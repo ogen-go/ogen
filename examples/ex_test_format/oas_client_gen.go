@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net"
 	"net/netip"
 	"net/url"
 	"strings"
@@ -1554,6 +1555,30 @@ type Invoker interface {
 	//
 	// POST /test_request_required_string_ipv6_nullable_array_array
 	TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (*Error, error)
+	// TestRequestRequiredStringMAC invokes test_request_required_string_mac operation.
+	//
+	// POST /test_request_required_string_mac
+	TestRequestRequiredStringMAC(ctx context.Context, request net.HardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACArray invokes test_request_required_string_mac_array operation.
+	//
+	// POST /test_request_required_string_mac_array
+	TestRequestRequiredStringMACArray(ctx context.Context, request []net.HardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACArrayArray invokes test_request_required_string_mac_array_array operation.
+	//
+	// POST /test_request_required_string_mac_array_array
+	TestRequestRequiredStringMACArrayArray(ctx context.Context, request [][]net.HardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACNullable invokes test_request_required_string_mac_nullable operation.
+	//
+	// POST /test_request_required_string_mac_nullable
+	TestRequestRequiredStringMACNullable(ctx context.Context, request NilHardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACNullableArray invokes test_request_required_string_mac_nullable_array operation.
+	//
+	// POST /test_request_required_string_mac_nullable_array
+	TestRequestRequiredStringMACNullableArray(ctx context.Context, request []NilHardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACNullableArrayArray invokes test_request_required_string_mac_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_mac_nullable_array_array
+	TestRequestRequiredStringMACNullableArrayArray(ctx context.Context, request [][]NilHardwareAddr) (*Error, error)
 	// TestRequestRequiredStringNullable invokes test_request_required_string_nullable operation.
 	//
 	// POST /test_request_required_string_nullable
@@ -2346,6 +2371,30 @@ type Invoker interface {
 	//
 	// POST /test_request_string_ipv6_nullable_array_array
 	TestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]NilIPv6) (*Error, error)
+	// TestRequestStringMAC invokes test_request_string_mac operation.
+	//
+	// POST /test_request_string_mac
+	TestRequestStringMAC(ctx context.Context, request OptHardwareAddr) (*Error, error)
+	// TestRequestStringMACArray invokes test_request_string_mac_array operation.
+	//
+	// POST /test_request_string_mac_array
+	TestRequestStringMACArray(ctx context.Context, request []net.HardwareAddr) (*Error, error)
+	// TestRequestStringMACArrayArray invokes test_request_string_mac_array_array operation.
+	//
+	// POST /test_request_string_mac_array_array
+	TestRequestStringMACArrayArray(ctx context.Context, request [][]net.HardwareAddr) (*Error, error)
+	// TestRequestStringMACNullable invokes test_request_string_mac_nullable operation.
+	//
+	// POST /test_request_string_mac_nullable
+	TestRequestStringMACNullable(ctx context.Context, request OptNilHardwareAddr) (*Error, error)
+	// TestRequestStringMACNullableArray invokes test_request_string_mac_nullable_array operation.
+	//
+	// POST /test_request_string_mac_nullable_array
+	TestRequestStringMACNullableArray(ctx context.Context, request []NilHardwareAddr) (*Error, error)
+	// TestRequestStringMACNullableArrayArray invokes test_request_string_mac_nullable_array_array operation.
+	//
+	// POST /test_request_string_mac_nullable_array_array
+	TestRequestStringMACNullableArrayArray(ctx context.Context, request [][]NilHardwareAddr) (*Error, error)
 	// TestRequestStringNullable invokes test_request_string_nullable operation.
 	//
 	// POST /test_request_string_nullable
@@ -3678,6 +3727,30 @@ type Invoker interface {
 	//
 	// POST /test_response_string_ipv6_nullable_array_array
 	TestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) ([][]NilIPv6, error)
+	// TestResponseStringMAC invokes test_response_string_mac operation.
+	//
+	// POST /test_response_string_mac
+	TestResponseStringMAC(ctx context.Context, request string) (net.HardwareAddr, error)
+	// TestResponseStringMACArray invokes test_response_string_mac_array operation.
+	//
+	// POST /test_response_string_mac_array
+	TestResponseStringMACArray(ctx context.Context, request string) ([]net.HardwareAddr, error)
+	// TestResponseStringMACArrayArray invokes test_response_string_mac_array_array operation.
+	//
+	// POST /test_response_string_mac_array_array
+	TestResponseStringMACArrayArray(ctx context.Context, request string) ([][]net.HardwareAddr, error)
+	// TestResponseStringMACNullable invokes test_response_string_mac_nullable operation.
+	//
+	// POST /test_response_string_mac_nullable
+	TestResponseStringMACNullable(ctx context.Context, request string) (NilHardwareAddr, error)
+	// TestResponseStringMACNullableArray invokes test_response_string_mac_nullable_array operation.
+	//
+	// POST /test_response_string_mac_nullable_array
+	TestResponseStringMACNullableArray(ctx context.Context, request string) ([]NilHardwareAddr, error)
+	// TestResponseStringMACNullableArrayArray invokes test_response_string_mac_nullable_array_array operation.
+	//
+	// POST /test_response_string_mac_nullable_array_array
+	TestResponseStringMACNullableArrayArray(ctx context.Context, request string) ([][]NilHardwareAddr, error)
 	// TestResponseStringNullable invokes test_response_string_nullable operation.
 	//
 	// POST /test_response_string_nullable
@@ -5596,6 +5669,43 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 				for i, item := range params.StringIpv6Array {
 					if err := func() error {
 						return e.EncodeValue(conv.AddrToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_mac" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_mac",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.HardwareAddrToString(params.StringMAC))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string_mac_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string_mac_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.StringMACArray {
+					if err := func() error {
+						return e.EncodeValue(conv.HardwareAddrToString(item))
 					}(); err != nil {
 						return errors.Wrapf(err, "[%d]", i)
 					}
@@ -33964,6 +34074,444 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context
 	return result, nil
 }
 
+// TestRequestRequiredStringMAC invokes test_request_required_string_mac operation.
+//
+// POST /test_request_required_string_mac
+func (c *Client) TestRequestRequiredStringMAC(ctx context.Context, request net.HardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringMAC(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringMAC(ctx context.Context, request net.HardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_mac"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_mac"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMAC",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_mac"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringMACRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringMACResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringMACArray invokes test_request_required_string_mac_array operation.
+//
+// POST /test_request_required_string_mac_array
+func (c *Client) TestRequestRequiredStringMACArray(ctx context.Context, request []net.HardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringMACArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringMACArray(ctx context.Context, request []net.HardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_mac_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_mac_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_mac_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringMACArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringMACArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringMACArrayArray invokes test_request_required_string_mac_array_array operation.
+//
+// POST /test_request_required_string_mac_array_array
+func (c *Client) TestRequestRequiredStringMACArrayArray(ctx context.Context, request [][]net.HardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringMACArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringMACArrayArray(ctx context.Context, request [][]net.HardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_mac_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_mac_array_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_mac_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringMACArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringMACArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringMACNullable invokes test_request_required_string_mac_nullable operation.
+//
+// POST /test_request_required_string_mac_nullable
+func (c *Client) TestRequestRequiredStringMACNullable(ctx context.Context, request NilHardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringMACNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringMACNullable(ctx context.Context, request NilHardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_mac_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACNullable",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_mac_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringMACNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringMACNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringMACNullableArray invokes test_request_required_string_mac_nullable_array operation.
+//
+// POST /test_request_required_string_mac_nullable_array
+func (c *Client) TestRequestRequiredStringMACNullableArray(ctx context.Context, request []NilHardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringMACNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringMACNullableArray(ctx context.Context, request []NilHardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_mac_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_mac_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringMACNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringMACNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringMACNullableArrayArray invokes test_request_required_string_mac_nullable_array_array operation.
+//
+// POST /test_request_required_string_mac_nullable_array_array
+func (c *Client) TestRequestRequiredStringMACNullableArrayArray(ctx context.Context, request [][]NilHardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestRequiredStringMACNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestRequiredStringMACNullableArrayArray(ctx context.Context, request [][]NilHardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_mac_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable_array_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_required_string_mac_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestRequiredStringMACNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredStringMACNullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestRequestRequiredStringNullable invokes test_request_required_string_nullable operation.
 //
 // POST /test_request_required_string_nullable
@@ -48411,6 +48959,444 @@ func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestStringIpv6NullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringMAC invokes test_request_string_mac operation.
+//
+// POST /test_request_string_mac
+func (c *Client) TestRequestStringMAC(ctx context.Context, request OptHardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestStringMAC(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringMAC(ctx context.Context, request OptHardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_mac"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_mac"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMAC",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_mac"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringMACRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringMACResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringMACArray invokes test_request_string_mac_array operation.
+//
+// POST /test_request_string_mac_array
+func (c *Client) TestRequestStringMACArray(ctx context.Context, request []net.HardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestStringMACArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringMACArray(ctx context.Context, request []net.HardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_mac_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_mac_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_mac_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringMACArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringMACArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringMACArrayArray invokes test_request_string_mac_array_array operation.
+//
+// POST /test_request_string_mac_array_array
+func (c *Client) TestRequestStringMACArrayArray(ctx context.Context, request [][]net.HardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestStringMACArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringMACArrayArray(ctx context.Context, request [][]net.HardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_mac_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_mac_array_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_mac_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringMACArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringMACArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringMACNullable invokes test_request_string_mac_nullable operation.
+//
+// POST /test_request_string_mac_nullable
+func (c *Client) TestRequestStringMACNullable(ctx context.Context, request OptNilHardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestStringMACNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringMACNullable(ctx context.Context, request OptNilHardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_mac_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACNullable",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_mac_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringMACNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringMACNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringMACNullableArray invokes test_request_string_mac_nullable_array operation.
+//
+// POST /test_request_string_mac_nullable_array
+func (c *Client) TestRequestStringMACNullableArray(ctx context.Context, request []NilHardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestStringMACNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringMACNullableArray(ctx context.Context, request []NilHardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_mac_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_mac_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringMACNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringMACNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringMACNullableArrayArray invokes test_request_string_mac_nullable_array_array operation.
+//
+// POST /test_request_string_mac_nullable_array_array
+func (c *Client) TestRequestStringMACNullableArrayArray(ctx context.Context, request [][]NilHardwareAddr) (*Error, error) {
+	res, err := c.sendTestRequestStringMACNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestRequestStringMACNullableArrayArray(ctx context.Context, request [][]NilHardwareAddr) (res *Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_mac_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable_array_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_request_string_mac_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestRequestStringMACNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestStringMACNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72720,6 +73706,444 @@ func (c *Client) sendTestResponseStringIpv6NullableArrayArray(ctx context.Contex
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseStringIpv6NullableArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringMAC invokes test_response_string_mac operation.
+//
+// POST /test_response_string_mac
+func (c *Client) TestResponseStringMAC(ctx context.Context, request string) (net.HardwareAddr, error) {
+	res, err := c.sendTestResponseStringMAC(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringMAC(ctx context.Context, request string) (res net.HardwareAddr, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_mac"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_mac"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMAC",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_mac"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringMACRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringMACResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringMACArray invokes test_response_string_mac_array operation.
+//
+// POST /test_response_string_mac_array
+func (c *Client) TestResponseStringMACArray(ctx context.Context, request string) ([]net.HardwareAddr, error) {
+	res, err := c.sendTestResponseStringMACArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringMACArray(ctx context.Context, request string) (res []net.HardwareAddr, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_mac_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_mac_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_mac_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringMACArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringMACArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringMACArrayArray invokes test_response_string_mac_array_array operation.
+//
+// POST /test_response_string_mac_array_array
+func (c *Client) TestResponseStringMACArrayArray(ctx context.Context, request string) ([][]net.HardwareAddr, error) {
+	res, err := c.sendTestResponseStringMACArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringMACArrayArray(ctx context.Context, request string) (res [][]net.HardwareAddr, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_mac_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_mac_array_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_mac_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringMACArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringMACArrayArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringMACNullable invokes test_response_string_mac_nullable operation.
+//
+// POST /test_response_string_mac_nullable
+func (c *Client) TestResponseStringMACNullable(ctx context.Context, request string) (NilHardwareAddr, error) {
+	res, err := c.sendTestResponseStringMACNullable(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringMACNullable(ctx context.Context, request string) (res NilHardwareAddr, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_mac_nullable"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACNullable",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_mac_nullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringMACNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringMACNullableResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringMACNullableArray invokes test_response_string_mac_nullable_array operation.
+//
+// POST /test_response_string_mac_nullable_array
+func (c *Client) TestResponseStringMACNullableArray(ctx context.Context, request string) ([]NilHardwareAddr, error) {
+	res, err := c.sendTestResponseStringMACNullableArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringMACNullableArray(ctx context.Context, request string) (res []NilHardwareAddr, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_mac_nullable_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_mac_nullable_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringMACNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringMACNullableArrayResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringMACNullableArrayArray invokes test_response_string_mac_nullable_array_array operation.
+//
+// POST /test_response_string_mac_nullable_array_array
+func (c *Client) TestResponseStringMACNullableArrayArray(ctx context.Context, request string) ([][]NilHardwareAddr, error) {
+	res, err := c.sendTestResponseStringMACNullableArrayArray(ctx, request)
+	return res, err
+}
+
+func (c *Client) sendTestResponseStringMACNullableArrayArray(ctx context.Context, request string) (res [][]NilHardwareAddr, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_mac_nullable_array_array"),
+		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable_array_array"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/test_response_string_mac_nullable_array_array"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeTestResponseStringMACNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseStringMACNullableArrayArrayResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

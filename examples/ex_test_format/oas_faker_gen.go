@@ -3,6 +3,7 @@
 package api
 
 import (
+	"net"
 	"net/netip"
 	"net/url"
 	"time"
@@ -52,6 +53,11 @@ func (s *NilFloat32) SetFake() {
 
 // SetFake set fake values.
 func (s *NilFloat64) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilHardwareAddr) SetFake() {
 	s.Null = true
 }
 
@@ -295,6 +301,15 @@ func (s *OptFloat64) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptHardwareAddr) SetFake() {
+	var elem net.HardwareAddr
+	{
+		elem = net.ParseMAC("11:22:33:44:55:66")
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptIP) SetFake() {
 	var elem netip.Addr
 	{
@@ -404,6 +419,12 @@ func (s *OptNilFloat32) SetFake() {
 
 // SetFake set fake values.
 func (s *OptNilFloat64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilHardwareAddr) SetFake() {
 	s.Null = true
 	s.Set = true
 }
@@ -1426,6 +1447,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem net.HardwareAddr
+				{
+					elem = net.ParseMAC("11:22:33:44:55:66")
+				}
+				s.RequiredArrayStringMAC = append(s.RequiredArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -2397,6 +2430,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.HardwareAddr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.HardwareAddr
+						{
+							elemElem = net.ParseMAC("11:22:33:44:55:66")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringMAC = append(s.RequiredDoubleArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -2859,6 +2911,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringIpv6 = netip.MustParseAddr("::1")
+		}
+	}
+	{
+		{
+			s.RequiredStringMAC = net.ParseMAC("11:22:33:44:55:66")
 		}
 	}
 	{
@@ -3437,6 +3494,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = netip.MustParseAddr("::1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem net.HardwareAddr
+				{
+					elem = net.ParseMAC("11:22:33:44:55:66")
+				}
+				s.OptionalArrayStringMAC = append(s.OptionalArrayStringMAC, elem)
 			}
 		}
 	}
@@ -4413,6 +4482,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.HardwareAddr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.HardwareAddr
+						{
+							elemElem = net.ParseMAC("11:22:33:44:55:66")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringMAC = append(s.OptionalDoubleArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -4875,6 +4963,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringIpv6.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringMAC.SetFake()
 		}
 	}
 	{
@@ -5466,6 +5559,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem net.HardwareAddr
+				{
+					elem = net.ParseMAC("11:22:33:44:55:66")
+				}
+				s.RequiredArrayStringMAC = append(s.RequiredArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -6437,6 +6542,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.HardwareAddr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.HardwareAddr
+						{
+							elemElem = net.ParseMAC("11:22:33:44:55:66")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringMAC = append(s.RequiredDoubleArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -6899,6 +7023,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringIpv6 = netip.MustParseAddr("::1")
+		}
+	}
+	{
+		{
+			s.RequiredStringMAC = net.ParseMAC("11:22:33:44:55:66")
 		}
 	}
 	{
@@ -7477,6 +7606,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = netip.MustParseAddr("::1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem net.HardwareAddr
+				{
+					elem = net.ParseMAC("11:22:33:44:55:66")
+				}
+				s.OptionalArrayStringMAC = append(s.OptionalArrayStringMAC, elem)
 			}
 		}
 	}
@@ -8453,6 +8594,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.HardwareAddr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.HardwareAddr
+						{
+							elemElem = net.ParseMAC("11:22:33:44:55:66")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringMAC = append(s.OptionalDoubleArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -8915,6 +9075,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringIpv6.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringMAC.SetFake()
 		}
 	}
 	{
@@ -9506,6 +9671,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem net.HardwareAddr
+				{
+					elem = net.ParseMAC("11:22:33:44:55:66")
+				}
+				s.RequiredArrayStringMAC = append(s.RequiredArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -10477,6 +10654,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.HardwareAddr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.HardwareAddr
+						{
+							elemElem = net.ParseMAC("11:22:33:44:55:66")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringMAC = append(s.RequiredDoubleArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -10939,6 +11135,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredStringIpv6 = netip.MustParseAddr("::1")
+		}
+	}
+	{
+		{
+			s.RequiredStringMAC = net.ParseMAC("11:22:33:44:55:66")
 		}
 	}
 	{
@@ -11517,6 +11718,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = netip.MustParseAddr("::1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem net.HardwareAddr
+				{
+					elem = net.ParseMAC("11:22:33:44:55:66")
+				}
+				s.OptionalArrayStringMAC = append(s.OptionalArrayStringMAC, elem)
 			}
 		}
 	}
@@ -12493,6 +12706,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringMAC = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.HardwareAddr
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.HardwareAddr
+						{
+							elemElem = net.ParseMAC("11:22:33:44:55:66")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringMAC = append(s.OptionalDoubleArrayStringMAC, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
@@ -12955,6 +13187,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringIpv6.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringMAC.SetFake()
 		}
 	}
 	{
