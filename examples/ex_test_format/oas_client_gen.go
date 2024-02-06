@@ -5688,7 +5688,7 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.HardwareAddrToString(params.StringMAC))
+			return e.EncodeValue(conv.MACToString(params.StringMAC))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -5705,7 +5705,7 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.StringMACArray {
 					if err := func() error {
-						return e.EncodeValue(conv.HardwareAddrToString(item))
+						return e.EncodeValue(conv.MACToString(item))
 					}(); err != nil {
 						return errors.Wrapf(err, "[%d]", i)
 					}

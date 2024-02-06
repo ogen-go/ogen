@@ -304,7 +304,7 @@ func (s *OptFloat64) SetFake() {
 func (s *OptHardwareAddr) SetFake() {
 	var elem net.HardwareAddr
 	{
-		elem = net.ParseMAC("11:22:33:44:55:66")
+		elem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 	}
 	s.SetTo(elem)
 }
@@ -1451,7 +1451,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem net.HardwareAddr
 				{
-					elem = net.ParseMAC("11:22:33:44:55:66")
+					elem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 				}
 				s.RequiredArrayStringMAC = append(s.RequiredArrayStringMAC, elem)
 			}
@@ -2438,7 +2438,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem net.HardwareAddr
 						{
-							elemElem = net.ParseMAC("11:22:33:44:55:66")
+							elemElem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2915,7 +2915,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringMAC = net.ParseMAC("11:22:33:44:55:66")
+			s.RequiredStringMAC = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 		}
 	}
 	{
@@ -3503,7 +3503,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem net.HardwareAddr
 				{
-					elem = net.ParseMAC("11:22:33:44:55:66")
+					elem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 				}
 				s.OptionalArrayStringMAC = append(s.OptionalArrayStringMAC, elem)
 			}
@@ -4490,7 +4490,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem net.HardwareAddr
 						{
-							elemElem = net.ParseMAC("11:22:33:44:55:66")
+							elemElem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5563,7 +5563,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem net.HardwareAddr
 				{
-					elem = net.ParseMAC("11:22:33:44:55:66")
+					elem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 				}
 				s.RequiredArrayStringMAC = append(s.RequiredArrayStringMAC, elem)
 			}
@@ -6550,7 +6550,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem net.HardwareAddr
 						{
-							elemElem = net.ParseMAC("11:22:33:44:55:66")
+							elemElem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 						}
 						elem = append(elem, elemElem)
 					}
@@ -7027,7 +7027,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringMAC = net.ParseMAC("11:22:33:44:55:66")
+			s.RequiredStringMAC = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 		}
 	}
 	{
@@ -7615,7 +7615,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem net.HardwareAddr
 				{
-					elem = net.ParseMAC("11:22:33:44:55:66")
+					elem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 				}
 				s.OptionalArrayStringMAC = append(s.OptionalArrayStringMAC, elem)
 			}
@@ -8602,7 +8602,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem net.HardwareAddr
 						{
-							elemElem = net.ParseMAC("11:22:33:44:55:66")
+							elemElem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 						}
 						elem = append(elem, elemElem)
 					}
@@ -9675,7 +9675,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem net.HardwareAddr
 				{
-					elem = net.ParseMAC("11:22:33:44:55:66")
+					elem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 				}
 				s.RequiredArrayStringMAC = append(s.RequiredArrayStringMAC, elem)
 			}
@@ -10662,7 +10662,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem net.HardwareAddr
 						{
-							elemElem = net.ParseMAC("11:22:33:44:55:66")
+							elemElem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 						}
 						elem = append(elem, elemElem)
 					}
@@ -11139,7 +11139,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringMAC = net.ParseMAC("11:22:33:44:55:66")
+			s.RequiredStringMAC = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 		}
 	}
 	{
@@ -11727,7 +11727,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 			for i := 0; i < 0; i++ {
 				var elem net.HardwareAddr
 				{
-					elem = net.ParseMAC("11:22:33:44:55:66")
+					elem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 				}
 				s.OptionalArrayStringMAC = append(s.OptionalArrayStringMAC, elem)
 			}
@@ -12714,7 +12714,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					for i := 0; i < 0; i++ {
 						var elemElem net.HardwareAddr
 						{
-							elemElem = net.ParseMAC("11:22:33:44:55:66")
+							elemElem = net.HardwareAddr{0x11, 0x22, 0x33, 0x44, 0x55, 0x66}
 						}
 						elem = append(elem, elemElem)
 					}

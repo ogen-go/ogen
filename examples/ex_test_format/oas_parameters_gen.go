@@ -4692,7 +4692,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 					return err
 				}
 
-				c, err := conv.ToHardwareAddr(val)
+				c, err := conv.ToMAC(val)
 				if err != nil {
 					return err
 				}
@@ -4731,7 +4731,7 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 							return err
 						}
 
-						c, err := conv.ToHardwareAddr(val)
+						c, err := conv.ToMAC(val)
 						if err != nil {
 							return err
 						}
