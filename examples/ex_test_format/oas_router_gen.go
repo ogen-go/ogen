@@ -9562,6 +9562,151 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									elem = origElem
+								case 'm': // Prefix: "mac"
+									origElem := elem
+									if l := len("mac"); len(elem) >= l && elem[0:l] == "mac" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestRequiredStringMACRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										origElem := elem
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											origElem := elem
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringMACArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringMACArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										case 'n': // Prefix: "nullable"
+											origElem := elem
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredStringMACNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringMACNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													origElem := elem
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringMACNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+													elem = origElem
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									}
+
+									elem = origElem
 								case 'n': // Prefix: "nullable"
 									origElem := elem
 									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -14455,6 +14600,151 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													elem = origElem
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									}
+
+									elem = origElem
+								}
+
+								elem = origElem
+							case 'm': // Prefix: "mac"
+								origElem := elem
+								if l := len("mac"); len(elem) >= l && elem[0:l] == "mac" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch r.Method {
+									case "POST":
+										s.handleTestRequestStringMACRequest([0]string{}, elemIsEscaped, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									origElem := elem
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										origElem := elem
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringMACArrayRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf node.
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringMACArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									case 'n': // Prefix: "nullable"
+										origElem := elem
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestStringMACNullableRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringMACNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringMACNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
 												}
 
 												elem = origElem
@@ -22718,6 +23008,151 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													elem = origElem
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									}
+
+									elem = origElem
+								}
+
+								elem = origElem
+							case 'm': // Prefix: "mac"
+								origElem := elem
+								if l := len("mac"); len(elem) >= l && elem[0:l] == "mac" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch r.Method {
+									case "POST":
+										s.handleTestResponseStringMACRequest([0]string{}, elemIsEscaped, w, r)
+									default:
+										s.notAllowed(w, r, "POST")
+									}
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									origElem := elem
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										origElem := elem
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringMACArrayRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf node.
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringMACArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									case 'n': // Prefix: "nullable"
+										origElem := elem
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseStringMACNullableRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringMACNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringMACNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
 												}
 
 												elem = origElem
@@ -36010,6 +36445,175 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									elem = origElem
+								case 'm': // Prefix: "mac"
+									origElem := elem
+									if l := len("mac"); len(elem) >= l && elem[0:l] == "mac" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestRequiredStringMAC"
+											r.summary = ""
+											r.operationID = "test_request_required_string_mac"
+											r.pathPattern = "/test_request_required_string_mac"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										origElem := elem
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											origElem := elem
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringMACArray"
+													r.summary = ""
+													r.operationID = "test_request_required_string_mac_array"
+													r.pathPattern = "/test_request_required_string_mac_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestRequiredStringMACArrayArray
+														r.name = "TestRequestRequiredStringMACArrayArray"
+														r.summary = ""
+														r.operationID = "test_request_required_string_mac_array_array"
+														r.pathPattern = "/test_request_required_string_mac_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										case 'n': // Prefix: "nullable"
+											origElem := elem
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestRequiredStringMACNullable"
+													r.summary = ""
+													r.operationID = "test_request_required_string_mac_nullable"
+													r.pathPattern = "/test_request_required_string_mac_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredStringMACNullableArray"
+														r.summary = ""
+														r.operationID = "test_request_required_string_mac_nullable_array"
+														r.pathPattern = "/test_request_required_string_mac_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													origElem := elem
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredStringMACNullableArrayArray
+															r.name = "TestRequestRequiredStringMACNullableArrayArray"
+															r.summary = ""
+															r.operationID = "test_request_required_string_mac_nullable_array_array"
+															r.pathPattern = "/test_request_required_string_mac_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+													elem = origElem
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									}
+
+									elem = origElem
 								case 'n': // Prefix: "nullable"
 									origElem := elem
 									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
@@ -41695,6 +42299,175 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													elem = origElem
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									}
+
+									elem = origElem
+								}
+
+								elem = origElem
+							case 'm': // Prefix: "mac"
+								origElem := elem
+								if l := len("mac"); len(elem) >= l && elem[0:l] == "mac" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "POST":
+										r.name = "TestRequestStringMAC"
+										r.summary = ""
+										r.operationID = "test_request_string_mac"
+										r.pathPattern = "/test_request_string_mac"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									origElem := elem
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										origElem := elem
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringMACArray"
+												r.summary = ""
+												r.operationID = "test_request_string_mac_array"
+												r.pathPattern = "/test_request_string_mac_array"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													// Leaf: TestRequestStringMACArrayArray
+													r.name = "TestRequestStringMACArrayArray"
+													r.summary = ""
+													r.operationID = "test_request_string_mac_array_array"
+													r.pathPattern = "/test_request_string_mac_array_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									case 'n': // Prefix: "nullable"
+										origElem := elem
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestStringMACNullable"
+												r.summary = ""
+												r.operationID = "test_request_string_mac_nullable"
+												r.pathPattern = "/test_request_string_mac_nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestStringMACNullableArray"
+													r.summary = ""
+													r.operationID = "test_request_string_mac_nullable_array"
+													r.pathPattern = "/test_request_string_mac_nullable_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestStringMACNullableArrayArray
+														r.name = "TestRequestStringMACNullableArrayArray"
+														r.summary = ""
+														r.operationID = "test_request_string_mac_nullable_array_array"
+														r.pathPattern = "/test_request_string_mac_nullable_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 
 												elem = origElem
@@ -51290,6 +52063,175 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													elem = origElem
+												}
+
+												elem = origElem
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									}
+
+									elem = origElem
+								}
+
+								elem = origElem
+							case 'm': // Prefix: "mac"
+								origElem := elem
+								if l := len("mac"); len(elem) >= l && elem[0:l] == "mac" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									switch method {
+									case "POST":
+										r.name = "TestResponseStringMAC"
+										r.summary = ""
+										r.operationID = "test_response_string_mac"
+										r.pathPattern = "/test_response_string_mac"
+										r.args = args
+										r.count = 0
+										return r, true
+									default:
+										return
+									}
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									origElem := elem
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										break
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										origElem := elem
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringMACArray"
+												r.summary = ""
+												r.operationID = "test_response_string_mac_array"
+												r.pathPattern = "/test_response_string_mac_array"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													// Leaf: TestResponseStringMACArrayArray
+													r.name = "TestResponseStringMACArrayArray"
+													r.summary = ""
+													r.operationID = "test_response_string_mac_array_array"
+													r.pathPattern = "/test_response_string_mac_array_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+
+											elem = origElem
+										}
+
+										elem = origElem
+									case 'n': // Prefix: "nullable"
+										origElem := elem
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestResponseStringMACNullable"
+												r.summary = ""
+												r.operationID = "test_response_string_mac_nullable"
+												r.pathPattern = "/test_response_string_mac_nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											origElem := elem
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseStringMACNullableArray"
+													r.summary = ""
+													r.operationID = "test_response_string_mac_nullable_array"
+													r.pathPattern = "/test_response_string_mac_nullable_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												origElem := elem
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseStringMACNullableArrayArray
+														r.name = "TestResponseStringMACNullableArrayArray"
+														r.summary = ""
+														r.operationID = "test_response_string_mac_nullable_array_array"
+														r.pathPattern = "/test_response_string_mac_nullable_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
 												}
 
 												elem = origElem

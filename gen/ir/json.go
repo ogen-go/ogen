@@ -140,6 +140,8 @@ func (j JSON) Format() string {
 		return "IPv4"
 	case "ipv6":
 		return "IPv6"
+	case "mac":
+		return "MAC"
 	case "uri":
 		return "URI"
 	case "int", "int8", "int16", "int32", "int64",
@@ -228,7 +230,7 @@ func jsonType(t *Type) string {
 			return "Number"
 		}
 		return "String"
-	case String, Duration, UUID, IP, URL, ByteSlice:
+	case String, Duration, UUID, MAC, IP, URL, ByteSlice:
 		return "String"
 	case Null:
 		return "Null"

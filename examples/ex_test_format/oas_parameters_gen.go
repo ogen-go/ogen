@@ -4,6 +4,7 @@ package api
 
 import (
 	"fmt"
+	"net"
 	"net/http"
 	"net/netip"
 	"net/url"
@@ -101,6 +102,8 @@ type TestQueryParameterParams struct {
 	StringIpv4Array         []netip.Addr
 	StringIpv6              netip.Addr
 	StringIpv6Array         []netip.Addr
+	StringMAC               net.HardwareAddr
+	StringMACArray          []net.HardwareAddr
 	StringPassword          string
 	StringPasswordArray     []string
 	StringTime              time.Time
@@ -691,6 +694,20 @@ func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQu
 			In:   "query",
 		}
 		params.StringIpv6Array = packed[key].([]netip.Addr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_mac",
+			In:   "query",
+		}
+		params.StringMAC = packed[key].(net.HardwareAddr)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "string_mac_array",
+			In:   "query",
+		}
+		params.StringMACArray = packed[key].([]net.HardwareAddr)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -4656,6 +4673,95 @@ func decodeTestQueryParameterParams(args [0]string, argsEscaped bool, r *http.Re
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "string_ipv6_array",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_mac.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_mac",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToMAC(val)
+				if err != nil {
+					return err
+				}
+
+				params.StringMAC = c
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_mac",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode query: string_mac_array.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "string_mac_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotStringMACArrayVal net.HardwareAddr
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToMAC(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotStringMACArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.StringMACArray = append(params.StringMACArray, paramsDotStringMACArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if params.StringMACArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		} else {
+			return validate.ErrFieldRequired
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "string_mac_array",
 			In:   "query",
 			Err:  err,
 		}

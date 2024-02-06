@@ -197,6 +197,7 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"time":      ir.Time,
 			"duration":  ir.Duration,
 			"uuid":      ir.UUID,
+			"mac":       ir.MAC,
 			"ip":        ir.IP,
 			"ipv4":      ir.IP,
 			"ipv6":      ir.IP,

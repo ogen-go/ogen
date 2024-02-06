@@ -1,6 +1,7 @@
 package conv
 
 import (
+	"net"
 	"net/netip"
 	"net/url"
 	"strconv"
@@ -126,6 +127,10 @@ func ToUUID(s string) (uuid.UUID, error) {
 	return uuid.Parse(s)
 }
 
+func ToMAC(s string) (net.HardwareAddr, error) {
+	return net.ParseMAC(s)
+}
+
 func ToAddr(s string) (netip.Addr, error) {
 	return netip.ParseAddr(s)
 }
@@ -244,4 +249,8 @@ func ToBoolArray(a []string) ([]bool, error) {
 
 func ToUUIDArray(a []string) ([]uuid.UUID, error) {
 	return decodeArray(a, ToUUID)
+}
+
+func ToMACArray(a []string) ([]net.HardwareAddr, error) {
+	return decodeArray(a, ToMAC)
 }

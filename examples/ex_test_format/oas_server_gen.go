@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net"
 	"net/netip"
 	"net/url"
 	"time"
@@ -1542,6 +1543,30 @@ type Handler interface {
 	//
 	// POST /test_request_required_string_ipv6_nullable_array_array
 	TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, req [][]NilIPv6) (*Error, error)
+	// TestRequestRequiredStringMAC implements test_request_required_string_mac operation.
+	//
+	// POST /test_request_required_string_mac
+	TestRequestRequiredStringMAC(ctx context.Context, req net.HardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACArray implements test_request_required_string_mac_array operation.
+	//
+	// POST /test_request_required_string_mac_array
+	TestRequestRequiredStringMACArray(ctx context.Context, req []net.HardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACArrayArray implements test_request_required_string_mac_array_array operation.
+	//
+	// POST /test_request_required_string_mac_array_array
+	TestRequestRequiredStringMACArrayArray(ctx context.Context, req [][]net.HardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACNullable implements test_request_required_string_mac_nullable operation.
+	//
+	// POST /test_request_required_string_mac_nullable
+	TestRequestRequiredStringMACNullable(ctx context.Context, req NilHardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACNullableArray implements test_request_required_string_mac_nullable_array operation.
+	//
+	// POST /test_request_required_string_mac_nullable_array
+	TestRequestRequiredStringMACNullableArray(ctx context.Context, req []NilHardwareAddr) (*Error, error)
+	// TestRequestRequiredStringMACNullableArrayArray implements test_request_required_string_mac_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_mac_nullable_array_array
+	TestRequestRequiredStringMACNullableArrayArray(ctx context.Context, req [][]NilHardwareAddr) (*Error, error)
 	// TestRequestRequiredStringNullable implements test_request_required_string_nullable operation.
 	//
 	// POST /test_request_required_string_nullable
@@ -2334,6 +2359,30 @@ type Handler interface {
 	//
 	// POST /test_request_string_ipv6_nullable_array_array
 	TestRequestStringIpv6NullableArrayArray(ctx context.Context, req [][]NilIPv6) (*Error, error)
+	// TestRequestStringMAC implements test_request_string_mac operation.
+	//
+	// POST /test_request_string_mac
+	TestRequestStringMAC(ctx context.Context, req OptHardwareAddr) (*Error, error)
+	// TestRequestStringMACArray implements test_request_string_mac_array operation.
+	//
+	// POST /test_request_string_mac_array
+	TestRequestStringMACArray(ctx context.Context, req []net.HardwareAddr) (*Error, error)
+	// TestRequestStringMACArrayArray implements test_request_string_mac_array_array operation.
+	//
+	// POST /test_request_string_mac_array_array
+	TestRequestStringMACArrayArray(ctx context.Context, req [][]net.HardwareAddr) (*Error, error)
+	// TestRequestStringMACNullable implements test_request_string_mac_nullable operation.
+	//
+	// POST /test_request_string_mac_nullable
+	TestRequestStringMACNullable(ctx context.Context, req OptNilHardwareAddr) (*Error, error)
+	// TestRequestStringMACNullableArray implements test_request_string_mac_nullable_array operation.
+	//
+	// POST /test_request_string_mac_nullable_array
+	TestRequestStringMACNullableArray(ctx context.Context, req []NilHardwareAddr) (*Error, error)
+	// TestRequestStringMACNullableArrayArray implements test_request_string_mac_nullable_array_array operation.
+	//
+	// POST /test_request_string_mac_nullable_array_array
+	TestRequestStringMACNullableArrayArray(ctx context.Context, req [][]NilHardwareAddr) (*Error, error)
 	// TestRequestStringNullable implements test_request_string_nullable operation.
 	//
 	// POST /test_request_string_nullable
@@ -3666,6 +3715,30 @@ type Handler interface {
 	//
 	// POST /test_response_string_ipv6_nullable_array_array
 	TestResponseStringIpv6NullableArrayArray(ctx context.Context, req string) ([][]NilIPv6, error)
+	// TestResponseStringMAC implements test_response_string_mac operation.
+	//
+	// POST /test_response_string_mac
+	TestResponseStringMAC(ctx context.Context, req string) (net.HardwareAddr, error)
+	// TestResponseStringMACArray implements test_response_string_mac_array operation.
+	//
+	// POST /test_response_string_mac_array
+	TestResponseStringMACArray(ctx context.Context, req string) ([]net.HardwareAddr, error)
+	// TestResponseStringMACArrayArray implements test_response_string_mac_array_array operation.
+	//
+	// POST /test_response_string_mac_array_array
+	TestResponseStringMACArrayArray(ctx context.Context, req string) ([][]net.HardwareAddr, error)
+	// TestResponseStringMACNullable implements test_response_string_mac_nullable operation.
+	//
+	// POST /test_response_string_mac_nullable
+	TestResponseStringMACNullable(ctx context.Context, req string) (NilHardwareAddr, error)
+	// TestResponseStringMACNullableArray implements test_response_string_mac_nullable_array operation.
+	//
+	// POST /test_response_string_mac_nullable_array
+	TestResponseStringMACNullableArray(ctx context.Context, req string) ([]NilHardwareAddr, error)
+	// TestResponseStringMACNullableArrayArray implements test_response_string_mac_nullable_array_array operation.
+	//
+	// POST /test_response_string_mac_nullable_array_array
+	TestResponseStringMACNullableArrayArray(ctx context.Context, req string) ([][]NilHardwareAddr, error)
 	// TestResponseStringNullable implements test_response_string_nullable operation.
 	//
 	// POST /test_response_string_nullable

@@ -4,6 +4,7 @@ package api
 
 import (
 	"context"
+	"net"
 	"net/netip"
 	"net/url"
 	"time"
@@ -2693,6 +2694,48 @@ func (UnimplementedHandler) TestRequestRequiredStringIpv6NullableArrayArray(ctx 
 	return r, ht.ErrNotImplemented
 }
 
+// TestRequestRequiredStringMAC implements test_request_required_string_mac operation.
+//
+// POST /test_request_required_string_mac
+func (UnimplementedHandler) TestRequestRequiredStringMAC(ctx context.Context, req net.HardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringMACArray implements test_request_required_string_mac_array operation.
+//
+// POST /test_request_required_string_mac_array
+func (UnimplementedHandler) TestRequestRequiredStringMACArray(ctx context.Context, req []net.HardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringMACArrayArray implements test_request_required_string_mac_array_array operation.
+//
+// POST /test_request_required_string_mac_array_array
+func (UnimplementedHandler) TestRequestRequiredStringMACArrayArray(ctx context.Context, req [][]net.HardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringMACNullable implements test_request_required_string_mac_nullable operation.
+//
+// POST /test_request_required_string_mac_nullable
+func (UnimplementedHandler) TestRequestRequiredStringMACNullable(ctx context.Context, req NilHardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringMACNullableArray implements test_request_required_string_mac_nullable_array operation.
+//
+// POST /test_request_required_string_mac_nullable_array
+func (UnimplementedHandler) TestRequestRequiredStringMACNullableArray(ctx context.Context, req []NilHardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredStringMACNullableArrayArray implements test_request_required_string_mac_nullable_array_array operation.
+//
+// POST /test_request_required_string_mac_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredStringMACNullableArrayArray(ctx context.Context, req [][]NilHardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestRequestRequiredStringNullable implements test_request_required_string_nullable operation.
 //
 // POST /test_request_required_string_nullable
@@ -4076,6 +4119,48 @@ func (UnimplementedHandler) TestRequestStringIpv6NullableArray(ctx context.Conte
 //
 // POST /test_request_string_ipv6_nullable_array_array
 func (UnimplementedHandler) TestRequestStringIpv6NullableArrayArray(ctx context.Context, req [][]NilIPv6) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringMAC implements test_request_string_mac operation.
+//
+// POST /test_request_string_mac
+func (UnimplementedHandler) TestRequestStringMAC(ctx context.Context, req OptHardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringMACArray implements test_request_string_mac_array operation.
+//
+// POST /test_request_string_mac_array
+func (UnimplementedHandler) TestRequestStringMACArray(ctx context.Context, req []net.HardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringMACArrayArray implements test_request_string_mac_array_array operation.
+//
+// POST /test_request_string_mac_array_array
+func (UnimplementedHandler) TestRequestStringMACArrayArray(ctx context.Context, req [][]net.HardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringMACNullable implements test_request_string_mac_nullable operation.
+//
+// POST /test_request_string_mac_nullable
+func (UnimplementedHandler) TestRequestStringMACNullable(ctx context.Context, req OptNilHardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringMACNullableArray implements test_request_string_mac_nullable_array operation.
+//
+// POST /test_request_string_mac_nullable_array
+func (UnimplementedHandler) TestRequestStringMACNullableArray(ctx context.Context, req []NilHardwareAddr) (r *Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestStringMACNullableArrayArray implements test_request_string_mac_nullable_array_array operation.
+//
+// POST /test_request_string_mac_nullable_array_array
+func (UnimplementedHandler) TestRequestStringMACNullableArrayArray(ctx context.Context, req [][]NilHardwareAddr) (r *Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6407,6 +6492,48 @@ func (UnimplementedHandler) TestResponseStringIpv6NullableArray(ctx context.Cont
 //
 // POST /test_response_string_ipv6_nullable_array_array
 func (UnimplementedHandler) TestResponseStringIpv6NullableArrayArray(ctx context.Context, req string) (r [][]NilIPv6, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringMAC implements test_response_string_mac operation.
+//
+// POST /test_response_string_mac
+func (UnimplementedHandler) TestResponseStringMAC(ctx context.Context, req string) (r net.HardwareAddr, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringMACArray implements test_response_string_mac_array operation.
+//
+// POST /test_response_string_mac_array
+func (UnimplementedHandler) TestResponseStringMACArray(ctx context.Context, req string) (r []net.HardwareAddr, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringMACArrayArray implements test_response_string_mac_array_array operation.
+//
+// POST /test_response_string_mac_array_array
+func (UnimplementedHandler) TestResponseStringMACArrayArray(ctx context.Context, req string) (r [][]net.HardwareAddr, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringMACNullable implements test_response_string_mac_nullable operation.
+//
+// POST /test_response_string_mac_nullable
+func (UnimplementedHandler) TestResponseStringMACNullable(ctx context.Context, req string) (r NilHardwareAddr, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringMACNullableArray implements test_response_string_mac_nullable_array operation.
+//
+// POST /test_response_string_mac_nullable_array
+func (UnimplementedHandler) TestResponseStringMACNullableArray(ctx context.Context, req string) (r []NilHardwareAddr, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseStringMACNullableArrayArray implements test_response_string_mac_nullable_array_array operation.
+//
+// POST /test_response_string_mac_nullable_array_array
+func (UnimplementedHandler) TestResponseStringMACNullableArrayArray(ctx context.Context, req string) (r [][]NilHardwareAddr, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

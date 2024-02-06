@@ -44,6 +44,8 @@ func (p PrimitiveType) String() string {
 		return "time.Duration"
 	case UUID:
 		return "uuid.UUID"
+	case MAC:
+		return "net.HardwareAddr"
 	case IP:
 		return "netip.Addr"
 	case URL:
@@ -83,6 +85,7 @@ const (
 	Time
 	Duration
 	UUID
+	MAC
 	IP
 	URL
 	File

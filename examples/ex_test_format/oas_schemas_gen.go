@@ -3,6 +3,7 @@
 package api
 
 import (
+	"net"
 	"net/netip"
 	"net/url"
 	"time"
@@ -301,6 +302,51 @@ func (o NilFloat64) Get() (v float64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o NilFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilHardwareAddr returns new NilHardwareAddr with value set to v.
+func NewNilHardwareAddr(v net.HardwareAddr) NilHardwareAddr {
+	return NilHardwareAddr{
+		Value: v,
+	}
+}
+
+// NilHardwareAddr is nullable net.HardwareAddr.
+type NilHardwareAddr struct {
+	Value net.HardwareAddr
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilHardwareAddr) SetTo(v net.HardwareAddr) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilHardwareAddr) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *NilHardwareAddr) SetToNull() {
+	o.Null = true
+	var v net.HardwareAddr
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilHardwareAddr) Get() (v net.HardwareAddr, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilHardwareAddr) Or(d net.HardwareAddr) net.HardwareAddr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2248,6 +2294,52 @@ func (o OptFloat64) Or(d float64) float64 {
 	return d
 }
 
+// NewOptHardwareAddr returns new OptHardwareAddr with value set to v.
+func NewOptHardwareAddr(v net.HardwareAddr) OptHardwareAddr {
+	return OptHardwareAddr{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptHardwareAddr is optional net.HardwareAddr.
+type OptHardwareAddr struct {
+	Value net.HardwareAddr
+	Set   bool
+}
+
+// IsSet returns true if OptHardwareAddr was set.
+func (o OptHardwareAddr) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptHardwareAddr) Reset() {
+	var v net.HardwareAddr
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptHardwareAddr) SetTo(v net.HardwareAddr) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptHardwareAddr) Get() (v net.HardwareAddr, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptHardwareAddr) Or(d net.HardwareAddr) net.HardwareAddr {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIP returns new OptIP with value set to v.
 func NewOptIP(v netip.Addr) OptIP {
 	return OptIP{
@@ -3051,6 +3143,69 @@ func (o OptNilFloat64) Get() (v float64, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNilFloat64) Or(d float64) float64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilHardwareAddr returns new OptNilHardwareAddr with value set to v.
+func NewOptNilHardwareAddr(v net.HardwareAddr) OptNilHardwareAddr {
+	return OptNilHardwareAddr{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilHardwareAddr is optional nullable net.HardwareAddr.
+type OptNilHardwareAddr struct {
+	Value net.HardwareAddr
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilHardwareAddr was set.
+func (o OptNilHardwareAddr) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilHardwareAddr) Reset() {
+	var v net.HardwareAddr
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilHardwareAddr) SetTo(v net.HardwareAddr) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilHardwareAddr) IsNull() bool { return o.Null }
+
+// SetNull sets value to null.
+func (o *OptNilHardwareAddr) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v net.HardwareAddr
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilHardwareAddr) Get() (v net.HardwareAddr, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilHardwareAddr) Or(d net.HardwareAddr) net.HardwareAddr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -6860,6 +7015,7 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayStringIP                      []netip.Addr         `json:"required_array_string_ip"`
 	RequiredArrayStringIpv4                    []netip.Addr         `json:"required_array_string_ipv4"`
 	RequiredArrayStringIpv6                    []netip.Addr         `json:"required_array_string_ipv6"`
+	RequiredArrayStringMAC                     []net.HardwareAddr   `json:"required_array_string_mac"`
 	RequiredArrayStringPassword                []string             `json:"required_array_string_password"`
 	RequiredArrayStringTime                    []time.Time          `json:"required_array_string_time"`
 	RequiredArrayStringUint                    []uint               `json:"required_array_string_uint"`
@@ -6917,6 +7073,7 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayStringIP                [][]netip.Addr       `json:"required_double_array_string_ip"`
 	RequiredDoubleArrayStringIpv4              [][]netip.Addr       `json:"required_double_array_string_ipv4"`
 	RequiredDoubleArrayStringIpv6              [][]netip.Addr       `json:"required_double_array_string_ipv6"`
+	RequiredDoubleArrayStringMAC               [][]net.HardwareAddr `json:"required_double_array_string_mac"`
 	RequiredDoubleArrayStringPassword          [][]string           `json:"required_double_array_string_password"`
 	RequiredDoubleArrayStringTime              [][]time.Time        `json:"required_double_array_string_time"`
 	RequiredDoubleArrayStringUint              [][]uint             `json:"required_double_array_string_uint"`
@@ -6971,6 +7128,7 @@ type TestRequestFormatTestReq struct {
 	RequiredStringIP                           netip.Addr           `json:"required_string_ip"`
 	RequiredStringIpv4                         netip.Addr           `json:"required_string_ipv4"`
 	RequiredStringIpv6                         netip.Addr           `json:"required_string_ipv6"`
+	RequiredStringMAC                          net.HardwareAddr     `json:"required_string_mac"`
 	RequiredStringPassword                     string               `json:"required_string_password"`
 	RequiredStringTime                         time.Time            `json:"required_string_time"`
 	RequiredStringUint                         uint                 `json:"required_string_uint"`
@@ -7028,6 +7186,7 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayStringIP                      []netip.Addr         `json:"optional_array_string_ip"`
 	OptionalArrayStringIpv4                    []netip.Addr         `json:"optional_array_string_ipv4"`
 	OptionalArrayStringIpv6                    []netip.Addr         `json:"optional_array_string_ipv6"`
+	OptionalArrayStringMAC                     []net.HardwareAddr   `json:"optional_array_string_mac"`
 	OptionalArrayStringPassword                []string             `json:"optional_array_string_password"`
 	OptionalArrayStringTime                    []time.Time          `json:"optional_array_string_time"`
 	OptionalArrayStringUint                    []uint               `json:"optional_array_string_uint"`
@@ -7085,6 +7244,7 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayStringIP                [][]netip.Addr       `json:"optional_double_array_string_ip"`
 	OptionalDoubleArrayStringIpv4              [][]netip.Addr       `json:"optional_double_array_string_ipv4"`
 	OptionalDoubleArrayStringIpv6              [][]netip.Addr       `json:"optional_double_array_string_ipv6"`
+	OptionalDoubleArrayStringMAC               [][]net.HardwareAddr `json:"optional_double_array_string_mac"`
 	OptionalDoubleArrayStringPassword          [][]string           `json:"optional_double_array_string_password"`
 	OptionalDoubleArrayStringTime              [][]time.Time        `json:"optional_double_array_string_time"`
 	OptionalDoubleArrayStringUint              [][]uint             `json:"optional_double_array_string_uint"`
@@ -7139,6 +7299,7 @@ type TestRequestFormatTestReq struct {
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
+	OptionalStringMAC                          OptHardwareAddr      `json:"optional_string_mac"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
 	OptionalStringUint                         OptStringUint        `json:"optional_string_uint"`
@@ -7368,6 +7529,11 @@ func (s *TestRequestFormatTestReq) GetRequiredArrayStringIpv4() []netip.Addr {
 // GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
 func (s *TestRequestFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
 	return s.RequiredArrayStringIpv6
+}
+
+// GetRequiredArrayStringMAC returns the value of RequiredArrayStringMAC.
+func (s *TestRequestFormatTestReq) GetRequiredArrayStringMAC() []net.HardwareAddr {
+	return s.RequiredArrayStringMAC
 }
 
 // GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
@@ -7655,6 +7821,11 @@ func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringIpv6() [][]netip.
 	return s.RequiredDoubleArrayStringIpv6
 }
 
+// GetRequiredDoubleArrayStringMAC returns the value of RequiredDoubleArrayStringMAC.
+func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringMAC() [][]net.HardwareAddr {
+	return s.RequiredDoubleArrayStringMAC
+}
+
 // GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
 func (s *TestRequestFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
 	return s.RequiredDoubleArrayStringPassword
@@ -7923,6 +8094,11 @@ func (s *TestRequestFormatTestReq) GetRequiredStringIpv4() netip.Addr {
 // GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
 func (s *TestRequestFormatTestReq) GetRequiredStringIpv6() netip.Addr {
 	return s.RequiredStringIpv6
+}
+
+// GetRequiredStringMAC returns the value of RequiredStringMAC.
+func (s *TestRequestFormatTestReq) GetRequiredStringMAC() net.HardwareAddr {
+	return s.RequiredStringMAC
 }
 
 // GetRequiredStringPassword returns the value of RequiredStringPassword.
@@ -8210,6 +8386,11 @@ func (s *TestRequestFormatTestReq) GetOptionalArrayStringIpv6() []netip.Addr {
 	return s.OptionalArrayStringIpv6
 }
 
+// GetOptionalArrayStringMAC returns the value of OptionalArrayStringMAC.
+func (s *TestRequestFormatTestReq) GetOptionalArrayStringMAC() []net.HardwareAddr {
+	return s.OptionalArrayStringMAC
+}
+
 // GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
 func (s *TestRequestFormatTestReq) GetOptionalArrayStringPassword() []string {
 	return s.OptionalArrayStringPassword
@@ -8495,6 +8676,11 @@ func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringIpv6() [][]netip.
 	return s.OptionalDoubleArrayStringIpv6
 }
 
+// GetOptionalDoubleArrayStringMAC returns the value of OptionalDoubleArrayStringMAC.
+func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringMAC() [][]net.HardwareAddr {
+	return s.OptionalDoubleArrayStringMAC
+}
+
 // GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
 func (s *TestRequestFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
 	return s.OptionalDoubleArrayStringPassword
@@ -8763,6 +8949,11 @@ func (s *TestRequestFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
 // GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
 func (s *TestRequestFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
 	return s.OptionalStringIpv6
+}
+
+// GetOptionalStringMAC returns the value of OptionalStringMAC.
+func (s *TestRequestFormatTestReq) GetOptionalStringMAC() OptHardwareAddr {
+	return s.OptionalStringMAC
 }
 
 // GetOptionalStringPassword returns the value of OptionalStringPassword.
@@ -9050,6 +9241,11 @@ func (s *TestRequestFormatTestReq) SetRequiredArrayStringIpv6(val []netip.Addr) 
 	s.RequiredArrayStringIpv6 = val
 }
 
+// SetRequiredArrayStringMAC sets the value of RequiredArrayStringMAC.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringMAC(val []net.HardwareAddr) {
+	s.RequiredArrayStringMAC = val
+}
+
 // SetRequiredArrayStringPassword sets the value of RequiredArrayStringPassword.
 func (s *TestRequestFormatTestReq) SetRequiredArrayStringPassword(val []string) {
 	s.RequiredArrayStringPassword = val
@@ -9335,6 +9531,11 @@ func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringIpv6(val [][]neti
 	s.RequiredDoubleArrayStringIpv6 = val
 }
 
+// SetRequiredDoubleArrayStringMAC sets the value of RequiredDoubleArrayStringMAC.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringMAC(val [][]net.HardwareAddr) {
+	s.RequiredDoubleArrayStringMAC = val
+}
+
 // SetRequiredDoubleArrayStringPassword sets the value of RequiredDoubleArrayStringPassword.
 func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringPassword(val [][]string) {
 	s.RequiredDoubleArrayStringPassword = val
@@ -9603,6 +9804,11 @@ func (s *TestRequestFormatTestReq) SetRequiredStringIpv4(val netip.Addr) {
 // SetRequiredStringIpv6 sets the value of RequiredStringIpv6.
 func (s *TestRequestFormatTestReq) SetRequiredStringIpv6(val netip.Addr) {
 	s.RequiredStringIpv6 = val
+}
+
+// SetRequiredStringMAC sets the value of RequiredStringMAC.
+func (s *TestRequestFormatTestReq) SetRequiredStringMAC(val net.HardwareAddr) {
+	s.RequiredStringMAC = val
 }
 
 // SetRequiredStringPassword sets the value of RequiredStringPassword.
@@ -9890,6 +10096,11 @@ func (s *TestRequestFormatTestReq) SetOptionalArrayStringIpv6(val []netip.Addr) 
 	s.OptionalArrayStringIpv6 = val
 }
 
+// SetOptionalArrayStringMAC sets the value of OptionalArrayStringMAC.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringMAC(val []net.HardwareAddr) {
+	s.OptionalArrayStringMAC = val
+}
+
 // SetOptionalArrayStringPassword sets the value of OptionalArrayStringPassword.
 func (s *TestRequestFormatTestReq) SetOptionalArrayStringPassword(val []string) {
 	s.OptionalArrayStringPassword = val
@@ -10175,6 +10386,11 @@ func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringIpv6(val [][]neti
 	s.OptionalDoubleArrayStringIpv6 = val
 }
 
+// SetOptionalDoubleArrayStringMAC sets the value of OptionalDoubleArrayStringMAC.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringMAC(val [][]net.HardwareAddr) {
+	s.OptionalDoubleArrayStringMAC = val
+}
+
 // SetOptionalDoubleArrayStringPassword sets the value of OptionalDoubleArrayStringPassword.
 func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringPassword(val [][]string) {
 	s.OptionalDoubleArrayStringPassword = val
@@ -10445,6 +10661,11 @@ func (s *TestRequestFormatTestReq) SetOptionalStringIpv6(val OptIPv6) {
 	s.OptionalStringIpv6 = val
 }
 
+// SetOptionalStringMAC sets the value of OptionalStringMAC.
+func (s *TestRequestFormatTestReq) SetOptionalStringMAC(val OptHardwareAddr) {
+	s.OptionalStringMAC = val
+}
+
 // SetOptionalStringPassword sets the value of OptionalStringPassword.
 func (s *TestRequestFormatTestReq) SetOptionalStringPassword(val OptString) {
 	s.OptionalStringPassword = val
@@ -10561,6 +10782,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayStringIP                      []netip.Addr         `json:"required_array_string_ip"`
 	RequiredArrayStringIpv4                    []netip.Addr         `json:"required_array_string_ipv4"`
 	RequiredArrayStringIpv6                    []netip.Addr         `json:"required_array_string_ipv6"`
+	RequiredArrayStringMAC                     []net.HardwareAddr   `json:"required_array_string_mac"`
 	RequiredArrayStringPassword                []string             `json:"required_array_string_password"`
 	RequiredArrayStringTime                    []time.Time          `json:"required_array_string_time"`
 	RequiredArrayStringUint                    []uint               `json:"required_array_string_uint"`
@@ -10618,6 +10840,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayStringIP                [][]netip.Addr       `json:"required_double_array_string_ip"`
 	RequiredDoubleArrayStringIpv4              [][]netip.Addr       `json:"required_double_array_string_ipv4"`
 	RequiredDoubleArrayStringIpv6              [][]netip.Addr       `json:"required_double_array_string_ipv6"`
+	RequiredDoubleArrayStringMAC               [][]net.HardwareAddr `json:"required_double_array_string_mac"`
 	RequiredDoubleArrayStringPassword          [][]string           `json:"required_double_array_string_password"`
 	RequiredDoubleArrayStringTime              [][]time.Time        `json:"required_double_array_string_time"`
 	RequiredDoubleArrayStringUint              [][]uint             `json:"required_double_array_string_uint"`
@@ -10672,6 +10895,7 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredStringIP                           netip.Addr           `json:"required_string_ip"`
 	RequiredStringIpv4                         netip.Addr           `json:"required_string_ipv4"`
 	RequiredStringIpv6                         netip.Addr           `json:"required_string_ipv6"`
+	RequiredStringMAC                          net.HardwareAddr     `json:"required_string_mac"`
 	RequiredStringPassword                     string               `json:"required_string_password"`
 	RequiredStringTime                         time.Time            `json:"required_string_time"`
 	RequiredStringUint                         uint                 `json:"required_string_uint"`
@@ -10729,6 +10953,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayStringIP                      []netip.Addr         `json:"optional_array_string_ip"`
 	OptionalArrayStringIpv4                    []netip.Addr         `json:"optional_array_string_ipv4"`
 	OptionalArrayStringIpv6                    []netip.Addr         `json:"optional_array_string_ipv6"`
+	OptionalArrayStringMAC                     []net.HardwareAddr   `json:"optional_array_string_mac"`
 	OptionalArrayStringPassword                []string             `json:"optional_array_string_password"`
 	OptionalArrayStringTime                    []time.Time          `json:"optional_array_string_time"`
 	OptionalArrayStringUint                    []uint               `json:"optional_array_string_uint"`
@@ -10786,6 +11011,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayStringIP                [][]netip.Addr       `json:"optional_double_array_string_ip"`
 	OptionalDoubleArrayStringIpv4              [][]netip.Addr       `json:"optional_double_array_string_ipv4"`
 	OptionalDoubleArrayStringIpv6              [][]netip.Addr       `json:"optional_double_array_string_ipv6"`
+	OptionalDoubleArrayStringMAC               [][]net.HardwareAddr `json:"optional_double_array_string_mac"`
 	OptionalDoubleArrayStringPassword          [][]string           `json:"optional_double_array_string_password"`
 	OptionalDoubleArrayStringTime              [][]time.Time        `json:"optional_double_array_string_time"`
 	OptionalDoubleArrayStringUint              [][]uint             `json:"optional_double_array_string_uint"`
@@ -10840,6 +11066,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
+	OptionalStringMAC                          OptHardwareAddr      `json:"optional_string_mac"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
 	OptionalStringUint                         OptStringUint        `json:"optional_string_uint"`
@@ -11069,6 +11296,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv4() []netip.
 // GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
 	return s.RequiredArrayStringIpv6
+}
+
+// GetRequiredArrayStringMAC returns the value of RequiredArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredArrayStringMAC() []net.HardwareAddr {
+	return s.RequiredArrayStringMAC
 }
 
 // GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
@@ -11356,6 +11588,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIpv6() []
 	return s.RequiredDoubleArrayStringIpv6
 }
 
+// GetRequiredDoubleArrayStringMAC returns the value of RequiredDoubleArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringMAC() [][]net.HardwareAddr {
+	return s.RequiredDoubleArrayStringMAC
+}
+
 // GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
 	return s.RequiredDoubleArrayStringPassword
@@ -11624,6 +11861,11 @@ func (s *TestRequestRequiredFormatTestReq) GetRequiredStringIpv4() netip.Addr {
 // GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
 func (s *TestRequestRequiredFormatTestReq) GetRequiredStringIpv6() netip.Addr {
 	return s.RequiredStringIpv6
+}
+
+// GetRequiredStringMAC returns the value of RequiredStringMAC.
+func (s *TestRequestRequiredFormatTestReq) GetRequiredStringMAC() net.HardwareAddr {
+	return s.RequiredStringMAC
 }
 
 // GetRequiredStringPassword returns the value of RequiredStringPassword.
@@ -11911,6 +12153,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringIpv6() []netip.
 	return s.OptionalArrayStringIpv6
 }
 
+// GetOptionalArrayStringMAC returns the value of OptionalArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringMAC() []net.HardwareAddr {
+	return s.OptionalArrayStringMAC
+}
+
 // GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalArrayStringPassword() []string {
 	return s.OptionalArrayStringPassword
@@ -12196,6 +12443,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIpv6() []
 	return s.OptionalDoubleArrayStringIpv6
 }
 
+// GetOptionalDoubleArrayStringMAC returns the value of OptionalDoubleArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringMAC() [][]net.HardwareAddr {
+	return s.OptionalDoubleArrayStringMAC
+}
+
 // GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
 	return s.OptionalDoubleArrayStringPassword
@@ -12464,6 +12716,11 @@ func (s *TestRequestRequiredFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
 // GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
 func (s *TestRequestRequiredFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
 	return s.OptionalStringIpv6
+}
+
+// GetOptionalStringMAC returns the value of OptionalStringMAC.
+func (s *TestRequestRequiredFormatTestReq) GetOptionalStringMAC() OptHardwareAddr {
+	return s.OptionalStringMAC
 }
 
 // GetOptionalStringPassword returns the value of OptionalStringPassword.
@@ -12751,6 +13008,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringIpv6(val []neti
 	s.RequiredArrayStringIpv6 = val
 }
 
+// SetRequiredArrayStringMAC sets the value of RequiredArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringMAC(val []net.HardwareAddr) {
+	s.RequiredArrayStringMAC = val
+}
+
 // SetRequiredArrayStringPassword sets the value of RequiredArrayStringPassword.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringPassword(val []string) {
 	s.RequiredArrayStringPassword = val
@@ -13036,6 +13298,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringIpv6(val 
 	s.RequiredDoubleArrayStringIpv6 = val
 }
 
+// SetRequiredDoubleArrayStringMAC sets the value of RequiredDoubleArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringMAC(val [][]net.HardwareAddr) {
+	s.RequiredDoubleArrayStringMAC = val
+}
+
 // SetRequiredDoubleArrayStringPassword sets the value of RequiredDoubleArrayStringPassword.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringPassword(val [][]string) {
 	s.RequiredDoubleArrayStringPassword = val
@@ -13304,6 +13571,11 @@ func (s *TestRequestRequiredFormatTestReq) SetRequiredStringIpv4(val netip.Addr)
 // SetRequiredStringIpv6 sets the value of RequiredStringIpv6.
 func (s *TestRequestRequiredFormatTestReq) SetRequiredStringIpv6(val netip.Addr) {
 	s.RequiredStringIpv6 = val
+}
+
+// SetRequiredStringMAC sets the value of RequiredStringMAC.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringMAC(val net.HardwareAddr) {
+	s.RequiredStringMAC = val
 }
 
 // SetRequiredStringPassword sets the value of RequiredStringPassword.
@@ -13591,6 +13863,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringIpv6(val []neti
 	s.OptionalArrayStringIpv6 = val
 }
 
+// SetOptionalArrayStringMAC sets the value of OptionalArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringMAC(val []net.HardwareAddr) {
+	s.OptionalArrayStringMAC = val
+}
+
 // SetOptionalArrayStringPassword sets the value of OptionalArrayStringPassword.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringPassword(val []string) {
 	s.OptionalArrayStringPassword = val
@@ -13876,6 +14153,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringIpv6(val 
 	s.OptionalDoubleArrayStringIpv6 = val
 }
 
+// SetOptionalDoubleArrayStringMAC sets the value of OptionalDoubleArrayStringMAC.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringMAC(val [][]net.HardwareAddr) {
+	s.OptionalDoubleArrayStringMAC = val
+}
+
 // SetOptionalDoubleArrayStringPassword sets the value of OptionalDoubleArrayStringPassword.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringPassword(val [][]string) {
 	s.OptionalDoubleArrayStringPassword = val
@@ -14146,6 +14428,11 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringIpv6(val OptIPv6) {
 	s.OptionalStringIpv6 = val
 }
 
+// SetOptionalStringMAC sets the value of OptionalStringMAC.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringMAC(val OptHardwareAddr) {
+	s.OptionalStringMAC = val
+}
+
 // SetOptionalStringPassword sets the value of OptionalStringPassword.
 func (s *TestRequestRequiredFormatTestReq) SetOptionalStringPassword(val OptString) {
 	s.OptionalStringPassword = val
@@ -14262,6 +14549,7 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayStringIP                      []netip.Addr         `json:"required_array_string_ip"`
 	RequiredArrayStringIpv4                    []netip.Addr         `json:"required_array_string_ipv4"`
 	RequiredArrayStringIpv6                    []netip.Addr         `json:"required_array_string_ipv6"`
+	RequiredArrayStringMAC                     []net.HardwareAddr   `json:"required_array_string_mac"`
 	RequiredArrayStringPassword                []string             `json:"required_array_string_password"`
 	RequiredArrayStringTime                    []time.Time          `json:"required_array_string_time"`
 	RequiredArrayStringUint                    []uint               `json:"required_array_string_uint"`
@@ -14319,6 +14607,7 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayStringIP                [][]netip.Addr       `json:"required_double_array_string_ip"`
 	RequiredDoubleArrayStringIpv4              [][]netip.Addr       `json:"required_double_array_string_ipv4"`
 	RequiredDoubleArrayStringIpv6              [][]netip.Addr       `json:"required_double_array_string_ipv6"`
+	RequiredDoubleArrayStringMAC               [][]net.HardwareAddr `json:"required_double_array_string_mac"`
 	RequiredDoubleArrayStringPassword          [][]string           `json:"required_double_array_string_password"`
 	RequiredDoubleArrayStringTime              [][]time.Time        `json:"required_double_array_string_time"`
 	RequiredDoubleArrayStringUint              [][]uint             `json:"required_double_array_string_uint"`
@@ -14373,6 +14662,7 @@ type TestResponseFormatTestOK struct {
 	RequiredStringIP                           netip.Addr           `json:"required_string_ip"`
 	RequiredStringIpv4                         netip.Addr           `json:"required_string_ipv4"`
 	RequiredStringIpv6                         netip.Addr           `json:"required_string_ipv6"`
+	RequiredStringMAC                          net.HardwareAddr     `json:"required_string_mac"`
 	RequiredStringPassword                     string               `json:"required_string_password"`
 	RequiredStringTime                         time.Time            `json:"required_string_time"`
 	RequiredStringUint                         uint                 `json:"required_string_uint"`
@@ -14430,6 +14720,7 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayStringIP                      []netip.Addr         `json:"optional_array_string_ip"`
 	OptionalArrayStringIpv4                    []netip.Addr         `json:"optional_array_string_ipv4"`
 	OptionalArrayStringIpv6                    []netip.Addr         `json:"optional_array_string_ipv6"`
+	OptionalArrayStringMAC                     []net.HardwareAddr   `json:"optional_array_string_mac"`
 	OptionalArrayStringPassword                []string             `json:"optional_array_string_password"`
 	OptionalArrayStringTime                    []time.Time          `json:"optional_array_string_time"`
 	OptionalArrayStringUint                    []uint               `json:"optional_array_string_uint"`
@@ -14487,6 +14778,7 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayStringIP                [][]netip.Addr       `json:"optional_double_array_string_ip"`
 	OptionalDoubleArrayStringIpv4              [][]netip.Addr       `json:"optional_double_array_string_ipv4"`
 	OptionalDoubleArrayStringIpv6              [][]netip.Addr       `json:"optional_double_array_string_ipv6"`
+	OptionalDoubleArrayStringMAC               [][]net.HardwareAddr `json:"optional_double_array_string_mac"`
 	OptionalDoubleArrayStringPassword          [][]string           `json:"optional_double_array_string_password"`
 	OptionalDoubleArrayStringTime              [][]time.Time        `json:"optional_double_array_string_time"`
 	OptionalDoubleArrayStringUint              [][]uint             `json:"optional_double_array_string_uint"`
@@ -14541,6 +14833,7 @@ type TestResponseFormatTestOK struct {
 	OptionalStringIP                           OptIP                `json:"optional_string_ip"`
 	OptionalStringIpv4                         OptIPv4              `json:"optional_string_ipv4"`
 	OptionalStringIpv6                         OptIPv6              `json:"optional_string_ipv6"`
+	OptionalStringMAC                          OptHardwareAddr      `json:"optional_string_mac"`
 	OptionalStringPassword                     OptString            `json:"optional_string_password"`
 	OptionalStringTime                         OptTime              `json:"optional_string_time"`
 	OptionalStringUint                         OptStringUint        `json:"optional_string_uint"`
@@ -14770,6 +15063,11 @@ func (s *TestResponseFormatTestOK) GetRequiredArrayStringIpv4() []netip.Addr {
 // GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
 func (s *TestResponseFormatTestOK) GetRequiredArrayStringIpv6() []netip.Addr {
 	return s.RequiredArrayStringIpv6
+}
+
+// GetRequiredArrayStringMAC returns the value of RequiredArrayStringMAC.
+func (s *TestResponseFormatTestOK) GetRequiredArrayStringMAC() []net.HardwareAddr {
+	return s.RequiredArrayStringMAC
 }
 
 // GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
@@ -15057,6 +15355,11 @@ func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringIpv6() [][]netip.
 	return s.RequiredDoubleArrayStringIpv6
 }
 
+// GetRequiredDoubleArrayStringMAC returns the value of RequiredDoubleArrayStringMAC.
+func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringMAC() [][]net.HardwareAddr {
+	return s.RequiredDoubleArrayStringMAC
+}
+
 // GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
 func (s *TestResponseFormatTestOK) GetRequiredDoubleArrayStringPassword() [][]string {
 	return s.RequiredDoubleArrayStringPassword
@@ -15325,6 +15628,11 @@ func (s *TestResponseFormatTestOK) GetRequiredStringIpv4() netip.Addr {
 // GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
 func (s *TestResponseFormatTestOK) GetRequiredStringIpv6() netip.Addr {
 	return s.RequiredStringIpv6
+}
+
+// GetRequiredStringMAC returns the value of RequiredStringMAC.
+func (s *TestResponseFormatTestOK) GetRequiredStringMAC() net.HardwareAddr {
+	return s.RequiredStringMAC
 }
 
 // GetRequiredStringPassword returns the value of RequiredStringPassword.
@@ -15612,6 +15920,11 @@ func (s *TestResponseFormatTestOK) GetOptionalArrayStringIpv6() []netip.Addr {
 	return s.OptionalArrayStringIpv6
 }
 
+// GetOptionalArrayStringMAC returns the value of OptionalArrayStringMAC.
+func (s *TestResponseFormatTestOK) GetOptionalArrayStringMAC() []net.HardwareAddr {
+	return s.OptionalArrayStringMAC
+}
+
 // GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
 func (s *TestResponseFormatTestOK) GetOptionalArrayStringPassword() []string {
 	return s.OptionalArrayStringPassword
@@ -15897,6 +16210,11 @@ func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringIpv6() [][]netip.
 	return s.OptionalDoubleArrayStringIpv6
 }
 
+// GetOptionalDoubleArrayStringMAC returns the value of OptionalDoubleArrayStringMAC.
+func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringMAC() [][]net.HardwareAddr {
+	return s.OptionalDoubleArrayStringMAC
+}
+
 // GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
 func (s *TestResponseFormatTestOK) GetOptionalDoubleArrayStringPassword() [][]string {
 	return s.OptionalDoubleArrayStringPassword
@@ -16165,6 +16483,11 @@ func (s *TestResponseFormatTestOK) GetOptionalStringIpv4() OptIPv4 {
 // GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
 func (s *TestResponseFormatTestOK) GetOptionalStringIpv6() OptIPv6 {
 	return s.OptionalStringIpv6
+}
+
+// GetOptionalStringMAC returns the value of OptionalStringMAC.
+func (s *TestResponseFormatTestOK) GetOptionalStringMAC() OptHardwareAddr {
+	return s.OptionalStringMAC
 }
 
 // GetOptionalStringPassword returns the value of OptionalStringPassword.
@@ -16452,6 +16775,11 @@ func (s *TestResponseFormatTestOK) SetRequiredArrayStringIpv6(val []netip.Addr) 
 	s.RequiredArrayStringIpv6 = val
 }
 
+// SetRequiredArrayStringMAC sets the value of RequiredArrayStringMAC.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringMAC(val []net.HardwareAddr) {
+	s.RequiredArrayStringMAC = val
+}
+
 // SetRequiredArrayStringPassword sets the value of RequiredArrayStringPassword.
 func (s *TestResponseFormatTestOK) SetRequiredArrayStringPassword(val []string) {
 	s.RequiredArrayStringPassword = val
@@ -16737,6 +17065,11 @@ func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringIpv6(val [][]neti
 	s.RequiredDoubleArrayStringIpv6 = val
 }
 
+// SetRequiredDoubleArrayStringMAC sets the value of RequiredDoubleArrayStringMAC.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringMAC(val [][]net.HardwareAddr) {
+	s.RequiredDoubleArrayStringMAC = val
+}
+
 // SetRequiredDoubleArrayStringPassword sets the value of RequiredDoubleArrayStringPassword.
 func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringPassword(val [][]string) {
 	s.RequiredDoubleArrayStringPassword = val
@@ -17005,6 +17338,11 @@ func (s *TestResponseFormatTestOK) SetRequiredStringIpv4(val netip.Addr) {
 // SetRequiredStringIpv6 sets the value of RequiredStringIpv6.
 func (s *TestResponseFormatTestOK) SetRequiredStringIpv6(val netip.Addr) {
 	s.RequiredStringIpv6 = val
+}
+
+// SetRequiredStringMAC sets the value of RequiredStringMAC.
+func (s *TestResponseFormatTestOK) SetRequiredStringMAC(val net.HardwareAddr) {
+	s.RequiredStringMAC = val
 }
 
 // SetRequiredStringPassword sets the value of RequiredStringPassword.
@@ -17292,6 +17630,11 @@ func (s *TestResponseFormatTestOK) SetOptionalArrayStringIpv6(val []netip.Addr) 
 	s.OptionalArrayStringIpv6 = val
 }
 
+// SetOptionalArrayStringMAC sets the value of OptionalArrayStringMAC.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringMAC(val []net.HardwareAddr) {
+	s.OptionalArrayStringMAC = val
+}
+
 // SetOptionalArrayStringPassword sets the value of OptionalArrayStringPassword.
 func (s *TestResponseFormatTestOK) SetOptionalArrayStringPassword(val []string) {
 	s.OptionalArrayStringPassword = val
@@ -17577,6 +17920,11 @@ func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringIpv6(val [][]neti
 	s.OptionalDoubleArrayStringIpv6 = val
 }
 
+// SetOptionalDoubleArrayStringMAC sets the value of OptionalDoubleArrayStringMAC.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringMAC(val [][]net.HardwareAddr) {
+	s.OptionalDoubleArrayStringMAC = val
+}
+
 // SetOptionalDoubleArrayStringPassword sets the value of OptionalDoubleArrayStringPassword.
 func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringPassword(val [][]string) {
 	s.OptionalDoubleArrayStringPassword = val
@@ -17845,6 +18193,11 @@ func (s *TestResponseFormatTestOK) SetOptionalStringIpv4(val OptIPv4) {
 // SetOptionalStringIpv6 sets the value of OptionalStringIpv6.
 func (s *TestResponseFormatTestOK) SetOptionalStringIpv6(val OptIPv6) {
 	s.OptionalStringIpv6 = val
+}
+
+// SetOptionalStringMAC sets the value of OptionalStringMAC.
+func (s *TestResponseFormatTestOK) SetOptionalStringMAC(val OptHardwareAddr) {
+	s.OptionalStringMAC = val
 }
 
 // SetOptionalStringPassword sets the value of OptionalStringPassword.
