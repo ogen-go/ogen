@@ -25,6 +25,7 @@ linters-settings:
       - performance
       - style
     disabled-checks:
+      - emptyStringTest # len(<string>) > 0 is fine and easier to read in some contexts
       - hugeParam
       - rangeValCopy
       - exitAfterDefer
