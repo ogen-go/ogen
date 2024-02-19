@@ -7,6 +7,7 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -211,7 +212,7 @@ func (g *Generator) responseToIR(
 				},
 			}
 		}
-		t, err := wrapResponseType(ctx, name, media.Type, headers, withStatusCode)
+		t, err := wrapResponseType(ctx, name, resp.Ref, media.Type, headers, withStatusCode)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %q: wrap response type", contentType)
 		}
@@ -234,6 +235,7 @@ func (g *Generator) responseToIR(
 func wrapResponseType(
 	ctx *genctx,
 	name string,
+	respRef jsonschema.Ref,
 	t *ir.Type,
 	headers map[string]*ir.Parameter,
 	withStatusCode bool,
@@ -243,7 +245,7 @@ func wrapResponseType(
 	}
 
 	if schema := t.Schema; schema != nil && !schema.Ref.IsZero() {
-		if t, ok := ctx.lookupWType(schema.Ref); ok {
+		if t, ok := ctx.lookupWType(respRef, schema.Ref); ok {
 			return t, nil
 		}
 
@@ -252,7 +254,7 @@ func wrapResponseType(
 				return
 			}
 
-			if err := ctx.saveWType(schema.Ref, ret); err != nil {
+			if err := ctx.saveWType(respRef, schema.Ref, ret); err != nil {
 				rerr = err
 				ret = nil
 			}
@@ -270,7 +272,8 @@ func wrapResponseType(
 		}()
 	}
 
-	if t.Name != "" {
+	// Prefer response name to schema name in case of wrapping.
+	if respRef.IsZero() && t.Name != "" {
 		name = t.Name
 	}
 

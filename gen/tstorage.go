@@ -40,7 +40,7 @@ type tstorage struct {
 	//  * [T]StatusCode
 	//  * [T]Headers
 	//  * [T]StatusCodeWithHeaders
-	wtypes map[jsonschema.Ref]*ir.Type // Key: ref
+	wtypes map[[2]jsonschema.Ref]*ir.Type // Key: parent ref + ref
 }
 
 func newTStorage() *tstorage {
@@ -48,7 +48,7 @@ func newTStorage() *tstorage {
 		refs:      map[schemaKey]*ir.Type{},
 		types:     map[string]*ir.Type{},
 		responses: map[jsonschema.Ref]*ir.Response{},
-		wtypes:    map[jsonschema.Ref]*ir.Type{},
+		wtypes:    map[[2]jsonschema.Ref]*ir.Type{},
 	}
 }
 
@@ -106,15 +106,16 @@ func (s *tstorage) saveResponse(ref jsonschema.Ref, r *ir.Response) error {
 	return nil
 }
 
-func (s *tstorage) saveWType(ref jsonschema.Ref, t *ir.Type) error {
-	if _, ok := s.wtypes[ref]; ok {
+func (s *tstorage) saveWType(parent, ref jsonschema.Ref, t *ir.Type) error {
+	key := [2]jsonschema.Ref{parent, ref}
+	if _, ok := s.wtypes[key]; ok {
 		return errors.Errorf("reference conflict: %q", ref)
 	}
 	if _, ok := s.types[t.Name]; ok {
 		return errors.Errorf("reference %q type name conflict: %q", ref, t.Name)
 	}
 
-	s.wtypes[ref] = t
+	s.wtypes[key] = t
 	s.types[t.Name] = t
 	return nil
 }
