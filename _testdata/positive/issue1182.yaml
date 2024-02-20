@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: "REST API"
+  version: 0.0.1
+
+servers:
+  - url: "http://localhost:8888"
+
+paths:
+  /api/auth:
+    post:
+      operationId: auth
+      tags:
+        - auth
+      responses:
+        "200":
+          $ref: "#/components/responses/AuthOk"
+  /api/alive:
+    get:
+      operationId: alive
+      tags:
+        - system
+      responses:
+        "200":
+          $ref: "#/components/responses/Alive"
+
+components:
+  headers:
+    setCookie:
+      required: true
+      schema:
+        type: string
+    accessControlAllowCredentials:
+      required: false
+      schema:
+        type: string
+
+  schemas:
+    Ok:
+      type: object
+      required:
+        - ok
+      properties:
+        ok:
+          type: boolean
+          example: true
+
+  responses:
+    AuthOk:
+      description: "Ok"
+      headers:
+        Set-Cookie:
+          $ref: "#/components/headers/setCookie"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Ok"
+    Alive:
+      description: "Alive"
+      headers:
+        Access-Control-Allow-Credentials:
+          $ref: "#/components/headers/accessControlAllowCredentials"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Ok"

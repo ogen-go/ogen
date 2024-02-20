@@ -34,8 +34,8 @@ func (g *genctx) saveResponse(ref jsonschema.Ref, r *ir.Response) error {
 	return g.local.saveResponse(ref, r)
 }
 
-func (g *genctx) saveWType(ref jsonschema.Ref, t *ir.Type) error {
-	return g.local.saveWType(ref, t)
+func (g *genctx) saveWType(parent, ref jsonschema.Ref, t *ir.Type) error {
+	return g.local.saveWType(parent, ref, t)
 }
 
 func (g *genctx) lookupResponse(ref jsonschema.Ref) (*ir.Response, bool) {
@@ -48,11 +48,12 @@ func (g *genctx) lookupResponse(ref jsonschema.Ref) (*ir.Response, bool) {
 	return nil, false
 }
 
-func (g *genctx) lookupWType(ref jsonschema.Ref) (*ir.Type, bool) {
-	if t, ok := g.global.wtypes[ref]; ok {
+func (g *genctx) lookupWType(parent, ref jsonschema.Ref) (*ir.Type, bool) {
+	key := [2]jsonschema.Ref{parent, ref}
+	if t, ok := g.global.wtypes[key]; ok {
 		return t, true
 	}
-	if t, ok := g.local.wtypes[ref]; ok {
+	if t, ok := g.local.wtypes[key]; ok {
 		return t, true
 	}
 	return nil, false
