@@ -13,12 +13,12 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ main ]
+    branches: [main]
   schedule:
-    - cron: '45 12 * * 4'
+    - cron: "45 12 * * 4"
 
 jobs:
   analyze:
@@ -32,51 +32,51 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'go' ]
+        language: ["go"]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: ${{ matrix.language }}
-        # If you wish to specify custom queries, you can do so here or in a config file.
-        # By default, queries listed here will override any specified in a config file.
-        # Prefix the list here with "+" to use these queries and those in the config file.
-        # queries: ./path/to/local/query, your-org/your-repo/queries@main
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          # If you wish to specify custom queries, you can do so here or in a config file.
+          # By default, queries listed here will override any specified in a config file.
+          # Prefix the list here with "+" to use these queries and those in the config file.
+          # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
-    - name: Install Go
-      uses: actions/setup-go@v5
-      with:
-        go-version: '1.20'
-        cache: false
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+          cache: false
 
-    - name: Get Go environment
-      id: go-env
-      run: |
-        echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
-        echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
+      - name: Get Go environment
+        id: go-env
+        run: |
+          echo "cache=$(go env GOCACHE)" >> $GITHUB_ENV
+          echo "modcache=$(go env GOMODCACHE)" >> $GITHUB_ENV
 
-    # Notice: we're using read-only cache.
-    #
-    # See https://github.com/actions/setup-go/issues/357#issuecomment-1486486358
-    - name: Restore cache
-      uses: actions/cache/restore@v4
-      with:
-        path: |
-          ${{ env.cache }}
-          ${{ env.modcache }}
-        key: ${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-${{ runner.arch }}-go-
+      # Notice: we're using read-only cache.
+      #
+      # See https://github.com/actions/setup-go/issues/357#issuecomment-1486486358
+      - name: Restore cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            ${{ env.cache }}
+            ${{ env.modcache }}
+          key: ${{ runner.os }}-${{ runner.arch }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-go-
 
-    - name: Remove examples
-      run: rm -rf ./examples
+      - name: Remove examples
+        run: rm -rf ./examples
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
