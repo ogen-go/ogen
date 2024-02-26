@@ -10,7 +10,8 @@ type File struct {
 	Lines Lines
 }
 
-func (f File) humanName() string {
+// HumanName returns human-friendly name for this File.
+func (f File) HumanName() string {
 	if n := f.Name; n != "" {
 		return n
 	}

@@ -144,7 +144,7 @@ func (f File) PrintHighlights(w io.Writer, msg string, highlights []Highlight, o
 	padNum := clamp(log10(highestIdx), 2, math.MaxInt)
 
 	var (
-		filename     = f.humanName()
+		filename     = f.HumanName()
 		formattedMsg string
 	)
 	if msg != "" {
