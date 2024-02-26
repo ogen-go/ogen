@@ -394,6 +394,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 				}
 			}
 		}
+
 		// Delete such fields.
 		for field := range commonFields {
 			for _, variant := range sum.SumOf {
@@ -402,24 +403,63 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		}
 
 		// Check that at most one type has no unique fields.
-		metNoUniqueFields := false
+		noUniqueFields := map[string]struct{}{}
 		for _, variant := range sum.SumOf {
 			k := variant.Name
 			if len(uniq[k]) == 0 {
-				if metNoUniqueFields {
-					// Unable to deterministically select sub-schema only on fields.
-					return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
-						"oneOf %s: variant %s: no unique fields, "+
-							"unable to parse without discriminator", sum.Name, k,
-					)
+				// Set mapping without unique fields as default
+				if len(noUniqueFields) < 1 {
+					sum.SumSpec.DefaultMapping = k
+				}
+				noUniqueFields[k] = struct{}{}
+			}
+		}
+
+		if len(noUniqueFields) > 1 {
+			// Unable to deterministically select sub-schema only on fields.
+
+			// Collect field -> variant mapping to compute fields used by multiple variants.
+			fieldToVariants := map[string]map[*ir.Type]struct{}{}
+			for _, variant := range sum.SumOf {
+				for _, f := range variant.JSON().Fields() {
+					m, ok := fieldToVariants[f.Tag.JSON]
+					if !ok {
+						m = map[*ir.Type]struct{}{}
+						fieldToVariants[f.Tag.JSON] = m
+					}
+					m[variant] = struct{}{}
+				}
+			}
+
+			// Collect the problematic variants and fields.
+			badVariants := make([]BadVariant, 0, len(noUniqueFields))
+			for _, variant := range sum.SumOf {
+				if _, ok := noUniqueFields[variant.Name]; !ok {
+					continue
 				}
 
-				// Set mapping without unique fields as default
-				sum.SumSpec.DefaultMapping = k
-				metNoUniqueFields = true
+				fields := map[string][]*ir.Type{}
+				for _, f := range variant.JSON().Fields() {
+					for typ := range fieldToVariants[f.Tag.JSON] {
+						if typ == variant {
+							continue
+						}
+						fields[f.Tag.JSON] = append(fields[f.Tag.JSON], typ)
+					}
+				}
+				badVariants = append(badVariants, BadVariant{
+					Type:   variant,
+					Fields: fields,
+				})
+			}
+
+			return nil, &ErrFieldsDiscriminatorInference{
+				Sum:   sum,
+				Types: badVariants,
 			}
 		}
 	}
+
 	type sumVariant struct {
 		Name   string
 		Unique []string
