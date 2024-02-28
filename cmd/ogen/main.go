@@ -3,6 +3,7 @@ package main
 
 import (
 	"bytes"
+	"cmp"
 	"flag"
 	"fmt"
 	"io"
@@ -10,6 +11,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"runtime/pprof"
+	"slices"
 	"strings"
 	"time"
 
@@ -17,10 +19,12 @@ import (
 	"github.com/go-faster/yaml"
 	"go.uber.org/multierr"
 	"go.uber.org/zap"
+	"golang.org/x/exp/maps"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
+	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/ogenversion"
 	"github.com/ogen-go/ogen/internal/ogenzap"
 	"github.com/ogen-go/ogen/location"
@@ -112,38 +116,7 @@ func handleGenerateError(w io.Writer, color bool, err error) (r bool) {
 		return true
 	}
 
-	if notImplErr, ok := errors.Into[*gen.ErrNotImplemented](err); ok {
-		_, _ = fmt.Fprintf(w, `
-Feature %[1]q is not implemented yet.
-Try to create ogen.yml with:
-
-generator:
-	ignore_not_implemented: %[1]q
-
-or
-
-generator:
-	ignore_not_implemented: ["all"]
-
-to skip unsupported operations.
-`, notImplErr.Name)
-		return true
-	}
-
-	if ctErr, ok := errors.Into[*gen.ErrUnsupportedContentTypes](err); ok {
-		var msg string
-		if len(ctErr.ContentTypes) == 1 {
-			msg = fmt.Sprintf(
-				`Content type %q is unsupported.`,
-				ctErr.ContentTypes[0],
-			)
-		} else {
-			msg = fmt.Sprintf(
-				`Content types [%s] are unsupported.`,
-				strings.Join(ctErr.ContentTypes, ", "),
-			)
-		}
-
+	if msg, feature, ok := handleNotImplementedError(err); ok {
 		_, _ = fmt.Fprintf(w, `
 %s
 Try to create ogen.yml with:
@@ -157,15 +130,111 @@ generator:
 	ignore_not_implemented: ["all"]
 
 to skip unsupported operations.
-Also, you can use "content_type_aliases" field to map content types to supported ones.
-`,
-			msg,
-			"unsupported content types",
-		)
+`, msg, feature)
 		return true
 	}
 
 	return false
+}
+
+func handleNotImplementedError(err error) (msg, feature string, _ bool) {
+	if notImplErr, ok := errors.Into[*gen.ErrNotImplemented](err); ok {
+		msg := fmt.Sprintf("Feature %q is not implemented yet.\n", notImplErr.Name)
+		return msg, notImplErr.Name, true
+	}
+
+	if ctErr, ok := errors.Into[*gen.ErrUnsupportedContentTypes](err); ok {
+		if len(ctErr.ContentTypes) == 1 {
+			msg = fmt.Sprintf(
+				"Content type %q is unsupported.\n",
+				ctErr.ContentTypes[0],
+			)
+		} else {
+			msg = fmt.Sprintf(
+				"Content types [%s] are unsupported.\n",
+				strings.Join(ctErr.ContentTypes, ", "),
+			)
+		}
+		return msg, "unsupported content types", true
+	}
+
+	if inferErr, ok := errors.Into[*gen.ErrFieldsDiscriminatorInference](err); ok {
+		printTyp := func(sb *strings.Builder, typ *ir.Type) {
+			if typ.Schema == nil {
+				fmt.Fprintf(sb, "%q", typ.Name)
+				return
+			}
+			if ref := typ.Schema.Ref; ref.IsZero() {
+				fmt.Fprintf(sb, "%q", typ.Name)
+			} else {
+				fmt.Fprintf(sb, "%q", ref.Ptr)
+			}
+			ptr := typ.Schema.Pointer
+
+			if pos, ok := ptr.Position(); ok {
+				sb.WriteString(" (defined at ")
+				at := pos.WithFilename(ptr.File().HumanName())
+				sb.WriteString(at)
+				sb.WriteString(")")
+			}
+		}
+		var sb strings.Builder
+
+		sb.WriteString("ogen failed to infer fields discriminator for type ")
+		printTyp(&sb, inferErr.Sum)
+		sb.WriteString(":\n")
+
+		const (
+			propertyLimit = 5 // 10
+			usedByLimit   = 2
+		)
+		for _, bv := range inferErr.Types {
+			sb.WriteString("\tvariant ")
+			printTyp(&sb, bv.Type)
+			sb.WriteString("\n")
+
+			var (
+				printedProperties int
+				properties        = maps.Keys(bv.Fields)
+			)
+			// Sort by number of 'also used' types.
+			//
+			// It is likely to be properties to be fixed.
+			slices.SortFunc(properties, func(a, b string) int {
+				x, y := bv.Fields[a], bv.Fields[b]
+				return cmp.Compare(len(x), len(y))
+			})
+			for _, field := range properties {
+				if printedProperties >= propertyLimit {
+					fmt.Fprintf(&sb, "\t\t...%d more properties...\n", len(properties))
+					break
+				}
+				printedProperties++
+
+				fmt.Fprintf(&sb, "\t\tproperty %q also used by\n", field)
+
+				var (
+					printedUsedBy int
+					alsoUsedBy    = bv.Fields[field]
+				)
+				for _, typ := range alsoUsedBy {
+					if printedUsedBy >= usedByLimit {
+						fmt.Fprintf(&sb, "\t\t\t...%d more variants...\n", len(alsoUsedBy))
+						break
+					}
+					printedUsedBy++
+
+					sb.WriteString("\t\t\tvariant ")
+					printTyp(&sb, typ)
+					sb.WriteString("\n")
+				}
+			}
+		}
+		sb.WriteString("\n")
+		return sb.String(), "discriminator inference", true
+	}
+
+	return msg, feature, false
 }
 
 func loadConfig(cfgPath string, log *zap.Logger) (opts gen.Options, _ error) {

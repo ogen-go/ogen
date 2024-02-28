@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"github.com/ogen-go/ogen/gen/ir"
 	"go.uber.org/zap"
 	"golang.org/x/exp/slices"
 )
@@ -58,6 +59,29 @@ func (e *ErrUnsupportedContentTypes) Error() string {
 	return fmt.Sprintf("unsupported content types: [%s]", strings.Join(e.ContentTypes, ", "))
 }
 
+// ErrFieldsDiscriminatorInference reports fields discriminator inference failure.
+type ErrFieldsDiscriminatorInference struct {
+	Sum   *ir.Type
+	Types []BadVariant
+}
+
+func (e *ErrFieldsDiscriminatorInference) unimplemented() {}
+
+// Error implements error.
+func (e *ErrFieldsDiscriminatorInference) Error() string {
+	names := make([]string, len(e.Types))
+	for i, typ := range e.Types {
+		names[i] = typ.Type.Name
+	}
+	return fmt.Sprintf("can't infer fields discriminator: [%s]", strings.Join(names, ", "))
+}
+
+// BadVariant describes a sum type variant for what we unable to infer discriminator.
+type BadVariant struct {
+	Type   *ir.Type
+	Fields map[string][]*ir.Type
+}
+
 func (g *Generator) trySkip(err error, msg string, l position) error {
 	if err == nil {
 		return nil
@@ -96,6 +120,10 @@ func (g *Generator) fail(err error) error {
 	}
 	if _, ok := errors.Into[*ErrUnsupportedContentTypes](err); ok {
 		const name = "unsupported content types"
+		return handle(name, err)
+	}
+	if _, ok := errors.Into[*ErrFieldsDiscriminatorInference](err); ok {
+		const name = "discriminator inference"
 		return handle(name, err)
 	}
 	return err

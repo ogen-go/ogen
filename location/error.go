@@ -34,7 +34,7 @@ func (e *Error) Unwrap() error {
 
 // FormatError implements errors.Formatter.
 func (e *Error) FormatError(p errors.Printer) error {
-	p.Printf("at %s", e.Pos.WithFilename(e.File.humanName()))
+	p.Printf("at %s", e.Pos.WithFilename(e.File.HumanName()))
 	return e.Err
 }
 
@@ -45,7 +45,7 @@ func (e *Error) Format(s fmt.State, verb rune) {
 
 // Error implements error.
 func (e *Error) Error() string {
-	return fmt.Sprintf("at %s: %s", e.Pos.WithFilename(e.File.humanName()), e.Err)
+	return fmt.Sprintf("at %s: %s", e.Pos.WithFilename(e.File.HumanName()), e.Err)
 }
 
 // prettyPrint prints the error in a pretty way and returns true if it was printed successfully.
@@ -79,7 +79,7 @@ type Report struct {
 
 // String returns textual represntation of Report.
 func (r Report) String() string {
-	return fmt.Sprintf("at %s: %s", r.Pos.WithFilename(r.File.humanName()), r.Msg)
+	return fmt.Sprintf("at %s: %s", r.Pos.WithFilename(r.File.HumanName()), r.Msg)
 }
 
 var _ interface {
