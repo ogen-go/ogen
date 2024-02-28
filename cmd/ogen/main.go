@@ -159,9 +159,15 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 	}
 
 	if inferErr, ok := errors.Into[*gen.ErrFieldsDiscriminatorInference](err); ok {
-		printPos := func(sb *strings.Builder, typ *ir.Type) {
-			if typ == nil || typ.Schema == nil {
+		printTyp := func(sb *strings.Builder, typ *ir.Type) {
+			if typ.Schema == nil {
+				fmt.Fprintf(sb, "%q", typ.Name)
 				return
+			}
+			if ref := typ.Schema.Ref; ref.IsZero() {
+				fmt.Fprintf(sb, "%q", typ.Name)
+			} else {
+				fmt.Fprintf(sb, "%q", ref.Ptr)
 			}
 			ptr := typ.Schema.Pointer
 
@@ -174,8 +180,8 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 		}
 		var sb strings.Builder
 
-		fmt.Fprintf(&sb, "ogen failed to infer fields discriminator for type %q", inferErr.Sum.Name)
-		printPos(&sb, inferErr.Sum)
+		sb.WriteString("ogen failed to infer fields discriminator for type ")
+		printTyp(&sb, inferErr.Sum)
 		sb.WriteString(":\n")
 
 		const (
@@ -183,8 +189,8 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 			usedByLimit   = 2
 		)
 		for _, bv := range inferErr.Types {
-			fmt.Fprintf(&sb, "\tvariant %q", bv.Type.Name)
-			printPos(&sb, bv.Type)
+			sb.WriteString("\tvariant ")
+			printTyp(&sb, bv.Type)
 			sb.WriteString("\n")
 
 			var (
@@ -218,8 +224,8 @@ func handleNotImplementedError(err error) (msg, feature string, _ bool) {
 					}
 					printedUsedBy++
 
-					fmt.Fprintf(&sb, "\t\t\tvariant %q", typ.Name)
-					printPos(&sb, typ)
+					sb.WriteString("\t\t\tvariant ")
+					printTyp(&sb, typ)
 					sb.WriteString("\n")
 				}
 			}
