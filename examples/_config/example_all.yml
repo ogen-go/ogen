@@ -20,6 +20,8 @@ generator:
       - 'webhooks/client'
       # Enables webhooks server generation
       - 'webhooks/server'
+      # Enables client usage in security source implementations
+      - 'client/security/reentrant'
       # Enables validation of client requests
       - 'client/request/validation'
       # Enables validation of server responses
@@ -39,6 +41,8 @@ generator:
       - 'webhooks/client'
       # Disables webhooks server generation
       - 'webhooks/server'
+      # Disables client usage in security source implementations
+      - 'client/security/reentrant'
       # Disables validation of client requests
       - 'client/request/validation'
       # Disables validation of server responses

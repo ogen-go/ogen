@@ -39,6 +39,7 @@ type TemplateConfig struct {
 	WebhookClientEnabled      bool
 	WebhookServerEnabled      bool
 	OpenTelemetryEnabled      bool
+	SecurityReentrantEnabled  bool
 	RequestValidationEnabled  bool
 	ResponseValidationEnabled bool
 
@@ -264,6 +265,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		WebhookClientEnabled:      features.Has(WebhooksClient) && len(g.webhooks) > 0,
 		WebhookServerEnabled:      features.Has(WebhooksServer) && len(g.webhooks) > 0,
 		OpenTelemetryEnabled:      features.Has(OgenOtel),
+		SecurityReentrantEnabled:  features.Has(ClientSecurityReentrant),
 		RequestValidationEnabled:  features.Has(ClientRequestValidation),
 		ResponseValidationEnabled: features.Has(ServerResponseValidation),
 		// Unused for now.

@@ -1,0 +1,4 @@
+generator:
+  features:
+    enable:
+      - "client/security/reentrant"
