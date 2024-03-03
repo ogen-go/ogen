@@ -123,9 +123,17 @@ type SecuritySource interface {
 	// {{ $s.Type.Name }} provides {{ $name }} security value.
 	{{- template "godoc" $s.GoDoc }}
 	{{- if $s.Format.IsCustomSecurity }}
-    {{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error
+		{{- if $.SecurityReentrantEnabled }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request, client *Client) error
+		{{- else }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error
+		{{- end }}
 	{{- else }}
-    {{ $s.Type.Name }}(ctx context.Context, operationName string) ({{ $s.Type.Name }}, error)
+		{{- if $.SecurityReentrantEnabled }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName string, client *Client) ({{ $s.Type.Name }}, error)
+		{{- else }}
+		{{ $s.Type.Name }}(ctx context.Context, operationName string) ({{ $s.Type.Name }}, error)
+		{{- end }}
 	{{- end }}
 {{- end }}
 }
@@ -133,11 +141,19 @@ type SecuritySource interface {
 {{- range $s := $.Securities }}
 func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
 	{{- if $s.Format.IsCustomSecurity }}
+		{{- if $.SecurityReentrantEnabled }}
+		if err := s.sec.{{ $s.Type.Name }}(ctx, operationName, req, s); err != nil {
+		{{- else }}
 		if err := s.sec.{{ $s.Type.Name }}(ctx, operationName, req); err != nil {
+		{{- end }}
 			return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
 		}
 	{{- else }}
+		{{- if $.SecurityReentrantEnabled }}
+		t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName, s)
+		{{- else }}
 		t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
+		{{- end }}
 		if err != nil {
 			return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
 		}

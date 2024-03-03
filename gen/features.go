@@ -109,6 +109,10 @@ var (
 		"webhooks/server",
 		`Enables webhooks server generation`,
 	}
+	ClientSecurityReentrant = Feature{
+		"client/security/reentrant",
+		`Enables client usage in security source implementations`,
+	}
 	ClientRequestValidation = Feature{
 		"client/request/validation",
 		`Enables validation of client requests`,
@@ -147,6 +151,7 @@ var AllFeatures = []Feature{
 	PathsServer,
 	WebhooksClient,
 	WebhooksServer,
+	ClientSecurityReentrant,
 	ClientRequestValidation,
 	ServerResponseValidation,
 	OgenOtel,
