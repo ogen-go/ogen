@@ -371,7 +371,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 			)
 		}
 		for _, f := range s.JSON().Fields() {
-			uniq[s.Name][f.Name] = struct{}{}
+			uniq[s.Name][f.Tag.JSON] = struct{}{}
 		}
 	}
 	{
@@ -485,7 +485,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 				continue
 			}
 			for _, f := range s.JSON().Fields() {
-				if !slices.Contains(v.Unique, f.Name) {
+				if !slices.Contains(v.Unique, f.Tag.JSON) {
 					continue
 				}
 				s.SumSpec.Unique = append(s.SumSpec.Unique, f)
