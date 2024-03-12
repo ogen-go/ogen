@@ -99,14 +99,41 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 	return result, nil
 }
 
-func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Parameter) (*ir.Parameter, error) {
+func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Parameter) (ret *ir.Parameter, rerr error) {
 	if err := isSupportedParamStyle(p); err != nil {
 		return nil, err
 	}
 
-	paramTypeName, err := pascal(opName, p.Name)
-	if err != nil {
-		return nil, errors.Wrapf(err, "parameter type name: %q", p.Name)
+	var paramTypeName string
+	if ref := p.Ref; !ref.IsZero() {
+		if p, ok := ctx.lookupParameter(ref); ok {
+			return p, nil
+		}
+
+		n, err := pascal(cleanRef(ref))
+		if err != nil {
+			return nil, errors.Wrapf(err, "parameter type name: %q", ref)
+		}
+		paramTypeName = n
+
+		defer func() {
+			if rerr != nil {
+				return
+			}
+
+			if err := ctx.saveParameter(ref, ret); err != nil {
+				rerr = err
+				ret = nil
+			}
+		}()
+	}
+
+	if paramTypeName == "" {
+		var err error
+		paramTypeName, err = pascal(opName, p.Name)
+		if err != nil {
+			return nil, errors.Wrapf(err, "parameter type name: %q", p.Name)
+		}
 	}
 
 	generate := func(ctx *genctx, sch *jsonschema.Schema) (*ir.Type, error) {
