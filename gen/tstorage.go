@@ -33,8 +33,9 @@ type tstorage struct {
 	//                         in the map because
 	//                         the type is anonymous.
 	//
-	types     map[string]*ir.Type             // Key: type name
-	responses map[jsonschema.Ref]*ir.Response // Key: ref
+	types      map[string]*ir.Type              // Key: type name
+	responses  map[jsonschema.Ref]*ir.Response  // Key: ref
+	parameters map[jsonschema.Ref]*ir.Parameter // Key: ref
 
 	// wtypes stores references to wrapped types:
 	//  * [T]StatusCode
@@ -45,10 +46,11 @@ type tstorage struct {
 
 func newTStorage() *tstorage {
 	return &tstorage{
-		refs:      map[schemaKey]*ir.Type{},
-		types:     map[string]*ir.Type{},
-		responses: map[jsonschema.Ref]*ir.Response{},
-		wtypes:    map[[2]jsonschema.Ref]*ir.Type{},
+		refs:       map[schemaKey]*ir.Type{},
+		types:      map[string]*ir.Type{},
+		responses:  map[jsonschema.Ref]*ir.Response{},
+		parameters: map[jsonschema.Ref]*ir.Parameter{},
+		wtypes:     map[[2]jsonschema.Ref]*ir.Type{},
 	}
 }
 
@@ -120,6 +122,15 @@ func (s *tstorage) saveWType(parent, ref jsonschema.Ref, t *ir.Type) error {
 	return nil
 }
 
+func (s *tstorage) saveParameter(ref jsonschema.Ref, p *ir.Parameter) error {
+	if _, ok := s.parameters[ref]; ok {
+		return errors.Errorf("reference conflict: %q", ref)
+	}
+
+	s.parameters[ref] = p
+	return nil
+}
+
 func sameBase(t, tt *ir.Type) bool {
 	if t.GenericOf != nil {
 		t = t.GenericOf
@@ -182,6 +193,12 @@ func (s *tstorage) merge(other *tstorage) error {
 		}
 	}
 
+	for ref := range other.parameters {
+		if _, ok := s.parameters[ref]; ok {
+			return errors.Errorf("parameter reference conflict: %q", ref)
+		}
+	}
+
 	// Merge types.
 	for ref, t := range other.refs {
 		s.refs[ref] = t
@@ -198,6 +215,10 @@ func (s *tstorage) merge(other *tstorage) error {
 
 	for name, t := range other.wtypes {
 		s.wtypes[name] = t
+	}
+
+	for name, t := range other.parameters {
+		s.parameters[name] = t
 	}
 
 	return nil
