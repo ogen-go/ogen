@@ -2,7 +2,7 @@
 <img width="256" height="256" src="_logo/logo.svg" alt="ogen svg logo">
 </p>
 
-# ogen [![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![beta](https://img.shields.io/badge/-beta-yellow)](https://go-faster.org/docs/projects/status#beta)
+# ogen [![Go Reference](https://img.shields.io/badge/go-pkg-00ADD8)](https://pkg.go.dev/github.com/ogen-go/ogen#section-documentation) [![codecov](https://img.shields.io/codecov/c/github/ogen-go/ogen?label=cover)](https://codecov.io/gh/ogen-go/ogen) [![stable](https://img.shields.io/badge/-stable-brightgreen)](https://go-faster.org/docs/projects/status#stable)
 
 OpenAPI v3 Code Generator for Go.
 
@@ -10,9 +10,6 @@ OpenAPI v3 Code Generator for Go.
 - [Sample project](https://github.com/ogen-go/example)
 - [Security policy](https://github.com/ogen-go/ogen/blob/-/SECURITY.md)
 - [Telegram group `@ogen_dev`](https://t.me/ogen_dev)
-- [Roadmap](https://github.com/ogen-go/ogen/blob/-/ROADMAP.md)
-
-API should be pretty stable, but some rare changes can occur until v1.0.0.
 
 # Install
 
