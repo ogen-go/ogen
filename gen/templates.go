@@ -265,7 +265,7 @@ func paramObjectFields(typ *ir.Type) string {
 			req = "true"
 		}
 
-		fields = append(fields, "{\""+f.Spec.Name+"\","+req+"}")
+		fields = append(fields, "{Name:\""+f.Spec.Name+"\",Required:"+req+"}")
 	}
 
 	return "[]uri.QueryParameterObjectField{" + strings.Join(fields, ",") + "}"
