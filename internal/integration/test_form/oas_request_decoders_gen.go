@@ -452,7 +452,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Name:    "object",
 				Style:   uri.QueryStyleForm,
 				Explode: true,
-				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
+				Fields:  []uri.QueryParameterObjectField{{Name: "min", Required: false}, {Name: "max", Required: true}},
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
@@ -474,7 +474,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 				Name:    "deepObject",
 				Style:   uri.QueryStyleDeepObject,
 				Explode: true,
-				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
+				Fields:  []uri.QueryParameterObjectField{{Name: "min", Required: false}, {Name: "max", Required: true}},
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
@@ -697,7 +697,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 				Name:    "deepObject",
 				Style:   uri.QueryStyleDeepObject,
 				Explode: true,
-				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
+				Fields:  []uri.QueryParameterObjectField{{Name: "min", Required: false}, {Name: "max", Required: true}},
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {

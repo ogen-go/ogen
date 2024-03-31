@@ -671,7 +671,7 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 			Name:    "formObject",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-			Fields:  []uri.QueryParameterObjectField{{"min", true}, {"max", true}, {"filter", true}},
+			Fields:  []uri.QueryParameterObjectField{{Name: "min", Required: true}, {Name: "max", Required: true}, {Name: "filter", Required: true}},
 		}
 
 		if err := q.HasParam(cfg); err == nil {
@@ -702,7 +702,7 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 			Name:    "deepObject",
 			Style:   uri.QueryStyleDeepObject,
 			Explode: true,
-			Fields:  []uri.QueryParameterObjectField{{"min", true}, {"max", true}, {"filter", true}},
+			Fields:  []uri.QueryParameterObjectField{{Name: "min", Required: true}, {Name: "max", Required: true}, {Name: "filter", Required: true}},
 		}
 
 		if err := q.HasParam(cfg); err == nil {
