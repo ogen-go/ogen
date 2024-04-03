@@ -327,6 +327,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"test_examples", features.Has(DebugExampleTests)},
 		{"faker", features.Has(DebugExampleTests)},
 		{"unimplemented", features.Has(OgenUnimplemented) && genServer},
+		{"labeler", features.Has(OgenOtel) && genServer},
 	} {
 		t := t
 		if !t.enabled {
