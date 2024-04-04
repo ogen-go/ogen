@@ -17,6 +17,7 @@ import (
 	"go.opentelemetry.io/otel/sdk/resource"
 
 	api "github.com/ogen-go/ogen/internal/integration/sample_api"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/otelogen"
 )
 
@@ -42,6 +43,24 @@ func (h metricsTestHandler) APIKey(ctx context.Context, operationName string) (a
 	}, nil
 }
 
+func labelerMiddleware(req middleware.Request, next middleware.Next) (middleware.Response, error) {
+	labeler, _ := api.LabelerFromContext(req.Context)
+
+	if id, ok := req.Params.Path("id"); ok {
+		labeler.Add(
+			attribute.Int("pet_id", id.(int)),
+		)
+	}
+
+	if name, ok := req.Params.Path("name"); ok {
+		labeler.Add(
+			attribute.String("pet_name", name.(string)),
+		)
+	}
+
+	return next(req)
+}
+
 var _ api.Handler = metricsTestHandler{}
 var _ api.SecurityHandler = metricsTestHandler{}
 var _ api.SecuritySource = metricsTestHandler{}
@@ -49,6 +68,7 @@ var _ api.SecuritySource = metricsTestHandler{}
 func TestServerMetrics(t *testing.T) {
 	tests := []struct {
 		name      string
+		mw        middleware.Middleware
 		operation func(*testing.T, *api.Client)
 		want      []metricdata.Metrics
 	}{
@@ -164,6 +184,125 @@ func TestServerMetrics(t *testing.T) {
 				},
 			},
 		},
+		{
+			name: "Success with Labeler",
+			mw:   labelerMiddleware,
+			operation: func(t *testing.T, c *api.Client) {
+				name, err := c.PetNameByID(context.Background(), api.PetNameByIDParams{
+					ID: 1,
+				})
+				assert.Equal(t, "Fluffy", name)
+				assert.NoError(t, err)
+			},
+			want: []metricdata.Metrics{
+				{
+					Name:        "ogen.server.request_count",
+					Description: "Incoming request count total",
+					Unit:        "{count}",
+					Data: metricdata.Sum[int64]{
+						DataPoints: []metricdata.DataPoint[int64]{
+							{
+								Attributes: attribute.NewSet(
+									attribute.String("oas.operation", "petNameByID"),
+									attribute.String("http.method", "GET"),
+									attribute.String("http.route", "/pet/name/{id}"),
+									attribute.Int("pet_id", 1),
+								),
+							},
+						},
+						Temporality: metricdata.CumulativeTemporality,
+						IsMonotonic: true,
+					},
+				},
+				{
+					Name:        "ogen.server.duration",
+					Description: "Incoming end to end duration",
+					Unit:        "ms",
+					Data: metricdata.Histogram[float64]{
+						DataPoints: []metricdata.HistogramDataPoint[float64]{
+							{
+								Attributes: attribute.NewSet(
+									attribute.String("oas.operation", "petNameByID"),
+									attribute.String("http.method", "GET"),
+									attribute.String("http.route", "/pet/name/{id}"),
+									attribute.Int("pet_id", 1),
+								),
+							},
+						},
+						Temporality: metricdata.CumulativeTemporality,
+					},
+				},
+			},
+		},
+		{
+			name: "Error with Labeler",
+			mw:   labelerMiddleware,
+			operation: func(t *testing.T, c *api.Client) {
+				pet, err := c.PetGetByName(context.Background(), api.PetGetByNameParams{
+					Name: "Fluffy",
+				})
+				assert.Nil(t, pet)
+				assert.EqualError(t, err, "decode response: unexpected status code: 500")
+			},
+			want: []metricdata.Metrics{
+				{
+					Name:        "ogen.server.request_count",
+					Description: "Incoming request count total",
+					Unit:        "{count}",
+					Data: metricdata.Sum[int64]{
+						DataPoints: []metricdata.DataPoint[int64]{
+							{
+								Attributes: attribute.NewSet(
+									attribute.String("oas.operation", "petGetByName"),
+									attribute.String("http.method", "GET"),
+									attribute.String("http.route", "/pet/{name}"),
+									attribute.String("pet_name", "Fluffy"),
+								),
+							},
+						},
+						Temporality: metricdata.CumulativeTemporality,
+						IsMonotonic: true,
+					},
+				},
+				{
+					Name:        "ogen.server.duration",
+					Description: "Incoming end to end duration",
+					Unit:        "ms",
+					Data: metricdata.Histogram[float64]{
+						DataPoints: []metricdata.HistogramDataPoint[float64]{
+							{
+								Attributes: attribute.NewSet(
+									attribute.String("oas.operation", "petGetByName"),
+									attribute.String("http.method", "GET"),
+									attribute.String("http.route", "/pet/{name}"),
+									attribute.String("pet_name", "Fluffy"),
+								),
+							},
+						},
+						Temporality: metricdata.CumulativeTemporality,
+					},
+				},
+				{
+					Name:        "ogen.server.errors_count",
+					Description: "Incoming errors total",
+					Unit:        "{count}",
+					Data: metricdata.Sum[int64]{
+						DataPoints: []metricdata.DataPoint[int64]{
+							{
+								Attributes: attribute.NewSet(
+									attribute.String("oas.operation", "petGetByName"),
+									attribute.String("http.method", "GET"),
+									attribute.String("http.route", "/pet/{name}"),
+									attribute.String("pet_name", "Fluffy"),
+								),
+							},
+						},
+						Temporality: metricdata.CumulativeTemporality,
+						IsMonotonic: true,
+					},
+				},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -181,6 +320,7 @@ func TestServerMetrics(t *testing.T) {
 			handler := metricsTestHandler{}
 			h, err := api.NewServer(handler, handler,
 				api.WithMeterProvider(mp),
+				api.WithMiddleware(tt.mw),
 			)
 			require.NoError(t, err)
 
