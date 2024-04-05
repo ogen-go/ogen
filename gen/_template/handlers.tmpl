@@ -108,10 +108,10 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 				}
 				{{- if and $.Config.Error (not $op.WebhookInfo) }}
 				if encodeErr := encodeErrorResponse(s.h.NewError(ctx, err), w, {{ if $otel }}span{{ end }}); encodeErr != nil {
-					recordError({{ printf "Security:%s" $securityName | quote }}, err)
+					defer recordError({{ printf "Security:%s" $securityName | quote }}, err)
 				}
 				{{- else }}
-				recordError({{ printf "Security:%s" $securityName | quote }}, err)
+				defer recordError({{ printf "Security:%s" $securityName | quote }}, err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				{{- end }}
 				return
@@ -147,10 +147,10 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			}
 			{{- if and $.Config.Error (not $op.WebhookInfo) }}
 			if encodeErr := encodeErrorResponse(s.h.NewError(ctx, err), w, {{ if $otel }}span{{ end }}); encodeErr != nil {
-				recordError({{ quote "Security" }}, err)
+				defer recordError({{ quote "Security" }}, err)
 			}
 			{{- else }}
-			recordError({{ quote "Security" }}, err)
+			defer recordError({{ quote "Security" }}, err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			{{- end }}
 			return
@@ -165,7 +165,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			OperationContext: opErrContext,
 			Err: err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -178,7 +178,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			OperationContext: opErrContext,
 			Err: err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -234,7 +234,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- if and $.Config.Error (not $op.WebhookInfo) }}
 		if errRes, ok := errors.Into[{{ $.Config.ErrorGoType }}](err); ok {
 			if err := encodeErrorResponse(errRes, w, {{ if $otel }}span{{ end }}); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -243,17 +243,17 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, {{ if $otel }}span{{ end }}); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		{{- else }}
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		{{- end }}
 		return
 	}
 
 	if err := encode{{ $op.Name }}Response(response, w, {{ if $otel }}span{{ end }}); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

@@ -77,7 +77,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -105,7 +105,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -145,13 +145,13 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 		response, err = s.h.MarketBondsGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketBondsGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -217,7 +217,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -245,7 +245,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -256,7 +256,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -312,13 +312,13 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 		response, err = s.h.MarketCandlesGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketCandlesGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -384,7 +384,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -412,7 +412,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -452,13 +452,13 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 		response, err = s.h.MarketCurrenciesGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketCurrenciesGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -524,7 +524,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -552,7 +552,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -592,13 +592,13 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 		response, err = s.h.MarketEtfsGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketEtfsGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -664,7 +664,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -692,7 +692,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -703,7 +703,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -751,13 +751,13 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 		response, err = s.h.MarketOrderbookGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketOrderbookGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -823,7 +823,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -851,7 +851,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -862,7 +862,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -906,13 +906,13 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 		response, err = s.h.MarketSearchByFigiGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketSearchByFigiGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -978,7 +978,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1006,7 +1006,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1017,7 +1017,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1061,13 +1061,13 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 		response, err = s.h.MarketSearchByTickerGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketSearchByTickerGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1133,7 +1133,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1161,7 +1161,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1201,13 +1201,13 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 		response, err = s.h.MarketStocksGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketStocksGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1273,7 +1273,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1301,7 +1301,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1312,7 +1312,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1368,13 +1368,13 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 		response, err = s.h.OperationsGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOperationsGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1440,7 +1440,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1468,7 +1468,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1479,7 +1479,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1527,13 +1527,13 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 		response, err = s.h.OrdersCancelPost(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersCancelPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1599,7 +1599,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1627,7 +1627,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1638,7 +1638,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1682,13 +1682,13 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 		response, err = s.h.OrdersGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1754,7 +1754,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1782,7 +1782,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1793,7 +1793,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1803,7 +1803,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1856,13 +1856,13 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 		response, err = s.h.OrdersLimitOrderPost(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersLimitOrderPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1928,7 +1928,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1956,7 +1956,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1967,7 +1967,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1977,7 +1977,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2030,13 +2030,13 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 		response, err = s.h.OrdersMarketOrderPost(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersMarketOrderPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2102,7 +2102,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2130,7 +2130,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2141,7 +2141,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2185,13 +2185,13 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 		response, err = s.h.PortfolioCurrenciesGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodePortfolioCurrenciesGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2257,7 +2257,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2285,7 +2285,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2296,7 +2296,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2340,13 +2340,13 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 		response, err = s.h.PortfolioGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodePortfolioGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2412,7 +2412,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2440,7 +2440,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2451,7 +2451,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2495,13 +2495,13 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 		response, err = s.h.SandboxClearPost(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxClearPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2567,7 +2567,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2595,7 +2595,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2606,7 +2606,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2616,7 +2616,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2665,13 +2665,13 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 		response, err = s.h.SandboxCurrenciesBalancePost(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxCurrenciesBalancePostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2737,7 +2737,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2765,7 +2765,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2776,7 +2776,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2786,7 +2786,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2835,13 +2835,13 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 		response, err = s.h.SandboxPositionsBalancePost(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxPositionsBalancePostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2907,7 +2907,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2935,7 +2935,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2946,7 +2946,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2990,13 +2990,13 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 		response, err = s.h.SandboxRegisterPost(ctx, request)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxRegisterPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3062,7 +3062,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3090,7 +3090,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3101,7 +3101,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3145,13 +3145,13 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 		response, err = s.h.SandboxRemovePost(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxRemovePostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3217,7 +3217,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, 
 					Security:         "SSOAuth",
 					Err:              err,
 				}
-				recordError("Security:SSOAuth", err)
+				defer recordError("Security:SSOAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3245,7 +3245,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3285,13 +3285,13 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, 
 		response, err = s.h.UserAccountsGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUserAccountsGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

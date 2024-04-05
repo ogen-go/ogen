@@ -79,7 +79,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -107,7 +107,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -118,7 +118,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -170,13 +170,13 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 		response, err = s.h.ConnectCoreV1DeleteNamespacedPodProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1DeleteNamespacedPodProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -243,7 +243,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -271,7 +271,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -282,7 +282,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -338,13 +338,13 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 		response, err = s.h.ConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -411,7 +411,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -439,7 +439,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -450,7 +450,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -502,13 +502,13 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 		response, err = s.h.ConnectCoreV1DeleteNamespacedServiceProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1DeleteNamespacedServiceProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -575,7 +575,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -603,7 +603,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -614,7 +614,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -670,13 +670,13 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 		response, err = s.h.ConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -743,7 +743,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -771,7 +771,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -782,7 +782,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -830,13 +830,13 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 		response, err = s.h.ConnectCoreV1DeleteNodeProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1DeleteNodeProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -903,7 +903,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -931,7 +931,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -942,7 +942,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -994,13 +994,13 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 		response, err = s.h.ConnectCoreV1DeleteNodeProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1DeleteNodeProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1067,7 +1067,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1095,7 +1095,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1106,7 +1106,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1174,13 +1174,13 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 		response, err = s.h.ConnectCoreV1GetNamespacedPodAttach(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNamespacedPodAttachResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1247,7 +1247,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1275,7 +1275,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1286,7 +1286,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1358,13 +1358,13 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 		response, err = s.h.ConnectCoreV1GetNamespacedPodExec(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNamespacedPodExecResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1431,7 +1431,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1459,7 +1459,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1470,7 +1470,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1522,13 +1522,13 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 		response, err = s.h.ConnectCoreV1GetNamespacedPodPortforward(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNamespacedPodPortforwardResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1595,7 +1595,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1623,7 +1623,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1634,7 +1634,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1686,13 +1686,13 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 		response, err = s.h.ConnectCoreV1GetNamespacedPodProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNamespacedPodProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1759,7 +1759,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1787,7 +1787,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1798,7 +1798,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1854,13 +1854,13 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 		response, err = s.h.ConnectCoreV1GetNamespacedPodProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1927,7 +1927,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -1955,7 +1955,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -1966,7 +1966,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2018,13 +2018,13 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 		response, err = s.h.ConnectCoreV1GetNamespacedServiceProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNamespacedServiceProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2091,7 +2091,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2119,7 +2119,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2130,7 +2130,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2186,13 +2186,13 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 		response, err = s.h.ConnectCoreV1GetNamespacedServiceProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2259,7 +2259,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2287,7 +2287,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2298,7 +2298,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2346,13 +2346,13 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 		response, err = s.h.ConnectCoreV1GetNodeProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNodeProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2419,7 +2419,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2447,7 +2447,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2458,7 +2458,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2510,13 +2510,13 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 		response, err = s.h.ConnectCoreV1GetNodeProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1GetNodeProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2583,7 +2583,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2611,7 +2611,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2622,7 +2622,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2674,13 +2674,13 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 		response, err = s.h.ConnectCoreV1HeadNamespacedPodProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1HeadNamespacedPodProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2747,7 +2747,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2775,7 +2775,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2786,7 +2786,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2842,13 +2842,13 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 		response, err = s.h.ConnectCoreV1HeadNamespacedPodProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2915,7 +2915,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -2943,7 +2943,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -2954,7 +2954,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3006,13 +3006,13 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 		response, err = s.h.ConnectCoreV1HeadNamespacedServiceProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1HeadNamespacedServiceProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3079,7 +3079,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3107,7 +3107,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3118,7 +3118,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3174,13 +3174,13 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 		response, err = s.h.ConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3247,7 +3247,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3275,7 +3275,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3286,7 +3286,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3334,13 +3334,13 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 		response, err = s.h.ConnectCoreV1HeadNodeProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1HeadNodeProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3407,7 +3407,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3435,7 +3435,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3446,7 +3446,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3498,13 +3498,13 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 		response, err = s.h.ConnectCoreV1HeadNodeProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1HeadNodeProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3571,7 +3571,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3599,7 +3599,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3610,7 +3610,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3662,13 +3662,13 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 		response, err = s.h.ConnectCoreV1OptionsNamespacedPodProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1OptionsNamespacedPodProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3735,7 +3735,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3763,7 +3763,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3774,7 +3774,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3830,13 +3830,13 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 		response, err = s.h.ConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3903,7 +3903,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -3931,7 +3931,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -3942,7 +3942,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3994,13 +3994,13 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 		response, err = s.h.ConnectCoreV1OptionsNamespacedServiceProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1OptionsNamespacedServiceProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -4067,7 +4067,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -4095,7 +4095,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -4106,7 +4106,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -4162,13 +4162,13 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 		response, err = s.h.ConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -4235,7 +4235,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -4263,7 +4263,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -4274,7 +4274,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -4322,13 +4322,13 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 		response, err = s.h.ConnectCoreV1OptionsNodeProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1OptionsNodeProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -4395,7 +4395,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -4423,7 +4423,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -4434,7 +4434,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -4486,13 +4486,13 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 		response, err = s.h.ConnectCoreV1OptionsNodeProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1OptionsNodeProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -4559,7 +4559,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -4587,7 +4587,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -4598,7 +4598,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -4650,13 +4650,13 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 		response, err = s.h.ConnectCoreV1PatchNamespacedPodProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PatchNamespacedPodProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -4723,7 +4723,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -4751,7 +4751,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -4762,7 +4762,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -4818,13 +4818,13 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 		response, err = s.h.ConnectCoreV1PatchNamespacedPodProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -4891,7 +4891,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -4919,7 +4919,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -4930,7 +4930,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -4982,13 +4982,13 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 		response, err = s.h.ConnectCoreV1PatchNamespacedServiceProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PatchNamespacedServiceProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -5055,7 +5055,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -5083,7 +5083,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -5094,7 +5094,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -5150,13 +5150,13 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 		response, err = s.h.ConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -5223,7 +5223,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -5251,7 +5251,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -5262,7 +5262,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -5310,13 +5310,13 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 		response, err = s.h.ConnectCoreV1PatchNodeProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PatchNodeProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -5383,7 +5383,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -5411,7 +5411,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -5422,7 +5422,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -5474,13 +5474,13 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 		response, err = s.h.ConnectCoreV1PatchNodeProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PatchNodeProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -5547,7 +5547,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -5575,7 +5575,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -5586,7 +5586,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -5654,13 +5654,13 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 		response, err = s.h.ConnectCoreV1PostNamespacedPodAttach(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNamespacedPodAttachResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -5727,7 +5727,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -5755,7 +5755,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -5766,7 +5766,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -5838,13 +5838,13 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 		response, err = s.h.ConnectCoreV1PostNamespacedPodExec(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNamespacedPodExecResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -5911,7 +5911,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -5939,7 +5939,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -5950,7 +5950,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -6002,13 +6002,13 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 		response, err = s.h.ConnectCoreV1PostNamespacedPodPortforward(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNamespacedPodPortforwardResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -6075,7 +6075,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -6103,7 +6103,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -6114,7 +6114,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -6166,13 +6166,13 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 		response, err = s.h.ConnectCoreV1PostNamespacedPodProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNamespacedPodProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -6239,7 +6239,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -6267,7 +6267,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -6278,7 +6278,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -6334,13 +6334,13 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 		response, err = s.h.ConnectCoreV1PostNamespacedPodProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -6407,7 +6407,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -6435,7 +6435,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -6446,7 +6446,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -6498,13 +6498,13 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 		response, err = s.h.ConnectCoreV1PostNamespacedServiceProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNamespacedServiceProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -6571,7 +6571,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -6599,7 +6599,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -6610,7 +6610,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -6666,13 +6666,13 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 		response, err = s.h.ConnectCoreV1PostNamespacedServiceProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -6739,7 +6739,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -6767,7 +6767,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -6778,7 +6778,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -6826,13 +6826,13 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 		response, err = s.h.ConnectCoreV1PostNodeProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNodeProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -6899,7 +6899,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -6927,7 +6927,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -6938,7 +6938,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -6990,13 +6990,13 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 		response, err = s.h.ConnectCoreV1PostNodeProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PostNodeProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -7063,7 +7063,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -7091,7 +7091,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -7102,7 +7102,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -7154,13 +7154,13 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 		response, err = s.h.ConnectCoreV1PutNamespacedPodProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PutNamespacedPodProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -7227,7 +7227,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -7255,7 +7255,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -7266,7 +7266,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -7322,13 +7322,13 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 		response, err = s.h.ConnectCoreV1PutNamespacedPodProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -7395,7 +7395,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -7423,7 +7423,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -7434,7 +7434,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -7486,13 +7486,13 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 		response, err = s.h.ConnectCoreV1PutNamespacedServiceProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PutNamespacedServiceProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -7559,7 +7559,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -7587,7 +7587,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -7598,7 +7598,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -7654,13 +7654,13 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 		response, err = s.h.ConnectCoreV1PutNamespacedServiceProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -7727,7 +7727,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -7755,7 +7755,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -7766,7 +7766,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -7814,13 +7814,13 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 		response, err = s.h.ConnectCoreV1PutNodeProxy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PutNodeProxyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -7887,7 +7887,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -7915,7 +7915,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -7926,7 +7926,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -7978,13 +7978,13 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 		response, err = s.h.ConnectCoreV1PutNodeProxyWithPath(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeConnectCoreV1PutNodeProxyWithPathResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -8051,7 +8051,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -8079,7 +8079,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -8119,13 +8119,13 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 		response, err = s.h.GetAPIVersions(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAPIVersionsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -8192,7 +8192,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -8220,7 +8220,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -8260,13 +8260,13 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 		response, err = s.h.GetAdmissionregistrationAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAdmissionregistrationAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -8333,7 +8333,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -8361,7 +8361,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -8401,13 +8401,13 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 		response, err = s.h.GetAdmissionregistrationV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAdmissionregistrationV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -8474,7 +8474,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -8502,7 +8502,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -8542,13 +8542,13 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 		response, err = s.h.GetApiextensionsAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetApiextensionsAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -8615,7 +8615,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -8643,7 +8643,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -8683,13 +8683,13 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 		response, err = s.h.GetApiextensionsV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetApiextensionsV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -8756,7 +8756,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -8784,7 +8784,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -8824,13 +8824,13 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 		response, err = s.h.GetApiregistrationAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetApiregistrationAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -8897,7 +8897,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -8925,7 +8925,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -8965,13 +8965,13 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 		response, err = s.h.GetApiregistrationV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetApiregistrationV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -9038,7 +9038,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -9066,7 +9066,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -9106,13 +9106,13 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 		response, err = s.h.GetAppsAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAppsAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -9179,7 +9179,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -9207,7 +9207,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -9247,13 +9247,13 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 		response, err = s.h.GetAppsV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAppsV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -9320,7 +9320,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -9348,7 +9348,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -9388,13 +9388,13 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 		response, err = s.h.GetAuthenticationAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAuthenticationAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -9461,7 +9461,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -9489,7 +9489,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -9529,13 +9529,13 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 		response, err = s.h.GetAuthenticationV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAuthenticationV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -9602,7 +9602,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -9630,7 +9630,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -9670,13 +9670,13 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 		response, err = s.h.GetAuthorizationAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAuthorizationAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -9743,7 +9743,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -9771,7 +9771,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -9811,13 +9811,13 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 		response, err = s.h.GetAuthorizationV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAuthorizationV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -9884,7 +9884,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -9912,7 +9912,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -9952,13 +9952,13 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 		response, err = s.h.GetAutoscalingAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAutoscalingAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -10025,7 +10025,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -10053,7 +10053,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -10093,13 +10093,13 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 		response, err = s.h.GetAutoscalingV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAutoscalingV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -10166,7 +10166,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -10194,7 +10194,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -10234,13 +10234,13 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 		response, err = s.h.GetAutoscalingV2beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAutoscalingV2beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -10307,7 +10307,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -10335,7 +10335,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -10375,13 +10375,13 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 		response, err = s.h.GetAutoscalingV2beta2APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetAutoscalingV2beta2APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -10448,7 +10448,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -10476,7 +10476,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -10516,13 +10516,13 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 		response, err = s.h.GetBatchAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetBatchAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -10589,7 +10589,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -10617,7 +10617,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -10657,13 +10657,13 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 		response, err = s.h.GetBatchV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetBatchV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -10730,7 +10730,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -10758,7 +10758,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -10798,13 +10798,13 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 		response, err = s.h.GetBatchV1beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetBatchV1beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -10871,7 +10871,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -10899,7 +10899,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -10939,13 +10939,13 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 		response, err = s.h.GetCertificatesAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetCertificatesAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11012,7 +11012,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -11040,7 +11040,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -11080,13 +11080,13 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 		response, err = s.h.GetCertificatesV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetCertificatesV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11153,7 +11153,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -11181,7 +11181,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -11221,13 +11221,13 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 		response, err = s.h.GetCodeVersion(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetCodeVersionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11294,7 +11294,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -11322,7 +11322,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -11362,13 +11362,13 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 		response, err = s.h.GetCoordinationAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetCoordinationAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11435,7 +11435,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -11463,7 +11463,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -11503,13 +11503,13 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 		response, err = s.h.GetCoordinationV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetCoordinationV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11576,7 +11576,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -11604,7 +11604,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -11644,13 +11644,13 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 		response, err = s.h.GetCoreAPIVersions(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetCoreAPIVersionsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11717,7 +11717,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -11745,7 +11745,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -11785,13 +11785,13 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 		response, err = s.h.GetCoreV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetCoreV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11858,7 +11858,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -11886,7 +11886,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -11926,13 +11926,13 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 		response, err = s.h.GetDiscoveryAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetDiscoveryAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -11999,7 +11999,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -12027,7 +12027,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -12067,13 +12067,13 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 		response, err = s.h.GetDiscoveryV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetDiscoveryV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -12140,7 +12140,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -12168,7 +12168,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -12208,13 +12208,13 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 		response, err = s.h.GetDiscoveryV1beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetDiscoveryV1beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -12281,7 +12281,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -12309,7 +12309,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -12349,13 +12349,13 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 		response, err = s.h.GetEventsAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetEventsAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -12422,7 +12422,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -12450,7 +12450,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -12490,13 +12490,13 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 		response, err = s.h.GetEventsV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetEventsV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -12563,7 +12563,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -12591,7 +12591,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -12631,13 +12631,13 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 		response, err = s.h.GetEventsV1beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetEventsV1beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -12704,7 +12704,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -12732,7 +12732,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -12772,13 +12772,13 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 		response, err = s.h.GetFlowcontrolApiserverAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetFlowcontrolApiserverAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -12845,7 +12845,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -12873,7 +12873,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -12913,13 +12913,13 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 		response, err = s.h.GetFlowcontrolApiserverV1beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -12986,7 +12986,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -13014,7 +13014,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -13054,13 +13054,13 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 		response, err = s.h.GetFlowcontrolApiserverV1beta2APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -13127,7 +13127,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -13155,7 +13155,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -13195,13 +13195,13 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 		response, err = s.h.GetInternalApiserverAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetInternalApiserverAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -13268,7 +13268,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -13296,7 +13296,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -13336,13 +13336,13 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 		response, err = s.h.GetInternalApiserverV1alpha1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetInternalApiserverV1alpha1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -13409,7 +13409,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -13437,7 +13437,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -13477,13 +13477,13 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 		response, err = s.h.GetNetworkingAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetNetworkingAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -13550,7 +13550,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -13578,7 +13578,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -13618,13 +13618,13 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 		response, err = s.h.GetNetworkingV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetNetworkingV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -13691,7 +13691,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -13719,7 +13719,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -13759,13 +13759,13 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 		response, err = s.h.GetNodeAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetNodeAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -13832,7 +13832,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -13860,7 +13860,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -13900,13 +13900,13 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 		response, err = s.h.GetNodeV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetNodeV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -13973,7 +13973,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14001,7 +14001,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -14041,13 +14041,13 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 		response, err = s.h.GetNodeV1alpha1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetNodeV1alpha1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -14114,7 +14114,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14142,7 +14142,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -14182,13 +14182,13 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 		response, err = s.h.GetNodeV1beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetNodeV1beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -14255,7 +14255,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14283,7 +14283,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -14323,13 +14323,13 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 		response, err = s.h.GetPolicyAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetPolicyAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -14396,7 +14396,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14424,7 +14424,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -14464,13 +14464,13 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 		response, err = s.h.GetPolicyV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetPolicyV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -14537,7 +14537,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14565,7 +14565,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -14605,13 +14605,13 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 		response, err = s.h.GetPolicyV1beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetPolicyV1beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -14678,7 +14678,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14706,7 +14706,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -14746,13 +14746,13 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 		response, err = s.h.GetRbacAuthorizationAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetRbacAuthorizationAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -14819,7 +14819,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14847,7 +14847,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -14887,13 +14887,13 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 		response, err = s.h.GetRbacAuthorizationV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetRbacAuthorizationV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -14960,7 +14960,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -14988,7 +14988,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -15028,13 +15028,13 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 		response, err = s.h.GetSchedulingAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetSchedulingAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -15101,7 +15101,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -15129,7 +15129,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -15169,13 +15169,13 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 		response, err = s.h.GetSchedulingV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetSchedulingV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -15242,7 +15242,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -15270,7 +15270,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -15310,13 +15310,13 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 		response, err = s.h.GetServiceAccountIssuerOpenIDConfiguration(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -15383,7 +15383,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -15411,7 +15411,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -15451,13 +15451,13 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 		response, err = s.h.GetServiceAccountIssuerOpenIDKeyset(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetServiceAccountIssuerOpenIDKeysetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -15524,7 +15524,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -15552,7 +15552,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -15592,13 +15592,13 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 		response, err = s.h.GetStorageAPIGroup(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetStorageAPIGroupResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -15665,7 +15665,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -15693,7 +15693,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -15733,13 +15733,13 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 		response, err = s.h.GetStorageV1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetStorageV1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -15806,7 +15806,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -15834,7 +15834,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -15874,13 +15874,13 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 		response, err = s.h.GetStorageV1alpha1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetStorageV1alpha1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -15947,7 +15947,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -15975,7 +15975,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -16015,13 +16015,13 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 		response, err = s.h.GetStorageV1beta1APIResources(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeGetStorageV1beta1APIResourcesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -16088,7 +16088,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -16116,7 +16116,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -16127,7 +16127,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -16207,13 +16207,13 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 		response, err = s.h.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -16280,7 +16280,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -16308,7 +16308,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -16319,7 +16319,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -16399,13 +16399,13 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 		response, err = s.h.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -16472,7 +16472,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -16500,7 +16500,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -16511,7 +16511,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -16591,13 +16591,13 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 		response, err = s.h.ListApiextensionsV1CustomResourceDefinition(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListApiextensionsV1CustomResourceDefinitionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -16664,7 +16664,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -16692,7 +16692,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -16703,7 +16703,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -16783,13 +16783,13 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 		response, err = s.h.ListApiregistrationV1APIService(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListApiregistrationV1APIServiceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -16856,7 +16856,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -16884,7 +16884,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -16895,7 +16895,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -16975,13 +16975,13 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 		response, err = s.h.ListAppsV1ControllerRevisionForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -17048,7 +17048,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -17076,7 +17076,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -17087,7 +17087,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -17167,13 +17167,13 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 		response, err = s.h.ListAppsV1DaemonSetForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1DaemonSetForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -17240,7 +17240,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -17268,7 +17268,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -17279,7 +17279,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -17359,13 +17359,13 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 		response, err = s.h.ListAppsV1DeploymentForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1DeploymentForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -17432,7 +17432,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -17460,7 +17460,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -17471,7 +17471,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -17555,13 +17555,13 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 		response, err = s.h.ListAppsV1NamespacedControllerRevision(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1NamespacedControllerRevisionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -17628,7 +17628,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -17656,7 +17656,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -17667,7 +17667,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -17751,13 +17751,13 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 		response, err = s.h.ListAppsV1NamespacedDaemonSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1NamespacedDaemonSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -17824,7 +17824,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -17852,7 +17852,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -17863,7 +17863,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -17947,13 +17947,13 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 		response, err = s.h.ListAppsV1NamespacedDeployment(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1NamespacedDeploymentResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -18020,7 +18020,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -18048,7 +18048,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -18059,7 +18059,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -18143,13 +18143,13 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 		response, err = s.h.ListAppsV1NamespacedReplicaSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1NamespacedReplicaSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -18216,7 +18216,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -18244,7 +18244,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -18255,7 +18255,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -18339,13 +18339,13 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 		response, err = s.h.ListAppsV1NamespacedStatefulSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1NamespacedStatefulSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -18412,7 +18412,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -18440,7 +18440,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -18451,7 +18451,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -18531,13 +18531,13 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 		response, err = s.h.ListAppsV1ReplicaSetForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1ReplicaSetForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -18604,7 +18604,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -18632,7 +18632,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -18643,7 +18643,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -18723,13 +18723,13 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 		response, err = s.h.ListAppsV1StatefulSetForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAppsV1StatefulSetForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -18796,7 +18796,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -18824,7 +18824,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -18835,7 +18835,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -18915,13 +18915,13 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 		response, err = s.h.ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -18988,7 +18988,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -19016,7 +19016,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -19027,7 +19027,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -19111,13 +19111,13 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		response, err = s.h.ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -19184,7 +19184,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -19212,7 +19212,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -19223,7 +19223,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -19303,13 +19303,13 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 		response, err = s.h.ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -19376,7 +19376,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -19404,7 +19404,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -19415,7 +19415,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -19499,13 +19499,13 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		response, err = s.h.ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -19572,7 +19572,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -19600,7 +19600,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -19611,7 +19611,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -19691,13 +19691,13 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 		response, err = s.h.ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -19764,7 +19764,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -19792,7 +19792,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -19803,7 +19803,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -19887,13 +19887,13 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		response, err = s.h.ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -19960,7 +19960,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -19988,7 +19988,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -19999,7 +19999,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -20079,13 +20079,13 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 		response, err = s.h.ListBatchV1CronJobForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListBatchV1CronJobForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -20152,7 +20152,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -20180,7 +20180,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -20191,7 +20191,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -20271,13 +20271,13 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 		response, err = s.h.ListBatchV1JobForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListBatchV1JobForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -20344,7 +20344,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -20372,7 +20372,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -20383,7 +20383,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -20467,13 +20467,13 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 		response, err = s.h.ListBatchV1NamespacedCronJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListBatchV1NamespacedCronJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -20540,7 +20540,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -20568,7 +20568,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -20579,7 +20579,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -20663,13 +20663,13 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 		response, err = s.h.ListBatchV1NamespacedJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListBatchV1NamespacedJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -20736,7 +20736,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -20764,7 +20764,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -20775,7 +20775,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -20855,13 +20855,13 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 		response, err = s.h.ListBatchV1beta1CronJobForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListBatchV1beta1CronJobForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -20928,7 +20928,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -20956,7 +20956,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -20967,7 +20967,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -21051,13 +21051,13 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 		response, err = s.h.ListBatchV1beta1NamespacedCronJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListBatchV1beta1NamespacedCronJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -21124,7 +21124,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -21152,7 +21152,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -21163,7 +21163,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -21243,13 +21243,13 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 		response, err = s.h.ListCertificatesV1CertificateSigningRequest(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCertificatesV1CertificateSigningRequestResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -21316,7 +21316,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -21344,7 +21344,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -21355,7 +21355,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -21435,13 +21435,13 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 		response, err = s.h.ListCoordinationV1LeaseForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoordinationV1LeaseForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -21508,7 +21508,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -21536,7 +21536,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -21547,7 +21547,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -21631,13 +21631,13 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 		response, err = s.h.ListCoordinationV1NamespacedLease(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoordinationV1NamespacedLeaseResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -21704,7 +21704,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -21732,7 +21732,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -21743,7 +21743,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -21823,13 +21823,13 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 		response, err = s.h.ListCoreV1ComponentStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1ComponentStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -21896,7 +21896,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -21924,7 +21924,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -21935,7 +21935,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -22015,13 +22015,13 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 		response, err = s.h.ListCoreV1ConfigMapForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1ConfigMapForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -22088,7 +22088,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -22116,7 +22116,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -22127,7 +22127,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -22207,13 +22207,13 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 		response, err = s.h.ListCoreV1EndpointsForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1EndpointsForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -22280,7 +22280,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -22308,7 +22308,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -22319,7 +22319,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -22399,13 +22399,13 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 		response, err = s.h.ListCoreV1EventForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1EventForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -22472,7 +22472,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -22500,7 +22500,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -22511,7 +22511,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -22591,13 +22591,13 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 		response, err = s.h.ListCoreV1LimitRangeForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1LimitRangeForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -22664,7 +22664,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -22692,7 +22692,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -22703,7 +22703,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -22783,13 +22783,13 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 		response, err = s.h.ListCoreV1Namespace(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespaceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -22856,7 +22856,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -22884,7 +22884,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -22895,7 +22895,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -22979,13 +22979,13 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 		response, err = s.h.ListCoreV1NamespacedConfigMap(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedConfigMapResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -23052,7 +23052,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -23080,7 +23080,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -23091,7 +23091,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -23175,13 +23175,13 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 		response, err = s.h.ListCoreV1NamespacedEndpoints(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedEndpointsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -23248,7 +23248,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -23276,7 +23276,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -23287,7 +23287,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -23371,13 +23371,13 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 		response, err = s.h.ListCoreV1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -23444,7 +23444,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -23472,7 +23472,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -23483,7 +23483,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -23567,13 +23567,13 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 		response, err = s.h.ListCoreV1NamespacedLimitRange(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedLimitRangeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -23640,7 +23640,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -23668,7 +23668,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -23679,7 +23679,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -23763,13 +23763,13 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 		response, err = s.h.ListCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -23836,7 +23836,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -23864,7 +23864,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -23875,7 +23875,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -23959,13 +23959,13 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 		response, err = s.h.ListCoreV1NamespacedPod(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedPodResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -24032,7 +24032,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -24060,7 +24060,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -24071,7 +24071,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -24155,13 +24155,13 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 		response, err = s.h.ListCoreV1NamespacedPodTemplate(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedPodTemplateResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -24228,7 +24228,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -24256,7 +24256,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -24267,7 +24267,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -24351,13 +24351,13 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 		response, err = s.h.ListCoreV1NamespacedReplicationController(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedReplicationControllerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -24424,7 +24424,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -24452,7 +24452,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -24463,7 +24463,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -24547,13 +24547,13 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 		response, err = s.h.ListCoreV1NamespacedResourceQuota(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedResourceQuotaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -24620,7 +24620,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -24648,7 +24648,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -24659,7 +24659,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -24743,13 +24743,13 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 		response, err = s.h.ListCoreV1NamespacedSecret(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedSecretResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -24816,7 +24816,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -24844,7 +24844,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -24855,7 +24855,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -24939,13 +24939,13 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 		response, err = s.h.ListCoreV1NamespacedService(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedServiceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -25012,7 +25012,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -25040,7 +25040,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -25051,7 +25051,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -25135,13 +25135,13 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 		response, err = s.h.ListCoreV1NamespacedServiceAccount(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NamespacedServiceAccountResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -25208,7 +25208,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -25236,7 +25236,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -25247,7 +25247,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -25327,13 +25327,13 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 		response, err = s.h.ListCoreV1Node(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1NodeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -25400,7 +25400,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -25428,7 +25428,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -25439,7 +25439,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -25519,13 +25519,13 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 		response, err = s.h.ListCoreV1PersistentVolume(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1PersistentVolumeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -25592,7 +25592,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -25620,7 +25620,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -25631,7 +25631,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -25711,13 +25711,13 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 		response, err = s.h.ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -25784,7 +25784,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -25812,7 +25812,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -25823,7 +25823,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -25903,13 +25903,13 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 		response, err = s.h.ListCoreV1PodForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1PodForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -25976,7 +25976,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -26004,7 +26004,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -26015,7 +26015,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -26095,13 +26095,13 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 		response, err = s.h.ListCoreV1PodTemplateForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1PodTemplateForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -26168,7 +26168,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -26196,7 +26196,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -26207,7 +26207,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -26287,13 +26287,13 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 		response, err = s.h.ListCoreV1ReplicationControllerForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -26360,7 +26360,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -26388,7 +26388,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -26399,7 +26399,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -26479,13 +26479,13 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 		response, err = s.h.ListCoreV1ResourceQuotaForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -26552,7 +26552,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -26580,7 +26580,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -26591,7 +26591,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -26671,13 +26671,13 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 		response, err = s.h.ListCoreV1SecretForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1SecretForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -26744,7 +26744,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -26772,7 +26772,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -26783,7 +26783,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -26863,13 +26863,13 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 		response, err = s.h.ListCoreV1ServiceAccountForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1ServiceAccountForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -26936,7 +26936,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -26964,7 +26964,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -26975,7 +26975,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -27055,13 +27055,13 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 		response, err = s.h.ListCoreV1ServiceForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListCoreV1ServiceForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -27128,7 +27128,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -27156,7 +27156,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -27167,7 +27167,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -27247,13 +27247,13 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 		response, err = s.h.ListDiscoveryV1EndpointSliceForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -27320,7 +27320,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -27348,7 +27348,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -27359,7 +27359,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -27443,13 +27443,13 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 		response, err = s.h.ListDiscoveryV1NamespacedEndpointSlice(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListDiscoveryV1NamespacedEndpointSliceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -27516,7 +27516,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -27544,7 +27544,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -27555,7 +27555,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -27635,13 +27635,13 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 		response, err = s.h.ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -27708,7 +27708,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -27736,7 +27736,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -27747,7 +27747,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -27831,13 +27831,13 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		response, err = s.h.ListDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -27904,7 +27904,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -27932,7 +27932,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -27943,7 +27943,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -28023,13 +28023,13 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 		response, err = s.h.ListEventsV1EventForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListEventsV1EventForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -28096,7 +28096,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -28124,7 +28124,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -28135,7 +28135,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -28219,13 +28219,13 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 		response, err = s.h.ListEventsV1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListEventsV1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -28292,7 +28292,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -28320,7 +28320,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -28331,7 +28331,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -28411,13 +28411,13 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 		response, err = s.h.ListEventsV1beta1EventForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListEventsV1beta1EventForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -28484,7 +28484,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -28512,7 +28512,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -28523,7 +28523,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -28607,13 +28607,13 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 		response, err = s.h.ListEventsV1beta1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListEventsV1beta1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -28680,7 +28680,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -28708,7 +28708,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -28719,7 +28719,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -28799,13 +28799,13 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 		response, err = s.h.ListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -28872,7 +28872,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -28900,7 +28900,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -28911,7 +28911,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -28991,13 +28991,13 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		response, err = s.h.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -29064,7 +29064,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -29092,7 +29092,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -29103,7 +29103,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -29183,13 +29183,13 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 		response, err = s.h.ListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -29256,7 +29256,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -29284,7 +29284,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -29295,7 +29295,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -29375,13 +29375,13 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		response, err = s.h.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -29448,7 +29448,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -29476,7 +29476,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -29487,7 +29487,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -29567,13 +29567,13 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 		response, err = s.h.ListInternalApiserverV1alpha1StorageVersion(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListInternalApiserverV1alpha1StorageVersionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -29640,7 +29640,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -29668,7 +29668,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -29679,7 +29679,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -29759,13 +29759,13 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 		response, err = s.h.ListNetworkingV1IngressClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNetworkingV1IngressClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -29832,7 +29832,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -29860,7 +29860,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -29871,7 +29871,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -29951,13 +29951,13 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 		response, err = s.h.ListNetworkingV1IngressForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNetworkingV1IngressForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -30024,7 +30024,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -30052,7 +30052,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -30063,7 +30063,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -30147,13 +30147,13 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 		response, err = s.h.ListNetworkingV1NamespacedIngress(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNetworkingV1NamespacedIngressResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -30220,7 +30220,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -30248,7 +30248,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -30259,7 +30259,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -30343,13 +30343,13 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 		response, err = s.h.ListNetworkingV1NamespacedNetworkPolicy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNetworkingV1NamespacedNetworkPolicyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -30416,7 +30416,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -30444,7 +30444,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -30455,7 +30455,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -30535,13 +30535,13 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 		response, err = s.h.ListNetworkingV1NetworkPolicyForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -30608,7 +30608,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -30636,7 +30636,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -30647,7 +30647,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -30727,13 +30727,13 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 		response, err = s.h.ListNodeV1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNodeV1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -30800,7 +30800,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -30828,7 +30828,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -30839,7 +30839,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -30919,13 +30919,13 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 		response, err = s.h.ListNodeV1alpha1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNodeV1alpha1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -30992,7 +30992,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -31020,7 +31020,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -31031,7 +31031,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -31111,13 +31111,13 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 		response, err = s.h.ListNodeV1beta1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListNodeV1beta1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -31184,7 +31184,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -31212,7 +31212,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -31223,7 +31223,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -31307,13 +31307,13 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 		response, err = s.h.ListPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -31380,7 +31380,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -31408,7 +31408,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -31419,7 +31419,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -31499,13 +31499,13 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 		response, err = s.h.ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -31572,7 +31572,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -31600,7 +31600,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -31611,7 +31611,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -31695,13 +31695,13 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		response, err = s.h.ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -31768,7 +31768,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -31796,7 +31796,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -31807,7 +31807,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -31887,13 +31887,13 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 		response, err = s.h.ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -31960,7 +31960,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -31988,7 +31988,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -31999,7 +31999,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -32079,13 +32079,13 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 		response, err = s.h.ListPolicyV1beta1PodSecurityPolicy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPolicyV1beta1PodSecurityPolicyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -32152,7 +32152,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -32180,7 +32180,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -32191,7 +32191,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -32271,13 +32271,13 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 		response, err = s.h.ListRbacAuthorizationV1ClusterRole(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListRbacAuthorizationV1ClusterRoleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -32344,7 +32344,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -32372,7 +32372,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -32383,7 +32383,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -32463,13 +32463,13 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 		response, err = s.h.ListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -32536,7 +32536,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -32564,7 +32564,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -32575,7 +32575,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -32659,13 +32659,13 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 		response, err = s.h.ListRbacAuthorizationV1NamespacedRole(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListRbacAuthorizationV1NamespacedRoleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -32732,7 +32732,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -32760,7 +32760,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -32771,7 +32771,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -32855,13 +32855,13 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		response, err = s.h.ListRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -32928,7 +32928,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -32956,7 +32956,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -32967,7 +32967,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -33047,13 +33047,13 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 		response, err = s.h.ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -33120,7 +33120,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -33148,7 +33148,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -33159,7 +33159,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -33239,13 +33239,13 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 		response, err = s.h.ListRbacAuthorizationV1RoleForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -33312,7 +33312,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -33340,7 +33340,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -33351,7 +33351,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -33431,13 +33431,13 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 		response, err = s.h.ListSchedulingV1PriorityClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListSchedulingV1PriorityClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -33504,7 +33504,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -33532,7 +33532,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -33543,7 +33543,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -33623,13 +33623,13 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 		response, err = s.h.ListStorageV1CSIDriver(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1CSIDriverResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -33696,7 +33696,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -33724,7 +33724,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -33735,7 +33735,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -33815,13 +33815,13 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 		response, err = s.h.ListStorageV1CSINode(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1CSINodeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -33888,7 +33888,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -33916,7 +33916,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -33927,7 +33927,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -34007,13 +34007,13 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 		response, err = s.h.ListStorageV1StorageClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1StorageClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -34080,7 +34080,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -34108,7 +34108,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -34119,7 +34119,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -34199,13 +34199,13 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 		response, err = s.h.ListStorageV1VolumeAttachment(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1VolumeAttachmentResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -34272,7 +34272,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -34300,7 +34300,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -34311,7 +34311,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -34391,13 +34391,13 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 		response, err = s.h.ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -34464,7 +34464,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -34492,7 +34492,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -34503,7 +34503,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -34587,13 +34587,13 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		response, err = s.h.ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -34660,7 +34660,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -34688,7 +34688,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -34699,7 +34699,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -34779,13 +34779,13 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 		response, err = s.h.ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -34852,7 +34852,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -34880,7 +34880,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -34891,7 +34891,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -34975,13 +34975,13 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		response, err = s.h.ListStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -35046,7 +35046,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -35074,7 +35074,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -35085,7 +35085,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -35129,13 +35129,13 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 		err = s.h.LogFileHandler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeLogFileHandlerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -35200,7 +35200,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -35228,7 +35228,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -35268,13 +35268,13 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 		err = s.h.LogFileListHandler(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeLogFileListHandlerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -35341,7 +35341,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -35369,7 +35369,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -35380,7 +35380,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -35428,13 +35428,13 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 		response, err = s.h.ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -35501,7 +35501,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -35529,7 +35529,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -35540,7 +35540,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -35588,13 +35588,13 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		response, err = s.h.ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -35661,7 +35661,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -35689,7 +35689,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -35700,7 +35700,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -35748,13 +35748,13 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 		response, err = s.h.ReadApiextensionsV1CustomResourceDefinition(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadApiextensionsV1CustomResourceDefinitionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -35821,7 +35821,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -35849,7 +35849,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -35860,7 +35860,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -35908,13 +35908,13 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 		response, err = s.h.ReadApiextensionsV1CustomResourceDefinitionStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -35981,7 +35981,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -36009,7 +36009,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -36020,7 +36020,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -36068,13 +36068,13 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 		response, err = s.h.ReadApiregistrationV1APIService(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadApiregistrationV1APIServiceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -36141,7 +36141,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -36169,7 +36169,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -36180,7 +36180,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -36228,13 +36228,13 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 		response, err = s.h.ReadApiregistrationV1APIServiceStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadApiregistrationV1APIServiceStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -36301,7 +36301,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -36329,7 +36329,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -36340,7 +36340,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -36392,13 +36392,13 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 		response, err = s.h.ReadAppsV1NamespacedControllerRevision(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedControllerRevisionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -36465,7 +36465,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -36493,7 +36493,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -36504,7 +36504,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -36556,13 +36556,13 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 		response, err = s.h.ReadAppsV1NamespacedDaemonSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedDaemonSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -36629,7 +36629,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -36657,7 +36657,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -36668,7 +36668,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -36720,13 +36720,13 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 		response, err = s.h.ReadAppsV1NamespacedDaemonSetStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedDaemonSetStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -36793,7 +36793,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -36821,7 +36821,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -36832,7 +36832,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -36884,13 +36884,13 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 		response, err = s.h.ReadAppsV1NamespacedDeployment(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedDeploymentResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -36957,7 +36957,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -36985,7 +36985,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -36996,7 +36996,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -37048,13 +37048,13 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 		response, err = s.h.ReadAppsV1NamespacedDeploymentScale(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedDeploymentScaleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -37121,7 +37121,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -37149,7 +37149,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -37160,7 +37160,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -37212,13 +37212,13 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 		response, err = s.h.ReadAppsV1NamespacedDeploymentStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedDeploymentStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -37285,7 +37285,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -37313,7 +37313,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -37324,7 +37324,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -37376,13 +37376,13 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 		response, err = s.h.ReadAppsV1NamespacedReplicaSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedReplicaSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -37449,7 +37449,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -37477,7 +37477,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -37488,7 +37488,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -37540,13 +37540,13 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 		response, err = s.h.ReadAppsV1NamespacedReplicaSetScale(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedReplicaSetScaleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -37613,7 +37613,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -37641,7 +37641,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -37652,7 +37652,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -37704,13 +37704,13 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 		response, err = s.h.ReadAppsV1NamespacedReplicaSetStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedReplicaSetStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -37777,7 +37777,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -37805,7 +37805,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -37816,7 +37816,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -37868,13 +37868,13 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 		response, err = s.h.ReadAppsV1NamespacedStatefulSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedStatefulSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -37941,7 +37941,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -37969,7 +37969,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -37980,7 +37980,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -38032,13 +38032,13 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 		response, err = s.h.ReadAppsV1NamespacedStatefulSetScale(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedStatefulSetScaleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -38105,7 +38105,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -38133,7 +38133,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -38144,7 +38144,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -38196,13 +38196,13 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 		response, err = s.h.ReadAppsV1NamespacedStatefulSetStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAppsV1NamespacedStatefulSetStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -38269,7 +38269,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -38297,7 +38297,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -38308,7 +38308,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -38360,13 +38360,13 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		response, err = s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -38433,7 +38433,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -38461,7 +38461,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -38472,7 +38472,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -38524,13 +38524,13 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 		response, err = s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -38597,7 +38597,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -38625,7 +38625,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -38636,7 +38636,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -38688,13 +38688,13 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		response, err = s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -38761,7 +38761,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -38789,7 +38789,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -38800,7 +38800,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -38852,13 +38852,13 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 		response, err = s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -38925,7 +38925,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -38953,7 +38953,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -38964,7 +38964,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -39016,13 +39016,13 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		response, err = s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -39089,7 +39089,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -39117,7 +39117,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -39128,7 +39128,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -39180,13 +39180,13 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 		response, err = s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -39253,7 +39253,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -39281,7 +39281,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -39292,7 +39292,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -39344,13 +39344,13 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 		response, err = s.h.ReadBatchV1NamespacedCronJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadBatchV1NamespacedCronJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -39417,7 +39417,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -39445,7 +39445,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -39456,7 +39456,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -39508,13 +39508,13 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 		response, err = s.h.ReadBatchV1NamespacedCronJobStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadBatchV1NamespacedCronJobStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -39581,7 +39581,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -39609,7 +39609,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -39620,7 +39620,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -39672,13 +39672,13 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 		response, err = s.h.ReadBatchV1NamespacedJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadBatchV1NamespacedJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -39745,7 +39745,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -39773,7 +39773,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -39784,7 +39784,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -39836,13 +39836,13 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 		response, err = s.h.ReadBatchV1NamespacedJobStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadBatchV1NamespacedJobStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -39909,7 +39909,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -39937,7 +39937,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -39948,7 +39948,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -40000,13 +40000,13 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 		response, err = s.h.ReadBatchV1beta1NamespacedCronJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadBatchV1beta1NamespacedCronJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -40073,7 +40073,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -40101,7 +40101,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -40112,7 +40112,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -40164,13 +40164,13 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 		response, err = s.h.ReadBatchV1beta1NamespacedCronJobStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -40237,7 +40237,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -40265,7 +40265,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -40276,7 +40276,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -40324,13 +40324,13 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 		response, err = s.h.ReadCertificatesV1CertificateSigningRequest(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCertificatesV1CertificateSigningRequestResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -40397,7 +40397,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -40425,7 +40425,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -40436,7 +40436,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -40484,13 +40484,13 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 		response, err = s.h.ReadCertificatesV1CertificateSigningRequestApproval(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -40557,7 +40557,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -40585,7 +40585,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -40596,7 +40596,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -40644,13 +40644,13 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 		response, err = s.h.ReadCertificatesV1CertificateSigningRequestStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -40717,7 +40717,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -40745,7 +40745,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -40756,7 +40756,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -40808,13 +40808,13 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 		response, err = s.h.ReadCoordinationV1NamespacedLease(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoordinationV1NamespacedLeaseResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -40881,7 +40881,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -40909,7 +40909,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -40920,7 +40920,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -40968,13 +40968,13 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 		response, err = s.h.ReadCoreV1ComponentStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1ComponentStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -41041,7 +41041,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -41069,7 +41069,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -41080,7 +41080,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -41128,13 +41128,13 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 		response, err = s.h.ReadCoreV1Namespace(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespaceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -41201,7 +41201,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -41229,7 +41229,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -41240,7 +41240,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -41288,13 +41288,13 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 		response, err = s.h.ReadCoreV1NamespaceStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespaceStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -41361,7 +41361,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -41389,7 +41389,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -41400,7 +41400,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -41452,13 +41452,13 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 		response, err = s.h.ReadCoreV1NamespacedConfigMap(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedConfigMapResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -41525,7 +41525,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -41553,7 +41553,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -41564,7 +41564,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -41616,13 +41616,13 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 		response, err = s.h.ReadCoreV1NamespacedEndpoints(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedEndpointsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -41689,7 +41689,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -41717,7 +41717,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -41728,7 +41728,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -41780,13 +41780,13 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 		response, err = s.h.ReadCoreV1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -41853,7 +41853,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -41881,7 +41881,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -41892,7 +41892,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -41944,13 +41944,13 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 		response, err = s.h.ReadCoreV1NamespacedLimitRange(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedLimitRangeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -42017,7 +42017,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -42045,7 +42045,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -42056,7 +42056,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -42108,13 +42108,13 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 		response, err = s.h.ReadCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -42181,7 +42181,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -42209,7 +42209,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -42220,7 +42220,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -42272,13 +42272,13 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 		response, err = s.h.ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -42345,7 +42345,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -42373,7 +42373,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -42384,7 +42384,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -42436,13 +42436,13 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 		response, err = s.h.ReadCoreV1NamespacedPod(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedPodResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -42509,7 +42509,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -42537,7 +42537,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -42548,7 +42548,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -42600,13 +42600,13 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 		response, err = s.h.ReadCoreV1NamespacedPodEphemeralcontainers(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -42673,7 +42673,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -42701,7 +42701,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -42712,7 +42712,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -42796,13 +42796,13 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 		response, err = s.h.ReadCoreV1NamespacedPodLog(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedPodLogResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -42869,7 +42869,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -42897,7 +42897,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -42908,7 +42908,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -42960,13 +42960,13 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 		response, err = s.h.ReadCoreV1NamespacedPodStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedPodStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -43033,7 +43033,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -43061,7 +43061,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -43072,7 +43072,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -43124,13 +43124,13 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 		response, err = s.h.ReadCoreV1NamespacedPodTemplate(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedPodTemplateResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -43197,7 +43197,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -43225,7 +43225,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -43236,7 +43236,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -43288,13 +43288,13 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 		response, err = s.h.ReadCoreV1NamespacedReplicationController(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedReplicationControllerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -43361,7 +43361,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -43389,7 +43389,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -43400,7 +43400,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -43452,13 +43452,13 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 		response, err = s.h.ReadCoreV1NamespacedReplicationControllerScale(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -43525,7 +43525,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -43553,7 +43553,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -43564,7 +43564,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -43616,13 +43616,13 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 		response, err = s.h.ReadCoreV1NamespacedReplicationControllerStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -43689,7 +43689,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -43717,7 +43717,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -43728,7 +43728,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -43780,13 +43780,13 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 		response, err = s.h.ReadCoreV1NamespacedResourceQuota(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedResourceQuotaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -43853,7 +43853,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -43881,7 +43881,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -43892,7 +43892,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -43944,13 +43944,13 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 		response, err = s.h.ReadCoreV1NamespacedResourceQuotaStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -44017,7 +44017,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -44045,7 +44045,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -44056,7 +44056,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -44108,13 +44108,13 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 		response, err = s.h.ReadCoreV1NamespacedSecret(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedSecretResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -44181,7 +44181,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -44209,7 +44209,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -44220,7 +44220,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -44272,13 +44272,13 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 		response, err = s.h.ReadCoreV1NamespacedService(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedServiceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -44345,7 +44345,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -44373,7 +44373,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -44384,7 +44384,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -44436,13 +44436,13 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 		response, err = s.h.ReadCoreV1NamespacedServiceAccount(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedServiceAccountResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -44509,7 +44509,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -44537,7 +44537,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -44548,7 +44548,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -44600,13 +44600,13 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 		response, err = s.h.ReadCoreV1NamespacedServiceStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NamespacedServiceStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -44673,7 +44673,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -44701,7 +44701,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -44712,7 +44712,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -44760,13 +44760,13 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 		response, err = s.h.ReadCoreV1Node(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NodeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -44833,7 +44833,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -44861,7 +44861,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -44872,7 +44872,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -44920,13 +44920,13 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 		response, err = s.h.ReadCoreV1NodeStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1NodeStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -44993,7 +44993,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -45021,7 +45021,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -45032,7 +45032,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -45080,13 +45080,13 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 		response, err = s.h.ReadCoreV1PersistentVolume(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1PersistentVolumeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -45153,7 +45153,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -45181,7 +45181,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -45192,7 +45192,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -45240,13 +45240,13 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 		response, err = s.h.ReadCoreV1PersistentVolumeStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadCoreV1PersistentVolumeStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -45313,7 +45313,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -45341,7 +45341,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -45352,7 +45352,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -45404,13 +45404,13 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 		response, err = s.h.ReadDiscoveryV1NamespacedEndpointSlice(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -45477,7 +45477,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -45505,7 +45505,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -45516,7 +45516,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -45568,13 +45568,13 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		response, err = s.h.ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -45641,7 +45641,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -45669,7 +45669,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -45680,7 +45680,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -45732,13 +45732,13 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 		response, err = s.h.ReadEventsV1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadEventsV1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -45805,7 +45805,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -45833,7 +45833,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -45844,7 +45844,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -45896,13 +45896,13 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 		response, err = s.h.ReadEventsV1beta1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadEventsV1beta1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -45969,7 +45969,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -45997,7 +45997,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -46008,7 +46008,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -46056,13 +46056,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 		response, err = s.h.ReadFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -46129,7 +46129,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -46157,7 +46157,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -46168,7 +46168,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -46216,13 +46216,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 		response, err = s.h.ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -46289,7 +46289,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -46317,7 +46317,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -46328,7 +46328,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -46376,13 +46376,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		response, err = s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -46449,7 +46449,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -46477,7 +46477,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -46488,7 +46488,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -46536,13 +46536,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		response, err = s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -46609,7 +46609,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -46637,7 +46637,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -46648,7 +46648,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -46696,13 +46696,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 		response, err = s.h.ReadFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -46769,7 +46769,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -46797,7 +46797,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -46808,7 +46808,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -46856,13 +46856,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 		response, err = s.h.ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -46929,7 +46929,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -46957,7 +46957,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -46968,7 +46968,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -47016,13 +47016,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		response, err = s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -47089,7 +47089,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -47117,7 +47117,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -47128,7 +47128,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -47176,13 +47176,13 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		response, err = s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -47249,7 +47249,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -47277,7 +47277,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -47288,7 +47288,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -47336,13 +47336,13 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 		response, err = s.h.ReadInternalApiserverV1alpha1StorageVersion(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadInternalApiserverV1alpha1StorageVersionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -47409,7 +47409,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -47437,7 +47437,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -47448,7 +47448,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -47496,13 +47496,13 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 		response, err = s.h.ReadInternalApiserverV1alpha1StorageVersionStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -47569,7 +47569,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -47597,7 +47597,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -47608,7 +47608,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -47656,13 +47656,13 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 		response, err = s.h.ReadNetworkingV1IngressClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadNetworkingV1IngressClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -47729,7 +47729,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -47757,7 +47757,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -47768,7 +47768,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -47820,13 +47820,13 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 		response, err = s.h.ReadNetworkingV1NamespacedIngress(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadNetworkingV1NamespacedIngressResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -47893,7 +47893,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -47921,7 +47921,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -47932,7 +47932,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -47984,13 +47984,13 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 		response, err = s.h.ReadNetworkingV1NamespacedIngressStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadNetworkingV1NamespacedIngressStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -48057,7 +48057,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -48085,7 +48085,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -48096,7 +48096,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -48148,13 +48148,13 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 		response, err = s.h.ReadNetworkingV1NamespacedNetworkPolicy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -48221,7 +48221,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -48249,7 +48249,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -48260,7 +48260,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -48308,13 +48308,13 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 		response, err = s.h.ReadNodeV1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadNodeV1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -48381,7 +48381,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -48409,7 +48409,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -48420,7 +48420,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -48468,13 +48468,13 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 		response, err = s.h.ReadNodeV1alpha1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadNodeV1alpha1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -48541,7 +48541,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -48569,7 +48569,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -48580,7 +48580,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -48628,13 +48628,13 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 		response, err = s.h.ReadNodeV1beta1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadNodeV1beta1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -48701,7 +48701,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -48729,7 +48729,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -48740,7 +48740,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -48792,13 +48792,13 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 		response, err = s.h.ReadPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -48865,7 +48865,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -48893,7 +48893,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -48904,7 +48904,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -48956,13 +48956,13 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 		response, err = s.h.ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -49029,7 +49029,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -49057,7 +49057,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -49068,7 +49068,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -49120,13 +49120,13 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		response, err = s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -49193,7 +49193,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -49221,7 +49221,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -49232,7 +49232,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -49284,13 +49284,13 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 		response, err = s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -49357,7 +49357,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -49385,7 +49385,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -49396,7 +49396,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -49444,13 +49444,13 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 		response, err = s.h.ReadPolicyV1beta1PodSecurityPolicy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPolicyV1beta1PodSecurityPolicyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -49517,7 +49517,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -49545,7 +49545,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -49556,7 +49556,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -49604,13 +49604,13 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 		response, err = s.h.ReadRbacAuthorizationV1ClusterRole(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadRbacAuthorizationV1ClusterRoleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -49677,7 +49677,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -49705,7 +49705,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -49716,7 +49716,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -49764,13 +49764,13 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 		response, err = s.h.ReadRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -49837,7 +49837,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -49865,7 +49865,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -49876,7 +49876,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -49928,13 +49928,13 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 		response, err = s.h.ReadRbacAuthorizationV1NamespacedRole(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadRbacAuthorizationV1NamespacedRoleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -50001,7 +50001,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -50029,7 +50029,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -50040,7 +50040,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -50092,13 +50092,13 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		response, err = s.h.ReadRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -50165,7 +50165,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -50193,7 +50193,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -50204,7 +50204,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -50252,13 +50252,13 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 		response, err = s.h.ReadSchedulingV1PriorityClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadSchedulingV1PriorityClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -50325,7 +50325,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -50353,7 +50353,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -50364,7 +50364,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -50412,13 +50412,13 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 		response, err = s.h.ReadStorageV1CSIDriver(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadStorageV1CSIDriverResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -50485,7 +50485,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -50513,7 +50513,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -50524,7 +50524,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -50572,13 +50572,13 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 		response, err = s.h.ReadStorageV1CSINode(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadStorageV1CSINodeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -50645,7 +50645,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -50673,7 +50673,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -50684,7 +50684,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -50732,13 +50732,13 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 		response, err = s.h.ReadStorageV1StorageClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadStorageV1StorageClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -50805,7 +50805,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -50833,7 +50833,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -50844,7 +50844,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -50892,13 +50892,13 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 		response, err = s.h.ReadStorageV1VolumeAttachment(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadStorageV1VolumeAttachmentResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -50965,7 +50965,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -50993,7 +50993,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -51004,7 +51004,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -51052,13 +51052,13 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 		response, err = s.h.ReadStorageV1VolumeAttachmentStatus(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadStorageV1VolumeAttachmentStatusResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -51125,7 +51125,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -51153,7 +51153,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -51164,7 +51164,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -51216,13 +51216,13 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		response, err = s.h.ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -51289,7 +51289,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -51317,7 +51317,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -51328,7 +51328,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -51380,13 +51380,13 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		response, err = s.h.ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -51455,7 +51455,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -51483,7 +51483,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -51494,7 +51494,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -51578,13 +51578,13 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		response, err = s.h.WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -51652,7 +51652,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -51680,7 +51680,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -51691,7 +51691,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -51771,13 +51771,13 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 		response, err = s.h.WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -51846,7 +51846,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -51874,7 +51874,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -51885,7 +51885,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -51969,13 +51969,13 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		response, err = s.h.WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -52043,7 +52043,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -52071,7 +52071,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -52082,7 +52082,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -52162,13 +52162,13 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		response, err = s.h.WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -52236,7 +52236,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -52264,7 +52264,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -52275,7 +52275,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -52359,13 +52359,13 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		response, err = s.h.WatchApiextensionsV1CustomResourceDefinition(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -52433,7 +52433,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -52461,7 +52461,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -52472,7 +52472,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -52552,13 +52552,13 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 		response, err = s.h.WatchApiextensionsV1CustomResourceDefinitionList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -52626,7 +52626,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -52654,7 +52654,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -52665,7 +52665,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -52749,13 +52749,13 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 		response, err = s.h.WatchApiregistrationV1APIService(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchApiregistrationV1APIServiceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -52823,7 +52823,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -52851,7 +52851,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -52862,7 +52862,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -52942,13 +52942,13 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 		response, err = s.h.WatchApiregistrationV1APIServiceList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchApiregistrationV1APIServiceListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -53016,7 +53016,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -53044,7 +53044,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -53055,7 +53055,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -53135,13 +53135,13 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 		response, err = s.h.WatchAppsV1ControllerRevisionListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -53209,7 +53209,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -53237,7 +53237,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -53248,7 +53248,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -53328,13 +53328,13 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 		response, err = s.h.WatchAppsV1DaemonSetListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -53402,7 +53402,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -53430,7 +53430,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -53441,7 +53441,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -53521,13 +53521,13 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 		response, err = s.h.WatchAppsV1DeploymentListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -53595,7 +53595,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -53623,7 +53623,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -53634,7 +53634,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -53722,13 +53722,13 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		response, err = s.h.WatchAppsV1NamespacedControllerRevision(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedControllerRevisionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -53796,7 +53796,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -53824,7 +53824,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -53835,7 +53835,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -53919,13 +53919,13 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 		response, err = s.h.WatchAppsV1NamespacedControllerRevisionList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedControllerRevisionListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -53993,7 +53993,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -54021,7 +54021,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -54032,7 +54032,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -54120,13 +54120,13 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 		response, err = s.h.WatchAppsV1NamespacedDaemonSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedDaemonSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -54194,7 +54194,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -54222,7 +54222,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -54233,7 +54233,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -54317,13 +54317,13 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 		response, err = s.h.WatchAppsV1NamespacedDaemonSetList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedDaemonSetListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -54391,7 +54391,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -54419,7 +54419,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -54430,7 +54430,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -54518,13 +54518,13 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 		response, err = s.h.WatchAppsV1NamespacedDeployment(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedDeploymentResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -54592,7 +54592,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -54620,7 +54620,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -54631,7 +54631,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -54715,13 +54715,13 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 		response, err = s.h.WatchAppsV1NamespacedDeploymentList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedDeploymentListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -54789,7 +54789,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -54817,7 +54817,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -54828,7 +54828,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -54916,13 +54916,13 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 		response, err = s.h.WatchAppsV1NamespacedReplicaSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedReplicaSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -54990,7 +54990,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -55018,7 +55018,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -55029,7 +55029,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -55113,13 +55113,13 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 		response, err = s.h.WatchAppsV1NamespacedReplicaSetList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedReplicaSetListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -55187,7 +55187,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -55215,7 +55215,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -55226,7 +55226,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -55314,13 +55314,13 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 		response, err = s.h.WatchAppsV1NamespacedStatefulSet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedStatefulSetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -55388,7 +55388,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -55416,7 +55416,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -55427,7 +55427,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -55511,13 +55511,13 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 		response, err = s.h.WatchAppsV1NamespacedStatefulSetList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1NamespacedStatefulSetListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -55585,7 +55585,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -55613,7 +55613,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -55624,7 +55624,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -55704,13 +55704,13 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 		response, err = s.h.WatchAppsV1ReplicaSetListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -55778,7 +55778,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -55806,7 +55806,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -55817,7 +55817,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -55897,13 +55897,13 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 		response, err = s.h.WatchAppsV1StatefulSetListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -55971,7 +55971,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -55999,7 +55999,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -56010,7 +56010,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -56090,13 +56090,13 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 		response, err = s.h.WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -56164,7 +56164,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -56192,7 +56192,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -56203,7 +56203,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -56291,13 +56291,13 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		response, err = s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -56365,7 +56365,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -56393,7 +56393,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -56404,7 +56404,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -56488,13 +56488,13 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 		response, err = s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -56562,7 +56562,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -56590,7 +56590,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -56601,7 +56601,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -56681,13 +56681,13 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 		response, err = s.h.WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -56755,7 +56755,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -56783,7 +56783,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -56794,7 +56794,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -56882,13 +56882,13 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		response, err = s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -56956,7 +56956,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -56984,7 +56984,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -56995,7 +56995,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -57079,13 +57079,13 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 		response, err = s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -57153,7 +57153,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -57181,7 +57181,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -57192,7 +57192,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -57272,13 +57272,13 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 		response, err = s.h.WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -57346,7 +57346,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -57374,7 +57374,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -57385,7 +57385,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -57473,13 +57473,13 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		response, err = s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -57547,7 +57547,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -57575,7 +57575,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -57586,7 +57586,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -57670,13 +57670,13 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 		response, err = s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -57744,7 +57744,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -57772,7 +57772,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -57783,7 +57783,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -57863,13 +57863,13 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 		response, err = s.h.WatchBatchV1CronJobListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1CronJobListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -57937,7 +57937,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -57965,7 +57965,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -57976,7 +57976,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -58056,13 +58056,13 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 		response, err = s.h.WatchBatchV1JobListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1JobListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -58130,7 +58130,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -58158,7 +58158,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -58169,7 +58169,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -58257,13 +58257,13 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 		response, err = s.h.WatchBatchV1NamespacedCronJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1NamespacedCronJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -58331,7 +58331,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -58359,7 +58359,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -58370,7 +58370,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -58454,13 +58454,13 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 		response, err = s.h.WatchBatchV1NamespacedCronJobList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1NamespacedCronJobListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -58528,7 +58528,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -58556,7 +58556,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -58567,7 +58567,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -58655,13 +58655,13 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 		response, err = s.h.WatchBatchV1NamespacedJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1NamespacedJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -58729,7 +58729,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -58757,7 +58757,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -58768,7 +58768,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -58852,13 +58852,13 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 		response, err = s.h.WatchBatchV1NamespacedJobList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1NamespacedJobListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -58926,7 +58926,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -58954,7 +58954,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -58965,7 +58965,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -59045,13 +59045,13 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 		response, err = s.h.WatchBatchV1beta1CronJobListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -59119,7 +59119,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -59147,7 +59147,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -59158,7 +59158,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -59246,13 +59246,13 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		response, err = s.h.WatchBatchV1beta1NamespacedCronJob(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1beta1NamespacedCronJobResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -59320,7 +59320,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -59348,7 +59348,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -59359,7 +59359,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -59443,13 +59443,13 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 		response, err = s.h.WatchBatchV1beta1NamespacedCronJobList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchBatchV1beta1NamespacedCronJobListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -59518,7 +59518,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -59546,7 +59546,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -59557,7 +59557,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -59641,13 +59641,13 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 		response, err = s.h.WatchCertificatesV1CertificateSigningRequest(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCertificatesV1CertificateSigningRequestResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -59715,7 +59715,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -59743,7 +59743,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -59754,7 +59754,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -59834,13 +59834,13 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 		response, err = s.h.WatchCertificatesV1CertificateSigningRequestList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCertificatesV1CertificateSigningRequestListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -59908,7 +59908,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -59936,7 +59936,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -59947,7 +59947,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -60027,13 +60027,13 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 		response, err = s.h.WatchCoordinationV1LeaseListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -60101,7 +60101,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -60129,7 +60129,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -60140,7 +60140,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -60228,13 +60228,13 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		response, err = s.h.WatchCoordinationV1NamespacedLease(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoordinationV1NamespacedLeaseResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -60302,7 +60302,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -60330,7 +60330,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -60341,7 +60341,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -60425,13 +60425,13 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 		response, err = s.h.WatchCoordinationV1NamespacedLeaseList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoordinationV1NamespacedLeaseListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -60499,7 +60499,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -60527,7 +60527,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -60538,7 +60538,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -60618,13 +60618,13 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 		response, err = s.h.WatchCoreV1ConfigMapListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -60692,7 +60692,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -60720,7 +60720,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -60731,7 +60731,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -60811,13 +60811,13 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 		response, err = s.h.WatchCoreV1EndpointsListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -60885,7 +60885,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -60913,7 +60913,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -60924,7 +60924,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -61004,13 +61004,13 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 		response, err = s.h.WatchCoreV1EventListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1EventListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -61078,7 +61078,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -61106,7 +61106,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -61117,7 +61117,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -61197,13 +61197,13 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 		response, err = s.h.WatchCoreV1LimitRangeListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -61271,7 +61271,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -61299,7 +61299,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -61310,7 +61310,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -61394,13 +61394,13 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 		response, err = s.h.WatchCoreV1Namespace(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespaceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -61468,7 +61468,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -61496,7 +61496,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -61507,7 +61507,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -61587,13 +61587,13 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 		response, err = s.h.WatchCoreV1NamespaceList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespaceListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -61661,7 +61661,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -61689,7 +61689,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -61700,7 +61700,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -61788,13 +61788,13 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 		response, err = s.h.WatchCoreV1NamespacedConfigMap(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedConfigMapResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -61862,7 +61862,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -61890,7 +61890,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -61901,7 +61901,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -61985,13 +61985,13 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 		response, err = s.h.WatchCoreV1NamespacedConfigMapList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedConfigMapListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -62059,7 +62059,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -62087,7 +62087,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -62098,7 +62098,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -62186,13 +62186,13 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 		response, err = s.h.WatchCoreV1NamespacedEndpoints(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedEndpointsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -62260,7 +62260,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -62288,7 +62288,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -62299,7 +62299,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -62383,13 +62383,13 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 		response, err = s.h.WatchCoreV1NamespacedEndpointsList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedEndpointsListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -62457,7 +62457,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -62485,7 +62485,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -62496,7 +62496,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -62584,13 +62584,13 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 		response, err = s.h.WatchCoreV1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -62658,7 +62658,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -62686,7 +62686,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -62697,7 +62697,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -62781,13 +62781,13 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 		response, err = s.h.WatchCoreV1NamespacedEventList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedEventListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -62855,7 +62855,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -62883,7 +62883,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -62894,7 +62894,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -62982,13 +62982,13 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 		response, err = s.h.WatchCoreV1NamespacedLimitRange(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedLimitRangeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -63056,7 +63056,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -63084,7 +63084,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -63095,7 +63095,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -63179,13 +63179,13 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 		response, err = s.h.WatchCoreV1NamespacedLimitRangeList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedLimitRangeListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -63253,7 +63253,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -63281,7 +63281,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -63292,7 +63292,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -63380,13 +63380,13 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		response, err = s.h.WatchCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -63454,7 +63454,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -63482,7 +63482,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -63493,7 +63493,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -63577,13 +63577,13 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 		response, err = s.h.WatchCoreV1NamespacedPersistentVolumeClaimList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -63651,7 +63651,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -63679,7 +63679,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -63690,7 +63690,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -63778,13 +63778,13 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 		response, err = s.h.WatchCoreV1NamespacedPod(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedPodResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -63852,7 +63852,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -63880,7 +63880,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -63891,7 +63891,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -63975,13 +63975,13 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 		response, err = s.h.WatchCoreV1NamespacedPodList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedPodListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -64049,7 +64049,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -64077,7 +64077,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -64088,7 +64088,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -64176,13 +64176,13 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 		response, err = s.h.WatchCoreV1NamespacedPodTemplate(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedPodTemplateResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -64250,7 +64250,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -64278,7 +64278,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -64289,7 +64289,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -64373,13 +64373,13 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 		response, err = s.h.WatchCoreV1NamespacedPodTemplateList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedPodTemplateListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -64447,7 +64447,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -64475,7 +64475,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -64486,7 +64486,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -64574,13 +64574,13 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 		response, err = s.h.WatchCoreV1NamespacedReplicationController(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedReplicationControllerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -64648,7 +64648,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -64676,7 +64676,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -64687,7 +64687,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -64771,13 +64771,13 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 		response, err = s.h.WatchCoreV1NamespacedReplicationControllerList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedReplicationControllerListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -64845,7 +64845,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -64873,7 +64873,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -64884,7 +64884,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -64972,13 +64972,13 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		response, err = s.h.WatchCoreV1NamespacedResourceQuota(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedResourceQuotaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -65046,7 +65046,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -65074,7 +65074,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -65085,7 +65085,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -65169,13 +65169,13 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 		response, err = s.h.WatchCoreV1NamespacedResourceQuotaList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedResourceQuotaListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -65243,7 +65243,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -65271,7 +65271,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -65282,7 +65282,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -65370,13 +65370,13 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 		response, err = s.h.WatchCoreV1NamespacedSecret(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedSecretResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -65444,7 +65444,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -65472,7 +65472,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -65483,7 +65483,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -65567,13 +65567,13 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 		response, err = s.h.WatchCoreV1NamespacedSecretList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedSecretListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -65641,7 +65641,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -65669,7 +65669,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -65680,7 +65680,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -65768,13 +65768,13 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 		response, err = s.h.WatchCoreV1NamespacedService(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedServiceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -65842,7 +65842,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -65870,7 +65870,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -65881,7 +65881,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -65969,13 +65969,13 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		response, err = s.h.WatchCoreV1NamespacedServiceAccount(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedServiceAccountResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -66043,7 +66043,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -66071,7 +66071,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -66082,7 +66082,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -66166,13 +66166,13 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 		response, err = s.h.WatchCoreV1NamespacedServiceAccountList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedServiceAccountListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -66240,7 +66240,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -66268,7 +66268,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -66279,7 +66279,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -66363,13 +66363,13 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 		response, err = s.h.WatchCoreV1NamespacedServiceList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NamespacedServiceListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -66437,7 +66437,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -66465,7 +66465,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -66476,7 +66476,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -66560,13 +66560,13 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 		response, err = s.h.WatchCoreV1Node(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NodeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -66634,7 +66634,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -66662,7 +66662,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -66673,7 +66673,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -66753,13 +66753,13 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 		response, err = s.h.WatchCoreV1NodeList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1NodeListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -66827,7 +66827,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -66855,7 +66855,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -66866,7 +66866,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -66950,13 +66950,13 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 		response, err = s.h.WatchCoreV1PersistentVolume(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1PersistentVolumeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -67024,7 +67024,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -67052,7 +67052,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -67063,7 +67063,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -67143,13 +67143,13 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 		response, err = s.h.WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -67217,7 +67217,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -67245,7 +67245,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -67256,7 +67256,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -67336,13 +67336,13 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 		response, err = s.h.WatchCoreV1PersistentVolumeList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1PersistentVolumeListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -67410,7 +67410,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -67438,7 +67438,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -67449,7 +67449,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -67529,13 +67529,13 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 		response, err = s.h.WatchCoreV1PodListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1PodListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -67603,7 +67603,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -67631,7 +67631,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -67642,7 +67642,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -67722,13 +67722,13 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 		response, err = s.h.WatchCoreV1PodTemplateListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -67796,7 +67796,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -67824,7 +67824,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -67835,7 +67835,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -67915,13 +67915,13 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 		response, err = s.h.WatchCoreV1ReplicationControllerListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -67989,7 +67989,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -68017,7 +68017,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -68028,7 +68028,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -68108,13 +68108,13 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 		response, err = s.h.WatchCoreV1ResourceQuotaListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -68182,7 +68182,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -68210,7 +68210,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -68221,7 +68221,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -68301,13 +68301,13 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 		response, err = s.h.WatchCoreV1SecretListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1SecretListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -68375,7 +68375,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -68403,7 +68403,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -68414,7 +68414,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -68494,13 +68494,13 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 		response, err = s.h.WatchCoreV1ServiceAccountListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -68568,7 +68568,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -68596,7 +68596,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -68607,7 +68607,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -68687,13 +68687,13 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 		response, err = s.h.WatchCoreV1ServiceListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchCoreV1ServiceListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -68761,7 +68761,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -68789,7 +68789,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -68800,7 +68800,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -68880,13 +68880,13 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 		response, err = s.h.WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -68954,7 +68954,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -68982,7 +68982,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -68993,7 +68993,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -69081,13 +69081,13 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		response, err = s.h.WatchDiscoveryV1NamespacedEndpointSlice(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -69155,7 +69155,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -69183,7 +69183,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -69194,7 +69194,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -69278,13 +69278,13 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 		response, err = s.h.WatchDiscoveryV1NamespacedEndpointSliceList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -69352,7 +69352,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -69380,7 +69380,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -69391,7 +69391,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -69471,13 +69471,13 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 		response, err = s.h.WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -69545,7 +69545,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -69573,7 +69573,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -69584,7 +69584,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -69672,13 +69672,13 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		response, err = s.h.WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -69746,7 +69746,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -69774,7 +69774,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -69785,7 +69785,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -69869,13 +69869,13 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 		response, err = s.h.WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -69943,7 +69943,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -69971,7 +69971,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -69982,7 +69982,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -70062,13 +70062,13 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 		response, err = s.h.WatchEventsV1EventListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchEventsV1EventListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -70136,7 +70136,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -70164,7 +70164,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -70175,7 +70175,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -70263,13 +70263,13 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 		response, err = s.h.WatchEventsV1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchEventsV1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -70337,7 +70337,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -70365,7 +70365,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -70376,7 +70376,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -70460,13 +70460,13 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 		response, err = s.h.WatchEventsV1NamespacedEventList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchEventsV1NamespacedEventListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -70534,7 +70534,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -70562,7 +70562,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -70573,7 +70573,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -70653,13 +70653,13 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 		response, err = s.h.WatchEventsV1beta1EventListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -70727,7 +70727,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -70755,7 +70755,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -70766,7 +70766,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -70854,13 +70854,13 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		response, err = s.h.WatchEventsV1beta1NamespacedEvent(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchEventsV1beta1NamespacedEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -70928,7 +70928,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -70956,7 +70956,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -70967,7 +70967,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -71051,13 +71051,13 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 		response, err = s.h.WatchEventsV1beta1NamespacedEventList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchEventsV1beta1NamespacedEventListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -71125,7 +71125,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -71153,7 +71153,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -71164,7 +71164,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -71248,13 +71248,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		response, err = s.h.WatchFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -71322,7 +71322,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -71350,7 +71350,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -71361,7 +71361,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -71441,13 +71441,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 		response, err = s.h.WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -71516,7 +71516,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -71544,7 +71544,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -71555,7 +71555,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -71639,13 +71639,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		response, err = s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -71713,7 +71713,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -71741,7 +71741,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -71752,7 +71752,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -71832,13 +71832,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		response, err = s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -71906,7 +71906,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -71934,7 +71934,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -71945,7 +71945,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -72029,13 +72029,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		response, err = s.h.WatchFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -72103,7 +72103,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -72131,7 +72131,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -72142,7 +72142,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -72222,13 +72222,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 		response, err = s.h.WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -72297,7 +72297,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -72325,7 +72325,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -72336,7 +72336,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -72420,13 +72420,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		response, err = s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -72494,7 +72494,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -72522,7 +72522,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -72533,7 +72533,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -72613,13 +72613,13 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		response, err = s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -72687,7 +72687,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -72715,7 +72715,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -72726,7 +72726,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -72810,13 +72810,13 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		response, err = s.h.WatchInternalApiserverV1alpha1StorageVersion(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -72884,7 +72884,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -72912,7 +72912,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -72923,7 +72923,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -73003,13 +73003,13 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 		response, err = s.h.WatchInternalApiserverV1alpha1StorageVersionList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -73077,7 +73077,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -73105,7 +73105,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -73116,7 +73116,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -73200,13 +73200,13 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 		response, err = s.h.WatchNetworkingV1IngressClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1IngressClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -73274,7 +73274,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -73302,7 +73302,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -73313,7 +73313,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -73393,13 +73393,13 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 		response, err = s.h.WatchNetworkingV1IngressClassList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1IngressClassListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -73467,7 +73467,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -73495,7 +73495,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -73506,7 +73506,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -73586,13 +73586,13 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 		response, err = s.h.WatchNetworkingV1IngressListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -73660,7 +73660,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -73688,7 +73688,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -73699,7 +73699,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -73787,13 +73787,13 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		response, err = s.h.WatchNetworkingV1NamespacedIngress(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1NamespacedIngressResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -73861,7 +73861,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -73889,7 +73889,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -73900,7 +73900,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -73984,13 +73984,13 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 		response, err = s.h.WatchNetworkingV1NamespacedIngressList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1NamespacedIngressListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -74058,7 +74058,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -74086,7 +74086,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -74097,7 +74097,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -74185,13 +74185,13 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		response, err = s.h.WatchNetworkingV1NamespacedNetworkPolicy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -74259,7 +74259,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -74287,7 +74287,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -74298,7 +74298,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -74382,13 +74382,13 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 		response, err = s.h.WatchNetworkingV1NamespacedNetworkPolicyList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -74456,7 +74456,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -74484,7 +74484,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -74495,7 +74495,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -74575,13 +74575,13 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 		response, err = s.h.WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -74649,7 +74649,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -74677,7 +74677,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -74688,7 +74688,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -74772,13 +74772,13 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 		response, err = s.h.WatchNodeV1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNodeV1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -74846,7 +74846,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -74874,7 +74874,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -74885,7 +74885,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -74965,13 +74965,13 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 		response, err = s.h.WatchNodeV1RuntimeClassList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNodeV1RuntimeClassListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -75039,7 +75039,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -75067,7 +75067,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -75078,7 +75078,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -75162,13 +75162,13 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 		response, err = s.h.WatchNodeV1alpha1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNodeV1alpha1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -75236,7 +75236,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -75264,7 +75264,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -75275,7 +75275,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -75355,13 +75355,13 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 		response, err = s.h.WatchNodeV1alpha1RuntimeClassList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNodeV1alpha1RuntimeClassListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -75429,7 +75429,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -75457,7 +75457,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -75468,7 +75468,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -75552,13 +75552,13 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 		response, err = s.h.WatchNodeV1beta1RuntimeClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNodeV1beta1RuntimeClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -75626,7 +75626,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -75654,7 +75654,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -75665,7 +75665,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -75745,13 +75745,13 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 		response, err = s.h.WatchNodeV1beta1RuntimeClassList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchNodeV1beta1RuntimeClassListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -75819,7 +75819,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -75847,7 +75847,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -75858,7 +75858,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -75946,13 +75946,13 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		response, err = s.h.WatchPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -76020,7 +76020,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -76048,7 +76048,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -76059,7 +76059,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -76143,13 +76143,13 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 		response, err = s.h.WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -76217,7 +76217,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -76245,7 +76245,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -76256,7 +76256,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -76336,13 +76336,13 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 		response, err = s.h.WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -76410,7 +76410,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -76438,7 +76438,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -76449,7 +76449,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -76537,13 +76537,13 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		response, err = s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -76611,7 +76611,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -76639,7 +76639,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -76650,7 +76650,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -76734,13 +76734,13 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 		response, err = s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -76808,7 +76808,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -76836,7 +76836,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -76847,7 +76847,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -76927,13 +76927,13 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		response, err = s.h.WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -77001,7 +77001,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -77029,7 +77029,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -77040,7 +77040,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -77124,13 +77124,13 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		response, err = s.h.WatchPolicyV1beta1PodSecurityPolicy(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -77198,7 +77198,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -77226,7 +77226,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -77237,7 +77237,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -77317,13 +77317,13 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 		response, err = s.h.WatchPolicyV1beta1PodSecurityPolicyList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -77391,7 +77391,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -77419,7 +77419,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -77430,7 +77430,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -77514,13 +77514,13 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		response, err = s.h.WatchRbacAuthorizationV1ClusterRole(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1ClusterRoleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -77588,7 +77588,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -77616,7 +77616,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -77627,7 +77627,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -77711,13 +77711,13 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		response, err = s.h.WatchRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -77785,7 +77785,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -77813,7 +77813,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -77824,7 +77824,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -77904,13 +77904,13 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 		response, err = s.h.WatchRbacAuthorizationV1ClusterRoleBindingList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -77978,7 +77978,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -78006,7 +78006,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -78017,7 +78017,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -78097,13 +78097,13 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 		response, err = s.h.WatchRbacAuthorizationV1ClusterRoleList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -78171,7 +78171,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -78199,7 +78199,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -78210,7 +78210,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -78298,13 +78298,13 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		response, err = s.h.WatchRbacAuthorizationV1NamespacedRole(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -78372,7 +78372,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -78400,7 +78400,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -78411,7 +78411,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -78499,13 +78499,13 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		response, err = s.h.WatchRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -78573,7 +78573,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -78601,7 +78601,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -78612,7 +78612,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -78696,13 +78696,13 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 		response, err = s.h.WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -78770,7 +78770,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -78798,7 +78798,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -78809,7 +78809,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -78893,13 +78893,13 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 		response, err = s.h.WatchRbacAuthorizationV1NamespacedRoleList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -78967,7 +78967,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -78995,7 +78995,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -79006,7 +79006,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -79086,13 +79086,13 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 		response, err = s.h.WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -79160,7 +79160,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -79188,7 +79188,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -79199,7 +79199,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -79279,13 +79279,13 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 		response, err = s.h.WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -79353,7 +79353,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -79381,7 +79381,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -79392,7 +79392,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -79476,13 +79476,13 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 		response, err = s.h.WatchSchedulingV1PriorityClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchSchedulingV1PriorityClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -79550,7 +79550,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -79578,7 +79578,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -79589,7 +79589,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -79669,13 +79669,13 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 		response, err = s.h.WatchSchedulingV1PriorityClassList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchSchedulingV1PriorityClassListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -79743,7 +79743,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -79771,7 +79771,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -79782,7 +79782,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -79866,13 +79866,13 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 		response, err = s.h.WatchStorageV1CSIDriver(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1CSIDriverResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -79940,7 +79940,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -79968,7 +79968,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -79979,7 +79979,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -80059,13 +80059,13 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 		response, err = s.h.WatchStorageV1CSIDriverList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1CSIDriverListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -80133,7 +80133,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -80161,7 +80161,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -80172,7 +80172,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -80256,13 +80256,13 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 		response, err = s.h.WatchStorageV1CSINode(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1CSINodeResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -80330,7 +80330,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -80358,7 +80358,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -80369,7 +80369,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -80449,13 +80449,13 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 		response, err = s.h.WatchStorageV1CSINodeList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1CSINodeListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -80523,7 +80523,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -80551,7 +80551,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -80562,7 +80562,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -80646,13 +80646,13 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 		response, err = s.h.WatchStorageV1StorageClass(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1StorageClassResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -80720,7 +80720,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -80748,7 +80748,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -80759,7 +80759,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -80839,13 +80839,13 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 		response, err = s.h.WatchStorageV1StorageClassList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1StorageClassListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -80913,7 +80913,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -80941,7 +80941,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -80952,7 +80952,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -81036,13 +81036,13 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 		response, err = s.h.WatchStorageV1VolumeAttachment(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1VolumeAttachmentResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -81110,7 +81110,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -81138,7 +81138,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -81149,7 +81149,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -81229,13 +81229,13 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 		response, err = s.h.WatchStorageV1VolumeAttachmentList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1VolumeAttachmentListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -81303,7 +81303,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -81331,7 +81331,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -81342,7 +81342,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -81422,13 +81422,13 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 		response, err = s.h.WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -81496,7 +81496,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -81524,7 +81524,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -81535,7 +81535,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -81623,13 +81623,13 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		response, err = s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -81697,7 +81697,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -81725,7 +81725,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -81736,7 +81736,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -81820,13 +81820,13 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 		response, err = s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -81894,7 +81894,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -81922,7 +81922,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -81933,7 +81933,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -82013,13 +82013,13 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		response, err = s.h.WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -82087,7 +82087,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -82115,7 +82115,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -82126,7 +82126,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -82214,13 +82214,13 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		response, err = s.h.WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -82288,7 +82288,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -82316,7 +82316,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -82327,7 +82327,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -82411,13 +82411,13 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 		response, err = s.h.WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
