@@ -2,6 +2,7 @@ package integration_test
 
 import (
 	"context"
+	"net/http"
 	"net/http/httptest"
 	"testing"
 
@@ -18,6 +19,7 @@ import (
 
 	api "github.com/ogen-go/ogen/internal/integration/sample_api"
 	"github.com/ogen-go/ogen/middleware"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
 
@@ -30,7 +32,7 @@ func (h metricsTestHandler) PetNameByID(ctx context.Context, params api.PetNameB
 }
 
 func (h metricsTestHandler) PetGetByName(ctx context.Context, params api.PetGetByNameParams) (*api.Pet, error) {
-	return nil, errors.New("test error")
+	return nil, context.DeadlineExceeded
 }
 
 func (h metricsTestHandler) HandleAPIKey(ctx context.Context, operationName string, t api.APIKey) (context.Context, error) {
@@ -42,6 +44,10 @@ func (h metricsTestHandler) APIKey(ctx context.Context, operationName string) (a
 		APIKey: "blah",
 	}, nil
 }
+
+var _ api.Handler = metricsTestHandler{}
+var _ api.SecurityHandler = metricsTestHandler{}
+var _ api.SecuritySource = metricsTestHandler{}
 
 func labelerMiddleware(req middleware.Request, next middleware.Next) (middleware.Response, error) {
 	labeler, _ := api.LabelerFromContext(req.Context)
@@ -61,14 +67,30 @@ func labelerMiddleware(req middleware.Request, next middleware.Next) (middleware
 	return next(req)
 }
 
-var _ api.Handler = metricsTestHandler{}
-var _ api.SecurityHandler = metricsTestHandler{}
-var _ api.SecuritySource = metricsTestHandler{}
+func labelerErrorHandler(ctx context.Context, w http.ResponseWriter, r *http.Request, err error) {
+	var errType string
+	switch {
+	case errors.Is(err, context.DeadlineExceeded):
+		errType = "timeout"
+	case errors.Is(err, context.Canceled):
+		errType = "canceled"
+	default:
+		errType = "other"
+	}
+
+	labeler, _ := api.LabelerFromContext(ctx)
+	labeler.Add(
+		attribute.String("error.type", errType),
+	)
+
+	ogenerrors.DefaultErrorHandler(ctx, w, r, err)
+}
 
 func TestServerMetrics(t *testing.T) {
 	tests := []struct {
 		name      string
 		mw        middleware.Middleware
+		eh        ogenerrors.ErrorHandler
 		operation func(*testing.T, *api.Client)
 		want      []metricdata.Metrics
 	}{
@@ -237,6 +259,7 @@ func TestServerMetrics(t *testing.T) {
 		{
 			name: "Error with Labeler",
 			mw:   labelerMiddleware,
+			eh:   labelerErrorHandler,
 			operation: func(t *testing.T, c *api.Client) {
 				pet, err := c.PetGetByName(context.Background(), api.PetGetByNameParams{
 					Name: "Fluffy",
@@ -257,6 +280,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.method", "GET"),
 									attribute.String("http.route", "/pet/{name}"),
 									attribute.String("pet_name", "Fluffy"),
+									attribute.String("error.type", "timeout"),
 								),
 							},
 						},
@@ -276,6 +300,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.method", "GET"),
 									attribute.String("http.route", "/pet/{name}"),
 									attribute.String("pet_name", "Fluffy"),
+									attribute.String("error.type", "timeout"),
 								),
 							},
 						},
@@ -294,6 +319,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.method", "GET"),
 									attribute.String("http.route", "/pet/{name}"),
 									attribute.String("pet_name", "Fluffy"),
+									attribute.String("error.type", "timeout"),
 								),
 							},
 						},
@@ -321,6 +347,7 @@ func TestServerMetrics(t *testing.T) {
 			h, err := api.NewServer(handler, handler,
 				api.WithMeterProvider(mp),
 				api.WithMiddleware(tt.mw),
+				api.WithErrorHandler(tt.eh),
 			)
 			require.NoError(t, err)
 
