@@ -72,7 +72,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -120,13 +120,13 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 		response, err = s.h.APICaptcha2chcaptchaIDGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPICaptcha2chcaptchaIDGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -187,7 +187,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -231,13 +231,13 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 		response, err = s.h.APICaptcha2chcaptchaShowGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPICaptcha2chcaptchaShowGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -302,7 +302,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -354,13 +354,13 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 		response, err = s.h.APICaptchaAppIDPublicKeyGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPICaptchaAppIDPublicKeyGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -421,7 +421,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -469,13 +469,13 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 		response, err = s.h.APICaptchaInvisibleRecaptchaIDGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -561,13 +561,13 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 		err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPICaptchaInvisibleRecaptchaMobileGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -628,7 +628,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -676,13 +676,13 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 		response, err = s.h.APICaptchaRecaptchaIDGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPICaptchaRecaptchaIDGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -768,13 +768,13 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsE
 		err = s.h.APICaptchaRecaptchaMobileGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPICaptchaRecaptchaMobileGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -835,7 +835,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -883,13 +883,13 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 		response, err = s.h.APIDislikeGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPIDislikeGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -950,7 +950,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -998,13 +998,13 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 		response, err = s.h.APILikeGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPILikeGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1067,7 +1067,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1119,13 +1119,13 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 		response, err = s.h.APIMobileV2AfterBoardThreadNumGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPIMobileV2AfterBoardThreadNumGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1211,13 +1211,13 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped b
 		response, err = s.h.APIMobileV2BoardsGet(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPIMobileV2BoardsGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1278,7 +1278,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1326,13 +1326,13 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 		response, err = s.h.APIMobileV2InfoBoardThreadGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPIMobileV2InfoBoardThreadGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1393,7 +1393,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1441,13 +1441,13 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 		response, err = s.h.APIMobileV2PostBoardNumGet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAPIMobileV2PostBoardNumGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1508,7 +1508,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1518,7 +1518,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1567,13 +1567,13 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 		response, err = s.h.UserPassloginPost(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUserPassloginPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1634,7 +1634,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1678,13 +1678,13 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 		response, err = s.h.UserPostingPost(ctx, request)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUserPostingPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1745,7 +1745,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1789,13 +1789,13 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 		response, err = s.h.UserReportPost(ctx, request)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUserReportPostResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

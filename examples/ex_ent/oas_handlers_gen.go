@@ -74,7 +74,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -118,13 +118,13 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 		response, err = s.h.CreatePet(ctx, request)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -186,7 +186,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -196,7 +196,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -245,13 +245,13 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 		response, err = s.h.CreatePetCategories(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetCategoriesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -313,7 +313,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -323,7 +323,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -372,13 +372,13 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 		response, err = s.h.CreatePetFriends(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetFriendsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -440,7 +440,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -450,7 +450,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -499,13 +499,13 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 		response, err = s.h.CreatePetOwner(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetOwnerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -567,7 +567,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -611,13 +611,13 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 		response, err = s.h.DeletePet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeDeletePetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -679,7 +679,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -723,13 +723,13 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w
 		response, err = s.h.DeletePetOwner(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeDeletePetOwnerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -791,7 +791,7 @@ func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.R
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -839,13 +839,13 @@ func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.R
 		response, err = s.h.ListPet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -907,7 +907,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -959,13 +959,13 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool
 		response, err = s.h.ListPetCategories(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPetCategoriesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1027,7 +1027,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1079,13 +1079,13 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w
 		response, err = s.h.ListPetFriends(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPetFriendsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1147,7 +1147,7 @@ func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.R
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1191,13 +1191,13 @@ func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.R
 		response, err = s.h.ReadPet(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1259,7 +1259,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w h
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1303,13 +1303,13 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w h
 		response, err = s.h.ReadPetOwner(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPetOwnerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1371,7 +1371,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1381,7 +1381,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1430,13 +1430,13 @@ func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http
 		response, err = s.h.UpdatePet(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUpdatePetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

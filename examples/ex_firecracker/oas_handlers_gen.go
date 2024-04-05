@@ -74,7 +74,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, argsEscaped bool, w
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -120,7 +120,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, argsEscaped bool, w
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -129,13 +129,13 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, argsEscaped bool, w
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeCreateSnapshotResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -197,7 +197,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, argsEscaped bool,
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -243,7 +243,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, argsEscaped bool,
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -252,13 +252,13 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, argsEscaped bool,
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeCreateSyncActionResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -347,7 +347,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, argsEscaped 
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -356,13 +356,13 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, argsEscaped 
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeDescribeBalloonConfigResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -451,7 +451,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, argsEscaped b
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -460,13 +460,13 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, argsEscaped b
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeDescribeBalloonStatsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -555,7 +555,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, argsEscaped bool,
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -564,13 +564,13 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, argsEscaped bool,
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeDescribeInstanceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -659,7 +659,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, argsEscaped bool
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -668,13 +668,13 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, argsEscaped bool
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeGetExportVmConfigResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -765,7 +765,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, argsEscape
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -774,13 +774,13 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, argsEscape
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeGetMachineConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -843,7 +843,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w h
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -889,7 +889,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w h
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -898,13 +898,13 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w h
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeLoadSnapshotResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -965,7 +965,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1011,7 +1011,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w 
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1020,13 +1020,13 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w 
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeMmdsConfigPutResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1114,7 +1114,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.R
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1123,13 +1123,13 @@ func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.R
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeMmdsGetResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1190,7 +1190,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1236,7 +1236,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1245,13 +1245,13 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeMmdsPatchResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1312,7 +1312,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.R
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1358,7 +1358,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.R
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1367,13 +1367,13 @@ func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.R
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeMmdsPutResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1436,7 +1436,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, argsEscaped bool, w h
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1482,7 +1482,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, argsEscaped bool, w h
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1491,13 +1491,13 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, argsEscaped bool, w h
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePatchBalloonResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1560,7 +1560,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1606,7 +1606,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, argsEsca
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1615,13 +1615,13 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, argsEsca
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePatchBalloonStatsIntervalResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1684,7 +1684,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1694,7 +1694,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1745,7 +1745,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bo
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1754,13 +1754,13 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bo
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePatchGuestDriveByIDResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1822,7 +1822,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1832,7 +1832,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, arg
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -1883,7 +1883,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, arg
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -1892,13 +1892,13 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, arg
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePatchGuestNetworkInterfaceByIDResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -1961,7 +1961,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, argsEsca
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2007,7 +2007,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, argsEsca
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2016,13 +2016,13 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, argsEsca
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePatchMachineConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2084,7 +2084,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, argsEscaped bool, w http.R
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2130,7 +2130,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, argsEscaped bool, w http.R
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2139,13 +2139,13 @@ func (s *Server) handlePatchVmRequest(args [0]string, argsEscaped bool, w http.R
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePatchVmResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2208,7 +2208,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w htt
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2254,7 +2254,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w htt
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2263,13 +2263,13 @@ func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w htt
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutBalloonResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2332,7 +2332,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped boo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2378,7 +2378,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped boo
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2387,13 +2387,13 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped boo
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutGuestBootSourceResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2456,7 +2456,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2466,7 +2466,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2517,7 +2517,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2526,13 +2526,13 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutGuestDriveByIDResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2594,7 +2594,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2604,7 +2604,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsE
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2655,7 +2655,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsE
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2664,13 +2664,13 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsE
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutGuestNetworkInterfaceByIDResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2733,7 +2733,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, argsEscaped bool, w 
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2779,7 +2779,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, argsEscaped bool, w 
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2788,13 +2788,13 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, argsEscaped bool, w 
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutGuestVsockResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2856,7 +2856,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -2902,7 +2902,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -2911,13 +2911,13 @@ func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutLoggerResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -2982,7 +2982,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscape
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3028,7 +3028,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscape
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -3037,13 +3037,13 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscape
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutMachineConfigurationResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -3105,7 +3105,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, argsEscaped bool, w htt
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -3151,7 +3151,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, argsEscaped bool, w htt
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -3160,13 +3160,13 @@ func (s *Server) handlePutMetricsRequest(args [0]string, argsEscaped bool, w htt
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePutMetricsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

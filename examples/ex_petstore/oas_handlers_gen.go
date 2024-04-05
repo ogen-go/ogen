@@ -101,7 +101,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -110,13 +110,13 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeCreatePetsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -178,7 +178,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -224,7 +224,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -233,13 +233,13 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeListPetsResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -301,7 +301,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -347,7 +347,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -356,13 +356,13 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeShowPetByIdResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

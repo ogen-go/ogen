@@ -77,7 +77,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 					Security:         "Custom",
 					Err:              err,
 				}
-				recordError("Security:Custom", err)
+				defer recordError("Security:Custom", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -105,7 +105,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -145,13 +145,13 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 		err = s.h.CustomSecurity(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCustomSecurityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -216,7 +216,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 					Security:         "BasicAuth",
 					Err:              err,
 				}
-				recordError("Security:BasicAuth", err)
+				defer recordError("Security:BasicAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -233,7 +233,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 					Security:         "QueryKey",
 					Err:              err,
 				}
-				recordError("Security:QueryKey", err)
+				defer recordError("Security:QueryKey", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -250,7 +250,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 					Security:         "CookieKey",
 					Err:              err,
 				}
-				recordError("Security:CookieKey", err)
+				defer recordError("Security:CookieKey", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -267,7 +267,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 					Security:         "HeaderKey",
 					Err:              err,
 				}
-				recordError("Security:HeaderKey", err)
+				defer recordError("Security:HeaderKey", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -296,7 +296,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -336,13 +336,13 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 		err = s.h.DisjointSecurity(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeDisjointSecurityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -407,7 +407,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 					Security:         "BasicAuth",
 					Err:              err,
 				}
-				recordError("Security:BasicAuth", err)
+				defer recordError("Security:BasicAuth", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -424,7 +424,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 					Security:         "HeaderKey",
 					Err:              err,
 				}
-				recordError("Security:HeaderKey", err)
+				defer recordError("Security:HeaderKey", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -441,7 +441,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 					Security:         "BearerToken",
 					Err:              err,
 				}
-				recordError("Security:BearerToken", err)
+				defer recordError("Security:BearerToken", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -470,7 +470,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -510,13 +510,13 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 		err = s.h.IntersectSecurity(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeIntersectSecurityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -581,7 +581,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 					Security:         "QueryKey",
 					Err:              err,
 				}
-				recordError("Security:QueryKey", err)
+				defer recordError("Security:QueryKey", err)
 				s.cfg.ErrorHandler(ctx, w, r, err)
 				return
 			}
@@ -610,7 +610,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 				OperationContext: opErrContext,
 				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
 			}
-			recordError("Security", err)
+			defer recordError("Security", err)
 			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
@@ -650,13 +650,13 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 		err = s.h.OptionalSecurity(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOptionalSecurityResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

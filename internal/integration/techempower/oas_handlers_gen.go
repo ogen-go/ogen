@@ -79,7 +79,7 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -123,13 +123,13 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 		response, err = s.h.Caching(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCachingResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -217,13 +217,13 @@ func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.Respon
 		response, err = s.h.DB(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeDBResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -312,13 +312,13 @@ func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.Resp
 		response, err = s.h.JSON(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeJSONResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -383,7 +383,7 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -427,13 +427,13 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 		response, err = s.h.Queries(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeQueriesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -497,7 +497,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.R
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -541,13 +541,13 @@ func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.R
 		response, err = s.h.Updates(ctx, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUpdatesResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

@@ -72,7 +72,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -118,7 +118,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -127,13 +127,13 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodePublishEventResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -215,13 +215,13 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped b
 		response, err = s.h.StatusWebhook(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeStatusWebhookResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -302,13 +302,13 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bo
 		response, err = s.h.UpdateDelete(ctx)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUpdateDeleteResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
@@ -365,7 +365,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeParams", err)
+		defer recordError("DecodeParams", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -375,7 +375,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		recordError("DecodeRequest", err)
+		defer recordError("DecodeRequest", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
@@ -428,13 +428,13 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 		response, err = s.h.UpdateWebhook(ctx, request, params)
 	}
 	if err != nil {
-		recordError("Internal", err)
+		defer recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUpdateWebhookResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}

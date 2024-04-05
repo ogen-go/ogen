@@ -100,7 +100,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w 
 	if err != nil {
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			if err := encodeErrorResponse(errRes, w, span); err != nil {
-				recordError("Internal", err)
+				defer recordError("Internal", err)
 			}
 			return
 		}
@@ -109,13 +109,13 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w 
 			return
 		}
 		if err := encodeErrorResponse(s.h.NewError(ctx, err), w, span); err != nil {
-			recordError("Internal", err)
+			defer recordError("Internal", err)
 		}
 		return
 	}
 
 	if err := encodeProbeLivenessResponse(response, w, span); err != nil {
-		recordError("EncodeResponse", err)
+		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
 		}
