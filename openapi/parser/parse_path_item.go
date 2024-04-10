@@ -2,11 +2,13 @@ package parser
 
 import (
 	"fmt"
+	"go/token"
 
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonpointer"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/location"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -18,6 +20,10 @@ type (
 		loc  location.Locator
 		file location.File
 	}
+)
+
+const (
+	xOgenOperationGroup = "x-ogen-operation-group"
 )
 
 func (up unparsedPath) String() string {
@@ -50,6 +56,14 @@ func (p *parser) parsePathItem(
 		return nil, errors.Wrap(err, "parameters")
 	}
 
+	// Look for x-ogen-operation-group on the PathItem.
+	// Use it as a default value for operations.
+	var operationGroup string
+	err = p.parseOperationGroup(item.Common, &operationGroup)
+	if err != nil {
+		return nil, errors.Wrap(err, xOgenOperationGroup)
+	}
+
 	var ops []*openapi.Operation
 	if err := forEachOps(item, func(method string, op ogen.Operation) error {
 		locator := op.Common.Locator
@@ -68,7 +82,7 @@ func (p *parser) parsePathItem(
 			p.operationIDs[id] = ptr
 		}
 
-		parsedOp, err := p.parseOp(up, method, op, itemParams, ctx)
+		parsedOp, err := p.parseOp(up, method, op, itemParams, ctx, operationGroup)
 		if err != nil {
 			if op.OperationID != "" {
 				return errors.Wrapf(err, "operation %q", op.OperationID)
@@ -91,6 +105,7 @@ func (p *parser) parseOp(
 	spec ogen.Operation,
 	itemParams []*openapi.Parameter,
 	ctx *jsonpointer.ResolveCtx,
+	operationGroup string,
 ) (_ *openapi.Operation, err error) {
 	locator := spec.Common.Locator
 	defer func() {
@@ -98,12 +113,18 @@ func (p *parser) parseOp(
 	}()
 
 	op := &openapi.Operation{
-		OperationID: spec.OperationID,
-		Summary:     spec.Summary,
-		Description: spec.Description,
-		Deprecated:  spec.Deprecated,
-		HTTPMethod:  httpMethod,
-		Pointer:     locator.Pointer(p.file(ctx)),
+		OperationID:         spec.OperationID,
+		Summary:             spec.Summary,
+		Description:         spec.Description,
+		Deprecated:          spec.Deprecated,
+		HTTPMethod:          httpMethod,
+		Pointer:             locator.Pointer(p.file(ctx)),
+		XOgenOperationGroup: operationGroup,
+	}
+
+	err = p.parseOperationGroup(spec.Common, &op.XOgenOperationGroup)
+	if err != nil {
+		return nil, errors.Wrap(err, xOgenOperationGroup)
 	}
 
 	opParams, err := p.parseParams(spec.Parameters, locator.Field("parameters"), ctx)
@@ -189,4 +210,18 @@ func forEachOps(item *ogen.PathItem, f func(method string, op ogen.Operation) er
 	handle("patch", item.Patch)
 	handle("trace", item.Trace)
 	return err
+}
+
+func (p *parser) parseOperationGroup(common jsonschema.OpenAPICommon, operationGroup *string) error {
+	if ex, ok := common.Extensions[xOgenOperationGroup]; ok {
+		if err := ex.Decode(operationGroup); err != nil {
+			return errors.Wrap(err, "unmarshal value")
+		}
+
+		if !token.IsIdentifier(*operationGroup) {
+			return errors.Errorf("%q is not a valid identifier", *operationGroup)
+		}
+	}
+
+	return nil
 }

@@ -86,8 +86,7 @@ func (g *nameGen) generate() (string, error) {
 				name = "R" + name
 			}
 			if !token.IsIdentifier(name) {
-				return "", errors.Wrapf(&ErrNotImplemented{Name: "crypticName"},
-					"can't generate valid name: %+v", g.parts)
+				return "", errors.Errorf("can't generate valid name: %+v", g.parts)
 			}
 			return name, nil
 		}
@@ -191,7 +190,7 @@ func pascalNonEmpty(strs ...string) (string, error) {
 	if r != "" {
 		return r, nil
 	}
-	return "", errors.Wrapf(&ErrNotImplemented{Name: "crypticName"}, "can't generate name for %+v", strs)
+	return "", errors.Errorf("can't generate name for %+v", strs)
 }
 
 func camel(s ...string) (string, error) {

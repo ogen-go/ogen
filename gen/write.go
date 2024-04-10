@@ -22,17 +22,19 @@ import (
 )
 
 type TemplateConfig struct {
-	Package       string
-	Operations    []*ir.Operation
-	Webhooks      []*ir.Operation
-	Types         map[string]*ir.Type
-	Interfaces    map[string]*ir.Type
-	Error         *ir.Response
-	ErrorType     *ir.Type
-	Servers       ir.Servers
-	Securities    map[string]*ir.Security
-	Router        Router
-	WebhookRouter WebhookRouter
+	Package           string
+	Operations        []*ir.Operation
+	DefaultOperations []*ir.Operation
+	OperationGroups   []*ir.OperationGroup
+	Webhooks          []*ir.Operation
+	Types             map[string]*ir.Type
+	Interfaces        map[string]*ir.Type
+	Error             *ir.Response
+	ErrorType         *ir.Type
+	Servers           ir.Servers
+	Securities        map[string]*ir.Security
+	Router            Router
+	WebhookRouter     WebhookRouter
 
 	PathsClientEnabled        bool
 	PathsServerEnabled        bool
@@ -251,6 +253,8 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	cfg := TemplateConfig{
 		Package:                   pkgName,
 		Operations:                g.operations,
+		DefaultOperations:         g.defaultOperations,
+		OperationGroups:           g.operationGroups,
 		Webhooks:                  g.webhooks,
 		Types:                     types,
 		Interfaces:                interfaces,

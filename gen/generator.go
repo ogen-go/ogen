@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
 	"go.uber.org/zap"
+	"golang.org/x/exp/maps"
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
@@ -20,17 +21,19 @@ import (
 
 // Generator is OpenAPI-to-Go generator.
 type Generator struct {
-	opt           GenerateOptions
-	parseOpts     ParseOptions
-	api           *openapi.API
-	servers       []ir.Server
-	operations    []*ir.Operation
-	webhooks      []*ir.Operation
-	securities    map[string]*ir.Security
-	tstorage      *tstorage
-	errType       *ir.Response
-	webhookRouter WebhookRouter
-	router        Router
+	opt               GenerateOptions
+	parseOpts         ParseOptions
+	api               *openapi.API
+	servers           []ir.Server
+	operations        []*ir.Operation
+	defaultOperations []*ir.Operation // Operations without an operation group.
+	operationGroups   []*ir.OperationGroup
+	webhooks          []*ir.Operation
+	securities        map[string]*ir.Security
+	tstorage          *tstorage
+	errType           *ir.Response
+	webhookRouter     WebhookRouter
+	router            Router
 
 	log *zap.Logger
 }
@@ -185,7 +188,10 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 
 		g.operations = append(g.operations, op)
 	}
+
 	sortOperations(g.operations)
+	g.defaultOperations, g.operationGroups = groupOperations(g.operations)
+
 	return nil
 }
 
@@ -264,6 +270,34 @@ func sortOperations(ops []*ir.Operation) {
 	slices.SortStableFunc(ops, func(a, b *ir.Operation) int {
 		return strings.Compare(a.Name, b.Name)
 	})
+}
+
+func groupOperations(ops []*ir.Operation) (
+	defaultOperations []*ir.Operation,
+	operationGroups []*ir.OperationGroup,
+) {
+	groups := make(map[string]*ir.OperationGroup)
+	for _, op := range ops {
+		if op.OperationGroup == "" {
+			defaultOperations = append(defaultOperations, op)
+			continue
+		}
+		group, ok := groups[op.OperationGroup]
+		if !ok {
+			group = &ir.OperationGroup{
+				Name: op.OperationGroup,
+			}
+			groups[op.OperationGroup] = group
+		}
+		group.Operations = append(group.Operations, op)
+	}
+
+	operationGroups = maps.Values(groups)
+	slices.SortStableFunc(operationGroups, func(a, b *ir.OperationGroup) int {
+		return strings.Compare(a.Name, b.Name)
+	})
+
+	return defaultOperations, operationGroups
 }
 
 // Types returns generated types.

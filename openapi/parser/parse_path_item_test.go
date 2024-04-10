@@ -4,9 +4,12 @@ import (
 	"testing"
 
 	"github.com/go-faster/yaml"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 // Check that parser correctly handles paths with escaped slashes.
@@ -51,4 +54,86 @@ func TestEscapedSlashInPath(t *testing.T) {
 	})
 	a.NoError(err)
 	a.Len(spec.Operations, 2)
+}
+
+func TestXOgenOperationGroup(t *testing.T) {
+	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
+		Paths: map[string]*ogen.PathItem{
+			"/users": {
+				Common: extensionValue(xOgenOperationGroup, "Users"),
+				Get: &ogen.Operation{
+					OperationID: "userList",
+					Responses: map[string]*ogen.Response{
+						"200": {},
+					},
+				},
+				Post: &ogen.Operation{
+					Common:      extensionValue(xOgenOperationGroup, "Override"),
+					OperationID: "userCreate",
+					Responses: map[string]*ogen.Response{
+						"200": {},
+					},
+				},
+			},
+		},
+	}
+
+	spec, err := Parse(root, Settings{
+		RootURL: testRootURL,
+	})
+	assert.NoError(t, err)
+
+	expected := &openapi.API{
+		Version: openapi.Version{Major: 3, Minor: 0, Patch: 3},
+		Operations: []*openapi.Operation{
+			{
+				OperationID: "userList",
+				HTTPMethod:  "get",
+				Path: openapi.Path{
+					{Raw: "/users"},
+				},
+				Parameters: []*openapi.Parameter{},
+				Security:   openapi.SecurityRequirements{},
+				Responses: openapi.Responses{
+					StatusCode: map[int]*openapi.Response{
+						200: {},
+					},
+				},
+				XOgenOperationGroup: "Users",
+			},
+			{
+				OperationID: "userCreate",
+				HTTPMethod:  "post",
+				Path: openapi.Path{
+					{Raw: "/users"},
+				},
+				Parameters: []*openapi.Parameter{},
+				Security:   openapi.SecurityRequirements{},
+				Responses: openapi.Responses{
+					StatusCode: map[int]*openapi.Response{
+						200: {},
+					},
+				},
+				XOgenOperationGroup: "Override",
+			},
+		},
+		Components: &openapi.Components{
+			Schemas:       map[string]*jsonschema.Schema{},
+			Responses:     map[string]*openapi.Response{},
+			Parameters:    map[string]*openapi.Parameter{},
+			Examples:      map[string]*openapi.Example{},
+			RequestBodies: map[string]*openapi.RequestBody{},
+		},
+	}
+
+	assert.Equal(t, expected, spec)
+}
+
+func extensionValue(name, value string) ogen.OpenAPICommon {
+	return ogen.OpenAPICommon{
+		Extensions: ogen.Extensions{
+			name: yaml.Node{Kind: yaml.ScalarNode, Value: value},
+		},
+	}
 }
