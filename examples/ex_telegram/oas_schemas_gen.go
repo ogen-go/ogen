@@ -945,25 +945,76 @@ func NewBotCommandScopeChatMemberBotCommandScope(v BotCommandScopeChatMember) Bo
 
 // Represents the scope of bot commands, covering all group and supergroup chat administrators.
 // Ref: #/components/schemas/BotCommandScopeAllChatAdministrators
-type BotCommandScopeAllChatAdministrators struct{}
+type BotCommandScopeAllChatAdministrators struct {
+	// Scope type, must be all_chat_administrators.
+	Type string `json:"type"`
+}
+
+// GetType returns the value of Type.
+func (s *BotCommandScopeAllChatAdministrators) GetType() string {
+	return s.Type
+}
+
+// SetType sets the value of Type.
+func (s *BotCommandScopeAllChatAdministrators) SetType(val string) {
+	s.Type = val
+}
 
 // Represents the scope of bot commands, covering all group and supergroup chats.
 // Ref: #/components/schemas/BotCommandScopeAllGroupChats
-type BotCommandScopeAllGroupChats struct{}
+type BotCommandScopeAllGroupChats struct {
+	// Scope type, must be all_group_chats.
+	Type string `json:"type"`
+}
+
+// GetType returns the value of Type.
+func (s *BotCommandScopeAllGroupChats) GetType() string {
+	return s.Type
+}
+
+// SetType sets the value of Type.
+func (s *BotCommandScopeAllGroupChats) SetType(val string) {
+	s.Type = val
+}
 
 // Represents the scope of bot commands, covering all private chats.
 // Ref: #/components/schemas/BotCommandScopeAllPrivateChats
-type BotCommandScopeAllPrivateChats struct{}
+type BotCommandScopeAllPrivateChats struct {
+	// Scope type, must be all_private_chats.
+	Type string `json:"type"`
+}
+
+// GetType returns the value of Type.
+func (s *BotCommandScopeAllPrivateChats) GetType() string {
+	return s.Type
+}
+
+// SetType sets the value of Type.
+func (s *BotCommandScopeAllPrivateChats) SetType(val string) {
+	s.Type = val
+}
 
 // Represents the scope of bot commands, covering a specific chat.
 // Ref: #/components/schemas/BotCommandScopeChat
 type BotCommandScopeChat struct {
-	ChatID ID `json:"chat_id"`
+	// Scope type, must be chat.
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+}
+
+// GetType returns the value of Type.
+func (s *BotCommandScopeChat) GetType() string {
+	return s.Type
 }
 
 // GetChatID returns the value of ChatID.
 func (s *BotCommandScopeChat) GetChatID() ID {
 	return s.ChatID
+}
+
+// SetType sets the value of Type.
+func (s *BotCommandScopeChat) SetType(val string) {
+	s.Type = val
 }
 
 // SetChatID sets the value of ChatID.
@@ -975,12 +1026,24 @@ func (s *BotCommandScopeChat) SetChatID(val ID) {
 // supergroup chat.
 // Ref: #/components/schemas/BotCommandScopeChatAdministrators
 type BotCommandScopeChatAdministrators struct {
-	ChatID ID `json:"chat_id"`
+	// Scope type, must be chat_administrators.
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
+}
+
+// GetType returns the value of Type.
+func (s *BotCommandScopeChatAdministrators) GetType() string {
+	return s.Type
 }
 
 // GetChatID returns the value of ChatID.
 func (s *BotCommandScopeChatAdministrators) GetChatID() ID {
 	return s.ChatID
+}
+
+// SetType sets the value of Type.
+func (s *BotCommandScopeChatAdministrators) SetType(val string) {
+	s.Type = val
 }
 
 // SetChatID sets the value of ChatID.
@@ -991,9 +1054,16 @@ func (s *BotCommandScopeChatAdministrators) SetChatID(val ID) {
 // Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
 // Ref: #/components/schemas/BotCommandScopeChatMember
 type BotCommandScopeChatMember struct {
-	ChatID ID `json:"chat_id"`
+	// Scope type, must be chat_member.
+	Type   string `json:"type"`
+	ChatID ID     `json:"chat_id"`
 	// Unique identifier of the target user.
 	UserID int64 `json:"user_id"`
+}
+
+// GetType returns the value of Type.
+func (s *BotCommandScopeChatMember) GetType() string {
+	return s.Type
 }
 
 // GetChatID returns the value of ChatID.
@@ -1004,6 +1074,11 @@ func (s *BotCommandScopeChatMember) GetChatID() ID {
 // GetUserID returns the value of UserID.
 func (s *BotCommandScopeChatMember) GetUserID() int64 {
 	return s.UserID
+}
+
+// SetType sets the value of Type.
+func (s *BotCommandScopeChatMember) SetType(val string) {
+	s.Type = val
 }
 
 // SetChatID sets the value of ChatID.
@@ -1019,7 +1094,20 @@ func (s *BotCommandScopeChatMember) SetUserID(val int64) {
 // Represents the default scope of bot commands. Default commands are used if no commands with a
 // narrower scope are specified for the user.
 // Ref: #/components/schemas/BotCommandScopeDefault
-type BotCommandScopeDefault struct{}
+type BotCommandScopeDefault struct {
+	// Scope type, must be default.
+	Type string `json:"type"`
+}
+
+// GetType returns the value of Type.
+func (s *BotCommandScopeDefault) GetType() string {
+	return s.Type
+}
+
+// SetType sets the value of Type.
+func (s *BotCommandScopeDefault) SetType(val string) {
+	s.Type = val
+}
 
 // A placeholder, currently holds no information. Use BotFather to set up your game.
 // Ref: #/components/schemas/CallbackGame
@@ -5704,6 +5792,8 @@ func NewInlineQueryResultVoiceInlineQueryResult(v InlineQueryResultVoice) Inline
 // Represents a link to an article or web page.
 // Ref: #/components/schemas/InlineQueryResultArticle
 type InlineQueryResultArticle struct {
+	// Type of the result, must be article.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string `json:"id"`
 	// Title of the result.
@@ -5722,6 +5812,11 @@ type InlineQueryResultArticle struct {
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
 	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultArticle) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -5772,6 +5867,11 @@ func (s *InlineQueryResultArticle) GetThumbWidth() OptInt {
 // GetThumbHeight returns the value of ThumbHeight.
 func (s *InlineQueryResultArticle) GetThumbHeight() OptInt {
 	return s.ThumbHeight
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultArticle) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -5829,6 +5929,8 @@ func (s *InlineQueryResultArticle) SetThumbHeight(val OptInt) {
 // instead of the audio.
 // Ref: #/components/schemas/InlineQueryResultAudio
 type InlineQueryResultAudio struct {
+	// Type of the result, must be audio.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// A valid URL for the audio file.
@@ -5847,6 +5949,11 @@ type InlineQueryResultAudio struct {
 	AudioDuration       OptInt                  `json:"audio_duration"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultAudio) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -5897,6 +6004,11 @@ func (s *InlineQueryResultAudio) GetReplyMarkup() OptInlineKeyboardMarkup {
 // GetInputMessageContent returns the value of InputMessageContent.
 func (s *InlineQueryResultAudio) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultAudio) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -6532,12 +6644,19 @@ func (s *InlineQueryResultCachedPhoto) SetInputMessageContent(val OptInputMessag
 // specified content instead of the sticker.
 // Ref: #/components/schemas/InlineQueryResultCachedSticker
 type InlineQueryResultCachedSticker struct {
+	// Type of the result, must be sticker.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// A valid file identifier of the sticker.
 	StickerFileID       string                  `json:"sticker_file_id"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultCachedSticker) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -6558,6 +6677,11 @@ func (s *InlineQueryResultCachedSticker) GetReplyMarkup() OptInlineKeyboardMarku
 // GetInputMessageContent returns the value of InputMessageContent.
 func (s *InlineQueryResultCachedSticker) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultCachedSticker) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -6823,6 +6947,8 @@ func (s *InlineQueryResultCachedVoice) SetInputMessageContent(val OptInputMessag
 // instead of the contact.
 // Ref: #/components/schemas/InlineQueryResultContact
 type InlineQueryResultContact struct {
+	// Type of the result, must be contact.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string `json:"id"`
 	// Contact's phone number.
@@ -6841,6 +6967,11 @@ type InlineQueryResultContact struct {
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
 	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultContact) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -6891,6 +7022,11 @@ func (s *InlineQueryResultContact) GetThumbWidth() OptInt {
 // GetThumbHeight returns the value of ThumbHeight.
 func (s *InlineQueryResultContact) GetThumbHeight() OptInt {
 	return s.ThumbHeight
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultContact) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -6948,6 +7084,8 @@ func (s *InlineQueryResultContact) SetThumbHeight(val OptInt) {
 // content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
 // Ref: #/components/schemas/InlineQueryResultDocument
 type InlineQueryResultDocument struct {
+	// Type of the result, must be document.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// Title for the result.
@@ -6972,6 +7110,11 @@ type InlineQueryResultDocument struct {
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
 	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultDocument) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -7037,6 +7180,11 @@ func (s *InlineQueryResultDocument) GetThumbWidth() OptInt {
 // GetThumbHeight returns the value of ThumbHeight.
 func (s *InlineQueryResultDocument) GetThumbHeight() OptInt {
 	return s.ThumbHeight
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultDocument) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -7107,11 +7255,18 @@ func (s *InlineQueryResultDocument) SetThumbHeight(val OptInt) {
 // Represents a Game.
 // Ref: #/components/schemas/InlineQueryResultGame
 type InlineQueryResultGame struct {
+	// Type of the result, must be game.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// Short name of the game.
 	GameShortName string                  `json:"game_short_name"`
 	ReplyMarkup   OptInlineKeyboardMarkup `json:"reply_markup"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultGame) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -7127,6 +7282,11 @@ func (s *InlineQueryResultGame) GetGameShortName() string {
 // GetReplyMarkup returns the value of ReplyMarkup.
 func (s *InlineQueryResultGame) GetReplyMarkup() OptInlineKeyboardMarkup {
 	return s.ReplyMarkup
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultGame) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -7149,6 +7309,8 @@ func (s *InlineQueryResultGame) SetReplyMarkup(val OptInlineKeyboardMarkup) {
 // with the specified content instead of the animation.
 // Ref: #/components/schemas/InlineQueryResultGif
 type InlineQueryResultGif struct {
+	// Type of the result, must be gif.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// A valid URL for the GIF file. File size must not exceed 1MB.
@@ -7174,6 +7336,11 @@ type InlineQueryResultGif struct {
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultGif) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -7239,6 +7406,11 @@ func (s *InlineQueryResultGif) GetReplyMarkup() OptInlineKeyboardMarkup {
 // GetInputMessageContent returns the value of InputMessageContent.
 func (s *InlineQueryResultGif) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultGif) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -7311,6 +7483,8 @@ func (s *InlineQueryResultGif) SetInputMessageContent(val OptInputMessageContent
 // location.
 // Ref: #/components/schemas/InlineQueryResultLocation
 type InlineQueryResultLocation struct {
+	// Type of the result, must be location.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string `json:"id"`
 	// Location latitude in degrees.
@@ -7337,6 +7511,11 @@ type InlineQueryResultLocation struct {
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
 	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultLocation) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -7402,6 +7581,11 @@ func (s *InlineQueryResultLocation) GetThumbWidth() OptInt {
 // GetThumbHeight returns the value of ThumbHeight.
 func (s *InlineQueryResultLocation) GetThumbHeight() OptInt {
 	return s.ThumbHeight
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultLocation) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -7474,6 +7658,8 @@ func (s *InlineQueryResultLocation) SetThumbHeight(val OptInt) {
 // input_message_content to send a message with the specified content instead of the animation.
 // Ref: #/components/schemas/InlineQueryResultMpeg4Gif
 type InlineQueryResultMpeg4Gif struct {
+	// Type of the result, must be mpeg4_gif.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// A valid URL for the MP4 file. File size must not exceed 1MB.
@@ -7499,6 +7685,11 @@ type InlineQueryResultMpeg4Gif struct {
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultMpeg4Gif) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -7564,6 +7755,11 @@ func (s *InlineQueryResultMpeg4Gif) GetReplyMarkup() OptInlineKeyboardMarkup {
 // GetInputMessageContent returns the value of InputMessageContent.
 func (s *InlineQueryResultMpeg4Gif) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultMpeg4Gif) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -7636,6 +7832,8 @@ func (s *InlineQueryResultMpeg4Gif) SetInputMessageContent(val OptInputMessageCo
 // content instead of the photo.
 // Ref: #/components/schemas/InlineQueryResultPhoto
 type InlineQueryResultPhoto struct {
+	// Type of the result, must be photo.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB.
@@ -7658,6 +7856,11 @@ type InlineQueryResultPhoto struct {
 	CaptionEntities     []MessageEntity         `json:"caption_entities"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultPhoto) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -7718,6 +7921,11 @@ func (s *InlineQueryResultPhoto) GetReplyMarkup() OptInlineKeyboardMarkup {
 // GetInputMessageContent returns the value of InputMessageContent.
 func (s *InlineQueryResultPhoto) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultPhoto) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -7784,6 +7992,8 @@ func (s *InlineQueryResultPhoto) SetInputMessageContent(val OptInputMessageConte
 // input_message_content to send a message with the specified content instead of the venue.
 // Ref: #/components/schemas/InlineQueryResultVenue
 type InlineQueryResultVenue struct {
+	// Type of the result, must be venue.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string `json:"id"`
 	// Latitude of the venue location in degrees.
@@ -7811,6 +8021,11 @@ type InlineQueryResultVenue struct {
 	ThumbWidth OptInt `json:"thumb_width"`
 	// Thumbnail height.
 	ThumbHeight OptInt `json:"thumb_height"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultVenue) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -7881,6 +8096,11 @@ func (s *InlineQueryResultVenue) GetThumbWidth() OptInt {
 // GetThumbHeight returns the value of ThumbHeight.
 func (s *InlineQueryResultVenue) GetThumbHeight() OptInt {
 	return s.ThumbHeight
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultVenue) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -7958,6 +8178,8 @@ func (s *InlineQueryResultVenue) SetThumbHeight(val OptInt) {
 // input_message_content to send a message with the specified content instead of the video.
 // Ref: #/components/schemas/InlineQueryResultVideo
 type InlineQueryResultVideo struct {
+	// Type of the result, must be video.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// A valid URL for the embedded video player or video file.
@@ -7984,6 +8206,11 @@ type InlineQueryResultVideo struct {
 	Description         OptString               `json:"description"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultVideo) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -8054,6 +8281,11 @@ func (s *InlineQueryResultVideo) GetReplyMarkup() OptInlineKeyboardMarkup {
 // GetInputMessageContent returns the value of InputMessageContent.
 func (s *InlineQueryResultVideo) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultVideo) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -8131,6 +8363,8 @@ func (s *InlineQueryResultVideo) SetInputMessageContent(val OptInputMessageConte
 // a message with the specified content instead of the the voice message.
 // Ref: #/components/schemas/InlineQueryResultVoice
 type InlineQueryResultVoice struct {
+	// Type of the result, must be voice.
+	Type string `json:"type"`
 	// Unique identifier for this result, 1-64 bytes.
 	ID string `json:"id"`
 	// A valid URL for the voice recording.
@@ -8147,6 +8381,11 @@ type InlineQueryResultVoice struct {
 	VoiceDuration       OptInt                  `json:"voice_duration"`
 	ReplyMarkup         OptInlineKeyboardMarkup `json:"reply_markup"`
 	InputMessageContent OptInputMessageContent  `json:"input_message_content"`
+}
+
+// GetType returns the value of Type.
+func (s *InlineQueryResultVoice) GetType() string {
+	return s.Type
 }
 
 // GetID returns the value of ID.
@@ -8192,6 +8431,11 @@ func (s *InlineQueryResultVoice) GetReplyMarkup() OptInlineKeyboardMarkup {
 // GetInputMessageContent returns the value of InputMessageContent.
 func (s *InlineQueryResultVoice) GetInputMessageContent() OptInputMessageContent {
 	return s.InputMessageContent
+}
+
+// SetType sets the value of Type.
+func (s *InlineQueryResultVoice) SetType(val string) {
+	s.Type = val
 }
 
 // SetID sets the value of ID.
@@ -8772,6 +9016,8 @@ func NewInputMediaVideoInputMedia(v InputMediaVideo) InputMedia {
 // Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
 // Ref: #/components/schemas/InputMediaAnimation
 type InputMediaAnimation struct {
+	// Type of the result, must be animation.
+	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
@@ -8796,6 +9042,11 @@ type InputMediaAnimation struct {
 	Height OptInt `json:"height"`
 	// Animation duration in seconds.
 	Duration OptInt `json:"duration"`
+}
+
+// GetType returns the value of Type.
+func (s *InputMediaAnimation) GetType() string {
+	return s.Type
 }
 
 // GetMedia returns the value of Media.
@@ -8836,6 +9087,11 @@ func (s *InputMediaAnimation) GetHeight() OptInt {
 // GetDuration returns the value of Duration.
 func (s *InputMediaAnimation) GetDuration() OptInt {
 	return s.Duration
+}
+
+// SetType sets the value of Type.
+func (s *InputMediaAnimation) SetType(val string) {
+	s.Type = val
 }
 
 // SetMedia sets the value of Media.
@@ -8881,6 +9137,8 @@ func (s *InputMediaAnimation) SetDuration(val OptInt) {
 // Represents an audio file to be treated as music to be sent.
 // Ref: #/components/schemas/InputMediaAudio
 type InputMediaAudio struct {
+	// Type of the result, must be audio.
+	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
@@ -8905,6 +9163,11 @@ type InputMediaAudio struct {
 	Performer OptString `json:"performer"`
 	// Title of the audio.
 	Title OptString `json:"title"`
+}
+
+// GetType returns the value of Type.
+func (s *InputMediaAudio) GetType() string {
+	return s.Type
 }
 
 // GetMedia returns the value of Media.
@@ -8945,6 +9208,11 @@ func (s *InputMediaAudio) GetPerformer() OptString {
 // GetTitle returns the value of Title.
 func (s *InputMediaAudio) GetTitle() OptString {
 	return s.Title
+}
+
+// SetType sets the value of Type.
+func (s *InputMediaAudio) SetType(val string) {
+	s.Type = val
 }
 
 // SetMedia sets the value of Media.
@@ -8990,6 +9258,8 @@ func (s *InputMediaAudio) SetTitle(val OptString) {
 // Represents a general file to be sent.
 // Ref: #/components/schemas/InputMediaDocument
 type InputMediaDocument struct {
+	// Type of the result, must be document.
+	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
@@ -9011,6 +9281,11 @@ type InputMediaDocument struct {
 	// Disables automatic server-side content type detection for files uploaded using multipart/form-data.
 	//  Always True, if the document is sent as part of an album.
 	DisableContentTypeDetection OptBool `json:"disable_content_type_detection"`
+}
+
+// GetType returns the value of Type.
+func (s *InputMediaDocument) GetType() string {
+	return s.Type
 }
 
 // GetMedia returns the value of Media.
@@ -9041,6 +9316,11 @@ func (s *InputMediaDocument) GetCaptionEntities() []MessageEntity {
 // GetDisableContentTypeDetection returns the value of DisableContentTypeDetection.
 func (s *InputMediaDocument) GetDisableContentTypeDetection() OptBool {
 	return s.DisableContentTypeDetection
+}
+
+// SetType sets the value of Type.
+func (s *InputMediaDocument) SetType(val string) {
+	s.Type = val
 }
 
 // SetMedia sets the value of Media.
@@ -9076,6 +9356,8 @@ func (s *InputMediaDocument) SetDisableContentTypeDetection(val OptBool) {
 // Represents a photo to be sent.
 // Ref: #/components/schemas/InputMediaPhoto
 type InputMediaPhoto struct {
+	// Type of the result, must be photo.
+	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
@@ -9087,6 +9369,11 @@ type InputMediaPhoto struct {
 	ParseMode OptString `json:"parse_mode"`
 	// List of special entities that appear in the caption, which can be specified instead of parse_mode.
 	CaptionEntities []MessageEntity `json:"caption_entities"`
+}
+
+// GetType returns the value of Type.
+func (s *InputMediaPhoto) GetType() string {
+	return s.Type
 }
 
 // GetMedia returns the value of Media.
@@ -9107,6 +9394,11 @@ func (s *InputMediaPhoto) GetParseMode() OptString {
 // GetCaptionEntities returns the value of CaptionEntities.
 func (s *InputMediaPhoto) GetCaptionEntities() []MessageEntity {
 	return s.CaptionEntities
+}
+
+// SetType sets the value of Type.
+func (s *InputMediaPhoto) SetType(val string) {
+	s.Type = val
 }
 
 // SetMedia sets the value of Media.
@@ -9132,6 +9424,8 @@ func (s *InputMediaPhoto) SetCaptionEntities(val []MessageEntity) {
 // Represents a video to be sent.
 // Ref: #/components/schemas/InputMediaVideo
 type InputMediaVideo struct {
+	// Type of the result, must be video.
+	Type string `json:"type"`
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// “attach://<file_attach_name>” to upload a new one using multipart/form-data under
@@ -9158,6 +9452,11 @@ type InputMediaVideo struct {
 	Duration OptInt `json:"duration"`
 	// Pass True, if the uploaded video is suitable for streaming.
 	SupportsStreaming OptBool `json:"supports_streaming"`
+}
+
+// GetType returns the value of Type.
+func (s *InputMediaVideo) GetType() string {
+	return s.Type
 }
 
 // GetMedia returns the value of Media.
@@ -9203,6 +9502,11 @@ func (s *InputMediaVideo) GetDuration() OptInt {
 // GetSupportsStreaming returns the value of SupportsStreaming.
 func (s *InputMediaVideo) GetSupportsStreaming() OptBool {
 	return s.SupportsStreaming
+}
+
+// SetType sets the value of Type.
+func (s *InputMediaVideo) SetType(val string) {
+	s.Type = val
 }
 
 // SetMedia sets the value of Media.
@@ -14944,6 +15248,9 @@ func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErr
 type PassportElementErrorDataField struct {
 	// Error source, must be data.
 	Source string `json:"source"`
+	// The section of the user's Telegram Passport which has the error, one of “personal_details”,
+	// “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”.
+	Type PassportElementErrorDataFieldType `json:"type"`
 	// Name of the data field which has the error.
 	FieldName string `json:"field_name"`
 	// Base64-encoded data hash.
@@ -14955,6 +15262,11 @@ type PassportElementErrorDataField struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorDataField) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorDataField) GetType() PassportElementErrorDataFieldType {
+	return s.Type
 }
 
 // GetFieldName returns the value of FieldName.
@@ -14975,6 +15287,11 @@ func (s *PassportElementErrorDataField) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorDataField) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorDataField) SetType(val PassportElementErrorDataFieldType) {
+	s.Type = val
 }
 
 // SetFieldName sets the value of FieldName.
@@ -15069,6 +15386,10 @@ func (s *PassportElementErrorDataFieldType) UnmarshalText(data []byte) error {
 type PassportElementErrorFile struct {
 	// Error source, must be file.
 	Source string `json:"source"`
+	// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
+	// “bank_statement”, “rental_agreement”, “passport_registration”,
+	// “temporary_registration”.
+	Type PassportElementErrorFileType `json:"type"`
 	// Base64-encoded file hash.
 	FileHash string `json:"file_hash"`
 	// Error message.
@@ -15078,6 +15399,11 @@ type PassportElementErrorFile struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorFile) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorFile) GetType() PassportElementErrorFileType {
+	return s.Type
 }
 
 // GetFileHash returns the value of FileHash.
@@ -15093,6 +15419,11 @@ func (s *PassportElementErrorFile) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorFile) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorFile) SetType(val PassportElementErrorFileType) {
+	s.Type = val
 }
 
 // SetFileHash sets the value of FileHash.
@@ -15176,6 +15507,10 @@ func (s *PassportElementErrorFileType) UnmarshalText(data []byte) error {
 type PassportElementErrorFiles struct {
 	// Error source, must be files.
 	Source string `json:"source"`
+	// The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
+	// “bank_statement”, “rental_agreement”, “passport_registration”,
+	// “temporary_registration”.
+	Type PassportElementErrorFilesType `json:"type"`
 	// List of base64-encoded file hashes.
 	FileHashes []string `json:"file_hashes"`
 	// Error message.
@@ -15185,6 +15520,11 @@ type PassportElementErrorFiles struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorFiles) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorFiles) GetType() PassportElementErrorFilesType {
+	return s.Type
 }
 
 // GetFileHashes returns the value of FileHashes.
@@ -15200,6 +15540,11 @@ func (s *PassportElementErrorFiles) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorFiles) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorFiles) SetType(val PassportElementErrorFilesType) {
+	s.Type = val
 }
 
 // SetFileHashes sets the value of FileHashes.
@@ -15283,6 +15628,9 @@ func (s *PassportElementErrorFilesType) UnmarshalText(data []byte) error {
 type PassportElementErrorFrontSide struct {
 	// Error source, must be front_side.
 	Source string `json:"source"`
+	// The section of the user's Telegram Passport which has the issue, one of “passport”,
+	// “driver_license”, “identity_card”, “internal_passport”.
+	Type PassportElementErrorFrontSideType `json:"type"`
 	// Base64-encoded hash of the file with the front side of the document.
 	FileHash string `json:"file_hash"`
 	// Error message.
@@ -15292,6 +15640,11 @@ type PassportElementErrorFrontSide struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorFrontSide) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorFrontSide) GetType() PassportElementErrorFrontSideType {
+	return s.Type
 }
 
 // GetFileHash returns the value of FileHash.
@@ -15307,6 +15660,11 @@ func (s *PassportElementErrorFrontSide) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorFrontSide) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorFrontSide) SetType(val PassportElementErrorFrontSideType) {
+	s.Type = val
 }
 
 // SetFileHash sets the value of FileHash.
@@ -15382,6 +15740,9 @@ func (s *PassportElementErrorFrontSideType) UnmarshalText(data []byte) error {
 type PassportElementErrorReverseSide struct {
 	// Error source, must be reverse_side.
 	Source string `json:"source"`
+	// The section of the user's Telegram Passport which has the issue, one of “driver_license”,
+	// “identity_card”.
+	Type PassportElementErrorReverseSideType `json:"type"`
 	// Base64-encoded hash of the file with the reverse side of the document.
 	FileHash string `json:"file_hash"`
 	// Error message.
@@ -15391,6 +15752,11 @@ type PassportElementErrorReverseSide struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorReverseSide) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorReverseSide) GetType() PassportElementErrorReverseSideType {
+	return s.Type
 }
 
 // GetFileHash returns the value of FileHash.
@@ -15406,6 +15772,11 @@ func (s *PassportElementErrorReverseSide) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorReverseSide) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorReverseSide) SetType(val PassportElementErrorReverseSideType) {
+	s.Type = val
 }
 
 // SetFileHash sets the value of FileHash.
@@ -15467,6 +15838,9 @@ func (s *PassportElementErrorReverseSideType) UnmarshalText(data []byte) error {
 type PassportElementErrorSelfie struct {
 	// Error source, must be selfie.
 	Source string `json:"source"`
+	// The section of the user's Telegram Passport which has the issue, one of “passport”,
+	// “driver_license”, “identity_card”, “internal_passport”.
+	Type PassportElementErrorSelfieType `json:"type"`
 	// Base64-encoded hash of the file with the selfie.
 	FileHash string `json:"file_hash"`
 	// Error message.
@@ -15476,6 +15850,11 @@ type PassportElementErrorSelfie struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorSelfie) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorSelfie) GetType() PassportElementErrorSelfieType {
+	return s.Type
 }
 
 // GetFileHash returns the value of FileHash.
@@ -15491,6 +15870,11 @@ func (s *PassportElementErrorSelfie) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorSelfie) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorSelfie) SetType(val PassportElementErrorSelfieType) {
+	s.Type = val
 }
 
 // SetFileHash sets the value of FileHash.
@@ -15566,6 +15950,11 @@ func (s *PassportElementErrorSelfieType) UnmarshalText(data []byte) error {
 type PassportElementErrorTranslationFile struct {
 	// Error source, must be translation_file.
 	Source string `json:"source"`
+	// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
+	// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
+	// “bank_statement”, “rental_agreement”, “passport_registration”,
+	// “temporary_registration”.
+	Type PassportElementErrorTranslationFileType `json:"type"`
 	// Base64-encoded file hash.
 	FileHash string `json:"file_hash"`
 	// Error message.
@@ -15575,6 +15964,11 @@ type PassportElementErrorTranslationFile struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorTranslationFile) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorTranslationFile) GetType() PassportElementErrorTranslationFileType {
+	return s.Type
 }
 
 // GetFileHash returns the value of FileHash.
@@ -15590,6 +15984,11 @@ func (s *PassportElementErrorTranslationFile) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorTranslationFile) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorTranslationFile) SetType(val PassportElementErrorTranslationFileType) {
+	s.Type = val
 }
 
 // SetFileHash sets the value of FileHash.
@@ -15702,6 +16101,11 @@ func (s *PassportElementErrorTranslationFileType) UnmarshalText(data []byte) err
 type PassportElementErrorTranslationFiles struct {
 	// Error source, must be translation_files.
 	Source string `json:"source"`
+	// Type of element of the user's Telegram Passport which has the issue, one of “passport”,
+	// “driver_license”, “identity_card”, “internal_passport”, “utility_bill”,
+	// “bank_statement”, “rental_agreement”, “passport_registration”,
+	// “temporary_registration”.
+	Type PassportElementErrorTranslationFilesType `json:"type"`
 	// List of base64-encoded file hashes.
 	FileHashes []string `json:"file_hashes"`
 	// Error message.
@@ -15711,6 +16115,11 @@ type PassportElementErrorTranslationFiles struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorTranslationFiles) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorTranslationFiles) GetType() PassportElementErrorTranslationFilesType {
+	return s.Type
 }
 
 // GetFileHashes returns the value of FileHashes.
@@ -15726,6 +16135,11 @@ func (s *PassportElementErrorTranslationFiles) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorTranslationFiles) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorTranslationFiles) SetType(val PassportElementErrorTranslationFilesType) {
+	s.Type = val
 }
 
 // SetFileHashes sets the value of FileHashes.
@@ -15838,6 +16252,8 @@ func (s *PassportElementErrorTranslationFilesType) UnmarshalText(data []byte) er
 type PassportElementErrorUnspecified struct {
 	// Error source, must be unspecified.
 	Source string `json:"source"`
+	// Type of element of the user's Telegram Passport which has the issue.
+	Type string `json:"type"`
 	// Base64-encoded element hash.
 	ElementHash string `json:"element_hash"`
 	// Error message.
@@ -15847,6 +16263,11 @@ type PassportElementErrorUnspecified struct {
 // GetSource returns the value of Source.
 func (s *PassportElementErrorUnspecified) GetSource() string {
 	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s *PassportElementErrorUnspecified) GetType() string {
+	return s.Type
 }
 
 // GetElementHash returns the value of ElementHash.
@@ -15862,6 +16283,11 @@ func (s *PassportElementErrorUnspecified) GetMessage() string {
 // SetSource sets the value of Source.
 func (s *PassportElementErrorUnspecified) SetSource(val string) {
 	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *PassportElementErrorUnspecified) SetType(val string) {
+	s.Type = val
 }
 
 // SetElementHash sets the value of ElementHash.

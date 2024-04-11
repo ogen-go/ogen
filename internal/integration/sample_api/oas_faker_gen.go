@@ -307,6 +307,11 @@ func (s *InlineDiscriminatorOneOfSum) SetFake() {
 func (s *InlineOneOfBar) SetFake() {
 	{
 		{
+			s.Kind.SetFake()
+		}
+	}
+	{
+		{
 			s.Bar.SetFake()
 		}
 	}
@@ -314,6 +319,11 @@ func (s *InlineOneOfBar) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineOneOfFoo) SetFake() {
+	{
+		{
+			s.Kind.SetFake()
+		}
+	}
 	{
 		{
 			s.Foo.SetFake()
@@ -445,6 +455,11 @@ func (s *Issue943) SetFake() {
 func (s *Issue943Map) SetFake() {
 	{
 		{
+			s.Selector = "string"
+		}
+	}
+	{
+		{
 			s.Pattern0Props.SetFake()
 		}
 	}
@@ -465,6 +480,11 @@ func (s *Issue943MapPattern0) SetFake() {
 func (s *Issue943Variant1) SetFake() {
 	{
 		{
+			s.Selector = "string"
+		}
+	}
+	{
+		{
 			s.Variant1Field = int(0)
 		}
 	}
@@ -472,6 +492,11 @@ func (s *Issue943Variant1) SetFake() {
 
 // SetFake set fake values.
 func (s *Issue943Variant2) SetFake() {
+	{
+		{
+			s.Selector = "string"
+		}
+	}
 	{
 		{
 			s.Variant2Field = true
@@ -732,6 +757,11 @@ func (s *OneOfMappingReference) SetFake() {
 func (s *OneOfMappingReferenceA) SetFake() {
 	{
 		{
+			s.InfoType.SetFake()
+		}
+	}
+	{
+		{
 			s.Description.SetFake()
 		}
 	}
@@ -739,6 +769,11 @@ func (s *OneOfMappingReferenceA) SetFake() {
 
 // SetFake set fake values.
 func (s *OneOfMappingReferenceB) SetFake() {
+	{
+		{
+			s.InfoType.SetFake()
+		}
+	}
 	{
 		{
 			s.Code.SetFake()

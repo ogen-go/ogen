@@ -767,12 +767,23 @@ func NewInlineOneOfBarInlineDiscriminatorOneOfSum(v InlineOneOfBar) InlineDiscri
 
 // Ref: #/components/schemas/InlineOneOfBar
 type InlineOneOfBar struct {
-	Bar OptString `json:"bar"`
+	Kind OptString `json:"kind"`
+	Bar  OptString `json:"bar"`
+}
+
+// GetKind returns the value of Kind.
+func (s *InlineOneOfBar) GetKind() OptString {
+	return s.Kind
 }
 
 // GetBar returns the value of Bar.
 func (s *InlineOneOfBar) GetBar() OptString {
 	return s.Bar
+}
+
+// SetKind sets the value of Kind.
+func (s *InlineOneOfBar) SetKind(val OptString) {
+	s.Kind = val
 }
 
 // SetBar sets the value of Bar.
@@ -782,12 +793,23 @@ func (s *InlineOneOfBar) SetBar(val OptString) {
 
 // Ref: #/components/schemas/InlineOneOfFoo
 type InlineOneOfFoo struct {
-	Foo OptString `json:"foo"`
+	Kind OptString `json:"kind"`
+	Foo  OptString `json:"foo"`
+}
+
+// GetKind returns the value of Kind.
+func (s *InlineOneOfFoo) GetKind() OptString {
+	return s.Kind
 }
 
 // GetFoo returns the value of Foo.
 func (s *InlineOneOfFoo) GetFoo() OptString {
 	return s.Foo
+}
+
+// SetKind sets the value of Kind.
+func (s *InlineOneOfFoo) SetKind(val OptString) {
+	s.Kind = val
 }
 
 // SetFoo sets the value of Foo.
@@ -1243,13 +1265,24 @@ func NewIssue943MapIssue943(v Issue943Map) Issue943 {
 
 // Ref: #/components/schemas/Issue943Map
 type Issue943Map struct {
+	Selector string `json:"selector"`
 	// Pattern: "^variant3_[^\r\n\u2028\u2029]*".
 	Pattern0Props Issue943MapPattern0
+}
+
+// GetSelector returns the value of Selector.
+func (s *Issue943Map) GetSelector() string {
+	return s.Selector
 }
 
 // GetPattern0Props returns the value of Pattern0Props.
 func (s *Issue943Map) GetPattern0Props() Issue943MapPattern0 {
 	return s.Pattern0Props
+}
+
+// SetSelector sets the value of Selector.
+func (s *Issue943Map) SetSelector(val string) {
+	s.Selector = val
 }
 
 // SetPattern0Props sets the value of Pattern0Props.
@@ -1270,12 +1303,23 @@ func (s *Issue943MapPattern0) init() Issue943MapPattern0 {
 
 // Ref: #/components/schemas/Issue943Variant1
 type Issue943Variant1 struct {
-	Variant1Field int `json:"variant1_field"`
+	Selector      string `json:"selector"`
+	Variant1Field int    `json:"variant1_field"`
+}
+
+// GetSelector returns the value of Selector.
+func (s *Issue943Variant1) GetSelector() string {
+	return s.Selector
 }
 
 // GetVariant1Field returns the value of Variant1Field.
 func (s *Issue943Variant1) GetVariant1Field() int {
 	return s.Variant1Field
+}
+
+// SetSelector sets the value of Selector.
+func (s *Issue943Variant1) SetSelector(val string) {
+	s.Selector = val
 }
 
 // SetVariant1Field sets the value of Variant1Field.
@@ -1285,12 +1329,23 @@ func (s *Issue943Variant1) SetVariant1Field(val int) {
 
 // Ref: #/components/schemas/Issue943Variant2
 type Issue943Variant2 struct {
-	Variant2Field bool `json:"variant2_field"`
+	Selector      string `json:"selector"`
+	Variant2Field bool   `json:"variant2_field"`
+}
+
+// GetSelector returns the value of Selector.
+func (s *Issue943Variant2) GetSelector() string {
+	return s.Selector
 }
 
 // GetVariant2Field returns the value of Variant2Field.
 func (s *Issue943Variant2) GetVariant2Field() bool {
 	return s.Variant2Field
+}
+
+// SetSelector sets the value of Selector.
+func (s *Issue943Variant2) SetSelector(val string) {
+	s.Selector = val
 }
 
 // SetVariant2Field sets the value of Variant2Field.
@@ -2292,12 +2347,23 @@ func NewOneOfMappingReferenceBOneOfMappingReference(v OneOfMappingReferenceB) On
 
 // Ref: #/components/schemas/OneOfMappingReferenceA
 type OneOfMappingReferenceA struct {
+	InfoType    OptString `json:"infoType"`
 	Description OptString `json:"description"`
+}
+
+// GetInfoType returns the value of InfoType.
+func (s *OneOfMappingReferenceA) GetInfoType() OptString {
+	return s.InfoType
 }
 
 // GetDescription returns the value of Description.
 func (s *OneOfMappingReferenceA) GetDescription() OptString {
 	return s.Description
+}
+
+// SetInfoType sets the value of InfoType.
+func (s *OneOfMappingReferenceA) SetInfoType(val OptString) {
+	s.InfoType = val
 }
 
 // SetDescription sets the value of Description.
@@ -2307,9 +2373,15 @@ func (s *OneOfMappingReferenceA) SetDescription(val OptString) {
 
 // Ref: #/components/schemas/OneOfMappingReferenceB
 type OneOfMappingReferenceB struct {
-	Code OptInt32                    `json:"code"`
-	Data *OneOfMappingReferenceBData `json:"data"`
-	Info OptString                   `json:"info"`
+	InfoType OptString                   `json:"infoType"`
+	Code     OptInt32                    `json:"code"`
+	Data     *OneOfMappingReferenceBData `json:"data"`
+	Info     OptString                   `json:"info"`
+}
+
+// GetInfoType returns the value of InfoType.
+func (s *OneOfMappingReferenceB) GetInfoType() OptString {
+	return s.InfoType
 }
 
 // GetCode returns the value of Code.
@@ -2325,6 +2397,11 @@ func (s *OneOfMappingReferenceB) GetData() *OneOfMappingReferenceBData {
 // GetInfo returns the value of Info.
 func (s *OneOfMappingReferenceB) GetInfo() OptString {
 	return s.Info
+}
+
+// SetInfoType sets the value of InfoType.
+func (s *OneOfMappingReferenceB) SetInfoType(val OptString) {
+	s.InfoType = val
 }
 
 // SetCode sets the value of Code.

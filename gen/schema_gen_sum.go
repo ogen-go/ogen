@@ -13,7 +13,6 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
-	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/location"
 )
@@ -281,16 +280,6 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 						Key:  k,
 						Type: s,
 					})
-
-					// Filter discriminator field in-place.
-					s.Fields = xslices.Filter(s.Fields, func(f *ir.Field) bool {
-						return f.Tag.JSON != propName
-					})
-
-					if s.AllowedProps == nil {
-						s.AllowedProps = map[string]struct{}{}
-					}
-					s.AllowedProps[propName] = struct{}{}
 				}
 			}
 			if !found {

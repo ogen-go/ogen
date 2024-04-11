@@ -1607,6 +1607,18 @@ func TestPassportElementErrorDataField_EncodeDecode(t *testing.T) {
 	var typ2 PassportElementErrorDataField
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestPassportElementErrorDataFieldType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorDataFieldType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorDataFieldType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestPassportElementErrorFile_EncodeDecode(t *testing.T) {
 	var typ PassportElementErrorFile
 	typ.SetFake()
@@ -1617,6 +1629,18 @@ func TestPassportElementErrorFile_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PassportElementErrorFile
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPassportElementErrorFileType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorFileType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorFileType
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestPassportElementErrorFiles_EncodeDecode(t *testing.T) {
@@ -1631,6 +1655,18 @@ func TestPassportElementErrorFiles_EncodeDecode(t *testing.T) {
 	var typ2 PassportElementErrorFiles
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestPassportElementErrorFilesType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorFilesType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorFilesType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestPassportElementErrorFrontSide_EncodeDecode(t *testing.T) {
 	var typ PassportElementErrorFrontSide
 	typ.SetFake()
@@ -1641,6 +1677,18 @@ func TestPassportElementErrorFrontSide_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PassportElementErrorFrontSide
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPassportElementErrorFrontSideType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorFrontSideType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorFrontSideType
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestPassportElementErrorReverseSide_EncodeDecode(t *testing.T) {
@@ -1655,6 +1703,18 @@ func TestPassportElementErrorReverseSide_EncodeDecode(t *testing.T) {
 	var typ2 PassportElementErrorReverseSide
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestPassportElementErrorReverseSideType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorReverseSideType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorReverseSideType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestPassportElementErrorSelfie_EncodeDecode(t *testing.T) {
 	var typ PassportElementErrorSelfie
 	typ.SetFake()
@@ -1665,6 +1725,18 @@ func TestPassportElementErrorSelfie_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PassportElementErrorSelfie
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPassportElementErrorSelfieType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorSelfieType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorSelfieType
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestPassportElementErrorTranslationFile_EncodeDecode(t *testing.T) {
@@ -1679,6 +1751,18 @@ func TestPassportElementErrorTranslationFile_EncodeDecode(t *testing.T) {
 	var typ2 PassportElementErrorTranslationFile
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestPassportElementErrorTranslationFileType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorTranslationFileType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorTranslationFileType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestPassportElementErrorTranslationFiles_EncodeDecode(t *testing.T) {
 	var typ PassportElementErrorTranslationFiles
 	typ.SetFake()
@@ -1689,6 +1773,18 @@ func TestPassportElementErrorTranslationFiles_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PassportElementErrorTranslationFiles
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPassportElementErrorTranslationFilesType_EncodeDecode(t *testing.T) {
+	var typ PassportElementErrorTranslationFilesType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PassportElementErrorTranslationFilesType
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestPassportElementErrorUnspecified_EncodeDecode(t *testing.T) {
