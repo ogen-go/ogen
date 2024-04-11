@@ -1641,6 +1641,12 @@ func (s *InlineOneOfBar) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineOneOfBar) encodeFields(e *jx.Encoder) {
 	{
+		if s.Kind.Set {
+			e.FieldStart("kind")
+			s.Kind.Encode(e)
+		}
+	}
+	{
 		if s.Bar.Set {
 			e.FieldStart("bar")
 			s.Bar.Encode(e)
@@ -1648,8 +1654,9 @@ func (s *InlineOneOfBar) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineOneOfBar = [1]string{
-	0: "bar",
+var jsonFieldsNameOfInlineOneOfBar = [2]string{
+	0: "kind",
+	1: "bar",
 }
 
 // Decode decodes InlineOneOfBar from json.
@@ -1660,6 +1667,16 @@ func (s *InlineOneOfBar) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "kind":
+			if err := func() error {
+				s.Kind.Reset()
+				if err := s.Kind.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"kind\"")
+			}
 		case "bar":
 			if err := func() error {
 				s.Bar.Reset()
@@ -1670,8 +1687,6 @@ func (s *InlineOneOfBar) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"bar\"")
 			}
-		case "kind":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -1706,6 +1721,12 @@ func (s *InlineOneOfFoo) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineOneOfFoo) encodeFields(e *jx.Encoder) {
 	{
+		if s.Kind.Set {
+			e.FieldStart("kind")
+			s.Kind.Encode(e)
+		}
+	}
+	{
 		if s.Foo.Set {
 			e.FieldStart("foo")
 			s.Foo.Encode(e)
@@ -1713,8 +1734,9 @@ func (s *InlineOneOfFoo) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineOneOfFoo = [1]string{
-	0: "foo",
+var jsonFieldsNameOfInlineOneOfFoo = [2]string{
+	0: "kind",
+	1: "foo",
 }
 
 // Decode decodes InlineOneOfFoo from json.
@@ -1725,6 +1747,16 @@ func (s *InlineOneOfFoo) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "kind":
+			if err := func() error {
+				s.Kind.Reset()
+				if err := s.Kind.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"kind\"")
+			}
 		case "foo":
 			if err := func() error {
 				s.Foo.Reset()
@@ -1735,8 +1767,6 @@ func (s *InlineOneOfFoo) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"foo\"")
 			}
-		case "kind":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2697,6 +2727,10 @@ func (s *Issue943Map) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *Issue943Map) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("selector")
+		e.Str(s.Selector)
+	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -2704,19 +2738,32 @@ func (s *Issue943Map) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIssue943Map = [0]string{}
+var jsonFieldsNameOfIssue943Map = [1]string{
+	0: "selector",
+}
 
 // Decode decodes Issue943Map from json.
 func (s *Issue943Map) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Issue943Map to nil")
 	}
+	var requiredBitSet [1]uint8
 	s.Pattern0Props = map[string]string{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "selector":
-			return d.Skip()
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Selector = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"selector\"")
+			}
 		default:
 			var handled bool
 			switch match, err := regexMap["^variant3_[^\r\n\u2028\u2029]*"].Match(k); {
@@ -2742,8 +2789,41 @@ func (s *Issue943Map) Decode(d *jx.Decoder) error {
 			}
 			return errors.Errorf("unexpected field %q", k)
 		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode Issue943Map")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfIssue943Map) {
+					name = jsonFieldsNameOfIssue943Map[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -2835,13 +2915,18 @@ func (s *Issue943Variant1) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Issue943Variant1) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("selector")
+		e.Str(s.Selector)
+	}
+	{
 		e.FieldStart("variant1_field")
 		e.Int(s.Variant1Field)
 	}
 }
 
-var jsonFieldsNameOfIssue943Variant1 = [1]string{
-	0: "variant1_field",
+var jsonFieldsNameOfIssue943Variant1 = [2]string{
+	0: "selector",
+	1: "variant1_field",
 }
 
 // Decode decodes Issue943Variant1 from json.
@@ -2853,8 +2938,20 @@ func (s *Issue943Variant1) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "variant1_field":
+		case "selector":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Selector = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"selector\"")
+			}
+		case "variant1_field":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Int()
 				s.Variant1Field = int(v)
@@ -2865,8 +2962,6 @@ func (s *Issue943Variant1) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"variant1_field\"")
 			}
-		case "selector":
-			return d.Skip()
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
@@ -2877,7 +2972,7 @@ func (s *Issue943Variant1) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -2933,13 +3028,18 @@ func (s *Issue943Variant2) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *Issue943Variant2) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("selector")
+		e.Str(s.Selector)
+	}
+	{
 		e.FieldStart("variant2_field")
 		e.Bool(s.Variant2Field)
 	}
 }
 
-var jsonFieldsNameOfIssue943Variant2 = [1]string{
-	0: "variant2_field",
+var jsonFieldsNameOfIssue943Variant2 = [2]string{
+	0: "selector",
+	1: "variant2_field",
 }
 
 // Decode decodes Issue943Variant2 from json.
@@ -2951,8 +3051,20 @@ func (s *Issue943Variant2) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "variant2_field":
+		case "selector":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Selector = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"selector\"")
+			}
+		case "variant2_field":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Bool()
 				s.Variant2Field = bool(v)
@@ -2963,8 +3075,6 @@ func (s *Issue943Variant2) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"variant2_field\"")
 			}
-		case "selector":
-			return d.Skip()
 		default:
 			return errors.Errorf("unexpected field %q", k)
 		}
@@ -2975,7 +3085,7 @@ func (s *Issue943Variant2) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -4777,6 +4887,12 @@ func (s *OneOfMappingReferenceA) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OneOfMappingReferenceA) encodeFields(e *jx.Encoder) {
 	{
+		if s.InfoType.Set {
+			e.FieldStart("infoType")
+			s.InfoType.Encode(e)
+		}
+	}
+	{
 		if s.Description.Set {
 			e.FieldStart("description")
 			s.Description.Encode(e)
@@ -4784,8 +4900,9 @@ func (s *OneOfMappingReferenceA) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfOneOfMappingReferenceA = [1]string{
-	0: "description",
+var jsonFieldsNameOfOneOfMappingReferenceA = [2]string{
+	0: "infoType",
+	1: "description",
 }
 
 // Decode decodes OneOfMappingReferenceA from json.
@@ -4796,6 +4913,16 @@ func (s *OneOfMappingReferenceA) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "infoType":
+			if err := func() error {
+				s.InfoType.Reset()
+				if err := s.InfoType.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"infoType\"")
+			}
 		case "description":
 			if err := func() error {
 				s.Description.Reset()
@@ -4806,8 +4933,6 @@ func (s *OneOfMappingReferenceA) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"description\"")
 			}
-		case "infoType":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -4842,6 +4967,12 @@ func (s *OneOfMappingReferenceB) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *OneOfMappingReferenceB) encodeFields(e *jx.Encoder) {
 	{
+		if s.InfoType.Set {
+			e.FieldStart("infoType")
+			s.InfoType.Encode(e)
+		}
+	}
+	{
 		if s.Code.Set {
 			e.FieldStart("code")
 			s.Code.Encode(e)
@@ -4861,10 +4992,11 @@ func (s *OneOfMappingReferenceB) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfOneOfMappingReferenceB = [3]string{
-	0: "code",
-	1: "data",
-	2: "info",
+var jsonFieldsNameOfOneOfMappingReferenceB = [4]string{
+	0: "infoType",
+	1: "code",
+	2: "data",
+	3: "info",
 }
 
 // Decode decodes OneOfMappingReferenceB from json.
@@ -4875,6 +5007,16 @@ func (s *OneOfMappingReferenceB) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
+		case "infoType":
+			if err := func() error {
+				s.InfoType.Reset()
+				if err := s.InfoType.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"infoType\"")
+			}
 		case "code":
 			if err := func() error {
 				s.Code.Reset()
@@ -4907,8 +5049,6 @@ func (s *OneOfMappingReferenceB) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"info\"")
 			}
-		case "infoType":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}

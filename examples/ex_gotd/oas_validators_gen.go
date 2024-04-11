@@ -6353,22 +6353,40 @@ func (s *PassportData) Validate() error {
 func (s PassportElementError) Validate() error {
 	switch s.Type {
 	case PassportElementErrorDataFieldPassportElementError:
-		return nil // no validation needed
+		if err := s.PassportElementErrorDataField.Validate(); err != nil {
+			return err
+		}
+		return nil
 	case PassportElementErrorFrontSidePassportElementError:
-		return nil // no validation needed
+		if err := s.PassportElementErrorFrontSide.Validate(); err != nil {
+			return err
+		}
+		return nil
 	case PassportElementErrorReverseSidePassportElementError:
-		return nil // no validation needed
+		if err := s.PassportElementErrorReverseSide.Validate(); err != nil {
+			return err
+		}
+		return nil
 	case PassportElementErrorSelfiePassportElementError:
-		return nil // no validation needed
+		if err := s.PassportElementErrorSelfie.Validate(); err != nil {
+			return err
+		}
+		return nil
 	case PassportElementErrorFilePassportElementError:
-		return nil // no validation needed
+		if err := s.PassportElementErrorFile.Validate(); err != nil {
+			return err
+		}
+		return nil
 	case PassportElementErrorFilesPassportElementError:
 		if err := s.PassportElementErrorFiles.Validate(); err != nil {
 			return err
 		}
 		return nil
 	case PassportElementErrorTranslationFilePassportElementError:
-		return nil // no validation needed
+		if err := s.PassportElementErrorTranslationFile.Validate(); err != nil {
+			return err
+		}
+		return nil
 	case PassportElementErrorTranslationFilesPassportElementError:
 		if err := s.PassportElementErrorTranslationFiles.Validate(); err != nil {
 			return err
@@ -6379,6 +6397,29 @@ func (s PassportElementError) Validate() error {
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
+}
+
+func (s *PassportElementErrorDataField) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 
 func (s PassportElementErrorDataFieldType) Validate() error {
@@ -6398,6 +6439,29 @@ func (s PassportElementErrorDataFieldType) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+
+func (s *PassportElementErrorFile) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 
 func (s PassportElementErrorFileType) Validate() error {
@@ -6423,6 +6487,17 @@ func (s *PassportElementErrorFiles) Validate() error {
 	}
 
 	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
 	if err := func() error {
 		if s.FileHashes == nil {
 			return errors.New("nil is invalid value")
@@ -6457,6 +6532,29 @@ func (s PassportElementErrorFilesType) Validate() error {
 	}
 }
 
+func (s *PassportElementErrorFrontSide) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+
 func (s PassportElementErrorFrontSideType) Validate() error {
 	switch s {
 	case "passport":
@@ -6472,6 +6570,29 @@ func (s PassportElementErrorFrontSideType) Validate() error {
 	}
 }
 
+func (s *PassportElementErrorReverseSide) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+
 func (s PassportElementErrorReverseSideType) Validate() error {
 	switch s {
 	case "driver_license":
@@ -6481,6 +6602,29 @@ func (s PassportElementErrorReverseSideType) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+
+func (s *PassportElementErrorSelfie) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 
 func (s PassportElementErrorSelfieType) Validate() error {
@@ -6496,6 +6640,29 @@ func (s PassportElementErrorSelfieType) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+
+func (s *PassportElementErrorTranslationFile) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 
 func (s PassportElementErrorTranslationFileType) Validate() error {
@@ -6529,6 +6696,17 @@ func (s *PassportElementErrorTranslationFiles) Validate() error {
 	}
 
 	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Type.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "type",
+			Error: err,
+		})
+	}
 	if err := func() error {
 		if s.FileHashes == nil {
 			return errors.New("nil is invalid value")

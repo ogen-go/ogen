@@ -2081,25 +2081,76 @@ func (s *BotCommandScopeAllChatAdministrators) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *BotCommandScopeAllChatAdministrators) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 }
 
-var jsonFieldsNameOfBotCommandScopeAllChatAdministrators = [0]string{}
+var jsonFieldsNameOfBotCommandScopeAllChatAdministrators = [1]string{
+	0: "type",
+}
 
 // Decode decodes BotCommandScopeAllChatAdministrators from json.
 func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode BotCommandScopeAllChatAdministrators to nil")
 	}
+	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
-			return d.Skip()
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
 		default:
 			return d.Skip()
 		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeAllChatAdministrators")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfBotCommandScopeAllChatAdministrators) {
+					name = jsonFieldsNameOfBotCommandScopeAllChatAdministrators[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -2127,25 +2178,76 @@ func (s *BotCommandScopeAllGroupChats) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *BotCommandScopeAllGroupChats) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 }
 
-var jsonFieldsNameOfBotCommandScopeAllGroupChats = [0]string{}
+var jsonFieldsNameOfBotCommandScopeAllGroupChats = [1]string{
+	0: "type",
+}
 
 // Decode decodes BotCommandScopeAllGroupChats from json.
 func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode BotCommandScopeAllGroupChats to nil")
 	}
+	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
-			return d.Skip()
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
 		default:
 			return d.Skip()
 		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeAllGroupChats")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfBotCommandScopeAllGroupChats) {
+					name = jsonFieldsNameOfBotCommandScopeAllGroupChats[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -2173,25 +2275,76 @@ func (s *BotCommandScopeAllPrivateChats) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *BotCommandScopeAllPrivateChats) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 }
 
-var jsonFieldsNameOfBotCommandScopeAllPrivateChats = [0]string{}
+var jsonFieldsNameOfBotCommandScopeAllPrivateChats = [1]string{
+	0: "type",
+}
 
 // Decode decodes BotCommandScopeAllPrivateChats from json.
 func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode BotCommandScopeAllPrivateChats to nil")
 	}
+	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
-			return d.Skip()
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
 		default:
 			return d.Skip()
 		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeAllPrivateChats")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfBotCommandScopeAllPrivateChats) {
+					name = jsonFieldsNameOfBotCommandScopeAllPrivateChats[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -2220,13 +2373,18 @@ func (s *BotCommandScopeChat) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BotCommandScopeChat) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 }
 
-var jsonFieldsNameOfBotCommandScopeChat = [1]string{
-	0: "chat_id",
+var jsonFieldsNameOfBotCommandScopeChat = [2]string{
+	0: "type",
+	1: "chat_id",
 }
 
 // Decode decodes BotCommandScopeChat from json.
@@ -2235,11 +2393,24 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode BotCommandScopeChat to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "chat_id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "chat_id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				if err := s.ChatID.Decode(d); err != nil {
 					return err
@@ -2248,8 +2419,6 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"chat_id\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2260,7 +2429,7 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -2316,13 +2485,18 @@ func (s *BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BotCommandScopeChatAdministrators) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
 }
 
-var jsonFieldsNameOfBotCommandScopeChatAdministrators = [1]string{
-	0: "chat_id",
+var jsonFieldsNameOfBotCommandScopeChatAdministrators = [2]string{
+	0: "type",
+	1: "chat_id",
 }
 
 // Decode decodes BotCommandScopeChatAdministrators from json.
@@ -2331,11 +2505,24 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode BotCommandScopeChatAdministrators to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "chat_id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "chat_id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				if err := s.ChatID.Decode(d); err != nil {
 					return err
@@ -2344,8 +2531,6 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"chat_id\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2356,7 +2541,7 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -2412,6 +2597,10 @@ func (s *BotCommandScopeChatMember) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *BotCommandScopeChatMember) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
@@ -2421,9 +2610,10 @@ func (s *BotCommandScopeChatMember) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfBotCommandScopeChatMember = [2]string{
-	0: "chat_id",
-	1: "user_id",
+var jsonFieldsNameOfBotCommandScopeChatMember = [3]string{
+	0: "type",
+	1: "chat_id",
+	2: "user_id",
 }
 
 // Decode decodes BotCommandScopeChatMember from json.
@@ -2432,11 +2622,24 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode BotCommandScopeChatMember to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "chat_id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "chat_id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				if err := s.ChatID.Decode(d); err != nil {
 					return err
@@ -2446,7 +2649,7 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"chat_id\"")
 			}
 		case "user_id":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int64()
 				s.UserID = int64(v)
@@ -2457,8 +2660,6 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"user_id\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -2469,7 +2670,7 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000011,
+		0b00000111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -2524,25 +2725,76 @@ func (s *BotCommandScopeDefault) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *BotCommandScopeDefault) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 }
 
-var jsonFieldsNameOfBotCommandScopeDefault = [0]string{}
+var jsonFieldsNameOfBotCommandScopeDefault = [1]string{
+	0: "type",
+}
 
 // Decode decodes BotCommandScopeDefault from json.
 func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode BotCommandScopeDefault to nil")
 	}
+	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
-			return d.Skip()
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
 		default:
 			return d.Skip()
 		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode BotCommandScopeDefault")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfBotCommandScopeDefault) {
+					name = jsonFieldsNameOfBotCommandScopeDefault[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -12371,6 +12623,10 @@ func (s *InlineQueryResultArticle) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultArticle) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -12426,17 +12682,18 @@ func (s *InlineQueryResultArticle) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultArticle = [10]string{
-	0: "id",
-	1: "title",
-	2: "input_message_content",
-	3: "reply_markup",
-	4: "url",
-	5: "hide_url",
-	6: "description",
-	7: "thumb_url",
-	8: "thumb_width",
-	9: "thumb_height",
+var jsonFieldsNameOfInlineQueryResultArticle = [11]string{
+	0:  "type",
+	1:  "id",
+	2:  "title",
+	3:  "input_message_content",
+	4:  "reply_markup",
+	5:  "url",
+	6:  "hide_url",
+	7:  "description",
+	8:  "thumb_url",
+	9:  "thumb_width",
+	10: "thumb_height",
 }
 
 // Decode decodes InlineQueryResultArticle from json.
@@ -12445,11 +12702,24 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultArticle to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -12461,7 +12731,7 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.Title = string(v)
@@ -12473,7 +12743,7 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"title\"")
 			}
 		case "input_message_content":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				if err := s.InputMessageContent.Decode(d); err != nil {
 					return err
@@ -12552,8 +12822,6 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -12564,7 +12832,7 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00000111,
+		0b00001111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -12620,6 +12888,10 @@ func (s *InlineQueryResultAudio) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultAudio) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -12680,17 +12952,18 @@ func (s *InlineQueryResultAudio) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultAudio = [10]string{
-	0: "id",
-	1: "audio_url",
-	2: "title",
-	3: "caption",
-	4: "parse_mode",
-	5: "caption_entities",
-	6: "performer",
-	7: "audio_duration",
-	8: "reply_markup",
-	9: "input_message_content",
+var jsonFieldsNameOfInlineQueryResultAudio = [11]string{
+	0:  "type",
+	1:  "id",
+	2:  "audio_url",
+	3:  "title",
+	4:  "caption",
+	5:  "parse_mode",
+	6:  "caption_entities",
+	7:  "performer",
+	8:  "audio_duration",
+	9:  "reply_markup",
+	10: "input_message_content",
 }
 
 // Decode decodes InlineQueryResultAudio from json.
@@ -12699,11 +12972,24 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultAudio to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -12715,7 +13001,7 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "audio_url":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.AudioURL = string(v)
@@ -12727,7 +13013,7 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"audio_url\"")
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Title = string(v)
@@ -12815,8 +13101,6 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -12827,7 +13111,7 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00000111,
+		0b00001111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -14125,6 +14409,10 @@ func (s *InlineQueryResultCachedSticker) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultCachedSticker) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -14146,11 +14434,12 @@ func (s *InlineQueryResultCachedSticker) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultCachedSticker = [4]string{
-	0: "id",
-	1: "sticker_file_id",
-	2: "reply_markup",
-	3: "input_message_content",
+var jsonFieldsNameOfInlineQueryResultCachedSticker = [5]string{
+	0: "type",
+	1: "id",
+	2: "sticker_file_id",
+	3: "reply_markup",
+	4: "input_message_content",
 }
 
 // Decode decodes InlineQueryResultCachedSticker from json.
@@ -14159,11 +14448,24 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultCachedSticker to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -14175,7 +14477,7 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "sticker_file_id":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.StickerFileID = string(v)
@@ -14206,8 +14508,6 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -14218,7 +14518,7 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000011,
+		0b00000111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -14781,6 +15081,10 @@ func (s *InlineQueryResultContact) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultContact) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -14836,17 +15140,18 @@ func (s *InlineQueryResultContact) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultContact = [10]string{
-	0: "id",
-	1: "phone_number",
-	2: "first_name",
-	3: "last_name",
-	4: "vcard",
-	5: "reply_markup",
-	6: "input_message_content",
-	7: "thumb_url",
-	8: "thumb_width",
-	9: "thumb_height",
+var jsonFieldsNameOfInlineQueryResultContact = [11]string{
+	0:  "type",
+	1:  "id",
+	2:  "phone_number",
+	3:  "first_name",
+	4:  "last_name",
+	5:  "vcard",
+	6:  "reply_markup",
+	7:  "input_message_content",
+	8:  "thumb_url",
+	9:  "thumb_width",
+	10: "thumb_height",
 }
 
 // Decode decodes InlineQueryResultContact from json.
@@ -14855,11 +15160,24 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultContact to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -14871,7 +15189,7 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "phone_number":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.PhoneNumber = string(v)
@@ -14883,7 +15201,7 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"phone_number\"")
 			}
 		case "first_name":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.FirstName = string(v)
@@ -14964,8 +15282,6 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -14976,7 +15292,7 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00000111,
+		0b00001111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -15032,6 +15348,10 @@ func (s *InlineQueryResultDocument) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultDocument) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -15108,20 +15428,21 @@ func (s *InlineQueryResultDocument) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultDocument = [13]string{
-	0:  "id",
-	1:  "title",
-	2:  "caption",
-	3:  "parse_mode",
-	4:  "caption_entities",
-	5:  "document_url",
-	6:  "mime_type",
-	7:  "description",
-	8:  "reply_markup",
-	9:  "input_message_content",
-	10: "thumb_url",
-	11: "thumb_width",
-	12: "thumb_height",
+var jsonFieldsNameOfInlineQueryResultDocument = [14]string{
+	0:  "type",
+	1:  "id",
+	2:  "title",
+	3:  "caption",
+	4:  "parse_mode",
+	5:  "caption_entities",
+	6:  "document_url",
+	7:  "mime_type",
+	8:  "description",
+	9:  "reply_markup",
+	10: "input_message_content",
+	11: "thumb_url",
+	12: "thumb_width",
+	13: "thumb_height",
 }
 
 // Decode decodes InlineQueryResultDocument from json.
@@ -15130,11 +15451,24 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultDocument to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -15146,7 +15480,7 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.Title = string(v)
@@ -15195,7 +15529,7 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"caption_entities\"")
 			}
 		case "document_url":
-			requiredBitSet[0] |= 1 << 5
+			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
 				v, err := d.Str()
 				s.DocumentURL = string(v)
@@ -15207,7 +15541,7 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"document_url\"")
 			}
 		case "mime_type":
-			requiredBitSet[0] |= 1 << 6
+			requiredBitSet[0] |= 1 << 7
 			if err := func() error {
 				v, err := d.Str()
 				s.MimeType = string(v)
@@ -15278,8 +15612,6 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -15290,7 +15622,7 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b01100011,
+		0b11000111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -15347,6 +15679,10 @@ func (s *InlineQueryResultGame) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultGame) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -15362,10 +15698,11 @@ func (s *InlineQueryResultGame) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultGame = [3]string{
-	0: "id",
-	1: "game_short_name",
-	2: "reply_markup",
+var jsonFieldsNameOfInlineQueryResultGame = [4]string{
+	0: "type",
+	1: "id",
+	2: "game_short_name",
+	3: "reply_markup",
 }
 
 // Decode decodes InlineQueryResultGame from json.
@@ -15374,11 +15711,24 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultGame to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -15390,7 +15740,7 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "game_short_name":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.GameShortName = string(v)
@@ -15411,8 +15761,6 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"reply_markup\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -15423,7 +15771,7 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000011,
+		0b00000111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -15478,6 +15826,10 @@ func (s *InlineQueryResultGif) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultGif) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -15556,20 +15908,21 @@ func (s *InlineQueryResultGif) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultGif = [13]string{
-	0:  "id",
-	1:  "gif_url",
-	2:  "gif_width",
-	3:  "gif_height",
-	4:  "gif_duration",
-	5:  "thumb_url",
-	6:  "thumb_mime_type",
-	7:  "title",
-	8:  "caption",
-	9:  "parse_mode",
-	10: "caption_entities",
-	11: "reply_markup",
-	12: "input_message_content",
+var jsonFieldsNameOfInlineQueryResultGif = [14]string{
+	0:  "type",
+	1:  "id",
+	2:  "gif_url",
+	3:  "gif_width",
+	4:  "gif_height",
+	5:  "gif_duration",
+	6:  "thumb_url",
+	7:  "thumb_mime_type",
+	8:  "title",
+	9:  "caption",
+	10: "parse_mode",
+	11: "caption_entities",
+	12: "reply_markup",
+	13: "input_message_content",
 }
 
 // Decode decodes InlineQueryResultGif from json.
@@ -15578,11 +15931,24 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultGif to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -15594,7 +15960,7 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "gif_url":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.GIFURL = string(v)
@@ -15636,7 +16002,7 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"gif_duration\"")
 			}
 		case "thumb_url":
-			requiredBitSet[0] |= 1 << 5
+			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
 				v, err := d.Str()
 				s.ThumbURL = string(v)
@@ -15724,8 +16090,6 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -15736,7 +16100,7 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00100011,
+		0b01000111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -15792,6 +16156,10 @@ func (s *InlineQueryResultLocation) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultLocation) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -15864,20 +16232,21 @@ func (s *InlineQueryResultLocation) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultLocation = [13]string{
-	0:  "id",
-	1:  "latitude",
-	2:  "longitude",
-	3:  "title",
-	4:  "horizontal_accuracy",
-	5:  "live_period",
-	6:  "heading",
-	7:  "proximity_alert_radius",
-	8:  "reply_markup",
-	9:  "input_message_content",
-	10: "thumb_url",
-	11: "thumb_width",
-	12: "thumb_height",
+var jsonFieldsNameOfInlineQueryResultLocation = [14]string{
+	0:  "type",
+	1:  "id",
+	2:  "latitude",
+	3:  "longitude",
+	4:  "title",
+	5:  "horizontal_accuracy",
+	6:  "live_period",
+	7:  "heading",
+	8:  "proximity_alert_radius",
+	9:  "reply_markup",
+	10: "input_message_content",
+	11: "thumb_url",
+	12: "thumb_width",
+	13: "thumb_height",
 }
 
 // Decode decodes InlineQueryResultLocation from json.
@@ -15886,11 +16255,24 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultLocation to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -15902,7 +16284,7 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "latitude":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Float64()
 				s.Latitude = float64(v)
@@ -15914,7 +16296,7 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"latitude\"")
 			}
 		case "longitude":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Float64()
 				s.Longitude = float64(v)
@@ -15926,7 +16308,7 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"longitude\"")
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 3
+			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
 				v, err := d.Str()
 				s.Title = string(v)
@@ -16027,8 +16409,6 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -16039,7 +16419,7 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00001111,
+		0b00011111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -16095,6 +16475,10 @@ func (s *InlineQueryResultMpeg4Gif) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultMpeg4Gif) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -16173,20 +16557,21 @@ func (s *InlineQueryResultMpeg4Gif) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultMpeg4Gif = [13]string{
-	0:  "id",
-	1:  "mpeg4_url",
-	2:  "mpeg4_width",
-	3:  "mpeg4_height",
-	4:  "mpeg4_duration",
-	5:  "thumb_url",
-	6:  "thumb_mime_type",
-	7:  "title",
-	8:  "caption",
-	9:  "parse_mode",
-	10: "caption_entities",
-	11: "reply_markup",
-	12: "input_message_content",
+var jsonFieldsNameOfInlineQueryResultMpeg4Gif = [14]string{
+	0:  "type",
+	1:  "id",
+	2:  "mpeg4_url",
+	3:  "mpeg4_width",
+	4:  "mpeg4_height",
+	5:  "mpeg4_duration",
+	6:  "thumb_url",
+	7:  "thumb_mime_type",
+	8:  "title",
+	9:  "caption",
+	10: "parse_mode",
+	11: "caption_entities",
+	12: "reply_markup",
+	13: "input_message_content",
 }
 
 // Decode decodes InlineQueryResultMpeg4Gif from json.
@@ -16195,11 +16580,24 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultMpeg4Gif to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -16211,7 +16609,7 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "mpeg4_url":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.Mpeg4URL = string(v)
@@ -16253,7 +16651,7 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mpeg4_duration\"")
 			}
 		case "thumb_url":
-			requiredBitSet[0] |= 1 << 5
+			requiredBitSet[0] |= 1 << 6
 			if err := func() error {
 				v, err := d.Str()
 				s.ThumbURL = string(v)
@@ -16341,8 +16739,6 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -16353,7 +16749,7 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00100011,
+		0b01000111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -16409,6 +16805,10 @@ func (s *InlineQueryResultPhoto) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultPhoto) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -16481,19 +16881,20 @@ func (s *InlineQueryResultPhoto) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultPhoto = [12]string{
-	0:  "id",
-	1:  "photo_url",
-	2:  "thumb_url",
-	3:  "photo_width",
-	4:  "photo_height",
-	5:  "title",
-	6:  "description",
-	7:  "caption",
-	8:  "parse_mode",
-	9:  "caption_entities",
-	10: "reply_markup",
-	11: "input_message_content",
+var jsonFieldsNameOfInlineQueryResultPhoto = [13]string{
+	0:  "type",
+	1:  "id",
+	2:  "photo_url",
+	3:  "thumb_url",
+	4:  "photo_width",
+	5:  "photo_height",
+	6:  "title",
+	7:  "description",
+	8:  "caption",
+	9:  "parse_mode",
+	10: "caption_entities",
+	11: "reply_markup",
+	12: "input_message_content",
 }
 
 // Decode decodes InlineQueryResultPhoto from json.
@@ -16502,11 +16903,24 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultPhoto to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -16518,7 +16932,7 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "photo_url":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.PhotoURL = string(v)
@@ -16530,7 +16944,7 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"photo_url\"")
 			}
 		case "thumb_url":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.ThumbURL = string(v)
@@ -16638,8 +17052,6 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -16650,7 +17062,7 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00000111,
+		0b00001111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -16706,6 +17118,10 @@ func (s *InlineQueryResultVenue) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultVenue) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -16782,21 +17198,22 @@ func (s *InlineQueryResultVenue) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultVenue = [14]string{
-	0:  "id",
-	1:  "latitude",
-	2:  "longitude",
-	3:  "title",
-	4:  "address",
-	5:  "foursquare_id",
-	6:  "foursquare_type",
-	7:  "google_place_id",
-	8:  "google_place_type",
-	9:  "reply_markup",
-	10: "input_message_content",
-	11: "thumb_url",
-	12: "thumb_width",
-	13: "thumb_height",
+var jsonFieldsNameOfInlineQueryResultVenue = [15]string{
+	0:  "type",
+	1:  "id",
+	2:  "latitude",
+	3:  "longitude",
+	4:  "title",
+	5:  "address",
+	6:  "foursquare_id",
+	7:  "foursquare_type",
+	8:  "google_place_id",
+	9:  "google_place_type",
+	10: "reply_markup",
+	11: "input_message_content",
+	12: "thumb_url",
+	13: "thumb_width",
+	14: "thumb_height",
 }
 
 // Decode decodes InlineQueryResultVenue from json.
@@ -16805,11 +17222,24 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultVenue to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -16821,7 +17251,7 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "latitude":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Float64()
 				s.Latitude = float64(v)
@@ -16833,7 +17263,7 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"latitude\"")
 			}
 		case "longitude":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Float64()
 				s.Longitude = float64(v)
@@ -16845,7 +17275,7 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"longitude\"")
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 3
+			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
 				v, err := d.Str()
 				s.Title = string(v)
@@ -16857,7 +17287,7 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"title\"")
 			}
 		case "address":
-			requiredBitSet[0] |= 1 << 4
+			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
 				v, err := d.Str()
 				s.Address = string(v)
@@ -16958,8 +17388,6 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"thumb_height\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -16970,7 +17398,7 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00011111,
+		0b00111111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -17026,6 +17454,10 @@ func (s *InlineQueryResultVideo) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InlineQueryResultVideo) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("id")
 		e.Str(s.ID)
@@ -17106,21 +17538,22 @@ func (s *InlineQueryResultVideo) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultVideo = [14]string{
-	0:  "id",
-	1:  "video_url",
-	2:  "mime_type",
-	3:  "thumb_url",
-	4:  "title",
-	5:  "caption",
-	6:  "parse_mode",
-	7:  "caption_entities",
-	8:  "video_width",
-	9:  "video_height",
-	10: "video_duration",
-	11: "description",
-	12: "reply_markup",
-	13: "input_message_content",
+var jsonFieldsNameOfInlineQueryResultVideo = [15]string{
+	0:  "type",
+	1:  "id",
+	2:  "video_url",
+	3:  "mime_type",
+	4:  "thumb_url",
+	5:  "title",
+	6:  "caption",
+	7:  "parse_mode",
+	8:  "caption_entities",
+	9:  "video_width",
+	10: "video_height",
+	11: "video_duration",
+	12: "description",
+	13: "reply_markup",
+	14: "input_message_content",
 }
 
 // Decode decodes InlineQueryResultVideo from json.
@@ -17129,11 +17562,24 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultVideo to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -17145,7 +17591,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "video_url":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.VideoURL = string(v)
@@ -17157,7 +17603,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"video_url\"")
 			}
 		case "mime_type":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.MimeType = string(v)
@@ -17169,7 +17615,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mime_type\"")
 			}
 		case "thumb_url":
-			requiredBitSet[0] |= 1 << 3
+			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
 				v, err := d.Str()
 				s.ThumbURL = string(v)
@@ -17181,7 +17627,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"thumb_url\"")
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 4
+			requiredBitSet[0] |= 1 << 5
 			if err := func() error {
 				v, err := d.Str()
 				s.Title = string(v)
@@ -17289,8 +17735,6 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -17301,7 +17745,7 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00011111,
+		0b00111111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -17358,6 +17802,10 @@ func (s *InlineQueryResultVoice) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InlineQueryResultVoice) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("id")
 		e.Str(s.ID)
 	}
@@ -17411,16 +17859,17 @@ func (s *InlineQueryResultVoice) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInlineQueryResultVoice = [9]string{
-	0: "id",
-	1: "voice_url",
-	2: "title",
-	3: "caption",
-	4: "parse_mode",
-	5: "caption_entities",
-	6: "voice_duration",
-	7: "reply_markup",
-	8: "input_message_content",
+var jsonFieldsNameOfInlineQueryResultVoice = [10]string{
+	0: "type",
+	1: "id",
+	2: "voice_url",
+	3: "title",
+	4: "caption",
+	5: "parse_mode",
+	6: "caption_entities",
+	7: "voice_duration",
+	8: "reply_markup",
+	9: "input_message_content",
 }
 
 // Decode decodes InlineQueryResultVoice from json.
@@ -17429,11 +17878,24 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResultVoice to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "id":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "id":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.ID = string(v)
@@ -17445,7 +17907,7 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"id\"")
 			}
 		case "voice_url":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.VoiceURL = string(v)
@@ -17457,7 +17919,7 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"voice_url\"")
 			}
 		case "title":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Title = string(v)
@@ -17535,8 +17997,6 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"input_message_content\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -17547,7 +18007,7 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00000111,
+		0b00001111,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -18499,6 +18959,10 @@ func (s *InputMediaAnimation) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaAnimation) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -18550,15 +19014,16 @@ func (s *InputMediaAnimation) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInputMediaAnimation = [8]string{
-	0: "media",
-	1: "thumb",
-	2: "caption",
-	3: "parse_mode",
-	4: "caption_entities",
-	5: "width",
-	6: "height",
-	7: "duration",
+var jsonFieldsNameOfInputMediaAnimation = [9]string{
+	0: "type",
+	1: "media",
+	2: "thumb",
+	3: "caption",
+	4: "parse_mode",
+	5: "caption_entities",
+	6: "width",
+	7: "height",
+	8: "duration",
 }
 
 // Decode decodes InputMediaAnimation from json.
@@ -18566,12 +19031,25 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode InputMediaAnimation to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "media":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "media":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.Media = string(v)
@@ -18659,8 +19137,6 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"duration\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -18670,8 +19146,9 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000001,
+	for i, mask := range [2]uint8{
+		0b00000011,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -18727,6 +19204,10 @@ func (s *InputMediaAudio) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaAudio) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -18778,15 +19259,16 @@ func (s *InputMediaAudio) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInputMediaAudio = [8]string{
-	0: "media",
-	1: "thumb",
-	2: "caption",
-	3: "parse_mode",
-	4: "caption_entities",
-	5: "duration",
-	6: "performer",
-	7: "title",
+var jsonFieldsNameOfInputMediaAudio = [9]string{
+	0: "type",
+	1: "media",
+	2: "thumb",
+	3: "caption",
+	4: "parse_mode",
+	5: "caption_entities",
+	6: "duration",
+	7: "performer",
+	8: "title",
 }
 
 // Decode decodes InputMediaAudio from json.
@@ -18794,12 +19276,25 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode InputMediaAudio to nil")
 	}
-	var requiredBitSet [1]uint8
+	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "media":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "media":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.Media = string(v)
@@ -18887,8 +19382,6 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"title\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -18898,8 +19391,9 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000001,
+	for i, mask := range [2]uint8{
+		0b00000011,
+		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -18955,6 +19449,10 @@ func (s *InputMediaDocument) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaDocument) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -18994,13 +19492,14 @@ func (s *InputMediaDocument) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInputMediaDocument = [6]string{
-	0: "media",
-	1: "thumb",
-	2: "caption",
-	3: "parse_mode",
-	4: "caption_entities",
-	5: "disable_content_type_detection",
+var jsonFieldsNameOfInputMediaDocument = [7]string{
+	0: "type",
+	1: "media",
+	2: "thumb",
+	3: "caption",
+	4: "parse_mode",
+	5: "caption_entities",
+	6: "disable_content_type_detection",
 }
 
 // Decode decodes InputMediaDocument from json.
@@ -19009,11 +19508,24 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InputMediaDocument to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "media":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "media":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.Media = string(v)
@@ -19081,8 +19593,6 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"disable_content_type_detection\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -19093,7 +19603,7 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -19149,6 +19659,10 @@ func (s *InputMediaPhoto) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *InputMediaPhoto) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("media")
 		e.Str(s.Media)
 	}
@@ -19176,11 +19690,12 @@ func (s *InputMediaPhoto) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInputMediaPhoto = [4]string{
-	0: "media",
-	1: "caption",
-	2: "parse_mode",
-	3: "caption_entities",
+var jsonFieldsNameOfInputMediaPhoto = [5]string{
+	0: "type",
+	1: "media",
+	2: "caption",
+	3: "parse_mode",
+	4: "caption_entities",
 }
 
 // Decode decodes InputMediaPhoto from json.
@@ -19189,11 +19704,24 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InputMediaPhoto to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "media":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "media":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.Media = string(v)
@@ -19241,8 +19769,6 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"caption_entities\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -19253,7 +19779,7 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000001,
+		0b00000011,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -19308,6 +19834,10 @@ func (s *InputMediaVideo) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *InputMediaVideo) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 	{
 		e.FieldStart("media")
 		e.Str(s.Media)
@@ -19366,16 +19896,17 @@ func (s *InputMediaVideo) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfInputMediaVideo = [9]string{
-	0: "media",
-	1: "thumb",
-	2: "caption",
-	3: "parse_mode",
-	4: "caption_entities",
-	5: "width",
-	6: "height",
-	7: "duration",
-	8: "supports_streaming",
+var jsonFieldsNameOfInputMediaVideo = [10]string{
+	0: "type",
+	1: "media",
+	2: "thumb",
+	3: "caption",
+	4: "parse_mode",
+	5: "caption_entities",
+	6: "width",
+	7: "height",
+	8: "duration",
+	9: "supports_streaming",
 }
 
 // Decode decodes InputMediaVideo from json.
@@ -19384,11 +19915,24 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InputMediaVideo to nil")
 	}
 	var requiredBitSet [2]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "media":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "media":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.Media = string(v)
@@ -19486,8 +20030,6 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"supports_streaming\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -19498,7 +20040,7 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [2]uint8{
-		0b00000001,
+		0b00000011,
 		0b00000000,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
@@ -21531,25 +22073,76 @@ func (s *MenuButtonCommands) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *MenuButtonCommands) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 }
 
-var jsonFieldsNameOfMenuButtonCommands = [0]string{}
+var jsonFieldsNameOfMenuButtonCommands = [1]string{
+	0: "type",
+}
 
 // Decode decodes MenuButtonCommands from json.
 func (s *MenuButtonCommands) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode MenuButtonCommands to nil")
 	}
+	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
-			return d.Skip()
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
 		default:
 			return d.Skip()
 		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MenuButtonCommands")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfMenuButtonCommands) {
+					name = jsonFieldsNameOfMenuButtonCommands[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -21577,25 +22170,76 @@ func (s *MenuButtonDefault) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s *MenuButtonDefault) encodeFields(e *jx.Encoder) {
+	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
 }
 
-var jsonFieldsNameOfMenuButtonDefault = [0]string{}
+var jsonFieldsNameOfMenuButtonDefault = [1]string{
+	0: "type",
+}
 
 // Decode decodes MenuButtonDefault from json.
 func (s *MenuButtonDefault) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode MenuButtonDefault to nil")
 	}
+	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "type":
-			return d.Skip()
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
 		default:
 			return d.Skip()
 		}
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MenuButtonDefault")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfMenuButtonDefault) {
+					name = jsonFieldsNameOfMenuButtonDefault[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
 	}
 
 	return nil
@@ -21624,6 +22268,10 @@ func (s *MenuButtonWebApp) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MenuButtonWebApp) encodeFields(e *jx.Encoder) {
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("text")
 		e.Str(s.Text)
 	}
@@ -21633,9 +22281,10 @@ func (s *MenuButtonWebApp) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfMenuButtonWebApp = [2]string{
-	0: "text",
-	1: "web_app",
+var jsonFieldsNameOfMenuButtonWebApp = [3]string{
+	0: "type",
+	1: "text",
+	2: "web_app",
 }
 
 // Decode decodes MenuButtonWebApp from json.
@@ -21644,11 +22293,24 @@ func (s *MenuButtonWebApp) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode MenuButtonWebApp to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "text":
+		case "type":
 			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "text":
+			requiredBitSet[0] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.Text = string(v)
@@ -21660,7 +22322,7 @@ func (s *MenuButtonWebApp) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"text\"")
 			}
 		case "web_app":
-			requiredBitSet[0] |= 1 << 1
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				if err := s.WebApp.Decode(d); err != nil {
 					return err
@@ -21669,8 +22331,6 @@ func (s *MenuButtonWebApp) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"web_app\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -21681,7 +22341,7 @@ func (s *MenuButtonWebApp) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000011,
+		0b00000111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -26234,6 +26894,10 @@ func (s *PassportElementErrorDataField) encodeFields(e *jx.Encoder) {
 		e.Str(s.Source)
 	}
 	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
 		e.FieldStart("field_name")
 		e.Str(s.FieldName)
 	}
@@ -26247,11 +26911,12 @@ func (s *PassportElementErrorDataField) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorDataField = [4]string{
+var jsonFieldsNameOfPassportElementErrorDataField = [5]string{
 	0: "source",
-	1: "field_name",
-	2: "data_hash",
-	3: "message",
+	1: "type",
+	2: "field_name",
+	3: "data_hash",
+	4: "message",
 }
 
 // Decode decodes PassportElementErrorDataField from json.
@@ -26276,8 +26941,18 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "field_name":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "field_name":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.FieldName = string(v)
@@ -26289,7 +26964,7 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"field_name\"")
 			}
 		case "data_hash":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.DataHash = string(v)
@@ -26301,7 +26976,7 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"data_hash\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 3
+			requiredBitSet[0] |= 1 << 4
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -26312,8 +26987,6 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26324,7 +26997,7 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00001111,
+		0b00011111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -26370,6 +27043,54 @@ func (s *PassportElementErrorDataField) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorDataFieldType as json.
+func (s PassportElementErrorDataFieldType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorDataFieldType from json.
+func (s *PassportElementErrorDataFieldType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorDataFieldType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorDataFieldType(v) {
+	case PassportElementErrorDataFieldTypePersonalDetails:
+		*s = PassportElementErrorDataFieldTypePersonalDetails
+	case PassportElementErrorDataFieldTypePassport:
+		*s = PassportElementErrorDataFieldTypePassport
+	case PassportElementErrorDataFieldTypeDriverLicense:
+		*s = PassportElementErrorDataFieldTypeDriverLicense
+	case PassportElementErrorDataFieldTypeIdentityCard:
+		*s = PassportElementErrorDataFieldTypeIdentityCard
+	case PassportElementErrorDataFieldTypeInternalPassport:
+		*s = PassportElementErrorDataFieldTypeInternalPassport
+	case PassportElementErrorDataFieldTypeAddress:
+		*s = PassportElementErrorDataFieldTypeAddress
+	default:
+		*s = PassportElementErrorDataFieldType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorDataFieldType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorDataFieldType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26384,6 +27105,10 @@ func (s *PassportElementErrorFile) encodeFields(e *jx.Encoder) {
 		e.Str(s.Source)
 	}
 	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
@@ -26393,10 +27118,11 @@ func (s *PassportElementErrorFile) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorFile = [3]string{
+var jsonFieldsNameOfPassportElementErrorFile = [4]string{
 	0: "source",
-	1: "file_hash",
-	2: "message",
+	1: "type",
+	2: "file_hash",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorFile from json.
@@ -26421,8 +27147,18 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "file_hash":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "file_hash":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.FileHash = string(v)
@@ -26434,7 +27170,7 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"file_hash\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -26445,8 +27181,6 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26457,7 +27191,7 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -26503,6 +27237,52 @@ func (s *PassportElementErrorFile) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorFileType as json.
+func (s PassportElementErrorFileType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorFileType from json.
+func (s *PassportElementErrorFileType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorFileType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorFileType(v) {
+	case PassportElementErrorFileTypeUtilityBill:
+		*s = PassportElementErrorFileTypeUtilityBill
+	case PassportElementErrorFileTypeBankStatement:
+		*s = PassportElementErrorFileTypeBankStatement
+	case PassportElementErrorFileTypeRentalAgreement:
+		*s = PassportElementErrorFileTypeRentalAgreement
+	case PassportElementErrorFileTypePassportRegistration:
+		*s = PassportElementErrorFileTypePassportRegistration
+	case PassportElementErrorFileTypeTemporaryRegistration:
+		*s = PassportElementErrorFileTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorFileType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorFileType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorFileType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26515,6 +27295,10 @@ func (s *PassportElementErrorFiles) encodeFields(e *jx.Encoder) {
 	{
 		e.FieldStart("source")
 		e.Str(s.Source)
+	}
+	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
 	}
 	{
 		e.FieldStart("file_hashes")
@@ -26530,10 +27314,11 @@ func (s *PassportElementErrorFiles) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorFiles = [3]string{
+var jsonFieldsNameOfPassportElementErrorFiles = [4]string{
 	0: "source",
-	1: "file_hashes",
-	2: "message",
+	1: "type",
+	2: "file_hashes",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorFiles from json.
@@ -26558,8 +27343,18 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "file_hashes":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "file_hashes":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				s.FileHashes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -26579,7 +27374,7 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"file_hashes\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -26590,8 +27385,6 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26602,7 +27395,7 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -26648,6 +27441,52 @@ func (s *PassportElementErrorFiles) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorFilesType as json.
+func (s PassportElementErrorFilesType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorFilesType from json.
+func (s *PassportElementErrorFilesType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorFilesType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorFilesType(v) {
+	case PassportElementErrorFilesTypeUtilityBill:
+		*s = PassportElementErrorFilesTypeUtilityBill
+	case PassportElementErrorFilesTypeBankStatement:
+		*s = PassportElementErrorFilesTypeBankStatement
+	case PassportElementErrorFilesTypeRentalAgreement:
+		*s = PassportElementErrorFilesTypeRentalAgreement
+	case PassportElementErrorFilesTypePassportRegistration:
+		*s = PassportElementErrorFilesTypePassportRegistration
+	case PassportElementErrorFilesTypeTemporaryRegistration:
+		*s = PassportElementErrorFilesTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorFilesType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorFilesType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorFilesType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26662,6 +27501,10 @@ func (s *PassportElementErrorFrontSide) encodeFields(e *jx.Encoder) {
 		e.Str(s.Source)
 	}
 	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
@@ -26671,10 +27514,11 @@ func (s *PassportElementErrorFrontSide) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorFrontSide = [3]string{
+var jsonFieldsNameOfPassportElementErrorFrontSide = [4]string{
 	0: "source",
-	1: "file_hash",
-	2: "message",
+	1: "type",
+	2: "file_hash",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorFrontSide from json.
@@ -26699,8 +27543,18 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "file_hash":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "file_hash":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.FileHash = string(v)
@@ -26712,7 +27566,7 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"file_hash\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -26723,8 +27577,6 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26735,7 +27587,7 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -26781,6 +27633,50 @@ func (s *PassportElementErrorFrontSide) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorFrontSideType as json.
+func (s PassportElementErrorFrontSideType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorFrontSideType from json.
+func (s *PassportElementErrorFrontSideType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorFrontSideType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorFrontSideType(v) {
+	case PassportElementErrorFrontSideTypePassport:
+		*s = PassportElementErrorFrontSideTypePassport
+	case PassportElementErrorFrontSideTypeDriverLicense:
+		*s = PassportElementErrorFrontSideTypeDriverLicense
+	case PassportElementErrorFrontSideTypeIdentityCard:
+		*s = PassportElementErrorFrontSideTypeIdentityCard
+	case PassportElementErrorFrontSideTypeInternalPassport:
+		*s = PassportElementErrorFrontSideTypeInternalPassport
+	default:
+		*s = PassportElementErrorFrontSideType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorFrontSideType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorFrontSideType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26795,6 +27691,10 @@ func (s *PassportElementErrorReverseSide) encodeFields(e *jx.Encoder) {
 		e.Str(s.Source)
 	}
 	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
@@ -26804,10 +27704,11 @@ func (s *PassportElementErrorReverseSide) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorReverseSide = [3]string{
+var jsonFieldsNameOfPassportElementErrorReverseSide = [4]string{
 	0: "source",
-	1: "file_hash",
-	2: "message",
+	1: "type",
+	2: "file_hash",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorReverseSide from json.
@@ -26832,8 +27733,18 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "file_hash":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "file_hash":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.FileHash = string(v)
@@ -26845,7 +27756,7 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"file_hash\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -26856,8 +27767,6 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -26868,7 +27777,7 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -26914,6 +27823,46 @@ func (s *PassportElementErrorReverseSide) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorReverseSideType as json.
+func (s PassportElementErrorReverseSideType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorReverseSideType from json.
+func (s *PassportElementErrorReverseSideType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorReverseSideType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorReverseSideType(v) {
+	case PassportElementErrorReverseSideTypeDriverLicense:
+		*s = PassportElementErrorReverseSideTypeDriverLicense
+	case PassportElementErrorReverseSideTypeIdentityCard:
+		*s = PassportElementErrorReverseSideTypeIdentityCard
+	default:
+		*s = PassportElementErrorReverseSideType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorReverseSideType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorReverseSideType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorSelfie) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26928,6 +27877,10 @@ func (s *PassportElementErrorSelfie) encodeFields(e *jx.Encoder) {
 		e.Str(s.Source)
 	}
 	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
@@ -26937,10 +27890,11 @@ func (s *PassportElementErrorSelfie) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorSelfie = [3]string{
+var jsonFieldsNameOfPassportElementErrorSelfie = [4]string{
 	0: "source",
-	1: "file_hash",
-	2: "message",
+	1: "type",
+	2: "file_hash",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorSelfie from json.
@@ -26965,8 +27919,18 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "file_hash":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "file_hash":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.FileHash = string(v)
@@ -26978,7 +27942,7 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"file_hash\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -26989,8 +27953,6 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -27001,7 +27963,7 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -27047,6 +28009,50 @@ func (s *PassportElementErrorSelfie) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorSelfieType as json.
+func (s PassportElementErrorSelfieType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorSelfieType from json.
+func (s *PassportElementErrorSelfieType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorSelfieType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorSelfieType(v) {
+	case PassportElementErrorSelfieTypePassport:
+		*s = PassportElementErrorSelfieTypePassport
+	case PassportElementErrorSelfieTypeDriverLicense:
+		*s = PassportElementErrorSelfieTypeDriverLicense
+	case PassportElementErrorSelfieTypeIdentityCard:
+		*s = PassportElementErrorSelfieTypeIdentityCard
+	case PassportElementErrorSelfieTypeInternalPassport:
+		*s = PassportElementErrorSelfieTypeInternalPassport
+	default:
+		*s = PassportElementErrorSelfieType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorSelfieType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorSelfieType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27061,6 +28067,10 @@ func (s *PassportElementErrorTranslationFile) encodeFields(e *jx.Encoder) {
 		e.Str(s.Source)
 	}
 	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
+	}
+	{
 		e.FieldStart("file_hash")
 		e.Str(s.FileHash)
 	}
@@ -27070,10 +28080,11 @@ func (s *PassportElementErrorTranslationFile) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorTranslationFile = [3]string{
+var jsonFieldsNameOfPassportElementErrorTranslationFile = [4]string{
 	0: "source",
-	1: "file_hash",
-	2: "message",
+	1: "type",
+	2: "file_hash",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorTranslationFile from json.
@@ -27098,8 +28109,18 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "file_hash":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "file_hash":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.FileHash = string(v)
@@ -27111,7 +28132,7 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"file_hash\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -27122,8 +28143,6 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -27134,7 +28153,7 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -27180,6 +28199,60 @@ func (s *PassportElementErrorTranslationFile) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorTranslationFileType as json.
+func (s PassportElementErrorTranslationFileType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorTranslationFileType from json.
+func (s *PassportElementErrorTranslationFileType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorTranslationFileType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorTranslationFileType(v) {
+	case PassportElementErrorTranslationFileTypePassport:
+		*s = PassportElementErrorTranslationFileTypePassport
+	case PassportElementErrorTranslationFileTypeDriverLicense:
+		*s = PassportElementErrorTranslationFileTypeDriverLicense
+	case PassportElementErrorTranslationFileTypeIdentityCard:
+		*s = PassportElementErrorTranslationFileTypeIdentityCard
+	case PassportElementErrorTranslationFileTypeInternalPassport:
+		*s = PassportElementErrorTranslationFileTypeInternalPassport
+	case PassportElementErrorTranslationFileTypeUtilityBill:
+		*s = PassportElementErrorTranslationFileTypeUtilityBill
+	case PassportElementErrorTranslationFileTypeBankStatement:
+		*s = PassportElementErrorTranslationFileTypeBankStatement
+	case PassportElementErrorTranslationFileTypeRentalAgreement:
+		*s = PassportElementErrorTranslationFileTypeRentalAgreement
+	case PassportElementErrorTranslationFileTypePassportRegistration:
+		*s = PassportElementErrorTranslationFileTypePassportRegistration
+	case PassportElementErrorTranslationFileTypeTemporaryRegistration:
+		*s = PassportElementErrorTranslationFileTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorTranslationFileType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorTranslationFileType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorTranslationFileType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27192,6 +28265,10 @@ func (s *PassportElementErrorTranslationFiles) encodeFields(e *jx.Encoder) {
 	{
 		e.FieldStart("source")
 		e.Str(s.Source)
+	}
+	{
+		e.FieldStart("type")
+		s.Type.Encode(e)
 	}
 	{
 		e.FieldStart("file_hashes")
@@ -27207,10 +28284,11 @@ func (s *PassportElementErrorTranslationFiles) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorTranslationFiles = [3]string{
+var jsonFieldsNameOfPassportElementErrorTranslationFiles = [4]string{
 	0: "source",
-	1: "file_hashes",
-	2: "message",
+	1: "type",
+	2: "file_hashes",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorTranslationFiles from json.
@@ -27235,8 +28313,18 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "file_hashes":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				if err := s.Type.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "file_hashes":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				s.FileHashes = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -27256,7 +28344,7 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"file_hashes\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -27267,8 +28355,6 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -27279,7 +28365,7 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.
@@ -27325,6 +28411,60 @@ func (s *PassportElementErrorTranslationFiles) UnmarshalJSON(data []byte) error 
 	return s.Decode(d)
 }
 
+// Encode encodes PassportElementErrorTranslationFilesType as json.
+func (s PassportElementErrorTranslationFilesType) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes PassportElementErrorTranslationFilesType from json.
+func (s *PassportElementErrorTranslationFilesType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PassportElementErrorTranslationFilesType to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch PassportElementErrorTranslationFilesType(v) {
+	case PassportElementErrorTranslationFilesTypePassport:
+		*s = PassportElementErrorTranslationFilesTypePassport
+	case PassportElementErrorTranslationFilesTypeDriverLicense:
+		*s = PassportElementErrorTranslationFilesTypeDriverLicense
+	case PassportElementErrorTranslationFilesTypeIdentityCard:
+		*s = PassportElementErrorTranslationFilesTypeIdentityCard
+	case PassportElementErrorTranslationFilesTypeInternalPassport:
+		*s = PassportElementErrorTranslationFilesTypeInternalPassport
+	case PassportElementErrorTranslationFilesTypeUtilityBill:
+		*s = PassportElementErrorTranslationFilesTypeUtilityBill
+	case PassportElementErrorTranslationFilesTypeBankStatement:
+		*s = PassportElementErrorTranslationFilesTypeBankStatement
+	case PassportElementErrorTranslationFilesTypeRentalAgreement:
+		*s = PassportElementErrorTranslationFilesTypeRentalAgreement
+	case PassportElementErrorTranslationFilesTypePassportRegistration:
+		*s = PassportElementErrorTranslationFilesTypePassportRegistration
+	case PassportElementErrorTranslationFilesTypeTemporaryRegistration:
+		*s = PassportElementErrorTranslationFilesTypeTemporaryRegistration
+	default:
+		*s = PassportElementErrorTranslationFilesType(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorTranslationFilesType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorTranslationFilesType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s *PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27339,6 +28479,10 @@ func (s *PassportElementErrorUnspecified) encodeFields(e *jx.Encoder) {
 		e.Str(s.Source)
 	}
 	{
+		e.FieldStart("type")
+		e.Str(s.Type)
+	}
+	{
 		e.FieldStart("element_hash")
 		e.Str(s.ElementHash)
 	}
@@ -27348,10 +28492,11 @@ func (s *PassportElementErrorUnspecified) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfPassportElementErrorUnspecified = [3]string{
+var jsonFieldsNameOfPassportElementErrorUnspecified = [4]string{
 	0: "source",
-	1: "element_hash",
-	2: "message",
+	1: "type",
+	2: "element_hash",
+	3: "message",
 }
 
 // Decode decodes PassportElementErrorUnspecified from json.
@@ -27376,8 +28521,20 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"source\"")
 			}
-		case "element_hash":
+		case "type":
 			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				v, err := d.Str()
+				s.Type = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"type\"")
+			}
+		case "element_hash":
+			requiredBitSet[0] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.ElementHash = string(v)
@@ -27389,7 +28546,7 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"element_hash\"")
 			}
 		case "message":
-			requiredBitSet[0] |= 1 << 2
+			requiredBitSet[0] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.Message = string(v)
@@ -27400,8 +28557,6 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")
 			}
-		case "type":
-			return d.Skip()
 		default:
 			return d.Skip()
 		}
@@ -27412,7 +28567,7 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.

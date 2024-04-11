@@ -356,18 +356,38 @@ func (s *BotCommandScope) SetFake() {
 
 // SetFake set fake values.
 func (s *BotCommandScopeAllChatAdministrators) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 }
 
 // SetFake set fake values.
 func (s *BotCommandScopeAllGroupChats) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 }
 
 // SetFake set fake values.
 func (s *BotCommandScopeAllPrivateChats) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 }
 
 // SetFake set fake values.
 func (s *BotCommandScopeChat) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ChatID.SetFake()
@@ -379,6 +399,11 @@ func (s *BotCommandScopeChat) SetFake() {
 func (s *BotCommandScopeChatAdministrators) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.ChatID.SetFake()
 		}
 	}
@@ -386,6 +411,11 @@ func (s *BotCommandScopeChatAdministrators) SetFake() {
 
 // SetFake set fake values.
 func (s *BotCommandScopeChatMember) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ChatID.SetFake()
@@ -400,6 +430,11 @@ func (s *BotCommandScopeChatMember) SetFake() {
 
 // SetFake set fake values.
 func (s *BotCommandScopeDefault) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 }
 
 // SetFake set fake values.
@@ -2161,6 +2196,11 @@ func (s *InlineQueryResult) SetFake() {
 func (s *InlineQueryResultArticle) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.ID = "string"
 		}
 	}
@@ -2213,6 +2253,11 @@ func (s *InlineQueryResultArticle) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResultAudio) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ID = "string"
@@ -2561,6 +2606,11 @@ func (s *InlineQueryResultCachedPhoto) SetFake() {
 func (s *InlineQueryResultCachedSticker) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.ID = "string"
 		}
 	}
@@ -2702,6 +2752,11 @@ func (s *InlineQueryResultCachedVoice) SetFake() {
 func (s *InlineQueryResultContact) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.ID = "string"
 		}
 	}
@@ -2754,6 +2809,11 @@ func (s *InlineQueryResultContact) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResultDocument) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ID = "string"
@@ -2832,6 +2892,11 @@ func (s *InlineQueryResultDocument) SetFake() {
 func (s *InlineQueryResultGame) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.ID = "string"
 		}
 	}
@@ -2849,6 +2914,11 @@ func (s *InlineQueryResultGame) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResultGif) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ID = "string"
@@ -2927,6 +2997,11 @@ func (s *InlineQueryResultGif) SetFake() {
 func (s *InlineQueryResultLocation) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.ID = "string"
 		}
 	}
@@ -2994,6 +3069,11 @@ func (s *InlineQueryResultLocation) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResultMpeg4Gif) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ID = "string"
@@ -3072,6 +3152,11 @@ func (s *InlineQueryResultMpeg4Gif) SetFake() {
 func (s *InlineQueryResultPhoto) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.ID = "string"
 		}
 	}
@@ -3141,6 +3226,11 @@ func (s *InlineQueryResultPhoto) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResultVenue) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ID = "string"
@@ -3215,6 +3305,11 @@ func (s *InlineQueryResultVenue) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResultVideo) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ID = "string"
@@ -3296,6 +3391,11 @@ func (s *InlineQueryResultVideo) SetFake() {
 
 // SetFake set fake values.
 func (s *InlineQueryResultVoice) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.ID = "string"
@@ -3540,6 +3640,11 @@ func (s *InputMedia) SetFake() {
 func (s *InputMediaAnimation) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.Media = "string"
 		}
 	}
@@ -3589,6 +3694,11 @@ func (s *InputMediaAnimation) SetFake() {
 
 // SetFake set fake values.
 func (s *InputMediaAudio) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.Media = "string"
@@ -3642,6 +3752,11 @@ func (s *InputMediaAudio) SetFake() {
 func (s *InputMediaDocument) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.Media = "string"
 		}
 	}
@@ -3683,6 +3798,11 @@ func (s *InputMediaDocument) SetFake() {
 func (s *InputMediaPhoto) SetFake() {
 	{
 		{
+			s.Type = "string"
+		}
+	}
+	{
+		{
 			s.Media = "string"
 		}
 	}
@@ -3712,6 +3832,11 @@ func (s *InputMediaPhoto) SetFake() {
 
 // SetFake set fake values.
 func (s *InputMediaVideo) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.Media = "string"
@@ -4045,14 +4170,29 @@ func (s *MenuButton) SetFake() {
 
 // SetFake set fake values.
 func (s *MenuButtonCommands) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 }
 
 // SetFake set fake values.
 func (s *MenuButtonDefault) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 }
 
 // SetFake set fake values.
 func (s *MenuButtonWebApp) SetFake() {
+	{
+		{
+			s.Type = "string"
+		}
+	}
 	{
 		{
 			s.Text = "string"
@@ -5201,6 +5341,11 @@ func (s *PassportElementErrorDataField) SetFake() {
 	}
 	{
 		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
 			s.FieldName = "string"
 		}
 	}
@@ -5217,10 +5362,20 @@ func (s *PassportElementErrorDataField) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *PassportElementErrorDataFieldType) SetFake() {
+	*s = PassportElementErrorDataFieldTypePersonalDetails
+}
+
+// SetFake set fake values.
 func (s *PassportElementErrorFile) SetFake() {
 	{
 		{
 			s.Source = "string"
+		}
+	}
+	{
+		{
+			s.Type.SetFake()
 		}
 	}
 	{
@@ -5233,6 +5388,11 @@ func (s *PassportElementErrorFile) SetFake() {
 			s.Message = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *PassportElementErrorFileType) SetFake() {
+	*s = PassportElementErrorFileTypeUtilityBill
 }
 
 // SetFake set fake values.
@@ -5244,6 +5404,11 @@ func (s *PassportElementErrorFiles) SetFake() {
 	}
 	{
 		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
 			s.FileHashes = nil
 			for i := 0; i < 0; i++ {
 				var elem string
@@ -5259,6 +5424,11 @@ func (s *PassportElementErrorFiles) SetFake() {
 			s.Message = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *PassportElementErrorFilesType) SetFake() {
+	*s = PassportElementErrorFilesTypeUtilityBill
 }
 
 // SetFake set fake values.
@@ -5270,6 +5440,11 @@ func (s *PassportElementErrorFrontSide) SetFake() {
 	}
 	{
 		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
 			s.FileHash = "string"
 		}
 	}
@@ -5278,6 +5453,11 @@ func (s *PassportElementErrorFrontSide) SetFake() {
 			s.Message = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *PassportElementErrorFrontSideType) SetFake() {
+	*s = PassportElementErrorFrontSideTypePassport
 }
 
 // SetFake set fake values.
@@ -5289,6 +5469,11 @@ func (s *PassportElementErrorReverseSide) SetFake() {
 	}
 	{
 		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
 			s.FileHash = "string"
 		}
 	}
@@ -5297,6 +5482,11 @@ func (s *PassportElementErrorReverseSide) SetFake() {
 			s.Message = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *PassportElementErrorReverseSideType) SetFake() {
+	*s = PassportElementErrorReverseSideTypeDriverLicense
 }
 
 // SetFake set fake values.
@@ -5308,6 +5498,11 @@ func (s *PassportElementErrorSelfie) SetFake() {
 	}
 	{
 		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
 			s.FileHash = "string"
 		}
 	}
@@ -5316,6 +5511,11 @@ func (s *PassportElementErrorSelfie) SetFake() {
 			s.Message = "string"
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *PassportElementErrorSelfieType) SetFake() {
+	*s = PassportElementErrorSelfieTypePassport
 }
 
 // SetFake set fake values.
@@ -5327,6 +5527,11 @@ func (s *PassportElementErrorTranslationFile) SetFake() {
 	}
 	{
 		{
+			s.Type.SetFake()
+		}
+	}
+	{
+		{
 			s.FileHash = "string"
 		}
 	}
@@ -5338,10 +5543,20 @@ func (s *PassportElementErrorTranslationFile) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *PassportElementErrorTranslationFileType) SetFake() {
+	*s = PassportElementErrorTranslationFileTypePassport
+}
+
+// SetFake set fake values.
 func (s *PassportElementErrorTranslationFiles) SetFake() {
 	{
 		{
 			s.Source = "string"
+		}
+	}
+	{
+		{
+			s.Type.SetFake()
 		}
 	}
 	{
@@ -5364,10 +5579,20 @@ func (s *PassportElementErrorTranslationFiles) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *PassportElementErrorTranslationFilesType) SetFake() {
+	*s = PassportElementErrorTranslationFilesTypePassport
+}
+
+// SetFake set fake values.
 func (s *PassportElementErrorUnspecified) SetFake() {
 	{
 		{
 			s.Source = "string"
+		}
+	}
+	{
+		{
+			s.Type = "string"
 		}
 	}
 	{
