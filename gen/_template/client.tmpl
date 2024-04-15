@@ -3,11 +3,13 @@
 {{ template "header" $ }}
 
 {{- if $.PathsClientEnabled }}
-{{- with $ops := $.Operations }}
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
-{{- range $op := $ops }}
+{{- range $group := $.OperationGroups }}
+	{{ $group.Name }}Invoker
+{{- end }}
+{{- range $op := $.DefaultOperations }}
 	// {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 	//
 	{{- template "godoc_op" $op }}
@@ -17,6 +19,23 @@ type Invoker interface {
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
 {{- end }}
 }
+
+{{- range $group := $.OperationGroups }}
+// {{ $group.Name }}Invoker invokes operations described by OpenAPI v3 specification.
+//
+// x-gen-operation-group: {{ $group.Name }}
+type {{ $group.Name }}Invoker interface {
+{{- range $op := $group.Operations }}
+	// {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
+	//
+	{{- template "godoc_op" $op }}
+	{{ $op.Name }}(ctx context.Context
+	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
+	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
+{{- end }}
+}
+{{- end }}
 
 // Client implements OAS client.
 type Client struct {
@@ -80,11 +99,10 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 	return u
 }
 
-{{- range $op := $ops }}
+{{- range $op := $.Operations }}
 	{{ template "client/operation" op_elem $op $ }}
 {{- end }}
 
-{{- end }}
 {{- end }}
 
 {{- if $.WebhookClientEnabled }}

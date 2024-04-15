@@ -26,6 +26,8 @@ type Operation struct {
 	// Operation responses.
 	Responses Responses
 
+	XOgenOperationGroup string // Extension field for operation grouping.
+
 	location.Pointer `json:"-" yaml:"-"`
 }
 

@@ -15,17 +15,23 @@ type WebhookInfo struct {
 }
 
 type Operation struct {
-	Name        string
-	Summary     string
-	Description string
-	Deprecated  bool
-	WebhookInfo *WebhookInfo
-	PathParts   []*PathPart
-	Params      []*Parameter
-	Request     *Request
-	Responses   *Responses
-	Security    SecurityRequirements
-	Spec        *openapi.Operation
+	Name           string
+	Summary        string
+	Description    string
+	Deprecated     bool
+	WebhookInfo    *WebhookInfo
+	PathParts      []*PathPart
+	Params         []*Parameter
+	Request        *Request
+	Responses      *Responses
+	Security       SecurityRequirements
+	Spec           *openapi.Operation
+	OperationGroup string
+}
+
+type OperationGroup struct {
+	Name       string
+	Operations []*Operation
 }
 
 // OTELAttribute represents OpenTelemetry attribute defined by otelogen package.

@@ -33,6 +33,13 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 		Spec:        spec,
 	}
 
+	if spec.XOgenOperationGroup != "" {
+		op.OperationGroup, err = pascalNonEmpty(spec.XOgenOperationGroup)
+		if err != nil {
+			return nil, errors.Wrap(err, "operation group")
+		}
+	}
+
 	vetPathParametersUsed(g.log, op.Spec.Path, spec.Parameters)
 	// Convert []openapi.Parameter to []*ir.Parameter.
 	op.Params, err = g.generateParameters(ctx, op.Name, spec.Parameters)

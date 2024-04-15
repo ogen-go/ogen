@@ -287,6 +287,53 @@ requestBody:
           type: number
 ```
 
+### Operation groups
+
+Optionally, operations can be grouped so a handler interface will be generated for each group of operations. 
+This is useful for organizing operations for large APIs.
+
+The group for operations on a path or individual operations can be specified by `x-ogen-operation-group`, for example:
+
+```yaml
+paths:
+  /images:
+    x-ogen-operation-group: Images
+    get:
+      operationId: listImages
+      ...
+  /images/{imageID}:
+    x-ogen-operation-group: Images
+    get:
+      operationId: getImageByID
+      ...
+  /users:
+    x-ogen-operation-group: Users
+    get:
+      operationId: listUsers
+      ...
+```
+
+The generated handler interfaces look like this:
+
+```go
+// x-ogen-operation-group: Images
+type ImagesHandler interface {
+    ListImages(ctx context.Context, req *ListImagesRequest) (*ListImagesResponse, error)
+    GetImageByID(ctx context.Context, req *GetImagesByIDRequest) (*GetImagesByIDResponse, error)
+}
+
+// x-ogen-operation-group: Users
+type UsersHandler interface {
+    ListUsers(ctx context.Context, req *ListUsersRequest) (*ListUsersResponse, error)
+}
+
+type Handler interface {
+    ImagesHandler
+    UsersHandler
+    // All un-grouped operations will be on this interface
+}
+```
+
 ## JSON
 
 Code generation provides very efficient and flexible encoding and decoding of json:
