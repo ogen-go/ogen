@@ -212,7 +212,7 @@ func (g *Generator) responseToIR(
 				},
 			}
 		}
-		t, err := wrapResponseType(ctx, name, resp.Ref, media.Type, headers, withStatusCode)
+		t, err := wrapResponseType(ctx, name, resp.Ref, media.Type, headers, withStatusCode, len(contents) > 1)
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %q: wrap response type", contentType)
 		}
@@ -239,6 +239,7 @@ func wrapResponseType(
 	t *ir.Type,
 	headers map[string]*ir.Parameter,
 	withStatusCode bool,
+	multipleContents bool,
 ) (ret *ir.Type, rerr error) {
 	if len(headers) == 0 && !withStatusCode {
 		return t, nil
@@ -273,7 +274,7 @@ func wrapResponseType(
 	}
 
 	// Prefer response name to schema name in case of wrapping.
-	if respRef.IsZero() && t.Name != "" {
+	if (respRef.IsZero() || multipleContents) && t.Name != "" {
 		name = t.Name
 	}
 
