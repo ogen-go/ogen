@@ -1,0 +1,49 @@
+openapi: 3.0.3
+servers:
+  - url: https://my.ru/test
+    description: api server
+info:
+  version: 1.0.0
+  title: "MY API"
+
+paths:
+  /user/list:
+    post:
+      operationId: MY_UserList
+      requestBody:
+        $ref: "#/components/requestBodies/UserRequest"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessResponse"
+          description: Success response
+        default:
+          $ref: "#/components/responses/DefaultResponse"
+          description: Unsuccessful response
+components:
+  responses:
+    SuccessResponse:
+      description: A successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            format: binary
+    DefaultResponse:
+      description: A unsuccessful response
+      content:
+        application/json:
+          schema:
+            type: object
+            format: binary
+        text/plain:
+          schema:
+            type: string
+            format: binary
+  requestBodies:
+    UserRequest:
+      description: A unsuccessful response
+      content:
+        application/json:
+          schema:
+            type: object
+            format: binary
