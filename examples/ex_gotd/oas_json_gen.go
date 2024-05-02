@@ -1939,31 +1939,49 @@ func (s BotCommandScope) encodeFields(e *jx.Encoder) {
 	case BotCommandScopeAllChatAdministratorsBotCommandScope:
 		e.FieldStart("type")
 		e.Str("all_chat_administrators")
-		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
 	case BotCommandScopeAllGroupChatsBotCommandScope:
 		e.FieldStart("type")
 		e.Str("all_group_chats")
-		s.BotCommandScopeAllGroupChats.encodeFields(e)
 	case BotCommandScopeAllPrivateChatsBotCommandScope:
 		e.FieldStart("type")
 		e.Str("all_private_chats")
-		s.BotCommandScopeAllPrivateChats.encodeFields(e)
 	case BotCommandScopeChatBotCommandScope:
 		e.FieldStart("type")
 		e.Str("chat")
-		s.BotCommandScopeChat.encodeFields(e)
+		{
+			s := s.BotCommandScopeChat
+			{
+				e.FieldStart("chat_id")
+				s.ChatID.Encode(e)
+			}
+		}
 	case BotCommandScopeChatAdministratorsBotCommandScope:
 		e.FieldStart("type")
 		e.Str("chat_administrators")
-		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		{
+			s := s.BotCommandScopeChatAdministrators
+			{
+				e.FieldStart("chat_id")
+				s.ChatID.Encode(e)
+			}
+		}
 	case BotCommandScopeChatMemberBotCommandScope:
 		e.FieldStart("type")
 		e.Str("chat_member")
-		s.BotCommandScopeChatMember.encodeFields(e)
+		{
+			s := s.BotCommandScopeChatMember
+			{
+				e.FieldStart("chat_id")
+				s.ChatID.Encode(e)
+			}
+			{
+				e.FieldStart("user_id")
+				e.Int64(s.UserID)
+			}
+		}
 	case BotCommandScopeDefaultBotCommandScope:
 		e.FieldStart("type")
 		e.Str("default")
-		s.BotCommandScopeDefault.encodeFields(e)
 	}
 }
 
@@ -4272,27 +4290,177 @@ func (s ChatMember) encodeFields(e *jx.Encoder) {
 	case ChatMemberAdministratorChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberAdministrator")
-		s.ChatMemberAdministrator.encodeFields(e)
+		{
+			s := s.ChatMemberAdministrator
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+			{
+				e.FieldStart("can_be_edited")
+				e.Bool(s.CanBeEdited)
+			}
+			{
+				e.FieldStart("is_anonymous")
+				e.Bool(s.IsAnonymous)
+			}
+			{
+				e.FieldStart("can_manage_chat")
+				e.Bool(s.CanManageChat)
+			}
+			{
+				e.FieldStart("can_delete_messages")
+				e.Bool(s.CanDeleteMessages)
+			}
+			{
+				e.FieldStart("can_manage_video_chats")
+				e.Bool(s.CanManageVideoChats)
+			}
+			{
+				e.FieldStart("can_restrict_members")
+				e.Bool(s.CanRestrictMembers)
+			}
+			{
+				e.FieldStart("can_promote_members")
+				e.Bool(s.CanPromoteMembers)
+			}
+			{
+				e.FieldStart("can_change_info")
+				e.Bool(s.CanChangeInfo)
+			}
+			{
+				e.FieldStart("can_invite_users")
+				e.Bool(s.CanInviteUsers)
+			}
+			{
+				if s.CanPostMessages.Set {
+					e.FieldStart("can_post_messages")
+					s.CanPostMessages.Encode(e)
+				}
+			}
+			{
+				if s.CanEditMessages.Set {
+					e.FieldStart("can_edit_messages")
+					s.CanEditMessages.Encode(e)
+				}
+			}
+			{
+				if s.CanPinMessages.Set {
+					e.FieldStart("can_pin_messages")
+					s.CanPinMessages.Encode(e)
+				}
+			}
+			{
+				if s.CustomTitle.Set {
+					e.FieldStart("custom_title")
+					s.CustomTitle.Encode(e)
+				}
+			}
+		}
 	case ChatMemberBannedChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberBanned")
-		s.ChatMemberBanned.encodeFields(e)
+		{
+			s := s.ChatMemberBanned
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+			{
+				e.FieldStart("until_date")
+				e.Int(s.UntilDate)
+			}
+		}
 	case ChatMemberLeftChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberLeft")
-		s.ChatMemberLeft.encodeFields(e)
+		{
+			s := s.ChatMemberLeft
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+		}
 	case ChatMemberMemberChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberMember")
-		s.ChatMemberMember.encodeFields(e)
+		{
+			s := s.ChatMemberMember
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+		}
 	case ChatMemberOwnerChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberOwner")
-		s.ChatMemberOwner.encodeFields(e)
+		{
+			s := s.ChatMemberOwner
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+			{
+				e.FieldStart("is_anonymous")
+				e.Bool(s.IsAnonymous)
+			}
+			{
+				if s.CustomTitle.Set {
+					e.FieldStart("custom_title")
+					s.CustomTitle.Encode(e)
+				}
+			}
+		}
 	case ChatMemberRestrictedChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberRestricted")
-		s.ChatMemberRestricted.encodeFields(e)
+		{
+			s := s.ChatMemberRestricted
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+			{
+				e.FieldStart("is_member")
+				e.Bool(s.IsMember)
+			}
+			{
+				e.FieldStart("can_change_info")
+				e.Bool(s.CanChangeInfo)
+			}
+			{
+				e.FieldStart("can_invite_users")
+				e.Bool(s.CanInviteUsers)
+			}
+			{
+				e.FieldStart("can_pin_messages")
+				e.Bool(s.CanPinMessages)
+			}
+			{
+				e.FieldStart("can_send_messages")
+				e.Bool(s.CanSendMessages)
+			}
+			{
+				e.FieldStart("can_send_media_messages")
+				e.Bool(s.CanSendMediaMessages)
+			}
+			{
+				e.FieldStart("can_send_polls")
+				e.Bool(s.CanSendPolls)
+			}
+			{
+				e.FieldStart("can_send_other_messages")
+				e.Bool(s.CanSendOtherMessages)
+			}
+			{
+				e.FieldStart("can_add_web_page_previews")
+				e.Bool(s.CanAddWebPagePreviews)
+			}
+			{
+				e.FieldStart("until_date")
+				e.Int(s.UntilDate)
+			}
+		}
 	}
 }
 
@@ -12386,55 +12554,851 @@ func (s InlineQueryResult) encodeFields(e *jx.Encoder) {
 	case InlineQueryResultArticleInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("article")
-		s.InlineQueryResultArticle.encodeFields(e)
+		{
+			s := s.InlineQueryResultArticle
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				e.FieldStart("input_message_content")
+				s.InputMessageContent.Encode(e)
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.URL.Set {
+					e.FieldStart("url")
+					s.URL.Encode(e)
+				}
+			}
+			{
+				if s.HideURL.Set {
+					e.FieldStart("hide_url")
+					s.HideURL.Encode(e)
+				}
+			}
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+			{
+				if s.ThumbURL.Set {
+					e.FieldStart("thumb_url")
+					s.ThumbURL.Encode(e)
+				}
+			}
+			{
+				if s.ThumbWidth.Set {
+					e.FieldStart("thumb_width")
+					s.ThumbWidth.Encode(e)
+				}
+			}
+			{
+				if s.ThumbHeight.Set {
+					e.FieldStart("thumb_height")
+					s.ThumbHeight.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultAudioInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("audio")
-		s.InlineQueryResultAudio.encodeFields(e)
+		{
+			s := s.InlineQueryResultAudio
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("audio_url")
+				e.Str(s.AudioURL)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.Performer.Set {
+					e.FieldStart("performer")
+					s.Performer.Encode(e)
+				}
+			}
+			{
+				if s.AudioDuration.Set {
+					e.FieldStart("audio_duration")
+					s.AudioDuration.Encode(e)
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultContactInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("contact")
-		s.InlineQueryResultContact.encodeFields(e)
+		{
+			s := s.InlineQueryResultContact
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("phone_number")
+				e.Str(s.PhoneNumber)
+			}
+			{
+				e.FieldStart("first_name")
+				e.Str(s.FirstName)
+			}
+			{
+				if s.LastName.Set {
+					e.FieldStart("last_name")
+					s.LastName.Encode(e)
+				}
+			}
+			{
+				if s.Vcard.Set {
+					e.FieldStart("vcard")
+					s.Vcard.Encode(e)
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+			{
+				if s.ThumbURL.Set {
+					e.FieldStart("thumb_url")
+					s.ThumbURL.Encode(e)
+				}
+			}
+			{
+				if s.ThumbWidth.Set {
+					e.FieldStart("thumb_width")
+					s.ThumbWidth.Encode(e)
+				}
+			}
+			{
+				if s.ThumbHeight.Set {
+					e.FieldStart("thumb_height")
+					s.ThumbHeight.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultDocumentInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("document")
-		s.InlineQueryResultDocument.encodeFields(e)
+		{
+			s := s.InlineQueryResultDocument
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				e.FieldStart("document_url")
+				e.Str(s.DocumentURL)
+			}
+			{
+				e.FieldStart("mime_type")
+				e.Str(s.MimeType)
+			}
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+			{
+				if s.ThumbURL.Set {
+					e.FieldStart("thumb_url")
+					s.ThumbURL.Encode(e)
+				}
+			}
+			{
+				if s.ThumbWidth.Set {
+					e.FieldStart("thumb_width")
+					s.ThumbWidth.Encode(e)
+				}
+			}
+			{
+				if s.ThumbHeight.Set {
+					e.FieldStart("thumb_height")
+					s.ThumbHeight.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultGameInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("game")
-		s.InlineQueryResultGame.encodeFields(e)
+		{
+			s := s.InlineQueryResultGame
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("game_short_name")
+				e.Str(s.GameShortName)
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultGifInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("gif")
-		s.InlineQueryResultGif.encodeFields(e)
+		{
+			s := s.InlineQueryResultGif
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("gif_url")
+				e.Str(s.GIFURL)
+			}
+			{
+				if s.GIFWidth.Set {
+					e.FieldStart("gif_width")
+					s.GIFWidth.Encode(e)
+				}
+			}
+			{
+				if s.GIFHeight.Set {
+					e.FieldStart("gif_height")
+					s.GIFHeight.Encode(e)
+				}
+			}
+			{
+				if s.GIFDuration.Set {
+					e.FieldStart("gif_duration")
+					s.GIFDuration.Encode(e)
+				}
+			}
+			{
+				e.FieldStart("thumb_url")
+				e.Str(s.ThumbURL)
+			}
+			{
+				if s.ThumbMimeType.Set {
+					e.FieldStart("thumb_mime_type")
+					s.ThumbMimeType.Encode(e)
+				}
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultLocationInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("location")
-		s.InlineQueryResultLocation.encodeFields(e)
+		{
+			s := s.InlineQueryResultLocation
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("latitude")
+				e.Float64(s.Latitude)
+			}
+			{
+				e.FieldStart("longitude")
+				e.Float64(s.Longitude)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				if s.HorizontalAccuracy.Set {
+					e.FieldStart("horizontal_accuracy")
+					s.HorizontalAccuracy.Encode(e)
+				}
+			}
+			{
+				if s.LivePeriod.Set {
+					e.FieldStart("live_period")
+					s.LivePeriod.Encode(e)
+				}
+			}
+			{
+				if s.Heading.Set {
+					e.FieldStart("heading")
+					s.Heading.Encode(e)
+				}
+			}
+			{
+				if s.ProximityAlertRadius.Set {
+					e.FieldStart("proximity_alert_radius")
+					s.ProximityAlertRadius.Encode(e)
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+			{
+				if s.ThumbURL.Set {
+					e.FieldStart("thumb_url")
+					s.ThumbURL.Encode(e)
+				}
+			}
+			{
+				if s.ThumbWidth.Set {
+					e.FieldStart("thumb_width")
+					s.ThumbWidth.Encode(e)
+				}
+			}
+			{
+				if s.ThumbHeight.Set {
+					e.FieldStart("thumb_height")
+					s.ThumbHeight.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultMpeg4GifInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("mpeg4_gif")
-		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		{
+			s := s.InlineQueryResultMpeg4Gif
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("mpeg4_url")
+				e.Str(s.Mpeg4URL)
+			}
+			{
+				if s.Mpeg4Width.Set {
+					e.FieldStart("mpeg4_width")
+					s.Mpeg4Width.Encode(e)
+				}
+			}
+			{
+				if s.Mpeg4Height.Set {
+					e.FieldStart("mpeg4_height")
+					s.Mpeg4Height.Encode(e)
+				}
+			}
+			{
+				if s.Mpeg4Duration.Set {
+					e.FieldStart("mpeg4_duration")
+					s.Mpeg4Duration.Encode(e)
+				}
+			}
+			{
+				e.FieldStart("thumb_url")
+				e.Str(s.ThumbURL)
+			}
+			{
+				if s.ThumbMimeType.Set {
+					e.FieldStart("thumb_mime_type")
+					s.ThumbMimeType.Encode(e)
+				}
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultPhotoInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("photo")
-		s.InlineQueryResultPhoto.encodeFields(e)
+		{
+			s := s.InlineQueryResultPhoto
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("photo_url")
+				e.Str(s.PhotoURL)
+			}
+			{
+				e.FieldStart("thumb_url")
+				e.Str(s.ThumbURL)
+			}
+			{
+				if s.PhotoWidth.Set {
+					e.FieldStart("photo_width")
+					s.PhotoWidth.Encode(e)
+				}
+			}
+			{
+				if s.PhotoHeight.Set {
+					e.FieldStart("photo_height")
+					s.PhotoHeight.Encode(e)
+				}
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultCachedStickerInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("sticker")
-		s.InlineQueryResultCachedSticker.encodeFields(e)
+		{
+			s := s.InlineQueryResultCachedSticker
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("sticker_file_id")
+				e.Str(s.StickerFileID)
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultVenueInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("venue")
-		s.InlineQueryResultVenue.encodeFields(e)
+		{
+			s := s.InlineQueryResultVenue
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("latitude")
+				e.Float64(s.Latitude)
+			}
+			{
+				e.FieldStart("longitude")
+				e.Float64(s.Longitude)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				e.FieldStart("address")
+				e.Str(s.Address)
+			}
+			{
+				if s.FoursquareID.Set {
+					e.FieldStart("foursquare_id")
+					s.FoursquareID.Encode(e)
+				}
+			}
+			{
+				if s.FoursquareType.Set {
+					e.FieldStart("foursquare_type")
+					s.FoursquareType.Encode(e)
+				}
+			}
+			{
+				if s.GooglePlaceID.Set {
+					e.FieldStart("google_place_id")
+					s.GooglePlaceID.Encode(e)
+				}
+			}
+			{
+				if s.GooglePlaceType.Set {
+					e.FieldStart("google_place_type")
+					s.GooglePlaceType.Encode(e)
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+			{
+				if s.ThumbURL.Set {
+					e.FieldStart("thumb_url")
+					s.ThumbURL.Encode(e)
+				}
+			}
+			{
+				if s.ThumbWidth.Set {
+					e.FieldStart("thumb_width")
+					s.ThumbWidth.Encode(e)
+				}
+			}
+			{
+				if s.ThumbHeight.Set {
+					e.FieldStart("thumb_height")
+					s.ThumbHeight.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultVideoInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("video")
-		s.InlineQueryResultVideo.encodeFields(e)
+		{
+			s := s.InlineQueryResultVideo
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("video_url")
+				e.Str(s.VideoURL)
+			}
+			{
+				e.FieldStart("mime_type")
+				e.Str(s.MimeType)
+			}
+			{
+				e.FieldStart("thumb_url")
+				e.Str(s.ThumbURL)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.VideoWidth.Set {
+					e.FieldStart("video_width")
+					s.VideoWidth.Encode(e)
+				}
+			}
+			{
+				if s.VideoHeight.Set {
+					e.FieldStart("video_height")
+					s.VideoHeight.Encode(e)
+				}
+			}
+			{
+				if s.VideoDuration.Set {
+					e.FieldStart("video_duration")
+					s.VideoDuration.Encode(e)
+				}
+			}
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultVoiceInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("voice")
-		s.InlineQueryResultVoice.encodeFields(e)
+		{
+			s := s.InlineQueryResultVoice
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("voice_url")
+				e.Str(s.VoiceURL)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.VoiceDuration.Set {
+					e.FieldStart("voice_duration")
+					s.VoiceDuration.Encode(e)
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	}
 }
 
@@ -18838,23 +19802,253 @@ func (s InputMedia) encodeFields(e *jx.Encoder) {
 	case InputMediaAnimationInputMedia:
 		e.FieldStart("type")
 		e.Str("animation")
-		s.InputMediaAnimation.encodeFields(e)
+		{
+			s := s.InputMediaAnimation
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.Width.Set {
+					e.FieldStart("width")
+					s.Width.Encode(e)
+				}
+			}
+			{
+				if s.Height.Set {
+					e.FieldStart("height")
+					s.Height.Encode(e)
+				}
+			}
+			{
+				if s.Duration.Set {
+					e.FieldStart("duration")
+					s.Duration.Encode(e)
+				}
+			}
+		}
 	case InputMediaAudioInputMedia:
 		e.FieldStart("type")
 		e.Str("audio")
-		s.InputMediaAudio.encodeFields(e)
+		{
+			s := s.InputMediaAudio
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.Duration.Set {
+					e.FieldStart("duration")
+					s.Duration.Encode(e)
+				}
+			}
+			{
+				if s.Performer.Set {
+					e.FieldStart("performer")
+					s.Performer.Encode(e)
+				}
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+		}
 	case InputMediaDocumentInputMedia:
 		e.FieldStart("type")
 		e.Str("document")
-		s.InputMediaDocument.encodeFields(e)
+		{
+			s := s.InputMediaDocument
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.DisableContentTypeDetection.Set {
+					e.FieldStart("disable_content_type_detection")
+					s.DisableContentTypeDetection.Encode(e)
+				}
+			}
+		}
 	case InputMediaPhotoInputMedia:
 		e.FieldStart("type")
 		e.Str("photo")
-		s.InputMediaPhoto.encodeFields(e)
+		{
+			s := s.InputMediaPhoto
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+		}
 	case InputMediaVideoInputMedia:
 		e.FieldStart("type")
 		e.Str("video")
-		s.InputMediaVideo.encodeFields(e)
+		{
+			s := s.InputMediaVideo
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.Width.Set {
+					e.FieldStart("width")
+					s.Width.Encode(e)
+				}
+			}
+			{
+				if s.Height.Set {
+					e.FieldStart("height")
+					s.Height.Encode(e)
+				}
+			}
+			{
+				if s.Duration.Set {
+					e.FieldStart("duration")
+					s.Duration.Encode(e)
+				}
+			}
+			{
+				if s.SupportsStreaming.Set {
+					e.FieldStart("supports_streaming")
+					s.SupportsStreaming.Encode(e)
+				}
+			}
+		}
 	}
 }
 
@@ -21975,15 +23169,23 @@ func (s MenuButton) encodeFields(e *jx.Encoder) {
 	case MenuButtonCommandsMenuButton:
 		e.FieldStart("type")
 		e.Str("commands")
-		s.MenuButtonCommands.encodeFields(e)
 	case MenuButtonDefaultMenuButton:
 		e.FieldStart("type")
 		e.Str("default")
-		s.MenuButtonDefault.encodeFields(e)
 	case MenuButtonWebAppMenuButton:
 		e.FieldStart("type")
 		e.Str("web_app")
-		s.MenuButtonWebApp.encodeFields(e)
+		{
+			s := s.MenuButtonWebApp
+			{
+				e.FieldStart("text")
+				e.Str(s.Text)
+			}
+			{
+				e.FieldStart("web_app")
+				s.WebApp.Encode(e)
+			}
+		}
 	}
 }
 
@@ -26725,39 +27927,177 @@ func (s PassportElementError) encodeFields(e *jx.Encoder) {
 	case PassportElementErrorDataFieldPassportElementError:
 		e.FieldStart("type")
 		e.Str("data")
-		s.PassportElementErrorDataField.encodeFields(e)
+		{
+			s := s.PassportElementErrorDataField
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("field_name")
+				e.Str(s.FieldName)
+			}
+			{
+				e.FieldStart("data_hash")
+				e.Str(s.DataHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorFilePassportElementError:
 		e.FieldStart("type")
 		e.Str("file")
-		s.PassportElementErrorFile.encodeFields(e)
+		{
+			s := s.PassportElementErrorFile
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hash")
+				e.Str(s.FileHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorFilesPassportElementError:
 		e.FieldStart("type")
 		e.Str("files")
-		s.PassportElementErrorFiles.encodeFields(e)
+		{
+			s := s.PassportElementErrorFiles
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hashes")
+				e.ArrStart()
+				for _, elem := range s.FileHashes {
+					e.Str(elem)
+				}
+				e.ArrEnd()
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorFrontSidePassportElementError:
 		e.FieldStart("type")
 		e.Str("front_side")
-		s.PassportElementErrorFrontSide.encodeFields(e)
+		{
+			s := s.PassportElementErrorFrontSide
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hash")
+				e.Str(s.FileHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorReverseSidePassportElementError:
 		e.FieldStart("type")
 		e.Str("reverse_side")
-		s.PassportElementErrorReverseSide.encodeFields(e)
+		{
+			s := s.PassportElementErrorReverseSide
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hash")
+				e.Str(s.FileHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorSelfiePassportElementError:
 		e.FieldStart("type")
 		e.Str("selfie")
-		s.PassportElementErrorSelfie.encodeFields(e)
+		{
+			s := s.PassportElementErrorSelfie
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hash")
+				e.Str(s.FileHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorTranslationFilePassportElementError:
 		e.FieldStart("type")
 		e.Str("translation_file")
-		s.PassportElementErrorTranslationFile.encodeFields(e)
+		{
+			s := s.PassportElementErrorTranslationFile
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hash")
+				e.Str(s.FileHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorTranslationFilesPassportElementError:
 		e.FieldStart("type")
 		e.Str("translation_files")
-		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		{
+			s := s.PassportElementErrorTranslationFiles
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hashes")
+				e.ArrStart()
+				for _, elem := range s.FileHashes {
+					e.Str(elem)
+				}
+				e.ArrEnd()
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	case PassportElementErrorUnspecifiedPassportElementError:
 		e.FieldStart("type")
 		e.Str("unspecified")
-		s.PassportElementErrorUnspecified.encodeFields(e)
+		{
+			s := s.PassportElementErrorUnspecified
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("element_hash")
+				e.Str(s.ElementHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
 	}
 }
 
@@ -36047,19 +37387,197 @@ func (s SendMediaGroupMediaItem) encodeFields(e *jx.Encoder) {
 	case InputMediaAudioSendMediaGroupMediaItem:
 		e.FieldStart("type")
 		e.Str("audio")
-		s.InputMediaAudio.encodeFields(e)
+		{
+			s := s.InputMediaAudio
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.Duration.Set {
+					e.FieldStart("duration")
+					s.Duration.Encode(e)
+				}
+			}
+			{
+				if s.Performer.Set {
+					e.FieldStart("performer")
+					s.Performer.Encode(e)
+				}
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+		}
 	case InputMediaDocumentSendMediaGroupMediaItem:
 		e.FieldStart("type")
 		e.Str("document")
-		s.InputMediaDocument.encodeFields(e)
+		{
+			s := s.InputMediaDocument
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.DisableContentTypeDetection.Set {
+					e.FieldStart("disable_content_type_detection")
+					s.DisableContentTypeDetection.Encode(e)
+				}
+			}
+		}
 	case InputMediaPhotoSendMediaGroupMediaItem:
 		e.FieldStart("type")
 		e.Str("photo")
-		s.InputMediaPhoto.encodeFields(e)
+		{
+			s := s.InputMediaPhoto
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+		}
 	case InputMediaVideoSendMediaGroupMediaItem:
 		e.FieldStart("type")
 		e.Str("video")
-		s.InputMediaVideo.encodeFields(e)
+		{
+			s := s.InputMediaVideo
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.Width.Set {
+					e.FieldStart("width")
+					s.Width.Encode(e)
+				}
+			}
+			{
+				if s.Height.Set {
+					e.FieldStart("height")
+					s.Height.Encode(e)
+				}
+			}
+			{
+				if s.Duration.Set {
+					e.FieldStart("duration")
+					s.Duration.Encode(e)
+				}
+			}
+			{
+				if s.SupportsStreaming.Set {
+					e.FieldStart("supports_streaming")
+					s.SupportsStreaming.Encode(e)
+				}
+			}
+		}
 	}
 }
 
