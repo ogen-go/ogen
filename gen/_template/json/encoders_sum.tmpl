@@ -24,7 +24,13 @@ func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
 		case {{ $m.Type.Name }}{{ $.Name }}:
 			e.FieldStart({{ quote $.SumSpec.Discriminator }})
 			e.Str({{ quote $m.Key }})
-			s.{{ $m.Type.Name }}.encodeFields(e)
+			{{- $j := $m.Type.JSON.Except $.SumSpec.Discriminator }}
+			{{- if $j.AnyFields }}
+			{
+				s := s.{{ $m.Type.Name }}
+				{{- template "json/encode_struct_fields" $j }}
+			}
+			{{- end }}
 		{{- end }}
 		}
 	{{- else if $d.Fields }}
