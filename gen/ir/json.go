@@ -20,15 +20,34 @@ func (t *Type) JSON() JSON {
 
 // JSON specifies json encoding and decoding for Type.
 type JSON struct {
-	t *Type
+	t      *Type
+	except []string
+}
+
+// AnyFields whether if type has any fields to encode.
+func (j JSON) AnyFields() bool {
+	for _, f := range j.t.Fields {
+		if f.Inline != InlineNone {
+			return true
+		}
+
+		t := f.Tag.JSON
+		if t != "" && !slices.Contains(j.except, t) {
+			return true
+		}
+	}
+	return false
+}
+
+// Except return JSON with filter by given properties.
+func (j JSON) Except(set ...string) JSON {
+	return JSON{
+		t:      j.t,
+		except: set,
+	}
 }
 
 type JSONFields []*Field
-
-// NotEmpty whether field slice is not empty.
-func (j JSONFields) NotEmpty() bool {
-	return len(j) != 0
-}
 
 // FirstRequiredIndex returns first required field index.
 //
@@ -70,7 +89,7 @@ func (j JSONFields) RequiredMask() []uint8 {
 // Fields return all fields of Type that should be encoded via json.
 func (j JSON) Fields() (fields JSONFields) {
 	for _, f := range j.t.Fields {
-		if f.Tag.JSON == "" {
+		if t := f.Tag.JSON; t == "" || slices.Contains(j.except, t) {
 			continue
 		}
 		fields = append(fields, f)

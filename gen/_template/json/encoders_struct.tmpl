@@ -1,10 +1,30 @@
 {{- define "json/encode_struct_fields" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.JSONFields*/ -}}
-	{{- range $i, $f := $ }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.JSON*/ -}}
+	{{- $fields := $.Fields }}
+	{{- $additional := $.AdditionalProps }}
+	{{- $pattern := $.PatternProps }}
+	{{- $sum := $.SumProps }}
+
+	{{- range $i, $f := $fields }}
 		{
 		{{- $elem := field_elem $f }}
 		{{- template "json/enc" $elem }}
 		}
+	{{- end }}
+	{{- if $additional }}
+	for k, elem := range s.{{ $additional.Name }} {
+		e.FieldStart(k)
+    	{{ template "json/enc" map_elem $additional.Type.Item }}
+	}
+	{{- end }}
+	{{- range $p := $pattern }}
+	for k, elem := range s.{{ $p.Name }} {
+		e.FieldStart(k)
+    	{{ template "json/enc" map_elem $p.Type.Item }}
+	}
+	{{- end }}
+	{{- range $s := $sum }}
+	s.{{ $s.Name }}.encodeFields(e)
 	{{- end }}
 {{- end }}
 
@@ -67,22 +87,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 {{- else }}
 // encodeFields encodes fields.
 func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
-	{{- template "json/encode_struct_fields" $fields }}
-	{{- if $additional }}
-	for k, elem := range s.{{ $additional.Name }} {
-		e.FieldStart(k)
-    	{{ template "json/enc" map_elem $additional.Type.Item }}
-	}
-	{{- end }}
-	{{- range $p := $pattern }}
-	for k, elem := range s.{{ $p.Name }} {
-		e.FieldStart(k)
-    	{{ template "json/enc" map_elem $p.Type.Item }}
-	}
-	{{- end }}
-	{{- range $s := $sum }}
-	s.{{ $s.Name }}.encodeFields(e)
-	{{- end }}
+	{{- template "json/encode_struct_fields" $.JSON }}
 }
 
 var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{

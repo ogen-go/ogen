@@ -1553,11 +1553,27 @@ func (s InlineDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
 	case InlineOneOfBarInlineDiscriminatorOneOfSum:
 		e.FieldStart("kind")
 		e.Str("bar")
-		s.InlineOneOfBar.encodeFields(e)
+		{
+			s := s.InlineOneOfBar
+			{
+				if s.Bar.Set {
+					e.FieldStart("bar")
+					s.Bar.Encode(e)
+				}
+			}
+		}
 	case InlineOneOfFooInlineDiscriminatorOneOfSum:
 		e.FieldStart("kind")
 		e.Str("foo")
-		s.InlineOneOfFoo.encodeFields(e)
+		{
+			s := s.InlineOneOfFoo
+			{
+				if s.Foo.Set {
+					e.FieldStart("foo")
+					s.Foo.Encode(e)
+				}
+			}
+		}
 	}
 }
 
@@ -2629,15 +2645,34 @@ func (s Issue943) encodeFields(e *jx.Encoder) {
 	case Issue943Variant1Issue943:
 		e.FieldStart("selector")
 		e.Str("variant1")
-		s.Issue943Variant1.encodeFields(e)
+		{
+			s := s.Issue943Variant1
+			{
+				e.FieldStart("variant1_field")
+				e.Int(s.Variant1Field)
+			}
+		}
 	case Issue943Variant2Issue943:
 		e.FieldStart("selector")
 		e.Str("variant2")
-		s.Issue943Variant2.encodeFields(e)
+		{
+			s := s.Issue943Variant2
+			{
+				e.FieldStart("variant2_field")
+				e.Bool(s.Variant2Field)
+			}
+		}
 	case Issue943MapIssue943:
 		e.FieldStart("selector")
 		e.Str("variant3")
-		s.Issue943Map.encodeFields(e)
+		{
+			s := s.Issue943Map
+			for k, elem := range s.Pattern0Props {
+				e.FieldStart(k)
+
+				e.Str(elem)
+			}
+		}
 	}
 }
 
@@ -3707,11 +3742,27 @@ func (s MergeDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
 	case InlineOneOfBarMergeDiscriminatorOneOfSum:
 		e.FieldStart("kind")
 		e.Str("bar")
-		s.InlineOneOfBar.encodeFields(e)
+		{
+			s := s.InlineOneOfBar
+			{
+				if s.Bar.Set {
+					e.FieldStart("bar")
+					s.Bar.Encode(e)
+				}
+			}
+		}
 	case InlineOneOfFooMergeDiscriminatorOneOfSum:
 		e.FieldStart("kind")
 		e.Str("foo")
-		s.InlineOneOfFoo.encodeFields(e)
+		{
+			s := s.InlineOneOfFoo
+			{
+				if s.Foo.Set {
+					e.FieldStart("foo")
+					s.Foo.Encode(e)
+				}
+			}
+		}
 	}
 }
 
@@ -4799,11 +4850,39 @@ func (s OneOfMappingReference) encodeFields(e *jx.Encoder) {
 	case OneOfMappingReferenceBOneOfMappingReference:
 		e.FieldStart("infoType")
 		e.Str("extended")
-		s.OneOfMappingReferenceB.encodeFields(e)
+		{
+			s := s.OneOfMappingReferenceB
+			{
+				if s.Code.Set {
+					e.FieldStart("code")
+					s.Code.Encode(e)
+				}
+			}
+			{
+				if s.Data != nil {
+					e.FieldStart("data")
+					s.Data.Encode(e)
+				}
+			}
+			{
+				if s.Info.Set {
+					e.FieldStart("info")
+					s.Info.Encode(e)
+				}
+			}
+		}
 	case OneOfMappingReferenceAOneOfMappingReference:
 		e.FieldStart("infoType")
 		e.Str("simple")
-		s.OneOfMappingReferenceA.encodeFields(e)
+		{
+			s := s.OneOfMappingReferenceA
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+		}
 	}
 }
 

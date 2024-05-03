@@ -4,6 +4,7 @@ import (
 	std "encoding/json"
 	"fmt"
 	"strconv"
+	"strings"
 	"testing"
 
 	"github.com/go-faster/jx"
@@ -49,6 +50,31 @@ func testEncode(t *testing.T, encoder json.Marshaler, expected string) {
 	}
 	require.True(t, std.Valid(e.Bytes()), string(e.Bytes()))
 	require.JSONEq(t, expected, string(e.Bytes()), "encoding result mismatch")
+	require.NoError(t, validProperties(jx.DecodeBytes(e.Bytes()), []string{"$"}))
+}
+
+func validProperties(d *jx.Decoder, path []string) error {
+	if tt := d.Next(); tt != jx.Object {
+		return d.Skip()
+	}
+
+	m := map[string]struct{}{}
+	return d.Obj(func(d *jx.Decoder, key string) error {
+		path = append(path, key)
+		defer func() {
+			path = path[:len(path)-1]
+		}()
+
+		if _, ok := m[key]; ok {
+			return fmt.Errorf("duplicate field %q (at %q)", key, strings.Join(path, "."))
+		}
+		m[key] = struct{}{}
+
+		if err := validProperties(d, path); err != nil {
+			return err
+		}
+		return nil
+	})
 }
 
 func TestJSONGenerics(t *testing.T) {
