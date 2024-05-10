@@ -23,17 +23,17 @@ func findParam(op *ir.Operation, name string) (*ir.Parameter, bool) {
 
 // longestPrefix founds the longest common prefix of k1 and k2.
 func longestPrefix(k1, k2 string) int {
-	min := len(k1)
-	if l := len(k2); l < min {
-		min = l
+	smin := len(k1)
+	if l := len(k2); l < smin {
+		smin = l
 	}
 
-	for i := 0; i < min; i++ {
+	for i := 0; i < smin; i++ {
 		if k1[i] != k2[i] {
 			return i
 		}
 	}
-	return min
+	return smin
 }
 
 func (t *RouteTree) addRoute(m Route) error {
