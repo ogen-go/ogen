@@ -354,9 +354,9 @@ func TestBuilder(t *testing.T) {
 
 	mlt := uint64(1)
 	mltStr := ogen.Num("1")
-	max := int64(2)
+	maxn := int64(2)
 	maxStr := ogen.Num("2")
-	umax := uint64(max)
+	umax := uint64(maxn)
 	assert.Equal(t, &ogen.Schema{
 		Ref:         "ref",
 		Description: "desc",
@@ -402,9 +402,9 @@ func TestBuilder(t *testing.T) {
 		SetDiscriminator(&ogen.Discriminator{PropertyName: "prop"}).
 		SetEnum([]json.RawMessage{json.RawMessage("0"), json.RawMessage("1")}).
 		SetMultipleOf(&mlt).
-		SetMaximum(&max).
+		SetMaximum(&maxn).
 		SetExclusiveMaximum(true).
-		SetMinimum(&max).
+		SetMinimum(&maxn).
 		SetExclusiveMinimum(true).
 		SetMaxLength(&umax).
 		SetMinLength(&umax).
