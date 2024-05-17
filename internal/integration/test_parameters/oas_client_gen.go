@@ -52,6 +52,10 @@ type Invoker interface {
 	//
 	// GET /objectQueryParameter
 	ObjectQueryParameter(ctx context.Context, params ObjectQueryParameterParams) (*ObjectQueryParameterOK, error)
+	// OptionalArrayParameter invokes optionalArrayParameter operation.
+	//
+	// GET /optionalArrayParameter
+	OptionalArrayParameter(ctx context.Context, params OptionalArrayParameterParams) (string, error)
 	// PathParameter invokes pathParameter operation.
 	//
 	// Test for path param.
@@ -776,6 +780,132 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 
 	stage = "DecodeResponse"
 	result, err := decodeObjectQueryParameterResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// OptionalArrayParameter invokes optionalArrayParameter operation.
+//
+// GET /optionalArrayParameter
+func (c *Client) OptionalArrayParameter(ctx context.Context, params OptionalArrayParameterParams) (string, error) {
+	res, err := c.sendOptionalArrayParameter(ctx, params)
+	return res, err
+}
+
+func (c *Client) sendOptionalArrayParameter(ctx context.Context, params OptionalArrayParameterParams) (res string, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("optionalArrayParameter"),
+		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRouteKey.String("/optionalArrayParameter"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "OptionalArrayParameter",
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/optionalArrayParameter"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeQueryParams"
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "query" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "query",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if params.Query != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.Query {
+						if err := func() error {
+							return e.EncodeValue(conv.StringToString(item))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
+					}
+					return nil
+				})
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	u.RawQuery = q.Values().Encode()
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	stage = "EncodeHeaderParams"
+	h := uri.NewHeaderEncoder(r.Header)
+	{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    "header",
+			Explode: false,
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+			if params.Header != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.Header {
+						if err := func() error {
+							return e.EncodeValue(conv.StringToString(item))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
+					}
+					return nil
+				})
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode header")
+		}
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeOptionalArrayParameterResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

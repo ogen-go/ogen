@@ -59,6 +59,13 @@ func (UnimplementedHandler) ObjectQueryParameter(ctx context.Context, params Obj
 	return r, ht.ErrNotImplemented
 }
 
+// OptionalArrayParameter implements optionalArrayParameter operation.
+//
+// GET /optionalArrayParameter
+func (UnimplementedHandler) OptionalArrayParameter(ctx context.Context, params OptionalArrayParameterParams) (r string, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // PathParameter implements pathParameter operation.
 //
 // Test for path param.

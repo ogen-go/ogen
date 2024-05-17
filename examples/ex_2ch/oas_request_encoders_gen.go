@@ -281,16 +281,19 @@ func encodeUserReportPostRequest(
 			Explode: true,
 		}
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range request.Post {
-					if err := func() error {
-						return e.EncodeValue(conv.IntToString(item))
-					}(); err != nil {
-						return errors.Wrapf(err, "[%d]", i)
+			if request.Post != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range request.Post {
+						if err := func() error {
+							return e.EncodeValue(conv.IntToString(item))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
 					}
-				}
-				return nil
-			})
+					return nil
+				})
+			}
+			return nil
 		}); err != nil {
 			return errors.Wrap(err, "encode query")
 		}
