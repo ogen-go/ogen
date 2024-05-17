@@ -63,7 +63,7 @@ if {{ $.Var }}.Set {
 		{{- template "json/enc_array_elems" $ -}}
 	}
 {{- else -}}
-{{ errorf "unexpected nil semantic %s" $t.NilSemantic }}
+	{{ errorf "unexpected nil semantic %s" $t.NilSemantic }}
 {{- end -}}
 {{- end }}
 

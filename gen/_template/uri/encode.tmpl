@@ -7,16 +7,16 @@
 {{- else if $t.IsEnum }}
 	return e.EncodeValue(conv.{{ $t.ToString }}({{ $t.Primitive.String }}({{ $var }})))
 {{- else if $t.IsArray  }}
-	return e.EncodeArray(func(e uri.Encoder) error {
-		for i, item := range {{ $var }} {
-			if err := func() error {
-				{{- template "uri/encode" elem $t.Item "item" }}
-			}(); err != nil {
-				return errors.Wrapf(err, "[%d]", i)
-			}
+	{{- if $t.NilSemantic.Invalid -}}
+		{{- template "uri/encode_array_elems" $ }}
+	{{- else if $t.NilSemantic.Optional -}}
+		if {{ $.Var }} != nil {
+			{{- template "uri/encode_array_elems" $ }}
 		}
 		return nil
-	})
+	{{- else -}}
+		{{ errorf "unexpected nil semantic %s" $t.NilSemantic }}
+	{{- end -}}
 {{- else if $t.IsAlias }}
 	if unwrapped := {{ $t.AliasTo.Go }}({{ $var }}); true {
 		{{- template "uri/encode" elem $t.AliasTo "unwrapped" }}
@@ -37,4 +37,17 @@
 {{- else }}
 	{{ errorf "unexpected kind %s" $t.Kind }}
 {{- end }}
+{{- end }}
+
+{{- define "uri/encode_array_elems" }}
+return e.EncodeArray(func(e uri.Encoder) error {
+	for i, item := range {{ $.Var }} {
+		if err := func() error {
+			{{- template "uri/encode" elem $.Type.Item "item" }}
+		}(); err != nil {
+			return errors.Wrapf(err, "[%d]", i)
+		}
+	}
+	return nil
+})
 {{- end }}
