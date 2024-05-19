@@ -5,6 +5,8 @@ package api
 import (
 	"fmt"
 	"time"
+
+	"github.com/go-faster/jx"
 )
 
 // SetFake set fake values.
@@ -503,6 +505,13 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) SetFake() {
 
 // SetFake set fake values.
 func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -546,8 +555,8 @@ func (s *IoK8sAPIAppsV1ControllerRevision) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.Data = nil
+		{
+			s.Data.SetFake()
 		}
 	}
 	{
@@ -14318,6 +14327,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 
 // SetFake set fake values.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -14328,8 +14344,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.Status = nil
+		{
+			s.Status.SetFake()
 		}
 	}
 }
@@ -14359,6 +14375,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 
 // SetFake set fake values.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -14374,13 +14397,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.AdditionalItems = nil
+		{
+			s.AdditionalItems.SetFake()
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.AdditionalProperties = nil
+		{
+			s.AdditionalProperties.SetFake()
 		}
 	}
 	{
@@ -14408,8 +14431,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.Default = nil
+		{
+			s.Default.SetFake()
 		}
 	}
 	{
@@ -14440,8 +14463,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.Example = nil
+		{
+			s.Example.SetFake()
 		}
 	}
 	{
@@ -14470,8 +14493,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.Items = nil
+		{
+			s.Items.SetFake()
 		}
 	}
 	{
@@ -14646,14 +14669,35 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepende
 
 // SetFake set fake values.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -15005,6 +15049,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetFake() {
 
 // SetFake set fake values.
 func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -15116,8 +15167,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.FieldsV1 = nil
+		{
+			s.FieldsV1.SetFake()
 		}
 	}
 	{
@@ -15351,6 +15402,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) SetFake() {
 
 // SetFake set fake values.
 func (s *IoK8sApimachineryPkgRuntimeRawExtension) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -17969,6 +18027,15 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 }
 
 // SetFake set fake values.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetFake() {
 	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources
 	{
@@ -17996,6 +18063,15 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentati
 }
 
 // SetFake set fake values.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFake() {
 	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 	{
@@ -18016,6 +18092,24 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefi
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) SetFake() {
 	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
 	{
 		elem.SetFake()
 	}
@@ -18070,6 +18164,15 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgAPIResourceQuantity) SetFake() {
 	var elem IoK8sApimachineryPkgAPIResourceQuantity
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIoK8sApimachineryPkgApisMetaV1FieldsV1) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1FieldsV1
 	{
 		elem.SetFake()
 	}
@@ -18151,6 +18254,15 @@ func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) SetFake() {
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1Time) SetFake() {
 	var elem IoK8sApimachineryPkgApisMetaV1Time
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIoK8sApimachineryPkgRuntimeRawExtension) SetFake() {
+	var elem IoK8sApimachineryPkgRuntimeRawExtension
 	{
 		elem.SetFake()
 	}

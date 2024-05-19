@@ -229,6 +229,7 @@ func TestMmdsConfig_EncodeDecode(t *testing.T) {
 }
 func TestMmdsGetOK_EncodeDecode(t *testing.T) {
 	var typ MmdsGetOK
+	typ = make(MmdsGetOK)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -237,10 +238,12 @@ func TestMmdsGetOK_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 MmdsGetOK
+	typ2 = make(MmdsGetOK)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestMmdsPatchReq_EncodeDecode(t *testing.T) {
 	var typ MmdsPatchReq
+	typ = make(MmdsPatchReq)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -249,10 +252,12 @@ func TestMmdsPatchReq_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 MmdsPatchReq
+	typ2 = make(MmdsPatchReq)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestMmdsPutReq_EncodeDecode(t *testing.T) {
 	var typ MmdsPutReq
+	typ = make(MmdsPutReq)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -261,6 +266,7 @@ func TestMmdsPutReq_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 MmdsPutReq
+	typ2 = make(MmdsPutReq)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestNetworkInterface_EncodeDecode(t *testing.T) {

@@ -4859,7 +4859,7 @@ func (s OneOfMappingReference) encodeFields(e *jx.Encoder) {
 				}
 			}
 			{
-				if s.Data != nil {
+				if s.Data.Set {
 					e.FieldStart("data")
 					s.Data.Encode(e)
 				}
@@ -5058,7 +5058,7 @@ func (s *OneOfMappingReferenceB) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Data != nil {
+		if s.Data.Set {
 			e.FieldStart("data")
 			s.Data.Encode(e)
 		}
@@ -5108,12 +5108,10 @@ func (s *OneOfMappingReferenceB) Decode(d *jx.Decoder) error {
 			}
 		case "data":
 			if err := func() error {
-				s.Data = nil
-				var elem OneOfMappingReferenceBData
-				if err := elem.Decode(d); err != nil {
+				s.Data.Reset()
+				if err := s.Data.Decode(d); err != nil {
 					return err
 				}
-				s.Data = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"data\"")
@@ -5153,29 +5151,43 @@ func (s *OneOfMappingReferenceB) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *OneOfMappingReferenceBData) Encode(e *jx.Encoder) {
+func (s OneOfMappingReferenceBData) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *OneOfMappingReferenceBData) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s OneOfMappingReferenceBData) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfOneOfMappingReferenceBData = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes OneOfMappingReferenceBData from json.
 func (s *OneOfMappingReferenceBData) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode OneOfMappingReferenceBData to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode OneOfMappingReferenceBData")
 	}
@@ -5184,7 +5196,7 @@ func (s *OneOfMappingReferenceBData) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *OneOfMappingReferenceBData) MarshalJSON() ([]byte, error) {
+func (s OneOfMappingReferenceBData) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -6983,6 +6995,40 @@ func (s OptOneOfMappingReference) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptOneOfMappingReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes OneOfMappingReferenceBData as json.
+func (o OptOneOfMappingReferenceBData) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OneOfMappingReferenceBData from json.
+func (o *OptOneOfMappingReferenceBData) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOneOfMappingReferenceBData to nil")
+	}
+	o.Set = true
+	o.Value = make(OneOfMappingReferenceBData)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptOneOfMappingReferenceBData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptOneOfMappingReferenceBData) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

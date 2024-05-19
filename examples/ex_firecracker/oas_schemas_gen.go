@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
 func (s *ErrorStatusCode) Error() string {
@@ -1008,7 +1009,16 @@ type MmdsConfigPutNoContent struct{}
 
 func (*MmdsConfigPutNoContent) mmdsConfigPutRes() {}
 
-type MmdsGetOK struct{}
+type MmdsGetOK map[string]jx.Raw
+
+func (s *MmdsGetOK) init() MmdsGetOK {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 func (*MmdsGetOK) mmdsGetRes() {}
 
@@ -1017,14 +1027,32 @@ type MmdsPatchNoContent struct{}
 
 func (*MmdsPatchNoContent) mmdsPatchRes() {}
 
-type MmdsPatchReq struct{}
+type MmdsPatchReq map[string]jx.Raw
+
+func (s *MmdsPatchReq) init() MmdsPatchReq {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // MmdsPutNoContent is response for MmdsPut operation.
 type MmdsPutNoContent struct{}
 
 func (*MmdsPutNoContent) mmdsPutRes() {}
 
-type MmdsPutReq struct{}
+type MmdsPutReq map[string]jx.Raw
+
+func (s *MmdsPutReq) init() MmdsPutReq {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // Defines a network interface.
 // Ref: #/components/schemas/NetworkInterface
@@ -1602,6 +1630,98 @@ func (o OptMmdsConfig) Get() (v MmdsConfig, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptMmdsConfig) Or(d MmdsConfig) MmdsConfig {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMmdsPatchReq returns new OptMmdsPatchReq with value set to v.
+func NewOptMmdsPatchReq(v MmdsPatchReq) OptMmdsPatchReq {
+	return OptMmdsPatchReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMmdsPatchReq is optional MmdsPatchReq.
+type OptMmdsPatchReq struct {
+	Value MmdsPatchReq
+	Set   bool
+}
+
+// IsSet returns true if OptMmdsPatchReq was set.
+func (o OptMmdsPatchReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMmdsPatchReq) Reset() {
+	var v MmdsPatchReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMmdsPatchReq) SetTo(v MmdsPatchReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMmdsPatchReq) Get() (v MmdsPatchReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMmdsPatchReq) Or(d MmdsPatchReq) MmdsPatchReq {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMmdsPutReq returns new OptMmdsPutReq with value set to v.
+func NewOptMmdsPutReq(v MmdsPutReq) OptMmdsPutReq {
+	return OptMmdsPutReq{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMmdsPutReq is optional MmdsPutReq.
+type OptMmdsPutReq struct {
+	Value MmdsPutReq
+	Set   bool
+}
+
+// IsSet returns true if OptMmdsPutReq was set.
+func (o OptMmdsPutReq) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMmdsPutReq) Reset() {
+	var v MmdsPutReq
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMmdsPutReq) SetTo(v MmdsPutReq) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMmdsPutReq) Get() (v MmdsPutReq, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMmdsPutReq) Or(d MmdsPutReq) MmdsPutReq {
 	if v, ok := o.Get(); ok {
 		return v
 	}

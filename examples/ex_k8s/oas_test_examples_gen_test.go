@@ -181,6 +181,7 @@ func TestIoK8sAPIApiserverinternalV1alpha1StorageVersionList_EncodeDecode(t *tes
 }
 func TestIoK8sAPIApiserverinternalV1alpha1StorageVersionSpec_EncodeDecode(t *testing.T) {
 	var typ IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec
+	typ = make(IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -189,6 +190,7 @@ func TestIoK8sAPIApiserverinternalV1alpha1StorageVersionSpec_EncodeDecode(t *tes
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec
+	typ2 = make(IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sAPIApiserverinternalV1alpha1StorageVersionStatus_EncodeDecode(t *testing.T) {
@@ -6223,6 +6225,7 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus_EncodeDecode(t *testing.T) {
 	var typ IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus
+	typ = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6231,6 +6234,7 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus
+	typ2 = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources_EncodeDecode(t *testing.T) {
@@ -6271,6 +6275,7 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation_
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON_EncodeDecode(t *testing.T) {
 	var typ IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+	typ = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6279,6 +6284,7 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON_EncodeDecode(t *t
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+	typ2 = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps_EncodeDecode(t *testing.T) {
@@ -6323,6 +6329,7 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepende
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray_EncodeDecode(t *testing.T) {
 	var typ IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
+	typ = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6331,10 +6338,12 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
+	typ2 = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool_EncodeDecode(t *testing.T) {
 	var typ IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
+	typ = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6343,10 +6352,12 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool_
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
+	typ2 = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray_EncodeDecode(t *testing.T) {
 	var typ IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
+	typ = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6355,6 +6366,7 @@ func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
+	typ2 = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties_EncodeDecode(t *testing.T) {
@@ -6507,6 +6519,7 @@ func TestIoK8sApimachineryPkgApisMetaV1Condition_EncodeDecode(t *testing.T) {
 }
 func TestIoK8sApimachineryPkgApisMetaV1FieldsV1_EncodeDecode(t *testing.T) {
 	var typ IoK8sApimachineryPkgApisMetaV1FieldsV1
+	typ = make(IoK8sApimachineryPkgApisMetaV1FieldsV1)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6515,6 +6528,7 @@ func TestIoK8sApimachineryPkgApisMetaV1FieldsV1_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sApimachineryPkgApisMetaV1FieldsV1
+	typ2 = make(IoK8sApimachineryPkgApisMetaV1FieldsV1)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery_EncodeDecode(t *testing.T) {
@@ -6693,6 +6707,7 @@ func TestIoK8sApimachineryPkgApisMetaV1WatchEvent_EncodeDecode(t *testing.T) {
 }
 func TestIoK8sApimachineryPkgRuntimeRawExtension_EncodeDecode(t *testing.T) {
 	var typ IoK8sApimachineryPkgRuntimeRawExtension
+	typ = make(IoK8sApimachineryPkgRuntimeRawExtension)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6701,6 +6716,7 @@ func TestIoK8sApimachineryPkgRuntimeRawExtension_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sApimachineryPkgRuntimeRawExtension
+	typ2 = make(IoK8sApimachineryPkgRuntimeRawExtension)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIoK8sApimachineryPkgUtilIntstrIntOrString_EncodeDecode(t *testing.T) {

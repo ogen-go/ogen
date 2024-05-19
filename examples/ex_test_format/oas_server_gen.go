@@ -50,7 +50,7 @@ type Handler interface {
 	// TestRequestEmptyStruct implements test_request_EmptyStruct operation.
 	//
 	// POST /test_request_EmptyStruct
-	TestRequestEmptyStruct(ctx context.Context, req *TestRequestEmptyStructReq) (*Error, error)
+	TestRequestEmptyStruct(ctx context.Context, req OptTestRequestEmptyStructReq) (*Error, error)
 	// TestRequestFormatTest implements test_request_FormatTest operation.
 	//
 	// POST /test_request_FormatTest
@@ -590,7 +590,7 @@ type Handler interface {
 	// TestRequestRequiredEmptyStruct implements test_request_required_EmptyStruct operation.
 	//
 	// POST /test_request_required_EmptyStruct
-	TestRequestRequiredEmptyStruct(ctx context.Context, req *TestRequestRequiredEmptyStructReq) (*Error, error)
+	TestRequestRequiredEmptyStruct(ctx context.Context, req TestRequestRequiredEmptyStructReq) (*Error, error)
 	// TestRequestRequiredFormatTest implements test_request_required_FormatTest operation.
 	//
 	// POST /test_request_required_FormatTest
@@ -2762,7 +2762,7 @@ type Handler interface {
 	// TestResponseEmptyStruct implements test_response_EmptyStruct operation.
 	//
 	// POST /test_response_EmptyStruct
-	TestResponseEmptyStruct(ctx context.Context, req string) error
+	TestResponseEmptyStruct(ctx context.Context, req string) (TestResponseEmptyStructOK, error)
 	// TestResponseFormatTest implements test_response_FormatTest operation.
 	//
 	// POST /test_response_FormatTest

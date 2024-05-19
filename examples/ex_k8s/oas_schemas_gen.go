@@ -5,6 +5,8 @@ package api
 import (
 	"io"
 	"time"
+
+	"github.com/go-faster/jx"
 )
 
 type BearerToken struct {
@@ -3635,7 +3637,16 @@ func (*IoK8sAPIApiserverinternalV1alpha1StorageVersionList) listInternalApiserve
 
 // StorageVersionSpec is an empty spec.
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionSpec
-type IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec struct{}
+type IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec map[string]jx.Raw
+
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) init() IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // API server instances report the versions they can decode and the version they encode objects to
 // when persisting objects in the backend.
@@ -3697,8 +3708,8 @@ type IoK8sAPIAppsV1ControllerRevision struct {
 	// APIVersion defines the versioned schema of this representation of an object. Servers should
 	// convert recognized schemas to the latest internal value, and may reject unrecognized values. More
 	// info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources.
-	ApiVersion OptString                                `json:"apiVersion"`
-	Data       *IoK8sApimachineryPkgRuntimeRawExtension `json:"data"`
+	ApiVersion OptString                                  `json:"apiVersion"`
+	Data       OptIoK8sApimachineryPkgRuntimeRawExtension `json:"data"`
 	// Kind is a string value representing the REST resource this object represents. Servers may infer
 	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
@@ -3714,7 +3725,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) GetApiVersion() OptString {
 }
 
 // GetData returns the value of Data.
-func (s *IoK8sAPIAppsV1ControllerRevision) GetData() *IoK8sApimachineryPkgRuntimeRawExtension {
+func (s *IoK8sAPIAppsV1ControllerRevision) GetData() OptIoK8sApimachineryPkgRuntimeRawExtension {
 	return s.Data
 }
 
@@ -3739,7 +3750,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) SetApiVersion(val OptString) {
 }
 
 // SetData sets the value of Data.
-func (s *IoK8sAPIAppsV1ControllerRevision) SetData(val *IoK8sApimachineryPkgRuntimeRawExtension) {
+func (s *IoK8sAPIAppsV1ControllerRevision) SetData(val OptIoK8sApimachineryPkgRuntimeRawExtension) {
 	s.Data = val
 }
 
@@ -31926,13 +31937,22 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // custom resource object, and ignore changes to anything except the status stanza * PUT/POST/PATCH
 // requests to the custom resource ignore changes to the status stanza.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresourceStatus
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus struct{}
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus map[string]jx.Raw
+
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // CustomResourceSubresources defines the status and scale subresources for CustomResources.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresources
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources struct {
-	Scale  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale `json:"scale"`
-	Status *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus  `json:"status"`
+	Scale  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale  `json:"scale"`
+	Status OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus `json:"status"`
 }
 
 // GetScale returns the value of Scale.
@@ -31941,7 +31961,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 
 // GetStatus returns the value of Status.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetStatus() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetStatus() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
 	return s.Status
 }
 
@@ -31951,7 +31971,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 
 // SetStatus sets the value of Status.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetStatus(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetStatus(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) {
 	s.Status = val
 }
 
@@ -32001,23 +32021,32 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 // JSON represents any valid JSON value. These types are supported: bool, int64, float64, string,
 // []interface{}, map[string]interface{} and nil.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON struct{}
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON map[string]jx.Raw
+
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 	Ref                  OptString                                                                       `json:"$ref"`
 	Schema               OptString                                                                       `json:"$schema"`
-	AdditionalItems      *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool         `json:"additionalItems"`
-	AdditionalProperties *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool         `json:"additionalProperties"`
+	AdditionalItems      OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool       `json:"additionalItems"`
+	AdditionalProperties OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool       `json:"additionalProperties"`
 	AllOf                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps              `json:"allOf"`
 	AnyOf                []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps              `json:"anyOf"`
-	Default              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                          `json:"default"`
+	Default              OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                        `json:"default"`
 	Definitions          OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions  `json:"definitions"`
 	Dependencies         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies `json:"dependencies"`
 	Description          OptString                                                                       `json:"description"`
 	Enum                 []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                         `json:"enum"`
-	Example              *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                          `json:"example"`
+	Example              OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON                        `json:"example"`
 	ExclusiveMaximum     OptBool                                                                         `json:"exclusiveMaximum"`
 	ExclusiveMinimum     OptBool                                                                         `json:"exclusiveMinimum"`
 	ExternalDocs         OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation       `json:"externalDocs"`
@@ -32042,7 +32071,7 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 	// ^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$ with any non digit characters mixed in - ssn: a U.S. social security number following the regex ^\d{3}[- ]?\d{2}[- ]?\d{4}$ - hexcolor: an hexadecimal color code like "#FFFFFF: following the regex ^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$ - rgbcolor: an RGB color code like rgb like "rgb(255,255,2559" - byte: base64 encoded binary data - password: any kind of string - date: a date string like "2006-01-02" as defined by full-date in RFC3339 - duration: a duration string like "22 ns" as parsed by Golang time.ParseDuration or compatible with Scala duration format - datetime: a date time string like "2014-12-15T19:30:20.000Z" as defined by date-time in RFC3339.
 	Format            OptString                                                                            `json:"format"`
 	ID                OptString                                                                            `json:"id"`
-	Items             *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray             `json:"items"`
+	Items             OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray           `json:"items"`
 	MaxItems          OptInt64                                                                             `json:"maxItems"`
 	MaxLength         OptInt64                                                                             `json:"maxLength"`
 	MaxProperties     OptInt64                                                                             `json:"maxProperties"`
@@ -32130,12 +32159,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetSc
 }
 
 // GetAdditionalItems returns the value of AdditionalItems.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalItems() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
 	return s.AdditionalItems
 }
 
 // GetAdditionalProperties returns the value of AdditionalProperties.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalProperties() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalProperties() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
 	return s.AdditionalProperties
 }
 
@@ -32150,7 +32179,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAn
 }
 
 // GetDefault returns the value of Default.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefault() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefault() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
 	return s.Default
 }
 
@@ -32175,7 +32204,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetEn
 }
 
 // GetExample returns the value of Example.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExample() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExample() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
 	return s.Example
 }
 
@@ -32205,7 +32234,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetID
 }
 
 // GetItems returns the value of Items.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetItems() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
 	return s.Items
 }
 
@@ -32345,12 +32374,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetSc
 }
 
 // SetAdditionalItems sets the value of AdditionalItems.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAdditionalItems(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAdditionalItems(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) {
 	s.AdditionalItems = val
 }
 
 // SetAdditionalProperties sets the value of AdditionalProperties.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAdditionalProperties(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAdditionalProperties(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) {
 	s.AdditionalProperties = val
 }
 
@@ -32365,7 +32394,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAn
 }
 
 // SetDefault sets the value of Default.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetDefault(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetDefault(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
 	s.Default = val
 }
 
@@ -32390,7 +32419,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetEn
 }
 
 // SetExample sets the value of Example.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetExample(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetExample(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
 	s.Example = val
 }
 
@@ -32420,7 +32449,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetID
 }
 
 // SetItems sets the value of Items.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetItems(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetItems(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) {
 	s.Items = val
 }
 
@@ -32574,16 +32603,43 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepende
 // JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of
 // JSONSchemaProps. Mainly here for serialization purposes.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrArray
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray struct{}
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray map[string]jx.Raw
+
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the
 // boolean property.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool struct{}
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool map[string]jx.Raw
+
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrStringArray
-type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray struct{}
+type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray map[string]jx.Raw
+
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 
@@ -33288,7 +33344,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetType(val string) {
 // values If a key maps to an empty Fields value, the field that key represents is part of the set.
 // The exact format is defined in sigs.k8s.io/structured-merge-diff.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1
-type IoK8sApimachineryPkgApisMetaV1FieldsV1 struct{}
+type IoK8sApimachineryPkgApisMetaV1FieldsV1 map[string]jx.Raw
+
+func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) init() IoK8sApimachineryPkgApisMetaV1FieldsV1 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // GroupVersion contains the "group/version" and "version" string of a version. It is made a struct
 // to keep extensibility.
@@ -33496,8 +33561,8 @@ type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
 	ApiVersion OptString `json:"apiVersion"`
 	// FieldsType is the discriminator for the different fields format and version. There is currently
 	// only one possible value: "FieldsV1".
-	FieldsType OptString                               `json:"fieldsType"`
-	FieldsV1   *IoK8sApimachineryPkgApisMetaV1FieldsV1 `json:"fieldsV1"`
+	FieldsType OptString                                 `json:"fieldsType"`
+	FieldsV1   OptIoK8sApimachineryPkgApisMetaV1FieldsV1 `json:"fieldsV1"`
 	// Manager is an identifier of the workflow managing these fields.
 	Manager OptString `json:"manager"`
 	// Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only
@@ -33523,7 +33588,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsType() OptSt
 }
 
 // GetFieldsV1 returns the value of FieldsV1.
-func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsV1() *IoK8sApimachineryPkgApisMetaV1FieldsV1 {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsV1() OptIoK8sApimachineryPkgApisMetaV1FieldsV1 {
 	return s.FieldsV1
 }
 
@@ -33558,7 +33623,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetFieldsType(val Opt
 }
 
 // SetFieldsV1 sets the value of FieldsV1.
-func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetFieldsV1(val *IoK8sApimachineryPkgApisMetaV1FieldsV1) {
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetFieldsV1(val OptIoK8sApimachineryPkgApisMetaV1FieldsV1) {
 	s.FieldsV1 = val
 }
 
@@ -34239,7 +34304,16 @@ func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchStorageV1beta1NamespacedCS
 // the correct object type, and storing it in the Object. (TODO: In the case where the object is of
 // an unknown type, a runtime.Unknown object will be created and stored.).
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.runtime.RawExtension
-type IoK8sApimachineryPkgRuntimeRawExtension struct{}
+type IoK8sApimachineryPkgRuntimeRawExtension map[string]jx.Raw
+
+func (s *IoK8sApimachineryPkgRuntimeRawExtension) init() IoK8sApimachineryPkgRuntimeRawExtension {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 type IoK8sApimachineryPkgUtilIntstrIntOrString string
 
@@ -47541,6 +47615,54 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubres
 	return d
 }
 
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources{
@@ -47685,6 +47807,52 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentatio
 	return d
 }
 
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps with value set to v.
 func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps{
@@ -47823,6 +47991,102 @@ func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepen
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool returns new OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool with value set to v.
+func NewOptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+	return OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool is optional IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool.
+type OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool struct {
+	Value IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) IsSet() bool {
+	return o.Set
+}
+
+// Reset unsets value.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Reset() {
+	var v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) SetTo(v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Get() (v IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Or(d IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -48109,6 +48373,52 @@ func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Get() (v IoK8sApimachineryPk
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Or(d IoK8sApimachineryPkgAPIResourceQuantity) IoK8sApimachineryPkgAPIResourceQuantity {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApimachineryPkgApisMetaV1FieldsV1 returns new OptIoK8sApimachineryPkgApisMetaV1FieldsV1 with value set to v.
+func NewOptIoK8sApimachineryPkgApisMetaV1FieldsV1(v IoK8sApimachineryPkgApisMetaV1FieldsV1) OptIoK8sApimachineryPkgApisMetaV1FieldsV1 {
+	return OptIoK8sApimachineryPkgApisMetaV1FieldsV1{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgApisMetaV1FieldsV1 is optional IoK8sApimachineryPkgApisMetaV1FieldsV1.
+type OptIoK8sApimachineryPkgApisMetaV1FieldsV1 struct {
+	Value IoK8sApimachineryPkgApisMetaV1FieldsV1
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgApisMetaV1FieldsV1 was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1FieldsV1) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgApisMetaV1FieldsV1) Reset() {
+	var v IoK8sApimachineryPkgApisMetaV1FieldsV1
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgApisMetaV1FieldsV1) SetTo(v IoK8sApimachineryPkgApisMetaV1FieldsV1) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgApisMetaV1FieldsV1) Get() (v IoK8sApimachineryPkgApisMetaV1FieldsV1, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgApisMetaV1FieldsV1) Or(d IoK8sApimachineryPkgApisMetaV1FieldsV1) IoK8sApimachineryPkgApisMetaV1FieldsV1 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -48523,6 +48833,52 @@ func (o OptIoK8sApimachineryPkgApisMetaV1Time) Get() (v IoK8sApimachineryPkgApis
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIoK8sApimachineryPkgApisMetaV1Time) Or(d IoK8sApimachineryPkgApisMetaV1Time) IoK8sApimachineryPkgApisMetaV1Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIoK8sApimachineryPkgRuntimeRawExtension returns new OptIoK8sApimachineryPkgRuntimeRawExtension with value set to v.
+func NewOptIoK8sApimachineryPkgRuntimeRawExtension(v IoK8sApimachineryPkgRuntimeRawExtension) OptIoK8sApimachineryPkgRuntimeRawExtension {
+	return OptIoK8sApimachineryPkgRuntimeRawExtension{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIoK8sApimachineryPkgRuntimeRawExtension is optional IoK8sApimachineryPkgRuntimeRawExtension.
+type OptIoK8sApimachineryPkgRuntimeRawExtension struct {
+	Value IoK8sApimachineryPkgRuntimeRawExtension
+	Set   bool
+}
+
+// IsSet returns true if OptIoK8sApimachineryPkgRuntimeRawExtension was set.
+func (o OptIoK8sApimachineryPkgRuntimeRawExtension) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIoK8sApimachineryPkgRuntimeRawExtension) Reset() {
+	var v IoK8sApimachineryPkgRuntimeRawExtension
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIoK8sApimachineryPkgRuntimeRawExtension) SetTo(v IoK8sApimachineryPkgRuntimeRawExtension) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIoK8sApimachineryPkgRuntimeRawExtension) Get() (v IoK8sApimachineryPkgRuntimeRawExtension, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIoK8sApimachineryPkgRuntimeRawExtension) Or(d IoK8sApimachineryPkgRuntimeRawExtension) IoK8sApimachineryPkgRuntimeRawExtension {
 	if v, ok := o.Get(); ok {
 		return v
 	}

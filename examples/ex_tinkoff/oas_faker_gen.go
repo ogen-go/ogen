@@ -3,7 +3,10 @@
 package api
 
 import (
+	"fmt"
 	"time"
+
+	"github.com/go-faster/jx"
 )
 
 // SetFake set fake values.
@@ -166,6 +169,13 @@ func (s *Empty) SetFake() {
 
 // SetFake set fake values.
 func (s *EmptyPayload) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.

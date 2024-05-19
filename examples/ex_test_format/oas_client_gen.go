@@ -62,7 +62,7 @@ type Invoker interface {
 	// TestRequestEmptyStruct invokes test_request_EmptyStruct operation.
 	//
 	// POST /test_request_EmptyStruct
-	TestRequestEmptyStruct(ctx context.Context, request *TestRequestEmptyStructReq) (*Error, error)
+	TestRequestEmptyStruct(ctx context.Context, request OptTestRequestEmptyStructReq) (*Error, error)
 	// TestRequestFormatTest invokes test_request_FormatTest operation.
 	//
 	// POST /test_request_FormatTest
@@ -602,7 +602,7 @@ type Invoker interface {
 	// TestRequestRequiredEmptyStruct invokes test_request_required_EmptyStruct operation.
 	//
 	// POST /test_request_required_EmptyStruct
-	TestRequestRequiredEmptyStruct(ctx context.Context, request *TestRequestRequiredEmptyStructReq) (*Error, error)
+	TestRequestRequiredEmptyStruct(ctx context.Context, request TestRequestRequiredEmptyStructReq) (*Error, error)
 	// TestRequestRequiredFormatTest invokes test_request_required_FormatTest operation.
 	//
 	// POST /test_request_required_FormatTest
@@ -2774,7 +2774,7 @@ type Invoker interface {
 	// TestResponseEmptyStruct invokes test_response_EmptyStruct operation.
 	//
 	// POST /test_response_EmptyStruct
-	TestResponseEmptyStruct(ctx context.Context, request string) error
+	TestResponseEmptyStruct(ctx context.Context, request string) (TestResponseEmptyStructOK, error)
 	// TestResponseFormatTest invokes test_response_FormatTest operation.
 	//
 	// POST /test_response_FormatTest
@@ -6775,12 +6775,12 @@ func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, r
 // TestRequestEmptyStruct invokes test_request_EmptyStruct operation.
 //
 // POST /test_request_EmptyStruct
-func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestRequestEmptyStructReq) (*Error, error) {
+func (c *Client) TestRequestEmptyStruct(ctx context.Context, request OptTestRequestEmptyStructReq) (*Error, error) {
 	res, err := c.sendTestRequestEmptyStruct(ctx, request)
 	return res, err
 }
 
-func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request *TestRequestEmptyStructReq) (res *Error, err error) {
+func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request OptTestRequestEmptyStructReq) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_EmptyStruct"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -16630,12 +16630,12 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Co
 // TestRequestRequiredEmptyStruct invokes test_request_required_EmptyStruct operation.
 //
 // POST /test_request_required_EmptyStruct
-func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request *TestRequestRequiredEmptyStructReq) (*Error, error) {
+func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request TestRequestRequiredEmptyStructReq) (*Error, error) {
 	res, err := c.sendTestRequestRequiredEmptyStruct(ctx, request)
 	return res, err
 }
 
-func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request *TestRequestRequiredEmptyStructReq) (res *Error, err error) {
+func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request TestRequestRequiredEmptyStructReq) (res *Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_EmptyStruct"),
 		semconv.HTTPMethodKey.String("POST"),
@@ -56269,12 +56269,12 @@ func (c *Client) sendTestResponseBooleanNullableArrayArray(ctx context.Context, 
 // TestResponseEmptyStruct invokes test_response_EmptyStruct operation.
 //
 // POST /test_response_EmptyStruct
-func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) error {
-	_, err := c.sendTestResponseEmptyStruct(ctx, request)
-	return err
+func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (TestResponseEmptyStructOK, error) {
+	res, err := c.sendTestResponseEmptyStruct(ctx, request)
+	return res, err
 }
 
-func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string) (res *TestResponseEmptyStructOK, err error) {
+func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string) (res TestResponseEmptyStructOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_EmptyStruct"),
 		semconv.HTTPMethodKey.String("POST"),

@@ -121,6 +121,7 @@ func TestEmpty_EncodeDecode(t *testing.T) {
 }
 func TestEmptyPayload_EncodeDecode(t *testing.T) {
 	var typ EmptyPayload
+	typ = make(EmptyPayload)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -129,6 +130,7 @@ func TestEmptyPayload_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 EmptyPayload
+	typ2 = make(EmptyPayload)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestError_EncodeDecode(t *testing.T) {

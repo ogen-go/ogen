@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
 // Ref: #/components/schemas/BrokerAccountType
@@ -522,7 +523,16 @@ func (*Empty) sandboxCurrenciesBalancePostRes() {}
 func (*Empty) sandboxPositionsBalancePostRes()  {}
 func (*Empty) sandboxRemovePostRes()            {}
 
-type EmptyPayload struct{}
+type EmptyPayload map[string]jx.Raw
+
+func (s *EmptyPayload) init() EmptyPayload {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // Ref: #/components/schemas/Error
 type Error struct {

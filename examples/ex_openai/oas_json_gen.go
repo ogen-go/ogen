@@ -748,29 +748,43 @@ func (s *CreateAnswerRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *CreateAnswerRequestLogitBias) Encode(e *jx.Encoder) {
+func (s CreateAnswerRequestLogitBias) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *CreateAnswerRequestLogitBias) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s CreateAnswerRequestLogitBias) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfCreateAnswerRequestLogitBias = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes CreateAnswerRequestLogitBias from json.
 func (s *CreateAnswerRequestLogitBias) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateAnswerRequestLogitBias to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateAnswerRequestLogitBias")
 	}
@@ -779,7 +793,7 @@ func (s *CreateAnswerRequestLogitBias) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *CreateAnswerRequestLogitBias) MarshalJSON() ([]byte, error) {
+func (s CreateAnswerRequestLogitBias) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -1401,29 +1415,43 @@ func (s *CreateChatCompletionRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *CreateChatCompletionRequestLogitBias) Encode(e *jx.Encoder) {
+func (s CreateChatCompletionRequestLogitBias) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *CreateChatCompletionRequestLogitBias) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s CreateChatCompletionRequestLogitBias) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfCreateChatCompletionRequestLogitBias = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes CreateChatCompletionRequestLogitBias from json.
 func (s *CreateChatCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateChatCompletionRequestLogitBias to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateChatCompletionRequestLogitBias")
 	}
@@ -1432,7 +1460,7 @@ func (s *CreateChatCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *CreateChatCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
+func (s CreateChatCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2244,29 +2272,43 @@ func (s *CreateClassificationRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *CreateClassificationRequestLogitBias) Encode(e *jx.Encoder) {
+func (s CreateClassificationRequestLogitBias) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *CreateClassificationRequestLogitBias) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s CreateClassificationRequestLogitBias) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfCreateClassificationRequestLogitBias = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes CreateClassificationRequestLogitBias from json.
 func (s *CreateClassificationRequestLogitBias) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateClassificationRequestLogitBias to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateClassificationRequestLogitBias")
 	}
@@ -2275,7 +2317,7 @@ func (s *CreateClassificationRequestLogitBias) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *CreateClassificationRequestLogitBias) MarshalJSON() ([]byte, error) {
+func (s CreateClassificationRequestLogitBias) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2897,29 +2939,43 @@ func (s *CreateCompletionRequest) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *CreateCompletionRequestLogitBias) Encode(e *jx.Encoder) {
+func (s CreateCompletionRequestLogitBias) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *CreateCompletionRequestLogitBias) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s CreateCompletionRequestLogitBias) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfCreateCompletionRequestLogitBias = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes CreateCompletionRequestLogitBias from json.
 func (s *CreateCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateCompletionRequestLogitBias to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateCompletionRequestLogitBias")
 	}
@@ -2928,7 +2984,7 @@ func (s *CreateCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *CreateCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
+func (s CreateCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -3542,29 +3598,43 @@ func (s *CreateCompletionResponseChoicesItemLogprobs) UnmarshalJSON(data []byte)
 }
 
 // Encode implements json.Marshaler.
-func (s *CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) Encode(e *jx.Encoder) {
+func (s CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfCreateCompletionResponseChoicesItemLogprobsTopLogprobsItem = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem from json.
 func (s *CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem")
 	}
@@ -3573,7 +3643,7 @@ func (s *CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) Decode(d *j
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) MarshalJSON() ([]byte, error) {
+func (s CreateCompletionResponseChoicesItemLogprobsTopLogprobsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -4331,29 +4401,43 @@ func (s *CreateEditResponseChoicesItemLogprobs) UnmarshalJSON(data []byte) error
 }
 
 // Encode implements json.Marshaler.
-func (s *CreateEditResponseChoicesItemLogprobsTopLogprobsItem) Encode(e *jx.Encoder) {
+func (s CreateEditResponseChoicesItemLogprobsTopLogprobsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *CreateEditResponseChoicesItemLogprobsTopLogprobsItem) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s CreateEditResponseChoicesItemLogprobsTopLogprobsItem) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfCreateEditResponseChoicesItemLogprobsTopLogprobsItem = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes CreateEditResponseChoicesItemLogprobsTopLogprobsItem from json.
 func (s *CreateEditResponseChoicesItemLogprobsTopLogprobsItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CreateEditResponseChoicesItemLogprobsTopLogprobsItem to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CreateEditResponseChoicesItemLogprobsTopLogprobsItem")
 	}
@@ -4362,7 +4446,7 @@ func (s *CreateEditResponseChoicesItemLogprobsTopLogprobsItem) Decode(d *jx.Deco
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *CreateEditResponseChoicesItemLogprobsTopLogprobsItem) MarshalJSON() ([]byte, error) {
+func (s CreateEditResponseChoicesItemLogprobsTopLogprobsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -8211,72 +8295,6 @@ func (s *OptChatCompletionResponseMessage) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes *CreateAnswerRequestLogitBias as json.
-func (o OptCreateAnswerRequestLogitBias) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes *CreateAnswerRequestLogitBias from json.
-func (o *OptCreateAnswerRequestLogitBias) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptCreateAnswerRequestLogitBias to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptCreateAnswerRequestLogitBias) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptCreateAnswerRequestLogitBias) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes *CreateChatCompletionRequestLogitBias as json.
-func (o OptCreateChatCompletionRequestLogitBias) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes *CreateChatCompletionRequestLogitBias from json.
-func (o *OptCreateChatCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptCreateChatCompletionRequestLogitBias to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptCreateChatCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptCreateChatCompletionRequestLogitBias) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
 // Encode encodes CreateChatCompletionResponseUsage as json.
 func (o OptCreateChatCompletionResponseUsage) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -8306,72 +8324,6 @@ func (s OptCreateChatCompletionResponseUsage) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptCreateChatCompletionResponseUsage) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes *CreateClassificationRequestLogitBias as json.
-func (o OptCreateClassificationRequestLogitBias) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes *CreateClassificationRequestLogitBias from json.
-func (o *OptCreateClassificationRequestLogitBias) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptCreateClassificationRequestLogitBias to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptCreateClassificationRequestLogitBias) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptCreateClassificationRequestLogitBias) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes *CreateCompletionRequestLogitBias as json.
-func (o OptCreateCompletionRequestLogitBias) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes *CreateCompletionRequestLogitBias from json.
-func (o *OptCreateCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptCreateCompletionRequestLogitBias to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptCreateCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptCreateCompletionRequestLogitBias) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -8595,6 +8547,56 @@ func (s *OptNilBool) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes CreateAnswerRequestLogitBias as json.
+func (o OptNilCreateAnswerRequestLogitBias) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes CreateAnswerRequestLogitBias from json.
+func (o *OptNilCreateAnswerRequestLogitBias) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilCreateAnswerRequestLogitBias to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v CreateAnswerRequestLogitBias
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	o.Value = make(CreateAnswerRequestLogitBias)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilCreateAnswerRequestLogitBias) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilCreateAnswerRequestLogitBias) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes CreateAnswerRequestStop as json.
 func (o OptNilCreateAnswerRequestStop) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -8644,6 +8646,56 @@ func (s *OptNilCreateAnswerRequestStop) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes CreateChatCompletionRequestLogitBias as json.
+func (o OptNilCreateChatCompletionRequestLogitBias) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes CreateChatCompletionRequestLogitBias from json.
+func (o *OptNilCreateChatCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilCreateChatCompletionRequestLogitBias to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v CreateChatCompletionRequestLogitBias
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	o.Value = make(CreateChatCompletionRequestLogitBias)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilCreateChatCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilCreateChatCompletionRequestLogitBias) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes CreateChatCompletionRequestStop as json.
 func (o OptNilCreateChatCompletionRequestStop) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -8689,6 +8741,106 @@ func (s OptNilCreateChatCompletionRequestStop) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptNilCreateChatCompletionRequestStop) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes CreateClassificationRequestLogitBias as json.
+func (o OptNilCreateClassificationRequestLogitBias) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes CreateClassificationRequestLogitBias from json.
+func (o *OptNilCreateClassificationRequestLogitBias) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilCreateClassificationRequestLogitBias to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v CreateClassificationRequestLogitBias
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	o.Value = make(CreateClassificationRequestLogitBias)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilCreateClassificationRequestLogitBias) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilCreateClassificationRequestLogitBias) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes CreateCompletionRequestLogitBias as json.
+func (o OptNilCreateCompletionRequestLogitBias) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	if o.Null {
+		e.Null()
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes CreateCompletionRequestLogitBias from json.
+func (o *OptNilCreateCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNilCreateCompletionRequestLogitBias to nil")
+	}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v CreateCompletionRequestLogitBias
+		o.Value = v
+		o.Set = true
+		o.Null = true
+		return nil
+	}
+	o.Set = true
+	o.Null = false
+	o.Value = make(CreateCompletionRequestLogitBias)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNilCreateCompletionRequestLogitBias) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNilCreateCompletionRequestLogitBias) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

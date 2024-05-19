@@ -25,6 +25,7 @@ func TestError_EncodeDecode(t *testing.T) {
 }
 func TestTestRequestEmptyStructReq_EncodeDecode(t *testing.T) {
 	var typ TestRequestEmptyStructReq
+	typ = make(TestRequestEmptyStructReq)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -33,6 +34,7 @@ func TestTestRequestEmptyStructReq_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TestRequestEmptyStructReq
+	typ2 = make(TestRequestEmptyStructReq)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTestRequestFormatTestReq_EncodeDecode(t *testing.T) {
@@ -49,6 +51,7 @@ func TestTestRequestFormatTestReq_EncodeDecode(t *testing.T) {
 }
 func TestTestRequestRequiredEmptyStructReq_EncodeDecode(t *testing.T) {
 	var typ TestRequestRequiredEmptyStructReq
+	typ = make(TestRequestRequiredEmptyStructReq)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -57,6 +60,7 @@ func TestTestRequestRequiredEmptyStructReq_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TestRequestRequiredEmptyStructReq
+	typ2 = make(TestRequestRequiredEmptyStructReq)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTestRequestRequiredFormatTestReq_EncodeDecode(t *testing.T) {
@@ -73,6 +77,7 @@ func TestTestRequestRequiredFormatTestReq_EncodeDecode(t *testing.T) {
 }
 func TestTestResponseEmptyStructOK_EncodeDecode(t *testing.T) {
 	var typ TestResponseEmptyStructOK
+	typ = make(TestResponseEmptyStructOK)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -81,6 +86,7 @@ func TestTestResponseEmptyStructOK_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TestResponseEmptyStructOK
+	typ2 = make(TestResponseEmptyStructOK)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTestResponseFormatTestOK_EncodeDecode(t *testing.T) {

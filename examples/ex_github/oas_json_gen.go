@@ -514,29 +514,43 @@ func (s *APIOverviewSSHKeyFingerprints) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *Accepted) Encode(e *jx.Encoder) {
+func (s Accepted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *Accepted) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s Accepted) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfAccepted = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes Accepted from json.
 func (s *Accepted) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Accepted to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode Accepted")
 	}
@@ -545,7 +559,7 @@ func (s *Accepted) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *Accepted) MarshalJSON() ([]byte, error) {
+func (s Accepted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -13592,7 +13606,7 @@ func (s *AuthenticationToken) encodeFields(e *jx.Encoder) {
 		json.EncodeDateTime(e, s.ExpiresAt)
 	}
 	{
-		if s.Permissions != nil {
+		if s.Permissions.Set {
 			e.FieldStart("permissions")
 			s.Permissions.Encode(e)
 		}
@@ -13665,12 +13679,10 @@ func (s *AuthenticationToken) Decode(d *jx.Decoder) error {
 			}
 		case "permissions":
 			if err := func() error {
-				s.Permissions = nil
-				var elem AuthenticationTokenPermissions
-				if err := elem.Decode(d); err != nil {
+				s.Permissions.Reset()
+				if err := s.Permissions.Decode(d); err != nil {
 					return err
 				}
-				s.Permissions = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"permissions\"")
@@ -13769,29 +13781,43 @@ func (s *AuthenticationToken) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *AuthenticationTokenPermissions) Encode(e *jx.Encoder) {
+func (s AuthenticationTokenPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *AuthenticationTokenPermissions) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s AuthenticationTokenPermissions) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfAuthenticationTokenPermissions = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes AuthenticationTokenPermissions from json.
 func (s *AuthenticationTokenPermissions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode AuthenticationTokenPermissions to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode AuthenticationTokenPermissions")
 	}
@@ -13800,7 +13826,7 @@ func (s *AuthenticationTokenPermissions) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *AuthenticationTokenPermissions) MarshalJSON() ([]byte, error) {
+func (s AuthenticationTokenPermissions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36731,29 +36757,43 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 }
 
 // Encode implements json.Marshaler.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Encode(e *jx.Encoder) {
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 from json.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1")
 	}
@@ -36762,7 +36802,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) MarshalJSON() ([]byte, error) {
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -36910,29 +36950,43 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) UnmarshalJSON(data 
 }
 
 // Encode implements json.Marshaler.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Encode(e *jx.Encoder) {
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfEnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem from json.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem")
 	}
@@ -36941,7 +36995,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) MarshalJSON() ([]byte, error) {
+func (s EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -82989,6 +83043,40 @@ func (s OptAuditLogEventData) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptAuditLogEventData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes AuthenticationTokenPermissions as json.
+func (o OptAuthenticationTokenPermissions) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes AuthenticationTokenPermissions from json.
+func (o *OptAuthenticationTokenPermissions) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptAuthenticationTokenPermissions to nil")
+	}
+	o.Set = true
+	o.Value = make(AuthenticationTokenPermissions)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptAuthenticationTokenPermissions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptAuthenticationTokenPermissions) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
