@@ -730,6 +730,124 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 	return params, nil
 }
 
+// OptionalArrayParameterParams is parameters of optionalArrayParameter operation.
+type OptionalArrayParameterParams struct {
+	Query  []string
+	Header []string
+}
+
+func unpackOptionalArrayParameterParams(packed middleware.Parameters) (params OptionalArrayParameterParams) {
+	{
+		key := middleware.ParameterKey{
+			Name: "query",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Query = v.([]string)
+		}
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "header",
+			In:   "header",
+		}
+		if v, ok := packed[key]; ok {
+			params.Header = v.([]string)
+		}
+	}
+	return params
+}
+
+func decodeOptionalArrayParameterParams(args [0]string, argsEscaped bool, r *http.Request) (params OptionalArrayParameterParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	h := uri.NewHeaderDecoder(r.Header)
+	// Decode query: query.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "query",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotQueryVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotQueryVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.Query = append(params.Query, paramsDotQueryVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "query",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Decode header: header.
+	if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "header",
+			Explode: false,
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotHeaderVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotHeaderVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.Header = append(params.Header, paramsDotHeaderVal)
+					return nil
+				})
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "header",
+			In:   "header",
+			Err:  err,
+		}
+	}
+	return params, nil
+}
+
 // PathParameterParams is parameters of pathParameter operation.
 type PathParameterParams struct {
 	Value string

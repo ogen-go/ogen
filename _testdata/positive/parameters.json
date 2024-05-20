@@ -5,6 +5,47 @@
     "version": "0.1.0"
   },
   "paths": {
+    "/optionalArrayParameter": {
+      "get": {
+        "operationId": "optionalArrayParameter",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "header",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/objectQueryParameter": {
       "get": {
         "operationId": "objectQueryParameter",

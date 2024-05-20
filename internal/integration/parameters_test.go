@@ -3,6 +3,8 @@ package integration
 import (
 	"context"
 	"fmt"
+	"io"
+	"net/http"
 	"net/http/httptest"
 	"testing"
 
@@ -14,6 +16,12 @@ import (
 )
 
 type testParameters struct{}
+
+var _ api.Handler = (*testParameters)(nil)
+
+func (s *testParameters) OptionalArrayParameter(ctx context.Context, params api.OptionalArrayParameterParams) (string, error) {
+	return "", nil
+}
 
 func (s *testParameters) ObjectQueryParameter(ctx context.Context, params api.ObjectQueryParameterParams) (*api.ObjectQueryParameterOK, error) {
 	if param, ok := params.FormObject.Get(); ok {
@@ -174,4 +182,31 @@ func TestParameters(t *testing.T) {
 		assert.Equal(t, user, resp.Header)
 		assert.Equal(t, user, resp.Cookie)
 	})
+}
+
+func TestOptionalArrayParameter(t *testing.T) {
+	ctx := context.Background()
+
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Ensure that client does not send these query parameters and headers.
+		if q := r.URL.Query(); q.Has("query") {
+			http.Error(w, "must have not query", http.StatusBadRequest)
+			return
+		}
+		if h := r.Header; len(h.Values("header")) > 0 {
+			http.Error(w, "must have not header", http.StatusBadRequest)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		_, _ = io.WriteString(w, `"ok"`)
+	}))
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+	require.NoError(t, err)
+
+	resp, err := client.OptionalArrayParameter(ctx, api.OptionalArrayParameterParams{})
+	require.NoError(t, err)
+	require.Equal(t, "ok", resp)
 }

@@ -167,9 +167,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				elem = origElem
-			case 'o': // Prefix: "object"
+			case 'o': // Prefix: "o"
 				origElem := elem
-				if l := len("object"); len(elem) >= l && elem[0:l] == "object" {
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
 					break
@@ -179,30 +179,66 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case 'C': // Prefix: "CookieParameter"
+				case 'b': // Prefix: "bject"
 					origElem := elem
-					if l := len("CookieParameter"); len(elem) >= l && elem[0:l] == "CookieParameter" {
+					if l := len("bject"); len(elem) >= l && elem[0:l] == "bject" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "GET":
-							s.handleObjectCookieParameterRequest([0]string{}, elemIsEscaped, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
+						break
+					}
+					switch elem[0] {
+					case 'C': // Prefix: "CookieParameter"
+						origElem := elem
+						if l := len("CookieParameter"); len(elem) >= l && elem[0:l] == "CookieParameter" {
+							elem = elem[l:]
+						} else {
+							break
 						}
 
-						return
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleObjectCookieParameterRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+
+						elem = origElem
+					case 'Q': // Prefix: "QueryParameter"
+						origElem := elem
+						if l := len("QueryParameter"); len(elem) >= l && elem[0:l] == "QueryParameter" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleObjectQueryParameterRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+
+						elem = origElem
 					}
 
 					elem = origElem
-				case 'Q': // Prefix: "QueryParameter"
+				case 'p': // Prefix: "ptionalArrayParameter"
 					origElem := elem
-					if l := len("QueryParameter"); len(elem) >= l && elem[0:l] == "QueryParameter" {
+					if l := len("ptionalArrayParameter"); len(elem) >= l && elem[0:l] == "ptionalArrayParameter" {
 						elem = elem[l:]
 					} else {
 						break
@@ -212,7 +248,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "GET":
-							s.handleObjectQueryParameterRequest([0]string{}, elemIsEscaped, w, r)
+							s.handleOptionalArrayParameterRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "GET")
 						}
@@ -531,9 +567,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				elem = origElem
-			case 'o': // Prefix: "object"
+			case 'o': // Prefix: "o"
 				origElem := elem
-				if l := len("object"); len(elem) >= l && elem[0:l] == "object" {
+				if l := len("o"); len(elem) >= l && elem[0:l] == "o" {
 					elem = elem[l:]
 				} else {
 					break
@@ -543,34 +579,74 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case 'C': // Prefix: "CookieParameter"
+				case 'b': // Prefix: "bject"
 					origElem := elem
-					if l := len("CookieParameter"); len(elem) >= l && elem[0:l] == "CookieParameter" {
+					if l := len("bject"); len(elem) >= l && elem[0:l] == "bject" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						switch method {
-						case "GET":
-							// Leaf: ObjectCookieParameter
-							r.name = "ObjectCookieParameter"
-							r.summary = ""
-							r.operationID = "objectCookieParameter"
-							r.pathPattern = "/objectCookieParameter"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
+						break
+					}
+					switch elem[0] {
+					case 'C': // Prefix: "CookieParameter"
+						origElem := elem
+						if l := len("CookieParameter"); len(elem) >= l && elem[0:l] == "CookieParameter" {
+							elem = elem[l:]
+						} else {
+							break
 						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: ObjectCookieParameter
+								r.name = "ObjectCookieParameter"
+								r.summary = ""
+								r.operationID = "objectCookieParameter"
+								r.pathPattern = "/objectCookieParameter"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
+						elem = origElem
+					case 'Q': // Prefix: "QueryParameter"
+						origElem := elem
+						if l := len("QueryParameter"); len(elem) >= l && elem[0:l] == "QueryParameter" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							switch method {
+							case "GET":
+								// Leaf: ObjectQueryParameter
+								r.name = "ObjectQueryParameter"
+								r.summary = ""
+								r.operationID = "objectQueryParameter"
+								r.pathPattern = "/objectQueryParameter"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
+						elem = origElem
 					}
 
 					elem = origElem
-				case 'Q': // Prefix: "QueryParameter"
+				case 'p': // Prefix: "ptionalArrayParameter"
 					origElem := elem
-					if l := len("QueryParameter"); len(elem) >= l && elem[0:l] == "QueryParameter" {
+					if l := len("ptionalArrayParameter"); len(elem) >= l && elem[0:l] == "ptionalArrayParameter" {
 						elem = elem[l:]
 					} else {
 						break
@@ -579,11 +655,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							// Leaf: ObjectQueryParameter
-							r.name = "ObjectQueryParameter"
+							// Leaf: OptionalArrayParameter
+							r.name = "OptionalArrayParameter"
 							r.summary = ""
-							r.operationID = "objectQueryParameter"
-							r.pathPattern = "/objectQueryParameter"
+							r.operationID = "optionalArrayParameter"
+							r.pathPattern = "/optionalArrayParameter"
 							r.args = args
 							r.count = 0
 							return r, true

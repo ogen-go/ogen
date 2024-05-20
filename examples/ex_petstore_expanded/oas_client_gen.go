@@ -451,16 +451,19 @@ func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res [
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range params.Tags {
-					if err := func() error {
-						return e.EncodeValue(conv.StringToString(item))
-					}(); err != nil {
-						return errors.Wrapf(err, "[%d]", i)
+			if params.Tags != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.Tags {
+						if err := func() error {
+							return e.EncodeValue(conv.StringToString(item))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
 					}
-				}
-				return nil
-			})
+					return nil
+				})
+			}
+			return nil
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}

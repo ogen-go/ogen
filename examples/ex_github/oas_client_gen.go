@@ -45423,16 +45423,19 @@ func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range params.Exclude {
-					if err := func() error {
-						return e.EncodeValue(conv.StringToString(item))
-					}(); err != nil {
-						return errors.Wrapf(err, "[%d]", i)
+			if params.Exclude != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.Exclude {
+						if err := func() error {
+							return e.EncodeValue(conv.StringToString(item))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
 					}
-				}
-				return nil
-			})
+					return nil
+				})
+			}
+			return nil
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -45564,16 +45567,19 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range params.Exclude {
-					if err := func() error {
-						return e.EncodeValue(conv.StringToString(string(item)))
-					}(); err != nil {
-						return errors.Wrapf(err, "[%d]", i)
+			if params.Exclude != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.Exclude {
+						if err := func() error {
+							return e.EncodeValue(conv.StringToString(string(item)))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
 					}
-				}
-				return nil
-			})
+					return nil
+				})
+			}
+			return nil
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -45826,16 +45832,19 @@ func (c *Client) sendMigrationsListForOrg(ctx context.Context, params Migrations
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeArray(func(e uri.Encoder) error {
-				for i, item := range params.Exclude {
-					if err := func() error {
-						return e.EncodeValue(conv.StringToString(string(item)))
-					}(); err != nil {
-						return errors.Wrapf(err, "[%d]", i)
+			if params.Exclude != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.Exclude {
+						if err := func() error {
+							return e.EncodeValue(conv.StringToString(string(item)))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
 					}
-				}
-				return nil
-			})
+					return nil
+				})
+			}
+			return nil
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
