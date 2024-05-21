@@ -345,9 +345,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "meta"
         },
         "externalDocs": {
@@ -368,9 +366,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/apps#get-the-authenticated-app"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -391,9 +387,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -486,9 +480,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -526,9 +518,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "webhooks"
         }
@@ -593,9 +583,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "webhooks"
         }
@@ -650,9 +638,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "webhooks"
         }
@@ -701,9 +687,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "webhooks"
         }
@@ -740,9 +724,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "webhooks"
         }
@@ -807,9 +789,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -858,9 +838,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -892,9 +870,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -984,9 +960,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -1020,9 +994,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -1054,9 +1026,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -1131,9 +1101,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -1188,9 +1156,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -1231,9 +1197,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -1292,9 +1256,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "oauth-applications"
         }
@@ -1362,9 +1324,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "oauth-applications"
         }
@@ -1427,9 +1387,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "oauth-applications"
         }
@@ -1483,9 +1441,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "oauth-applications"
         }
@@ -1591,9 +1547,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "oauth-applications"
         }
@@ -1645,9 +1599,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -1722,9 +1674,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -1743,9 +1693,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/oauth-authorizations#create-a-new-authorization"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1835,9 +1783,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -1971,9 +1917,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -2102,9 +2046,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -2159,9 +2101,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -2258,9 +2198,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -2301,9 +2239,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2020-11-13",
           "deprecationDate": "2020-02-14",
           "category": "oauth-authorizations",
@@ -2324,9 +2260,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/codes-of-conduct#get-all-codes-of-conduct"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -2423,9 +2357,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/emojis#get-emojis"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -2447,9 +2379,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "emojis",
           "subcategory": null
         }
@@ -2492,9 +2422,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2548,9 +2476,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2614,9 +2540,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2674,9 +2598,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2710,9 +2632,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2744,9 +2664,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2789,9 +2707,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2835,9 +2751,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2901,9 +2815,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -2999,9 +2911,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3047,9 +2957,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3121,9 +3029,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3155,9 +3061,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3224,9 +3128,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3287,9 +3189,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3326,9 +3226,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3363,9 +3261,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3437,9 +3333,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3500,9 +3394,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3539,9 +3431,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3576,9 +3466,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3643,9 +3531,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3691,9 +3577,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3736,9 +3620,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3781,9 +3663,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3829,9 +3709,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3863,9 +3741,7 @@
         "x-github": {
           "enabledForGitHubApps": false,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "actions"
         }
@@ -3932,9 +3808,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "audit-log"
         }
@@ -3977,9 +3851,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "billing"
         }
@@ -4022,9 +3894,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "billing"
         }
@@ -4067,9 +3937,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "billing"
         }
@@ -4122,9 +3990,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -4142,9 +4008,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/activity#get-feeds"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -4165,9 +4029,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "feeds"
         }
@@ -4230,9 +4092,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -4248,9 +4108,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/gists#create-a-gist"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -4352,9 +4210,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -4420,9 +4276,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -4488,9 +4342,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -4542,9 +4394,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -4662,9 +4512,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -4702,9 +4550,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -4770,9 +4616,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": "comments"
         }
@@ -4851,9 +4695,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": "comments"
         }
@@ -4908,9 +4750,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": "comments"
         }
@@ -4978,9 +4818,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": "comments"
         }
@@ -5021,9 +4859,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": "comments"
         }
@@ -5092,9 +4928,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -5160,9 +4994,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -5223,9 +5055,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -5258,8 +5088,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -5275,9 +5104,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -5315,9 +5142,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -5355,9 +5180,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -5417,9 +5240,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -5437,9 +5258,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/gitignore#get-all-gitignore-templates"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -5470,9 +5289,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gitignore",
           "subcategory": null
         }
@@ -5523,9 +5340,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gitignore",
           "subcategory": null
         }
@@ -5628,9 +5443,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/apps#revoke-an-installation-access-token"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "204": {
             "description": "Response"
@@ -5639,9 +5452,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "installations"
         }
@@ -5859,9 +5670,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "licenses",
           "subcategory": null
         }
@@ -5918,9 +5727,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "licenses",
           "subcategory": null
         }
@@ -5938,9 +5745,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/markdown#render-a-markdown-document"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -6006,9 +5811,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "markdown",
           "subcategory": null
         }
@@ -6026,9 +5829,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/markdown#render-a-markdown-document-in-raw-mode"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "text/plain": {
@@ -6066,9 +5867,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "markdown",
           "subcategory": null
         }
@@ -6124,9 +5923,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -6186,9 +5983,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -6270,9 +6065,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -6321,9 +6114,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -6380,9 +6171,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -6458,9 +6247,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -6478,9 +6265,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/meta#get-github-meta-information"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -6504,9 +6289,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "meta",
           "subcategory": null
         }
@@ -6568,9 +6351,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -6648,9 +6429,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -6666,9 +6445,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/activity#mark-notifications-as-read"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6721,9 +6498,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -6775,9 +6550,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -6812,9 +6585,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -6866,9 +6637,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -6934,9 +6703,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -6974,9 +6741,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -7020,9 +6785,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "meta"
         }
       }
@@ -7081,9 +6844,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": null
         }
@@ -7363,9 +7124,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7419,9 +7178,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7485,9 +7242,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7545,9 +7300,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7581,9 +7334,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7615,9 +7366,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7660,9 +7409,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7705,9 +7452,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -7771,9 +7516,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -7871,9 +7614,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -7919,9 +7660,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -7997,9 +7736,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8031,9 +7768,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8100,9 +7835,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8163,9 +7896,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8202,9 +7933,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8239,9 +7968,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8313,9 +8040,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8376,9 +8101,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8415,9 +8138,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8452,9 +8173,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runner-groups"
         }
@@ -8523,9 +8242,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -8571,9 +8288,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -8616,9 +8331,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -8661,9 +8374,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -8709,9 +8420,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -8743,9 +8452,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -8814,9 +8521,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -8859,9 +8564,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -8907,9 +8610,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -9000,9 +8701,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -9034,9 +8733,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -9103,9 +8800,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -9164,9 +8859,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -9211,9 +8904,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -9256,9 +8947,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -9325,9 +9014,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": null
         }
@@ -9376,9 +9063,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "blocking"
         }
@@ -9422,9 +9107,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "blocking"
         }
@@ -9459,9 +9142,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "blocking"
         }
@@ -9493,9 +9174,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "blocking"
         }
@@ -9541,9 +9220,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": null
         }
@@ -9585,9 +9262,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": null
         }
@@ -9634,9 +9309,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -9696,9 +9369,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -9758,9 +9429,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -9891,9 +9560,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -9942,9 +9609,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10051,9 +9716,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10088,9 +9751,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10136,9 +9797,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10212,9 +9871,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10275,9 +9932,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10332,9 +9987,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10377,9 +10030,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10416,9 +10067,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "webhooks"
         }
@@ -10461,9 +10110,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -10532,9 +10179,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": null
         }
@@ -10569,8 +10214,7 @@
                     },
                     {
                       "type": "object",
-                      "properties": {
-                      },
+                      "properties": {},
                       "additionalProperties": false
                     }
                   ]
@@ -10587,9 +10231,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "orgs"
         }
@@ -10643,9 +10285,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "orgs"
         }
@@ -10674,9 +10314,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "orgs"
         }
@@ -10736,9 +10374,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -10830,9 +10466,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -10873,9 +10507,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -10938,9 +10570,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -11163,9 +10793,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -11213,9 +10841,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -11250,9 +10876,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -11304,9 +10928,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -11376,9 +10998,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -11416,9 +11036,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -11598,9 +11216,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "orgs"
         }
@@ -11906,9 +11522,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "outside-collaborators"
         }
@@ -11941,8 +11555,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -11961,9 +11574,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "outside-collaborators"
         }
@@ -12021,9 +11632,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "outside-collaborators"
         }
@@ -12063,7 +11672,7 @@
             "$ref": "#/components/parameters/org"
           },
           {
-            "$ref": "#/components/parameters/package-visibility"
+            "$ref": "#/components/parameters/package-visibility-param"
           }
         ],
         "responses": {
@@ -12095,9 +11704,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12146,9 +11753,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12192,9 +11797,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12249,9 +11852,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12332,9 +11933,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12386,9 +11985,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12435,9 +12032,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12486,9 +12081,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -12701,9 +12294,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -12740,9 +12331,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -12777,9 +12366,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -12811,9 +12398,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -13192,9 +12777,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "secret-scanning",
           "subcategory": null
         }
@@ -13237,9 +12820,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "billing",
           "subcategory": null
         }
@@ -13282,9 +12863,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "billing",
           "subcategory": null
         }
@@ -13327,9 +12906,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "billing",
           "subcategory": null
         }
@@ -13391,9 +12968,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "team-sync"
         }
@@ -13453,9 +13028,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -13567,9 +13140,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -13618,9 +13189,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -13711,9 +13280,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -13745,9 +13312,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -14074,9 +13639,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "discussions"
         }
@@ -14398,9 +13961,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "discussion-comments"
         }
@@ -14937,9 +14498,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "members"
         }
@@ -15014,9 +14573,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "members"
         }
@@ -15068,9 +14625,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "members"
         }
@@ -15143,9 +14698,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "members"
         }
@@ -15183,9 +14736,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "members"
         }
@@ -15411,9 +14962,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -15473,9 +15022,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -15533,9 +15080,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -15595,9 +15140,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -15635,9 +15178,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -15683,9 +15224,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "team-sync"
         }
@@ -15777,9 +15316,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": "team-sync"
         }
@@ -15839,9 +15376,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -16089,8 +15624,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -16617,8 +16151,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -17297,9 +16830,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/rate-limit#get-rate-limit-status-for-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -17337,9 +16868,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "rate-limit",
           "subcategory": null
         }
@@ -17715,9 +17244,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -17789,9 +17316,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "artifacts"
         }
@@ -17840,9 +17365,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "artifacts"
         }
@@ -17877,9 +17400,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "artifacts"
         }
@@ -17929,9 +17450,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "artifacts"
         }
@@ -17980,9 +17499,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-jobs"
         }
@@ -18027,9 +17544,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-jobs"
         }
@@ -18075,9 +17590,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -18134,9 +17647,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -18182,9 +17693,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -18230,9 +17739,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "permissions"
         }
@@ -18304,9 +17811,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -18355,9 +17860,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -18403,9 +17906,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -18451,9 +17952,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -18502,9 +18001,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -18539,9 +18036,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "self-hosted-runners"
         }
@@ -18628,9 +18123,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -18679,9 +18172,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -18716,9 +18207,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -18770,9 +18259,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -18822,9 +18309,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -18899,9 +18384,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "artifacts"
         }
@@ -18937,8 +18420,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -18948,9 +18430,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -19039,9 +18519,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-jobs"
         }
@@ -19086,9 +18564,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -19123,9 +18599,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -19177,9 +18651,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -19272,9 +18744,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -19310,8 +18780,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -19321,9 +18790,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "deprecationDate": "2021-09-14",
           "category": "actions",
           "subcategory": "workflow-runs"
@@ -19361,8 +18828,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -19372,9 +18838,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -19423,9 +18887,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -19497,9 +18959,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -19545,9 +19005,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -19596,9 +19054,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -19657,8 +19113,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -19671,9 +19126,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -19708,9 +19161,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -19782,9 +19233,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflows"
         }
@@ -19833,9 +19282,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflows"
         }
@@ -19872,9 +19319,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflows"
         }
@@ -19945,9 +19390,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflows"
         }
@@ -19984,9 +19427,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflows"
         }
@@ -20076,9 +19517,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflow-runs"
         }
@@ -20127,9 +19566,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "workflows"
         }
@@ -20192,9 +19629,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "assignees"
         }
@@ -20246,9 +19681,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "assignees"
         }
@@ -20300,9 +19733,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "autolinks"
         }
@@ -20385,9 +19816,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "autolinks"
         }
@@ -20439,9 +19868,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "autolinks"
         }
@@ -20479,9 +19906,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "autolinks"
         }
@@ -20617,9 +20042,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -20672,9 +20095,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -20983,9 +20404,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21034,9 +20453,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21083,9 +20500,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21123,9 +20538,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21323,9 +20736,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21535,9 +20946,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21618,9 +21027,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21655,9 +21062,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21710,9 +21115,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -21807,9 +21210,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "contexts",
           "category": "repos",
           "subcategory": "branches"
@@ -21901,9 +21302,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "contexts",
           "category": "repos",
           "subcategory": "branches"
@@ -21995,9 +21394,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "contexts",
           "category": "repos",
           "subcategory": "branches"
@@ -22050,9 +21447,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -22087,9 +21482,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -22144,9 +21537,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -22235,9 +21626,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "apps",
           "category": "repos",
           "subcategory": "branches"
@@ -22327,9 +21716,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "apps",
           "category": "repos",
           "subcategory": "branches"
@@ -22419,9 +21806,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "apps",
           "category": "repos",
           "subcategory": "branches"
@@ -22477,9 +21862,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -22569,9 +21952,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "teams",
           "category": "repos",
           "subcategory": "branches"
@@ -22662,9 +22043,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "teams",
           "category": "repos",
           "subcategory": "branches"
@@ -22755,9 +22134,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "teams",
           "category": "repos",
           "subcategory": "branches"
@@ -22813,9 +22190,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -22904,9 +22279,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "users",
           "category": "repos",
           "subcategory": "branches"
@@ -22996,9 +22369,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "users",
           "category": "repos",
           "subcategory": "branches"
@@ -23088,9 +22459,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "requestBodyParameterName": "users",
           "category": "repos",
           "subcategory": "branches"
@@ -23170,9 +22539,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -23514,9 +22881,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "runs"
         }
@@ -23565,9 +22930,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "runs"
         }
@@ -23870,9 +23233,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "runs"
         }
@@ -23935,9 +23296,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "runs"
         }
@@ -24020,9 +23379,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "suites"
         }
@@ -24110,9 +23467,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "suites"
         }
@@ -24161,9 +23516,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "suites"
         }
@@ -24195,7 +23548,7 @@
             "$ref": "#/components/parameters/check-name"
           },
           {
-            "$ref": "#/components/parameters/status"
+            "$ref": "#/components/parameters/status-parameter"
           },
           {
             "name": "filter",
@@ -24258,9 +23611,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "runs"
         }
@@ -24296,8 +23647,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                  },
+                  "properties": {},
                   "additionalProperties": false
                 }
               }
@@ -24307,9 +23657,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "suites"
         }
@@ -24391,9 +23739,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning",
           "subcategory": null
         }
@@ -24451,9 +23797,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning",
           "subcategory": null
         }
@@ -24534,9 +23878,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning"
         }
       }
@@ -24605,9 +23947,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning",
           "subcategory": null
         }
@@ -24695,9 +24035,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning"
         }
       }
@@ -24765,9 +24103,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning"
         }
       },
@@ -24841,9 +24177,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning"
         }
       }
@@ -24944,9 +24278,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning"
         }
       }
@@ -25009,9 +24341,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "code-scanning"
         }
       }
@@ -25088,9 +24418,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "collaborators"
         }
@@ -25130,9 +24458,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "collaborators"
         }
@@ -25216,9 +24542,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "collaborators"
         }
@@ -25253,9 +24577,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "collaborators"
         }
@@ -25307,9 +24629,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "collaborators"
         }
@@ -25505,9 +24825,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "comments"
         }
@@ -25545,9 +24863,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "comments"
         }
@@ -25905,9 +25221,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "commits"
         }
@@ -26129,9 +25443,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "comments"
         }
@@ -26264,9 +25576,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "commits"
         }
@@ -26305,7 +25615,7 @@
             "$ref": "#/components/parameters/check-name"
           },
           {
-            "$ref": "#/components/parameters/status"
+            "$ref": "#/components/parameters/status-parameter"
           },
           {
             "name": "filter",
@@ -26376,9 +25686,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "runs"
         }
@@ -26473,9 +25781,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "checks",
           "subcategory": "suites"
         }
@@ -26540,9 +25846,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statuses"
         }
@@ -26615,9 +25919,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statuses"
         }
@@ -26729,9 +26031,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "commits"
         }
@@ -26951,9 +26251,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "contents"
         }
@@ -27132,9 +26430,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "contents"
         }
@@ -27264,9 +26560,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "contents"
         }
@@ -27344,9 +26638,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -27722,9 +27014,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "deployments"
         }
@@ -28082,9 +27372,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -28143,9 +27431,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "environments"
         }
@@ -28194,9 +27480,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "environments"
         }
@@ -28290,9 +27574,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "environments"
         }
@@ -28327,9 +27609,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "environments"
         }
@@ -28379,9 +27659,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -28460,9 +27738,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "forks"
         }
@@ -28534,9 +27810,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "forks"
         }
@@ -28630,9 +27904,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "blobs"
         }
@@ -28695,9 +27967,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "blobs"
         }
@@ -28847,9 +28117,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "commits"
         }
@@ -28901,9 +28169,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "commits"
         }
@@ -28973,9 +28239,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "refs"
         }
@@ -29034,9 +28298,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "refs"
         }
@@ -29125,9 +28387,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "refs"
         }
@@ -29214,9 +28474,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "refs"
         }
@@ -29261,9 +28519,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "refs"
         }
@@ -29393,9 +28649,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "tags"
         }
@@ -29452,9 +28706,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "tags"
         }
@@ -29589,9 +28841,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "trees"
         }
@@ -29664,9 +28914,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "git",
           "subcategory": "trees"
         }
@@ -29729,9 +28977,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -29863,9 +29109,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -29917,9 +29161,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30047,9 +29289,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30087,9 +29327,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30138,9 +29376,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30217,9 +29453,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30283,9 +29517,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30343,9 +29575,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30391,9 +29621,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30433,9 +29661,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30475,9 +29701,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "webhooks"
         }
@@ -30526,9 +29750,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -30633,9 +29855,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -30722,9 +29942,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -30756,9 +29974,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -30813,9 +30029,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -30899,9 +30113,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -30950,9 +30162,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -31027,9 +30237,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "source-imports"
         }
@@ -31081,9 +30289,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -31121,8 +30327,7 @@
                     },
                     {
                       "type": "object",
-                      "properties": {
-                      },
+                      "properties": {},
                       "additionalProperties": false
                     }
                   ]
@@ -31139,9 +30344,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "repos"
         }
@@ -31198,9 +30401,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "repos"
         }
@@ -31235,9 +30436,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "repos"
         }
@@ -31297,9 +30496,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "invitations"
         }
@@ -31370,9 +30567,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "invitations"
         }
@@ -31407,9 +30602,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "invitations"
         }
@@ -31722,9 +30915,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": null
         }
@@ -31945,9 +31136,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "comments"
         }
@@ -31982,9 +31171,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "comments"
         }
@@ -32588,9 +31775,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": null
         }
@@ -32663,9 +31848,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "assignees"
         }
@@ -32736,9 +31919,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "assignees"
         }
@@ -32906,9 +32087,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "comments"
         }
@@ -33039,9 +32218,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -33171,9 +32348,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -33303,9 +32478,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -33343,9 +32516,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -33411,9 +32582,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -33484,9 +32653,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": null
         }
@@ -33527,9 +32694,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": null
         }
@@ -33901,9 +33066,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "keys"
         }
@@ -33990,9 +33153,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "keys"
         }
@@ -34044,9 +33205,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "keys"
         }
@@ -34081,9 +33240,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "keys"
         }
@@ -34146,9 +33303,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -34238,9 +33393,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -34297,9 +33450,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -34379,9 +33530,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -34421,9 +33570,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -34469,9 +33616,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -34508,9 +33653,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "lfs"
         }
@@ -34542,9 +33685,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "lfs"
         }
@@ -34590,9 +33731,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "licenses",
           "subcategory": null
         }
@@ -34666,9 +33805,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "branches"
         }
@@ -34762,9 +33899,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "merging"
         }
@@ -34870,9 +34005,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "milestones"
         }
@@ -34973,9 +34106,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "milestones"
         }
@@ -35027,9 +34158,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "milestones"
         }
@@ -35115,9 +34244,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "milestones"
         }
@@ -35155,9 +34282,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "milestones"
         }
@@ -35220,9 +34345,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "issues",
           "subcategory": "labels"
         }
@@ -35294,9 +34417,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -35362,9 +34483,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "notifications"
         }
@@ -35413,9 +34532,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "pages"
         }
@@ -35646,9 +34763,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "pages"
         }
@@ -35755,9 +34870,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "pages"
         }
@@ -35801,9 +34914,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "pages"
         }
@@ -35849,9 +34960,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "pages"
         }
@@ -35905,9 +35014,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "pages"
         }
@@ -36273,9 +35380,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -36384,9 +35489,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -36662,9 +35765,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "comments"
         }
@@ -36968,9 +36069,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -37064,9 +36163,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -37397,9 +36494,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "comments"
         }
@@ -37462,9 +36557,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -37533,9 +36626,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -37575,9 +36666,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -37717,9 +36806,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": null
         }
@@ -37779,9 +36866,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "review-requests"
         }
@@ -37882,9 +36967,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "review-requests"
         }
@@ -37968,9 +37051,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "review-requests"
         }
@@ -38033,9 +37114,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38170,9 +37249,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38227,9 +37304,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38304,9 +37379,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38362,9 +37435,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38433,9 +37504,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38516,9 +37585,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38607,9 +37674,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "pulls",
           "subcategory": "reviews"
         }
@@ -38750,9 +37815,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "contents"
         }
@@ -38823,9 +37886,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "contents"
         }
@@ -38888,9 +37949,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39009,9 +38068,7 @@
           "triggersNotification": true,
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39069,9 +38126,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39145,9 +38200,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39182,9 +38235,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39230,9 +38281,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39291,9 +38340,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39345,9 +38392,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39451,9 +38496,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39488,9 +38531,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39553,9 +38594,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39638,9 +38677,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "releases"
         }
@@ -39829,9 +38866,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "secret-scanning",
           "subcategory": null
         }
@@ -39886,9 +38921,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "secret-scanning",
           "subcategory": null
         }
@@ -39969,9 +39002,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "secret-scanning"
         }
       }
@@ -40046,9 +39077,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "starring"
         }
@@ -40103,9 +39132,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statistics"
         }
@@ -40160,9 +39187,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statistics"
         }
@@ -40217,9 +39242,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statistics"
         }
@@ -40268,9 +39291,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statistics"
         }
@@ -40322,9 +39343,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statistics"
         }
@@ -40431,9 +39450,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "statuses"
         }
@@ -40493,9 +39510,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "watching"
         }
@@ -40547,9 +39562,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "watching"
         }
@@ -40612,9 +39625,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "watching"
         }
@@ -40646,9 +39657,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "watching"
         }
@@ -40708,9 +39717,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -40760,9 +39767,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "contents"
         }
@@ -40822,9 +39827,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -41029,9 +40032,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "traffic"
         }
@@ -41083,9 +40084,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "traffic"
         }
@@ -41137,9 +40136,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "traffic"
         }
@@ -41191,9 +40188,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "traffic"
         }
@@ -41272,9 +40267,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -41422,9 +40415,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "contents"
         }
@@ -41598,9 +40589,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -41672,9 +40661,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -41720,9 +40707,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -41771,9 +40756,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -41847,9 +40830,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -41884,9 +40865,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "actions",
           "subcategory": "secrets"
         }
@@ -41953,9 +40932,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42052,9 +41029,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42109,9 +41084,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42211,9 +41184,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42336,9 +41307,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42370,9 +41339,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42430,9 +41397,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42579,9 +41544,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42627,9 +41590,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42779,9 +41740,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42877,9 +41836,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42911,9 +41868,7 @@
         "x-github": {
           "enabledForGitHubApps": true,
           "githubCloudOnly": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "enterprise-admin",
           "subcategory": "scim"
         }
@@ -42998,9 +41953,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "scim",
           "subcategory": null
         }
@@ -43158,9 +42111,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "scim",
           "subcategory": null
         }
@@ -43215,9 +42166,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "scim",
           "subcategory": null
         }
@@ -43369,9 +42318,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "scim",
           "subcategory": null
         }
@@ -43536,9 +42483,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "scim",
           "subcategory": null
         }
@@ -43579,9 +42524,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "scim",
           "subcategory": null
         }
@@ -43682,9 +42625,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "search",
           "subcategory": null
         }
@@ -43897,9 +42838,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "search",
           "subcategory": null
         }
@@ -44010,9 +42949,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "search",
           "subcategory": null
         }
@@ -44305,9 +43242,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "search",
           "subcategory": null
         }
@@ -44353,9 +43288,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -44474,9 +43407,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -44514,9 +43445,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -44834,9 +43763,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45158,9 +44085,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45572,9 +44497,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45652,9 +44575,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45694,9 +44615,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45740,9 +44659,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45780,9 +44697,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45834,9 +44749,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45912,9 +44825,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -45952,9 +44863,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46197,9 +45106,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46262,9 +45169,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46322,9 +45227,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46388,9 +45291,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46428,9 +45329,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46482,9 +45381,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46601,9 +45498,7 @@
         "x-github": {
           "githubCloudOnly": true,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46672,9 +45567,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "removalDate": "2021-02-01",
           "deprecationDate": "2020-01-21",
           "category": "teams",
@@ -46695,9 +45588,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users#get-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -46737,9 +45628,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": null
         }
@@ -46755,9 +45644,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users/#update-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -46843,9 +45730,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": null
         }
@@ -46863,9 +45748,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users#list-users-blocked-by-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Response",
@@ -46904,9 +45787,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "blocking"
         }
@@ -46956,9 +45837,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "blocking"
         }
@@ -47002,9 +45881,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "blocking"
         }
@@ -47045,9 +45922,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "blocking"
         }
@@ -47065,9 +45940,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users#set-primary-email-visibility-for-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -47129,9 +46002,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "emails"
         }
@@ -47197,9 +46068,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "emails"
         }
@@ -47215,9 +46084,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users#add-an-email-address-for-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -47234,9 +46101,7 @@
                           "example": "username@example.com",
                           "minLength": 1
                         },
-                        "example": [
-
-                        ]
+                        "example": []
                       }
                     },
                     "required": [
@@ -47303,9 +46168,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "emails"
         }
@@ -47321,9 +46184,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users#delete-an-email-address-for-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -47392,9 +46253,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "emails"
         }
@@ -47457,9 +46316,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -47522,9 +46379,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -47574,9 +46429,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -47617,9 +46470,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -47660,9 +46511,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -47728,9 +46577,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "gpg-keys"
         }
@@ -47746,9 +46593,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users#create-a-gpg-key-for-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -47803,9 +46648,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "gpg-keys"
         }
@@ -47860,9 +46703,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "gpg-keys"
         }
@@ -47906,9 +46747,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "gpg-keys"
         }
@@ -47986,9 +46825,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "installations"
         }
@@ -48118,9 +46955,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "installations"
         }
@@ -48161,9 +46996,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "installations"
         }
@@ -48193,8 +47026,7 @@
                     },
                     {
                       "type": "object",
-                      "properties": {
-                      },
+                      "properties": {},
                       "additionalProperties": false
                     }
                   ]
@@ -48214,9 +47046,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "user"
         }
@@ -48265,9 +47095,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "user"
         }
@@ -48291,9 +47119,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "interactions",
           "subcategory": "user"
         }
@@ -48482,9 +47308,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "keys"
         }
@@ -48500,9 +47324,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/users#create-a-public-ssh-key-for-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -48563,9 +47385,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "keys"
         }
@@ -48620,9 +47440,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "keys"
         }
@@ -48663,9 +47481,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "keys"
         }
@@ -48728,9 +47544,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -48790,9 +47604,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": "marketplace"
         }
@@ -48871,9 +47683,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -48922,9 +47732,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -48999,9 +47807,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": "members"
         }
@@ -49079,9 +47885,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/migrations#start-a-user-migration"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -49177,9 +47981,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "migrations",
           "subcategory": "users"
         }
@@ -49490,9 +48292,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": null
         }
@@ -49529,7 +48329,7 @@
             }
           },
           {
-            "$ref": "#/components/parameters/package-visibility"
+            "$ref": "#/components/parameters/package-visibility-param"
           }
         ],
         "responses": {
@@ -49555,9 +48355,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49603,9 +48401,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49646,9 +48442,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49700,9 +48494,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49780,9 +48572,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49831,9 +48621,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49877,9 +48665,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49925,9 +48711,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -49945,9 +48729,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/projects#create-a-user-project"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -50074,9 +48856,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "emails"
         }
@@ -50214,9 +48994,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": null
         }
@@ -50232,9 +49010,7 @@
           "description": "API method documentation",
           "url": "https://docs.github.com/rest/reference/repos#create-a-repository-for-the-authenticated-user"
         },
-        "parameters": [
-
-        ],
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -50470,9 +49246,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "invitations"
         }
@@ -50515,9 +49289,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "invitations"
         }
@@ -50558,9 +49330,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "repos",
           "subcategory": "invitations"
         }
@@ -50642,9 +49412,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "starring"
         }
@@ -50697,9 +49465,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "starring"
         }
@@ -50743,9 +49509,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "starring"
         }
@@ -50789,9 +49553,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "starring"
         }
@@ -50854,9 +49616,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "watching"
         }
@@ -50919,9 +49679,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "teams",
           "subcategory": null
         }
@@ -50981,9 +49739,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": null
         }
@@ -51042,9 +49798,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": null
         }
@@ -51091,9 +49845,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -51143,9 +49895,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -51192,9 +49942,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -51251,9 +49999,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -51310,9 +50056,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -51354,9 +50098,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "followers"
         }
@@ -51419,9 +50161,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "gists",
           "subcategory": null
         }
@@ -51478,9 +50218,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "gpg-keys"
         }
@@ -51553,9 +50291,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": null
         }
@@ -51598,9 +50334,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "apps",
           "subcategory": null
         }
@@ -51657,9 +50391,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "users",
           "subcategory": "keys"
         }
@@ -51716,9 +50448,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "orgs",
           "subcategory": null
         }
@@ -51755,7 +50485,7 @@
             }
           },
           {
-            "$ref": "#/components/parameters/package-visibility"
+            "$ref": "#/components/parameters/package-visibility-param"
           },
           {
             "$ref": "#/components/parameters/username"
@@ -51790,9 +50520,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -51841,9 +50569,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -51887,9 +50613,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -51944,9 +50668,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -52007,9 +50729,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -52061,9 +50781,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -52110,9 +50828,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -52161,9 +50877,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "packages",
           "subcategory": null
         }
@@ -52284,9 +50998,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -52333,9 +51045,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "events"
         }
@@ -52485,9 +51195,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "billing",
           "subcategory": null
         }
@@ -52530,9 +51238,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "billing",
           "subcategory": null
         }
@@ -52575,9 +51281,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": false,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "billing",
           "subcategory": null
         }
@@ -52650,9 +51354,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "starring"
         }
@@ -52709,9 +51411,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "activity",
           "subcategory": "watching"
         }
@@ -52740,9 +51440,7 @@
         "x-github": {
           "githubCloudOnly": false,
           "enabledForGitHubApps": true,
-          "previews": [
-
-          ],
+          "previews": [],
           "category": "meta"
         }
       }
@@ -56618,13 +55316,11 @@
           },
           "forks": {
             "type": "array",
-            "items": {
-            }
+            "items": {}
           },
           "history": {
             "type": "array",
-            "items": {
-            }
+            "items": {}
           }
         },
         "required": [
@@ -57019,13 +55715,11 @@
               },
               "forks": {
                 "type": "array",
-                "items": {
-                }
+                "items": {}
               },
               "history": {
                 "type": "array",
-                "items": {
-                }
+                "items": {}
               }
             },
             "required": [
@@ -59665,8 +58359,7 @@
         "title": "Empty Object",
         "description": "An object without any properties.",
         "type": "object",
-        "properties": {
-        },
+        "properties": {},
         "additionalProperties": false
       },
       "credential-authorization": {
@@ -60254,8 +58947,7 @@
           },
           "exclude": {
             "type": "array",
-            "items": {
-            }
+            "items": {}
           }
         },
         "required": [
@@ -74637,8 +73329,7 @@
                     },
                     {
                       "type": "array",
-                      "items": {
-                      }
+                      "items": {}
                     }
                   ]
                 }
@@ -76204,12 +74895,8 @@
                 "primary_key_id": 3,
                 "key_id": "4A595D4C72EE49C7",
                 "public_key": "zsBNBFayYZ...",
-                "emails": [
-
-                ],
-                "subkeys": [
-
-                ],
+                "emails": [],
+                "subkeys": [],
                 "can_sign": false,
                 "can_encrypt_comms": true,
                 "can_encrypt_storage": true,
@@ -76235,13 +74922,11 @@
                 },
                 "emails": {
                   "type": "array",
-                  "items": {
-                  }
+                  "items": {}
                 },
                 "subkeys": {
                   "type": "array",
-                  "items": {
-                  }
+                  "items": {}
                 },
                 "can_sign": {
                   "type": "boolean"
@@ -77005,9 +75690,7 @@
         "value": {
           "id": 1,
           "url": "https://api.github.com/authorizations/1",
-          "scopes": [
-
-          ],
+          "scopes": [],
           "token": "ghu_16C7e42F292c6912E7710c838347Ae178B4a",
           "token_last_eight": "Ae178B4a",
           "hashed_token": "25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8",
@@ -77072,9 +75755,7 @@
               "site_admin": false
             },
             "has_multiple_single_files": false,
-            "single_file_paths": [
-
-            ]
+            "single_file_paths": []
           }
         }
       },
@@ -83498,9 +82179,7 @@
               "workflow_id": 159038,
               "url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642",
               "html_url": "https://github.com/octo-org/octo-repo/actions/runs/30433642",
-              "pull_requests": [
-
-              ],
+              "pull_requests": [],
               "created_at": "2020-01-22T19:33:08Z",
               "updated_at": "2020-01-22T19:33:08Z",
               "jobs_url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/jobs",
@@ -83680,9 +82359,7 @@
           "workflow_id": 159038,
           "url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642",
           "html_url": "https://github.com/octo-org/octo-repo/actions/runs/30433642",
-          "pull_requests": [
-
-          ],
+          "pull_requests": [],
           "created_at": "2020-01-22T19:33:08Z",
           "updated_at": "2020-01-22T19:33:08Z",
           "jobs_url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/jobs",
@@ -84054,8 +82731,7 @@
             "sha": "a84d88e7554fc1fa21bcbc4efae3c782a70d2b9d",
             "ref": "topic-branch",
             "task": "deploy",
-            "payload": {
-            },
+            "payload": {},
             "original_environment": "staging",
             "environment": "production",
             "description": "Deploy request from hubot",
@@ -84903,9 +83579,7 @@
           "url": "https://api.github.com/repos/github/hello-world/check-suites/5",
           "before": "146e867f55c26428e5f9fade55a9bbf5e95a7912",
           "after": "d6fde92930d4715a2b49857d24b940956b26d2d3",
-          "pull_requests": [
-
-          ],
+          "pull_requests": [],
           "created_at": "2017-07-08T16:18:44-04:00",
           "updated_at": "2017-07-08T16:18:44-04:00",
           "app": {
@@ -85633,9 +84307,7 @@
                 "start_column": 7,
                 "end_column": 18
               },
-              "classifications": [
-
-              ]
+              "classifications": []
             },
             "instances_url": "https://api.github.com/repos/octocat/hello-world/code-scanning/alerts/3/instances"
           }
@@ -86928,9 +85600,7 @@
               "url": "https://api.github.com/repos/github/hello-world/check-suites/5",
               "before": "146e867f55c26428e5f9fade55a9bbf5e95a7912",
               "after": "d6fde92930d4715a2b49857d24b940956b26d2d3",
-              "pull_requests": [
-
-              ],
+              "pull_requests": [],
               "app": {
                 "id": 1,
                 "slug": "octoapp",
@@ -87835,8 +86505,7 @@
           "sha": "a84d88e7554fc1fa21bcbc4efae3c782a70d2b9d",
           "ref": "topic-branch",
           "task": "deploy",
-          "payload": {
-          },
+          "payload": {},
           "original_environment": "staging",
           "environment": "production",
           "description": "Deploy request from hubot",
@@ -87876,8 +86545,7 @@
           "sha": "a84d88e7554fc1fa21bcbc4efae3c782a70d2b9d",
           "ref": "topic-branch",
           "task": "deploy",
-          "payload": {
-          },
+          "payload": {},
           "original_environment": "staging",
           "environment": "production",
           "description": "Deploy request from hubot",
@@ -93493,9 +92161,7 @@
                   "primary": true
                 }
               ],
-              "groups": [
-
-              ],
+              "groups": [],
               "active": true,
               "meta": {
                 "resourceType": "User",
@@ -93849,8 +92515,7 @@
                 "type": "User",
                 "site_admin": false
               },
-              "committer": {
-              },
+              "committer": {},
               "parents": [
                 {
                   "url": "https://api.github.com/repos/octocat/Spoon-Knife/commits/a30c19e3f13765a3b48829788bc1cb8b4e95cee4",
@@ -94739,12 +93404,8 @@
                 "primary_key_id": 3,
                 "key_id": "4A595D4C72EE49C7",
                 "public_key": "zsBNBFayYZ...",
-                "emails": [
-
-                ],
-                "subkeys": [
-
-                ],
+                "emails": [],
+                "subkeys": [],
                 "can_sign": false,
                 "can_encrypt_comms": true,
                 "can_encrypt_storage": true,
@@ -94781,12 +93442,8 @@
               "primary_key_id": 3,
               "key_id": "4A595D4C72EE49C7",
               "public_key": "zsBNBFayYZ...",
-              "emails": [
-
-              ],
-              "subkeys": [
-
-              ],
+              "emails": [],
+              "subkeys": [],
               "can_sign": false,
               "can_encrypt_comms": true,
               "can_encrypt_storage": true,
@@ -95836,9 +94493,7 @@
             "metadata": {
               "package_type": "container",
               "container": {
-                "tags": [
-
-                ]
+                "tags": []
               }
             }
           }
@@ -97100,7 +95755,7 @@
           "type": "string"
         }
       },
-      "package-visibility": {
+      "package-visibility-param": {
         "name": "visibility",
         "description": "The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only `container` package_types currently support `internal` visibility properly. For other ecosystems `internal` is synonymous with `private`. This parameter is optional and only filters an existing result set.",
         "in": "query",
@@ -97357,7 +96012,7 @@
           "type": "string"
         }
       },
-      "status": {
+      "status-parameter": {
         "name": "status",
         "description": "Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or `completed`.",
         "in": "query",

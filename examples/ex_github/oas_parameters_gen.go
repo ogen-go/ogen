@@ -9806,7 +9806,7 @@ type ActionsListWorkflowRunsForRepoParams struct {
 	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
 	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
 	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
-	Status OptActionsListWorkflowRunsForRepoStatus
+	Status OptWorkflowRunStatus
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -9862,7 +9862,7 @@ func unpackActionsListWorkflowRunsForRepoParams(packed middleware.Parameters) (p
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Status = v.(OptActionsListWorkflowRunsForRepoStatus)
+			params.Status = v.(OptWorkflowRunStatus)
 		}
 	}
 	{
@@ -10120,7 +10120,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotStatusVal ActionsListWorkflowRunsForRepoStatus
+				var paramsDotStatusVal WorkflowRunStatus
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -10132,7 +10132,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 						return err
 					}
 
-					paramsDotStatusVal = ActionsListWorkflowRunsForRepoStatus(c)
+					paramsDotStatusVal = WorkflowRunStatus(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -15323,9 +15323,9 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 // ActivityListReposStarredByAuthenticatedUserParams is parameters of activity/list-repos-starred-by-authenticated-user operation.
 type ActivityListReposStarredByAuthenticatedUserParams struct {
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptActivityListReposStarredByAuthenticatedUserSort
+	Sort OptSort
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptActivityListReposStarredByAuthenticatedUserDirection
+	Direction OptDirection
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -15339,7 +15339,7 @@ func unpackActivityListReposStarredByAuthenticatedUserParams(packed middleware.P
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Sort = v.(OptActivityListReposStarredByAuthenticatedUserSort)
+			params.Sort = v.(OptSort)
 		}
 	}
 	{
@@ -15348,7 +15348,7 @@ func unpackActivityListReposStarredByAuthenticatedUserParams(packed middleware.P
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptActivityListReposStarredByAuthenticatedUserDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -15376,7 +15376,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: sort.
 	{
-		val := ActivityListReposStarredByAuthenticatedUserSort("created")
+		val := Sort("created")
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -15389,7 +15389,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotSortVal ActivityListReposStarredByAuthenticatedUserSort
+				var paramsDotSortVal Sort
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -15401,7 +15401,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 						return err
 					}
 
-					paramsDotSortVal = ActivityListReposStarredByAuthenticatedUserSort(c)
+					paramsDotSortVal = Sort(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -15437,7 +15437,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 	}
 	// Set default value for query: direction.
 	{
-		val := ActivityListReposStarredByAuthenticatedUserDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -15450,7 +15450,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal ActivityListReposStarredByAuthenticatedUserDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -15462,7 +15462,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 						return err
 					}
 
-					paramsDotDirectionVal = ActivityListReposStarredByAuthenticatedUserDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -17692,7 +17692,7 @@ type AppsListAccountsForPlanParams struct {
 	// Plan_id parameter.
 	PlanID int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptAppsListAccountsForPlanSort
+	Sort OptSort
 	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
 	// the `sort` parameter.
 	Direction OptAppsListAccountsForPlanDirection
@@ -17716,7 +17716,7 @@ func unpackAppsListAccountsForPlanParams(packed middleware.Parameters) (params A
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Sort = v.(OptAppsListAccountsForPlanSort)
+			params.Sort = v.(OptSort)
 		}
 	}
 	{
@@ -17798,7 +17798,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 	}
 	// Set default value for query: sort.
 	{
-		val := AppsListAccountsForPlanSort("created")
+		val := Sort("created")
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -17811,7 +17811,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotSortVal AppsListAccountsForPlanSort
+				var paramsDotSortVal Sort
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -17823,7 +17823,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 						return err
 					}
 
-					paramsDotSortVal = AppsListAccountsForPlanSort(c)
+					paramsDotSortVal = Sort(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -18013,7 +18013,7 @@ type AppsListAccountsForPlanStubbedParams struct {
 	// Plan_id parameter.
 	PlanID int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptAppsListAccountsForPlanStubbedSort
+	Sort OptSort
 	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
 	// the `sort` parameter.
 	Direction OptAppsListAccountsForPlanStubbedDirection
@@ -18037,7 +18037,7 @@ func unpackAppsListAccountsForPlanStubbedParams(packed middleware.Parameters) (p
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Sort = v.(OptAppsListAccountsForPlanStubbedSort)
+			params.Sort = v.(OptSort)
 		}
 	}
 	{
@@ -18119,7 +18119,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 	}
 	// Set default value for query: sort.
 	{
-		val := AppsListAccountsForPlanStubbedSort("created")
+		val := Sort("created")
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -18132,7 +18132,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotSortVal AppsListAccountsForPlanStubbedSort
+				var paramsDotSortVal Sort
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -18144,7 +18144,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 						return err
 					}
 
-					paramsDotSortVal = AppsListAccountsForPlanStubbedSort(c)
+					paramsDotSortVal = Sort(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -21063,7 +21063,7 @@ type ChecksListForRefParams struct {
 	CheckName OptString
 	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
 	// `completed`.
-	Status OptChecksListForRefStatus
+	Status OptStatusParameter
 	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
 	// recent check runs) or `all`.
 	Filter OptChecksListForRefFilter
@@ -21111,7 +21111,7 @@ func unpackChecksListForRefParams(packed middleware.Parameters) (params ChecksLi
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Status = v.(OptChecksListForRefStatus)
+			params.Status = v.(OptStatusParameter)
 		}
 	}
 	{
@@ -21341,7 +21341,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotStatusVal ChecksListForRefStatus
+				var paramsDotStatusVal StatusParameter
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -21353,7 +21353,7 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 						return err
 					}
 
-					paramsDotStatusVal = ChecksListForRefStatus(c)
+					paramsDotStatusVal = StatusParameter(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -21594,7 +21594,7 @@ type ChecksListForSuiteParams struct {
 	CheckName OptString
 	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
 	// `completed`.
-	Status OptChecksListForSuiteStatus
+	Status OptStatusParameter
 	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
 	// recent check runs) or `all`.
 	Filter OptChecksListForSuiteFilter
@@ -21641,7 +21641,7 @@ func unpackChecksListForSuiteParams(packed middleware.Parameters) (params Checks
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Status = v.(OptChecksListForSuiteStatus)
+			params.Status = v.(OptStatusParameter)
 		}
 	}
 	{
@@ -21862,7 +21862,7 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotStatusVal ChecksListForSuiteStatus
+				var paramsDotStatusVal StatusParameter
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -21874,7 +21874,7 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 						return err
 					}
 
-					paramsDotStatusVal = ChecksListForSuiteStatus(c)
+					paramsDotStatusVal = StatusParameter(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -26521,7 +26521,7 @@ type EnterpriseAdminGetAuditLogParams struct {
 	// - `git` - returns Git events
 	// - `all` - returns both web and Git events
 	// The default is `web`.
-	Include OptEnterpriseAdminGetAuditLogInclude
+	Include OptAuditLogInclude
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events after this cursor.
@@ -26533,7 +26533,7 @@ type EnterpriseAdminGetAuditLogParams struct {
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
 	// The default is `desc`.
-	Order OptEnterpriseAdminGetAuditLogOrder
+	Order OptAuditLogOrder
 	// Page number of the results to fetch.
 	Page OptInt
 	// Results per page (max 100).
@@ -26563,7 +26563,7 @@ func unpackEnterpriseAdminGetAuditLogParams(packed middleware.Parameters) (param
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Include = v.(OptEnterpriseAdminGetAuditLogInclude)
+			params.Include = v.(OptAuditLogInclude)
 		}
 	}
 	{
@@ -26590,7 +26590,7 @@ func unpackEnterpriseAdminGetAuditLogParams(packed middleware.Parameters) (param
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptEnterpriseAdminGetAuditLogOrder)
+			params.Order = v.(OptAuditLogOrder)
 		}
 	}
 	{
@@ -26712,7 +26712,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotIncludeVal EnterpriseAdminGetAuditLogInclude
+				var paramsDotIncludeVal AuditLogInclude
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -26724,7 +26724,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 						return err
 					}
 
-					paramsDotIncludeVal = EnterpriseAdminGetAuditLogInclude(c)
+					paramsDotIncludeVal = AuditLogInclude(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -26850,7 +26850,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal EnterpriseAdminGetAuditLogOrder
+				var paramsDotOrderVal AuditLogOrder
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -26862,7 +26862,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 						return err
 					}
 
-					paramsDotOrderVal = EnterpriseAdminGetAuditLogOrder(c)
+					paramsDotOrderVal = AuditLogOrder(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -37766,7 +37766,7 @@ type IssuesListParams struct {
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
 	Sort OptIssuesListSort
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListDirection
+	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
 	Since  OptDateTime
@@ -37823,7 +37823,7 @@ func unpackIssuesListParams(packed middleware.Parameters) (params IssuesListPara
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptIssuesListDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -38120,7 +38120,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 	}
 	// Set default value for query: direction.
 	{
-		val := IssuesListDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -38133,7 +38133,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal IssuesListDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -38145,7 +38145,7 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 						return err
 					}
 
-					paramsDotDirectionVal = IssuesListDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -39057,7 +39057,7 @@ type IssuesListCommentsForRepoParams struct {
 	Owner string
 	Repo  string
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptIssuesListCommentsForRepoSort
+	Sort OptSort
 	// Either `asc` or `desc`. Ignored without the `sort` parameter.
 	Direction OptIssuesListCommentsForRepoDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
@@ -39090,7 +39090,7 @@ func unpackIssuesListCommentsForRepoParams(packed middleware.Parameters) (params
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Sort = v.(OptIssuesListCommentsForRepoSort)
+			params.Sort = v.(OptSort)
 		}
 	}
 	{
@@ -39226,7 +39226,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 	}
 	// Set default value for query: sort.
 	{
-		val := IssuesListCommentsForRepoSort("created")
+		val := Sort("created")
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -39239,7 +39239,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotSortVal IssuesListCommentsForRepoSort
+				var paramsDotSortVal Sort
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -39251,7 +39251,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 						return err
 					}
 
-					paramsDotSortVal = IssuesListCommentsForRepoSort(c)
+					paramsDotSortVal = Sort(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -39727,7 +39727,7 @@ type IssuesListForAuthenticatedUserParams struct {
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
 	Sort OptIssuesListForAuthenticatedUserSort
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListForAuthenticatedUserDirection
+	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
 	Since OptDateTime
@@ -39780,7 +39780,7 @@ func unpackIssuesListForAuthenticatedUserParams(packed middleware.Parameters) (p
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptIssuesListForAuthenticatedUserDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -40041,7 +40041,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 	}
 	// Set default value for query: direction.
 	{
-		val := IssuesListForAuthenticatedUserDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -40054,7 +40054,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal IssuesListForAuthenticatedUserDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -40066,7 +40066,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, argsEscaped bool
 						return err
 					}
 
-					paramsDotDirectionVal = IssuesListForAuthenticatedUserDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -40254,7 +40254,7 @@ type IssuesListForOrgParams struct {
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
 	Sort OptIssuesListForOrgSort
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListForOrgDirection
+	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
 	Since OptDateTime
@@ -40314,7 +40314,7 @@ func unpackIssuesListForOrgParams(packed middleware.Parameters) (params IssuesLi
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptIssuesListForOrgDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -40620,7 +40620,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 	}
 	// Set default value for query: direction.
 	{
-		val := IssuesListForOrgDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -40633,7 +40633,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal IssuesListForOrgDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -40645,7 +40645,7 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 						return err
 					}
 
-					paramsDotDirectionVal = IssuesListForOrgDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -40837,7 +40837,7 @@ type IssuesListForRepoParams struct {
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
 	Sort OptIssuesListForRepoSort
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptIssuesListForRepoDirection
+	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
 	Since OptDateTime
@@ -40931,7 +40931,7 @@ func unpackIssuesListForRepoParams(packed middleware.Parameters) (params IssuesL
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptIssuesListForRepoDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -41385,7 +41385,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 	}
 	// Set default value for query: direction.
 	{
-		val := IssuesListForRepoDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -41398,7 +41398,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal IssuesListForRepoDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -41410,7 +41410,7 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 						return err
 					}
 
-					paramsDotDirectionVal = IssuesListForRepoDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -49660,7 +49660,7 @@ type OrgsGetAuditLogParams struct {
 	// - `git` - returns Git events
 	// - `all` - returns both web and Git events
 	// The default is `web`.
-	Include OptOrgsGetAuditLogInclude
+	Include OptAuditLogInclude
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events after this cursor.
@@ -49672,7 +49672,7 @@ type OrgsGetAuditLogParams struct {
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
 	// The default is `desc`.
-	Order OptOrgsGetAuditLogOrder
+	Order OptAuditLogOrder
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -49702,7 +49702,7 @@ func unpackOrgsGetAuditLogParams(packed middleware.Parameters) (params OrgsGetAu
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Include = v.(OptOrgsGetAuditLogInclude)
+			params.Include = v.(OptAuditLogInclude)
 		}
 	}
 	{
@@ -49729,7 +49729,7 @@ func unpackOrgsGetAuditLogParams(packed middleware.Parameters) (params OrgsGetAu
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptOrgsGetAuditLogOrder)
+			params.Order = v.(OptAuditLogOrder)
 		}
 	}
 	{
@@ -49851,7 +49851,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotIncludeVal OrgsGetAuditLogInclude
+				var paramsDotIncludeVal AuditLogInclude
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -49863,7 +49863,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 						return err
 					}
 
-					paramsDotIncludeVal = OrgsGetAuditLogInclude(c)
+					paramsDotIncludeVal = AuditLogInclude(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -49989,7 +49989,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal OrgsGetAuditLogOrder
+				var paramsDotOrderVal AuditLogOrder
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -50001,7 +50001,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, argsEscaped bool, r *http.Reque
 						return err
 					}
 
-					paramsDotOrderVal = OrgsGetAuditLogOrder(c)
+					paramsDotOrderVal = AuditLogOrder(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -54783,7 +54783,7 @@ type PackagesDeletePackageForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesDeletePackageForAuthenticatedUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 }
@@ -54794,7 +54794,7 @@ func unpackPackagesDeletePackageForAuthenticatedUserParams(packed middleware.Par
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesDeletePackageForAuthenticatedUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -54836,7 +54836,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, argsE
 					return err
 				}
 
-				params.PackageType = PackagesDeletePackageForAuthenticatedUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -54915,7 +54915,7 @@ type PackagesDeletePackageForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesDeletePackageForOrgPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Org         string
@@ -54927,7 +54927,7 @@ func unpackPackagesDeletePackageForOrgParams(packed middleware.Parameters) (para
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesDeletePackageForOrgPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -54976,7 +54976,7 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, argsEscaped bool, r
 					return err
 				}
 
-				params.PackageType = PackagesDeletePackageForOrgPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -55100,7 +55100,7 @@ type PackagesDeletePackageForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesDeletePackageForUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Username    string
@@ -55112,7 +55112,7 @@ func unpackPackagesDeletePackageForUserParams(packed middleware.Parameters) (par
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesDeletePackageForUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -55161,7 +55161,7 @@ func decodePackagesDeletePackageForUserParams(args [3]string, argsEscaped bool, 
 					return err
 				}
 
-				params.PackageType = PackagesDeletePackageForUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -55285,7 +55285,7 @@ type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesDeletePackageVersionForAuthenticatedUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	// Unique identifier of the package version.
@@ -55298,7 +55298,7 @@ func unpackPackagesDeletePackageVersionForAuthenticatedUserParams(packed middlew
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesDeletePackageVersionForAuthenticatedUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -55347,7 +55347,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 					return err
 				}
 
-				params.PackageType = PackagesDeletePackageVersionForAuthenticatedUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -55471,7 +55471,7 @@ type PackagesDeletePackageVersionForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesDeletePackageVersionForOrgPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Org         string
@@ -55485,7 +55485,7 @@ func unpackPackagesDeletePackageVersionForOrgParams(packed middleware.Parameters
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesDeletePackageVersionForOrgPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -55541,7 +55541,7 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, argsEscaped 
 					return err
 				}
 
-				params.PackageType = PackagesDeletePackageVersionForOrgPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -55710,7 +55710,7 @@ type PackagesDeletePackageVersionForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesDeletePackageVersionForUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Username    string
@@ -55724,7 +55724,7 @@ func unpackPackagesDeletePackageVersionForUserParams(packed middleware.Parameter
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesDeletePackageVersionForUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -55780,7 +55780,7 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, argsEscaped
 					return err
 				}
 
-				params.PackageType = PackagesDeletePackageVersionForUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -55949,7 +55949,7 @@ type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struc
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	// Page number of the results to fetch.
@@ -55966,7 +55966,7 @@ func unpackPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -56036,7 +56036,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 					return err
 				}
 
-				params.PackageType = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -56268,7 +56268,7 @@ type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Org         string
@@ -56286,7 +56286,7 @@ func unpackPackagesGetAllPackageVersionsForPackageOwnedByOrgParams(packed middle
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -56363,7 +56363,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 					return err
 				}
 
-				params.PackageType = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -56640,7 +56640,7 @@ type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Username    string
@@ -56652,7 +56652,7 @@ func unpackPackagesGetAllPackageVersionsForPackageOwnedByUserParams(packed middl
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -56701,7 +56701,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 					return err
 				}
 
-				params.PackageType = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -56825,7 +56825,7 @@ type PackagesGetPackageForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetPackageForAuthenticatedUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 }
@@ -56836,7 +56836,7 @@ func unpackPackagesGetPackageForAuthenticatedUserParams(packed middleware.Parame
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetPackageForAuthenticatedUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -56878,7 +56878,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, argsEsca
 					return err
 				}
 
-				params.PackageType = PackagesGetPackageForAuthenticatedUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -56957,7 +56957,7 @@ type PackagesGetPackageForOrganizationParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetPackageForOrganizationPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Org         string
@@ -56969,7 +56969,7 @@ func unpackPackagesGetPackageForOrganizationParams(packed middleware.Parameters)
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetPackageForOrganizationPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -57018,7 +57018,7 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, argsEscaped b
 					return err
 				}
 
-				params.PackageType = PackagesGetPackageForOrganizationPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -57142,7 +57142,7 @@ type PackagesGetPackageForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetPackageForUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Username    string
@@ -57154,7 +57154,7 @@ func unpackPackagesGetPackageForUserParams(packed middleware.Parameters) (params
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetPackageForUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -57203,7 +57203,7 @@ func decodePackagesGetPackageForUserParams(args [3]string, argsEscaped bool, r *
 					return err
 				}
 
-				params.PackageType = PackagesGetPackageForUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -57327,7 +57327,7 @@ type PackagesGetPackageVersionForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetPackageVersionForAuthenticatedUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	// Unique identifier of the package version.
@@ -57340,7 +57340,7 @@ func unpackPackagesGetPackageVersionForAuthenticatedUserParams(packed middleware
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetPackageVersionForAuthenticatedUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -57389,7 +57389,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, a
 					return err
 				}
 
-				params.PackageType = PackagesGetPackageVersionForAuthenticatedUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -57513,7 +57513,7 @@ type PackagesGetPackageVersionForOrganizationParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetPackageVersionForOrganizationPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Org         string
@@ -57527,7 +57527,7 @@ func unpackPackagesGetPackageVersionForOrganizationParams(packed middleware.Para
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetPackageVersionForOrganizationPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -57583,7 +57583,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, argsEs
 					return err
 				}
 
-				params.PackageType = PackagesGetPackageVersionForOrganizationPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -57752,7 +57752,7 @@ type PackagesGetPackageVersionForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesGetPackageVersionForUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	// Unique identifier of the package version.
@@ -57766,7 +57766,7 @@ func unpackPackagesGetPackageVersionForUserParams(packed middleware.Parameters) 
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesGetPackageVersionForUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -57822,7 +57822,7 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, argsEscaped bo
 					return err
 				}
 
-				params.PackageType = PackagesGetPackageVersionForUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -57996,7 +57996,7 @@ type PackagesListPackagesForAuthenticatedUserParams struct {
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-	Visibility OptPackagesListPackagesForAuthenticatedUserVisibility
+	Visibility OptPackageVisibilityParam
 }
 
 func unpackPackagesListPackagesForAuthenticatedUserParams(packed middleware.Parameters) (params PackagesListPackagesForAuthenticatedUserParams) {
@@ -58013,7 +58013,7 @@ func unpackPackagesListPackagesForAuthenticatedUserParams(packed middleware.Para
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Visibility = v.(OptPackagesListPackagesForAuthenticatedUserVisibility)
+			params.Visibility = v.(OptPackageVisibilityParam)
 		}
 	}
 	return params
@@ -58075,7 +58075,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEs
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotVisibilityVal PackagesListPackagesForAuthenticatedUserVisibility
+				var paramsDotVisibilityVal PackageVisibilityParam
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -58087,7 +58087,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEs
 						return err
 					}
 
-					paramsDotVisibilityVal = PackagesListPackagesForAuthenticatedUserVisibility(c)
+					paramsDotVisibilityVal = PackageVisibilityParam(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -58137,7 +58137,7 @@ type PackagesListPackagesForOrganizationParams struct {
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-	Visibility OptPackagesListPackagesForOrganizationVisibility
+	Visibility OptPackageVisibilityParam
 }
 
 func unpackPackagesListPackagesForOrganizationParams(packed middleware.Parameters) (params PackagesListPackagesForOrganizationParams) {
@@ -58161,7 +58161,7 @@ func unpackPackagesListPackagesForOrganizationParams(packed middleware.Parameter
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Visibility = v.(OptPackagesListPackagesForOrganizationVisibility)
+			params.Visibility = v.(OptPackageVisibilityParam)
 		}
 	}
 	return params
@@ -58268,7 +58268,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotVisibilityVal PackagesListPackagesForOrganizationVisibility
+				var paramsDotVisibilityVal PackageVisibilityParam
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -58280,7 +58280,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped
 						return err
 					}
 
-					paramsDotVisibilityVal = PackagesListPackagesForOrganizationVisibility(c)
+					paramsDotVisibilityVal = PackageVisibilityParam(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -58329,7 +58329,7 @@ type PackagesListPackagesForUserParams struct {
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-	Visibility OptPackagesListPackagesForUserVisibility
+	Visibility OptPackageVisibilityParam
 	Username   string
 }
 
@@ -58347,7 +58347,7 @@ func unpackPackagesListPackagesForUserParams(packed middleware.Parameters) (para
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Visibility = v.(OptPackagesListPackagesForUserVisibility)
+			params.Visibility = v.(OptPackageVisibilityParam)
 		}
 	}
 	{
@@ -58416,7 +58416,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotVisibilityVal PackagesListPackagesForUserVisibility
+				var paramsDotVisibilityVal PackageVisibilityParam
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -58428,7 +58428,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r
 						return err
 					}
 
-					paramsDotVisibilityVal = PackagesListPackagesForUserVisibility(c)
+					paramsDotVisibilityVal = PackageVisibilityParam(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -58517,7 +58517,7 @@ type PackagesRestorePackageForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesRestorePackageForAuthenticatedUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	// Package token.
@@ -58530,7 +58530,7 @@ func unpackPackagesRestorePackageForAuthenticatedUserParams(packed middleware.Pa
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesRestorePackageForAuthenticatedUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -58582,7 +58582,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, args
 					return err
 				}
 
-				params.PackageType = PackagesRestorePackageForAuthenticatedUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -58702,7 +58702,7 @@ type PackagesRestorePackageForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesRestorePackageForOrgPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Org         string
@@ -58716,7 +58716,7 @@ func unpackPackagesRestorePackageForOrgParams(packed middleware.Parameters) (par
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesRestorePackageForOrgPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -58775,7 +58775,7 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, argsEscaped bool, 
 					return err
 				}
 
-				params.PackageType = PackagesRestorePackageForOrgPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -58940,7 +58940,7 @@ type PackagesRestorePackageForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesRestorePackageForUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Username    string
@@ -58954,7 +58954,7 @@ func unpackPackagesRestorePackageForUserParams(packed middleware.Parameters) (pa
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesRestorePackageForUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -59013,7 +59013,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, argsEscaped bool,
 					return err
 				}
 
-				params.PackageType = PackagesRestorePackageForUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -59178,7 +59178,7 @@ type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesRestorePackageVersionForAuthenticatedUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	// Unique identifier of the package version.
@@ -59191,7 +59191,7 @@ func unpackPackagesRestorePackageVersionForAuthenticatedUserParams(packed middle
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesRestorePackageVersionForAuthenticatedUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -59240,7 +59240,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 					return err
 				}
 
-				params.PackageType = PackagesRestorePackageVersionForAuthenticatedUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -59364,7 +59364,7 @@ type PackagesRestorePackageVersionForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesRestorePackageVersionForOrgPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Org         string
@@ -59378,7 +59378,7 @@ func unpackPackagesRestorePackageVersionForOrgParams(packed middleware.Parameter
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesRestorePackageVersionForOrgPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -59434,7 +59434,7 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, argsEscaped
 					return err
 				}
 
-				params.PackageType = PackagesRestorePackageVersionForOrgPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -59603,7 +59603,7 @@ type PackagesRestorePackageVersionForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-	PackageType PackagesRestorePackageVersionForUserPackageType
+	PackageType PackageType
 	// The name of the package.
 	PackageName string
 	Username    string
@@ -59617,7 +59617,7 @@ func unpackPackagesRestorePackageVersionForUserParams(packed middleware.Paramete
 			Name: "package_type",
 			In:   "path",
 		}
-		params.PackageType = packed[key].(PackagesRestorePackageVersionForUserPackageType)
+		params.PackageType = packed[key].(PackageType)
 	}
 	{
 		key := middleware.ParameterKey{
@@ -59673,7 +59673,7 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, argsEscape
 					return err
 				}
 
-				params.PackageType = PackagesRestorePackageVersionForUserPackageType(c)
+				params.PackageType = PackageType(c)
 				return nil
 			}(); err != nil {
 				return err
@@ -66461,7 +66461,7 @@ type PullsListReviewCommentsParams struct {
 	Repo       string
 	PullNumber int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-	Sort OptPullsListReviewCommentsSort
+	Sort OptSort
 	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
 	Direction OptPullsListReviewCommentsDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
@@ -66501,7 +66501,7 @@ func unpackPullsListReviewCommentsParams(packed middleware.Parameters) (params P
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Sort = v.(OptPullsListReviewCommentsSort)
+			params.Sort = v.(OptSort)
 		}
 	}
 	{
@@ -66682,7 +66682,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 	}
 	// Set default value for query: sort.
 	{
-		val := PullsListReviewCommentsSort("created")
+		val := Sort("created")
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -66695,7 +66695,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotSortVal PullsListReviewCommentsSort
+				var paramsDotSortVal Sort
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -66707,7 +66707,7 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 						return err
 					}
 
-					paramsDotSortVal = PullsListReviewCommentsSort(c)
+					paramsDotSortVal = Sort(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -83774,7 +83774,7 @@ type ReposGetClonesParams struct {
 	Owner string
 	Repo  string
 	// Must be one of: `day`, `week`.
-	Per OptReposGetClonesPer
+	Per OptPer
 }
 
 func unpackReposGetClonesParams(packed middleware.Parameters) (params ReposGetClonesParams) {
@@ -83798,7 +83798,7 @@ func unpackReposGetClonesParams(packed middleware.Parameters) (params ReposGetCl
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Per = v.(OptReposGetClonesPer)
+			params.Per = v.(OptPer)
 		}
 	}
 	return params
@@ -83898,7 +83898,7 @@ func decodeReposGetClonesParams(args [2]string, argsEscaped bool, r *http.Reques
 	}
 	// Set default value for query: per.
 	{
-		val := ReposGetClonesPer("day")
+		val := Per("day")
 		params.Per.SetTo(val)
 	}
 	// Decode query: per.
@@ -83911,7 +83911,7 @@ func decodeReposGetClonesParams(args [2]string, argsEscaped bool, r *http.Reques
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotPerVal ReposGetClonesPer
+				var paramsDotPerVal Per
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -83923,7 +83923,7 @@ func decodeReposGetClonesParams(args [2]string, argsEscaped bool, r *http.Reques
 						return err
 					}
 
-					paramsDotPerVal = ReposGetClonesPer(c)
+					paramsDotPerVal = Per(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -88810,7 +88810,7 @@ type ReposGetViewsParams struct {
 	Owner string
 	Repo  string
 	// Must be one of: `day`, `week`.
-	Per OptReposGetViewsPer
+	Per OptPer
 }
 
 func unpackReposGetViewsParams(packed middleware.Parameters) (params ReposGetViewsParams) {
@@ -88834,7 +88834,7 @@ func unpackReposGetViewsParams(packed middleware.Parameters) (params ReposGetVie
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Per = v.(OptReposGetViewsPer)
+			params.Per = v.(OptPer)
 		}
 	}
 	return params
@@ -88934,7 +88934,7 @@ func decodeReposGetViewsParams(args [2]string, argsEscaped bool, r *http.Request
 	}
 	// Set default value for query: per.
 	{
-		val := ReposGetViewsPer("day")
+		val := Per("day")
 		params.Per.SetTo(val)
 	}
 	// Decode query: per.
@@ -88947,7 +88947,7 @@ func decodeReposGetViewsParams(args [2]string, argsEscaped bool, r *http.Request
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotPerVal ReposGetViewsPer
+				var paramsDotPerVal Per
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -88959,7 +88959,7 @@ func decodeReposGetViewsParams(args [2]string, argsEscaped bool, r *http.Request
 						return err
 					}
 
-					paramsDotPerVal = ReposGetViewsPer(c)
+					paramsDotPerVal = Per(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -102590,7 +102590,7 @@ type SearchCodeParams struct {
 	Sort OptSearchCodeSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchCodeOrder
+	Order OptOrder
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -102620,7 +102620,7 @@ func unpackSearchCodeParams(packed middleware.Parameters) (params SearchCodePara
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptSearchCodeOrder)
+			params.Order = v.(OptOrder)
 		}
 	}
 	{
@@ -102740,7 +102740,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 	}
 	// Set default value for query: order.
 	{
-		val := SearchCodeOrder("desc")
+		val := Order("desc")
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -102753,7 +102753,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal SearchCodeOrder
+				var paramsDotOrderVal Order
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -102765,7 +102765,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 						return err
 					}
 
-					paramsDotOrderVal = SearchCodeOrder(c)
+					paramsDotOrderVal = Order(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -102907,7 +102907,7 @@ type SearchCommitsParams struct {
 	Sort OptSearchCommitsSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchCommitsOrder
+	Order OptOrder
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -102937,7 +102937,7 @@ func unpackSearchCommitsParams(packed middleware.Parameters) (params SearchCommi
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptSearchCommitsOrder)
+			params.Order = v.(OptOrder)
 		}
 	}
 	{
@@ -103057,7 +103057,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 	}
 	// Set default value for query: order.
 	{
-		val := SearchCommitsOrder("desc")
+		val := Order("desc")
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -103070,7 +103070,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal SearchCommitsOrder
+				var paramsDotOrderVal Order
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -103082,7 +103082,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 						return err
 					}
 
-					paramsDotOrderVal = SearchCommitsOrder(c)
+					paramsDotOrderVal = Order(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -103227,7 +103227,7 @@ type SearchIssuesAndPullRequestsParams struct {
 	Sort OptSearchIssuesAndPullRequestsSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchIssuesAndPullRequestsOrder
+	Order OptOrder
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -103257,7 +103257,7 @@ func unpackSearchIssuesAndPullRequestsParams(packed middleware.Parameters) (para
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptSearchIssuesAndPullRequestsOrder)
+			params.Order = v.(OptOrder)
 		}
 	}
 	{
@@ -103377,7 +103377,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 	}
 	// Set default value for query: order.
 	{
-		val := SearchIssuesAndPullRequestsOrder("desc")
+		val := Order("desc")
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -103390,7 +103390,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal SearchIssuesAndPullRequestsOrder
+				var paramsDotOrderVal Order
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -103402,7 +103402,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 						return err
 					}
 
-					paramsDotOrderVal = SearchIssuesAndPullRequestsOrder(c)
+					paramsDotOrderVal = Order(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -103544,7 +103544,7 @@ type SearchLabelsParams struct {
 	Sort OptSearchLabelsSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchLabelsOrder
+	Order OptOrder
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -103581,7 +103581,7 @@ func unpackSearchLabelsParams(packed middleware.Parameters) (params SearchLabels
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptSearchLabelsOrder)
+			params.Order = v.(OptOrder)
 		}
 	}
 	{
@@ -103737,7 +103737,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 	}
 	// Set default value for query: order.
 	{
-		val := SearchLabelsOrder("desc")
+		val := Order("desc")
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -103750,7 +103750,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal SearchLabelsOrder
+				var paramsDotOrderVal Order
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -103762,7 +103762,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 						return err
 					}
 
-					paramsDotOrderVal = SearchLabelsOrder(c)
+					paramsDotOrderVal = Order(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -103906,7 +103906,7 @@ type SearchReposParams struct {
 	Sort OptSearchReposSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchReposOrder
+	Order OptOrder
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -103936,7 +103936,7 @@ func unpackSearchReposParams(packed middleware.Parameters) (params SearchReposPa
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptSearchReposOrder)
+			params.Order = v.(OptOrder)
 		}
 	}
 	{
@@ -104056,7 +104056,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 	}
 	// Set default value for query: order.
 	{
-		val := SearchReposOrder("desc")
+		val := Order("desc")
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -104069,7 +104069,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal SearchReposOrder
+				var paramsDotOrderVal Order
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -104081,7 +104081,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 						return err
 					}
 
-					paramsDotOrderVal = SearchReposOrder(c)
+					paramsDotOrderVal = Order(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -104399,7 +104399,7 @@ type SearchUsersParams struct {
 	Sort OptSearchUsersSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-	Order OptSearchUsersOrder
+	Order OptOrder
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -104429,7 +104429,7 @@ func unpackSearchUsersParams(packed middleware.Parameters) (params SearchUsersPa
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Order = v.(OptSearchUsersOrder)
+			params.Order = v.(OptOrder)
 		}
 	}
 	{
@@ -104549,7 +104549,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 	}
 	// Set default value for query: order.
 	{
-		val := SearchUsersOrder("desc")
+		val := Order("desc")
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -104562,7 +104562,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotOrderVal SearchUsersOrder
+				var paramsDotOrderVal Order
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -104574,7 +104574,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 						return err
 					}
 
-					paramsDotOrderVal = SearchUsersOrder(c)
+					paramsDotOrderVal = Order(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -110970,7 +110970,7 @@ type TeamsListDiscussionCommentsInOrgParams struct {
 	TeamSlug         string
 	DiscussionNumber int
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionCommentsInOrgDirection
+	Direction OptDirection
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -111005,7 +111005,7 @@ func unpackTeamsListDiscussionCommentsInOrgParams(packed middleware.Parameters) 
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptTeamsListDiscussionCommentsInOrgDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -111168,7 +111168,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 	}
 	// Set default value for query: direction.
 	{
-		val := TeamsListDiscussionCommentsInOrgDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -111181,7 +111181,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal TeamsListDiscussionCommentsInOrgDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -111193,7 +111193,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 						return err
 					}
 
-					paramsDotDirectionVal = TeamsListDiscussionCommentsInOrgDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -111327,7 +111327,7 @@ type TeamsListDiscussionCommentsLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionCommentsLegacyDirection
+	Direction OptDirection
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -111355,7 +111355,7 @@ func unpackTeamsListDiscussionCommentsLegacyParams(packed middleware.Parameters)
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptTeamsListDiscussionCommentsLegacyDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -111473,7 +111473,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 	}
 	// Set default value for query: direction.
 	{
-		val := TeamsListDiscussionCommentsLegacyDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -111486,7 +111486,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal TeamsListDiscussionCommentsLegacyDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -111498,7 +111498,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 						return err
 					}
 
-					paramsDotDirectionVal = TeamsListDiscussionCommentsLegacyDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -111633,7 +111633,7 @@ type TeamsListDiscussionsInOrgParams struct {
 	// Team_slug parameter.
 	TeamSlug string
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionsInOrgDirection
+	Direction OptDirection
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -111663,7 +111663,7 @@ func unpackTeamsListDiscussionsInOrgParams(packed middleware.Parameters) (params
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptTeamsListDiscussionsInOrgDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -111790,7 +111790,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 	}
 	// Set default value for query: direction.
 	{
-		val := TeamsListDiscussionsInOrgDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -111803,7 +111803,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal TeamsListDiscussionsInOrgDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -111815,7 +111815,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 						return err
 					}
 
-					paramsDotDirectionVal = TeamsListDiscussionsInOrgDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
@@ -111989,7 +111989,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 type TeamsListDiscussionsLegacyParams struct {
 	TeamID int
 	// One of `asc` (ascending) or `desc` (descending).
-	Direction OptTeamsListDiscussionsLegacyDirection
+	Direction OptDirection
 	// Results per page (max 100).
 	PerPage OptInt
 	// Page number of the results to fetch.
@@ -112010,7 +112010,7 @@ func unpackTeamsListDiscussionsLegacyParams(packed middleware.Parameters) (param
 			In:   "query",
 		}
 		if v, ok := packed[key]; ok {
-			params.Direction = v.(OptTeamsListDiscussionsLegacyDirection)
+			params.Direction = v.(OptDirection)
 		}
 	}
 	{
@@ -112083,7 +112083,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 	}
 	// Set default value for query: direction.
 	{
-		val := TeamsListDiscussionsLegacyDirection("desc")
+		val := Direction("desc")
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -112096,7 +112096,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotDirectionVal TeamsListDiscussionsLegacyDirection
+				var paramsDotDirectionVal Direction
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
@@ -112108,7 +112108,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 						return err
 					}
 
-					paramsDotDirectionVal = TeamsListDiscussionsLegacyDirection(c)
+					paramsDotDirectionVal = Direction(c)
 					return nil
 				}(); err != nil {
 					return err
