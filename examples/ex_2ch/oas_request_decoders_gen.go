@@ -483,6 +483,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 						optForm.File = append(optForm.File, ht.MultipartFile{
 							Name:   fh.Filename,
 							File:   f,
+							Size:   fh.Size,
 							Header: fh.Header,
 						})
 					}
