@@ -182,6 +182,7 @@ func (s *Server) decodeOnlyMultipartFileRequest(r *http.Request) (
 				request.File = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				}
 				return nil
@@ -875,6 +876,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 				request.File = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				}
 				return nil
@@ -898,6 +900,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 				request.OptionalFile.SetTo(ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				})
 				return nil
@@ -920,6 +923,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 					request.Files = append(request.Files, ht.MultipartFile{
 						Name:   fh.Filename,
 						File:   f,
+						Size:   fh.Size,
 						Header: fh.Header,
 					})
 				}
@@ -1043,6 +1047,7 @@ func (s *Server) decodeTestReuseFormOptionalSchemaRequest(r *http.Request) (
 					optForm.File.SetTo(ht.MultipartFile{
 						Name:   fh.Filename,
 						File:   f,
+						Size:   fh.Size,
 						Header: fh.Header,
 					})
 					return nil
@@ -1152,6 +1157,7 @@ func (s *Server) decodeTestReuseFormSchemaRequest(r *http.Request) (
 				request.File.SetTo(ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				})
 				return nil
@@ -1289,6 +1295,7 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request) (
 				request.File.SetTo(ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				})
 				return nil

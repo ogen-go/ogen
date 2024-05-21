@@ -531,6 +531,7 @@ func (s *Server) decodeCreateFileRequest(r *http.Request) (
 				request.File = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				}
 				return nil
@@ -954,6 +955,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 				request.Image = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				}
 				return nil
@@ -977,6 +979,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 				request.Mask.SetTo(ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				})
 				return nil
@@ -1231,6 +1234,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 				request.Image = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				}
 				return nil
@@ -1615,6 +1619,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 				request.File = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				}
 				return nil
@@ -1825,6 +1830,7 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 				request.File = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				}
 				return nil
