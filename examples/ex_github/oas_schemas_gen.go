@@ -1440,124 +1440,6 @@ func (s *ActionsListWorkflowRunsForRepoOKHeaders) SetResponse(val ActionsListWor
 	s.Response = val
 }
 
-type ActionsListWorkflowRunsForRepoStatus string
-
-const (
-	ActionsListWorkflowRunsForRepoStatusCompleted      ActionsListWorkflowRunsForRepoStatus = "completed"
-	ActionsListWorkflowRunsForRepoStatusActionRequired ActionsListWorkflowRunsForRepoStatus = "action_required"
-	ActionsListWorkflowRunsForRepoStatusCancelled      ActionsListWorkflowRunsForRepoStatus = "cancelled"
-	ActionsListWorkflowRunsForRepoStatusFailure        ActionsListWorkflowRunsForRepoStatus = "failure"
-	ActionsListWorkflowRunsForRepoStatusNeutral        ActionsListWorkflowRunsForRepoStatus = "neutral"
-	ActionsListWorkflowRunsForRepoStatusSkipped        ActionsListWorkflowRunsForRepoStatus = "skipped"
-	ActionsListWorkflowRunsForRepoStatusStale          ActionsListWorkflowRunsForRepoStatus = "stale"
-	ActionsListWorkflowRunsForRepoStatusSuccess        ActionsListWorkflowRunsForRepoStatus = "success"
-	ActionsListWorkflowRunsForRepoStatusTimedOut       ActionsListWorkflowRunsForRepoStatus = "timed_out"
-	ActionsListWorkflowRunsForRepoStatusInProgress     ActionsListWorkflowRunsForRepoStatus = "in_progress"
-	ActionsListWorkflowRunsForRepoStatusQueued         ActionsListWorkflowRunsForRepoStatus = "queued"
-	ActionsListWorkflowRunsForRepoStatusRequested      ActionsListWorkflowRunsForRepoStatus = "requested"
-	ActionsListWorkflowRunsForRepoStatusWaiting        ActionsListWorkflowRunsForRepoStatus = "waiting"
-)
-
-// AllValues returns all ActionsListWorkflowRunsForRepoStatus values.
-func (ActionsListWorkflowRunsForRepoStatus) AllValues() []ActionsListWorkflowRunsForRepoStatus {
-	return []ActionsListWorkflowRunsForRepoStatus{
-		ActionsListWorkflowRunsForRepoStatusCompleted,
-		ActionsListWorkflowRunsForRepoStatusActionRequired,
-		ActionsListWorkflowRunsForRepoStatusCancelled,
-		ActionsListWorkflowRunsForRepoStatusFailure,
-		ActionsListWorkflowRunsForRepoStatusNeutral,
-		ActionsListWorkflowRunsForRepoStatusSkipped,
-		ActionsListWorkflowRunsForRepoStatusStale,
-		ActionsListWorkflowRunsForRepoStatusSuccess,
-		ActionsListWorkflowRunsForRepoStatusTimedOut,
-		ActionsListWorkflowRunsForRepoStatusInProgress,
-		ActionsListWorkflowRunsForRepoStatusQueued,
-		ActionsListWorkflowRunsForRepoStatusRequested,
-		ActionsListWorkflowRunsForRepoStatusWaiting,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s ActionsListWorkflowRunsForRepoStatus) MarshalText() ([]byte, error) {
-	switch s {
-	case ActionsListWorkflowRunsForRepoStatusCompleted:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusActionRequired:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusCancelled:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusFailure:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusNeutral:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusSkipped:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusStale:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusSuccess:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusTimedOut:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusInProgress:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusQueued:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusRequested:
-		return []byte(s), nil
-	case ActionsListWorkflowRunsForRepoStatusWaiting:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *ActionsListWorkflowRunsForRepoStatus) UnmarshalText(data []byte) error {
-	switch ActionsListWorkflowRunsForRepoStatus(data) {
-	case ActionsListWorkflowRunsForRepoStatusCompleted:
-		*s = ActionsListWorkflowRunsForRepoStatusCompleted
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusActionRequired:
-		*s = ActionsListWorkflowRunsForRepoStatusActionRequired
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusCancelled:
-		*s = ActionsListWorkflowRunsForRepoStatusCancelled
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusFailure:
-		*s = ActionsListWorkflowRunsForRepoStatusFailure
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusNeutral:
-		*s = ActionsListWorkflowRunsForRepoStatusNeutral
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusSkipped:
-		*s = ActionsListWorkflowRunsForRepoStatusSkipped
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusStale:
-		*s = ActionsListWorkflowRunsForRepoStatusStale
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusSuccess:
-		*s = ActionsListWorkflowRunsForRepoStatusSuccess
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusTimedOut:
-		*s = ActionsListWorkflowRunsForRepoStatusTimedOut
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusInProgress:
-		*s = ActionsListWorkflowRunsForRepoStatusInProgress
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusQueued:
-		*s = ActionsListWorkflowRunsForRepoStatusQueued
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusRequested:
-		*s = ActionsListWorkflowRunsForRepoStatusRequested
-		return nil
-	case ActionsListWorkflowRunsForRepoStatusWaiting:
-		*s = ActionsListWorkflowRunsForRepoStatusWaiting
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 // Ref: #/components/schemas/actions-organization-permissions
 type ActionsOrganizationPermissions struct {
 	EnabledRepositories EnabledRepositories `json:"enabled_repositories"`
@@ -2224,47 +2106,6 @@ func (s *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders) SetResponse
 	s.Response = val
 }
 
-type ActivityListReposStarredByAuthenticatedUserDirection string
-
-const (
-	ActivityListReposStarredByAuthenticatedUserDirectionAsc  ActivityListReposStarredByAuthenticatedUserDirection = "asc"
-	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
-)
-
-// AllValues returns all ActivityListReposStarredByAuthenticatedUserDirection values.
-func (ActivityListReposStarredByAuthenticatedUserDirection) AllValues() []ActivityListReposStarredByAuthenticatedUserDirection {
-	return []ActivityListReposStarredByAuthenticatedUserDirection{
-		ActivityListReposStarredByAuthenticatedUserDirectionAsc,
-		ActivityListReposStarredByAuthenticatedUserDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s ActivityListReposStarredByAuthenticatedUserDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case ActivityListReposStarredByAuthenticatedUserDirectionAsc:
-		return []byte(s), nil
-	case ActivityListReposStarredByAuthenticatedUserDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *ActivityListReposStarredByAuthenticatedUserDirection) UnmarshalText(data []byte) error {
-	switch ActivityListReposStarredByAuthenticatedUserDirection(data) {
-	case ActivityListReposStarredByAuthenticatedUserDirectionAsc:
-		*s = ActivityListReposStarredByAuthenticatedUserDirectionAsc
-		return nil
-	case ActivityListReposStarredByAuthenticatedUserDirectionDesc:
-		*s = ActivityListReposStarredByAuthenticatedUserDirectionDesc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type ActivityListReposStarredByAuthenticatedUserForbidden BasicError
 
 func (*ActivityListReposStarredByAuthenticatedUserForbidden) activityListReposStarredByAuthenticatedUserRes() {
@@ -2297,47 +2138,6 @@ func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) SetResponse(val [
 }
 
 func (*ActivityListReposStarredByAuthenticatedUserOKHeaders) activityListReposStarredByAuthenticatedUserRes() {
-}
-
-type ActivityListReposStarredByAuthenticatedUserSort string
-
-const (
-	ActivityListReposStarredByAuthenticatedUserSortCreated ActivityListReposStarredByAuthenticatedUserSort = "created"
-	ActivityListReposStarredByAuthenticatedUserSortUpdated ActivityListReposStarredByAuthenticatedUserSort = "updated"
-)
-
-// AllValues returns all ActivityListReposStarredByAuthenticatedUserSort values.
-func (ActivityListReposStarredByAuthenticatedUserSort) AllValues() []ActivityListReposStarredByAuthenticatedUserSort {
-	return []ActivityListReposStarredByAuthenticatedUserSort{
-		ActivityListReposStarredByAuthenticatedUserSortCreated,
-		ActivityListReposStarredByAuthenticatedUserSortUpdated,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s ActivityListReposStarredByAuthenticatedUserSort) MarshalText() ([]byte, error) {
-	switch s {
-	case ActivityListReposStarredByAuthenticatedUserSortCreated:
-		return []byte(s), nil
-	case ActivityListReposStarredByAuthenticatedUserSortUpdated:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *ActivityListReposStarredByAuthenticatedUserSort) UnmarshalText(data []byte) error {
-	switch ActivityListReposStarredByAuthenticatedUserSort(data) {
-	case ActivityListReposStarredByAuthenticatedUserSortCreated:
-		*s = ActivityListReposStarredByAuthenticatedUserSortCreated
-		return nil
-	case ActivityListReposStarredByAuthenticatedUserSortUpdated:
-		*s = ActivityListReposStarredByAuthenticatedUserSortUpdated
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 type ActivityListReposStarredByAuthenticatedUserUnauthorized BasicError
@@ -5183,47 +4983,6 @@ func (s *AppsListAccountsForPlanOKHeaders) SetResponse(val []MarketplacePurchase
 
 func (*AppsListAccountsForPlanOKHeaders) appsListAccountsForPlanRes() {}
 
-type AppsListAccountsForPlanSort string
-
-const (
-	AppsListAccountsForPlanSortCreated AppsListAccountsForPlanSort = "created"
-	AppsListAccountsForPlanSortUpdated AppsListAccountsForPlanSort = "updated"
-)
-
-// AllValues returns all AppsListAccountsForPlanSort values.
-func (AppsListAccountsForPlanSort) AllValues() []AppsListAccountsForPlanSort {
-	return []AppsListAccountsForPlanSort{
-		AppsListAccountsForPlanSortCreated,
-		AppsListAccountsForPlanSortUpdated,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s AppsListAccountsForPlanSort) MarshalText() ([]byte, error) {
-	switch s {
-	case AppsListAccountsForPlanSortCreated:
-		return []byte(s), nil
-	case AppsListAccountsForPlanSortUpdated:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *AppsListAccountsForPlanSort) UnmarshalText(data []byte) error {
-	switch AppsListAccountsForPlanSort(data) {
-	case AppsListAccountsForPlanSortCreated:
-		*s = AppsListAccountsForPlanSortCreated
-		return nil
-	case AppsListAccountsForPlanSortUpdated:
-		*s = AppsListAccountsForPlanSortUpdated
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type AppsListAccountsForPlanStubbedDirection string
 
 const (
@@ -5292,47 +5051,6 @@ func (s *AppsListAccountsForPlanStubbedOKHeaders) SetResponse(val []MarketplaceP
 }
 
 func (*AppsListAccountsForPlanStubbedOKHeaders) appsListAccountsForPlanStubbedRes() {}
-
-type AppsListAccountsForPlanStubbedSort string
-
-const (
-	AppsListAccountsForPlanStubbedSortCreated AppsListAccountsForPlanStubbedSort = "created"
-	AppsListAccountsForPlanStubbedSortUpdated AppsListAccountsForPlanStubbedSort = "updated"
-)
-
-// AllValues returns all AppsListAccountsForPlanStubbedSort values.
-func (AppsListAccountsForPlanStubbedSort) AllValues() []AppsListAccountsForPlanStubbedSort {
-	return []AppsListAccountsForPlanStubbedSort{
-		AppsListAccountsForPlanStubbedSortCreated,
-		AppsListAccountsForPlanStubbedSortUpdated,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s AppsListAccountsForPlanStubbedSort) MarshalText() ([]byte, error) {
-	switch s {
-	case AppsListAccountsForPlanStubbedSortCreated:
-		return []byte(s), nil
-	case AppsListAccountsForPlanStubbedSortUpdated:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *AppsListAccountsForPlanStubbedSort) UnmarshalText(data []byte) error {
-	switch AppsListAccountsForPlanStubbedSort(data) {
-	case AppsListAccountsForPlanStubbedSortCreated:
-		*s = AppsListAccountsForPlanStubbedSortCreated
-		return nil
-	case AppsListAccountsForPlanStubbedSortUpdated:
-		*s = AppsListAccountsForPlanStubbedSortUpdated
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type AppsListAccountsForPlanUnauthorized BasicError
 
@@ -6400,6 +6118,95 @@ func (s *AuditLogEventData) init() AuditLogEventData {
 		*s = m
 	}
 	return m
+}
+
+type AuditLogInclude string
+
+const (
+	AuditLogIncludeWeb AuditLogInclude = "web"
+	AuditLogIncludeGit AuditLogInclude = "git"
+	AuditLogIncludeAll AuditLogInclude = "all"
+)
+
+// AllValues returns all AuditLogInclude values.
+func (AuditLogInclude) AllValues() []AuditLogInclude {
+	return []AuditLogInclude{
+		AuditLogIncludeWeb,
+		AuditLogIncludeGit,
+		AuditLogIncludeAll,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AuditLogInclude) MarshalText() ([]byte, error) {
+	switch s {
+	case AuditLogIncludeWeb:
+		return []byte(s), nil
+	case AuditLogIncludeGit:
+		return []byte(s), nil
+	case AuditLogIncludeAll:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AuditLogInclude) UnmarshalText(data []byte) error {
+	switch AuditLogInclude(data) {
+	case AuditLogIncludeWeb:
+		*s = AuditLogIncludeWeb
+		return nil
+	case AuditLogIncludeGit:
+		*s = AuditLogIncludeGit
+		return nil
+	case AuditLogIncludeAll:
+		*s = AuditLogIncludeAll
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
+type AuditLogOrder string
+
+const (
+	AuditLogOrderDesc AuditLogOrder = "desc"
+	AuditLogOrderAsc  AuditLogOrder = "asc"
+)
+
+// AllValues returns all AuditLogOrder values.
+func (AuditLogOrder) AllValues() []AuditLogOrder {
+	return []AuditLogOrder{
+		AuditLogOrderDesc,
+		AuditLogOrderAsc,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s AuditLogOrder) MarshalText() ([]byte, error) {
+	switch s {
+	case AuditLogOrderDesc:
+		return []byte(s), nil
+	case AuditLogOrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *AuditLogOrder) UnmarshalText(data []byte) error {
+	switch AuditLogOrder(data) {
+	case AuditLogOrderDesc:
+		*s = AuditLogOrderDesc
+		return nil
+	case AuditLogOrderAsc:
+		*s = AuditLogOrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
 }
 
 // Authentication Token.
@@ -10015,54 +9822,6 @@ func (s *ChecksListForRefOKHeaders) SetResponse(val ChecksListForRefOK) {
 	s.Response = val
 }
 
-type ChecksListForRefStatus string
-
-const (
-	ChecksListForRefStatusQueued     ChecksListForRefStatus = "queued"
-	ChecksListForRefStatusInProgress ChecksListForRefStatus = "in_progress"
-	ChecksListForRefStatusCompleted  ChecksListForRefStatus = "completed"
-)
-
-// AllValues returns all ChecksListForRefStatus values.
-func (ChecksListForRefStatus) AllValues() []ChecksListForRefStatus {
-	return []ChecksListForRefStatus{
-		ChecksListForRefStatusQueued,
-		ChecksListForRefStatusInProgress,
-		ChecksListForRefStatusCompleted,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s ChecksListForRefStatus) MarshalText() ([]byte, error) {
-	switch s {
-	case ChecksListForRefStatusQueued:
-		return []byte(s), nil
-	case ChecksListForRefStatusInProgress:
-		return []byte(s), nil
-	case ChecksListForRefStatusCompleted:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *ChecksListForRefStatus) UnmarshalText(data []byte) error {
-	switch ChecksListForRefStatus(data) {
-	case ChecksListForRefStatusQueued:
-		*s = ChecksListForRefStatusQueued
-		return nil
-	case ChecksListForRefStatusInProgress:
-		*s = ChecksListForRefStatusInProgress
-		return nil
-	case ChecksListForRefStatusCompleted:
-		*s = ChecksListForRefStatusCompleted
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type ChecksListForSuiteFilter string
 
 const (
@@ -10153,54 +9912,6 @@ func (s *ChecksListForSuiteOKHeaders) SetLink(val OptString) {
 // SetResponse sets the value of Response.
 func (s *ChecksListForSuiteOKHeaders) SetResponse(val ChecksListForSuiteOK) {
 	s.Response = val
-}
-
-type ChecksListForSuiteStatus string
-
-const (
-	ChecksListForSuiteStatusQueued     ChecksListForSuiteStatus = "queued"
-	ChecksListForSuiteStatusInProgress ChecksListForSuiteStatus = "in_progress"
-	ChecksListForSuiteStatusCompleted  ChecksListForSuiteStatus = "completed"
-)
-
-// AllValues returns all ChecksListForSuiteStatus values.
-func (ChecksListForSuiteStatus) AllValues() []ChecksListForSuiteStatus {
-	return []ChecksListForSuiteStatus{
-		ChecksListForSuiteStatusQueued,
-		ChecksListForSuiteStatusInProgress,
-		ChecksListForSuiteStatusCompleted,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s ChecksListForSuiteStatus) MarshalText() ([]byte, error) {
-	switch s {
-	case ChecksListForSuiteStatusQueued:
-		return []byte(s), nil
-	case ChecksListForSuiteStatusInProgress:
-		return []byte(s), nil
-	case ChecksListForSuiteStatusCompleted:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *ChecksListForSuiteStatus) UnmarshalText(data []byte) error {
-	switch ChecksListForSuiteStatus(data) {
-	case ChecksListForSuiteStatusQueued:
-		*s = ChecksListForSuiteStatusQueued
-		return nil
-	case ChecksListForSuiteStatusInProgress:
-		*s = ChecksListForSuiteStatusInProgress
-		return nil
-	case ChecksListForSuiteStatusCompleted:
-		*s = ChecksListForSuiteStatusCompleted
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 type ChecksListSuitesForRefOK struct {
@@ -15771,6 +15482,47 @@ func (s *DiffEntryStatus) UnmarshalText(data []byte) error {
 	}
 }
 
+type Direction string
+
+const (
+	DirectionAsc  Direction = "asc"
+	DirectionDesc Direction = "desc"
+)
+
+// AllValues returns all Direction values.
+func (Direction) AllValues() []Direction {
+	return []Direction{
+		DirectionAsc,
+		DirectionDesc,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s Direction) MarshalText() ([]byte, error) {
+	switch s {
+	case DirectionAsc:
+		return []byte(s), nil
+	case DirectionDesc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *Direction) UnmarshalText(data []byte) error {
+	switch Direction(data) {
+	case DirectionAsc:
+		*s = DirectionAsc
+		return nil
+	case DirectionDesc:
+		*s = DirectionDesc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Email.
 // Ref: #/components/schemas/email
 type Email struct {
@@ -16062,95 +15814,6 @@ type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent 
 
 // EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent is response for EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise operation.
 type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent struct{}
-
-type EnterpriseAdminGetAuditLogInclude string
-
-const (
-	EnterpriseAdminGetAuditLogIncludeWeb EnterpriseAdminGetAuditLogInclude = "web"
-	EnterpriseAdminGetAuditLogIncludeGit EnterpriseAdminGetAuditLogInclude = "git"
-	EnterpriseAdminGetAuditLogIncludeAll EnterpriseAdminGetAuditLogInclude = "all"
-)
-
-// AllValues returns all EnterpriseAdminGetAuditLogInclude values.
-func (EnterpriseAdminGetAuditLogInclude) AllValues() []EnterpriseAdminGetAuditLogInclude {
-	return []EnterpriseAdminGetAuditLogInclude{
-		EnterpriseAdminGetAuditLogIncludeWeb,
-		EnterpriseAdminGetAuditLogIncludeGit,
-		EnterpriseAdminGetAuditLogIncludeAll,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s EnterpriseAdminGetAuditLogInclude) MarshalText() ([]byte, error) {
-	switch s {
-	case EnterpriseAdminGetAuditLogIncludeWeb:
-		return []byte(s), nil
-	case EnterpriseAdminGetAuditLogIncludeGit:
-		return []byte(s), nil
-	case EnterpriseAdminGetAuditLogIncludeAll:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *EnterpriseAdminGetAuditLogInclude) UnmarshalText(data []byte) error {
-	switch EnterpriseAdminGetAuditLogInclude(data) {
-	case EnterpriseAdminGetAuditLogIncludeWeb:
-		*s = EnterpriseAdminGetAuditLogIncludeWeb
-		return nil
-	case EnterpriseAdminGetAuditLogIncludeGit:
-		*s = EnterpriseAdminGetAuditLogIncludeGit
-		return nil
-	case EnterpriseAdminGetAuditLogIncludeAll:
-		*s = EnterpriseAdminGetAuditLogIncludeAll
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type EnterpriseAdminGetAuditLogOrder string
-
-const (
-	EnterpriseAdminGetAuditLogOrderDesc EnterpriseAdminGetAuditLogOrder = "desc"
-	EnterpriseAdminGetAuditLogOrderAsc  EnterpriseAdminGetAuditLogOrder = "asc"
-)
-
-// AllValues returns all EnterpriseAdminGetAuditLogOrder values.
-func (EnterpriseAdminGetAuditLogOrder) AllValues() []EnterpriseAdminGetAuditLogOrder {
-	return []EnterpriseAdminGetAuditLogOrder{
-		EnterpriseAdminGetAuditLogOrderDesc,
-		EnterpriseAdminGetAuditLogOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s EnterpriseAdminGetAuditLogOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case EnterpriseAdminGetAuditLogOrderDesc:
-		return []byte(s), nil
-	case EnterpriseAdminGetAuditLogOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *EnterpriseAdminGetAuditLogOrder) UnmarshalText(data []byte) error {
-	switch EnterpriseAdminGetAuditLogOrder(data) {
-	case EnterpriseAdminGetAuditLogOrderDesc:
-		*s = EnterpriseAdminGetAuditLogOrderDesc
-		return nil
-	case EnterpriseAdminGetAuditLogOrderAsc:
-		*s = EnterpriseAdminGetAuditLogOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK struct {
 	TotalCount    float64              `json:"total_count"`
@@ -27713,47 +27376,6 @@ func (s *IssuesListCommentsForRepoOKHeaders) SetResponse(val []IssueComment) {
 
 func (*IssuesListCommentsForRepoOKHeaders) issuesListCommentsForRepoRes() {}
 
-type IssuesListCommentsForRepoSort string
-
-const (
-	IssuesListCommentsForRepoSortCreated IssuesListCommentsForRepoSort = "created"
-	IssuesListCommentsForRepoSortUpdated IssuesListCommentsForRepoSort = "updated"
-)
-
-// AllValues returns all IssuesListCommentsForRepoSort values.
-func (IssuesListCommentsForRepoSort) AllValues() []IssuesListCommentsForRepoSort {
-	return []IssuesListCommentsForRepoSort{
-		IssuesListCommentsForRepoSortCreated,
-		IssuesListCommentsForRepoSortUpdated,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s IssuesListCommentsForRepoSort) MarshalText() ([]byte, error) {
-	switch s {
-	case IssuesListCommentsForRepoSortCreated:
-		return []byte(s), nil
-	case IssuesListCommentsForRepoSortUpdated:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *IssuesListCommentsForRepoSort) UnmarshalText(data []byte) error {
-	switch IssuesListCommentsForRepoSort(data) {
-	case IssuesListCommentsForRepoSortCreated:
-		*s = IssuesListCommentsForRepoSortCreated
-		return nil
-	case IssuesListCommentsForRepoSortUpdated:
-		*s = IssuesListCommentsForRepoSortUpdated
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type IssuesListCommentsGone BasicError
 
 func (*IssuesListCommentsGone) issuesListCommentsRes() {}
@@ -27789,47 +27411,6 @@ func (s *IssuesListCommentsOKHeaders) SetResponse(val []IssueComment) {
 }
 
 func (*IssuesListCommentsOKHeaders) issuesListCommentsRes() {}
-
-type IssuesListDirection string
-
-const (
-	IssuesListDirectionAsc  IssuesListDirection = "asc"
-	IssuesListDirectionDesc IssuesListDirection = "desc"
-)
-
-// AllValues returns all IssuesListDirection values.
-func (IssuesListDirection) AllValues() []IssuesListDirection {
-	return []IssuesListDirection{
-		IssuesListDirectionAsc,
-		IssuesListDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s IssuesListDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case IssuesListDirectionAsc:
-		return []byte(s), nil
-	case IssuesListDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *IssuesListDirection) UnmarshalText(data []byte) error {
-	switch IssuesListDirection(data) {
-	case IssuesListDirectionAsc:
-		*s = IssuesListDirectionAsc
-		return nil
-	case IssuesListDirectionDesc:
-		*s = IssuesListDirectionDesc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 // IssuesListEventsForRepoOKHeaders wraps []IssueEvent with response headers.
 type IssuesListEventsForRepoOKHeaders struct {
@@ -27922,47 +27503,6 @@ func (s *IssuesListFilter) UnmarshalText(data []byte) error {
 		return nil
 	case IssuesListFilterAll:
 		*s = IssuesListFilterAll
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type IssuesListForAuthenticatedUserDirection string
-
-const (
-	IssuesListForAuthenticatedUserDirectionAsc  IssuesListForAuthenticatedUserDirection = "asc"
-	IssuesListForAuthenticatedUserDirectionDesc IssuesListForAuthenticatedUserDirection = "desc"
-)
-
-// AllValues returns all IssuesListForAuthenticatedUserDirection values.
-func (IssuesListForAuthenticatedUserDirection) AllValues() []IssuesListForAuthenticatedUserDirection {
-	return []IssuesListForAuthenticatedUserDirection{
-		IssuesListForAuthenticatedUserDirectionAsc,
-		IssuesListForAuthenticatedUserDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s IssuesListForAuthenticatedUserDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case IssuesListForAuthenticatedUserDirectionAsc:
-		return []byte(s), nil
-	case IssuesListForAuthenticatedUserDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *IssuesListForAuthenticatedUserDirection) UnmarshalText(data []byte) error {
-	switch IssuesListForAuthenticatedUserDirection(data) {
-	case IssuesListForAuthenticatedUserDirectionAsc:
-		*s = IssuesListForAuthenticatedUserDirectionAsc
-		return nil
-	case IssuesListForAuthenticatedUserDirectionDesc:
-		*s = IssuesListForAuthenticatedUserDirectionDesc
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
@@ -28162,47 +27702,6 @@ func (s *IssuesListForAuthenticatedUserState) UnmarshalText(data []byte) error {
 	}
 }
 
-type IssuesListForOrgDirection string
-
-const (
-	IssuesListForOrgDirectionAsc  IssuesListForOrgDirection = "asc"
-	IssuesListForOrgDirectionDesc IssuesListForOrgDirection = "desc"
-)
-
-// AllValues returns all IssuesListForOrgDirection values.
-func (IssuesListForOrgDirection) AllValues() []IssuesListForOrgDirection {
-	return []IssuesListForOrgDirection{
-		IssuesListForOrgDirectionAsc,
-		IssuesListForOrgDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s IssuesListForOrgDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case IssuesListForOrgDirectionAsc:
-		return []byte(s), nil
-	case IssuesListForOrgDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *IssuesListForOrgDirection) UnmarshalText(data []byte) error {
-	switch IssuesListForOrgDirection(data) {
-	case IssuesListForOrgDirectionAsc:
-		*s = IssuesListForOrgDirectionAsc
-		return nil
-	case IssuesListForOrgDirectionDesc:
-		*s = IssuesListForOrgDirectionDesc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type IssuesListForOrgFilter string
 
 const (
@@ -28390,47 +27889,6 @@ func (s *IssuesListForOrgState) UnmarshalText(data []byte) error {
 		return nil
 	case IssuesListForOrgStateAll:
 		*s = IssuesListForOrgStateAll
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type IssuesListForRepoDirection string
-
-const (
-	IssuesListForRepoDirectionAsc  IssuesListForRepoDirection = "asc"
-	IssuesListForRepoDirectionDesc IssuesListForRepoDirection = "desc"
-)
-
-// AllValues returns all IssuesListForRepoDirection values.
-func (IssuesListForRepoDirection) AllValues() []IssuesListForRepoDirection {
-	return []IssuesListForRepoDirection{
-		IssuesListForRepoDirectionAsc,
-		IssuesListForRepoDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s IssuesListForRepoDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case IssuesListForRepoDirectionAsc:
-		return []byte(s), nil
-	case IssuesListForRepoDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *IssuesListForRepoDirection) UnmarshalText(data []byte) error {
-	switch IssuesListForRepoDirection(data) {
-	case IssuesListForRepoDirectionAsc:
-		*s = IssuesListForRepoDirectionAsc
-		return nil
-	case IssuesListForRepoDirectionDesc:
-		*s = IssuesListForRepoDirectionDesc
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
@@ -41207,52 +40665,6 @@ func (o OptActionsListJobsForWorkflowRunFilter) Or(d ActionsListJobsForWorkflowR
 	return d
 }
 
-// NewOptActionsListWorkflowRunsForRepoStatus returns new OptActionsListWorkflowRunsForRepoStatus with value set to v.
-func NewOptActionsListWorkflowRunsForRepoStatus(v ActionsListWorkflowRunsForRepoStatus) OptActionsListWorkflowRunsForRepoStatus {
-	return OptActionsListWorkflowRunsForRepoStatus{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptActionsListWorkflowRunsForRepoStatus is optional ActionsListWorkflowRunsForRepoStatus.
-type OptActionsListWorkflowRunsForRepoStatus struct {
-	Value ActionsListWorkflowRunsForRepoStatus
-	Set   bool
-}
-
-// IsSet returns true if OptActionsListWorkflowRunsForRepoStatus was set.
-func (o OptActionsListWorkflowRunsForRepoStatus) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptActionsListWorkflowRunsForRepoStatus) Reset() {
-	var v ActionsListWorkflowRunsForRepoStatus
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptActionsListWorkflowRunsForRepoStatus) SetTo(v ActionsListWorkflowRunsForRepoStatus) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptActionsListWorkflowRunsForRepoStatus) Get() (v ActionsListWorkflowRunsForRepoStatus, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptActionsListWorkflowRunsForRepoStatus) Or(d ActionsListWorkflowRunsForRepoStatus) ActionsListWorkflowRunsForRepoStatus {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility returns new OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility with value set to v.
 func NewOptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility(v ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility {
 	return OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility{
@@ -41293,98 +40705,6 @@ func (o OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Get() (v Actio
 
 // Or returns value if set, or given parameter if does not.
 func (o OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Or(d ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptActivityListReposStarredByAuthenticatedUserDirection returns new OptActivityListReposStarredByAuthenticatedUserDirection with value set to v.
-func NewOptActivityListReposStarredByAuthenticatedUserDirection(v ActivityListReposStarredByAuthenticatedUserDirection) OptActivityListReposStarredByAuthenticatedUserDirection {
-	return OptActivityListReposStarredByAuthenticatedUserDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptActivityListReposStarredByAuthenticatedUserDirection is optional ActivityListReposStarredByAuthenticatedUserDirection.
-type OptActivityListReposStarredByAuthenticatedUserDirection struct {
-	Value ActivityListReposStarredByAuthenticatedUserDirection
-	Set   bool
-}
-
-// IsSet returns true if OptActivityListReposStarredByAuthenticatedUserDirection was set.
-func (o OptActivityListReposStarredByAuthenticatedUserDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptActivityListReposStarredByAuthenticatedUserDirection) Reset() {
-	var v ActivityListReposStarredByAuthenticatedUserDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptActivityListReposStarredByAuthenticatedUserDirection) SetTo(v ActivityListReposStarredByAuthenticatedUserDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptActivityListReposStarredByAuthenticatedUserDirection) Get() (v ActivityListReposStarredByAuthenticatedUserDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptActivityListReposStarredByAuthenticatedUserDirection) Or(d ActivityListReposStarredByAuthenticatedUserDirection) ActivityListReposStarredByAuthenticatedUserDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptActivityListReposStarredByAuthenticatedUserSort returns new OptActivityListReposStarredByAuthenticatedUserSort with value set to v.
-func NewOptActivityListReposStarredByAuthenticatedUserSort(v ActivityListReposStarredByAuthenticatedUserSort) OptActivityListReposStarredByAuthenticatedUserSort {
-	return OptActivityListReposStarredByAuthenticatedUserSort{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptActivityListReposStarredByAuthenticatedUserSort is optional ActivityListReposStarredByAuthenticatedUserSort.
-type OptActivityListReposStarredByAuthenticatedUserSort struct {
-	Value ActivityListReposStarredByAuthenticatedUserSort
-	Set   bool
-}
-
-// IsSet returns true if OptActivityListReposStarredByAuthenticatedUserSort was set.
-func (o OptActivityListReposStarredByAuthenticatedUserSort) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptActivityListReposStarredByAuthenticatedUserSort) Reset() {
-	var v ActivityListReposStarredByAuthenticatedUserSort
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptActivityListReposStarredByAuthenticatedUserSort) SetTo(v ActivityListReposStarredByAuthenticatedUserSort) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptActivityListReposStarredByAuthenticatedUserSort) Get() (v ActivityListReposStarredByAuthenticatedUserSort, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptActivityListReposStarredByAuthenticatedUserSort) Or(d ActivityListReposStarredByAuthenticatedUserSort) ActivityListReposStarredByAuthenticatedUserSort {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -43415,52 +42735,6 @@ func (o OptAppsListAccountsForPlanDirection) Or(d AppsListAccountsForPlanDirecti
 	return d
 }
 
-// NewOptAppsListAccountsForPlanSort returns new OptAppsListAccountsForPlanSort with value set to v.
-func NewOptAppsListAccountsForPlanSort(v AppsListAccountsForPlanSort) OptAppsListAccountsForPlanSort {
-	return OptAppsListAccountsForPlanSort{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptAppsListAccountsForPlanSort is optional AppsListAccountsForPlanSort.
-type OptAppsListAccountsForPlanSort struct {
-	Value AppsListAccountsForPlanSort
-	Set   bool
-}
-
-// IsSet returns true if OptAppsListAccountsForPlanSort was set.
-func (o OptAppsListAccountsForPlanSort) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptAppsListAccountsForPlanSort) Reset() {
-	var v AppsListAccountsForPlanSort
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptAppsListAccountsForPlanSort) SetTo(v AppsListAccountsForPlanSort) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptAppsListAccountsForPlanSort) Get() (v AppsListAccountsForPlanSort, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptAppsListAccountsForPlanSort) Or(d AppsListAccountsForPlanSort) AppsListAccountsForPlanSort {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptAppsListAccountsForPlanStubbedDirection returns new OptAppsListAccountsForPlanStubbedDirection with value set to v.
 func NewOptAppsListAccountsForPlanStubbedDirection(v AppsListAccountsForPlanStubbedDirection) OptAppsListAccountsForPlanStubbedDirection {
 	return OptAppsListAccountsForPlanStubbedDirection{
@@ -43501,52 +42775,6 @@ func (o OptAppsListAccountsForPlanStubbedDirection) Get() (v AppsListAccountsFor
 
 // Or returns value if set, or given parameter if does not.
 func (o OptAppsListAccountsForPlanStubbedDirection) Or(d AppsListAccountsForPlanStubbedDirection) AppsListAccountsForPlanStubbedDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptAppsListAccountsForPlanStubbedSort returns new OptAppsListAccountsForPlanStubbedSort with value set to v.
-func NewOptAppsListAccountsForPlanStubbedSort(v AppsListAccountsForPlanStubbedSort) OptAppsListAccountsForPlanStubbedSort {
-	return OptAppsListAccountsForPlanStubbedSort{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptAppsListAccountsForPlanStubbedSort is optional AppsListAccountsForPlanStubbedSort.
-type OptAppsListAccountsForPlanStubbedSort struct {
-	Value AppsListAccountsForPlanStubbedSort
-	Set   bool
-}
-
-// IsSet returns true if OptAppsListAccountsForPlanStubbedSort was set.
-func (o OptAppsListAccountsForPlanStubbedSort) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptAppsListAccountsForPlanStubbedSort) Reset() {
-	var v AppsListAccountsForPlanStubbedSort
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptAppsListAccountsForPlanStubbedSort) SetTo(v AppsListAccountsForPlanStubbedSort) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptAppsListAccountsForPlanStubbedSort) Get() (v AppsListAccountsForPlanStubbedSort, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptAppsListAccountsForPlanStubbedSort) Or(d AppsListAccountsForPlanStubbedSort) AppsListAccountsForPlanStubbedSort {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -43685,6 +42913,98 @@ func (o OptAuditLogEventData) Get() (v AuditLogEventData, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptAuditLogEventData) Or(d AuditLogEventData) AuditLogEventData {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptAuditLogInclude returns new OptAuditLogInclude with value set to v.
+func NewOptAuditLogInclude(v AuditLogInclude) OptAuditLogInclude {
+	return OptAuditLogInclude{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAuditLogInclude is optional AuditLogInclude.
+type OptAuditLogInclude struct {
+	Value AuditLogInclude
+	Set   bool
+}
+
+// IsSet returns true if OptAuditLogInclude was set.
+func (o OptAuditLogInclude) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAuditLogInclude) Reset() {
+	var v AuditLogInclude
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAuditLogInclude) SetTo(v AuditLogInclude) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAuditLogInclude) Get() (v AuditLogInclude, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAuditLogInclude) Or(d AuditLogInclude) AuditLogInclude {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptAuditLogOrder returns new OptAuditLogOrder with value set to v.
+func NewOptAuditLogOrder(v AuditLogOrder) OptAuditLogOrder {
+	return OptAuditLogOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptAuditLogOrder is optional AuditLogOrder.
+type OptAuditLogOrder struct {
+	Value AuditLogOrder
+	Set   bool
+}
+
+// IsSet returns true if OptAuditLogOrder was set.
+func (o OptAuditLogOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAuditLogOrder) Reset() {
+	var v AuditLogOrder
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptAuditLogOrder) SetTo(v AuditLogOrder) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAuditLogOrder) Get() (v AuditLogOrder, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptAuditLogOrder) Or(d AuditLogOrder) AuditLogOrder {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -44335,52 +43655,6 @@ func (o OptChecksListForRefFilter) Or(d ChecksListForRefFilter) ChecksListForRef
 	return d
 }
 
-// NewOptChecksListForRefStatus returns new OptChecksListForRefStatus with value set to v.
-func NewOptChecksListForRefStatus(v ChecksListForRefStatus) OptChecksListForRefStatus {
-	return OptChecksListForRefStatus{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptChecksListForRefStatus is optional ChecksListForRefStatus.
-type OptChecksListForRefStatus struct {
-	Value ChecksListForRefStatus
-	Set   bool
-}
-
-// IsSet returns true if OptChecksListForRefStatus was set.
-func (o OptChecksListForRefStatus) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptChecksListForRefStatus) Reset() {
-	var v ChecksListForRefStatus
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptChecksListForRefStatus) SetTo(v ChecksListForRefStatus) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptChecksListForRefStatus) Get() (v ChecksListForRefStatus, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptChecksListForRefStatus) Or(d ChecksListForRefStatus) ChecksListForRefStatus {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptChecksListForSuiteFilter returns new OptChecksListForSuiteFilter with value set to v.
 func NewOptChecksListForSuiteFilter(v ChecksListForSuiteFilter) OptChecksListForSuiteFilter {
 	return OptChecksListForSuiteFilter{
@@ -44421,52 +43695,6 @@ func (o OptChecksListForSuiteFilter) Get() (v ChecksListForSuiteFilter, ok bool)
 
 // Or returns value if set, or given parameter if does not.
 func (o OptChecksListForSuiteFilter) Or(d ChecksListForSuiteFilter) ChecksListForSuiteFilter {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptChecksListForSuiteStatus returns new OptChecksListForSuiteStatus with value set to v.
-func NewOptChecksListForSuiteStatus(v ChecksListForSuiteStatus) OptChecksListForSuiteStatus {
-	return OptChecksListForSuiteStatus{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptChecksListForSuiteStatus is optional ChecksListForSuiteStatus.
-type OptChecksListForSuiteStatus struct {
-	Value ChecksListForSuiteStatus
-	Set   bool
-}
-
-// IsSet returns true if OptChecksListForSuiteStatus was set.
-func (o OptChecksListForSuiteStatus) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptChecksListForSuiteStatus) Reset() {
-	var v ChecksListForSuiteStatus
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptChecksListForSuiteStatus) SetTo(v ChecksListForSuiteStatus) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptChecksListForSuiteStatus) Get() (v ChecksListForSuiteStatus, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptChecksListForSuiteStatus) Or(d ChecksListForSuiteStatus) ChecksListForSuiteStatus {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -45255,6 +44483,52 @@ func (o OptDeploymentSimple) Or(d DeploymentSimple) DeploymentSimple {
 	return d
 }
 
+// NewOptDirection returns new OptDirection with value set to v.
+func NewOptDirection(v Direction) OptDirection {
+	return OptDirection{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDirection is optional Direction.
+type OptDirection struct {
+	Value Direction
+	Set   bool
+}
+
+// IsSet returns true if OptDirection was set.
+func (o OptDirection) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDirection) Reset() {
+	var v Direction
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDirection) SetTo(v Direction) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDirection) Get() (v Direction, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDirection) Or(d Direction) Direction {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility returns new OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility with value set to v.
 func NewOptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility(v EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility {
 	return OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility{
@@ -45297,98 +44571,6 @@ func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility)
 
 // Or returns value if set, or given parameter if does not.
 func (o OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) Or(d EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptEnterpriseAdminGetAuditLogInclude returns new OptEnterpriseAdminGetAuditLogInclude with value set to v.
-func NewOptEnterpriseAdminGetAuditLogInclude(v EnterpriseAdminGetAuditLogInclude) OptEnterpriseAdminGetAuditLogInclude {
-	return OptEnterpriseAdminGetAuditLogInclude{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptEnterpriseAdminGetAuditLogInclude is optional EnterpriseAdminGetAuditLogInclude.
-type OptEnterpriseAdminGetAuditLogInclude struct {
-	Value EnterpriseAdminGetAuditLogInclude
-	Set   bool
-}
-
-// IsSet returns true if OptEnterpriseAdminGetAuditLogInclude was set.
-func (o OptEnterpriseAdminGetAuditLogInclude) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptEnterpriseAdminGetAuditLogInclude) Reset() {
-	var v EnterpriseAdminGetAuditLogInclude
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptEnterpriseAdminGetAuditLogInclude) SetTo(v EnterpriseAdminGetAuditLogInclude) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptEnterpriseAdminGetAuditLogInclude) Get() (v EnterpriseAdminGetAuditLogInclude, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptEnterpriseAdminGetAuditLogInclude) Or(d EnterpriseAdminGetAuditLogInclude) EnterpriseAdminGetAuditLogInclude {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptEnterpriseAdminGetAuditLogOrder returns new OptEnterpriseAdminGetAuditLogOrder with value set to v.
-func NewOptEnterpriseAdminGetAuditLogOrder(v EnterpriseAdminGetAuditLogOrder) OptEnterpriseAdminGetAuditLogOrder {
-	return OptEnterpriseAdminGetAuditLogOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptEnterpriseAdminGetAuditLogOrder is optional EnterpriseAdminGetAuditLogOrder.
-type OptEnterpriseAdminGetAuditLogOrder struct {
-	Value EnterpriseAdminGetAuditLogOrder
-	Set   bool
-}
-
-// IsSet returns true if OptEnterpriseAdminGetAuditLogOrder was set.
-func (o OptEnterpriseAdminGetAuditLogOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptEnterpriseAdminGetAuditLogOrder) Reset() {
-	var v EnterpriseAdminGetAuditLogOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptEnterpriseAdminGetAuditLogOrder) SetTo(v EnterpriseAdminGetAuditLogOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptEnterpriseAdminGetAuditLogOrder) Get() (v EnterpriseAdminGetAuditLogOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptEnterpriseAdminGetAuditLogOrder) Or(d EnterpriseAdminGetAuditLogOrder) EnterpriseAdminGetAuditLogOrder {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -47239,98 +46421,6 @@ func (o OptIssuesListCommentsForRepoDirection) Or(d IssuesListCommentsForRepoDir
 	return d
 }
 
-// NewOptIssuesListCommentsForRepoSort returns new OptIssuesListCommentsForRepoSort with value set to v.
-func NewOptIssuesListCommentsForRepoSort(v IssuesListCommentsForRepoSort) OptIssuesListCommentsForRepoSort {
-	return OptIssuesListCommentsForRepoSort{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesListCommentsForRepoSort is optional IssuesListCommentsForRepoSort.
-type OptIssuesListCommentsForRepoSort struct {
-	Value IssuesListCommentsForRepoSort
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesListCommentsForRepoSort was set.
-func (o OptIssuesListCommentsForRepoSort) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesListCommentsForRepoSort) Reset() {
-	var v IssuesListCommentsForRepoSort
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesListCommentsForRepoSort) SetTo(v IssuesListCommentsForRepoSort) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesListCommentsForRepoSort) Get() (v IssuesListCommentsForRepoSort, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesListCommentsForRepoSort) Or(d IssuesListCommentsForRepoSort) IssuesListCommentsForRepoSort {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptIssuesListDirection returns new OptIssuesListDirection with value set to v.
-func NewOptIssuesListDirection(v IssuesListDirection) OptIssuesListDirection {
-	return OptIssuesListDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesListDirection is optional IssuesListDirection.
-type OptIssuesListDirection struct {
-	Value IssuesListDirection
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesListDirection was set.
-func (o OptIssuesListDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesListDirection) Reset() {
-	var v IssuesListDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesListDirection) SetTo(v IssuesListDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesListDirection) Get() (v IssuesListDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesListDirection) Or(d IssuesListDirection) IssuesListDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptIssuesListFilter returns new OptIssuesListFilter with value set to v.
 func NewOptIssuesListFilter(v IssuesListFilter) OptIssuesListFilter {
 	return OptIssuesListFilter{
@@ -47371,52 +46461,6 @@ func (o OptIssuesListFilter) Get() (v IssuesListFilter, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIssuesListFilter) Or(d IssuesListFilter) IssuesListFilter {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptIssuesListForAuthenticatedUserDirection returns new OptIssuesListForAuthenticatedUserDirection with value set to v.
-func NewOptIssuesListForAuthenticatedUserDirection(v IssuesListForAuthenticatedUserDirection) OptIssuesListForAuthenticatedUserDirection {
-	return OptIssuesListForAuthenticatedUserDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesListForAuthenticatedUserDirection is optional IssuesListForAuthenticatedUserDirection.
-type OptIssuesListForAuthenticatedUserDirection struct {
-	Value IssuesListForAuthenticatedUserDirection
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesListForAuthenticatedUserDirection was set.
-func (o OptIssuesListForAuthenticatedUserDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesListForAuthenticatedUserDirection) Reset() {
-	var v IssuesListForAuthenticatedUserDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesListForAuthenticatedUserDirection) SetTo(v IssuesListForAuthenticatedUserDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesListForAuthenticatedUserDirection) Get() (v IssuesListForAuthenticatedUserDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesListForAuthenticatedUserDirection) Or(d IssuesListForAuthenticatedUserDirection) IssuesListForAuthenticatedUserDirection {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -47561,52 +46605,6 @@ func (o OptIssuesListForAuthenticatedUserState) Or(d IssuesListForAuthenticatedU
 	return d
 }
 
-// NewOptIssuesListForOrgDirection returns new OptIssuesListForOrgDirection with value set to v.
-func NewOptIssuesListForOrgDirection(v IssuesListForOrgDirection) OptIssuesListForOrgDirection {
-	return OptIssuesListForOrgDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesListForOrgDirection is optional IssuesListForOrgDirection.
-type OptIssuesListForOrgDirection struct {
-	Value IssuesListForOrgDirection
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesListForOrgDirection was set.
-func (o OptIssuesListForOrgDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesListForOrgDirection) Reset() {
-	var v IssuesListForOrgDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesListForOrgDirection) SetTo(v IssuesListForOrgDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesListForOrgDirection) Get() (v IssuesListForOrgDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesListForOrgDirection) Or(d IssuesListForOrgDirection) IssuesListForOrgDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptIssuesListForOrgFilter returns new OptIssuesListForOrgFilter with value set to v.
 func NewOptIssuesListForOrgFilter(v IssuesListForOrgFilter) OptIssuesListForOrgFilter {
 	return OptIssuesListForOrgFilter{
@@ -47739,52 +46737,6 @@ func (o OptIssuesListForOrgState) Get() (v IssuesListForOrgState, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIssuesListForOrgState) Or(d IssuesListForOrgState) IssuesListForOrgState {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptIssuesListForRepoDirection returns new OptIssuesListForRepoDirection with value set to v.
-func NewOptIssuesListForRepoDirection(v IssuesListForRepoDirection) OptIssuesListForRepoDirection {
-	return OptIssuesListForRepoDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptIssuesListForRepoDirection is optional IssuesListForRepoDirection.
-type OptIssuesListForRepoDirection struct {
-	Value IssuesListForRepoDirection
-	Set   bool
-}
-
-// IsSet returns true if OptIssuesListForRepoDirection was set.
-func (o OptIssuesListForRepoDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptIssuesListForRepoDirection) Reset() {
-	var v IssuesListForRepoDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptIssuesListForRepoDirection) SetTo(v IssuesListForRepoDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptIssuesListForRepoDirection) Get() (v IssuesListForRepoDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptIssuesListForRepoDirection) Or(d IssuesListForRepoDirection) IssuesListForRepoDirection {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -52166,6 +51118,52 @@ func (o OptOAuthAuthorizationsUpdateAuthorizationReq) Or(d OAuthAuthorizationsUp
 	return d
 }
 
+// NewOptOrder returns new OptOrder with value set to v.
+func NewOptOrder(v Order) OptOrder {
+	return OptOrder{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOrder is optional Order.
+type OptOrder struct {
+	Value Order
+	Set   bool
+}
+
+// IsSet returns true if OptOrder was set.
+func (o OptOrder) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOrder) Reset() {
+	var v Order
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOrder) SetTo(v Order) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOrder) Get() (v Order, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOrder) Or(d Order) Order {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOrgMembershipPermissions returns new OptOrgMembershipPermissions with value set to v.
 func NewOptOrgMembershipPermissions(v OrgMembershipPermissions) OptOrgMembershipPermissions {
 	return OptOrgMembershipPermissions{
@@ -52344,98 +51342,6 @@ func (o OptOrgsCreateInvitationReqRole) Get() (v OrgsCreateInvitationReqRole, ok
 
 // Or returns value if set, or given parameter if does not.
 func (o OptOrgsCreateInvitationReqRole) Or(d OrgsCreateInvitationReqRole) OrgsCreateInvitationReqRole {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptOrgsGetAuditLogInclude returns new OptOrgsGetAuditLogInclude with value set to v.
-func NewOptOrgsGetAuditLogInclude(v OrgsGetAuditLogInclude) OptOrgsGetAuditLogInclude {
-	return OptOrgsGetAuditLogInclude{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptOrgsGetAuditLogInclude is optional OrgsGetAuditLogInclude.
-type OptOrgsGetAuditLogInclude struct {
-	Value OrgsGetAuditLogInclude
-	Set   bool
-}
-
-// IsSet returns true if OptOrgsGetAuditLogInclude was set.
-func (o OptOrgsGetAuditLogInclude) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptOrgsGetAuditLogInclude) Reset() {
-	var v OrgsGetAuditLogInclude
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptOrgsGetAuditLogInclude) SetTo(v OrgsGetAuditLogInclude) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsGetAuditLogInclude) Get() (v OrgsGetAuditLogInclude, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptOrgsGetAuditLogInclude) Or(d OrgsGetAuditLogInclude) OrgsGetAuditLogInclude {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptOrgsGetAuditLogOrder returns new OptOrgsGetAuditLogOrder with value set to v.
-func NewOptOrgsGetAuditLogOrder(v OrgsGetAuditLogOrder) OptOrgsGetAuditLogOrder {
-	return OptOrgsGetAuditLogOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptOrgsGetAuditLogOrder is optional OrgsGetAuditLogOrder.
-type OptOrgsGetAuditLogOrder struct {
-	Value OrgsGetAuditLogOrder
-	Set   bool
-}
-
-// IsSet returns true if OptOrgsGetAuditLogOrder was set.
-func (o OptOrgsGetAuditLogOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptOrgsGetAuditLogOrder) Reset() {
-	var v OrgsGetAuditLogOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptOrgsGetAuditLogOrder) SetTo(v OrgsGetAuditLogOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptOrgsGetAuditLogOrder) Get() (v OrgsGetAuditLogOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptOrgsGetAuditLogOrder) Or(d OrgsGetAuditLogOrder) OrgsGetAuditLogOrder {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -52994,6 +51900,52 @@ func (o OptPackageVersionMetadataDocker) Or(d PackageVersionMetadataDocker) Pack
 	return d
 }
 
+// NewOptPackageVisibilityParam returns new OptPackageVisibilityParam with value set to v.
+func NewOptPackageVisibilityParam(v PackageVisibilityParam) OptPackageVisibilityParam {
+	return OptPackageVisibilityParam{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPackageVisibilityParam is optional PackageVisibilityParam.
+type OptPackageVisibilityParam struct {
+	Value PackageVisibilityParam
+	Set   bool
+}
+
+// IsSet returns true if OptPackageVisibilityParam was set.
+func (o OptPackageVisibilityParam) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPackageVisibilityParam) Reset() {
+	var v PackageVisibilityParam
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPackageVisibilityParam) SetTo(v PackageVisibilityParam) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPackageVisibilityParam) Get() (v PackageVisibilityParam, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPackageVisibilityParam) Or(d PackageVisibilityParam) PackageVisibilityParam {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState returns new OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState with value set to v.
 func NewOptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState(v PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState {
 	return OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState{
@@ -53082,144 +52034,6 @@ func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Get() (v Pack
 
 // Or returns value if set, or given parameter if does not.
 func (o OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) Or(d PackagesGetAllPackageVersionsForPackageOwnedByOrgState) PackagesGetAllPackageVersionsForPackageOwnedByOrgState {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptPackagesListPackagesForAuthenticatedUserVisibility returns new OptPackagesListPackagesForAuthenticatedUserVisibility with value set to v.
-func NewOptPackagesListPackagesForAuthenticatedUserVisibility(v PackagesListPackagesForAuthenticatedUserVisibility) OptPackagesListPackagesForAuthenticatedUserVisibility {
-	return OptPackagesListPackagesForAuthenticatedUserVisibility{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPackagesListPackagesForAuthenticatedUserVisibility is optional PackagesListPackagesForAuthenticatedUserVisibility.
-type OptPackagesListPackagesForAuthenticatedUserVisibility struct {
-	Value PackagesListPackagesForAuthenticatedUserVisibility
-	Set   bool
-}
-
-// IsSet returns true if OptPackagesListPackagesForAuthenticatedUserVisibility was set.
-func (o OptPackagesListPackagesForAuthenticatedUserVisibility) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) Reset() {
-	var v PackagesListPackagesForAuthenticatedUserVisibility
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPackagesListPackagesForAuthenticatedUserVisibility) SetTo(v PackagesListPackagesForAuthenticatedUserVisibility) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPackagesListPackagesForAuthenticatedUserVisibility) Get() (v PackagesListPackagesForAuthenticatedUserVisibility, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptPackagesListPackagesForAuthenticatedUserVisibility) Or(d PackagesListPackagesForAuthenticatedUserVisibility) PackagesListPackagesForAuthenticatedUserVisibility {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptPackagesListPackagesForOrganizationVisibility returns new OptPackagesListPackagesForOrganizationVisibility with value set to v.
-func NewOptPackagesListPackagesForOrganizationVisibility(v PackagesListPackagesForOrganizationVisibility) OptPackagesListPackagesForOrganizationVisibility {
-	return OptPackagesListPackagesForOrganizationVisibility{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPackagesListPackagesForOrganizationVisibility is optional PackagesListPackagesForOrganizationVisibility.
-type OptPackagesListPackagesForOrganizationVisibility struct {
-	Value PackagesListPackagesForOrganizationVisibility
-	Set   bool
-}
-
-// IsSet returns true if OptPackagesListPackagesForOrganizationVisibility was set.
-func (o OptPackagesListPackagesForOrganizationVisibility) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPackagesListPackagesForOrganizationVisibility) Reset() {
-	var v PackagesListPackagesForOrganizationVisibility
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPackagesListPackagesForOrganizationVisibility) SetTo(v PackagesListPackagesForOrganizationVisibility) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPackagesListPackagesForOrganizationVisibility) Get() (v PackagesListPackagesForOrganizationVisibility, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptPackagesListPackagesForOrganizationVisibility) Or(d PackagesListPackagesForOrganizationVisibility) PackagesListPackagesForOrganizationVisibility {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptPackagesListPackagesForUserVisibility returns new OptPackagesListPackagesForUserVisibility with value set to v.
-func NewOptPackagesListPackagesForUserVisibility(v PackagesListPackagesForUserVisibility) OptPackagesListPackagesForUserVisibility {
-	return OptPackagesListPackagesForUserVisibility{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPackagesListPackagesForUserVisibility is optional PackagesListPackagesForUserVisibility.
-type OptPackagesListPackagesForUserVisibility struct {
-	Value PackagesListPackagesForUserVisibility
-	Set   bool
-}
-
-// IsSet returns true if OptPackagesListPackagesForUserVisibility was set.
-func (o OptPackagesListPackagesForUserVisibility) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPackagesListPackagesForUserVisibility) Reset() {
-	var v PackagesListPackagesForUserVisibility
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPackagesListPackagesForUserVisibility) SetTo(v PackagesListPackagesForUserVisibility) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPackagesListPackagesForUserVisibility) Get() (v PackagesListPackagesForUserVisibility, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptPackagesListPackagesForUserVisibility) Or(d PackagesListPackagesForUserVisibility) PackagesListPackagesForUserVisibility {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -53358,6 +52172,52 @@ func (o OptPagesSourceHash) Get() (v PagesSourceHash, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptPagesSourceHash) Or(d PagesSourceHash) PagesSourceHash {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPer returns new OptPer with value set to v.
+func NewOptPer(v Per) OptPer {
+	return OptPer{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPer is optional Per.
+type OptPer struct {
+	Value Per
+	Set   bool
+}
+
+// IsSet returns true if OptPer was set.
+func (o OptPer) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPer) Reset() {
+	var v Per
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPer) SetTo(v Per) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPer) Get() (v Per, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPer) Or(d Per) Per {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -54974,52 +53834,6 @@ func (o OptPullsListReviewCommentsForRepoSort) Or(d PullsListReviewCommentsForRe
 	return d
 }
 
-// NewOptPullsListReviewCommentsSort returns new OptPullsListReviewCommentsSort with value set to v.
-func NewOptPullsListReviewCommentsSort(v PullsListReviewCommentsSort) OptPullsListReviewCommentsSort {
-	return OptPullsListReviewCommentsSort{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptPullsListReviewCommentsSort is optional PullsListReviewCommentsSort.
-type OptPullsListReviewCommentsSort struct {
-	Value PullsListReviewCommentsSort
-	Set   bool
-}
-
-// IsSet returns true if OptPullsListReviewCommentsSort was set.
-func (o OptPullsListReviewCommentsSort) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptPullsListReviewCommentsSort) Reset() {
-	var v PullsListReviewCommentsSort
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptPullsListReviewCommentsSort) SetTo(v PullsListReviewCommentsSort) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptPullsListReviewCommentsSort) Get() (v PullsListReviewCommentsSort, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptPullsListReviewCommentsSort) Or(d PullsListReviewCommentsSort) PullsListReviewCommentsSort {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptPullsListSort returns new OptPullsListSort with value set to v.
 func NewOptPullsListSort(v PullsListSort) OptPullsListSort {
 	return OptPullsListSort{
@@ -56486,98 +55300,6 @@ func (o OptReposDeleteFileReqCommitter) Get() (v ReposDeleteFileReqCommitter, ok
 
 // Or returns value if set, or given parameter if does not.
 func (o OptReposDeleteFileReqCommitter) Or(d ReposDeleteFileReqCommitter) ReposDeleteFileReqCommitter {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptReposGetClonesPer returns new OptReposGetClonesPer with value set to v.
-func NewOptReposGetClonesPer(v ReposGetClonesPer) OptReposGetClonesPer {
-	return OptReposGetClonesPer{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptReposGetClonesPer is optional ReposGetClonesPer.
-type OptReposGetClonesPer struct {
-	Value ReposGetClonesPer
-	Set   bool
-}
-
-// IsSet returns true if OptReposGetClonesPer was set.
-func (o OptReposGetClonesPer) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptReposGetClonesPer) Reset() {
-	var v ReposGetClonesPer
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptReposGetClonesPer) SetTo(v ReposGetClonesPer) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptReposGetClonesPer) Get() (v ReposGetClonesPer, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptReposGetClonesPer) Or(d ReposGetClonesPer) ReposGetClonesPer {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptReposGetViewsPer returns new OptReposGetViewsPer with value set to v.
-func NewOptReposGetViewsPer(v ReposGetViewsPer) OptReposGetViewsPer {
-	return OptReposGetViewsPer{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptReposGetViewsPer is optional ReposGetViewsPer.
-type OptReposGetViewsPer struct {
-	Value ReposGetViewsPer
-	Set   bool
-}
-
-// IsSet returns true if OptReposGetViewsPer was set.
-func (o OptReposGetViewsPer) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptReposGetViewsPer) Reset() {
-	var v ReposGetViewsPer
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptReposGetViewsPer) SetTo(v ReposGetViewsPer) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptReposGetViewsPer) Get() (v ReposGetViewsPer, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptReposGetViewsPer) Or(d ReposGetViewsPer) ReposGetViewsPer {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -58794,52 +57516,6 @@ func (o OptScimUserListEnterpriseResourcesItemName) Or(d ScimUserListEnterpriseR
 	return d
 }
 
-// NewOptSearchCodeOrder returns new OptSearchCodeOrder with value set to v.
-func NewOptSearchCodeOrder(v SearchCodeOrder) OptSearchCodeOrder {
-	return OptSearchCodeOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSearchCodeOrder is optional SearchCodeOrder.
-type OptSearchCodeOrder struct {
-	Value SearchCodeOrder
-	Set   bool
-}
-
-// IsSet returns true if OptSearchCodeOrder was set.
-func (o OptSearchCodeOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSearchCodeOrder) Reset() {
-	var v SearchCodeOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSearchCodeOrder) SetTo(v SearchCodeOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSearchCodeOrder) Get() (v SearchCodeOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSearchCodeOrder) Or(d SearchCodeOrder) SearchCodeOrder {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptSearchCodeSort returns new OptSearchCodeSort with value set to v.
 func NewOptSearchCodeSort(v SearchCodeSort) OptSearchCodeSort {
 	return OptSearchCodeSort{
@@ -58880,52 +57556,6 @@ func (o OptSearchCodeSort) Get() (v SearchCodeSort, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptSearchCodeSort) Or(d SearchCodeSort) SearchCodeSort {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSearchCommitsOrder returns new OptSearchCommitsOrder with value set to v.
-func NewOptSearchCommitsOrder(v SearchCommitsOrder) OptSearchCommitsOrder {
-	return OptSearchCommitsOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSearchCommitsOrder is optional SearchCommitsOrder.
-type OptSearchCommitsOrder struct {
-	Value SearchCommitsOrder
-	Set   bool
-}
-
-// IsSet returns true if OptSearchCommitsOrder was set.
-func (o OptSearchCommitsOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSearchCommitsOrder) Reset() {
-	var v SearchCommitsOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSearchCommitsOrder) SetTo(v SearchCommitsOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSearchCommitsOrder) Get() (v SearchCommitsOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSearchCommitsOrder) Or(d SearchCommitsOrder) SearchCommitsOrder {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -58978,52 +57608,6 @@ func (o OptSearchCommitsSort) Or(d SearchCommitsSort) SearchCommitsSort {
 	return d
 }
 
-// NewOptSearchIssuesAndPullRequestsOrder returns new OptSearchIssuesAndPullRequestsOrder with value set to v.
-func NewOptSearchIssuesAndPullRequestsOrder(v SearchIssuesAndPullRequestsOrder) OptSearchIssuesAndPullRequestsOrder {
-	return OptSearchIssuesAndPullRequestsOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSearchIssuesAndPullRequestsOrder is optional SearchIssuesAndPullRequestsOrder.
-type OptSearchIssuesAndPullRequestsOrder struct {
-	Value SearchIssuesAndPullRequestsOrder
-	Set   bool
-}
-
-// IsSet returns true if OptSearchIssuesAndPullRequestsOrder was set.
-func (o OptSearchIssuesAndPullRequestsOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSearchIssuesAndPullRequestsOrder) Reset() {
-	var v SearchIssuesAndPullRequestsOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSearchIssuesAndPullRequestsOrder) SetTo(v SearchIssuesAndPullRequestsOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSearchIssuesAndPullRequestsOrder) Get() (v SearchIssuesAndPullRequestsOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSearchIssuesAndPullRequestsOrder) Or(d SearchIssuesAndPullRequestsOrder) SearchIssuesAndPullRequestsOrder {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptSearchIssuesAndPullRequestsSort returns new OptSearchIssuesAndPullRequestsSort with value set to v.
 func NewOptSearchIssuesAndPullRequestsSort(v SearchIssuesAndPullRequestsSort) OptSearchIssuesAndPullRequestsSort {
 	return OptSearchIssuesAndPullRequestsSort{
@@ -59064,52 +57648,6 @@ func (o OptSearchIssuesAndPullRequestsSort) Get() (v SearchIssuesAndPullRequests
 
 // Or returns value if set, or given parameter if does not.
 func (o OptSearchIssuesAndPullRequestsSort) Or(d SearchIssuesAndPullRequestsSort) SearchIssuesAndPullRequestsSort {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSearchLabelsOrder returns new OptSearchLabelsOrder with value set to v.
-func NewOptSearchLabelsOrder(v SearchLabelsOrder) OptSearchLabelsOrder {
-	return OptSearchLabelsOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSearchLabelsOrder is optional SearchLabelsOrder.
-type OptSearchLabelsOrder struct {
-	Value SearchLabelsOrder
-	Set   bool
-}
-
-// IsSet returns true if OptSearchLabelsOrder was set.
-func (o OptSearchLabelsOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSearchLabelsOrder) Reset() {
-	var v SearchLabelsOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSearchLabelsOrder) SetTo(v SearchLabelsOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSearchLabelsOrder) Get() (v SearchLabelsOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSearchLabelsOrder) Or(d SearchLabelsOrder) SearchLabelsOrder {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -59162,52 +57700,6 @@ func (o OptSearchLabelsSort) Or(d SearchLabelsSort) SearchLabelsSort {
 	return d
 }
 
-// NewOptSearchReposOrder returns new OptSearchReposOrder with value set to v.
-func NewOptSearchReposOrder(v SearchReposOrder) OptSearchReposOrder {
-	return OptSearchReposOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSearchReposOrder is optional SearchReposOrder.
-type OptSearchReposOrder struct {
-	Value SearchReposOrder
-	Set   bool
-}
-
-// IsSet returns true if OptSearchReposOrder was set.
-func (o OptSearchReposOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSearchReposOrder) Reset() {
-	var v SearchReposOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSearchReposOrder) SetTo(v SearchReposOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSearchReposOrder) Get() (v SearchReposOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSearchReposOrder) Or(d SearchReposOrder) SearchReposOrder {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptSearchReposSort returns new OptSearchReposSort with value set to v.
 func NewOptSearchReposSort(v SearchReposSort) OptSearchReposSort {
 	return OptSearchReposSort{
@@ -59248,52 +57740,6 @@ func (o OptSearchReposSort) Get() (v SearchReposSort, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptSearchReposSort) Or(d SearchReposSort) SearchReposSort {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSearchUsersOrder returns new OptSearchUsersOrder with value set to v.
-func NewOptSearchUsersOrder(v SearchUsersOrder) OptSearchUsersOrder {
-	return OptSearchUsersOrder{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSearchUsersOrder is optional SearchUsersOrder.
-type OptSearchUsersOrder struct {
-	Value SearchUsersOrder
-	Set   bool
-}
-
-// IsSet returns true if OptSearchUsersOrder was set.
-func (o OptSearchUsersOrder) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSearchUsersOrder) Reset() {
-	var v SearchUsersOrder
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSearchUsersOrder) SetTo(v SearchUsersOrder) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSearchUsersOrder) Get() (v SearchUsersOrder, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSearchUsersOrder) Or(d SearchUsersOrder) SearchUsersOrder {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -59622,6 +58068,52 @@ func (o OptSimpleUser) Or(d SimpleUser) SimpleUser {
 	return d
 }
 
+// NewOptSort returns new OptSort with value set to v.
+func NewOptSort(v Sort) OptSort {
+	return OptSort{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSort is optional Sort.
+type OptSort struct {
+	Value Sort
+	Set   bool
+}
+
+// IsSet returns true if OptSort was set.
+func (o OptSort) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSort) Reset() {
+	var v Sort
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSort) SetTo(v Sort) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSort) Get() (v Sort, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSort) Or(d Sort) Sort {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptStatusCheckPolicy returns new OptStatusCheckPolicy with value set to v.
 func NewOptStatusCheckPolicy(v StatusCheckPolicy) OptStatusCheckPolicy {
 	return OptStatusCheckPolicy{
@@ -59662,6 +58154,52 @@ func (o OptStatusCheckPolicy) Get() (v StatusCheckPolicy, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptStatusCheckPolicy) Or(d StatusCheckPolicy) StatusCheckPolicy {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStatusParameter returns new OptStatusParameter with value set to v.
+func NewOptStatusParameter(v StatusParameter) OptStatusParameter {
+	return OptStatusParameter{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStatusParameter is optional StatusParameter.
+type OptStatusParameter struct {
+	Value StatusParameter
+	Set   bool
+}
+
+// IsSet returns true if OptStatusParameter was set.
+func (o OptStatusParameter) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStatusParameter) Reset() {
+	var v StatusParameter
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStatusParameter) SetTo(v StatusParameter) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStatusParameter) Get() (v StatusParameter, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStatusParameter) Or(d StatusParameter) StatusParameter {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -60490,190 +59028,6 @@ func (o OptTeamsCreateReqPrivacy) Get() (v TeamsCreateReqPrivacy, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptTeamsCreateReqPrivacy) Or(d TeamsCreateReqPrivacy) TeamsCreateReqPrivacy {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptTeamsListDiscussionCommentsInOrgDirection returns new OptTeamsListDiscussionCommentsInOrgDirection with value set to v.
-func NewOptTeamsListDiscussionCommentsInOrgDirection(v TeamsListDiscussionCommentsInOrgDirection) OptTeamsListDiscussionCommentsInOrgDirection {
-	return OptTeamsListDiscussionCommentsInOrgDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTeamsListDiscussionCommentsInOrgDirection is optional TeamsListDiscussionCommentsInOrgDirection.
-type OptTeamsListDiscussionCommentsInOrgDirection struct {
-	Value TeamsListDiscussionCommentsInOrgDirection
-	Set   bool
-}
-
-// IsSet returns true if OptTeamsListDiscussionCommentsInOrgDirection was set.
-func (o OptTeamsListDiscussionCommentsInOrgDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTeamsListDiscussionCommentsInOrgDirection) Reset() {
-	var v TeamsListDiscussionCommentsInOrgDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTeamsListDiscussionCommentsInOrgDirection) SetTo(v TeamsListDiscussionCommentsInOrgDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsListDiscussionCommentsInOrgDirection) Get() (v TeamsListDiscussionCommentsInOrgDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptTeamsListDiscussionCommentsInOrgDirection) Or(d TeamsListDiscussionCommentsInOrgDirection) TeamsListDiscussionCommentsInOrgDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptTeamsListDiscussionCommentsLegacyDirection returns new OptTeamsListDiscussionCommentsLegacyDirection with value set to v.
-func NewOptTeamsListDiscussionCommentsLegacyDirection(v TeamsListDiscussionCommentsLegacyDirection) OptTeamsListDiscussionCommentsLegacyDirection {
-	return OptTeamsListDiscussionCommentsLegacyDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTeamsListDiscussionCommentsLegacyDirection is optional TeamsListDiscussionCommentsLegacyDirection.
-type OptTeamsListDiscussionCommentsLegacyDirection struct {
-	Value TeamsListDiscussionCommentsLegacyDirection
-	Set   bool
-}
-
-// IsSet returns true if OptTeamsListDiscussionCommentsLegacyDirection was set.
-func (o OptTeamsListDiscussionCommentsLegacyDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTeamsListDiscussionCommentsLegacyDirection) Reset() {
-	var v TeamsListDiscussionCommentsLegacyDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTeamsListDiscussionCommentsLegacyDirection) SetTo(v TeamsListDiscussionCommentsLegacyDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsListDiscussionCommentsLegacyDirection) Get() (v TeamsListDiscussionCommentsLegacyDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptTeamsListDiscussionCommentsLegacyDirection) Or(d TeamsListDiscussionCommentsLegacyDirection) TeamsListDiscussionCommentsLegacyDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptTeamsListDiscussionsInOrgDirection returns new OptTeamsListDiscussionsInOrgDirection with value set to v.
-func NewOptTeamsListDiscussionsInOrgDirection(v TeamsListDiscussionsInOrgDirection) OptTeamsListDiscussionsInOrgDirection {
-	return OptTeamsListDiscussionsInOrgDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTeamsListDiscussionsInOrgDirection is optional TeamsListDiscussionsInOrgDirection.
-type OptTeamsListDiscussionsInOrgDirection struct {
-	Value TeamsListDiscussionsInOrgDirection
-	Set   bool
-}
-
-// IsSet returns true if OptTeamsListDiscussionsInOrgDirection was set.
-func (o OptTeamsListDiscussionsInOrgDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTeamsListDiscussionsInOrgDirection) Reset() {
-	var v TeamsListDiscussionsInOrgDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTeamsListDiscussionsInOrgDirection) SetTo(v TeamsListDiscussionsInOrgDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsListDiscussionsInOrgDirection) Get() (v TeamsListDiscussionsInOrgDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptTeamsListDiscussionsInOrgDirection) Or(d TeamsListDiscussionsInOrgDirection) TeamsListDiscussionsInOrgDirection {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptTeamsListDiscussionsLegacyDirection returns new OptTeamsListDiscussionsLegacyDirection with value set to v.
-func NewOptTeamsListDiscussionsLegacyDirection(v TeamsListDiscussionsLegacyDirection) OptTeamsListDiscussionsLegacyDirection {
-	return OptTeamsListDiscussionsLegacyDirection{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTeamsListDiscussionsLegacyDirection is optional TeamsListDiscussionsLegacyDirection.
-type OptTeamsListDiscussionsLegacyDirection struct {
-	Value TeamsListDiscussionsLegacyDirection
-	Set   bool
-}
-
-// IsSet returns true if OptTeamsListDiscussionsLegacyDirection was set.
-func (o OptTeamsListDiscussionsLegacyDirection) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTeamsListDiscussionsLegacyDirection) Reset() {
-	var v TeamsListDiscussionsLegacyDirection
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTeamsListDiscussionsLegacyDirection) SetTo(v TeamsListDiscussionsLegacyDirection) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTeamsListDiscussionsLegacyDirection) Get() (v TeamsListDiscussionsLegacyDirection, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptTeamsListDiscussionsLegacyDirection) Or(d TeamsListDiscussionsLegacyDirection) TeamsListDiscussionsLegacyDirection {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -61692,6 +60046,52 @@ func (o OptWebhookConfigURL) Or(d WebhookConfigURL) WebhookConfigURL {
 	return d
 }
 
+// NewOptWorkflowRunStatus returns new OptWorkflowRunStatus with value set to v.
+func NewOptWorkflowRunStatus(v WorkflowRunStatus) OptWorkflowRunStatus {
+	return OptWorkflowRunStatus{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptWorkflowRunStatus is optional WorkflowRunStatus.
+type OptWorkflowRunStatus struct {
+	Value WorkflowRunStatus
+	Set   bool
+}
+
+// IsSet returns true if OptWorkflowRunStatus was set.
+func (o OptWorkflowRunStatus) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptWorkflowRunStatus) Reset() {
+	var v WorkflowRunStatus
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptWorkflowRunStatus) SetTo(v WorkflowRunStatus) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptWorkflowRunStatus) Get() (v WorkflowRunStatus, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptWorkflowRunStatus) Or(d WorkflowRunStatus) WorkflowRunStatus {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptWorkflowRunUsageBillableMACOS returns new OptWorkflowRunUsageBillableMACOS with value set to v.
 func NewOptWorkflowRunUsageBillableMACOS(v WorkflowRunUsageBillableMACOS) OptWorkflowRunUsageBillableMACOS {
 	return OptWorkflowRunUsageBillableMACOS{
@@ -61828,6 +60228,47 @@ func (o OptWorkflowRunUsageBillableWINDOWS) Or(d WorkflowRunUsageBillableWINDOWS
 		return v
 	}
 	return d
+}
+
+type Order string
+
+const (
+	OrderDesc Order = "desc"
+	OrderAsc  Order = "asc"
+)
+
+// AllValues returns all Order values.
+func (Order) AllValues() []Order {
+	return []Order{
+		OrderDesc,
+		OrderAsc,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s Order) MarshalText() ([]byte, error) {
+	switch s {
+	case OrderDesc:
+		return []byte(s), nil
+	case OrderAsc:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *Order) UnmarshalText(data []byte) error {
+	switch Order(data) {
+	case OrderDesc:
+		*s = OrderDesc
+		return nil
+	case OrderAsc:
+		*s = OrderAsc
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
 }
 
 // Org Hook.
@@ -63626,95 +62067,6 @@ type OrgsDeleteWebhookNoContent struct{}
 
 func (*OrgsDeleteWebhookNoContent) orgsDeleteWebhookRes() {}
 
-type OrgsGetAuditLogInclude string
-
-const (
-	OrgsGetAuditLogIncludeWeb OrgsGetAuditLogInclude = "web"
-	OrgsGetAuditLogIncludeGit OrgsGetAuditLogInclude = "git"
-	OrgsGetAuditLogIncludeAll OrgsGetAuditLogInclude = "all"
-)
-
-// AllValues returns all OrgsGetAuditLogInclude values.
-func (OrgsGetAuditLogInclude) AllValues() []OrgsGetAuditLogInclude {
-	return []OrgsGetAuditLogInclude{
-		OrgsGetAuditLogIncludeWeb,
-		OrgsGetAuditLogIncludeGit,
-		OrgsGetAuditLogIncludeAll,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s OrgsGetAuditLogInclude) MarshalText() ([]byte, error) {
-	switch s {
-	case OrgsGetAuditLogIncludeWeb:
-		return []byte(s), nil
-	case OrgsGetAuditLogIncludeGit:
-		return []byte(s), nil
-	case OrgsGetAuditLogIncludeAll:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *OrgsGetAuditLogInclude) UnmarshalText(data []byte) error {
-	switch OrgsGetAuditLogInclude(data) {
-	case OrgsGetAuditLogIncludeWeb:
-		*s = OrgsGetAuditLogIncludeWeb
-		return nil
-	case OrgsGetAuditLogIncludeGit:
-		*s = OrgsGetAuditLogIncludeGit
-		return nil
-	case OrgsGetAuditLogIncludeAll:
-		*s = OrgsGetAuditLogIncludeAll
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type OrgsGetAuditLogOrder string
-
-const (
-	OrgsGetAuditLogOrderDesc OrgsGetAuditLogOrder = "desc"
-	OrgsGetAuditLogOrderAsc  OrgsGetAuditLogOrder = "asc"
-)
-
-// AllValues returns all OrgsGetAuditLogOrder values.
-func (OrgsGetAuditLogOrder) AllValues() []OrgsGetAuditLogOrder {
-	return []OrgsGetAuditLogOrder{
-		OrgsGetAuditLogOrderDesc,
-		OrgsGetAuditLogOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s OrgsGetAuditLogOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case OrgsGetAuditLogOrderDesc:
-		return []byte(s), nil
-	case OrgsGetAuditLogOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *OrgsGetAuditLogOrder) UnmarshalText(data []byte) error {
-	switch OrgsGetAuditLogOrder(data) {
-	case OrgsGetAuditLogOrderDesc:
-		*s = OrgsGetAuditLogOrderDesc
-		return nil
-	case OrgsGetAuditLogOrderAsc:
-		*s = OrgsGetAuditLogOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type OrgsGetMembershipForAuthenticatedUserForbidden BasicError
 
 func (*OrgsGetMembershipForAuthenticatedUserForbidden) orgsGetMembershipForAuthenticatedUserRes() {}
@@ -64788,6 +63140,75 @@ func (s *PackagePackageType) UnmarshalText(data []byte) error {
 	}
 }
 
+type PackageType string
+
+const (
+	PackageTypeNpm       PackageType = "npm"
+	PackageTypeMaven     PackageType = "maven"
+	PackageTypeRubygems  PackageType = "rubygems"
+	PackageTypeDocker    PackageType = "docker"
+	PackageTypeNuget     PackageType = "nuget"
+	PackageTypeContainer PackageType = "container"
+)
+
+// AllValues returns all PackageType values.
+func (PackageType) AllValues() []PackageType {
+	return []PackageType{
+		PackageTypeNpm,
+		PackageTypeMaven,
+		PackageTypeRubygems,
+		PackageTypeDocker,
+		PackageTypeNuget,
+		PackageTypeContainer,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackageType) MarshalText() ([]byte, error) {
+	switch s {
+	case PackageTypeNpm:
+		return []byte(s), nil
+	case PackageTypeMaven:
+		return []byte(s), nil
+	case PackageTypeRubygems:
+		return []byte(s), nil
+	case PackageTypeDocker:
+		return []byte(s), nil
+	case PackageTypeNuget:
+		return []byte(s), nil
+	case PackageTypeContainer:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackageType) UnmarshalText(data []byte) error {
+	switch PackageType(data) {
+	case PackageTypeNpm:
+		*s = PackageTypeNpm
+		return nil
+	case PackageTypeMaven:
+		*s = PackageTypeMaven
+		return nil
+	case PackageTypeRubygems:
+		*s = PackageTypeRubygems
+		return nil
+	case PackageTypeDocker:
+		*s = PackageTypeDocker
+		return nil
+	case PackageTypeNuget:
+		*s = PackageTypeNuget
+		return nil
+	case PackageTypeContainer:
+		*s = PackageTypeContainer
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // A version of a software package.
 // Ref: #/components/schemas/package-version
 type PackageVersion struct {
@@ -65090,6 +63511,54 @@ func (s *PackageVisibility) UnmarshalText(data []byte) error {
 	}
 }
 
+type PackageVisibilityParam string
+
+const (
+	PackageVisibilityParamPublic   PackageVisibilityParam = "public"
+	PackageVisibilityParamPrivate  PackageVisibilityParam = "private"
+	PackageVisibilityParamInternal PackageVisibilityParam = "internal"
+)
+
+// AllValues returns all PackageVisibilityParam values.
+func (PackageVisibilityParam) AllValues() []PackageVisibilityParam {
+	return []PackageVisibilityParam{
+		PackageVisibilityParamPublic,
+		PackageVisibilityParamPrivate,
+		PackageVisibilityParamInternal,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s PackageVisibilityParam) MarshalText() ([]byte, error) {
+	switch s {
+	case PackageVisibilityParamPublic:
+		return []byte(s), nil
+	case PackageVisibilityParamPrivate:
+		return []byte(s), nil
+	case PackageVisibilityParamInternal:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *PackageVisibilityParam) UnmarshalText(data []byte) error {
+	switch PackageVisibilityParam(data) {
+	case PackageVisibilityParamPublic:
+		*s = PackageVisibilityParamPublic
+		return nil
+	case PackageVisibilityParamPrivate:
+		*s = PackageVisibilityParamPrivate
+		return nil
+	case PackageVisibilityParamInternal:
+		*s = PackageVisibilityParamInternal
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // Ref: #/components/schemas/packages-billing-usage
 type PackagesBillingUsage struct {
 	// Sum of the free and paid storage space (GB) for GitHuub Packages.
@@ -65146,75 +63615,6 @@ type PackagesDeletePackageForAuthenticatedUserNotFound BasicError
 func (*PackagesDeletePackageForAuthenticatedUserNotFound) packagesDeletePackageForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageForAuthenticatedUserPackageType string
-
-const (
-	PackagesDeletePackageForAuthenticatedUserPackageTypeNpm       PackagesDeletePackageForAuthenticatedUserPackageType = "npm"
-	PackagesDeletePackageForAuthenticatedUserPackageTypeMaven     PackagesDeletePackageForAuthenticatedUserPackageType = "maven"
-	PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems  PackagesDeletePackageForAuthenticatedUserPackageType = "rubygems"
-	PackagesDeletePackageForAuthenticatedUserPackageTypeDocker    PackagesDeletePackageForAuthenticatedUserPackageType = "docker"
-	PackagesDeletePackageForAuthenticatedUserPackageTypeNuget     PackagesDeletePackageForAuthenticatedUserPackageType = "nuget"
-	PackagesDeletePackageForAuthenticatedUserPackageTypeContainer PackagesDeletePackageForAuthenticatedUserPackageType = "container"
-)
-
-// AllValues returns all PackagesDeletePackageForAuthenticatedUserPackageType values.
-func (PackagesDeletePackageForAuthenticatedUserPackageType) AllValues() []PackagesDeletePackageForAuthenticatedUserPackageType {
-	return []PackagesDeletePackageForAuthenticatedUserPackageType{
-		PackagesDeletePackageForAuthenticatedUserPackageTypeNpm,
-		PackagesDeletePackageForAuthenticatedUserPackageTypeMaven,
-		PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems,
-		PackagesDeletePackageForAuthenticatedUserPackageTypeDocker,
-		PackagesDeletePackageForAuthenticatedUserPackageTypeNuget,
-		PackagesDeletePackageForAuthenticatedUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesDeletePackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesDeletePackageForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesDeletePackageForAuthenticatedUserPackageType(data) {
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeNpm:
-		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeNpm
-		return nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeMaven:
-		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeMaven
-		return nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems:
-		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeRubygems
-		return nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeDocker:
-		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeDocker
-		return nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeNuget:
-		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeNuget
-		return nil
-	case PackagesDeletePackageForAuthenticatedUserPackageTypeContainer:
-		*s = PackagesDeletePackageForAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesDeletePackageForAuthenticatedUserUnauthorized BasicError
 
 func (*PackagesDeletePackageForAuthenticatedUserUnauthorized) packagesDeletePackageForAuthenticatedUserRes() {
@@ -65233,75 +63633,6 @@ type PackagesDeletePackageForOrgNotFound BasicError
 
 func (*PackagesDeletePackageForOrgNotFound) packagesDeletePackageForOrgRes() {}
 
-type PackagesDeletePackageForOrgPackageType string
-
-const (
-	PackagesDeletePackageForOrgPackageTypeNpm       PackagesDeletePackageForOrgPackageType = "npm"
-	PackagesDeletePackageForOrgPackageTypeMaven     PackagesDeletePackageForOrgPackageType = "maven"
-	PackagesDeletePackageForOrgPackageTypeRubygems  PackagesDeletePackageForOrgPackageType = "rubygems"
-	PackagesDeletePackageForOrgPackageTypeDocker    PackagesDeletePackageForOrgPackageType = "docker"
-	PackagesDeletePackageForOrgPackageTypeNuget     PackagesDeletePackageForOrgPackageType = "nuget"
-	PackagesDeletePackageForOrgPackageTypeContainer PackagesDeletePackageForOrgPackageType = "container"
-)
-
-// AllValues returns all PackagesDeletePackageForOrgPackageType values.
-func (PackagesDeletePackageForOrgPackageType) AllValues() []PackagesDeletePackageForOrgPackageType {
-	return []PackagesDeletePackageForOrgPackageType{
-		PackagesDeletePackageForOrgPackageTypeNpm,
-		PackagesDeletePackageForOrgPackageTypeMaven,
-		PackagesDeletePackageForOrgPackageTypeRubygems,
-		PackagesDeletePackageForOrgPackageTypeDocker,
-		PackagesDeletePackageForOrgPackageTypeNuget,
-		PackagesDeletePackageForOrgPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesDeletePackageForOrgPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesDeletePackageForOrgPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesDeletePackageForOrgPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesDeletePackageForOrgPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesDeletePackageForOrgPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesDeletePackageForOrgPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesDeletePackageForOrgPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesDeletePackageForOrgPackageType) UnmarshalText(data []byte) error {
-	switch PackagesDeletePackageForOrgPackageType(data) {
-	case PackagesDeletePackageForOrgPackageTypeNpm:
-		*s = PackagesDeletePackageForOrgPackageTypeNpm
-		return nil
-	case PackagesDeletePackageForOrgPackageTypeMaven:
-		*s = PackagesDeletePackageForOrgPackageTypeMaven
-		return nil
-	case PackagesDeletePackageForOrgPackageTypeRubygems:
-		*s = PackagesDeletePackageForOrgPackageTypeRubygems
-		return nil
-	case PackagesDeletePackageForOrgPackageTypeDocker:
-		*s = PackagesDeletePackageForOrgPackageTypeDocker
-		return nil
-	case PackagesDeletePackageForOrgPackageTypeNuget:
-		*s = PackagesDeletePackageForOrgPackageTypeNuget
-		return nil
-	case PackagesDeletePackageForOrgPackageTypeContainer:
-		*s = PackagesDeletePackageForOrgPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesDeletePackageForOrgUnauthorized BasicError
 
 func (*PackagesDeletePackageForOrgUnauthorized) packagesDeletePackageForOrgRes() {}
@@ -65318,75 +63649,6 @@ func (*PackagesDeletePackageForUserNoContent) packagesDeletePackageForUserRes() 
 type PackagesDeletePackageForUserNotFound BasicError
 
 func (*PackagesDeletePackageForUserNotFound) packagesDeletePackageForUserRes() {}
-
-type PackagesDeletePackageForUserPackageType string
-
-const (
-	PackagesDeletePackageForUserPackageTypeNpm       PackagesDeletePackageForUserPackageType = "npm"
-	PackagesDeletePackageForUserPackageTypeMaven     PackagesDeletePackageForUserPackageType = "maven"
-	PackagesDeletePackageForUserPackageTypeRubygems  PackagesDeletePackageForUserPackageType = "rubygems"
-	PackagesDeletePackageForUserPackageTypeDocker    PackagesDeletePackageForUserPackageType = "docker"
-	PackagesDeletePackageForUserPackageTypeNuget     PackagesDeletePackageForUserPackageType = "nuget"
-	PackagesDeletePackageForUserPackageTypeContainer PackagesDeletePackageForUserPackageType = "container"
-)
-
-// AllValues returns all PackagesDeletePackageForUserPackageType values.
-func (PackagesDeletePackageForUserPackageType) AllValues() []PackagesDeletePackageForUserPackageType {
-	return []PackagesDeletePackageForUserPackageType{
-		PackagesDeletePackageForUserPackageTypeNpm,
-		PackagesDeletePackageForUserPackageTypeMaven,
-		PackagesDeletePackageForUserPackageTypeRubygems,
-		PackagesDeletePackageForUserPackageTypeDocker,
-		PackagesDeletePackageForUserPackageTypeNuget,
-		PackagesDeletePackageForUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesDeletePackageForUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesDeletePackageForUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesDeletePackageForUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesDeletePackageForUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesDeletePackageForUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesDeletePackageForUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesDeletePackageForUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesDeletePackageForUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesDeletePackageForUserPackageType(data) {
-	case PackagesDeletePackageForUserPackageTypeNpm:
-		*s = PackagesDeletePackageForUserPackageTypeNpm
-		return nil
-	case PackagesDeletePackageForUserPackageTypeMaven:
-		*s = PackagesDeletePackageForUserPackageTypeMaven
-		return nil
-	case PackagesDeletePackageForUserPackageTypeRubygems:
-		*s = PackagesDeletePackageForUserPackageTypeRubygems
-		return nil
-	case PackagesDeletePackageForUserPackageTypeDocker:
-		*s = PackagesDeletePackageForUserPackageTypeDocker
-		return nil
-	case PackagesDeletePackageForUserPackageTypeNuget:
-		*s = PackagesDeletePackageForUserPackageTypeNuget
-		return nil
-	case PackagesDeletePackageForUserPackageTypeContainer:
-		*s = PackagesDeletePackageForUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type PackagesDeletePackageForUserUnauthorized BasicError
 
@@ -65408,75 +63670,6 @@ type PackagesDeletePackageVersionForAuthenticatedUserNotFound BasicError
 func (*PackagesDeletePackageVersionForAuthenticatedUserNotFound) packagesDeletePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesDeletePackageVersionForAuthenticatedUserPackageType string
-
-const (
-	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm       PackagesDeletePackageVersionForAuthenticatedUserPackageType = "npm"
-	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven     PackagesDeletePackageVersionForAuthenticatedUserPackageType = "maven"
-	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems  PackagesDeletePackageVersionForAuthenticatedUserPackageType = "rubygems"
-	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker    PackagesDeletePackageVersionForAuthenticatedUserPackageType = "docker"
-	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget     PackagesDeletePackageVersionForAuthenticatedUserPackageType = "nuget"
-	PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer PackagesDeletePackageVersionForAuthenticatedUserPackageType = "container"
-)
-
-// AllValues returns all PackagesDeletePackageVersionForAuthenticatedUserPackageType values.
-func (PackagesDeletePackageVersionForAuthenticatedUserPackageType) AllValues() []PackagesDeletePackageVersionForAuthenticatedUserPackageType {
-	return []PackagesDeletePackageVersionForAuthenticatedUserPackageType{
-		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm,
-		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven,
-		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems,
-		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker,
-		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget,
-		PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesDeletePackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesDeletePackageVersionForAuthenticatedUserPackageType(data) {
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm:
-		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm
-		return nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven:
-		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeMaven
-		return nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems:
-		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeRubygems
-		return nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker:
-		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeDocker
-		return nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget:
-		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNuget
-		return nil
-	case PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer:
-		*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesDeletePackageVersionForAuthenticatedUserUnauthorized BasicError
 
 func (*PackagesDeletePackageVersionForAuthenticatedUserUnauthorized) packagesDeletePackageVersionForAuthenticatedUserRes() {
@@ -65495,75 +63688,6 @@ type PackagesDeletePackageVersionForOrgNotFound BasicError
 
 func (*PackagesDeletePackageVersionForOrgNotFound) packagesDeletePackageVersionForOrgRes() {}
 
-type PackagesDeletePackageVersionForOrgPackageType string
-
-const (
-	PackagesDeletePackageVersionForOrgPackageTypeNpm       PackagesDeletePackageVersionForOrgPackageType = "npm"
-	PackagesDeletePackageVersionForOrgPackageTypeMaven     PackagesDeletePackageVersionForOrgPackageType = "maven"
-	PackagesDeletePackageVersionForOrgPackageTypeRubygems  PackagesDeletePackageVersionForOrgPackageType = "rubygems"
-	PackagesDeletePackageVersionForOrgPackageTypeDocker    PackagesDeletePackageVersionForOrgPackageType = "docker"
-	PackagesDeletePackageVersionForOrgPackageTypeNuget     PackagesDeletePackageVersionForOrgPackageType = "nuget"
-	PackagesDeletePackageVersionForOrgPackageTypeContainer PackagesDeletePackageVersionForOrgPackageType = "container"
-)
-
-// AllValues returns all PackagesDeletePackageVersionForOrgPackageType values.
-func (PackagesDeletePackageVersionForOrgPackageType) AllValues() []PackagesDeletePackageVersionForOrgPackageType {
-	return []PackagesDeletePackageVersionForOrgPackageType{
-		PackagesDeletePackageVersionForOrgPackageTypeNpm,
-		PackagesDeletePackageVersionForOrgPackageTypeMaven,
-		PackagesDeletePackageVersionForOrgPackageTypeRubygems,
-		PackagesDeletePackageVersionForOrgPackageTypeDocker,
-		PackagesDeletePackageVersionForOrgPackageTypeNuget,
-		PackagesDeletePackageVersionForOrgPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesDeletePackageVersionForOrgPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesDeletePackageVersionForOrgPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForOrgPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForOrgPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForOrgPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForOrgPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForOrgPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesDeletePackageVersionForOrgPackageType) UnmarshalText(data []byte) error {
-	switch PackagesDeletePackageVersionForOrgPackageType(data) {
-	case PackagesDeletePackageVersionForOrgPackageTypeNpm:
-		*s = PackagesDeletePackageVersionForOrgPackageTypeNpm
-		return nil
-	case PackagesDeletePackageVersionForOrgPackageTypeMaven:
-		*s = PackagesDeletePackageVersionForOrgPackageTypeMaven
-		return nil
-	case PackagesDeletePackageVersionForOrgPackageTypeRubygems:
-		*s = PackagesDeletePackageVersionForOrgPackageTypeRubygems
-		return nil
-	case PackagesDeletePackageVersionForOrgPackageTypeDocker:
-		*s = PackagesDeletePackageVersionForOrgPackageTypeDocker
-		return nil
-	case PackagesDeletePackageVersionForOrgPackageTypeNuget:
-		*s = PackagesDeletePackageVersionForOrgPackageTypeNuget
-		return nil
-	case PackagesDeletePackageVersionForOrgPackageTypeContainer:
-		*s = PackagesDeletePackageVersionForOrgPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesDeletePackageVersionForOrgUnauthorized BasicError
 
 func (*PackagesDeletePackageVersionForOrgUnauthorized) packagesDeletePackageVersionForOrgRes() {}
@@ -65580,75 +63704,6 @@ func (*PackagesDeletePackageVersionForUserNoContent) packagesDeletePackageVersio
 type PackagesDeletePackageVersionForUserNotFound BasicError
 
 func (*PackagesDeletePackageVersionForUserNotFound) packagesDeletePackageVersionForUserRes() {}
-
-type PackagesDeletePackageVersionForUserPackageType string
-
-const (
-	PackagesDeletePackageVersionForUserPackageTypeNpm       PackagesDeletePackageVersionForUserPackageType = "npm"
-	PackagesDeletePackageVersionForUserPackageTypeMaven     PackagesDeletePackageVersionForUserPackageType = "maven"
-	PackagesDeletePackageVersionForUserPackageTypeRubygems  PackagesDeletePackageVersionForUserPackageType = "rubygems"
-	PackagesDeletePackageVersionForUserPackageTypeDocker    PackagesDeletePackageVersionForUserPackageType = "docker"
-	PackagesDeletePackageVersionForUserPackageTypeNuget     PackagesDeletePackageVersionForUserPackageType = "nuget"
-	PackagesDeletePackageVersionForUserPackageTypeContainer PackagesDeletePackageVersionForUserPackageType = "container"
-)
-
-// AllValues returns all PackagesDeletePackageVersionForUserPackageType values.
-func (PackagesDeletePackageVersionForUserPackageType) AllValues() []PackagesDeletePackageVersionForUserPackageType {
-	return []PackagesDeletePackageVersionForUserPackageType{
-		PackagesDeletePackageVersionForUserPackageTypeNpm,
-		PackagesDeletePackageVersionForUserPackageTypeMaven,
-		PackagesDeletePackageVersionForUserPackageTypeRubygems,
-		PackagesDeletePackageVersionForUserPackageTypeDocker,
-		PackagesDeletePackageVersionForUserPackageTypeNuget,
-		PackagesDeletePackageVersionForUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesDeletePackageVersionForUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesDeletePackageVersionForUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesDeletePackageVersionForUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesDeletePackageVersionForUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesDeletePackageVersionForUserPackageType(data) {
-	case PackagesDeletePackageVersionForUserPackageTypeNpm:
-		*s = PackagesDeletePackageVersionForUserPackageTypeNpm
-		return nil
-	case PackagesDeletePackageVersionForUserPackageTypeMaven:
-		*s = PackagesDeletePackageVersionForUserPackageTypeMaven
-		return nil
-	case PackagesDeletePackageVersionForUserPackageTypeRubygems:
-		*s = PackagesDeletePackageVersionForUserPackageTypeRubygems
-		return nil
-	case PackagesDeletePackageVersionForUserPackageTypeDocker:
-		*s = PackagesDeletePackageVersionForUserPackageTypeDocker
-		return nil
-	case PackagesDeletePackageVersionForUserPackageTypeNuget:
-		*s = PackagesDeletePackageVersionForUserPackageTypeNuget
-		return nil
-	case PackagesDeletePackageVersionForUserPackageTypeContainer:
-		*s = PackagesDeletePackageVersionForUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type PackagesDeletePackageVersionForUserUnauthorized BasicError
 
@@ -65667,75 +63722,6 @@ func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserNotFound) 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON []PackageVersion
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes() {
-}
-
-type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType string
-
-const (
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm       PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "npm"
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven     PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "maven"
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems  PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "rubygems"
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "docker"
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget     PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "nuget"
-	PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType = "container"
-)
-
-// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType values.
-func (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType {
-	return []PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType{
-		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm,
-		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven,
-		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems,
-		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker,
-		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget,
-		PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType(data) {
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeMaven
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeRubygems
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeDocker
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNuget
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState string
@@ -65799,75 +63785,6 @@ type PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON []Packag
 func (*PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByOrgRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType string
-
-const (
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm       PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "npm"
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven     PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "maven"
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems  PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "rubygems"
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker    PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "docker"
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget     PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "nuget"
-	PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType = "container"
-)
-
-// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType values.
-func (PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType {
-	return []PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType{
-		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm,
-		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven,
-		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems,
-		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker,
-		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget,
-		PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(data) {
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeMaven
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeRubygems
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeDocker
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNuget
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgState string
 
 const (
@@ -65929,492 +63846,9 @@ type PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON []Packa
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
 }
 
-type PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType string
-
-const (
-	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm       PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "npm"
-	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven     PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "maven"
-	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems  PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "rubygems"
-	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker    PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "docker"
-	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget     PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "nuget"
-	PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType = "container"
-)
-
-// AllValues returns all PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType values.
-func (PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) AllValues() []PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType {
-	return []PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType{
-		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm,
-		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven,
-		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems,
-		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker,
-		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget,
-		PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType(data) {
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeMaven
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeRubygems
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeDocker
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNuget
-		return nil
-	case PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer:
-		*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized BasicError
 
 func (*PackagesGetAllPackageVersionsForPackageOwnedByUserUnauthorized) packagesGetAllPackageVersionsForPackageOwnedByUserRes() {
-}
-
-type PackagesGetPackageForAuthenticatedUserPackageType string
-
-const (
-	PackagesGetPackageForAuthenticatedUserPackageTypeNpm       PackagesGetPackageForAuthenticatedUserPackageType = "npm"
-	PackagesGetPackageForAuthenticatedUserPackageTypeMaven     PackagesGetPackageForAuthenticatedUserPackageType = "maven"
-	PackagesGetPackageForAuthenticatedUserPackageTypeRubygems  PackagesGetPackageForAuthenticatedUserPackageType = "rubygems"
-	PackagesGetPackageForAuthenticatedUserPackageTypeDocker    PackagesGetPackageForAuthenticatedUserPackageType = "docker"
-	PackagesGetPackageForAuthenticatedUserPackageTypeNuget     PackagesGetPackageForAuthenticatedUserPackageType = "nuget"
-	PackagesGetPackageForAuthenticatedUserPackageTypeContainer PackagesGetPackageForAuthenticatedUserPackageType = "container"
-)
-
-// AllValues returns all PackagesGetPackageForAuthenticatedUserPackageType values.
-func (PackagesGetPackageForAuthenticatedUserPackageType) AllValues() []PackagesGetPackageForAuthenticatedUserPackageType {
-	return []PackagesGetPackageForAuthenticatedUserPackageType{
-		PackagesGetPackageForAuthenticatedUserPackageTypeNpm,
-		PackagesGetPackageForAuthenticatedUserPackageTypeMaven,
-		PackagesGetPackageForAuthenticatedUserPackageTypeRubygems,
-		PackagesGetPackageForAuthenticatedUserPackageTypeDocker,
-		PackagesGetPackageForAuthenticatedUserPackageTypeNuget,
-		PackagesGetPackageForAuthenticatedUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetPackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetPackageForAuthenticatedUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetPackageForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetPackageForAuthenticatedUserPackageType(data) {
-	case PackagesGetPackageForAuthenticatedUserPackageTypeNpm:
-		*s = PackagesGetPackageForAuthenticatedUserPackageTypeNpm
-		return nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeMaven:
-		*s = PackagesGetPackageForAuthenticatedUserPackageTypeMaven
-		return nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeRubygems:
-		*s = PackagesGetPackageForAuthenticatedUserPackageTypeRubygems
-		return nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeDocker:
-		*s = PackagesGetPackageForAuthenticatedUserPackageTypeDocker
-		return nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeNuget:
-		*s = PackagesGetPackageForAuthenticatedUserPackageTypeNuget
-		return nil
-	case PackagesGetPackageForAuthenticatedUserPackageTypeContainer:
-		*s = PackagesGetPackageForAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type PackagesGetPackageForOrganizationPackageType string
-
-const (
-	PackagesGetPackageForOrganizationPackageTypeNpm       PackagesGetPackageForOrganizationPackageType = "npm"
-	PackagesGetPackageForOrganizationPackageTypeMaven     PackagesGetPackageForOrganizationPackageType = "maven"
-	PackagesGetPackageForOrganizationPackageTypeRubygems  PackagesGetPackageForOrganizationPackageType = "rubygems"
-	PackagesGetPackageForOrganizationPackageTypeDocker    PackagesGetPackageForOrganizationPackageType = "docker"
-	PackagesGetPackageForOrganizationPackageTypeNuget     PackagesGetPackageForOrganizationPackageType = "nuget"
-	PackagesGetPackageForOrganizationPackageTypeContainer PackagesGetPackageForOrganizationPackageType = "container"
-)
-
-// AllValues returns all PackagesGetPackageForOrganizationPackageType values.
-func (PackagesGetPackageForOrganizationPackageType) AllValues() []PackagesGetPackageForOrganizationPackageType {
-	return []PackagesGetPackageForOrganizationPackageType{
-		PackagesGetPackageForOrganizationPackageTypeNpm,
-		PackagesGetPackageForOrganizationPackageTypeMaven,
-		PackagesGetPackageForOrganizationPackageTypeRubygems,
-		PackagesGetPackageForOrganizationPackageTypeDocker,
-		PackagesGetPackageForOrganizationPackageTypeNuget,
-		PackagesGetPackageForOrganizationPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetPackageForOrganizationPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetPackageForOrganizationPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetPackageForOrganizationPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetPackageForOrganizationPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetPackageForOrganizationPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetPackageForOrganizationPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetPackageForOrganizationPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetPackageForOrganizationPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetPackageForOrganizationPackageType(data) {
-	case PackagesGetPackageForOrganizationPackageTypeNpm:
-		*s = PackagesGetPackageForOrganizationPackageTypeNpm
-		return nil
-	case PackagesGetPackageForOrganizationPackageTypeMaven:
-		*s = PackagesGetPackageForOrganizationPackageTypeMaven
-		return nil
-	case PackagesGetPackageForOrganizationPackageTypeRubygems:
-		*s = PackagesGetPackageForOrganizationPackageTypeRubygems
-		return nil
-	case PackagesGetPackageForOrganizationPackageTypeDocker:
-		*s = PackagesGetPackageForOrganizationPackageTypeDocker
-		return nil
-	case PackagesGetPackageForOrganizationPackageTypeNuget:
-		*s = PackagesGetPackageForOrganizationPackageTypeNuget
-		return nil
-	case PackagesGetPackageForOrganizationPackageTypeContainer:
-		*s = PackagesGetPackageForOrganizationPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type PackagesGetPackageForUserPackageType string
-
-const (
-	PackagesGetPackageForUserPackageTypeNpm       PackagesGetPackageForUserPackageType = "npm"
-	PackagesGetPackageForUserPackageTypeMaven     PackagesGetPackageForUserPackageType = "maven"
-	PackagesGetPackageForUserPackageTypeRubygems  PackagesGetPackageForUserPackageType = "rubygems"
-	PackagesGetPackageForUserPackageTypeDocker    PackagesGetPackageForUserPackageType = "docker"
-	PackagesGetPackageForUserPackageTypeNuget     PackagesGetPackageForUserPackageType = "nuget"
-	PackagesGetPackageForUserPackageTypeContainer PackagesGetPackageForUserPackageType = "container"
-)
-
-// AllValues returns all PackagesGetPackageForUserPackageType values.
-func (PackagesGetPackageForUserPackageType) AllValues() []PackagesGetPackageForUserPackageType {
-	return []PackagesGetPackageForUserPackageType{
-		PackagesGetPackageForUserPackageTypeNpm,
-		PackagesGetPackageForUserPackageTypeMaven,
-		PackagesGetPackageForUserPackageTypeRubygems,
-		PackagesGetPackageForUserPackageTypeDocker,
-		PackagesGetPackageForUserPackageTypeNuget,
-		PackagesGetPackageForUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetPackageForUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetPackageForUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetPackageForUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetPackageForUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetPackageForUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetPackageForUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetPackageForUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetPackageForUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetPackageForUserPackageType(data) {
-	case PackagesGetPackageForUserPackageTypeNpm:
-		*s = PackagesGetPackageForUserPackageTypeNpm
-		return nil
-	case PackagesGetPackageForUserPackageTypeMaven:
-		*s = PackagesGetPackageForUserPackageTypeMaven
-		return nil
-	case PackagesGetPackageForUserPackageTypeRubygems:
-		*s = PackagesGetPackageForUserPackageTypeRubygems
-		return nil
-	case PackagesGetPackageForUserPackageTypeDocker:
-		*s = PackagesGetPackageForUserPackageTypeDocker
-		return nil
-	case PackagesGetPackageForUserPackageTypeNuget:
-		*s = PackagesGetPackageForUserPackageTypeNuget
-		return nil
-	case PackagesGetPackageForUserPackageTypeContainer:
-		*s = PackagesGetPackageForUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type PackagesGetPackageVersionForAuthenticatedUserPackageType string
-
-const (
-	PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm       PackagesGetPackageVersionForAuthenticatedUserPackageType = "npm"
-	PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven     PackagesGetPackageVersionForAuthenticatedUserPackageType = "maven"
-	PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems  PackagesGetPackageVersionForAuthenticatedUserPackageType = "rubygems"
-	PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker    PackagesGetPackageVersionForAuthenticatedUserPackageType = "docker"
-	PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget     PackagesGetPackageVersionForAuthenticatedUserPackageType = "nuget"
-	PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer PackagesGetPackageVersionForAuthenticatedUserPackageType = "container"
-)
-
-// AllValues returns all PackagesGetPackageVersionForAuthenticatedUserPackageType values.
-func (PackagesGetPackageVersionForAuthenticatedUserPackageType) AllValues() []PackagesGetPackageVersionForAuthenticatedUserPackageType {
-	return []PackagesGetPackageVersionForAuthenticatedUserPackageType{
-		PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm,
-		PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven,
-		PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems,
-		PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker,
-		PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget,
-		PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetPackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetPackageVersionForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetPackageVersionForAuthenticatedUserPackageType(data) {
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm:
-		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm
-		return nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven:
-		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeMaven
-		return nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems:
-		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeRubygems
-		return nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker:
-		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeDocker
-		return nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget:
-		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeNuget
-		return nil
-	case PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer:
-		*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type PackagesGetPackageVersionForOrganizationPackageType string
-
-const (
-	PackagesGetPackageVersionForOrganizationPackageTypeNpm       PackagesGetPackageVersionForOrganizationPackageType = "npm"
-	PackagesGetPackageVersionForOrganizationPackageTypeMaven     PackagesGetPackageVersionForOrganizationPackageType = "maven"
-	PackagesGetPackageVersionForOrganizationPackageTypeRubygems  PackagesGetPackageVersionForOrganizationPackageType = "rubygems"
-	PackagesGetPackageVersionForOrganizationPackageTypeDocker    PackagesGetPackageVersionForOrganizationPackageType = "docker"
-	PackagesGetPackageVersionForOrganizationPackageTypeNuget     PackagesGetPackageVersionForOrganizationPackageType = "nuget"
-	PackagesGetPackageVersionForOrganizationPackageTypeContainer PackagesGetPackageVersionForOrganizationPackageType = "container"
-)
-
-// AllValues returns all PackagesGetPackageVersionForOrganizationPackageType values.
-func (PackagesGetPackageVersionForOrganizationPackageType) AllValues() []PackagesGetPackageVersionForOrganizationPackageType {
-	return []PackagesGetPackageVersionForOrganizationPackageType{
-		PackagesGetPackageVersionForOrganizationPackageTypeNpm,
-		PackagesGetPackageVersionForOrganizationPackageTypeMaven,
-		PackagesGetPackageVersionForOrganizationPackageTypeRubygems,
-		PackagesGetPackageVersionForOrganizationPackageTypeDocker,
-		PackagesGetPackageVersionForOrganizationPackageTypeNuget,
-		PackagesGetPackageVersionForOrganizationPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetPackageVersionForOrganizationPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetPackageVersionForOrganizationPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetPackageVersionForOrganizationPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetPackageVersionForOrganizationPackageType(data) {
-	case PackagesGetPackageVersionForOrganizationPackageTypeNpm:
-		*s = PackagesGetPackageVersionForOrganizationPackageTypeNpm
-		return nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeMaven:
-		*s = PackagesGetPackageVersionForOrganizationPackageTypeMaven
-		return nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeRubygems:
-		*s = PackagesGetPackageVersionForOrganizationPackageTypeRubygems
-		return nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeDocker:
-		*s = PackagesGetPackageVersionForOrganizationPackageTypeDocker
-		return nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeNuget:
-		*s = PackagesGetPackageVersionForOrganizationPackageTypeNuget
-		return nil
-	case PackagesGetPackageVersionForOrganizationPackageTypeContainer:
-		*s = PackagesGetPackageVersionForOrganizationPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type PackagesGetPackageVersionForUserPackageType string
-
-const (
-	PackagesGetPackageVersionForUserPackageTypeNpm       PackagesGetPackageVersionForUserPackageType = "npm"
-	PackagesGetPackageVersionForUserPackageTypeMaven     PackagesGetPackageVersionForUserPackageType = "maven"
-	PackagesGetPackageVersionForUserPackageTypeRubygems  PackagesGetPackageVersionForUserPackageType = "rubygems"
-	PackagesGetPackageVersionForUserPackageTypeDocker    PackagesGetPackageVersionForUserPackageType = "docker"
-	PackagesGetPackageVersionForUserPackageTypeNuget     PackagesGetPackageVersionForUserPackageType = "nuget"
-	PackagesGetPackageVersionForUserPackageTypeContainer PackagesGetPackageVersionForUserPackageType = "container"
-)
-
-// AllValues returns all PackagesGetPackageVersionForUserPackageType values.
-func (PackagesGetPackageVersionForUserPackageType) AllValues() []PackagesGetPackageVersionForUserPackageType {
-	return []PackagesGetPackageVersionForUserPackageType{
-		PackagesGetPackageVersionForUserPackageTypeNpm,
-		PackagesGetPackageVersionForUserPackageTypeMaven,
-		PackagesGetPackageVersionForUserPackageTypeRubygems,
-		PackagesGetPackageVersionForUserPackageTypeDocker,
-		PackagesGetPackageVersionForUserPackageTypeNuget,
-		PackagesGetPackageVersionForUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesGetPackageVersionForUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesGetPackageVersionForUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesGetPackageVersionForUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesGetPackageVersionForUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesGetPackageVersionForUserPackageType(data) {
-	case PackagesGetPackageVersionForUserPackageTypeNpm:
-		*s = PackagesGetPackageVersionForUserPackageTypeNpm
-		return nil
-	case PackagesGetPackageVersionForUserPackageTypeMaven:
-		*s = PackagesGetPackageVersionForUserPackageTypeMaven
-		return nil
-	case PackagesGetPackageVersionForUserPackageTypeRubygems:
-		*s = PackagesGetPackageVersionForUserPackageTypeRubygems
-		return nil
-	case PackagesGetPackageVersionForUserPackageTypeDocker:
-		*s = PackagesGetPackageVersionForUserPackageTypeDocker
-		return nil
-	case PackagesGetPackageVersionForUserPackageTypeNuget:
-		*s = PackagesGetPackageVersionForUserPackageTypeNuget
-		return nil
-	case PackagesGetPackageVersionForUserPackageTypeContainer:
-		*s = PackagesGetPackageVersionForUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 type PackagesListPackagesForAuthenticatedUserPackageType string
@@ -66480,54 +63914,6 @@ func (s *PackagesListPackagesForAuthenticatedUserPackageType) UnmarshalText(data
 		return nil
 	case PackagesListPackagesForAuthenticatedUserPackageTypeContainer:
 		*s = PackagesListPackagesForAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
-type PackagesListPackagesForAuthenticatedUserVisibility string
-
-const (
-	PackagesListPackagesForAuthenticatedUserVisibilityPublic   PackagesListPackagesForAuthenticatedUserVisibility = "public"
-	PackagesListPackagesForAuthenticatedUserVisibilityPrivate  PackagesListPackagesForAuthenticatedUserVisibility = "private"
-	PackagesListPackagesForAuthenticatedUserVisibilityInternal PackagesListPackagesForAuthenticatedUserVisibility = "internal"
-)
-
-// AllValues returns all PackagesListPackagesForAuthenticatedUserVisibility values.
-func (PackagesListPackagesForAuthenticatedUserVisibility) AllValues() []PackagesListPackagesForAuthenticatedUserVisibility {
-	return []PackagesListPackagesForAuthenticatedUserVisibility{
-		PackagesListPackagesForAuthenticatedUserVisibilityPublic,
-		PackagesListPackagesForAuthenticatedUserVisibilityPrivate,
-		PackagesListPackagesForAuthenticatedUserVisibilityInternal,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesListPackagesForAuthenticatedUserVisibility) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesListPackagesForAuthenticatedUserVisibilityPublic:
-		return []byte(s), nil
-	case PackagesListPackagesForAuthenticatedUserVisibilityPrivate:
-		return []byte(s), nil
-	case PackagesListPackagesForAuthenticatedUserVisibilityInternal:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesListPackagesForAuthenticatedUserVisibility) UnmarshalText(data []byte) error {
-	switch PackagesListPackagesForAuthenticatedUserVisibility(data) {
-	case PackagesListPackagesForAuthenticatedUserVisibilityPublic:
-		*s = PackagesListPackagesForAuthenticatedUserVisibilityPublic
-		return nil
-	case PackagesListPackagesForAuthenticatedUserVisibilityPrivate:
-		*s = PackagesListPackagesForAuthenticatedUserVisibilityPrivate
-		return nil
-	case PackagesListPackagesForAuthenticatedUserVisibilityInternal:
-		*s = PackagesListPackagesForAuthenticatedUserVisibilityInternal
 		return nil
 	default:
 		return errors.Errorf("invalid value: %q", data)
@@ -66616,54 +64002,6 @@ type PackagesListPackagesForOrganizationUnauthorized BasicError
 
 func (*PackagesListPackagesForOrganizationUnauthorized) packagesListPackagesForOrganizationRes() {}
 
-type PackagesListPackagesForOrganizationVisibility string
-
-const (
-	PackagesListPackagesForOrganizationVisibilityPublic   PackagesListPackagesForOrganizationVisibility = "public"
-	PackagesListPackagesForOrganizationVisibilityPrivate  PackagesListPackagesForOrganizationVisibility = "private"
-	PackagesListPackagesForOrganizationVisibilityInternal PackagesListPackagesForOrganizationVisibility = "internal"
-)
-
-// AllValues returns all PackagesListPackagesForOrganizationVisibility values.
-func (PackagesListPackagesForOrganizationVisibility) AllValues() []PackagesListPackagesForOrganizationVisibility {
-	return []PackagesListPackagesForOrganizationVisibility{
-		PackagesListPackagesForOrganizationVisibilityPublic,
-		PackagesListPackagesForOrganizationVisibilityPrivate,
-		PackagesListPackagesForOrganizationVisibilityInternal,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesListPackagesForOrganizationVisibility) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesListPackagesForOrganizationVisibilityPublic:
-		return []byte(s), nil
-	case PackagesListPackagesForOrganizationVisibilityPrivate:
-		return []byte(s), nil
-	case PackagesListPackagesForOrganizationVisibilityInternal:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesListPackagesForOrganizationVisibility) UnmarshalText(data []byte) error {
-	switch PackagesListPackagesForOrganizationVisibility(data) {
-	case PackagesListPackagesForOrganizationVisibilityPublic:
-		*s = PackagesListPackagesForOrganizationVisibilityPublic
-		return nil
-	case PackagesListPackagesForOrganizationVisibilityPrivate:
-		*s = PackagesListPackagesForOrganizationVisibilityPrivate
-		return nil
-	case PackagesListPackagesForOrganizationVisibilityInternal:
-		*s = PackagesListPackagesForOrganizationVisibilityInternal
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesListPackagesForUserForbidden BasicError
 
 func (*PackagesListPackagesForUserForbidden) packagesListPackagesForUserRes() {}
@@ -66745,54 +64083,6 @@ type PackagesListPackagesForUserUnauthorized BasicError
 
 func (*PackagesListPackagesForUserUnauthorized) packagesListPackagesForUserRes() {}
 
-type PackagesListPackagesForUserVisibility string
-
-const (
-	PackagesListPackagesForUserVisibilityPublic   PackagesListPackagesForUserVisibility = "public"
-	PackagesListPackagesForUserVisibilityPrivate  PackagesListPackagesForUserVisibility = "private"
-	PackagesListPackagesForUserVisibilityInternal PackagesListPackagesForUserVisibility = "internal"
-)
-
-// AllValues returns all PackagesListPackagesForUserVisibility values.
-func (PackagesListPackagesForUserVisibility) AllValues() []PackagesListPackagesForUserVisibility {
-	return []PackagesListPackagesForUserVisibility{
-		PackagesListPackagesForUserVisibilityPublic,
-		PackagesListPackagesForUserVisibilityPrivate,
-		PackagesListPackagesForUserVisibilityInternal,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesListPackagesForUserVisibility) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesListPackagesForUserVisibilityPublic:
-		return []byte(s), nil
-	case PackagesListPackagesForUserVisibilityPrivate:
-		return []byte(s), nil
-	case PackagesListPackagesForUserVisibilityInternal:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesListPackagesForUserVisibility) UnmarshalText(data []byte) error {
-	switch PackagesListPackagesForUserVisibility(data) {
-	case PackagesListPackagesForUserVisibilityPublic:
-		*s = PackagesListPackagesForUserVisibilityPublic
-		return nil
-	case PackagesListPackagesForUserVisibilityPrivate:
-		*s = PackagesListPackagesForUserVisibilityPrivate
-		return nil
-	case PackagesListPackagesForUserVisibilityInternal:
-		*s = PackagesListPackagesForUserVisibilityInternal
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesRestorePackageForAuthenticatedUserForbidden BasicError
 
 func (*PackagesRestorePackageForAuthenticatedUserForbidden) packagesRestorePackageForAuthenticatedUserRes() {
@@ -66807,75 +64097,6 @@ func (*PackagesRestorePackageForAuthenticatedUserNoContent) packagesRestorePacka
 type PackagesRestorePackageForAuthenticatedUserNotFound BasicError
 
 func (*PackagesRestorePackageForAuthenticatedUserNotFound) packagesRestorePackageForAuthenticatedUserRes() {
-}
-
-type PackagesRestorePackageForAuthenticatedUserPackageType string
-
-const (
-	PackagesRestorePackageForAuthenticatedUserPackageTypeNpm       PackagesRestorePackageForAuthenticatedUserPackageType = "npm"
-	PackagesRestorePackageForAuthenticatedUserPackageTypeMaven     PackagesRestorePackageForAuthenticatedUserPackageType = "maven"
-	PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems  PackagesRestorePackageForAuthenticatedUserPackageType = "rubygems"
-	PackagesRestorePackageForAuthenticatedUserPackageTypeDocker    PackagesRestorePackageForAuthenticatedUserPackageType = "docker"
-	PackagesRestorePackageForAuthenticatedUserPackageTypeNuget     PackagesRestorePackageForAuthenticatedUserPackageType = "nuget"
-	PackagesRestorePackageForAuthenticatedUserPackageTypeContainer PackagesRestorePackageForAuthenticatedUserPackageType = "container"
-)
-
-// AllValues returns all PackagesRestorePackageForAuthenticatedUserPackageType values.
-func (PackagesRestorePackageForAuthenticatedUserPackageType) AllValues() []PackagesRestorePackageForAuthenticatedUserPackageType {
-	return []PackagesRestorePackageForAuthenticatedUserPackageType{
-		PackagesRestorePackageForAuthenticatedUserPackageTypeNpm,
-		PackagesRestorePackageForAuthenticatedUserPackageTypeMaven,
-		PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems,
-		PackagesRestorePackageForAuthenticatedUserPackageTypeDocker,
-		PackagesRestorePackageForAuthenticatedUserPackageTypeNuget,
-		PackagesRestorePackageForAuthenticatedUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesRestorePackageForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesRestorePackageForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesRestorePackageForAuthenticatedUserPackageType(data) {
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeNpm:
-		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeNpm
-		return nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeMaven:
-		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeMaven
-		return nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems:
-		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeRubygems
-		return nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeDocker:
-		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeDocker
-		return nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeNuget:
-		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeNuget
-		return nil
-	case PackagesRestorePackageForAuthenticatedUserPackageTypeContainer:
-		*s = PackagesRestorePackageForAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 type PackagesRestorePackageForAuthenticatedUserUnauthorized BasicError
@@ -66896,75 +64117,6 @@ type PackagesRestorePackageForOrgNotFound BasicError
 
 func (*PackagesRestorePackageForOrgNotFound) packagesRestorePackageForOrgRes() {}
 
-type PackagesRestorePackageForOrgPackageType string
-
-const (
-	PackagesRestorePackageForOrgPackageTypeNpm       PackagesRestorePackageForOrgPackageType = "npm"
-	PackagesRestorePackageForOrgPackageTypeMaven     PackagesRestorePackageForOrgPackageType = "maven"
-	PackagesRestorePackageForOrgPackageTypeRubygems  PackagesRestorePackageForOrgPackageType = "rubygems"
-	PackagesRestorePackageForOrgPackageTypeDocker    PackagesRestorePackageForOrgPackageType = "docker"
-	PackagesRestorePackageForOrgPackageTypeNuget     PackagesRestorePackageForOrgPackageType = "nuget"
-	PackagesRestorePackageForOrgPackageTypeContainer PackagesRestorePackageForOrgPackageType = "container"
-)
-
-// AllValues returns all PackagesRestorePackageForOrgPackageType values.
-func (PackagesRestorePackageForOrgPackageType) AllValues() []PackagesRestorePackageForOrgPackageType {
-	return []PackagesRestorePackageForOrgPackageType{
-		PackagesRestorePackageForOrgPackageTypeNpm,
-		PackagesRestorePackageForOrgPackageTypeMaven,
-		PackagesRestorePackageForOrgPackageTypeRubygems,
-		PackagesRestorePackageForOrgPackageTypeDocker,
-		PackagesRestorePackageForOrgPackageTypeNuget,
-		PackagesRestorePackageForOrgPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesRestorePackageForOrgPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesRestorePackageForOrgPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesRestorePackageForOrgPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesRestorePackageForOrgPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesRestorePackageForOrgPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesRestorePackageForOrgPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesRestorePackageForOrgPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesRestorePackageForOrgPackageType) UnmarshalText(data []byte) error {
-	switch PackagesRestorePackageForOrgPackageType(data) {
-	case PackagesRestorePackageForOrgPackageTypeNpm:
-		*s = PackagesRestorePackageForOrgPackageTypeNpm
-		return nil
-	case PackagesRestorePackageForOrgPackageTypeMaven:
-		*s = PackagesRestorePackageForOrgPackageTypeMaven
-		return nil
-	case PackagesRestorePackageForOrgPackageTypeRubygems:
-		*s = PackagesRestorePackageForOrgPackageTypeRubygems
-		return nil
-	case PackagesRestorePackageForOrgPackageTypeDocker:
-		*s = PackagesRestorePackageForOrgPackageTypeDocker
-		return nil
-	case PackagesRestorePackageForOrgPackageTypeNuget:
-		*s = PackagesRestorePackageForOrgPackageTypeNuget
-		return nil
-	case PackagesRestorePackageForOrgPackageTypeContainer:
-		*s = PackagesRestorePackageForOrgPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesRestorePackageForOrgUnauthorized BasicError
 
 func (*PackagesRestorePackageForOrgUnauthorized) packagesRestorePackageForOrgRes() {}
@@ -66981,75 +64133,6 @@ func (*PackagesRestorePackageForUserNoContent) packagesRestorePackageForUserRes(
 type PackagesRestorePackageForUserNotFound BasicError
 
 func (*PackagesRestorePackageForUserNotFound) packagesRestorePackageForUserRes() {}
-
-type PackagesRestorePackageForUserPackageType string
-
-const (
-	PackagesRestorePackageForUserPackageTypeNpm       PackagesRestorePackageForUserPackageType = "npm"
-	PackagesRestorePackageForUserPackageTypeMaven     PackagesRestorePackageForUserPackageType = "maven"
-	PackagesRestorePackageForUserPackageTypeRubygems  PackagesRestorePackageForUserPackageType = "rubygems"
-	PackagesRestorePackageForUserPackageTypeDocker    PackagesRestorePackageForUserPackageType = "docker"
-	PackagesRestorePackageForUserPackageTypeNuget     PackagesRestorePackageForUserPackageType = "nuget"
-	PackagesRestorePackageForUserPackageTypeContainer PackagesRestorePackageForUserPackageType = "container"
-)
-
-// AllValues returns all PackagesRestorePackageForUserPackageType values.
-func (PackagesRestorePackageForUserPackageType) AllValues() []PackagesRestorePackageForUserPackageType {
-	return []PackagesRestorePackageForUserPackageType{
-		PackagesRestorePackageForUserPackageTypeNpm,
-		PackagesRestorePackageForUserPackageTypeMaven,
-		PackagesRestorePackageForUserPackageTypeRubygems,
-		PackagesRestorePackageForUserPackageTypeDocker,
-		PackagesRestorePackageForUserPackageTypeNuget,
-		PackagesRestorePackageForUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesRestorePackageForUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesRestorePackageForUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesRestorePackageForUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesRestorePackageForUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesRestorePackageForUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesRestorePackageForUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesRestorePackageForUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesRestorePackageForUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesRestorePackageForUserPackageType(data) {
-	case PackagesRestorePackageForUserPackageTypeNpm:
-		*s = PackagesRestorePackageForUserPackageTypeNpm
-		return nil
-	case PackagesRestorePackageForUserPackageTypeMaven:
-		*s = PackagesRestorePackageForUserPackageTypeMaven
-		return nil
-	case PackagesRestorePackageForUserPackageTypeRubygems:
-		*s = PackagesRestorePackageForUserPackageTypeRubygems
-		return nil
-	case PackagesRestorePackageForUserPackageTypeDocker:
-		*s = PackagesRestorePackageForUserPackageTypeDocker
-		return nil
-	case PackagesRestorePackageForUserPackageTypeNuget:
-		*s = PackagesRestorePackageForUserPackageTypeNuget
-		return nil
-	case PackagesRestorePackageForUserPackageTypeContainer:
-		*s = PackagesRestorePackageForUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type PackagesRestorePackageForUserUnauthorized BasicError
 
@@ -67071,75 +64154,6 @@ type PackagesRestorePackageVersionForAuthenticatedUserNotFound BasicError
 func (*PackagesRestorePackageVersionForAuthenticatedUserNotFound) packagesRestorePackageVersionForAuthenticatedUserRes() {
 }
 
-type PackagesRestorePackageVersionForAuthenticatedUserPackageType string
-
-const (
-	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm       PackagesRestorePackageVersionForAuthenticatedUserPackageType = "npm"
-	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven     PackagesRestorePackageVersionForAuthenticatedUserPackageType = "maven"
-	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems  PackagesRestorePackageVersionForAuthenticatedUserPackageType = "rubygems"
-	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker    PackagesRestorePackageVersionForAuthenticatedUserPackageType = "docker"
-	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget     PackagesRestorePackageVersionForAuthenticatedUserPackageType = "nuget"
-	PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer PackagesRestorePackageVersionForAuthenticatedUserPackageType = "container"
-)
-
-// AllValues returns all PackagesRestorePackageVersionForAuthenticatedUserPackageType values.
-func (PackagesRestorePackageVersionForAuthenticatedUserPackageType) AllValues() []PackagesRestorePackageVersionForAuthenticatedUserPackageType {
-	return []PackagesRestorePackageVersionForAuthenticatedUserPackageType{
-		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm,
-		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven,
-		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems,
-		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker,
-		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget,
-		PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesRestorePackageVersionForAuthenticatedUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesRestorePackageVersionForAuthenticatedUserPackageType(data) {
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm:
-		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm
-		return nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven:
-		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeMaven
-		return nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems:
-		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeRubygems
-		return nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker:
-		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeDocker
-		return nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget:
-		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNuget
-		return nil
-	case PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer:
-		*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesRestorePackageVersionForAuthenticatedUserUnauthorized BasicError
 
 func (*PackagesRestorePackageVersionForAuthenticatedUserUnauthorized) packagesRestorePackageVersionForAuthenticatedUserRes() {
@@ -67158,75 +64172,6 @@ type PackagesRestorePackageVersionForOrgNotFound BasicError
 
 func (*PackagesRestorePackageVersionForOrgNotFound) packagesRestorePackageVersionForOrgRes() {}
 
-type PackagesRestorePackageVersionForOrgPackageType string
-
-const (
-	PackagesRestorePackageVersionForOrgPackageTypeNpm       PackagesRestorePackageVersionForOrgPackageType = "npm"
-	PackagesRestorePackageVersionForOrgPackageTypeMaven     PackagesRestorePackageVersionForOrgPackageType = "maven"
-	PackagesRestorePackageVersionForOrgPackageTypeRubygems  PackagesRestorePackageVersionForOrgPackageType = "rubygems"
-	PackagesRestorePackageVersionForOrgPackageTypeDocker    PackagesRestorePackageVersionForOrgPackageType = "docker"
-	PackagesRestorePackageVersionForOrgPackageTypeNuget     PackagesRestorePackageVersionForOrgPackageType = "nuget"
-	PackagesRestorePackageVersionForOrgPackageTypeContainer PackagesRestorePackageVersionForOrgPackageType = "container"
-)
-
-// AllValues returns all PackagesRestorePackageVersionForOrgPackageType values.
-func (PackagesRestorePackageVersionForOrgPackageType) AllValues() []PackagesRestorePackageVersionForOrgPackageType {
-	return []PackagesRestorePackageVersionForOrgPackageType{
-		PackagesRestorePackageVersionForOrgPackageTypeNpm,
-		PackagesRestorePackageVersionForOrgPackageTypeMaven,
-		PackagesRestorePackageVersionForOrgPackageTypeRubygems,
-		PackagesRestorePackageVersionForOrgPackageTypeDocker,
-		PackagesRestorePackageVersionForOrgPackageTypeNuget,
-		PackagesRestorePackageVersionForOrgPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesRestorePackageVersionForOrgPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesRestorePackageVersionForOrgPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForOrgPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForOrgPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForOrgPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForOrgPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForOrgPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesRestorePackageVersionForOrgPackageType) UnmarshalText(data []byte) error {
-	switch PackagesRestorePackageVersionForOrgPackageType(data) {
-	case PackagesRestorePackageVersionForOrgPackageTypeNpm:
-		*s = PackagesRestorePackageVersionForOrgPackageTypeNpm
-		return nil
-	case PackagesRestorePackageVersionForOrgPackageTypeMaven:
-		*s = PackagesRestorePackageVersionForOrgPackageTypeMaven
-		return nil
-	case PackagesRestorePackageVersionForOrgPackageTypeRubygems:
-		*s = PackagesRestorePackageVersionForOrgPackageTypeRubygems
-		return nil
-	case PackagesRestorePackageVersionForOrgPackageTypeDocker:
-		*s = PackagesRestorePackageVersionForOrgPackageTypeDocker
-		return nil
-	case PackagesRestorePackageVersionForOrgPackageTypeNuget:
-		*s = PackagesRestorePackageVersionForOrgPackageTypeNuget
-		return nil
-	case PackagesRestorePackageVersionForOrgPackageTypeContainer:
-		*s = PackagesRestorePackageVersionForOrgPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type PackagesRestorePackageVersionForOrgUnauthorized BasicError
 
 func (*PackagesRestorePackageVersionForOrgUnauthorized) packagesRestorePackageVersionForOrgRes() {}
@@ -67243,75 +64188,6 @@ func (*PackagesRestorePackageVersionForUserNoContent) packagesRestorePackageVers
 type PackagesRestorePackageVersionForUserNotFound BasicError
 
 func (*PackagesRestorePackageVersionForUserNotFound) packagesRestorePackageVersionForUserRes() {}
-
-type PackagesRestorePackageVersionForUserPackageType string
-
-const (
-	PackagesRestorePackageVersionForUserPackageTypeNpm       PackagesRestorePackageVersionForUserPackageType = "npm"
-	PackagesRestorePackageVersionForUserPackageTypeMaven     PackagesRestorePackageVersionForUserPackageType = "maven"
-	PackagesRestorePackageVersionForUserPackageTypeRubygems  PackagesRestorePackageVersionForUserPackageType = "rubygems"
-	PackagesRestorePackageVersionForUserPackageTypeDocker    PackagesRestorePackageVersionForUserPackageType = "docker"
-	PackagesRestorePackageVersionForUserPackageTypeNuget     PackagesRestorePackageVersionForUserPackageType = "nuget"
-	PackagesRestorePackageVersionForUserPackageTypeContainer PackagesRestorePackageVersionForUserPackageType = "container"
-)
-
-// AllValues returns all PackagesRestorePackageVersionForUserPackageType values.
-func (PackagesRestorePackageVersionForUserPackageType) AllValues() []PackagesRestorePackageVersionForUserPackageType {
-	return []PackagesRestorePackageVersionForUserPackageType{
-		PackagesRestorePackageVersionForUserPackageTypeNpm,
-		PackagesRestorePackageVersionForUserPackageTypeMaven,
-		PackagesRestorePackageVersionForUserPackageTypeRubygems,
-		PackagesRestorePackageVersionForUserPackageTypeDocker,
-		PackagesRestorePackageVersionForUserPackageTypeNuget,
-		PackagesRestorePackageVersionForUserPackageTypeContainer,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PackagesRestorePackageVersionForUserPackageType) MarshalText() ([]byte, error) {
-	switch s {
-	case PackagesRestorePackageVersionForUserPackageTypeNpm:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForUserPackageTypeMaven:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForUserPackageTypeRubygems:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForUserPackageTypeDocker:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForUserPackageTypeNuget:
-		return []byte(s), nil
-	case PackagesRestorePackageVersionForUserPackageTypeContainer:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PackagesRestorePackageVersionForUserPackageType) UnmarshalText(data []byte) error {
-	switch PackagesRestorePackageVersionForUserPackageType(data) {
-	case PackagesRestorePackageVersionForUserPackageTypeNpm:
-		*s = PackagesRestorePackageVersionForUserPackageTypeNpm
-		return nil
-	case PackagesRestorePackageVersionForUserPackageTypeMaven:
-		*s = PackagesRestorePackageVersionForUserPackageTypeMaven
-		return nil
-	case PackagesRestorePackageVersionForUserPackageTypeRubygems:
-		*s = PackagesRestorePackageVersionForUserPackageTypeRubygems
-		return nil
-	case PackagesRestorePackageVersionForUserPackageTypeDocker:
-		*s = PackagesRestorePackageVersionForUserPackageTypeDocker
-		return nil
-	case PackagesRestorePackageVersionForUserPackageTypeNuget:
-		*s = PackagesRestorePackageVersionForUserPackageTypeNuget
-		return nil
-	case PackagesRestorePackageVersionForUserPackageTypeContainer:
-		*s = PackagesRestorePackageVersionForUserPackageTypeContainer
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type PackagesRestorePackageVersionForUserUnauthorized BasicError
 
@@ -68553,6 +65429,54 @@ func (s *ParticipationStats) SetOwner(val []int) {
 }
 
 func (*ParticipationStats) reposGetParticipationStatsRes() {}
+
+type Per string
+
+const (
+	PerEmpty Per = ""
+	PerDay   Per = "day"
+	PerWeek  Per = "week"
+)
+
+// AllValues returns all Per values.
+func (Per) AllValues() []Per {
+	return []Per{
+		PerEmpty,
+		PerDay,
+		PerWeek,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s Per) MarshalText() ([]byte, error) {
+	switch s {
+	case PerEmpty:
+		return []byte(s), nil
+	case PerDay:
+		return []byte(s), nil
+	case PerWeek:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *Per) UnmarshalText(data []byte) error {
+	switch Per(data) {
+	case PerEmpty:
+		*s = PerEmpty
+		return nil
+	case PerDay:
+		*s = PerDay
+		return nil
+	case PerWeek:
+		*s = PerWeek
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
 
 // Porter Author.
 // Ref: #/components/schemas/porter-author
@@ -78338,47 +75262,6 @@ func (s *PullsListReviewCommentsOKHeaders) SetResponse(val []PullRequestReviewCo
 	s.Response = val
 }
 
-type PullsListReviewCommentsSort string
-
-const (
-	PullsListReviewCommentsSortCreated PullsListReviewCommentsSort = "created"
-	PullsListReviewCommentsSortUpdated PullsListReviewCommentsSort = "updated"
-)
-
-// AllValues returns all PullsListReviewCommentsSort values.
-func (PullsListReviewCommentsSort) AllValues() []PullsListReviewCommentsSort {
-	return []PullsListReviewCommentsSort{
-		PullsListReviewCommentsSortCreated,
-		PullsListReviewCommentsSortUpdated,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s PullsListReviewCommentsSort) MarshalText() ([]byte, error) {
-	switch s {
-	case PullsListReviewCommentsSortCreated:
-		return []byte(s), nil
-	case PullsListReviewCommentsSortUpdated:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *PullsListReviewCommentsSort) UnmarshalText(data []byte) error {
-	switch PullsListReviewCommentsSort(data) {
-	case PullsListReviewCommentsSortCreated:
-		*s = PullsListReviewCommentsSortCreated
-		return nil
-	case PullsListReviewCommentsSortUpdated:
-		*s = PullsListReviewCommentsSortUpdated
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 // PullsListReviewsOKHeaders wraps []PullRequestReview with response headers.
 type PullsListReviewsOKHeaders struct {
 	Link     OptString
@@ -85536,54 +82419,6 @@ type ReposGetBranchNotFound BasicError
 
 func (*ReposGetBranchNotFound) reposGetBranchRes() {}
 
-type ReposGetClonesPer string
-
-const (
-	ReposGetClonesPerEmpty ReposGetClonesPer = ""
-	ReposGetClonesPerDay   ReposGetClonesPer = "day"
-	ReposGetClonesPerWeek  ReposGetClonesPer = "week"
-)
-
-// AllValues returns all ReposGetClonesPer values.
-func (ReposGetClonesPer) AllValues() []ReposGetClonesPer {
-	return []ReposGetClonesPer{
-		ReposGetClonesPerEmpty,
-		ReposGetClonesPerDay,
-		ReposGetClonesPerWeek,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s ReposGetClonesPer) MarshalText() ([]byte, error) {
-	switch s {
-	case ReposGetClonesPerEmpty:
-		return []byte(s), nil
-	case ReposGetClonesPerDay:
-		return []byte(s), nil
-	case ReposGetClonesPerWeek:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *ReposGetClonesPer) UnmarshalText(data []byte) error {
-	switch ReposGetClonesPer(data) {
-	case ReposGetClonesPerEmpty:
-		*s = ReposGetClonesPerEmpty
-		return nil
-	case ReposGetClonesPerDay:
-		*s = ReposGetClonesPerDay
-		return nil
-	case ReposGetClonesPerWeek:
-		*s = ReposGetClonesPerWeek
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type ReposGetCodeFrequencyStatsOKApplicationJSON []CodeFrequencyStat
 
 func (*ReposGetCodeFrequencyStatsOKApplicationJSON) reposGetCodeFrequencyStatsRes() {}
@@ -85646,54 +82481,6 @@ func (*ReposGetTopReferrersOKApplicationJSON) reposGetTopReferrersRes() {}
 type ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON []SimpleUser
 
 func (*ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) reposGetUsersWithAccessToProtectedBranchRes() {
-}
-
-type ReposGetViewsPer string
-
-const (
-	ReposGetViewsPerEmpty ReposGetViewsPer = ""
-	ReposGetViewsPerDay   ReposGetViewsPer = "day"
-	ReposGetViewsPerWeek  ReposGetViewsPer = "week"
-)
-
-// AllValues returns all ReposGetViewsPer values.
-func (ReposGetViewsPer) AllValues() []ReposGetViewsPer {
-	return []ReposGetViewsPer{
-		ReposGetViewsPerEmpty,
-		ReposGetViewsPerDay,
-		ReposGetViewsPerWeek,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s ReposGetViewsPer) MarshalText() ([]byte, error) {
-	switch s {
-	case ReposGetViewsPerEmpty:
-		return []byte(s), nil
-	case ReposGetViewsPerDay:
-		return []byte(s), nil
-	case ReposGetViewsPerWeek:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *ReposGetViewsPer) UnmarshalText(data []byte) error {
-	switch ReposGetViewsPer(data) {
-	case ReposGetViewsPerEmpty:
-		*s = ReposGetViewsPerEmpty
-		return nil
-	case ReposGetViewsPerDay:
-		*s = ReposGetViewsPerDay
-		return nil
-	case ReposGetViewsPerWeek:
-		*s = ReposGetViewsPerWeek
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 type ReposListBranchesForHeadCommitOKApplicationJSON []BranchShort
@@ -93472,47 +90259,6 @@ func (s *SearchCodeOK) SetItems(val []CodeSearchResultItem) {
 
 func (*SearchCodeOK) searchCodeRes() {}
 
-type SearchCodeOrder string
-
-const (
-	SearchCodeOrderDesc SearchCodeOrder = "desc"
-	SearchCodeOrderAsc  SearchCodeOrder = "asc"
-)
-
-// AllValues returns all SearchCodeOrder values.
-func (SearchCodeOrder) AllValues() []SearchCodeOrder {
-	return []SearchCodeOrder{
-		SearchCodeOrderDesc,
-		SearchCodeOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s SearchCodeOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case SearchCodeOrderDesc:
-		return []byte(s), nil
-	case SearchCodeOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *SearchCodeOrder) UnmarshalText(data []byte) error {
-	switch SearchCodeOrder(data) {
-	case SearchCodeOrderDesc:
-		*s = SearchCodeOrderDesc
-		return nil
-	case SearchCodeOrderAsc:
-		*s = SearchCodeOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type SearchCodeSort string
 
 const (
@@ -93584,47 +90330,6 @@ func (s *SearchCommitsOK) SetItems(val []CommitSearchResultItem) {
 }
 
 func (*SearchCommitsOK) searchCommitsRes() {}
-
-type SearchCommitsOrder string
-
-const (
-	SearchCommitsOrderDesc SearchCommitsOrder = "desc"
-	SearchCommitsOrderAsc  SearchCommitsOrder = "asc"
-)
-
-// AllValues returns all SearchCommitsOrder values.
-func (SearchCommitsOrder) AllValues() []SearchCommitsOrder {
-	return []SearchCommitsOrder{
-		SearchCommitsOrderDesc,
-		SearchCommitsOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s SearchCommitsOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case SearchCommitsOrderDesc:
-		return []byte(s), nil
-	case SearchCommitsOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *SearchCommitsOrder) UnmarshalText(data []byte) error {
-	switch SearchCommitsOrder(data) {
-	case SearchCommitsOrderDesc:
-		*s = SearchCommitsOrderDesc
-		return nil
-	case SearchCommitsOrderAsc:
-		*s = SearchCommitsOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type SearchCommitsSort string
 
@@ -93704,47 +90409,6 @@ func (s *SearchIssuesAndPullRequestsOK) SetItems(val []IssueSearchResultItem) {
 }
 
 func (*SearchIssuesAndPullRequestsOK) searchIssuesAndPullRequestsRes() {}
-
-type SearchIssuesAndPullRequestsOrder string
-
-const (
-	SearchIssuesAndPullRequestsOrderDesc SearchIssuesAndPullRequestsOrder = "desc"
-	SearchIssuesAndPullRequestsOrderAsc  SearchIssuesAndPullRequestsOrder = "asc"
-)
-
-// AllValues returns all SearchIssuesAndPullRequestsOrder values.
-func (SearchIssuesAndPullRequestsOrder) AllValues() []SearchIssuesAndPullRequestsOrder {
-	return []SearchIssuesAndPullRequestsOrder{
-		SearchIssuesAndPullRequestsOrderDesc,
-		SearchIssuesAndPullRequestsOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s SearchIssuesAndPullRequestsOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case SearchIssuesAndPullRequestsOrderDesc:
-		return []byte(s), nil
-	case SearchIssuesAndPullRequestsOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *SearchIssuesAndPullRequestsOrder) UnmarshalText(data []byte) error {
-	switch SearchIssuesAndPullRequestsOrder(data) {
-	case SearchIssuesAndPullRequestsOrderDesc:
-		*s = SearchIssuesAndPullRequestsOrderDesc
-		return nil
-	case SearchIssuesAndPullRequestsOrderAsc:
-		*s = SearchIssuesAndPullRequestsOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type SearchIssuesAndPullRequestsSort string
 
@@ -93896,47 +90560,6 @@ func (s *SearchLabelsOK) SetItems(val []LabelSearchResultItem) {
 
 func (*SearchLabelsOK) searchLabelsRes() {}
 
-type SearchLabelsOrder string
-
-const (
-	SearchLabelsOrderDesc SearchLabelsOrder = "desc"
-	SearchLabelsOrderAsc  SearchLabelsOrder = "asc"
-)
-
-// AllValues returns all SearchLabelsOrder values.
-func (SearchLabelsOrder) AllValues() []SearchLabelsOrder {
-	return []SearchLabelsOrder{
-		SearchLabelsOrderDesc,
-		SearchLabelsOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s SearchLabelsOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case SearchLabelsOrderDesc:
-		return []byte(s), nil
-	case SearchLabelsOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *SearchLabelsOrder) UnmarshalText(data []byte) error {
-	switch SearchLabelsOrder(data) {
-	case SearchLabelsOrderDesc:
-		*s = SearchLabelsOrderDesc
-		return nil
-	case SearchLabelsOrderAsc:
-		*s = SearchLabelsOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 type SearchLabelsSort string
 
 const (
@@ -94015,47 +90638,6 @@ func (s *SearchReposOK) SetItems(val []RepoSearchResultItem) {
 }
 
 func (*SearchReposOK) searchReposRes() {}
-
-type SearchReposOrder string
-
-const (
-	SearchReposOrderDesc SearchReposOrder = "desc"
-	SearchReposOrderAsc  SearchReposOrder = "asc"
-)
-
-// AllValues returns all SearchReposOrder values.
-func (SearchReposOrder) AllValues() []SearchReposOrder {
-	return []SearchReposOrder{
-		SearchReposOrderDesc,
-		SearchReposOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s SearchReposOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case SearchReposOrderDesc:
-		return []byte(s), nil
-	case SearchReposOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *SearchReposOrder) UnmarshalText(data []byte) error {
-	switch SearchReposOrder(data) {
-	case SearchReposOrderDesc:
-		*s = SearchReposOrderDesc
-		return nil
-	case SearchReposOrderAsc:
-		*s = SearchReposOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type SearchReposSort string
 
@@ -94272,47 +90854,6 @@ func (s *SearchUsersOK) SetItems(val []UserSearchResultItem) {
 }
 
 func (*SearchUsersOK) searchUsersRes() {}
-
-type SearchUsersOrder string
-
-const (
-	SearchUsersOrderDesc SearchUsersOrder = "desc"
-	SearchUsersOrderAsc  SearchUsersOrder = "asc"
-)
-
-// AllValues returns all SearchUsersOrder values.
-func (SearchUsersOrder) AllValues() []SearchUsersOrder {
-	return []SearchUsersOrder{
-		SearchUsersOrderDesc,
-		SearchUsersOrderAsc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s SearchUsersOrder) MarshalText() ([]byte, error) {
-	switch s {
-	case SearchUsersOrderDesc:
-		return []byte(s), nil
-	case SearchUsersOrderAsc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *SearchUsersOrder) UnmarshalText(data []byte) error {
-	switch SearchUsersOrder(data) {
-	case SearchUsersOrderDesc:
-		*s = SearchUsersOrderDesc
-		return nil
-	case SearchUsersOrderAsc:
-		*s = SearchUsersOrderAsc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
 
 type SearchUsersSort string
 
@@ -95480,6 +92021,47 @@ func (s *SimpleUser) SetStarredAt(val OptString) {
 	s.StarredAt = val
 }
 
+type Sort string
+
+const (
+	SortCreated Sort = "created"
+	SortUpdated Sort = "updated"
+)
+
+// AllValues returns all Sort values.
+func (Sort) AllValues() []Sort {
+	return []Sort{
+		SortCreated,
+		SortUpdated,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s Sort) MarshalText() ([]byte, error) {
+	switch s {
+	case SortCreated:
+		return []byte(s), nil
+	case SortUpdated:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *Sort) UnmarshalText(data []byte) error {
+	switch Sort(data) {
+	case SortCreated:
+		*s = SortCreated
+		return nil
+	case SortUpdated:
+		*s = SortUpdated
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
+}
+
 // The status of a commit.
 // Ref: #/components/schemas/status
 type Status struct {
@@ -95682,6 +92264,54 @@ func (s *StatusHeaders) SetLocation(val OptString) {
 // SetResponse sets the value of Response.
 func (s *StatusHeaders) SetResponse(val Status) {
 	s.Response = val
+}
+
+type StatusParameter string
+
+const (
+	StatusParameterQueued     StatusParameter = "queued"
+	StatusParameterInProgress StatusParameter = "in_progress"
+	StatusParameterCompleted  StatusParameter = "completed"
+)
+
+// AllValues returns all StatusParameter values.
+func (StatusParameter) AllValues() []StatusParameter {
+	return []StatusParameter{
+		StatusParameterQueued,
+		StatusParameterInProgress,
+		StatusParameterCompleted,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s StatusParameter) MarshalText() ([]byte, error) {
+	switch s {
+	case StatusParameterQueued:
+		return []byte(s), nil
+	case StatusParameterInProgress:
+		return []byte(s), nil
+	case StatusParameterCompleted:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *StatusParameter) UnmarshalText(data []byte) error {
+	switch StatusParameter(data) {
+	case StatusParameterQueued:
+		*s = StatusParameterQueued
+		return nil
+	case StatusParameterInProgress:
+		*s = StatusParameterInProgress
+		return nil
+	case StatusParameterCompleted:
+		*s = StatusParameterCompleted
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
 }
 
 // Tag.
@@ -99299,47 +95929,6 @@ func (s *TeamsListChildLegacyOKHeaders) SetResponse(val []Team) {
 
 func (*TeamsListChildLegacyOKHeaders) teamsListChildLegacyRes() {}
 
-type TeamsListDiscussionCommentsInOrgDirection string
-
-const (
-	TeamsListDiscussionCommentsInOrgDirectionAsc  TeamsListDiscussionCommentsInOrgDirection = "asc"
-	TeamsListDiscussionCommentsInOrgDirectionDesc TeamsListDiscussionCommentsInOrgDirection = "desc"
-)
-
-// AllValues returns all TeamsListDiscussionCommentsInOrgDirection values.
-func (TeamsListDiscussionCommentsInOrgDirection) AllValues() []TeamsListDiscussionCommentsInOrgDirection {
-	return []TeamsListDiscussionCommentsInOrgDirection{
-		TeamsListDiscussionCommentsInOrgDirectionAsc,
-		TeamsListDiscussionCommentsInOrgDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s TeamsListDiscussionCommentsInOrgDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case TeamsListDiscussionCommentsInOrgDirectionAsc:
-		return []byte(s), nil
-	case TeamsListDiscussionCommentsInOrgDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *TeamsListDiscussionCommentsInOrgDirection) UnmarshalText(data []byte) error {
-	switch TeamsListDiscussionCommentsInOrgDirection(data) {
-	case TeamsListDiscussionCommentsInOrgDirectionAsc:
-		*s = TeamsListDiscussionCommentsInOrgDirectionAsc
-		return nil
-	case TeamsListDiscussionCommentsInOrgDirectionDesc:
-		*s = TeamsListDiscussionCommentsInOrgDirectionDesc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 // TeamsListDiscussionCommentsInOrgOKHeaders wraps []TeamDiscussionComment with response headers.
 type TeamsListDiscussionCommentsInOrgOKHeaders struct {
 	Link     OptString
@@ -99364,47 +95953,6 @@ func (s *TeamsListDiscussionCommentsInOrgOKHeaders) SetLink(val OptString) {
 // SetResponse sets the value of Response.
 func (s *TeamsListDiscussionCommentsInOrgOKHeaders) SetResponse(val []TeamDiscussionComment) {
 	s.Response = val
-}
-
-type TeamsListDiscussionCommentsLegacyDirection string
-
-const (
-	TeamsListDiscussionCommentsLegacyDirectionAsc  TeamsListDiscussionCommentsLegacyDirection = "asc"
-	TeamsListDiscussionCommentsLegacyDirectionDesc TeamsListDiscussionCommentsLegacyDirection = "desc"
-)
-
-// AllValues returns all TeamsListDiscussionCommentsLegacyDirection values.
-func (TeamsListDiscussionCommentsLegacyDirection) AllValues() []TeamsListDiscussionCommentsLegacyDirection {
-	return []TeamsListDiscussionCommentsLegacyDirection{
-		TeamsListDiscussionCommentsLegacyDirectionAsc,
-		TeamsListDiscussionCommentsLegacyDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s TeamsListDiscussionCommentsLegacyDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case TeamsListDiscussionCommentsLegacyDirectionAsc:
-		return []byte(s), nil
-	case TeamsListDiscussionCommentsLegacyDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *TeamsListDiscussionCommentsLegacyDirection) UnmarshalText(data []byte) error {
-	switch TeamsListDiscussionCommentsLegacyDirection(data) {
-	case TeamsListDiscussionCommentsLegacyDirectionAsc:
-		*s = TeamsListDiscussionCommentsLegacyDirectionAsc
-		return nil
-	case TeamsListDiscussionCommentsLegacyDirectionDesc:
-		*s = TeamsListDiscussionCommentsLegacyDirectionDesc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 // TeamsListDiscussionCommentsLegacyOKHeaders wraps []TeamDiscussionComment with response headers.
@@ -99433,47 +95981,6 @@ func (s *TeamsListDiscussionCommentsLegacyOKHeaders) SetResponse(val []TeamDiscu
 	s.Response = val
 }
 
-type TeamsListDiscussionsInOrgDirection string
-
-const (
-	TeamsListDiscussionsInOrgDirectionAsc  TeamsListDiscussionsInOrgDirection = "asc"
-	TeamsListDiscussionsInOrgDirectionDesc TeamsListDiscussionsInOrgDirection = "desc"
-)
-
-// AllValues returns all TeamsListDiscussionsInOrgDirection values.
-func (TeamsListDiscussionsInOrgDirection) AllValues() []TeamsListDiscussionsInOrgDirection {
-	return []TeamsListDiscussionsInOrgDirection{
-		TeamsListDiscussionsInOrgDirectionAsc,
-		TeamsListDiscussionsInOrgDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s TeamsListDiscussionsInOrgDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case TeamsListDiscussionsInOrgDirectionAsc:
-		return []byte(s), nil
-	case TeamsListDiscussionsInOrgDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *TeamsListDiscussionsInOrgDirection) UnmarshalText(data []byte) error {
-	switch TeamsListDiscussionsInOrgDirection(data) {
-	case TeamsListDiscussionsInOrgDirectionAsc:
-		*s = TeamsListDiscussionsInOrgDirectionAsc
-		return nil
-	case TeamsListDiscussionsInOrgDirectionDesc:
-		*s = TeamsListDiscussionsInOrgDirectionDesc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 // TeamsListDiscussionsInOrgOKHeaders wraps []TeamDiscussion with response headers.
 type TeamsListDiscussionsInOrgOKHeaders struct {
 	Link     OptString
@@ -99498,47 +96005,6 @@ func (s *TeamsListDiscussionsInOrgOKHeaders) SetLink(val OptString) {
 // SetResponse sets the value of Response.
 func (s *TeamsListDiscussionsInOrgOKHeaders) SetResponse(val []TeamDiscussion) {
 	s.Response = val
-}
-
-type TeamsListDiscussionsLegacyDirection string
-
-const (
-	TeamsListDiscussionsLegacyDirectionAsc  TeamsListDiscussionsLegacyDirection = "asc"
-	TeamsListDiscussionsLegacyDirectionDesc TeamsListDiscussionsLegacyDirection = "desc"
-)
-
-// AllValues returns all TeamsListDiscussionsLegacyDirection values.
-func (TeamsListDiscussionsLegacyDirection) AllValues() []TeamsListDiscussionsLegacyDirection {
-	return []TeamsListDiscussionsLegacyDirection{
-		TeamsListDiscussionsLegacyDirectionAsc,
-		TeamsListDiscussionsLegacyDirectionDesc,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s TeamsListDiscussionsLegacyDirection) MarshalText() ([]byte, error) {
-	switch s {
-	case TeamsListDiscussionsLegacyDirectionAsc:
-		return []byte(s), nil
-	case TeamsListDiscussionsLegacyDirectionDesc:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *TeamsListDiscussionsLegacyDirection) UnmarshalText(data []byte) error {
-	switch TeamsListDiscussionsLegacyDirection(data) {
-	case TeamsListDiscussionsLegacyDirectionAsc:
-		*s = TeamsListDiscussionsLegacyDirectionAsc
-		return nil
-	case TeamsListDiscussionsLegacyDirectionDesc:
-		*s = TeamsListDiscussionsLegacyDirectionDesc
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
 }
 
 // TeamsListDiscussionsLegacyOKHeaders wraps []TeamDiscussion with response headers.
@@ -103906,6 +100372,124 @@ func (s *WorkflowRun) SetHeadRepository(val MinimalRepository) {
 // SetHeadRepositoryID sets the value of HeadRepositoryID.
 func (s *WorkflowRun) SetHeadRepositoryID(val OptInt) {
 	s.HeadRepositoryID = val
+}
+
+type WorkflowRunStatus string
+
+const (
+	WorkflowRunStatusCompleted      WorkflowRunStatus = "completed"
+	WorkflowRunStatusActionRequired WorkflowRunStatus = "action_required"
+	WorkflowRunStatusCancelled      WorkflowRunStatus = "cancelled"
+	WorkflowRunStatusFailure        WorkflowRunStatus = "failure"
+	WorkflowRunStatusNeutral        WorkflowRunStatus = "neutral"
+	WorkflowRunStatusSkipped        WorkflowRunStatus = "skipped"
+	WorkflowRunStatusStale          WorkflowRunStatus = "stale"
+	WorkflowRunStatusSuccess        WorkflowRunStatus = "success"
+	WorkflowRunStatusTimedOut       WorkflowRunStatus = "timed_out"
+	WorkflowRunStatusInProgress     WorkflowRunStatus = "in_progress"
+	WorkflowRunStatusQueued         WorkflowRunStatus = "queued"
+	WorkflowRunStatusRequested      WorkflowRunStatus = "requested"
+	WorkflowRunStatusWaiting        WorkflowRunStatus = "waiting"
+)
+
+// AllValues returns all WorkflowRunStatus values.
+func (WorkflowRunStatus) AllValues() []WorkflowRunStatus {
+	return []WorkflowRunStatus{
+		WorkflowRunStatusCompleted,
+		WorkflowRunStatusActionRequired,
+		WorkflowRunStatusCancelled,
+		WorkflowRunStatusFailure,
+		WorkflowRunStatusNeutral,
+		WorkflowRunStatusSkipped,
+		WorkflowRunStatusStale,
+		WorkflowRunStatusSuccess,
+		WorkflowRunStatusTimedOut,
+		WorkflowRunStatusInProgress,
+		WorkflowRunStatusQueued,
+		WorkflowRunStatusRequested,
+		WorkflowRunStatusWaiting,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s WorkflowRunStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case WorkflowRunStatusCompleted:
+		return []byte(s), nil
+	case WorkflowRunStatusActionRequired:
+		return []byte(s), nil
+	case WorkflowRunStatusCancelled:
+		return []byte(s), nil
+	case WorkflowRunStatusFailure:
+		return []byte(s), nil
+	case WorkflowRunStatusNeutral:
+		return []byte(s), nil
+	case WorkflowRunStatusSkipped:
+		return []byte(s), nil
+	case WorkflowRunStatusStale:
+		return []byte(s), nil
+	case WorkflowRunStatusSuccess:
+		return []byte(s), nil
+	case WorkflowRunStatusTimedOut:
+		return []byte(s), nil
+	case WorkflowRunStatusInProgress:
+		return []byte(s), nil
+	case WorkflowRunStatusQueued:
+		return []byte(s), nil
+	case WorkflowRunStatusRequested:
+		return []byte(s), nil
+	case WorkflowRunStatusWaiting:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *WorkflowRunStatus) UnmarshalText(data []byte) error {
+	switch WorkflowRunStatus(data) {
+	case WorkflowRunStatusCompleted:
+		*s = WorkflowRunStatusCompleted
+		return nil
+	case WorkflowRunStatusActionRequired:
+		*s = WorkflowRunStatusActionRequired
+		return nil
+	case WorkflowRunStatusCancelled:
+		*s = WorkflowRunStatusCancelled
+		return nil
+	case WorkflowRunStatusFailure:
+		*s = WorkflowRunStatusFailure
+		return nil
+	case WorkflowRunStatusNeutral:
+		*s = WorkflowRunStatusNeutral
+		return nil
+	case WorkflowRunStatusSkipped:
+		*s = WorkflowRunStatusSkipped
+		return nil
+	case WorkflowRunStatusStale:
+		*s = WorkflowRunStatusStale
+		return nil
+	case WorkflowRunStatusSuccess:
+		*s = WorkflowRunStatusSuccess
+		return nil
+	case WorkflowRunStatusTimedOut:
+		*s = WorkflowRunStatusTimedOut
+		return nil
+	case WorkflowRunStatusInProgress:
+		*s = WorkflowRunStatusInProgress
+		return nil
+	case WorkflowRunStatusQueued:
+		*s = WorkflowRunStatusQueued
+		return nil
+	case WorkflowRunStatusRequested:
+		*s = WorkflowRunStatusRequested
+		return nil
+	case WorkflowRunStatusWaiting:
+		*s = WorkflowRunStatusWaiting
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
 }
 
 // Workflow Run Usage.

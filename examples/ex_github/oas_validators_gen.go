@@ -997,39 +997,6 @@ func (s *ActionsListWorkflowRunsForRepoOKHeaders) Validate() error {
 	return nil
 }
 
-func (s ActionsListWorkflowRunsForRepoStatus) Validate() error {
-	switch s {
-	case "completed":
-		return nil
-	case "action_required":
-		return nil
-	case "cancelled":
-		return nil
-	case "failure":
-		return nil
-	case "neutral":
-		return nil
-	case "skipped":
-		return nil
-	case "stale":
-		return nil
-	case "success":
-		return nil
-	case "timed_out":
-		return nil
-	case "in_progress":
-		return nil
-	case "queued":
-		return nil
-	case "requested":
-		return nil
-	case "waiting":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s *ActionsOrganizationPermissions) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -1448,17 +1415,6 @@ func (s *ActivityListRepoNotificationsForAuthenticatedUserOKHeaders) Validate() 
 	return nil
 }
 
-func (s ActivityListReposStarredByAuthenticatedUserDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -1480,17 +1436,6 @@ func (s *ActivityListReposStarredByAuthenticatedUserOKHeaders) Validate() error 
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s ActivityListReposStarredByAuthenticatedUserSort) Validate() error {
-	switch s {
-	case "created":
-		return nil
-	case "updated":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s *ActivityListReposWatchedByUserOKHeaders) Validate() error {
@@ -2661,17 +2606,6 @@ func (s *AppsListAccountsForPlanOKHeaders) Validate() error {
 	return nil
 }
 
-func (s AppsListAccountsForPlanSort) Validate() error {
-	switch s {
-	case "created":
-		return nil
-	case "updated":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s AppsListAccountsForPlanStubbedDirection) Validate() error {
 	switch s {
 	case "asc":
@@ -2721,17 +2655,6 @@ func (s *AppsListAccountsForPlanStubbedOKHeaders) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s AppsListAccountsForPlanStubbedSort) Validate() error {
-	switch s {
-	case "created":
-		return nil
-	case "updated":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s *AppsListInstallationReposForAuthenticatedUserOK) Validate() error {
@@ -3069,6 +2992,30 @@ func (s *AppsUpdateWebhookConfigForAppReq) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
+}
+
+func (s AuditLogInclude) Validate() error {
+	switch s {
+	case "web":
+		return nil
+	case "git":
+		return nil
+	case "all":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
+func (s AuditLogOrder) Validate() error {
+	switch s {
+	case "desc":
+		return nil
+	case "asc":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
 }
 
 func (s *AuthenticationToken) Validate() error {
@@ -3727,19 +3674,6 @@ func (s *ChecksListForRefOKHeaders) Validate() error {
 	return nil
 }
 
-func (s ChecksListForRefStatus) Validate() error {
-	switch s {
-	case "queued":
-		return nil
-	case "in_progress":
-		return nil
-	case "completed":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s ChecksListForSuiteFilter) Validate() error {
 	switch s {
 	case "latest":
@@ -3812,19 +3746,6 @@ func (s *ChecksListForSuiteOKHeaders) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s ChecksListForSuiteStatus) Validate() error {
-	switch s {
-	case "queued":
-		return nil
-	case "in_progress":
-		return nil
-	case "completed":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s *ChecksListSuitesForRefOK) Validate() error {
@@ -5097,6 +5018,17 @@ func (s DiffEntryStatus) Validate() error {
 	}
 }
 
+func (s Direction) Validate() error {
+	switch s {
+	case "asc":
+		return nil
+	case "desc":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
 func (s *Email) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -5189,30 +5121,6 @@ func (s EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) Va
 	case "selected":
 		return nil
 	case "all":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s EnterpriseAdminGetAuditLogInclude) Validate() error {
-	switch s {
-	case "web":
-		return nil
-	case "git":
-		return nil
-	case "all":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s EnterpriseAdminGetAuditLogOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)
@@ -8060,17 +7968,6 @@ func (s *IssuesListCommentsForRepoOKHeaders) Validate() error {
 	return nil
 }
 
-func (s IssuesListCommentsForRepoSort) Validate() error {
-	switch s {
-	case "created":
-		return nil
-	case "updated":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s *IssuesListCommentsOKHeaders) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -8109,17 +8006,6 @@ func (s *IssuesListCommentsOKHeaders) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s IssuesListDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s *IssuesListEventsForRepoOKHeaders) Validate() error {
@@ -8175,17 +8061,6 @@ func (s IssuesListFilter) Validate() error {
 	case "repos":
 		return nil
 	case "all":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s IssuesListForAuthenticatedUserDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)
@@ -8277,17 +8152,6 @@ func (s IssuesListForAuthenticatedUserState) Validate() error {
 	}
 }
 
-func (s IssuesListForOrgDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s IssuesListForOrgFilter) Validate() error {
 	switch s {
 	case "assigned":
@@ -8367,17 +8231,6 @@ func (s IssuesListForOrgState) Validate() error {
 	case "closed":
 		return nil
 	case "all":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s IssuesListForRepoDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)
@@ -10089,6 +9942,17 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) Validate() error {
 	return nil
 }
 
+func (s Order) Validate() error {
+	switch s {
+	case "desc":
+		return nil
+	case "asc":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
 func (s *OrgHook) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -10435,30 +10299,6 @@ func (s *OrgsCreateWebhookReqConfig) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s OrgsGetAuditLogInclude) Validate() error {
-	switch s {
-	case "web":
-		return nil
-	case "git":
-		return nil
-	case "all":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s OrgsGetAuditLogOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s OrgsListBlockedUsersOKApplicationJSON) Validate() error {
@@ -11043,6 +10883,25 @@ func (s PackagePackageType) Validate() error {
 	}
 }
 
+func (s PackageType) Validate() error {
+	switch s {
+	case "npm":
+		return nil
+	case "maven":
+		return nil
+	case "rubygems":
+		return nil
+	case "docker":
+		return nil
+	case "nuget":
+		return nil
+	case "container":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
 func (s *PackageVersion) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -11167,114 +11026,13 @@ func (s PackageVisibility) Validate() error {
 	}
 }
 
-func (s PackagesDeletePackageForAuthenticatedUserPackageType) Validate() error {
+func (s PackageVisibilityParam) Validate() error {
 	switch s {
-	case "npm":
+	case "public":
 		return nil
-	case "maven":
+	case "private":
 		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesDeletePackageForOrgPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesDeletePackageForUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesDeletePackageVersionForAuthenticatedUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesDeletePackageVersionForOrgPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesDeletePackageVersionForUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
+	case "internal":
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)
@@ -11304,25 +11062,6 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplica
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) Validate() error {
@@ -11361,25 +11100,6 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) Vali
 	return nil
 }
 
-func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s PackagesGetAllPackageVersionsForPackageOwnedByOrgState) Validate() error {
 	switch s {
 	case "active":
@@ -11416,139 +11136,6 @@ func (s PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) Val
 	return nil
 }
 
-func (s PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesGetPackageForAuthenticatedUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesGetPackageForOrganizationPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesGetPackageForUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesGetPackageVersionForAuthenticatedUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesGetPackageVersionForOrganizationPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesGetPackageVersionForUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s PackagesListPackagesForAuthenticatedUserPackageType) Validate() error {
 	switch s {
 	case "npm":
@@ -11562,19 +11149,6 @@ func (s PackagesListPackagesForAuthenticatedUserPackageType) Validate() error {
 	case "nuget":
 		return nil
 	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesListPackagesForAuthenticatedUserVisibility) Validate() error {
-	switch s {
-	case "public":
-		return nil
-	case "private":
-		return nil
-	case "internal":
 		return nil
 	default:
 		return errors.Errorf("invalid value: %v", s)
@@ -11625,19 +11199,6 @@ func (s PackagesListPackagesForOrganizationPackageType) Validate() error {
 	}
 }
 
-func (s PackagesListPackagesForOrganizationVisibility) Validate() error {
-	switch s {
-	case "public":
-		return nil
-	case "private":
-		return nil
-	case "internal":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s PackagesListPackagesForUserOKApplicationJSON) Validate() error {
 	alias := ([]Package)(s)
 	if alias == nil {
@@ -11664,133 +11225,6 @@ func (s PackagesListPackagesForUserOKApplicationJSON) Validate() error {
 }
 
 func (s PackagesListPackagesForUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesListPackagesForUserVisibility) Validate() error {
-	switch s {
-	case "public":
-		return nil
-	case "private":
-		return nil
-	case "internal":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesRestorePackageForAuthenticatedUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesRestorePackageForOrgPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesRestorePackageForUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesRestorePackageVersionForAuthenticatedUserPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesRestorePackageVersionForOrgPackageType) Validate() error {
-	switch s {
-	case "npm":
-		return nil
-	case "maven":
-		return nil
-	case "rubygems":
-		return nil
-	case "docker":
-		return nil
-	case "nuget":
-		return nil
-	case "container":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
-func (s PackagesRestorePackageVersionForUserPackageType) Validate() error {
 	switch s {
 	case "npm":
 		return nil
@@ -11998,6 +11432,19 @@ func (s *ParticipationStats) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
+}
+
+func (s Per) Validate() error {
+	switch s {
+	case "":
+		return nil
+	case "day":
+		return nil
+	case "week":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
 }
 
 func (s *PrivateUser) Validate() error {
@@ -13570,17 +13017,6 @@ func (s *PullsListReviewCommentsOKHeaders) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s PullsListReviewCommentsSort) Validate() error {
-	switch s {
-	case "created":
-		return nil
-	case "updated":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s *PullsListReviewsOKHeaders) Validate() error {
@@ -15615,19 +15051,6 @@ func (s ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) Validate() err
 	return nil
 }
 
-func (s ReposGetClonesPer) Validate() error {
-	switch s {
-	case "":
-		return nil
-	case "day":
-		return nil
-	case "week":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s ReposGetCodeFrequencyStatsOKApplicationJSON) Validate() error {
 	alias := ([]CodeFrequencyStat)(s)
 	if alias == nil {
@@ -15758,19 +15181,6 @@ func (s ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) Validate() er
 		return errors.New("nil is invalid value")
 	}
 	return nil
-}
-
-func (s ReposGetViewsPer) Validate() error {
-	switch s {
-	case "":
-		return nil
-	case "day":
-		return nil
-	case "week":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s ReposListBranchesForHeadCommitOKApplicationJSON) Validate() error {
@@ -17993,17 +17403,6 @@ func (s *SearchCodeOK) Validate() error {
 	return nil
 }
 
-func (s SearchCodeOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s SearchCodeSort) Validate() error {
 	switch s {
 	case "indexed":
@@ -18051,17 +17450,6 @@ func (s *SearchCommitsOK) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s SearchCommitsOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s SearchCommitsSort) Validate() error {
@@ -18113,17 +17501,6 @@ func (s *SearchIssuesAndPullRequestsOK) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s SearchIssuesAndPullRequestsOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s SearchIssuesAndPullRequestsSort) Validate() error {
@@ -18195,17 +17572,6 @@ func (s *SearchLabelsOK) Validate() error {
 	return nil
 }
 
-func (s SearchLabelsOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s SearchLabelsSort) Validate() error {
 	switch s {
 	case "created":
@@ -18255,17 +17621,6 @@ func (s *SearchReposOK) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s SearchReposOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s SearchReposSort) Validate() error {
@@ -18361,17 +17716,6 @@ func (s *SearchUsersOK) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s SearchUsersOrder) Validate() error {
-	switch s {
-	case "desc":
-		return nil
-	case "asc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s SearchUsersSort) Validate() error {
@@ -18619,6 +17963,17 @@ func (s *ShortBranch) Validate() error {
 	return nil
 }
 
+func (s Sort) Validate() error {
+	switch s {
+	case "created":
+		return nil
+	case "updated":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
+}
+
 func (s *StatusCheckPolicy) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -18640,6 +17995,19 @@ func (s *StatusCheckPolicy) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
+}
+
+func (s StatusParameter) Validate() error {
+	switch s {
+	case "queued":
+		return nil
+	case "in_progress":
+		return nil
+	case "completed":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
 }
 
 func (s *TeamFull) Validate() error {
@@ -19149,17 +18517,6 @@ func (s *TeamsListChildLegacyOKHeaders) Validate() error {
 	return nil
 }
 
-func (s TeamsListDiscussionCommentsInOrgDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s *TeamsListDiscussionCommentsInOrgOKHeaders) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -19181,17 +18538,6 @@ func (s *TeamsListDiscussionCommentsInOrgOKHeaders) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s TeamsListDiscussionCommentsLegacyDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s *TeamsListDiscussionCommentsLegacyOKHeaders) Validate() error {
@@ -19217,17 +18563,6 @@ func (s *TeamsListDiscussionCommentsLegacyOKHeaders) Validate() error {
 	return nil
 }
 
-func (s TeamsListDiscussionsInOrgDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s *TeamsListDiscussionsInOrgOKHeaders) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -19249,17 +18584,6 @@ func (s *TeamsListDiscussionsInOrgOKHeaders) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
-}
-
-func (s TeamsListDiscussionsLegacyDirection) Validate() error {
-	switch s {
-	case "asc":
-		return nil
-	case "desc":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
 }
 
 func (s *TeamsListDiscussionsLegacyOKHeaders) Validate() error {
@@ -20733,6 +20057,39 @@ func (s *Workflow) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
+}
+
+func (s WorkflowRunStatus) Validate() error {
+	switch s {
+	case "completed":
+		return nil
+	case "action_required":
+		return nil
+	case "cancelled":
+		return nil
+	case "failure":
+		return nil
+	case "neutral":
+		return nil
+	case "skipped":
+		return nil
+	case "stale":
+		return nil
+	case "success":
+		return nil
+	case "timed_out":
+		return nil
+	case "in_progress":
+		return nil
+	case "queued":
+		return nil
+	case "requested":
+		return nil
+	case "waiting":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
 }
 
 func (s WorkflowState) Validate() error {
