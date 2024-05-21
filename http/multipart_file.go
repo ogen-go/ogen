@@ -14,6 +14,7 @@ import (
 type MultipartFile struct {
 	Name   string
 	File   io.Reader
+	Size   int64
 	Header textproto.MIMEHeader
 }
 

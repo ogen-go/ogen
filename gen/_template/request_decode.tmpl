@@ -301,12 +301,14 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 			{{ $recv }} = ht.MultipartFile{
 				Name:   fh.Filename,
 				File:   f,
+				Size:   fh.Size,
 				Header: fh.Header,
 			}
 			{{- else }}
 			{{ $recv }}.SetTo(ht.MultipartFile{
 				Name:   fh.Filename,
 				File:   f,
+				Size:   fh.Size,
 				Header: fh.Header,
 			})
 			{{- end }}
@@ -323,6 +325,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 				{{ $recv }} = append({{ $recv }}, ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
+					Size:   fh.Size,
 					Header: fh.Header,
 				})
 			}
