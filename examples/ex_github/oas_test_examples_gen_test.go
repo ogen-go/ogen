@@ -71,6 +71,7 @@ func TestAPIOverviewSSHKeyFingerprints_EncodeDecode(t *testing.T) {
 }
 func TestAccepted_EncodeDecode(t *testing.T) {
 	var typ Accepted
+	typ = make(Accepted)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -79,6 +80,7 @@ func TestAccepted_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 Accepted
+	typ2 = make(Accepted)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestActionsApproveWorkflowRunForbidden_EncodeDecode(t *testing.T) {
@@ -3377,6 +3379,7 @@ func TestAuthenticationToken_Examples(t *testing.T) {
 }
 func TestAuthenticationTokenPermissions_EncodeDecode(t *testing.T) {
 	var typ AuthenticationTokenPermissions
+	typ = make(AuthenticationTokenPermissions)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -3385,6 +3388,7 @@ func TestAuthenticationTokenPermissions_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 AuthenticationTokenPermissions
+	typ2 = make(AuthenticationTokenPermissions)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 
@@ -3398,6 +3402,7 @@ func TestAuthenticationTokenPermissions_Examples(t *testing.T) {
 		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			var typ AuthenticationTokenPermissions
+			typ = make(AuthenticationTokenPermissions)
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
 				if validateErr, ok := errors.Into[*validate.Error](err); ok {
@@ -3412,6 +3417,7 @@ func TestAuthenticationTokenPermissions_Examples(t *testing.T) {
 			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AuthenticationTokenPermissions
+			typ2 = make(AuthenticationTokenPermissions)
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
@@ -7267,6 +7273,7 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue_
 }
 func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
+	typ = make(EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -7275,6 +7282,7 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
+	typ2 = make(EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReq_EncodeDecode(t *testing.T) {
@@ -7320,6 +7328,7 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReq_Examples(t *testing.
 }
 func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem
+	typ = make(EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -7328,6 +7337,7 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem_Encode
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem
+	typ2 = make(EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq_EncodeDecode(t *testing.T) {

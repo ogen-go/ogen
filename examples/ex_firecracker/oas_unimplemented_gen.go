@@ -111,7 +111,7 @@ func (UnimplementedHandler) MmdsGet(ctx context.Context) (r MmdsGetRes, _ error)
 // Updates the MMDS data store.
 //
 // PATCH /mmds
-func (UnimplementedHandler) MmdsPatch(ctx context.Context, req *MmdsPatchReq) (r MmdsPatchRes, _ error) {
+func (UnimplementedHandler) MmdsPatch(ctx context.Context, req OptMmdsPatchReq) (r MmdsPatchRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -120,7 +120,7 @@ func (UnimplementedHandler) MmdsPatch(ctx context.Context, req *MmdsPatchReq) (r
 // Creates a MMDS (Microvm Metadata Service) data store.
 //
 // PUT /mmds
-func (UnimplementedHandler) MmdsPut(ctx context.Context, req *MmdsPutReq) (r MmdsPutRes, _ error) {
+func (UnimplementedHandler) MmdsPut(ctx context.Context, req OptMmdsPutReq) (r MmdsPutRes, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

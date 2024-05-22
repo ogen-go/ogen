@@ -573,6 +573,7 @@ func TestOneOfMappingReferenceB_EncodeDecode(t *testing.T) {
 }
 func TestOneOfMappingReferenceBData_EncodeDecode(t *testing.T) {
 	var typ OneOfMappingReferenceBData
+	typ = make(OneOfMappingReferenceBData)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -581,6 +582,7 @@ func TestOneOfMappingReferenceBData_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OneOfMappingReferenceBData
+	typ2 = make(OneOfMappingReferenceBData)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOneOfNullables_EncodeDecode(t *testing.T) {

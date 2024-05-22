@@ -5570,6 +5570,40 @@ func (s *OptStringUnixSeconds) UnmarshalJSON(data []byte) error {
 	return s.Decode(d, json.DecodeStringUnixSeconds)
 }
 
+// Encode encodes TestRequestEmptyStructReq as json.
+func (o OptTestRequestEmptyStructReq) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes TestRequestEmptyStructReq from json.
+func (o *OptTestRequestEmptyStructReq) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptTestRequestEmptyStructReq to nil")
+	}
+	o.Set = true
+	o.Value = make(TestRequestEmptyStructReq)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptTestRequestEmptyStructReq) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptTestRequestEmptyStructReq) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes TestRequestFormatTestReq as json.
 func (o OptTestRequestFormatTestReq) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -6024,29 +6058,43 @@ func (s *OptUnixSeconds) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *TestRequestEmptyStructReq) Encode(e *jx.Encoder) {
+func (s TestRequestEmptyStructReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *TestRequestEmptyStructReq) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s TestRequestEmptyStructReq) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfTestRequestEmptyStructReq = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes TestRequestEmptyStructReq from json.
 func (s *TestRequestEmptyStructReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode TestRequestEmptyStructReq to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode TestRequestEmptyStructReq")
 	}
@@ -6055,7 +6103,7 @@ func (s *TestRequestEmptyStructReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *TestRequestEmptyStructReq) MarshalJSON() ([]byte, error) {
+func (s TestRequestEmptyStructReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -16225,29 +16273,43 @@ func (s *TestRequestFormatTestReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *TestRequestRequiredEmptyStructReq) Encode(e *jx.Encoder) {
+func (s TestRequestRequiredEmptyStructReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *TestRequestRequiredEmptyStructReq) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s TestRequestRequiredEmptyStructReq) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfTestRequestRequiredEmptyStructReq = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes TestRequestRequiredEmptyStructReq from json.
 func (s *TestRequestRequiredEmptyStructReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode TestRequestRequiredEmptyStructReq to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode TestRequestRequiredEmptyStructReq")
 	}
@@ -16256,7 +16318,7 @@ func (s *TestRequestRequiredEmptyStructReq) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *TestRequestRequiredEmptyStructReq) MarshalJSON() ([]byte, error) {
+func (s TestRequestRequiredEmptyStructReq) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -26426,29 +26488,43 @@ func (s *TestRequestRequiredFormatTestReq) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s *TestResponseEmptyStructOK) Encode(e *jx.Encoder) {
+func (s TestResponseEmptyStructOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
-func (s *TestResponseEmptyStructOK) encodeFields(e *jx.Encoder) {
-}
+// encodeFields implements json.Marshaler.
+func (s TestResponseEmptyStructOK) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
 
-var jsonFieldsNameOfTestResponseEmptyStructOK = [0]string{}
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
 
 // Decode decodes TestResponseEmptyStructOK from json.
 func (s *TestResponseEmptyStructOK) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode TestResponseEmptyStructOK to nil")
 	}
-
+	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
+		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode TestResponseEmptyStructOK")
 	}
@@ -26457,7 +26533,7 @@ func (s *TestResponseEmptyStructOK) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *TestResponseEmptyStructOK) MarshalJSON() ([]byte, error) {
+func (s TestResponseEmptyStructOK) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

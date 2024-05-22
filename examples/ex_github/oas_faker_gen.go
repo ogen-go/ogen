@@ -158,6 +158,13 @@ func (s *APIOverviewSSHKeyFingerprints) SetFake() {
 
 // SetFake set fake values.
 func (s *Accepted) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -2692,8 +2699,8 @@ func (s *AuthenticationToken) SetFake() {
 		}
 	}
 	{
-		{ // Keep pointer nil to prevent infinite recursion.
-			s.Permissions = nil
+		{
+			s.Permissions.SetFake()
 		}
 	}
 	{
@@ -2722,6 +2729,13 @@ func (s *AuthenticationToken) SetFake() {
 
 // SetFake set fake values.
 func (s *AuthenticationTokenPermissions) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -7487,6 +7501,13 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 
 // SetFake set fake values.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -7519,6 +7540,13 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) SetFake() {
 
 // SetFake set fake values.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) SetFake() {
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 
 // SetFake set fake values.
@@ -17808,6 +17836,15 @@ func (s *OptAuditLogEventActorLocation) SetFake() {
 // SetFake set fake values.
 func (s *OptAuditLogEventData) SetFake() {
 	var elem AuditLogEventData
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptAuthenticationTokenPermissions) SetFake() {
+	var elem AuthenticationTokenPermissions
 	{
 		elem.SetFake()
 	}
