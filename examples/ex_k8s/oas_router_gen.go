@@ -13026,6 +13026,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 
+				if len(elem) == 0 {
+					switch r.Method {
+					case "GET":
+						s.handleLogFileListHandlerRequest([0]string{}, elemIsEscaped, w, r)
+					default:
+						s.notAllowed(w, r, "GET")
+					}
+
+					return
+				}
 				// Param: "logpath"
 				// Leaf parameter
 				args[0] = elem
