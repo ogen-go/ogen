@@ -202,15 +202,18 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		return
 	}
 {{- else }}
+	{{- with $routes := $r.Routes }}
+	if len(elem) == 0 {
+		{{ template "route_handle_request" $r }}
+		return
+	}
+	{{- end }}
 	{{- with $child := $r.StaticChildren }}
+		{{- if not $r.Routes }}
 		if len(elem) == 0 {
-			{{- with $routes := $r.Routes }}
-			{{ template "route_handle_request" $r }}
-			return
-			{{- else }}
 			break
-			{{- end }}
 		}
+		{{- end }}
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
@@ -221,7 +224,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 				break
 			}
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
-			
+
 			elem = origElem
 		{{- end }}
 		}
