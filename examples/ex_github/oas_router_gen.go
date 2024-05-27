@@ -16663,9 +16663,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: AppsCreateFromManifest
 									r.name = "AppsCreateFromManifest"
 									r.summary = "Create a GitHub App from a manifest"
 									r.operationID = "apps/create-from-manifest"
@@ -16715,9 +16715,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: AppsGetWebhookConfigForApp
 										r.name = "AppsGetWebhookConfigForApp"
 										r.summary = "Get a webhook configuration for an app"
 										r.operationID = "apps/get-webhook-config-for-app"
@@ -16726,7 +16726,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 0
 										return r, true
 									case "PATCH":
-										// Leaf: AppsUpdateWebhookConfigForApp
 										r.name = "AppsUpdateWebhookConfigForApp"
 										r.summary = "Update a webhook configuration for an app"
 										r.operationID = "apps/update-webhook-config-for-app"
@@ -16804,9 +16803,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: AppsRedeliverWebhookDelivery
 												r.name = "AppsRedeliverWebhookDelivery"
 												r.summary = "Redeliver a delivery for an app webhook"
 												r.operationID = "apps/redeliver-webhook-delivery"
@@ -16882,9 +16881,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: AppsCreateInstallationAccessToken
 											r.name = "AppsCreateInstallationAccessToken"
 											r.summary = "Create an installation access token for an app"
 											r.operationID = "apps/create-installation-access-token"
@@ -16907,9 +16906,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "DELETE":
-											// Leaf: AppsUnsuspendInstallation
 											r.name = "AppsUnsuspendInstallation"
 											r.summary = "Unsuspend an app installation"
 											r.operationID = "apps/unsuspend-installation"
@@ -16918,7 +16917,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 1
 											return r, true
 										case "PUT":
-											// Leaf: AppsSuspendInstallation
 											r.name = "AppsSuspendInstallation"
 											r.summary = "Suspend an app installation"
 											r.operationID = "apps/suspend-installation"
@@ -16990,9 +16988,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "DELETE":
-										// Leaf: OAuthAuthorizationsDeleteGrant
 										r.name = "OAuthAuthorizationsDeleteGrant"
 										r.summary = "Delete a grant"
 										r.operationID = "oauth-authorizations/delete-grant"
@@ -17001,7 +16999,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "GET":
-										// Leaf: OAuthAuthorizationsGetGrant
 										r.name = "OAuthAuthorizationsGetGrant"
 										r.summary = "Get a single grant"
 										r.operationID = "oauth-authorizations/get-grant"
@@ -17053,9 +17050,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "DELETE":
-										// Leaf: AppsDeleteAuthorization
 										r.name = "AppsDeleteAuthorization"
 										r.summary = "Delete an app authorization"
 										r.operationID = "apps/delete-authorization"
@@ -17117,9 +17114,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: AppsScopeToken
 											r.name = "AppsScopeToken"
 											r.summary = "Create a scoped access token"
 											r.operationID = "apps/scope-token"
@@ -17156,9 +17153,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: AppsGetBySlug
 								r.name = "AppsGetBySlug"
 								r.summary = "Get an app"
 								r.operationID = "apps/get-by-slug"
@@ -17264,9 +17261,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "PUT":
-										// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 										r.name = "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint"
 										r.summary = "Get-or-create an authorization for a specific app and fingerprint"
 										r.operationID = "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"
@@ -17290,9 +17287,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "DELETE":
-								// Leaf: OAuthAuthorizationsDeleteAuthorization
 								r.name = "OAuthAuthorizationsDeleteAuthorization"
 								r.summary = "Delete an authorization"
 								r.operationID = "oauth-authorizations/delete-authorization"
@@ -17301,7 +17298,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "GET":
-								// Leaf: OAuthAuthorizationsGetAuthorization
 								r.name = "OAuthAuthorizationsGetAuthorization"
 								r.summary = "Get a single authorization"
 								r.operationID = "oauth-authorizations/get-authorization"
@@ -17310,7 +17306,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "PATCH":
-								// Leaf: OAuthAuthorizationsUpdateAuthorization
 								r.name = "OAuthAuthorizationsUpdateAuthorization"
 								r.summary = "Update an existing authorization"
 								r.operationID = "oauth-authorizations/update-authorization"
@@ -17367,9 +17362,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					elem = ""
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: CodesOfConductGetConductCode
 							r.name = "CodesOfConductGetConductCode"
 							r.summary = "Get a code of conduct"
 							r.operationID = "codes-of-conduct/get-conduct-code"
@@ -17407,9 +17402,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: EmojisGet
 							r.name = "EmojisGet"
 							r.summary = "Get emojis"
 							r.operationID = "emojis/get"
@@ -17568,9 +17563,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "DELETE":
-														// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
 														r.name = "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise"
 														r.summary = "Disable a selected organization for GitHub Actions in an enterprise"
 														r.operationID = "enterprise-admin/disable-selected-organization-github-actions-enterprise"
@@ -17579,7 +17574,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "PUT":
-														// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
 														r.name = "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise"
 														r.summary = "Enable a selected organization for GitHub Actions in an enterprise"
 														r.operationID = "enterprise-admin/enable-selected-organization-github-actions-enterprise"
@@ -17605,9 +17599,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
 													r.name = "EnterpriseAdminGetAllowedActionsEnterprise"
 													r.summary = "Get allowed actions for an enterprise"
 													r.operationID = "enterprise-admin/get-allowed-actions-enterprise"
@@ -17616,7 +17610,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 1
 													return r, true
 												case "PUT":
-													// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
 													r.name = "EnterpriseAdminSetAllowedActionsEnterprise"
 													r.summary = "Set allowed actions for an enterprise"
 													r.operationID = "enterprise-admin/set-allowed-actions-enterprise"
@@ -17784,9 +17777,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
 																r.name = "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise"
 																r.summary = "Remove organization access to a self-hosted runner group in an enterprise"
 																r.operationID = "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"
@@ -17795,7 +17788,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "PUT":
-																// Leaf: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise
 																r.name = "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise"
 																r.summary = "Add organization access to a self-hosted runner group in an enterprise"
 																r.operationID = "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"
@@ -17857,9 +17849,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 																r.name = "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise"
 																r.summary = "Remove a self-hosted runner from a group for an enterprise"
 																r.operationID = "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"
@@ -17868,7 +17860,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "PUT":
-																// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
 																r.name = "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise"
 																r.summary = "Add a self-hosted runner to a group for an enterprise"
 																r.operationID = "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"
@@ -17938,9 +17929,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
 														r.name = "EnterpriseAdminListRunnerApplicationsForEnterprise"
 														r.summary = "List runner applications for an enterprise"
 														r.operationID = "enterprise-admin/list-runner-applications-for-enterprise"
@@ -17975,9 +17966,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: EnterpriseAdminCreateRegistrationTokenForEnterprise
 															r.name = "EnterpriseAdminCreateRegistrationTokenForEnterprise"
 															r.summary = "Create a registration token for an enterprise"
 															r.operationID = "enterprise-admin/create-registration-token-for-enterprise"
@@ -18000,9 +17991,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
 															r.name = "EnterpriseAdminCreateRemoveTokenForEnterprise"
 															r.summary = "Create a remove token for an enterprise"
 															r.operationID = "enterprise-admin/create-remove-token-for-enterprise"
@@ -18026,9 +18017,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "DELETE":
-													// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
 													r.name = "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise"
 													r.summary = "Delete a self-hosted runner from an enterprise"
 													r.operationID = "enterprise-admin/delete-self-hosted-runner-from-enterprise"
@@ -18037,7 +18028,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 2
 													return r, true
 												case "GET":
-													// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
 													r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
 													r.summary = "Get a self-hosted runner for an enterprise"
 													r.operationID = "enterprise-admin/get-self-hosted-runner-for-enterprise"
@@ -18069,9 +18059,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: EnterpriseAdminGetAuditLog
 										r.name = "EnterpriseAdminGetAuditLog"
 										r.summary = "Get the audit log for an enterprise"
 										r.operationID = "enterprise-admin/get-audit-log"
@@ -18109,9 +18099,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: BillingGetGithubActionsBillingGhe
 										r.name = "BillingGetGithubActionsBillingGhe"
 										r.summary = "Get GitHub Actions billing for an enterprise"
 										r.operationID = "billing/get-github-actions-billing-ghe"
@@ -18134,9 +18124,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: BillingGetGithubPackagesBillingGhe
 										r.name = "BillingGetGithubPackagesBillingGhe"
 										r.summary = "Get GitHub Packages billing for an enterprise"
 										r.operationID = "billing/get-github-packages-billing-ghe"
@@ -18159,9 +18149,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: BillingGetSharedStorageBillingGhe
 										r.name = "BillingGetSharedStorageBillingGhe"
 										r.summary = "Get shared storage billing for an enterprise"
 										r.operationID = "billing/get-shared-storage-billing-ghe"
@@ -18193,9 +18183,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: ActivityListPublicEvents
 							r.name = "ActivityListPublicEvents"
 							r.summary = "List public events"
 							r.operationID = "activity/list-public-events"
@@ -18221,9 +18211,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: ActivityGetFeeds
 						r.name = "ActivityGetFeeds"
 						r.summary = "Get feeds"
 						r.operationID = "activity/get-feeds"
@@ -18301,9 +18291,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: GistsListPublic
 									r.name = "GistsListPublic"
 									r.summary = "List public gists"
 									r.operationID = "gists/list-public"
@@ -18326,9 +18316,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: GistsListStarred
 									r.name = "GistsListStarred"
 									r.summary = "List starred gists"
 									r.operationID = "gists/list-starred"
@@ -18444,9 +18434,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: GistsDeleteComment
 												r.name = "GistsDeleteComment"
 												r.summary = "Delete a gist comment"
 												r.operationID = "gists/delete-comment"
@@ -18455,7 +18445,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "GET":
-												// Leaf: GistsGetComment
 												r.name = "GistsGetComment"
 												r.summary = "Get a gist comment"
 												r.operationID = "gists/get-comment"
@@ -18464,7 +18453,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "PATCH":
-												// Leaf: GistsUpdateComment
 												r.name = "GistsUpdateComment"
 												r.summary = "Update a gist comment"
 												r.operationID = "gists/update-comment"
@@ -18490,9 +18478,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: GistsListCommits
 											r.name = "GistsListCommits"
 											r.summary = "List gist commits"
 											r.operationID = "gists/list-commits"
@@ -18518,9 +18506,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: GistsListForks
 										r.name = "GistsListForks"
 										r.summary = "List gist forks"
 										r.operationID = "gists/list-forks"
@@ -18529,7 +18517,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "POST":
-										// Leaf: GistsFork
 										r.name = "GistsFork"
 										r.summary = "Fork a gist"
 										r.operationID = "gists/fork"
@@ -18552,9 +18539,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "DELETE":
-										// Leaf: GistsUnstar
 										r.name = "GistsUnstar"
 										r.summary = "Unstar a gist"
 										r.operationID = "gists/unstar"
@@ -18563,7 +18550,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "GET":
-										// Leaf: GistsCheckIsStarred
 										r.name = "GistsCheckIsStarred"
 										r.summary = "Check if a gist is starred"
 										r.operationID = "gists/check-is-starred"
@@ -18572,7 +18558,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "PUT":
-										// Leaf: GistsStar
 										r.name = "GistsStar"
 										r.summary = "Star a gist"
 										r.operationID = "gists/star"
@@ -18593,9 +18578,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: GistsGetRevision
 									r.name = "GistsGetRevision"
 									r.summary = "Get a gist revision"
 									r.operationID = "gists/get-revision"
@@ -18652,9 +18637,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: GitignoreGetTemplate
 								r.name = "GitignoreGetTemplate"
 								r.summary = "Get a gitignore template"
 								r.operationID = "gitignore/get-template"
@@ -18707,9 +18692,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: AppsListReposAccessibleToInstallation
 								r.name = "AppsListReposAccessibleToInstallation"
 								r.summary = "List repositories accessible to the app installation"
 								r.operationID = "apps/list-repos-accessible-to-installation"
@@ -18732,9 +18717,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "DELETE":
-								// Leaf: AppsRevokeInstallationAccessToken
 								r.name = "AppsRevokeInstallationAccessToken"
 								r.summary = "Revoke an installation access token"
 								r.operationID = "apps/revoke-installation-access-token"
@@ -18760,9 +18745,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: IssuesList
 							r.name = "IssuesList"
 							r.summary = "List issues assigned to the authenticated user"
 							r.operationID = "issues/list"
@@ -18816,9 +18801,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					elem = ""
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: LicensesGet
 							r.name = "LicensesGet"
 							r.summary = "Get a license"
 							r.operationID = "licenses/get"
@@ -18891,9 +18876,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: MarkdownRenderRaw
 									r.name = "MarkdownRenderRaw"
 									r.summary = "Render a Markdown document in raw mode"
 									r.operationID = "markdown/render-raw"
@@ -18936,9 +18921,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: AppsGetSubscriptionPlanForAccount
 									r.name = "AppsGetSubscriptionPlanForAccount"
 									r.summary = "Get a subscription plan for an account"
 									r.operationID = "apps/get-subscription-plan-for-account"
@@ -19005,9 +18990,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: AppsListAccountsForPlan
 											r.name = "AppsListAccountsForPlan"
 											r.summary = "List accounts for a plan"
 											r.operationID = "apps/list-accounts-for-plan"
@@ -19053,9 +19038,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: AppsGetSubscriptionPlanForAccountStubbed
 										r.name = "AppsGetSubscriptionPlanForAccountStubbed"
 										r.summary = "Get a subscription plan for an account (stubbed)"
 										r.operationID = "apps/get-subscription-plan-for-account-stubbed"
@@ -19122,9 +19107,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: AppsListAccountsForPlanStubbed
 												r.name = "AppsListAccountsForPlanStubbed"
 												r.summary = "List accounts for a plan (stubbed)"
 												r.operationID = "apps/list-accounts-for-plan-stubbed"
@@ -19162,9 +19147,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: MetaGet
 							r.name = "MetaGet"
 							r.summary = "Get GitHub meta information"
 							r.operationID = "meta/get"
@@ -19244,9 +19229,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: ActivityListPublicEventsForRepoNetwork
 									r.name = "ActivityListPublicEventsForRepoNetwork"
 									r.summary = "List public events for a network of repositories"
 									r.operationID = "activity/list-public-events-for-repo-network"
@@ -19346,9 +19331,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: ActivityDeleteThreadSubscription
 									r.name = "ActivityDeleteThreadSubscription"
 									r.summary = "Delete a thread subscription"
 									r.operationID = "activity/delete-thread-subscription"
@@ -19357,7 +19342,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 1
 									return r, true
 								case "GET":
-									// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
 									r.name = "ActivityGetThreadSubscriptionForAuthenticatedUser"
 									r.summary = "Get a thread subscription for the authenticated user"
 									r.operationID = "activity/get-thread-subscription-for-authenticated-user"
@@ -19366,7 +19350,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 1
 									return r, true
 								case "PUT":
-									// Leaf: ActivitySetThreadSubscription
 									r.name = "ActivitySetThreadSubscription"
 									r.summary = "Set a thread subscription"
 									r.operationID = "activity/set-thread-subscription"
@@ -19410,9 +19393,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: MetaGetOctocat
 							r.name = "MetaGetOctocat"
 							r.summary = "Get Octocat"
 							r.operationID = "meta/get-octocat"
@@ -19447,9 +19430,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: OrgsList
 								r.name = "OrgsList"
 								r.summary = "List organizations"
 								r.operationID = "orgs/list"
@@ -19619,9 +19602,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
 															r.name = "ActionsDisableSelectedRepositoryGithubActionsOrganization"
 															r.summary = "Disable a selected repository for GitHub Actions in an organization"
 															r.operationID = "actions/disable-selected-repository-github-actions-organization"
@@ -19630,7 +19613,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 2
 															return r, true
 														case "PUT":
-															// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
 															r.name = "ActionsEnableSelectedRepositoryGithubActionsOrganization"
 															r.summary = "Enable a selected repository for GitHub Actions in an organization"
 															r.operationID = "actions/enable-selected-repository-github-actions-organization"
@@ -19656,9 +19638,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ActionsGetAllowedActionsOrganization
 														r.name = "ActionsGetAllowedActionsOrganization"
 														r.summary = "Get allowed actions for an organization"
 														r.operationID = "actions/get-allowed-actions-organization"
@@ -19667,7 +19649,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 1
 														return r, true
 													case "PUT":
-														// Leaf: ActionsSetAllowedActionsOrganization
 														r.name = "ActionsSetAllowedActionsOrganization"
 														r.summary = "Set allowed actions for an organization"
 														r.operationID = "actions/set-allowed-actions-organization"
@@ -19835,9 +19816,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "DELETE":
-																	// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
 																	r.name = "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg"
 																	r.summary = "Remove repository access to a self-hosted runner group in an organization"
 																	r.operationID = "actions/remove-repo-access-to-self-hosted-runner-group-in-org"
@@ -19846,7 +19827,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.count = 3
 																	return r, true
 																case "PUT":
-																	// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
 																	r.name = "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg"
 																	r.summary = "Add repository access to a self-hosted runner group in an organization"
 																	r.operationID = "actions/add-repo-access-to-self-hosted-runner-group-in-org"
@@ -19908,9 +19888,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "DELETE":
-																	// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
 																	r.name = "ActionsRemoveSelfHostedRunnerFromGroupForOrg"
 																	r.summary = "Remove a self-hosted runner from a group for an organization"
 																	r.operationID = "actions/remove-self-hosted-runner-from-group-for-org"
@@ -19919,7 +19899,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.count = 3
 																	return r, true
 																case "PUT":
-																	// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
 																	r.name = "ActionsAddSelfHostedRunnerToGroupForOrg"
 																	r.summary = "Add a self-hosted runner to a group for an organization"
 																	r.operationID = "actions/add-self-hosted-runner-to-group-for-org"
@@ -19989,9 +19968,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ActionsListRunnerApplicationsForOrg
 															r.name = "ActionsListRunnerApplicationsForOrg"
 															r.summary = "List runner applications for an organization"
 															r.operationID = "actions/list-runner-applications-for-org"
@@ -20026,9 +20005,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: ActionsCreateRegistrationTokenForOrg
 																r.name = "ActionsCreateRegistrationTokenForOrg"
 																r.summary = "Create a registration token for an organization"
 																r.operationID = "actions/create-registration-token-for-org"
@@ -20051,9 +20030,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: ActionsCreateRemoveTokenForOrg
 																r.name = "ActionsCreateRemoveTokenForOrg"
 																r.summary = "Create a remove token for an organization"
 																r.operationID = "actions/create-remove-token-for-org"
@@ -20077,9 +20056,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "DELETE":
-														// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
 														r.name = "ActionsDeleteSelfHostedRunnerFromOrg"
 														r.summary = "Delete a self-hosted runner from an organization"
 														r.operationID = "actions/delete-self-hosted-runner-from-org"
@@ -20088,7 +20067,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "GET":
-														// Leaf: ActionsGetSelfHostedRunnerForOrg
 														r.name = "ActionsGetSelfHostedRunnerForOrg"
 														r.summary = "Get a self-hosted runner for an organization"
 														r.operationID = "actions/get-self-hosted-runner-for-org"
@@ -20152,9 +20130,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ActionsGetOrgPublicKey
 														r.name = "ActionsGetOrgPublicKey"
 														r.summary = "Get an organization public key"
 														r.operationID = "actions/get-org-public-key"
@@ -20254,9 +20232,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
 															r.name = "ActionsRemoveSelectedRepoFromOrgSecret"
 															r.summary = "Remove selected repository from an organization secret"
 															r.operationID = "actions/remove-selected-repo-from-org-secret"
@@ -20265,7 +20243,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PUT":
-															// Leaf: ActionsAddSelectedRepoToOrgSecret
 															r.name = "ActionsAddSelectedRepoToOrgSecret"
 															r.summary = "Add selected repository to an organization secret"
 															r.operationID = "actions/add-selected-repo-to-org-secret"
@@ -20300,9 +20277,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: OrgsGetAuditLog
 											r.name = "OrgsGetAuditLog"
 											r.summary = "Get the audit log for an organization"
 											r.operationID = "orgs/get-audit-log"
@@ -20356,9 +20333,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "DELETE":
-											// Leaf: OrgsUnblockUser
 											r.name = "OrgsUnblockUser"
 											r.summary = "Unblock a user from an organization"
 											r.operationID = "orgs/unblock-user"
@@ -20367,7 +20344,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "GET":
-											// Leaf: OrgsCheckBlockedUser
 											r.name = "OrgsCheckBlockedUser"
 											r.summary = "Check if a user is blocked by an organization"
 											r.operationID = "orgs/check-blocked-user"
@@ -20376,7 +20352,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "PUT":
-											// Leaf: OrgsBlockUser
 											r.name = "OrgsBlockUser"
 											r.summary = "Block a user from an organization"
 											r.operationID = "orgs/block-user"
@@ -20430,9 +20405,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "DELETE":
-											// Leaf: OrgsRemoveSamlSSOAuthorization
 											r.name = "OrgsRemoveSamlSSOAuthorization"
 											r.summary = "Remove a SAML SSO authorization for an organization"
 											r.operationID = "orgs/remove-saml-sso-authorization"
@@ -20458,9 +20433,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: ActivityListPublicOrgEvents
 										r.name = "ActivityListPublicOrgEvents"
 										r.summary = "List public organization events"
 										r.operationID = "activity/list-public-org-events"
@@ -20483,9 +20458,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: OrgsListFailedInvitations
 										r.name = "OrgsListFailedInvitations"
 										r.summary = "List failed organization invitations"
 										r.operationID = "orgs/list-failed-invitations"
@@ -20599,9 +20574,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: OrgsGetWebhookConfigForOrg
 													r.name = "OrgsGetWebhookConfigForOrg"
 													r.summary = "Get a webhook configuration for an organization"
 													r.operationID = "orgs/get-webhook-config-for-org"
@@ -20610,7 +20585,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 2
 													return r, true
 												case "PATCH":
-													// Leaf: OrgsUpdateWebhookConfigForOrg
 													r.name = "OrgsUpdateWebhookConfigForOrg"
 													r.summary = "Update a webhook configuration for an organization"
 													r.operationID = "orgs/update-webhook-config-for-org"
@@ -20688,9 +20662,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: OrgsRedeliverWebhookDelivery
 															r.name = "OrgsRedeliverWebhookDelivery"
 															r.summary = "Redeliver a delivery for an organization webhook"
 															r.operationID = "orgs/redeliver-webhook-delivery"
@@ -20719,9 +20693,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: OrgsPingWebhook
 													r.name = "OrgsPingWebhook"
 													r.summary = "Ping an organization webhook"
 													r.operationID = "orgs/ping-webhook"
@@ -20777,9 +20751,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: InteractionsRemoveRestrictionsForOrg
 												r.name = "InteractionsRemoveRestrictionsForOrg"
 												r.summary = "Remove interaction restrictions for an organization"
 												r.operationID = "interactions/remove-restrictions-for-org"
@@ -20788,7 +20762,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 1
 												return r, true
 											case "PUT":
-												// Leaf: InteractionsSetRestrictionsForOrg
 												r.name = "InteractionsSetRestrictionsForOrg"
 												r.summary = "Set interaction restrictions for an organization"
 												r.operationID = "interactions/set-restrictions-for-org"
@@ -20874,9 +20847,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: OrgsListInvitationTeams
 														r.name = "OrgsListInvitationTeams"
 														r.summary = "List organization invitation teams"
 														r.operationID = "orgs/list-invitation-teams"
@@ -20908,9 +20881,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: IssuesListForOrg
 											r.name = "IssuesListForOrg"
 											r.summary = "List organization issues assigned to the authenticated user"
 											r.operationID = "issues/list-for-org"
@@ -20976,9 +20949,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: OrgsRemoveMember
 												r.name = "OrgsRemoveMember"
 												r.summary = "Remove an organization member"
 												r.operationID = "orgs/remove-member"
@@ -20987,7 +20960,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "GET":
-												// Leaf: OrgsCheckMembershipForUser
 												r.name = "OrgsCheckMembershipForUser"
 												r.summary = "Check organization membership for a user"
 												r.operationID = "orgs/check-membership-for-user"
@@ -21015,9 +20987,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: OrgsRemoveMembershipForUser
 												r.name = "OrgsRemoveMembershipForUser"
 												r.summary = "Remove organization membership for a user"
 												r.operationID = "orgs/remove-membership-for-user"
@@ -21026,7 +20998,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "GET":
-												// Leaf: OrgsGetMembershipForUser
 												r.name = "OrgsGetMembershipForUser"
 												r.summary = "Get organization membership for a user"
 												r.operationID = "orgs/get-membership-for-user"
@@ -21035,7 +21006,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "PUT":
-												// Leaf: OrgsSetMembershipForUser
 												r.name = "OrgsSetMembershipForUser"
 												r.summary = "Set organization membership for a user"
 												r.operationID = "orgs/set-membership-for-user"
@@ -21136,9 +21106,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "DELETE":
-														// Leaf: MigrationsDeleteArchiveForOrg
 														r.name = "MigrationsDeleteArchiveForOrg"
 														r.summary = "Delete an organization migration archive"
 														r.operationID = "migrations/delete-archive-for-org"
@@ -21147,7 +21117,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "GET":
-														// Leaf: MigrationsDownloadArchiveForOrg
 														r.name = "MigrationsDownloadArchiveForOrg"
 														r.summary = "Download an organization migration archive"
 														r.operationID = "migrations/download-archive-for-org"
@@ -21203,9 +21172,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: MigrationsUnlockRepoForOrg
 																r.name = "MigrationsUnlockRepoForOrg"
 																r.summary = "Unlock an organization repository"
 																r.operationID = "migrations/unlock-repo-for-org"
@@ -21231,9 +21200,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: MigrationsListReposForOrg
 															r.name = "MigrationsListReposForOrg"
 															r.summary = "List repositories in an organization migration"
 															r.operationID = "migrations/list-repos-for-org"
@@ -21299,9 +21268,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "DELETE":
-											// Leaf: OrgsRemoveOutsideCollaborator
 											r.name = "OrgsRemoveOutsideCollaborator"
 											r.summary = "Remove outside collaborator from an organization"
 											r.operationID = "orgs/remove-outside-collaborator"
@@ -21310,7 +21279,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "PUT":
-											// Leaf: OrgsConvertMemberToOutsideCollaborator
 											r.name = "OrgsConvertMemberToOutsideCollaborator"
 											r.summary = "Convert an organization member to outside collaborator"
 											r.operationID = "orgs/convert-member-to-outside-collaborator"
@@ -21444,9 +21412,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: PackagesRestorePackageForOrg
 															r.name = "PackagesRestorePackageForOrg"
 															r.summary = "Restore a package for an organization"
 															r.operationID = "packages/restore-package-for-org"
@@ -21532,9 +21500,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: PackagesRestorePackageVersionForOrg
 																	r.name = "PackagesRestorePackageVersionForOrg"
 																	r.summary = "Restore package version for an organization"
 																	r.operationID = "packages/restore-package-version-for-org"
@@ -21575,9 +21543,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: ProjectsListForOrg
 											r.name = "ProjectsListForOrg"
 											r.summary = "List organization projects"
 											r.operationID = "projects/list-for-org"
@@ -21586,7 +21554,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 1
 											return r, true
 										case "POST":
-											// Leaf: ProjectsCreateForOrg
 											r.name = "ProjectsCreateForOrg"
 											r.summary = "Create an organization project"
 											r.operationID = "projects/create-for-org"
@@ -21637,9 +21604,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
 												r.name = "OrgsRemovePublicMembershipForAuthenticatedUser"
 												r.summary = "Remove public organization membership for the authenticated user"
 												r.operationID = "orgs/remove-public-membership-for-authenticated-user"
@@ -21648,7 +21615,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "GET":
-												// Leaf: OrgsCheckPublicMembershipForUser
 												r.name = "OrgsCheckPublicMembershipForUser"
 												r.summary = "Check public organization membership for a user"
 												r.operationID = "orgs/check-public-membership-for-user"
@@ -21657,7 +21623,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "PUT":
-												// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
 												r.name = "OrgsSetPublicMembershipForAuthenticatedUser"
 												r.summary = "Set public organization membership for the authenticated user"
 												r.operationID = "orgs/set-public-membership-for-authenticated-user"
@@ -21686,9 +21651,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: ReposListForOrg
 										r.name = "ReposListForOrg"
 										r.summary = "List organization repositories"
 										r.operationID = "repos/list-for-org"
@@ -21697,7 +21662,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "POST":
-										// Leaf: ReposCreateInOrg
 										r.name = "ReposCreateInOrg"
 										r.summary = "Create an organization repository"
 										r.operationID = "repos/create-in-org"
@@ -21732,9 +21696,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: SecretScanningListAlertsForOrg
 											r.name = "SecretScanningListAlertsForOrg"
 											r.summary = "List secret scanning alerts by organization"
 											r.operationID = "secret-scanning/list-alerts-for-org"
@@ -21769,9 +21733,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: BillingGetGithubActionsBillingOrg
 												r.name = "BillingGetGithubActionsBillingOrg"
 												r.summary = "Get GitHub Actions billing for an organization"
 												r.operationID = "billing/get-github-actions-billing-org"
@@ -21794,9 +21758,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: BillingGetGithubPackagesBillingOrg
 												r.name = "BillingGetGithubPackagesBillingOrg"
 												r.summary = "Get GitHub Packages billing for an organization"
 												r.operationID = "billing/get-github-packages-billing-org"
@@ -21819,9 +21783,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: BillingGetSharedStorageBillingOrg
 												r.name = "BillingGetSharedStorageBillingOrg"
 												r.summary = "Get shared storage billing for an organization"
 												r.operationID = "billing/get-shared-storage-billing-org"
@@ -21862,9 +21826,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: TeamsListIdpGroupsForOrg
 											r.name = "TeamsListIdpGroupsForOrg"
 											r.summary = "List IdP groups for an organization"
 											r.operationID = "teams/list-idp-groups-for-org"
@@ -22184,9 +22148,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		elem = ""
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "DELETE":
-																				// Leaf: ReactionsDeleteForTeamDiscussionComment
 																				r.name = "ReactionsDeleteForTeamDiscussionComment"
 																				r.summary = "Delete team discussion comment reaction"
 																				r.operationID = "reactions/delete-for-team-discussion-comment"
@@ -22254,9 +22218,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																elem = ""
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "DELETE":
-																		// Leaf: ReactionsDeleteForTeamDiscussion
 																		r.name = "ReactionsDeleteForTeamDiscussion"
 																		r.summary = "Delete team discussion reaction"
 																		r.operationID = "reactions/delete-for-team-discussion"
@@ -22291,9 +22255,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: TeamsListPendingInvitationsInOrg
 														r.name = "TeamsListPendingInvitationsInOrg"
 														r.summary = "List pending team invitations"
 														r.operationID = "teams/list-pending-invitations-in-org"
@@ -22344,9 +22308,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: TeamsRemoveMembershipForUserInOrg
 															r.name = "TeamsRemoveMembershipForUserInOrg"
 															r.summary = "Remove team membership for a user"
 															r.operationID = "teams/remove-membership-for-user-in-org"
@@ -22355,7 +22319,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "GET":
-															// Leaf: TeamsGetMembershipForUserInOrg
 															r.name = "TeamsGetMembershipForUserInOrg"
 															r.summary = "Get team membership for a user"
 															r.operationID = "teams/get-membership-for-user-in-org"
@@ -22364,7 +22327,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PUT":
-															// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
 															r.name = "TeamsAddOrUpdateMembershipForUserInOrg"
 															r.summary = "Add or update team membership for a user"
 															r.operationID = "teams/add-or-update-membership-for-user-in-org"
@@ -22418,9 +22380,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: TeamsRemoveProjectInOrg
 															r.name = "TeamsRemoveProjectInOrg"
 															r.summary = "Remove a project from a team"
 															r.operationID = "teams/remove-project-in-org"
@@ -22429,7 +22391,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "GET":
-															// Leaf: TeamsCheckPermissionsForProjectInOrg
 															r.name = "TeamsCheckPermissionsForProjectInOrg"
 															r.summary = "Check team permissions for a project"
 															r.operationID = "teams/check-permissions-for-project-in-org"
@@ -22438,7 +22399,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PUT":
-															// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
 															r.name = "TeamsAddOrUpdateProjectPermissionsInOrg"
 															r.summary = "Add or update team project permissions"
 															r.operationID = "teams/add-or-update-project-permissions-in-org"
@@ -22513,9 +22473,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: TeamsRemoveRepoInOrg
 																r.name = "TeamsRemoveRepoInOrg"
 																r.summary = "Remove a repository from a team"
 																r.operationID = "teams/remove-repo-in-org"
@@ -22524,7 +22484,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 4
 																return r, true
 															case "GET":
-																// Leaf: TeamsCheckPermissionsForRepoInOrg
 																r.name = "TeamsCheckPermissionsForRepoInOrg"
 																r.summary = "Check team permissions for a repository"
 																r.operationID = "teams/check-permissions-for-repo-in-org"
@@ -22533,7 +22492,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 4
 																return r, true
 															case "PUT":
-																// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
 																r.name = "TeamsAddOrUpdateRepoPermissionsInOrg"
 																r.summary = "Add or update team repository permissions"
 																r.operationID = "teams/add-or-update-repo-permissions-in-org"
@@ -22574,9 +22532,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: TeamsListIdpGroupsInOrg
 															r.name = "TeamsListIdpGroupsInOrg"
 															r.summary = "List IdP groups for a team"
 															r.operationID = "teams/list-idp-groups-in-org"
@@ -22585,7 +22543,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 2
 															return r, true
 														case "PATCH":
-															// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
 															r.name = "TeamsCreateOrUpdateIdpGroupConnectionsInOrg"
 															r.summary = "Create or update IdP group connections"
 															r.operationID = "teams/create-or-update-idp-group-connections-in-org"
@@ -22608,9 +22565,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: TeamsListChildInOrg
 															r.name = "TeamsListChildInOrg"
 															r.summary = "List child teams"
 															r.operationID = "teams/list-child-in-org"
@@ -22732,9 +22689,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: ProjectsMoveCard
 									r.name = "ProjectsMoveCard"
 									r.summary = "Move a project card"
 									r.operationID = "projects/move-card"
@@ -22813,9 +22770,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: ProjectsListCards
 									r.name = "ProjectsListCards"
 									r.summary = "List project cards"
 									r.operationID = "projects/list-cards"
@@ -22838,9 +22795,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: ProjectsMoveColumn
 									r.name = "ProjectsMoveColumn"
 									r.summary = "Move a project column"
 									r.operationID = "projects/move-column"
@@ -22985,9 +22942,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: ProjectsGetPermissionForUser
 										r.name = "ProjectsGetPermissionForUser"
 										r.summary = "Get project permission for a user"
 										r.operationID = "projects/get-permission-for-user"
@@ -23016,9 +22973,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: ProjectsListColumns
 								r.name = "ProjectsListColumns"
 								r.summary = "List project columns"
 								r.operationID = "projects/list-columns"
@@ -23027,7 +22984,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "POST":
-								// Leaf: ProjectsCreateColumn
 								r.name = "ProjectsCreateColumn"
 								r.summary = "Create a project column"
 								r.operationID = "projects/create-column"
@@ -23068,9 +23024,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: RateLimitGet
 							r.name = "RateLimitGet"
 							r.summary = "Get rate limit status for the authenticated user"
 							r.operationID = "rate-limit/get"
@@ -23110,9 +23066,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "DELETE":
-								// Leaf: ReactionsDeleteLegacy
 								r.name = "ReactionsDeleteLegacy"
 								r.summary = "Delete a reaction (Legacy)"
 								r.operationID = "reactions/delete-legacy"
@@ -23320,9 +23276,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ActionsDownloadArtifact
 																r.name = "ActionsDownloadArtifact"
 																r.summary = "Download an artifact"
 																r.operationID = "actions/download-artifact"
@@ -23383,9 +23339,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ActionsDownloadJobLogsForWorkflowRun
 															r.name = "ActionsDownloadJobLogsForWorkflowRun"
 															r.summary = "Download job logs for a workflow run"
 															r.operationID = "actions/download-job-logs-for-workflow-run"
@@ -23442,9 +23398,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ActionsGetAllowedActionsRepository
 															r.name = "ActionsGetAllowedActionsRepository"
 															r.summary = "Get allowed actions for a repository"
 															r.operationID = "actions/get-allowed-actions-repository"
@@ -23453,7 +23409,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 2
 															return r, true
 														case "PUT":
-															// Leaf: ActionsSetAllowedActionsRepository
 															r.name = "ActionsSetAllowedActionsRepository"
 															r.summary = "Set allowed actions for a repository"
 															r.operationID = "actions/set-allowed-actions-repository"
@@ -23526,9 +23481,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "GET":
-																	// Leaf: ActionsListRunnerApplicationsForRepo
 																	r.name = "ActionsListRunnerApplicationsForRepo"
 																	r.summary = "List runner applications for a repository"
 																	r.operationID = "actions/list-runner-applications-for-repo"
@@ -23563,9 +23518,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: ActionsCreateRegistrationTokenForRepo
 																		r.name = "ActionsCreateRegistrationTokenForRepo"
 																		r.summary = "Create a registration token for a repository"
 																		r.operationID = "actions/create-registration-token-for-repo"
@@ -23588,9 +23543,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: ActionsCreateRemoveTokenForRepo
 																		r.name = "ActionsCreateRemoveTokenForRepo"
 																		r.summary = "Create a remove token for a repository"
 																		r.operationID = "actions/create-remove-token-for-repo"
@@ -23614,9 +23569,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
 																r.name = "ActionsDeleteSelfHostedRunnerFromRepo"
 																r.summary = "Delete a self-hosted runner from a repository"
 																r.operationID = "actions/delete-self-hosted-runner-from-repo"
@@ -23625,7 +23580,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "GET":
-																// Leaf: ActionsGetSelfHostedRunnerForRepo
 																r.name = "ActionsGetSelfHostedRunnerForRepo"
 																r.summary = "Get a self-hosted runner for a repository"
 																r.operationID = "actions/get-self-hosted-runner-for-repo"
@@ -23750,9 +23704,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "GET":
-																				// Leaf: ActionsGetReviewsForRun
 																				r.name = "ActionsGetReviewsForRun"
 																				r.summary = "Get the review history for a workflow run"
 																				r.operationID = "actions/get-reviews-for-run"
@@ -23775,9 +23729,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "POST":
-																				// Leaf: ActionsApproveWorkflowRun
 																				r.name = "ActionsApproveWorkflowRun"
 																				r.summary = "Approve a workflow run for a fork pull request"
 																				r.operationID = "actions/approve-workflow-run"
@@ -23803,9 +23757,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "GET":
-																			// Leaf: ActionsListWorkflowRunArtifacts
 																			r.name = "ActionsListWorkflowRunArtifacts"
 																			r.summary = "List workflow run artifacts"
 																			r.operationID = "actions/list-workflow-run-artifacts"
@@ -23831,9 +23785,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: ActionsCancelWorkflowRun
 																		r.name = "ActionsCancelWorkflowRun"
 																		r.summary = "Cancel a workflow run"
 																		r.operationID = "actions/cancel-workflow-run"
@@ -23856,9 +23810,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		// Leaf: ActionsListJobsForWorkflowRun
 																		r.name = "ActionsListJobsForWorkflowRun"
 																		r.summary = "List jobs for a workflow run"
 																		r.operationID = "actions/list-jobs-for-workflow-run"
@@ -23881,9 +23835,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "DELETE":
-																		// Leaf: ActionsDeleteWorkflowRunLogs
 																		r.name = "ActionsDeleteWorkflowRunLogs"
 																		r.summary = "Delete workflow run logs"
 																		r.operationID = "actions/delete-workflow-run-logs"
@@ -23892,7 +23846,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.count = 3
 																		return r, true
 																	case "GET":
-																		// Leaf: ActionsDownloadWorkflowRunLogs
 																		r.name = "ActionsDownloadWorkflowRunLogs"
 																		r.summary = "Download workflow run logs"
 																		r.operationID = "actions/download-workflow-run-logs"
@@ -23915,9 +23868,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: ActionsReviewPendingDeploymentsForRun
 																		r.name = "ActionsReviewPendingDeploymentsForRun"
 																		r.summary = "Review pending deployments for a workflow run"
 																		r.operationID = "actions/review-pending-deployments-for-run"
@@ -23952,9 +23905,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "POST":
-																			// Leaf: ActionsReRunWorkflow
 																			r.name = "ActionsReRunWorkflow"
 																			r.summary = "Re-run a workflow"
 																			r.operationID = "actions/re-run-workflow"
@@ -23977,9 +23930,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "POST":
-																			// Leaf: ActionsRetryWorkflow
 																			r.name = "ActionsRetryWorkflow"
 																			r.summary = "Retry a workflow"
 																			r.operationID = "actions/retry-workflow"
@@ -24005,9 +23958,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		// Leaf: ActionsGetWorkflowRunUsage
 																		r.name = "ActionsGetWorkflowRunUsage"
 																		r.summary = "Get workflow run usage"
 																		r.operationID = "actions/get-workflow-run-usage"
@@ -24077,9 +24030,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ActionsGetRepoPublicKey
 																r.name = "ActionsGetRepoPublicKey"
 																r.summary = "Get a repository public key"
 																r.operationID = "actions/get-repo-public-key"
@@ -24100,9 +24053,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: ActionsDeleteRepoSecret
 															r.name = "ActionsDeleteRepoSecret"
 															r.summary = "Delete a repository secret"
 															r.operationID = "actions/delete-repo-secret"
@@ -24111,7 +24064,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "GET":
-															// Leaf: ActionsGetRepoSecret
 															r.name = "ActionsGetRepoSecret"
 															r.summary = "Get a repository secret"
 															r.operationID = "actions/get-repo-secret"
@@ -24120,7 +24072,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PUT":
-															// Leaf: ActionsCreateOrUpdateRepoSecret
 															r.name = "ActionsCreateOrUpdateRepoSecret"
 															r.summary = "Create or update a repository secret"
 															r.operationID = "actions/create-or-update-repo-secret"
@@ -24146,9 +24097,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ActionsListRepoWorkflows
 														r.name = "ActionsListRepoWorkflows"
 														r.summary = "List repository workflows"
 														r.operationID = "actions/list-repo-workflows"
@@ -24202,9 +24153,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: IssuesCheckUserCanBeAssigned
 														r.name = "IssuesCheckUserCanBeAssigned"
 														r.summary = "Check if a user can be assigned"
 														r.operationID = "issues/check-user-can-be-assigned"
@@ -24278,9 +24229,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: ReposDeleteAutolink
 															r.name = "ReposDeleteAutolink"
 															r.summary = "Delete an autolink reference from a repository"
 															r.operationID = "repos/delete-autolink"
@@ -24289,7 +24240,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "GET":
-															// Leaf: ReposGetAutolink
 															r.name = "ReposGetAutolink"
 															r.summary = "Get an autolink reference of a repository"
 															r.operationID = "repos/get-autolink"
@@ -24315,9 +24265,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "DELETE":
-														// Leaf: ReposDisableAutomatedSecurityFixes
 														r.name = "ReposDisableAutomatedSecurityFixes"
 														r.summary = "Disable automated security fixes"
 														r.operationID = "repos/disable-automated-security-fixes"
@@ -24326,7 +24276,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "PUT":
-														// Leaf: ReposEnableAutomatedSecurityFixes
 														r.name = "ReposEnableAutomatedSecurityFixes"
 														r.summary = "Enable automated security fixes"
 														r.operationID = "repos/enable-automated-security-fixes"
@@ -24473,9 +24422,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "DELETE":
-																	// Leaf: ReposDeleteAdminBranchProtection
 																	r.name = "ReposDeleteAdminBranchProtection"
 																	r.summary = "Delete admin branch protection"
 																	r.operationID = "repos/delete-admin-branch-protection"
@@ -24484,7 +24433,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.count = 3
 																	return r, true
 																case "GET":
-																	// Leaf: ReposGetAdminBranchProtection
 																	r.name = "ReposGetAdminBranchProtection"
 																	r.summary = "Get admin branch protection"
 																	r.operationID = "repos/get-admin-branch-protection"
@@ -24493,7 +24441,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.count = 3
 																	return r, true
 																case "POST":
-																	// Leaf: ReposSetAdminBranchProtection
 																	r.name = "ReposSetAdminBranchProtection"
 																	r.summary = "Set admin branch protection"
 																	r.operationID = "repos/set-admin-branch-protection"
@@ -24540,9 +24487,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "DELETE":
-																			// Leaf: ReposDeletePullRequestReviewProtection
 																			r.name = "ReposDeletePullRequestReviewProtection"
 																			r.summary = "Delete pull request review protection"
 																			r.operationID = "repos/delete-pull-request-review-protection"
@@ -24551,7 +24498,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 3
 																			return r, true
 																		case "GET":
-																			// Leaf: ReposGetPullRequestReviewProtection
 																			r.name = "ReposGetPullRequestReviewProtection"
 																			r.summary = "Get pull request review protection"
 																			r.operationID = "repos/get-pull-request-review-protection"
@@ -24560,7 +24506,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 3
 																			return r, true
 																		case "PATCH":
-																			// Leaf: ReposUpdatePullRequestReviewProtection
 																			r.name = "ReposUpdatePullRequestReviewProtection"
 																			r.summary = "Update pull request review protection"
 																			r.operationID = "repos/update-pull-request-review-protection"
@@ -24595,9 +24540,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "DELETE":
-																				// Leaf: ReposDeleteCommitSignatureProtection
 																				r.name = "ReposDeleteCommitSignatureProtection"
 																				r.summary = "Delete commit signature protection"
 																				r.operationID = "repos/delete-commit-signature-protection"
@@ -24606,7 +24551,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "GET":
-																				// Leaf: ReposGetCommitSignatureProtection
 																				r.name = "ReposGetCommitSignatureProtection"
 																				r.summary = "Get commit signature protection"
 																				r.operationID = "repos/get-commit-signature-protection"
@@ -24615,7 +24559,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "POST":
-																				// Leaf: ReposCreateCommitSignatureProtection
 																				r.name = "ReposCreateCommitSignatureProtection"
 																				r.summary = "Create commit signature protection"
 																				r.operationID = "repos/create-commit-signature-protection"
@@ -24677,9 +24620,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			}
 
 																			if len(elem) == 0 {
+																				// Leaf node.
 																				switch method {
 																				case "DELETE":
-																					// Leaf: ReposRemoveStatusCheckContexts
 																					r.name = "ReposRemoveStatusCheckContexts"
 																					r.summary = "Remove status check contexts"
 																					r.operationID = "repos/remove-status-check-contexts"
@@ -24688,7 +24631,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																					r.count = 3
 																					return r, true
 																				case "GET":
-																					// Leaf: ReposGetAllStatusCheckContexts
 																					r.name = "ReposGetAllStatusCheckContexts"
 																					r.summary = "Get all status check contexts"
 																					r.operationID = "repos/get-all-status-check-contexts"
@@ -24697,7 +24639,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																					r.count = 3
 																					return r, true
 																				case "POST":
-																					// Leaf: ReposAddStatusCheckContexts
 																					r.name = "ReposAddStatusCheckContexts"
 																					r.summary = "Add status check contexts"
 																					r.operationID = "repos/add-status-check-contexts"
@@ -24706,7 +24647,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																					r.count = 3
 																					return r, true
 																				case "PUT":
-																					// Leaf: ReposSetStatusCheckContexts
 																					r.name = "ReposSetStatusCheckContexts"
 																					r.summary = "Set status check contexts"
 																					r.operationID = "repos/set-status-check-contexts"
@@ -24781,9 +24721,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "DELETE":
-																				// Leaf: ReposRemoveAppAccessRestrictions
 																				r.name = "ReposRemoveAppAccessRestrictions"
 																				r.summary = "Remove app access restrictions"
 																				r.operationID = "repos/remove-app-access-restrictions"
@@ -24792,7 +24732,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "GET":
-																				// Leaf: ReposGetAppsWithAccessToProtectedBranch
 																				r.name = "ReposGetAppsWithAccessToProtectedBranch"
 																				r.summary = "Get apps with access to the protected branch"
 																				r.operationID = "repos/get-apps-with-access-to-protected-branch"
@@ -24801,7 +24740,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "POST":
-																				// Leaf: ReposAddAppAccessRestrictions
 																				r.name = "ReposAddAppAccessRestrictions"
 																				r.summary = "Add app access restrictions"
 																				r.operationID = "repos/add-app-access-restrictions"
@@ -24810,7 +24748,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "PUT":
-																				// Leaf: ReposSetAppAccessRestrictions
 																				r.name = "ReposSetAppAccessRestrictions"
 																				r.summary = "Set app access restrictions"
 																				r.operationID = "repos/set-app-access-restrictions"
@@ -24833,9 +24770,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "DELETE":
-																				// Leaf: ReposRemoveTeamAccessRestrictions
 																				r.name = "ReposRemoveTeamAccessRestrictions"
 																				r.summary = "Remove team access restrictions"
 																				r.operationID = "repos/remove-team-access-restrictions"
@@ -24844,7 +24781,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "GET":
-																				// Leaf: ReposGetTeamsWithAccessToProtectedBranch
 																				r.name = "ReposGetTeamsWithAccessToProtectedBranch"
 																				r.summary = "Get teams with access to the protected branch"
 																				r.operationID = "repos/get-teams-with-access-to-protected-branch"
@@ -24853,7 +24789,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "POST":
-																				// Leaf: ReposAddTeamAccessRestrictions
 																				r.name = "ReposAddTeamAccessRestrictions"
 																				r.summary = "Add team access restrictions"
 																				r.operationID = "repos/add-team-access-restrictions"
@@ -24862,7 +24797,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "PUT":
-																				// Leaf: ReposSetTeamAccessRestrictions
 																				r.name = "ReposSetTeamAccessRestrictions"
 																				r.summary = "Set team access restrictions"
 																				r.operationID = "repos/set-team-access-restrictions"
@@ -24885,9 +24819,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "DELETE":
-																				// Leaf: ReposRemoveUserAccessRestrictions
 																				r.name = "ReposRemoveUserAccessRestrictions"
 																				r.summary = "Remove user access restrictions"
 																				r.operationID = "repos/remove-user-access-restrictions"
@@ -24896,7 +24830,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "GET":
-																				// Leaf: ReposGetUsersWithAccessToProtectedBranch
 																				r.name = "ReposGetUsersWithAccessToProtectedBranch"
 																				r.summary = "Get users with access to the protected branch"
 																				r.operationID = "repos/get-users-with-access-to-protected-branch"
@@ -24905,7 +24838,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "POST":
-																				// Leaf: ReposAddUserAccessRestrictions
 																				r.name = "ReposAddUserAccessRestrictions"
 																				r.summary = "Add user access restrictions"
 																				r.operationID = "repos/add-user-access-restrictions"
@@ -24914,7 +24846,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "PUT":
-																				// Leaf: ReposSetUserAccessRestrictions
 																				r.name = "ReposSetUserAccessRestrictions"
 																				r.summary = "Set user access restrictions"
 																				r.operationID = "repos/set-user-access-restrictions"
@@ -24952,9 +24883,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: ReposRenameBranch
 															r.name = "ReposRenameBranch"
 															r.summary = "Rename a branch"
 															r.operationID = "repos/rename-branch"
@@ -25042,9 +24973,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ChecksListAnnotations
 															r.name = "ChecksListAnnotations"
 															r.summary = "List check run annotations"
 															r.operationID = "checks/list-annotations"
@@ -25105,9 +25036,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "PATCH":
-																// Leaf: ChecksSetSuitesPreferences
 																r.name = "ChecksSetSuitesPreferences"
 																r.summary = "Update repository preferences for check suites"
 																r.operationID = "checks/set-suites-preferences"
@@ -25167,9 +25098,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "GET":
-																	// Leaf: ChecksListForSuite
 																	r.name = "ChecksListForSuite"
 																	r.summary = "List check runs in a check suite"
 																	r.operationID = "checks/list-for-suite"
@@ -25192,9 +25123,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: ChecksRerequestSuite
 																	r.name = "ChecksRerequestSuite"
 																	r.summary = "Rerequest a check suite"
 																	r.operationID = "checks/rerequest-suite"
@@ -25328,9 +25259,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		// Leaf: CodeScanningListAlertInstances
 																		r.name = "CodeScanningListAlertInstances"
 																		r.summary = "List instances of a code scanning alert"
 																		r.operationID = "code-scanning/list-alert-instances"
@@ -25387,9 +25318,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "DELETE":
-																	// Leaf: CodeScanningDeleteAnalysis
 																	r.name = "CodeScanningDeleteAnalysis"
 																	r.summary = "Delete a code scanning analysis from a repository"
 																	r.operationID = "code-scanning/delete-analysis"
@@ -25398,7 +25329,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.count = 3
 																	return r, true
 																case "GET":
-																	// Leaf: CodeScanningGetAnalysis
 																	r.name = "CodeScanningGetAnalysis"
 																	r.summary = "Get a code scanning analysis for a repository"
 																	r.operationID = "code-scanning/get-analysis"
@@ -25455,9 +25385,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: CodeScanningGetSarif
 																r.name = "CodeScanningGetSarif"
 																r.summary = "Get information about a SARIF upload"
 																r.operationID = "code-scanning/get-sarif"
@@ -25557,9 +25487,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetCollaboratorPermissionLevel
 																r.name = "ReposGetCollaboratorPermissionLevel"
 																r.summary = "Get repository permissions for a user"
 																r.operationID = "repos/get-collaborator-permission-level"
@@ -25719,9 +25649,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	elem = ""
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "DELETE":
-																			// Leaf: ReactionsDeleteForCommitComment
 																			r.name = "ReactionsDeleteForCommitComment"
 																			r.summary = "Delete a commit comment reaction"
 																			r.operationID = "reactions/delete-for-commit-comment"
@@ -25820,9 +25750,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "GET":
-																			// Leaf: ReposListBranchesForHeadCommit
 																			r.name = "ReposListBranchesForHeadCommit"
 																			r.summary = "List branches for HEAD commit"
 																			r.operationID = "repos/list-branches-for-head-commit"
@@ -25869,9 +25799,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			}
 
 																			if len(elem) == 0 {
+																				// Leaf node.
 																				switch method {
 																				case "GET":
-																					// Leaf: ChecksListForRef
 																					r.name = "ChecksListForRef"
 																					r.summary = "List check runs for a Git reference"
 																					r.operationID = "checks/list-for-ref"
@@ -25894,9 +25824,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			}
 
 																			if len(elem) == 0 {
+																				// Leaf node.
 																				switch method {
 																				case "GET":
-																					// Leaf: ChecksListSuitesForRef
 																					r.name = "ChecksListSuitesForRef"
 																					r.summary = "List check suites for a Git reference"
 																					r.operationID = "checks/list-suites-for-ref"
@@ -25922,9 +25852,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "GET":
-																				// Leaf: ReposListCommentsForCommit
 																				r.name = "ReposListCommentsForCommit"
 																				r.summary = "List commit comments"
 																				r.operationID = "repos/list-comments-for-commit"
@@ -25933,7 +25863,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "POST":
-																				// Leaf: ReposCreateCommitComment
 																				r.name = "ReposCreateCommitComment"
 																				r.summary = "Create a commit comment"
 																				r.operationID = "repos/create-commit-comment"
@@ -25959,9 +25888,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "GET":
-																			// Leaf: ReposListPullRequestsAssociatedWithCommit
 																			r.name = "ReposListPullRequestsAssociatedWithCommit"
 																			r.summary = "List pull requests associated with a commit"
 																			r.operationID = "repos/list-pull-requests-associated-with-commit"
@@ -26007,9 +25936,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "GET":
-																				// Leaf: ReposListCommitStatusesForRef
 																				r.name = "ReposListCommitStatusesForRef"
 																				r.summary = "List commit statuses for a reference"
 																				r.operationID = "repos/list-commit-statuses-for-ref"
@@ -26044,9 +25973,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetCommunityProfileMetrics
 																r.name = "ReposGetCommunityProfileMetrics"
 																r.summary = "Get community profile metrics"
 																r.operationID = "repos/get-community-profile-metrics"
@@ -26077,9 +26006,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposCompareCommits
 															r.name = "ReposCompareCommits"
 															r.summary = "Compare two commits"
 															r.operationID = "repos/compare-commits"
@@ -26150,9 +26079,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: AppsCreateContentAttachment
 																	r.name = "AppsCreateContentAttachment"
 																	r.summary = "Create a content attachment"
 																	r.operationID = "apps/create-content-attachment"
@@ -26183,9 +26112,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: ReposDeleteFile
 																r.name = "ReposDeleteFile"
 																r.summary = "Delete a file"
 																r.operationID = "repos/delete-file"
@@ -26194,7 +26123,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "PUT":
-																// Leaf: ReposCreateOrUpdateFileContents
 																r.name = "ReposCreateOrUpdateFileContents"
 																r.summary = "Create or update file contents"
 																r.operationID = "repos/create-or-update-file-contents"
@@ -26220,9 +26148,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposListContributors
 															r.name = "ReposListContributors"
 															r.summary = "List repository contributors"
 															r.operationID = "repos/list-contributors"
@@ -26373,9 +26301,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetDeploymentStatus
 																r.name = "ReposGetDeploymentStatus"
 																r.summary = "Get a deployment status"
 																r.operationID = "repos/get-deployment-status"
@@ -26407,9 +26335,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: ReposCreateDispatchEvent
 													r.name = "ReposCreateDispatchEvent"
 													r.summary = "Create a repository dispatch event"
 													r.operationID = "repos/create-dispatch-event"
@@ -26452,9 +26380,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "DELETE":
-													// Leaf: ReposDeleteAnEnvironment
 													r.name = "ReposDeleteAnEnvironment"
 													r.summary = "Delete an environment"
 													r.operationID = "repos/delete-an-environment"
@@ -26477,9 +26405,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: ActivityListRepoEvents
 													r.name = "ActivityListRepoEvents"
 													r.summary = "List repository events"
 													r.operationID = "activity/list-repo-events"
@@ -26505,9 +26433,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: ReposListForks
 												r.name = "ReposListForks"
 												r.summary = "List forks"
 												r.operationID = "repos/list-forks"
@@ -26516,7 +26444,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "POST":
-												// Leaf: ReposCreateFork
 												r.name = "ReposCreateFork"
 												r.summary = "Create a fork"
 												r.operationID = "repos/create-fork"
@@ -26551,9 +26478,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: ReposCreateUsingTemplate
 													r.name = "ReposCreateUsingTemplate"
 													r.summary = "Create a repository using a template"
 													r.operationID = "repos/create-using-template"
@@ -26616,9 +26543,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: GitGetBlob
 															r.name = "GitGetBlob"
 															r.summary = "Get a blob"
 															r.operationID = "git/get-blob"
@@ -26672,9 +26599,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: GitGetCommit
 															r.name = "GitGetCommit"
 															r.summary = "Get a commit"
 															r.operationID = "git/get-commit"
@@ -26705,9 +26632,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: GitListMatchingRefs
 														r.name = "GitListMatchingRefs"
 														r.summary = "List matching references"
 														r.operationID = "git/list-matching-refs"
@@ -26747,9 +26674,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: GitGetRef
 															r.name = "GitGetRef"
 															r.summary = "Get a reference"
 															r.operationID = "git/get-ref"
@@ -26800,9 +26727,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: GitDeleteRef
 																r.name = "GitDeleteRef"
 																r.summary = "Delete a reference"
 																r.operationID = "git/delete-ref"
@@ -26811,7 +26738,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "PATCH":
-																// Leaf: GitUpdateRef
 																r.name = "GitUpdateRef"
 																r.summary = "Update a reference"
 																r.operationID = "git/update-ref"
@@ -26880,9 +26806,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: GitGetTag
 																r.name = "GitGetTag"
 																r.summary = "Get a tag"
 																r.operationID = "git/get-tag"
@@ -26936,9 +26862,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: GitGetTree
 																r.name = "GitGetTree"
 																r.summary = "Get a tree"
 																r.operationID = "git/get-tree"
@@ -27064,9 +26990,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposGetWebhookConfigForRepo
 															r.name = "ReposGetWebhookConfigForRepo"
 															r.summary = "Get a webhook configuration for a repository"
 															r.operationID = "repos/get-webhook-config-for-repo"
@@ -27075,7 +27001,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PATCH":
-															// Leaf: ReposUpdateWebhookConfigForRepo
 															r.name = "ReposUpdateWebhookConfigForRepo"
 															r.summary = "Update a webhook configuration for a repository"
 															r.operationID = "repos/update-webhook-config-for-repo"
@@ -27153,9 +27078,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: ReposRedeliverWebhookDelivery
 																	r.name = "ReposRedeliverWebhookDelivery"
 																	r.summary = "Redeliver a delivery for a repository webhook"
 																	r.operationID = "repos/redeliver-webhook-delivery"
@@ -27184,9 +27109,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: ReposPingWebhook
 															r.name = "ReposPingWebhook"
 															r.summary = "Ping a repository webhook"
 															r.operationID = "repos/ping-webhook"
@@ -27209,9 +27134,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: ReposTestPushWebhook
 															r.name = "ReposTestPushWebhook"
 															r.summary = "Test the push repository webhook"
 															r.operationID = "repos/test-push-webhook"
@@ -27342,9 +27267,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "PATCH":
-																// Leaf: MigrationsMapCommitAuthor
 																r.name = "MigrationsMapCommitAuthor"
 																r.summary = "Map a commit author"
 																r.operationID = "migrations/map-commit-author"
@@ -27382,9 +27307,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: MigrationsGetLargeFiles
 																r.name = "MigrationsGetLargeFiles"
 																r.summary = "Get large files"
 																r.operationID = "migrations/get-large-files"
@@ -27407,9 +27332,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "PATCH":
-																// Leaf: MigrationsSetLfsPreference
 																r.name = "MigrationsSetLfsPreference"
 																r.summary = "Update Git LFS preference"
 																r.operationID = "migrations/set-lfs-preference"
@@ -27453,9 +27378,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "DELETE":
-														// Leaf: InteractionsRemoveRestrictionsForRepo
 														r.name = "InteractionsRemoveRestrictionsForRepo"
 														r.summary = "Remove interaction restrictions for a repository"
 														r.operationID = "interactions/remove-restrictions-for-repo"
@@ -27464,7 +27389,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "PUT":
-														// Leaf: InteractionsSetRestrictionsForRepo
 														r.name = "InteractionsSetRestrictionsForRepo"
 														r.summary = "Set interaction restrictions for a repository"
 														r.operationID = "interactions/set-restrictions-for-repo"
@@ -27515,9 +27439,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: ReposDeleteInvitation
 															r.name = "ReposDeleteInvitation"
 															r.summary = "Delete a repository invitation"
 															r.operationID = "repos/delete-invitation"
@@ -27526,7 +27450,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PATCH":
-															// Leaf: ReposUpdateInvitation
 															r.name = "ReposUpdateInvitation"
 															r.summary = "Update a repository invitation"
 															r.operationID = "repos/update-invitation"
@@ -27705,9 +27628,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																elem = ""
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "DELETE":
-																		// Leaf: ReactionsDeleteForIssueComment
 																		r.name = "ReactionsDeleteForIssueComment"
 																		r.summary = "Delete an issue comment reaction"
 																		r.operationID = "reactions/delete-for-issue-comment"
@@ -27767,9 +27690,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: IssuesGetEvent
 																r.name = "IssuesGetEvent"
 																r.summary = "Get an issue event"
 																r.operationID = "issues/get-event"
@@ -27840,9 +27763,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "DELETE":
-																// Leaf: IssuesRemoveAssignees
 																r.name = "IssuesRemoveAssignees"
 																r.summary = "Remove assignees from an issue"
 																r.operationID = "issues/remove-assignees"
@@ -27851,7 +27774,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "POST":
-																// Leaf: IssuesAddAssignees
 																r.name = "IssuesAddAssignees"
 																r.summary = "Add assignees to an issue"
 																r.operationID = "issues/add-assignees"
@@ -27874,9 +27796,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: IssuesListComments
 																r.name = "IssuesListComments"
 																r.summary = "List issue comments"
 																r.operationID = "issues/list-comments"
@@ -27885,7 +27807,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "POST":
-																// Leaf: IssuesCreateComment
 																r.name = "IssuesCreateComment"
 																r.summary = "Create an issue comment"
 																r.operationID = "issues/create-comment"
@@ -27956,9 +27877,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																elem = ""
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "DELETE":
-																		// Leaf: IssuesRemoveLabel
 																		r.name = "IssuesRemoveLabel"
 																		r.summary = "Remove a label from an issue"
 																		r.operationID = "issues/remove-label"
@@ -27984,9 +27905,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "DELETE":
-																	// Leaf: IssuesUnlock
 																	r.name = "IssuesUnlock"
 																	r.summary = "Unlock an issue"
 																	r.operationID = "issues/unlock"
@@ -27995,7 +27916,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.count = 3
 																	return r, true
 																case "PUT":
-																	// Leaf: IssuesLock
 																	r.name = "IssuesLock"
 																	r.summary = "Lock an issue"
 																	r.operationID = "issues/lock"
@@ -28057,9 +27977,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															elem = ""
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "DELETE":
-																	// Leaf: ReactionsDeleteForIssue
 																	r.name = "ReactionsDeleteForIssue"
 																	r.summary = "Delete an issue reaction"
 																	r.operationID = "reactions/delete-for-issue"
@@ -28133,9 +28053,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "DELETE":
-													// Leaf: ReposDeleteDeployKey
 													r.name = "ReposDeleteDeployKey"
 													r.summary = "Delete a deploy key"
 													r.operationID = "repos/delete-deploy-key"
@@ -28144,7 +28064,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 3
 													return r, true
 												case "GET":
-													// Leaf: ReposGetDeployKey
 													r.name = "ReposGetDeployKey"
 													r.summary = "Get a deploy key"
 													r.operationID = "repos/get-deploy-key"
@@ -28230,9 +28149,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: IssuesDeleteLabel
 															r.name = "IssuesDeleteLabel"
 															r.summary = "Delete a label"
 															r.operationID = "issues/delete-label"
@@ -28241,7 +28160,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "GET":
-															// Leaf: IssuesGetLabel
 															r.name = "IssuesGetLabel"
 															r.summary = "Get a label"
 															r.operationID = "issues/get-label"
@@ -28250,7 +28168,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PATCH":
-															// Leaf: IssuesUpdateLabel
 															r.name = "IssuesUpdateLabel"
 															r.summary = "Update a label"
 															r.operationID = "issues/update-label"
@@ -28276,9 +28193,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ReposListLanguages
 														r.name = "ReposListLanguages"
 														r.summary = "List repository languages"
 														r.operationID = "repos/list-languages"
@@ -28304,9 +28221,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "DELETE":
-													// Leaf: ReposDisableLfsForRepo
 													r.name = "ReposDisableLfsForRepo"
 													r.summary = "Disable Git LFS for a repository"
 													r.operationID = "repos/disable-lfs-for-repo"
@@ -28315,7 +28232,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 2
 													return r, true
 												case "PUT":
-													// Leaf: ReposEnableLfsForRepo
 													r.name = "ReposEnableLfsForRepo"
 													r.summary = "Enable Git LFS for a repository"
 													r.operationID = "repos/enable-lfs-for-repo"
@@ -28338,9 +28254,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: LicensesGetForRepo
 													r.name = "LicensesGetForRepo"
 													r.summary = "Get the license for a repository"
 													r.operationID = "licenses/get-for-repo"
@@ -28390,9 +28306,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: ReposMergeUpstream
 														r.name = "ReposMergeUpstream"
 														r.summary = "Sync a fork branch with the upstream repository"
 														r.operationID = "repos/merge-upstream"
@@ -28415,9 +28331,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: ReposMerge
 														r.name = "ReposMerge"
 														r.summary = "Merge a branch"
 														r.operationID = "repos/merge"
@@ -28522,9 +28438,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: IssuesListLabelsForMilestone
 															r.name = "IssuesListLabelsForMilestone"
 															r.summary = "List labels for issues in a milestone"
 															r.operationID = "issues/list-labels-for-milestone"
@@ -28556,9 +28472,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
 												r.name = "ActivityListRepoNotificationsForAuthenticatedUser"
 												r.summary = "List repository notifications for the authenticated user"
 												r.operationID = "activity/list-repo-notifications-for-authenticated-user"
@@ -28567,7 +28483,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "PUT":
-												// Leaf: ActivityMarkRepoNotificationsAsRead
 												r.name = "ActivityMarkRepoNotificationsAsRead"
 												r.summary = "Mark repository notifications as read"
 												r.operationID = "activity/mark-repo-notifications-as-read"
@@ -28696,9 +28611,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "GET":
-																	// Leaf: ReposGetLatestPagesBuild
 																	r.name = "ReposGetLatestPagesBuild"
 																	r.summary = "Get latest Pages build"
 																	r.operationID = "repos/get-latest-pages-build"
@@ -28719,9 +28634,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														elem = ""
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetPagesBuild
 																r.name = "ReposGetPagesBuild"
 																r.summary = "Get GitHub Pages build"
 																r.operationID = "repos/get-pages-build"
@@ -28747,9 +28662,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposGetPagesHealthCheck
 															r.name = "ReposGetPagesHealthCheck"
 															r.summary = "Get a DNS health check for GitHub Pages"
 															r.operationID = "repos/get-pages-health-check"
@@ -28778,9 +28693,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: ProjectsListForRepo
 													r.name = "ProjectsListForRepo"
 													r.summary = "List repository projects"
 													r.operationID = "projects/list-for-repo"
@@ -28789,7 +28704,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 2
 													return r, true
 												case "POST":
-													// Leaf: ProjectsCreateForRepo
 													r.name = "ProjectsCreateForRepo"
 													r.summary = "Create a repository project"
 													r.operationID = "projects/create-for-repo"
@@ -28962,9 +28876,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																elem = ""
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "DELETE":
-																		// Leaf: ReactionsDeleteForPullRequestComment
 																		r.name = "ReactionsDeleteForPullRequestComment"
 																		r.summary = "Delete a pull request comment reaction"
 																		r.operationID = "reactions/delete-for-pull-request-comment"
@@ -29105,9 +29019,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "POST":
-																			// Leaf: PullsCreateReplyForReviewComment
 																			r.name = "PullsCreateReplyForReviewComment"
 																			r.summary = "Create a reply for a review comment"
 																			r.operationID = "pulls/create-reply-for-review-comment"
@@ -29136,9 +29050,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "GET":
-																	// Leaf: PullsListCommits
 																	r.name = "PullsListCommits"
 																	r.summary = "List commits on a pull request"
 																	r.operationID = "pulls/list-commits"
@@ -29164,9 +29078,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: PullsListFiles
 																r.name = "PullsListFiles"
 																r.summary = "List pull requests files"
 																r.operationID = "pulls/list-files"
@@ -29189,9 +29103,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: PullsCheckIfMerged
 																r.name = "PullsCheckIfMerged"
 																r.summary = "Check if a pull request has been merged"
 																r.operationID = "pulls/check-if-merged"
@@ -29200,7 +29114,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "PUT":
-																// Leaf: PullsMerge
 																r.name = "PullsMerge"
 																r.summary = "Merge a pull request"
 																r.operationID = "pulls/merge"
@@ -29235,9 +29148,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "DELETE":
-																	// Leaf: PullsRemoveRequestedReviewers
 																	r.name = "PullsRemoveRequestedReviewers"
 																	r.summary = "Remove requested reviewers from a pull request"
 																	r.operationID = "pulls/remove-requested-reviewers"
@@ -29246,7 +29159,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	r.count = 3
 																	return r, true
 																case "GET":
-																	// Leaf: PullsListRequestedReviewers
 																	r.name = "PullsListRequestedReviewers"
 																	r.summary = "List requested reviewers for a pull request"
 																	r.operationID = "pulls/list-requested-reviewers"
@@ -29360,9 +29272,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "GET":
-																				// Leaf: PullsListCommentsForReview
 																				r.name = "PullsListCommentsForReview"
 																				r.summary = "List comments for a pull request review"
 																				r.operationID = "pulls/list-comments-for-review"
@@ -29385,9 +29297,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "PUT":
-																				// Leaf: PullsDismissReview
 																				r.name = "PullsDismissReview"
 																				r.summary = "Dismiss a review for a pull request"
 																				r.operationID = "pulls/dismiss-review"
@@ -29410,9 +29322,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		if len(elem) == 0 {
+																			// Leaf node.
 																			switch method {
 																			case "POST":
-																				// Leaf: PullsSubmitReview
 																				r.name = "PullsSubmitReview"
 																				r.summary = "Submit a review for a pull request"
 																				r.operationID = "pulls/submit-review"
@@ -29447,9 +29359,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "PUT":
-																// Leaf: PullsUpdateBranch
 																r.name = "PullsUpdateBranch"
 																r.summary = "Update a pull request branch"
 																r.operationID = "pulls/update-branch"
@@ -29524,9 +29436,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ReposGetReadmeInDirectory
 														r.name = "ReposGetReadmeInDirectory"
 														r.summary = "Get a repository README for a directory"
 														r.operationID = "repos/get-readme-in-directory"
@@ -29600,9 +29512,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "DELETE":
-															// Leaf: ReposDeleteReleaseAsset
 															r.name = "ReposDeleteReleaseAsset"
 															r.summary = "Delete a release asset"
 															r.operationID = "repos/delete-release-asset"
@@ -29611,7 +29523,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "GET":
-															// Leaf: ReposGetReleaseAsset
 															r.name = "ReposGetReleaseAsset"
 															r.summary = "Get a release asset"
 															r.operationID = "repos/get-release-asset"
@@ -29620,7 +29531,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.count = 3
 															return r, true
 														case "PATCH":
-															// Leaf: ReposUpdateReleaseAsset
 															r.name = "ReposUpdateReleaseAsset"
 															r.summary = "Update a release asset"
 															r.operationID = "repos/update-release-asset"
@@ -29643,9 +29553,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposGetLatestRelease
 															r.name = "ReposGetLatestRelease"
 															r.summary = "Get the latest release"
 															r.operationID = "repos/get-latest-release"
@@ -29673,9 +29583,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													elem = ""
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposGetReleaseByTag
 															r.name = "ReposGetReleaseByTag"
 															r.summary = "Get a release by tag name"
 															r.operationID = "repos/get-release-by-tag"
@@ -29751,9 +29661,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposListReleaseAssets
 																r.name = "ReposListReleaseAssets"
 																r.summary = "List release assets"
 																r.operationID = "repos/list-release-assets"
@@ -29762,7 +29672,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.count = 3
 																return r, true
 															case "POST":
-																// Leaf: ReposUploadReleaseAsset
 																r.name = "ReposUploadReleaseAsset"
 																r.summary = "Upload a release asset"
 																r.operationID = "repos/upload-release-asset"
@@ -29785,9 +29694,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: ReactionsCreateForRelease
 																r.name = "ReactionsCreateForRelease"
 																r.summary = "Create reaction for a release"
 																r.operationID = "reactions/create-for-release"
@@ -29862,9 +29771,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: SecretScanningGetAlert
 														r.name = "SecretScanningGetAlert"
 														r.summary = "Get a secret scanning alert"
 														r.operationID = "secret-scanning/get-alert"
@@ -29873,7 +29782,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 3
 														return r, true
 													case "PATCH":
-														// Leaf: SecretScanningUpdateAlert
 														r.name = "SecretScanningUpdateAlert"
 														r.summary = "Update a secret scanning alert"
 														r.operationID = "secret-scanning/update-alert"
@@ -29935,9 +29843,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetCodeFrequencyStats
 																r.name = "ReposGetCodeFrequencyStats"
 																r.summary = "Get the weekly commit activity"
 																r.operationID = "repos/get-code-frequency-stats"
@@ -29960,9 +29868,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetCommitActivityStats
 																r.name = "ReposGetCommitActivityStats"
 																r.summary = "Get the last year of commit activity"
 																r.operationID = "repos/get-commit-activity-stats"
@@ -29985,9 +29893,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetContributorsStats
 																r.name = "ReposGetContributorsStats"
 																r.summary = "Get all contributor commit activity"
 																r.operationID = "repos/get-contributors-stats"
@@ -30025,9 +29933,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetParticipationStats
 																r.name = "ReposGetParticipationStats"
 																r.summary = "Get the weekly commit count"
 																r.operationID = "repos/get-participation-stats"
@@ -30050,9 +29958,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetPunchCardStats
 																r.name = "ReposGetPunchCardStats"
 																r.summary = "Get the hourly commit count for each day"
 																r.operationID = "repos/get-punch-card-stats"
@@ -30086,9 +29994,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: ReposCreateCommitStatus
 														r.name = "ReposCreateCommitStatus"
 														r.summary = "Create a commit status"
 														r.operationID = "repos/create-commit-status"
@@ -30126,9 +30034,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ActivityListWatchersForRepo
 														r.name = "ActivityListWatchersForRepo"
 														r.summary = "List watchers"
 														r.operationID = "activity/list-watchers-for-repo"
@@ -30151,9 +30059,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "DELETE":
-														// Leaf: ActivityDeleteRepoSubscription
 														r.name = "ActivityDeleteRepoSubscription"
 														r.summary = "Delete a repository subscription"
 														r.operationID = "activity/delete-repo-subscription"
@@ -30162,7 +30070,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "GET":
-														// Leaf: ActivityGetRepoSubscription
 														r.name = "ActivityGetRepoSubscription"
 														r.summary = "Get a repository subscription"
 														r.operationID = "activity/get-repo-subscription"
@@ -30171,7 +30078,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "PUT":
-														// Leaf: ActivitySetRepoSubscription
 														r.name = "ActivitySetRepoSubscription"
 														r.summary = "Set a repository subscription"
 														r.operationID = "activity/set-repo-subscription"
@@ -30224,9 +30130,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ReposListTags
 														r.name = "ReposListTags"
 														r.summary = "List repository tags"
 														r.operationID = "repos/list-tags"
@@ -30254,9 +30160,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												elem = ""
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ReposDownloadTarballArchive
 														r.name = "ReposDownloadTarballArchive"
 														r.summary = "Download a repository archive (tar)"
 														r.operationID = "repos/download-tarball-archive"
@@ -30282,9 +30188,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: ReposListTeams
 													r.name = "ReposListTeams"
 													r.summary = "List repository teams"
 													r.operationID = "repos/list-teams"
@@ -30307,9 +30213,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: ReposGetAllTopics
 													r.name = "ReposGetAllTopics"
 													r.summary = "Get all repository topics"
 													r.operationID = "repos/get-all-topics"
@@ -30318,7 +30224,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 2
 													return r, true
 												case "PUT":
-													// Leaf: ReposReplaceAllTopics
 													r.name = "ReposReplaceAllTopics"
 													r.summary = "Replace all repository topics"
 													r.operationID = "repos/replace-all-topics"
@@ -30365,9 +30270,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposGetClones
 															r.name = "ReposGetClones"
 															r.summary = "Get repository clones"
 															r.operationID = "repos/get-clones"
@@ -30402,9 +30307,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetTopPaths
 																r.name = "ReposGetTopPaths"
 																r.summary = "Get top referral paths"
 																r.operationID = "repos/get-top-paths"
@@ -30427,9 +30332,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "GET":
-																// Leaf: ReposGetTopReferrers
 																r.name = "ReposGetTopReferrers"
 																r.summary = "Get top referral sources"
 																r.operationID = "repos/get-top-referrers"
@@ -30455,9 +30360,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "GET":
-															// Leaf: ReposGetViews
 															r.name = "ReposGetViews"
 															r.summary = "Get page views"
 															r.operationID = "repos/get-views"
@@ -30483,9 +30388,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: ReposTransfer
 														r.name = "ReposTransfer"
 														r.summary = "Transfer a repository"
 														r.operationID = "repos/transfer"
@@ -30514,9 +30419,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: ReposDisableVulnerabilityAlerts
 												r.name = "ReposDisableVulnerabilityAlerts"
 												r.summary = "Disable vulnerability alerts"
 												r.operationID = "repos/disable-vulnerability-alerts"
@@ -30525,7 +30430,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "GET":
-												// Leaf: ReposCheckVulnerabilityAlerts
 												r.name = "ReposCheckVulnerabilityAlerts"
 												r.summary = "Check if vulnerability alerts are enabled for a repository"
 												r.operationID = "repos/check-vulnerability-alerts"
@@ -30534,7 +30438,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "PUT":
-												// Leaf: ReposEnableVulnerabilityAlerts
 												r.name = "ReposEnableVulnerabilityAlerts"
 												r.summary = "Enable vulnerability alerts"
 												r.operationID = "repos/enable-vulnerability-alerts"
@@ -30562,9 +30465,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: ReposDownloadZipballArchive
 												r.name = "ReposDownloadZipballArchive"
 												r.summary = "Download a repository archive (zip)"
 												r.operationID = "repos/download-zipball-archive"
@@ -30696,9 +30599,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "GET":
-														// Leaf: ActionsGetEnvironmentPublicKey
 														r.name = "ActionsGetEnvironmentPublicKey"
 														r.summary = "Get an environment public key"
 														r.operationID = "actions/get-environment-public-key"
@@ -30719,9 +30622,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											elem = ""
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "DELETE":
-													// Leaf: ActionsDeleteEnvironmentSecret
 													r.name = "ActionsDeleteEnvironmentSecret"
 													r.summary = "Delete an environment secret"
 													r.operationID = "actions/delete-environment-secret"
@@ -30730,7 +30633,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 3
 													return r, true
 												case "GET":
-													// Leaf: ActionsGetEnvironmentSecret
 													r.name = "ActionsGetEnvironmentSecret"
 													r.summary = "Get an environment secret"
 													r.operationID = "actions/get-environment-secret"
@@ -30739,7 +30641,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 3
 													return r, true
 												case "PUT":
-													// Leaf: ActionsCreateOrUpdateEnvironmentSecret
 													r.name = "ActionsCreateOrUpdateEnvironmentSecret"
 													r.summary = "Create or update an environment secret"
 													r.operationID = "actions/create-or-update-environment-secret"
@@ -30876,9 +30777,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "DELETE":
-											// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
 											r.name = "EnterpriseAdminDeleteScimGroupFromEnterprise"
 											r.summary = "Delete a SCIM group from an enterprise"
 											r.operationID = "enterprise-admin/delete-scim-group-from-enterprise"
@@ -30887,7 +30788,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "GET":
-											// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 											r.name = "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup"
 											r.summary = "Get SCIM provisioning information for an enterprise group"
 											r.operationID = "enterprise-admin/get-provisioning-information-for-enterprise-group"
@@ -30896,7 +30796,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "PATCH":
-											// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
 											r.name = "EnterpriseAdminUpdateAttributeForEnterpriseGroup"
 											r.summary = "Update an attribute for a SCIM enterprise group"
 											r.operationID = "enterprise-admin/update-attribute-for-enterprise-group"
@@ -30905,7 +30804,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "PUT":
-											// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseGroup
 											r.name = "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup"
 											r.summary = "Set SCIM information for a provisioned enterprise group"
 											r.operationID = "enterprise-admin/set-information-for-provisioned-enterprise-group"
@@ -30967,9 +30865,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "DELETE":
-											// Leaf: EnterpriseAdminDeleteUserFromEnterprise
 											r.name = "EnterpriseAdminDeleteUserFromEnterprise"
 											r.summary = "Delete a SCIM user from an enterprise"
 											r.operationID = "enterprise-admin/delete-user-from-enterprise"
@@ -30978,7 +30876,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "GET":
-											// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
 											r.name = "EnterpriseAdminGetProvisioningInformationForEnterpriseUser"
 											r.summary = "Get SCIM provisioning information for an enterprise user"
 											r.operationID = "enterprise-admin/get-provisioning-information-for-enterprise-user"
@@ -30987,7 +30884,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "PATCH":
-											// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
 											r.name = "EnterpriseAdminUpdateAttributeForEnterpriseUser"
 											r.summary = "Update an attribute for a SCIM enterprise user"
 											r.operationID = "enterprise-admin/update-attribute-for-enterprise-user"
@@ -30996,7 +30892,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "PUT":
-											// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
 											r.name = "EnterpriseAdminSetInformationForProvisionedEnterpriseUser"
 											r.summary = "Set SCIM information for a provisioned enterprise user"
 											r.operationID = "enterprise-admin/set-information-for-provisioned-enterprise-user"
@@ -31054,9 +30949,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: ScimDeleteUserFromOrg
 									r.name = "ScimDeleteUserFromOrg"
 									r.summary = "Delete a SCIM user from an organization"
 									r.operationID = "scim/delete-user-from-org"
@@ -31109,9 +31004,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: SearchCode
 									r.name = "SearchCode"
 									r.summary = "Search code"
 									r.operationID = "search/code"
@@ -31134,9 +31029,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: SearchCommits
 									r.name = "SearchCommits"
 									r.summary = "Search commits"
 									r.operationID = "search/commits"
@@ -31162,9 +31057,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: SearchIssuesAndPullRequests
 								r.name = "SearchIssuesAndPullRequests"
 								r.summary = "Search issues and pull requests"
 								r.operationID = "search/issues-and-pull-requests"
@@ -31187,9 +31082,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: SearchLabels
 								r.name = "SearchLabels"
 								r.summary = "Search labels"
 								r.operationID = "search/labels"
@@ -31212,9 +31107,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: SearchRepos
 								r.name = "SearchRepos"
 								r.summary = "Search repositories"
 								r.operationID = "search/repos"
@@ -31237,9 +31132,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: SearchTopics
 								r.name = "SearchTopics"
 								r.summary = "Search topics"
 								r.operationID = "search/topics"
@@ -31262,9 +31157,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: SearchUsers
 								r.name = "SearchUsers"
 								r.summary = "Search users"
 								r.operationID = "search/users"
@@ -31523,9 +31418,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: ReactionsListForTeamDiscussionCommentLegacy
 													r.name = "ReactionsListForTeamDiscussionCommentLegacy"
 													r.summary = "List reactions for a team discussion comment (Legacy)"
 													r.operationID = "reactions/list-for-team-discussion-comment-legacy"
@@ -31534,7 +31429,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 3
 													return r, true
 												case "POST":
-													// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
 													r.name = "ReactionsCreateForTeamDiscussionCommentLegacy"
 													r.summary = "Create reaction for a team discussion comment (Legacy)"
 													r.operationID = "reactions/create-for-team-discussion-comment-legacy"
@@ -31563,9 +31457,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: ReactionsListForTeamDiscussionLegacy
 											r.name = "ReactionsListForTeamDiscussionLegacy"
 											r.summary = "List reactions for a team discussion (Legacy)"
 											r.operationID = "reactions/list-for-team-discussion-legacy"
@@ -31574,7 +31468,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "POST":
-											// Leaf: ReactionsCreateForTeamDiscussionLegacy
 											r.name = "ReactionsCreateForTeamDiscussionLegacy"
 											r.summary = "Create reaction for a team discussion (Legacy)"
 											r.operationID = "reactions/create-for-team-discussion-legacy"
@@ -31606,9 +31499,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: TeamsListPendingInvitationsLegacy
 								r.name = "TeamsListPendingInvitationsLegacy"
 								r.summary = "List pending team invitations (Legacy)"
 								r.operationID = "teams/list-pending-invitations-legacy"
@@ -31659,9 +31552,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: TeamsRemoveMemberLegacy
 									r.name = "TeamsRemoveMemberLegacy"
 									r.summary = "Remove team member (Legacy)"
 									r.operationID = "teams/remove-member-legacy"
@@ -31670,7 +31563,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 2
 									return r, true
 								case "GET":
-									// Leaf: TeamsGetMemberLegacy
 									r.name = "TeamsGetMemberLegacy"
 									r.summary = "Get team member (Legacy)"
 									r.operationID = "teams/get-member-legacy"
@@ -31679,7 +31571,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 2
 									return r, true
 								case "PUT":
-									// Leaf: TeamsAddMemberLegacy
 									r.name = "TeamsAddMemberLegacy"
 									r.summary = "Add team member (Legacy)"
 									r.operationID = "teams/add-member-legacy"
@@ -31707,9 +31598,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: TeamsRemoveMembershipForUserLegacy
 									r.name = "TeamsRemoveMembershipForUserLegacy"
 									r.summary = "Remove team membership for a user (Legacy)"
 									r.operationID = "teams/remove-membership-for-user-legacy"
@@ -31718,7 +31609,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 2
 									return r, true
 								case "GET":
-									// Leaf: TeamsGetMembershipForUserLegacy
 									r.name = "TeamsGetMembershipForUserLegacy"
 									r.summary = "Get team membership for a user (Legacy)"
 									r.operationID = "teams/get-membership-for-user-legacy"
@@ -31727,7 +31617,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 2
 									return r, true
 								case "PUT":
-									// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
 									r.name = "TeamsAddOrUpdateMembershipForUserLegacy"
 									r.summary = "Add or update team membership for a user (Legacy)"
 									r.operationID = "teams/add-or-update-membership-for-user-legacy"
@@ -31781,9 +31670,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: TeamsRemoveProjectLegacy
 									r.name = "TeamsRemoveProjectLegacy"
 									r.summary = "Remove a project from a team (Legacy)"
 									r.operationID = "teams/remove-project-legacy"
@@ -31792,7 +31681,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 2
 									return r, true
 								case "GET":
-									// Leaf: TeamsCheckPermissionsForProjectLegacy
 									r.name = "TeamsCheckPermissionsForProjectLegacy"
 									r.summary = "Check team permissions for a project (Legacy)"
 									r.operationID = "teams/check-permissions-for-project-legacy"
@@ -31801,7 +31689,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 2
 									return r, true
 								case "PUT":
-									// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
 									r.name = "TeamsAddOrUpdateProjectPermissionsLegacy"
 									r.summary = "Add or update team project permissions (Legacy)"
 									r.operationID = "teams/add-or-update-project-permissions-legacy"
@@ -31876,9 +31763,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "DELETE":
-										// Leaf: TeamsRemoveRepoLegacy
 										r.name = "TeamsRemoveRepoLegacy"
 										r.summary = "Remove a repository from a team (Legacy)"
 										r.operationID = "teams/remove-repo-legacy"
@@ -31887,7 +31774,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 3
 										return r, true
 									case "GET":
-										// Leaf: TeamsCheckPermissionsForRepoLegacy
 										r.name = "TeamsCheckPermissionsForRepoLegacy"
 										r.summary = "Check team permissions for a repository (Legacy)"
 										r.operationID = "teams/check-permissions-for-repo-legacy"
@@ -31896,7 +31782,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 3
 										return r, true
 									case "PUT":
-										// Leaf: TeamsAddOrUpdateRepoPermissionsLegacy
 										r.name = "TeamsAddOrUpdateRepoPermissionsLegacy"
 										r.summary = "Add or update team repository permissions (Legacy)"
 										r.operationID = "teams/add-or-update-repo-permissions-legacy"
@@ -31937,9 +31822,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: TeamsListIdpGroupsForLegacy
 									r.name = "TeamsListIdpGroupsForLegacy"
 									r.summary = "List IdP groups for a team (Legacy)"
 									r.operationID = "teams/list-idp-groups-for-legacy"
@@ -31948,7 +31833,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 1
 									return r, true
 								case "PATCH":
-									// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsLegacy
 									r.name = "TeamsCreateOrUpdateIdpGroupConnectionsLegacy"
 									r.summary = "Create or update IdP group connections (Legacy)"
 									r.operationID = "teams/create-or-update-idp-group-connections-legacy"
@@ -31971,9 +31855,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: TeamsListChildLegacy
 									r.name = "TeamsListChildLegacy"
 									r.summary = "List child teams (Legacy)"
 									r.operationID = "teams/list-child-legacy"
@@ -32076,9 +31960,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: UsersUnblock
 									r.name = "UsersUnblock"
 									r.summary = "Unblock a user"
 									r.operationID = "users/unblock"
@@ -32087,7 +31971,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 1
 									return r, true
 								case "GET":
-									// Leaf: UsersCheckBlocked
 									r.name = "UsersCheckBlocked"
 									r.summary = "Check if a user is blocked by the authenticated user"
 									r.operationID = "users/check-blocked"
@@ -32096,7 +31979,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 1
 									return r, true
 								case "PUT":
-									// Leaf: UsersBlock
 									r.name = "UsersBlock"
 									r.summary = "Block a user"
 									r.operationID = "users/block"
@@ -32134,9 +32016,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "PATCH":
-									// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
 									r.name = "UsersSetPrimaryEmailVisibilityForAuthenticated"
 									r.summary = "Set primary email visibility for the authenticated user"
 									r.operationID = "users/set-primary-email-visibility-for-authenticated"
@@ -32159,9 +32041,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: UsersDeleteEmailForAuthenticated
 									r.name = "UsersDeleteEmailForAuthenticated"
 									r.summary = "Delete an email address for the authenticated user"
 									r.operationID = "users/delete-email-for-authenticated"
@@ -32170,7 +32052,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 0
 									return r, true
 								case "GET":
-									// Leaf: UsersListEmailsForAuthenticated
 									r.name = "UsersListEmailsForAuthenticated"
 									r.summary = "List email addresses for the authenticated user"
 									r.operationID = "users/list-emails-for-authenticated"
@@ -32179,7 +32060,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 0
 									return r, true
 								case "POST":
-									// Leaf: UsersAddEmailForAuthenticated
 									r.name = "UsersAddEmailForAuthenticated"
 									r.summary = "Add an email address for the authenticated user"
 									r.operationID = "users/add-email-for-authenticated"
@@ -32217,9 +32097,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: UsersListFollowersForAuthenticatedUser
 									r.name = "UsersListFollowersForAuthenticatedUser"
 									r.summary = "List followers of the authenticated user"
 									r.operationID = "users/list-followers-for-authenticated-user"
@@ -32270,9 +32150,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "DELETE":
-										// Leaf: UsersUnfollow
 										r.name = "UsersUnfollow"
 										r.summary = "Unfollow a user"
 										r.operationID = "users/unfollow"
@@ -32281,7 +32161,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "GET":
-										// Leaf: UsersCheckPersonIsFollowedByAuthenticated
 										r.name = "UsersCheckPersonIsFollowedByAuthenticated"
 										r.summary = "Check if a person is followed by the authenticated user"
 										r.operationID = "users/check-person-is-followed-by-authenticated"
@@ -32290,7 +32169,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "PUT":
-										// Leaf: UsersFollow
 										r.name = "UsersFollow"
 										r.summary = "Follow a user"
 										r.operationID = "users/follow"
@@ -32355,9 +32233,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: UsersDeleteGpgKeyForAuthenticated
 									r.name = "UsersDeleteGpgKeyForAuthenticated"
 									r.summary = "Delete a GPG key for the authenticated user"
 									r.operationID = "users/delete-gpg-key-for-authenticated"
@@ -32366,7 +32244,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 1
 									return r, true
 								case "GET":
-									// Leaf: UsersGetGpgKeyForAuthenticated
 									r.name = "UsersGetGpgKeyForAuthenticated"
 									r.summary = "Get a GPG key for the authenticated user"
 									r.operationID = "users/get-gpg-key-for-authenticated"
@@ -32465,9 +32342,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: AppsRemoveRepoFromInstallation
 												r.name = "AppsRemoveRepoFromInstallation"
 												r.summary = "Remove a repository from an app installation"
 												r.operationID = "apps/remove-repo-from-installation"
@@ -32476,7 +32353,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 2
 												return r, true
 											case "PUT":
-												// Leaf: AppsAddRepoToInstallation
 												r.name = "AppsAddRepoToInstallation"
 												r.summary = "Add a repository to an app installation"
 												r.operationID = "apps/add-repo-to-installation"
@@ -32505,9 +32381,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "DELETE":
-										// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
 										r.name = "InteractionsRemoveRestrictionsForAuthenticatedUser"
 										r.summary = "Remove interaction restrictions from your public repositories"
 										r.operationID = "interactions/remove-restrictions-for-authenticated-user"
@@ -32516,7 +32392,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 0
 										return r, true
 									case "PUT":
-										// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
 										r.name = "InteractionsSetRestrictionsForAuthenticatedUser"
 										r.summary = "Set interaction restrictions for your public repositories"
 										r.operationID = "interactions/set-restrictions-for-authenticated-user"
@@ -32542,9 +32417,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: IssuesListForAuthenticatedUser
 									r.name = "IssuesListForAuthenticatedUser"
 									r.summary = "List user account issues assigned to the authenticated user"
 									r.operationID = "issues/list-for-authenticated-user"
@@ -32606,9 +32481,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "DELETE":
-									// Leaf: UsersDeletePublicSSHKeyForAuthenticated
 									r.name = "UsersDeletePublicSSHKeyForAuthenticated"
 									r.summary = "Delete a public SSH key for the authenticated user"
 									r.operationID = "users/delete-public-ssh-key-for-authenticated"
@@ -32617,7 +32492,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 1
 									return r, true
 								case "GET":
-									// Leaf: UsersGetPublicSSHKeyForAuthenticated
 									r.name = "UsersGetPublicSSHKeyForAuthenticated"
 									r.summary = "Get a public SSH key for the authenticated user"
 									r.operationID = "users/get-public-ssh-key-for-authenticated"
@@ -32678,9 +32552,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
 										r.name = "AppsListSubscriptionsForAuthenticatedUserStubbed"
 										r.summary = "List subscriptions for the authenticated user (stubbed)"
 										r.operationID = "apps/list-subscriptions-for-authenticated-user-stubbed"
@@ -32734,9 +32608,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: OrgsGetMembershipForAuthenticatedUser
 										r.name = "OrgsGetMembershipForAuthenticatedUser"
 										r.summary = "Get an organization membership for the authenticated user"
 										r.operationID = "orgs/get-membership-for-authenticated-user"
@@ -32745,7 +32619,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "PATCH":
-										// Leaf: OrgsUpdateMembershipForAuthenticatedUser
 										r.name = "OrgsUpdateMembershipForAuthenticatedUser"
 										r.summary = "Update an organization membership for the authenticated user"
 										r.operationID = "orgs/update-membership-for-authenticated-user"
@@ -32846,9 +32719,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "DELETE":
-												// Leaf: MigrationsDeleteArchiveForAuthenticatedUser
 												r.name = "MigrationsDeleteArchiveForAuthenticatedUser"
 												r.summary = "Delete a user migration archive"
 												r.operationID = "migrations/delete-archive-for-authenticated-user"
@@ -32857,7 +32730,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												r.count = 1
 												return r, true
 											case "GET":
-												// Leaf: MigrationsGetArchiveForAuthenticatedUser
 												r.name = "MigrationsGetArchiveForAuthenticatedUser"
 												r.summary = "Download a user migration archive"
 												r.operationID = "migrations/get-archive-for-authenticated-user"
@@ -32913,9 +32785,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "DELETE":
-														// Leaf: MigrationsUnlockRepoForAuthenticatedUser
 														r.name = "MigrationsUnlockRepoForAuthenticatedUser"
 														r.summary = "Unlock a user repository"
 														r.operationID = "migrations/unlock-repo-for-authenticated-user"
@@ -32941,9 +32813,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "GET":
-													// Leaf: MigrationsListReposForUser
 													r.name = "MigrationsListReposForUser"
 													r.summary = "List repositories for a user migration"
 													r.operationID = "migrations/list-repos-for-user"
@@ -32981,9 +32853,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: OrgsListForAuthenticatedUser
 								r.name = "OrgsListForAuthenticatedUser"
 								r.summary = "List organizations for the authenticated user"
 								r.operationID = "orgs/list-for-authenticated-user"
@@ -33114,9 +32986,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: PackagesRestorePackageForAuthenticatedUser
 													r.name = "PackagesRestorePackageForAuthenticatedUser"
 													r.summary = "Restore a package for the authenticated user"
 													r.operationID = "packages/restore-package-for-authenticated-user"
@@ -33202,9 +33074,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
 															r.name = "PackagesRestorePackageVersionForAuthenticatedUser"
 															r.summary = "Restore a package version for the authenticated user"
 															r.operationID = "packages/restore-package-version-for-authenticated-user"
@@ -33245,9 +33117,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: ProjectsCreateForAuthenticatedUser
 									r.name = "ProjectsCreateForAuthenticatedUser"
 									r.summary = "Create a user project"
 									r.operationID = "projects/create-for-authenticated-user"
@@ -33270,9 +33142,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: UsersListPublicEmailsForAuthenticated
 									r.name = "UsersListPublicEmailsForAuthenticated"
 									r.summary = "List public email addresses for the authenticated user"
 									r.operationID = "users/list-public-emails-for-authenticated"
@@ -33357,9 +33229,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "DELETE":
-										// Leaf: ReposDeclineInvitation
 										r.name = "ReposDeclineInvitation"
 										r.summary = "Decline a repository invitation"
 										r.operationID = "repos/decline-invitation"
@@ -33368,7 +33240,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										r.count = 1
 										return r, true
 									case "PATCH":
-										// Leaf: ReposAcceptInvitation
 										r.name = "ReposAcceptInvitation"
 										r.summary = "Accept a repository invitation"
 										r.operationID = "repos/accept-invitation"
@@ -33458,9 +33329,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "DELETE":
-											// Leaf: ActivityUnstarRepoForAuthenticatedUser
 											r.name = "ActivityUnstarRepoForAuthenticatedUser"
 											r.summary = "Unstar a repository for the authenticated user"
 											r.operationID = "activity/unstar-repo-for-authenticated-user"
@@ -33469,7 +33340,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "GET":
-											// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
 											r.name = "ActivityCheckRepoIsStarredByAuthenticatedUser"
 											r.summary = "Check if a repository is starred by the authenticated user"
 											r.operationID = "activity/check-repo-is-starred-by-authenticated-user"
@@ -33478,7 +33348,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											r.count = 2
 											return r, true
 										case "PUT":
-											// Leaf: ActivityStarRepoForAuthenticatedUser
 											r.name = "ActivityStarRepoForAuthenticatedUser"
 											r.summary = "Star a repository for the authenticated user"
 											r.operationID = "activity/star-repo-for-authenticated-user"
@@ -33507,9 +33376,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: ActivityListWatchedReposForAuthenticatedUser
 									r.name = "ActivityListWatchedReposForAuthenticatedUser"
 									r.summary = "List repositories watched by the authenticated user"
 									r.operationID = "activity/list-watched-repos-for-authenticated-user"
@@ -33535,9 +33404,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: TeamsListForAuthenticatedUser
 								r.name = "TeamsListForAuthenticatedUser"
 								r.summary = "List teams for the authenticated user"
 								r.operationID = "teams/list-for-authenticated-user"
@@ -33670,9 +33539,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: ActivityListOrgEventsForAuthenticatedUser
 												r.name = "ActivityListOrgEventsForAuthenticatedUser"
 												r.summary = "List organization events for the authenticated user"
 												r.operationID = "activity/list-org-events-for-authenticated-user"
@@ -33695,9 +33564,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: ActivityListPublicEventsForUser
 												r.name = "ActivityListPublicEventsForUser"
 												r.summary = "List public events for a user"
 												r.operationID = "activity/list-public-events-for-user"
@@ -33738,9 +33607,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: UsersListFollowersForUser
 											r.name = "UsersListFollowersForUser"
 											r.summary = "List followers of a user"
 											r.operationID = "users/list-followers-for-user"
@@ -33791,9 +33660,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										elem = ""
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: UsersCheckFollowingForUser
 												r.name = "UsersCheckFollowingForUser"
 												r.summary = "Check if a user follows another user"
 												r.operationID = "users/check-following-for-user"
@@ -33834,9 +33703,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: GistsListForUser
 											r.name = "GistsListForUser"
 											r.summary = "List gists for a user"
 											r.operationID = "gists/list-for-user"
@@ -33859,9 +33728,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: UsersListGpgKeysForUser
 											r.name = "UsersListGpgKeysForUser"
 											r.summary = "List GPG keys for a user"
 											r.operationID = "users/list-gpg-keys-for-user"
@@ -33887,9 +33756,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: UsersGetContextForUser
 										r.name = "UsersGetContextForUser"
 										r.summary = "Get contextual information for a user"
 										r.operationID = "users/get-context-for-user"
@@ -33912,9 +33781,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: UsersListPublicKeysForUser
 										r.name = "UsersListPublicKeysForUser"
 										r.summary = "List public keys for a user"
 										r.operationID = "users/list-public-keys-for-user"
@@ -33937,9 +33806,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: OrgsListForUser
 										r.name = "OrgsListForUser"
 										r.summary = "List organizations for a user"
 										r.operationID = "orgs/list-for-user"
@@ -34070,9 +33939,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: PackagesRestorePackageForUser
 															r.name = "PackagesRestorePackageForUser"
 															r.summary = "Restore a package for a user"
 															r.operationID = "packages/restore-package-for-user"
@@ -34158,9 +34027,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: PackagesRestorePackageVersionForUser
 																	r.name = "PackagesRestorePackageVersionForUser"
 																	r.summary = "Restore package version for a user"
 																	r.operationID = "packages/restore-package-version-for-user"
@@ -34201,9 +34070,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: ProjectsListForUser
 											r.name = "ProjectsListForUser"
 											r.summary = "List user projects"
 											r.operationID = "projects/list-for-user"
@@ -34264,9 +34133,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: ActivityListReceivedPublicEventsForUser
 												r.name = "ActivityListReceivedPublicEventsForUser"
 												r.summary = "List public events received by a user"
 												r.operationID = "activity/list-received-public-events-for-user"
@@ -34292,9 +34161,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: ReposListForUser
 											r.name = "ReposListForUser"
 											r.summary = "List repositories for a user"
 											r.operationID = "repos/list-for-user"
@@ -34344,9 +34213,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: BillingGetGithubActionsBillingUser
 												r.name = "BillingGetGithubActionsBillingUser"
 												r.summary = "Get GitHub Actions billing for a user"
 												r.operationID = "billing/get-github-actions-billing-user"
@@ -34369,9 +34238,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: BillingGetGithubPackagesBillingUser
 												r.name = "BillingGetGithubPackagesBillingUser"
 												r.summary = "Get GitHub Packages billing for a user"
 												r.operationID = "billing/get-github-packages-billing-user"
@@ -34394,9 +34263,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "GET":
-												// Leaf: BillingGetSharedStorageBillingUser
 												r.name = "BillingGetSharedStorageBillingUser"
 												r.summary = "Get shared storage billing for a user"
 												r.operationID = "billing/get-shared-storage-billing-user"
@@ -34422,9 +34291,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: ActivityListReposWatchedByUser
 											r.name = "ActivityListReposWatchedByUser"
 											r.summary = "List repositories watched by a user"
 											r.operationID = "activity/list-repos-watched-by-user"
@@ -34462,9 +34331,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: MetaGetZen
 						r.name = "MetaGetZen"
 						r.summary = "Get the Zen of GitHub"
 						r.operationID = "meta/get-zen"

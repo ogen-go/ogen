@@ -868,9 +868,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateAnswer
 							r.name = "CreateAnswer"
 							r.summary = "Answers the specified question using the provided documents and examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).\n"
 							r.operationID = "createAnswer"
@@ -905,9 +905,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: CreateTranscription
 								r.name = "CreateTranscription"
 								r.summary = "Transcribes audio into the input language."
 								r.operationID = "createTranscription"
@@ -930,9 +930,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: CreateTranslation
 								r.name = "CreateTranslation"
 								r.summary = "Translates audio into into English."
 								r.operationID = "createTranslation"
@@ -973,9 +973,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateChatCompletion
 							r.name = "CreateChatCompletion"
 							r.summary = "Creates a completion for the chat message"
 							r.operationID = "createChatCompletion"
@@ -998,9 +998,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateClassification
 							r.name = "CreateClassification"
 							r.summary = "Classifies the specified `query` using provided examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over the labeled examples\nto select the ones most relevant for the particular query. Then, the relevant examples\nare combined with the query to construct a prompt to produce the final label via the\n[completions](/docs/api-reference/completions) endpoint.\n\nLabeled examples can be provided via an uploaded `file`, or explicitly listed in the\nrequest using the `examples` parameter for quick tests and small scale use cases.\n"
 							r.operationID = "createClassification"
@@ -1023,9 +1023,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateCompletion
 							r.name = "CreateCompletion"
 							r.summary = "Creates a completion for the provided prompt and parameters"
 							r.operationID = "createCompletion"
@@ -1063,9 +1063,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateEdit
 							r.name = "CreateEdit"
 							r.summary = "Creates a new edit for the provided input, instruction, and parameters."
 							r.operationID = "createEdit"
@@ -1088,9 +1088,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateEmbedding
 							r.name = "CreateEmbedding"
 							r.summary = "Creates an embedding vector representing the input text."
 							r.operationID = "createEmbedding"
@@ -1168,9 +1168,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: CreateSearch
 									r.name = "CreateSearch"
 									r.summary = "The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.\n\nTo go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.\n\nThe similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.\n"
 									r.operationID = "createSearch"
@@ -1285,9 +1285,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: DownloadFile
 									r.name = "DownloadFile"
 									r.summary = "Returns the contents of the specified file"
 									r.operationID = "downloadFile"
@@ -1391,9 +1391,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "POST":
-										// Leaf: CancelFineTune
 										r.name = "CancelFineTune"
 										r.summary = "Immediately cancel a fine-tune job.\n"
 										r.operationID = "cancelFineTune"
@@ -1416,9 +1416,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: ListFineTuneEvents
 										r.name = "ListFineTuneEvents"
 										r.summary = "Get fine-grained status updates for a fine-tune job.\n"
 										r.operationID = "listFineTuneEvents"
@@ -1465,9 +1465,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateImageEdit
 							r.name = "CreateImageEdit"
 							r.summary = "Creates an edited or extended image given an original image and a prompt."
 							r.operationID = "createImageEdit"
@@ -1490,9 +1490,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateImage
 							r.name = "CreateImage"
 							r.summary = "Creates an image given a prompt."
 							r.operationID = "createImage"
@@ -1515,9 +1515,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateImageVariation
 							r.name = "CreateImageVariation"
 							r.summary = "Creates a variation of a given image."
 							r.operationID = "createImageVariation"
@@ -1583,9 +1583,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "DELETE":
-								// Leaf: DeleteModel
 								r.name = "DeleteModel"
 								r.summary = "Delete a fine-tuned model. You must have the Owner role in your organization."
 								r.operationID = "deleteModel"
@@ -1594,7 +1594,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "GET":
-								// Leaf: RetrieveModel
 								r.name = "RetrieveModel"
 								r.summary = "Retrieves a model instance, providing basic information about the model such as the owner and permissioning."
 								r.operationID = "retrieveModel"
@@ -1620,9 +1619,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: CreateModeration
 							r.name = "CreateModeration"
 							r.summary = "Classifies if text violates OpenAI's Content Policy"
 							r.operationID = "createModeration"

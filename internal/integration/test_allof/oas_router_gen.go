@@ -378,9 +378,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "POST":
-						// Leaf: NullableStrings
 						r.name = "NullableStrings"
 						r.summary = ""
 						r.operationID = "nullableStrings"
@@ -415,9 +415,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: ObjectsWithConflictingArrayProperty
 							r.name = "ObjectsWithConflictingArrayProperty"
 							r.summary = ""
 							r.operationID = "objectsWithConflictingArrayProperty"
@@ -440,9 +440,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: ObjectsWithConflictingProperties
 							r.name = "ObjectsWithConflictingProperties"
 							r.summary = ""
 							r.operationID = "objectsWithConflictingProperties"
@@ -491,9 +491,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: ReferencedAllofOptional
 							r.name = "ReferencedAllofOptional"
 							r.summary = ""
 							r.operationID = "referencedAllofOptional"
@@ -543,9 +543,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: SimpleInteger
 								r.name = "SimpleInteger"
 								r.summary = ""
 								r.operationID = "simpleInteger"
@@ -568,9 +568,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: SimpleObjects
 								r.name = "SimpleObjects"
 								r.summary = ""
 								r.operationID = "simpleObjects"
@@ -596,9 +596,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: StringsNotype
 							r.name = "StringsNotype"
 							r.summary = ""
 							r.operationID = "stringsNotype"

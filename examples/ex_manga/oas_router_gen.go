@@ -431,9 +431,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: Search
 								r.name = "Search"
 								r.summary = "Search for comics"
 								r.operationID = "search"
@@ -456,9 +456,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: SearchByTagID
 								r.name = "SearchByTagID"
 								r.summary = "Search for comics by tag ID"
 								r.operationID = "searchByTagID"
@@ -489,9 +489,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					elem = ""
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: GetBook
 							r.name = "GetBook"
 							r.summary = "Gets metadata of book"
 							r.operationID = "getBook"
@@ -555,9 +555,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: GetPageCoverImage
 								r.name = "GetPageCoverImage"
 								r.summary = "Gets page cover"
 								r.operationID = "getPageCoverImage"
@@ -599,9 +599,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: GetPageImage
 								r.name = "GetPageImage"
 								r.summary = "Gets page"
 								r.operationID = "getPageImage"
@@ -629,9 +629,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: GetPageThumbnailImage
 								r.name = "GetPageThumbnailImage"
 								r.summary = "Gets page thumbnail"
 								r.operationID = "getPageThumbnailImage"

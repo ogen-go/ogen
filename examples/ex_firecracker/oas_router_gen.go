@@ -618,9 +618,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "PUT":
-						// Leaf: CreateSyncAction
 						r.name = "CreateSyncAction"
 						r.summary = "Creates a synchronous action."
 						r.operationID = "createSyncAction"
@@ -694,9 +694,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: DescribeBalloonStats
 								r.name = "DescribeBalloonStats"
 								r.summary = "Returns the latest balloon device statistics, only if enabled pre-boot."
 								r.operationID = "describeBalloonStats"
@@ -705,7 +705,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 0
 								return r, true
 							case "PATCH":
-								// Leaf: PatchBalloonStatsInterval
 								r.name = "PatchBalloonStatsInterval"
 								r.summary = "Updates a balloon device statistics polling interval."
 								r.operationID = "patchBalloonStatsInterval"
@@ -731,9 +730,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "PUT":
-							// Leaf: PutGuestBootSource
 							r.name = "PutGuestBootSource"
 							r.summary = "Creates or updates the boot source. Pre-boot only."
 							r.operationID = "putGuestBootSource"
@@ -764,9 +763,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				elem = ""
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "PATCH":
-						// Leaf: PatchGuestDriveByID
 						r.name = "PatchGuestDriveByID"
 						r.summary = "Updates the properties of a drive. Post-boot only."
 						r.operationID = "patchGuestDriveByID"
@@ -775,7 +774,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.count = 1
 						return r, true
 					case "PUT":
-						// Leaf: PutGuestDriveByID
 						r.name = "PutGuestDriveByID"
 						r.summary = "Creates or updates a drive. Pre-boot only."
 						r.operationID = "putGuestDriveByID"
@@ -798,9 +796,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "PUT":
-						// Leaf: PutLogger
 						r.name = "PutLogger"
 						r.summary = "Initializes the logger by specifying a named pipe or a file for the logs output."
 						r.operationID = "putLogger"
@@ -835,9 +833,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: GetMachineConfiguration
 							r.name = "GetMachineConfiguration"
 							r.summary = "Gets the machine configuration of the VM."
 							r.operationID = "getMachineConfiguration"
@@ -846,7 +844,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.count = 0
 							return r, true
 						case "PATCH":
-							// Leaf: PatchMachineConfiguration
 							r.name = "PatchMachineConfiguration"
 							r.summary = "Partially updates the Machine Configuration of the VM. Pre-boot only."
 							r.operationID = "patchMachineConfiguration"
@@ -855,7 +852,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.count = 0
 							return r, true
 						case "PUT":
-							// Leaf: PutMachineConfiguration
 							r.name = "PutMachineConfiguration"
 							r.summary = "Updates the Machine Configuration of the VM. Pre-boot only."
 							r.operationID = "putMachineConfiguration"
@@ -878,9 +874,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "PUT":
-							// Leaf: PutMetrics
 							r.name = "PutMetrics"
 							r.summary = "Initializes the metrics system by specifying a named pipe or a file for the metrics output."
 							r.operationID = "putMetrics"
@@ -942,9 +938,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "PUT":
-								// Leaf: MmdsConfigPut
 								r.name = "MmdsConfigPut"
 								r.summary = "Set MMDS configuration. Pre-boot only."
 								r.operationID = ""
@@ -978,9 +974,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				elem = ""
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "PATCH":
-						// Leaf: PatchGuestNetworkInterfaceByID
 						r.name = "PatchGuestNetworkInterfaceByID"
 						r.summary = "Updates the rate limiters applied to a network interface. Post-boot only."
 						r.operationID = "patchGuestNetworkInterfaceByID"
@@ -989,7 +985,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.count = 1
 						return r, true
 					case "PUT":
-						// Leaf: PutGuestNetworkInterfaceByID
 						r.name = "PutGuestNetworkInterfaceByID"
 						r.summary = "Creates a network interface. Pre-boot only."
 						r.operationID = "putGuestNetworkInterfaceByID"
@@ -1024,9 +1019,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "PUT":
-							// Leaf: CreateSnapshot
 							r.name = "CreateSnapshot"
 							r.summary = "Creates a full or diff snapshot. Post-boot only."
 							r.operationID = "createSnapshot"
@@ -1049,9 +1044,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "PUT":
-							// Leaf: LoadSnapshot
 							r.name = "LoadSnapshot"
 							r.summary = "Loads a snapshot. Pre-boot only."
 							r.operationID = "loadSnapshot"
@@ -1112,9 +1107,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: GetExportVmConfig
 								r.name = "GetExportVmConfig"
 								r.summary = "Gets the full VM configuration."
 								r.operationID = "getExportVmConfig"
@@ -1140,9 +1135,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "PUT":
-							// Leaf: PutGuestVsock
 							r.name = "PutGuestVsock"
 							r.summary = "Creates/updates a vsock device. Pre-boot only."
 							r.operationID = "putGuestVsock"

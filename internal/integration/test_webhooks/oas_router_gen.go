@@ -158,9 +158,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
+				// Leaf node.
 				switch method {
 				case "POST":
-					// Leaf: PublishEvent
 					r.name = "PublishEvent"
 					r.summary = ""
 					r.operationID = "publishEvent"

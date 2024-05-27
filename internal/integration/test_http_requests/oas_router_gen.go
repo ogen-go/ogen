@@ -315,9 +315,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: AllRequestBodiesOptional
 							r.name = "AllRequestBodiesOptional"
 							r.summary = ""
 							r.operationID = "allRequestBodiesOptional"
@@ -343,9 +343,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "POST":
-						// Leaf: Base64Request
 						r.name = "Base64Request"
 						r.summary = ""
 						r.operationID = "base64Request"
@@ -391,9 +391,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: MaskContentTypeOptional
 							r.name = "MaskContentTypeOptional"
 							r.summary = ""
 							r.operationID = "maskContentTypeOptional"
@@ -419,9 +419,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "POST":
-						// Leaf: StreamJSON
 						r.name = "StreamJSON"
 						r.summary = ""
 						r.operationID = "streamJSON"
