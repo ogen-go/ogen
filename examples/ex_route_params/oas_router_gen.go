@@ -282,9 +282,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					elem = ""
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: DataGet
 							r.name = "DataGet"
 							r.summary = ""
 							r.operationID = "dataGet"

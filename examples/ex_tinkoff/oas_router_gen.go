@@ -754,9 +754,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: MarketBondsGet
 							r.name = "MarketBondsGet"
 							r.summary = "Получение списка облигаций"
 							r.operationID = ""
@@ -791,9 +791,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: MarketCandlesGet
 								r.name = "MarketCandlesGet"
 								r.summary = "Получение исторических свечей по FIGI"
 								r.operationID = ""
@@ -816,9 +816,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: MarketCurrenciesGet
 								r.name = "MarketCurrenciesGet"
 								r.summary = "Получение списка валютных пар"
 								r.operationID = ""
@@ -844,9 +844,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: MarketEtfsGet
 							r.name = "MarketEtfsGet"
 							r.summary = "Получение списка ETF"
 							r.operationID = ""
@@ -869,9 +869,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: MarketOrderbookGet
 							r.name = "MarketOrderbookGet"
 							r.summary = "Получение стакана по FIGI"
 							r.operationID = ""
@@ -918,9 +918,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: MarketSearchByFigiGet
 									r.name = "MarketSearchByFigiGet"
 									r.summary = "Получение инструмента по FIGI"
 									r.operationID = ""
@@ -943,9 +943,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: MarketSearchByTickerGet
 									r.name = "MarketSearchByTickerGet"
 									r.summary = "Получение инструмента по тикеру"
 									r.operationID = ""
@@ -971,9 +971,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: MarketStocksGet
 								r.name = "MarketStocksGet"
 								r.summary = "Получение списка акций"
 								r.operationID = ""
@@ -1014,9 +1014,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: OperationsGet
 							r.name = "OperationsGet"
 							r.summary = "Получение списка операций"
 							r.operationID = ""
@@ -1074,9 +1074,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: OrdersCancelPost
 									r.name = "OrdersCancelPost"
 									r.summary = "Отмена заявки"
 									r.operationID = ""
@@ -1099,9 +1099,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: OrdersLimitOrderPost
 									r.name = "OrdersLimitOrderPost"
 									r.summary = "Создание лимитной заявки"
 									r.operationID = ""
@@ -1124,9 +1124,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: OrdersMarketOrderPost
 									r.name = "OrdersMarketOrderPost"
 									r.summary = "Создание рыночной заявки"
 									r.operationID = ""
@@ -1181,9 +1181,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: PortfolioCurrenciesGet
 							r.name = "PortfolioCurrenciesGet"
 							r.summary = "Получение валютных активов клиента"
 							r.operationID = ""
@@ -1233,9 +1233,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: SandboxClearPost
 								r.name = "SandboxClearPost"
 								r.summary = "Удаление всех позиций"
 								r.operationID = ""
@@ -1258,9 +1258,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: SandboxCurrenciesBalancePost
 								r.name = "SandboxCurrenciesBalancePost"
 								r.summary = "Выставление баланса по валютным позициям"
 								r.operationID = ""
@@ -1286,9 +1286,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: SandboxPositionsBalancePost
 							r.name = "SandboxPositionsBalancePost"
 							r.summary = "Выставление баланса по инструментным позициям"
 							r.operationID = ""
@@ -1323,9 +1323,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: SandboxRegisterPost
 								r.name = "SandboxRegisterPost"
 								r.summary = "Регистрация клиента в sandbox"
 								r.operationID = ""
@@ -1348,9 +1348,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: SandboxRemovePost
 								r.name = "SandboxRemovePost"
 								r.summary = "Удаление счета"
 								r.operationID = ""
@@ -1379,9 +1379,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: UserAccountsGet
 						r.name = "UserAccountsGet"
 						r.summary = "Получение брокерских счетов клиента"
 						r.operationID = ""

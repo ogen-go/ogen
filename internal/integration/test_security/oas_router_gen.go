@@ -248,9 +248,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: CustomSecurity
 						r.name = "CustomSecurity"
 						r.summary = ""
 						r.operationID = "customSecurity"
@@ -273,9 +273,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: DisjointSecurity
 						r.name = "DisjointSecurity"
 						r.summary = ""
 						r.operationID = "disjointSecurity"
@@ -298,9 +298,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: IntersectSecurity
 						r.name = "IntersectSecurity"
 						r.summary = ""
 						r.operationID = "intersectSecurity"
@@ -323,9 +323,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: OptionalSecurity
 						r.name = "OptionalSecurity"
 						r.summary = ""
 						r.operationID = "optionalSecurity"

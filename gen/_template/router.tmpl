@@ -259,49 +259,46 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 
 {{- end }}
 
+{{ define "return_found_edge" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.RouterElem*/ -}}
+{{- $r := $.Route -}}
+	switch method {
+	{{- range $route := $r.Routes }}
+	case {{ quote $route.Method }}:
+		{{- $op := $route.Operation }}
+		r.name = {{ quote $op.Name }}
+		r.summary = {{ quote $op.Summary }}
+		r.operationID = {{ quote $op.Spec.OperationID }}
+		r.pathPattern = {{ quote $route.Path }}
+		r.args = args
+		r.count = {{ $.ParameterIndex }}
+		return r, true
+	{{- end }}
+	default:
+		return
+	}
+{{- end }}
+
 {{ define "find_edge" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.RouterElem*/ -}}
 {{- $r := $.Route }}
 {{- if $r.IsLeaf }}
 	if len(elem) == 0 {
-		switch method {
-		{{- range $route := $r.Routes }}{{- $op := $route.Operation }}
-		case {{ quote $route.Method }}:
-			// Leaf: {{ $op.Name }}
-			r.name = {{ quote $op.Name }}
-			r.summary = {{ quote $op.Summary }}
-			r.operationID = {{ quote $op.Spec.OperationID }}
-			r.pathPattern = {{ quote $route.Path }}
-			r.args = args
-			r.count = {{ $.ParameterIndex }}
-			return r, true
-		{{- end }}
-		default:
-			return
-		}
+		// Leaf node.
+		{{ template "return_found_edge" $ }}
 	}
 {{- else }}
-	{{- with $child := $r.StaticChildren }}
+	{{- with $routes := $r.Routes }}
 		if len(elem) == 0 {
-			{{- with $routes := $r.Routes }}
-			switch method {
-			{{- range $route := $routes }}{{- $op := $route.Operation }}
-			case {{ quote $route.Method }}:
-				r.name = {{ quote $op.Name }}
-				r.summary = {{ quote $op.Summary }}
-				r.operationID = {{ quote $op.Spec.OperationID }}
-				r.pathPattern = {{ quote $route.Path }}
-				r.args = args
-				r.count = {{ $.ParameterIndex }}
-				return r, true
-			{{- end }}
-			default:
-				return
-			}
-			{{- else }}
-			break
-			{{- end }}
+			{{ template "return_found_edge" $ }}
 		}
+	{{- end }}
+	{{- with $child := $r.StaticChildren }}
+		{{- if not $r.Routes }}
+		if len(elem) == 0 {
+			break
+		}
+		{{- end }}
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}

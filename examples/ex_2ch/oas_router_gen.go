@@ -785,9 +785,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APICaptcha2chcaptchaIDGet
 									r.name = "APICaptcha2chcaptchaIDGet"
 									r.summary = "Получение ид для использования 2chcaptcha."
 									r.operationID = ""
@@ -810,9 +810,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APICaptcha2chcaptchaShowGet
 									r.name = "APICaptcha2chcaptchaShowGet"
 									r.summary = "Отображение 2chcaptcha по id."
 									r.operationID = ""
@@ -843,9 +843,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						elem = ""
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: APICaptchaAppIDPublicKeyGet
 								r.name = "APICaptchaAppIDPublicKeyGet"
 								r.summary = "Получение app_response_id для отправки поста."
 								r.operationID = ""
@@ -880,9 +880,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APICaptchaInvisibleRecaptchaIDGet
 									r.name = "APICaptchaInvisibleRecaptchaIDGet"
 									r.summary = "Получение публичного ключа invisible recaptcha."
 									r.operationID = ""
@@ -905,9 +905,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APICaptchaInvisibleRecaptchaMobileGet
 									r.name = "APICaptchaInvisibleRecaptchaMobileGet"
 									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
@@ -945,9 +945,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APICaptchaRecaptchaIDGet
 									r.name = "APICaptchaRecaptchaIDGet"
 									r.summary = "Получение публичного ключа recaptcha v2."
 									r.operationID = ""
@@ -970,9 +970,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APICaptchaRecaptchaMobileGet
 									r.name = "APICaptchaRecaptchaMobileGet"
 									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
@@ -1001,9 +1001,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: APIDislikeGet
 							r.name = "APIDislikeGet"
 							r.summary = "Добавление дизлайка на пост."
 							r.operationID = ""
@@ -1026,9 +1026,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: APILikeGet
 							r.name = "APILikeGet"
 							r.summary = "Добавление лайка на пост."
 							r.operationID = ""
@@ -1110,9 +1110,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								elem = ""
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "GET":
-										// Leaf: APIMobileV2AfterBoardThreadNumGet
 										r.name = "APIMobileV2AfterBoardThreadNumGet"
 										r.summary = "Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов."
 										r.operationID = ""
@@ -1141,9 +1141,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: APIMobileV2BoardsGet
 								r.name = "APIMobileV2BoardsGet"
 								r.summary = "Получение списка досок и их настроек."
 								r.operationID = ""
@@ -1192,9 +1192,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APIMobileV2InfoBoardThreadGet
 									r.name = "APIMobileV2InfoBoardThreadGet"
 									r.summary = "Получение информации о треде."
 									r.operationID = ""
@@ -1246,9 +1246,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: APIMobileV2PostBoardNumGet
 									r.name = "APIMobileV2PostBoardNumGet"
 									r.summary = "Получение информации о посте."
 									r.operationID = ""
@@ -1304,9 +1304,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: UserPassloginPost
 								r.name = "UserPassloginPost"
 								r.summary = "Авторизация пасскода."
 								r.operationID = ""
@@ -1329,9 +1329,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: UserPostingPost
 								r.name = "UserPostingPost"
 								r.summary = "Создание нового поста или треда."
 								r.operationID = ""
@@ -1357,9 +1357,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: UserReportPost
 							r.name = "UserReportPost"
 							r.summary = "Отправка жалобы."
 							r.operationID = ""

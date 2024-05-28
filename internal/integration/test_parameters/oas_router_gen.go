@@ -468,9 +468,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: ComplicatedParameterNameGet
 							r.name = "ComplicatedParameterNameGet"
 							r.summary = ""
 							r.operationID = ""
@@ -498,9 +498,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					elem = ""
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: ContentParameters
 							r.name = "ContentParameters"
 							r.summary = ""
 							r.operationID = "contentParameters"
@@ -523,9 +523,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: CookieParameter
 							r.name = "CookieParameter"
 							r.summary = ""
 							r.operationID = "cookieParameter"
@@ -551,9 +551,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: HeaderParameter
 						r.name = "HeaderParameter"
 						r.summary = ""
 						r.operationID = "headerParameter"
@@ -600,9 +600,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: ObjectCookieParameter
 								r.name = "ObjectCookieParameter"
 								r.summary = ""
 								r.operationID = "objectCookieParameter"
@@ -625,9 +625,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: ObjectQueryParameter
 								r.name = "ObjectQueryParameter"
 								r.summary = ""
 								r.operationID = "objectQueryParameter"
@@ -653,9 +653,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: OptionalArrayParameter
 							r.name = "OptionalArrayParameter"
 							r.summary = ""
 							r.operationID = "optionalArrayParameter"
@@ -686,9 +686,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				elem = ""
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: PathParameter
 						r.name = "PathParameter"
 						r.summary = ""
 						r.operationID = "pathParameter"
@@ -728,9 +728,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					elem = ""
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: SameName
 							r.name = "SameName"
 							r.summary = "parameters with different location, but with the same name"
 							r.operationID = "sameName"
@@ -753,9 +753,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: SimilarNames
 							r.name = "SimilarNames"
 							r.summary = "parameters with different location, but with similar names"
 							r.operationID = "similarNames"

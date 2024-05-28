@@ -394,9 +394,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: ListPetCategories
 								r.name = "ListPetCategories"
 								r.summary = "List attached Categories"
 								r.operationID = "listPetCategories"
@@ -405,7 +405,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "POST":
-								// Leaf: CreatePetCategories
 								r.name = "CreatePetCategories"
 								r.summary = "Create a new Category and attach it to the Pet"
 								r.operationID = "createPetCategories"
@@ -428,9 +427,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: ListPetFriends
 								r.name = "ListPetFriends"
 								r.summary = "List attached Friends"
 								r.operationID = "listPetFriends"
@@ -439,7 +438,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "POST":
-								// Leaf: CreatePetFriends
 								r.name = "CreatePetFriends"
 								r.summary = "Create a new Pet and attach it to the Pet"
 								r.operationID = "createPetFriends"
@@ -462,9 +460,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "DELETE":
-								// Leaf: DeletePetOwner
 								r.name = "DeletePetOwner"
 								r.summary = "Delete the attached Owner"
 								r.operationID = "deletePetOwner"
@@ -473,7 +471,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "GET":
-								// Leaf: ReadPetOwner
 								r.name = "ReadPetOwner"
 								r.summary = "Find the attached User"
 								r.operationID = "readPetOwner"
@@ -482,7 +479,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "POST":
-								// Leaf: CreatePetOwner
 								r.name = "CreatePetOwner"
 								r.summary = "Create a new User and attach it to the Pet"
 								r.operationID = "createPetOwner"

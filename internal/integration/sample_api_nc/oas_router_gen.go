@@ -937,9 +937,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "POST":
-						// Leaf: DefaultTest
 						r.name = "DefaultTest"
 						r.summary = ""
 						r.operationID = "defaultTest"
@@ -962,9 +962,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: ErrorGet
 						r.name = "ErrorGet"
 						r.summary = ""
 						r.operationID = "errorGet"
@@ -987,9 +987,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: FoobarGet
 						r.name = "FoobarGet"
 						r.summary = ""
 						r.operationID = "foobarGet"
@@ -998,7 +998,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.count = 0
 						return r, true
 					case "POST":
-						// Leaf: FoobarPost
 						r.name = "FoobarPost"
 						r.summary = ""
 						r.operationID = "foobarPost"
@@ -1007,7 +1006,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.count = 0
 						return r, true
 					case "PUT":
-						// Leaf: FoobarPut
 						r.name = "FoobarPut"
 						r.summary = ""
 						r.operationID = ""
@@ -1131,9 +1129,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									elem = ""
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "GET":
-											// Leaf: DataGetFormat
 											r.name = "DataGetFormat"
 											r.summary = ""
 											r.operationID = "dataGetFormat"
@@ -1168,9 +1166,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: NoAdditionalPropertiesTest
 							r.name = "NoAdditionalPropertiesTest"
 							r.summary = ""
 							r.operationID = "noAdditionalPropertiesTest"
@@ -1193,9 +1191,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: NullableDefaultResponse
 							r.name = "NullableDefaultResponse"
 							r.summary = ""
 							r.operationID = "nullableDefaultResponse"
@@ -1221,9 +1219,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "POST":
-						// Leaf: OneofBug
 						r.name = "OneofBug"
 						r.summary = ""
 						r.operationID = "oneofBug"
@@ -1258,9 +1256,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: PatternRecursiveMapGet
 							r.name = "PatternRecursiveMapGet"
 							r.summary = ""
 							r.operationID = ""
@@ -1326,9 +1324,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: PetGetAvatarByID
 									r.name = "PetGetAvatarByID"
 									r.summary = ""
 									r.operationID = "petGetAvatarByID"
@@ -1337,7 +1335,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									r.count = 0
 									return r, true
 								case "POST":
-									// Leaf: PetUploadAvatarByID
 									r.name = "PetUploadAvatarByID"
 									r.summary = ""
 									r.operationID = "petUploadAvatarByID"
@@ -1365,9 +1362,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: PetFriendsNamesByID
 									r.name = "PetFriendsNamesByID"
 									r.summary = ""
 									r.operationID = "petFriendsNamesByID"
@@ -1395,9 +1392,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							elem = ""
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: PetNameByID
 									r.name = "PetNameByID"
 									r.summary = ""
 									r.operationID = "petNameByID"
@@ -1443,9 +1440,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
+									// Leaf node.
 									switch method {
 									case "POST":
-										// Leaf: PetUpdateNameAliasPost
 										r.name = "PetUpdateNameAliasPost"
 										r.summary = ""
 										r.operationID = ""
@@ -1496,9 +1493,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "GET":
-									// Leaf: PetGetAvatarByName
 									r.name = "PetGetAvatarByName"
 									r.summary = ""
 									r.operationID = "petGetAvatarByName"
@@ -1542,9 +1539,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: RecursiveArrayGet
 							r.name = "RecursiveArrayGet"
 							r.summary = ""
 							r.operationID = ""
@@ -1567,9 +1564,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: RecursiveMapGet
 							r.name = "RecursiveMapGet"
 							r.summary = ""
 							r.operationID = ""
@@ -1607,9 +1604,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: SecurityTest
 							r.name = "SecurityTest"
 							r.summary = ""
 							r.operationID = "securityTest"
@@ -1632,9 +1629,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: StringIntMapGet
 							r.name = "StringIntMapGet"
 							r.summary = ""
 							r.operationID = ""
@@ -1672,9 +1669,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: TestFloatValidation
 							r.name = "TestFloatValidation"
 							r.summary = ""
 							r.operationID = "testFloatValidation"
@@ -1697,9 +1694,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: TestInlineOneof
 							r.name = "TestInlineOneof"
 							r.summary = ""
 							r.operationID = "testInlineOneof"
@@ -1722,9 +1719,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: TestNullableOneofs
 							r.name = "TestNullableOneofs"
 							r.summary = ""
 							r.operationID = "testNullableOneofs"
@@ -1770,9 +1767,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: TestTupleNamed
 								r.name = "TestTupleNamed"
 								r.summary = ""
 								r.operationID = "testTupleNamed"
@@ -1798,9 +1795,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: TestUniqueItems
 							r.name = "TestUniqueItems"
 							r.summary = ""
 							r.operationID = "testUniqueItems"

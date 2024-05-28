@@ -25424,9 +25424,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "POST":
-						// Leaf: TestQueryParameter
 						r.name = "TestQueryParameter"
 						r.summary = ""
 						r.operationID = "test_query_parameter"
@@ -25473,9 +25473,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestRequestAny
 								r.name = "TestRequestAny"
 								r.summary = ""
 								r.operationID = "test_request_Any"
@@ -25498,9 +25498,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestRequestEmptyStruct
 								r.name = "TestRequestEmptyStruct"
 								r.summary = ""
 								r.operationID = "test_request_EmptyStruct"
@@ -25523,9 +25523,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestRequestFormatTest
 								r.name = "TestRequestFormatTest"
 								r.summary = ""
 								r.operationID = "test_request_FormatTest"
@@ -25606,9 +25606,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: TestRequestBooleanArrayArray
 											r.name = "TestRequestBooleanArrayArray"
 											r.summary = ""
 											r.operationID = "test_request_boolean_array_array"
@@ -25680,9 +25680,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestBooleanNullableArrayArray
 												r.name = "TestRequestBooleanNullableArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_boolean_nullable_array_array"
@@ -25775,9 +25775,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: TestRequestIntegerArrayArray
 											r.name = "TestRequestIntegerArrayArray"
 											r.summary = ""
 											r.operationID = "test_request_integer_array_array"
@@ -25873,9 +25873,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestIntegerInt16ArrayArray
 														r.name = "TestRequestIntegerInt16ArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_integer_int16_array_array"
@@ -25947,9 +25947,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerInt16NullableArrayArray
 															r.name = "TestRequestIntegerInt16NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_int16_nullable_array_array"
@@ -26042,9 +26042,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestIntegerInt32ArrayArray
 														r.name = "TestRequestIntegerInt32ArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_integer_int32_array_array"
@@ -26116,9 +26116,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerInt32NullableArrayArray
 															r.name = "TestRequestIntegerInt32NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_int32_nullable_array_array"
@@ -26211,9 +26211,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestIntegerInt64ArrayArray
 														r.name = "TestRequestIntegerInt64ArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_integer_int64_array_array"
@@ -26285,9 +26285,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerInt64NullableArrayArray
 															r.name = "TestRequestIntegerInt64NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_int64_nullable_array_array"
@@ -26380,9 +26380,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestIntegerInt8ArrayArray
 														r.name = "TestRequestIntegerInt8ArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_integer_int8_array_array"
@@ -26454,9 +26454,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerInt8NullableArrayArray
 															r.name = "TestRequestIntegerInt8NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_int8_nullable_array_array"
@@ -26540,9 +26540,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestIntegerNullableArrayArray
 												r.name = "TestRequestIntegerNullableArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_integer_nullable_array_array"
@@ -26664,9 +26664,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUint16ArrayArray
 															r.name = "TestRequestIntegerUint16ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_uint16_array_array"
@@ -26738,9 +26738,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUint16NullableArrayArray
 																r.name = "TestRequestIntegerUint16NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_integer_uint16_nullable_array_array"
@@ -26833,9 +26833,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUint32ArrayArray
 															r.name = "TestRequestIntegerUint32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_uint32_array_array"
@@ -26907,9 +26907,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUint32NullableArrayArray
 																r.name = "TestRequestIntegerUint32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_integer_uint32_nullable_array_array"
@@ -27002,9 +27002,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUint64ArrayArray
 															r.name = "TestRequestIntegerUint64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_uint64_array_array"
@@ -27076,9 +27076,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUint64NullableArrayArray
 																r.name = "TestRequestIntegerUint64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_integer_uint64_nullable_array_array"
@@ -27171,9 +27171,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUint8ArrayArray
 															r.name = "TestRequestIntegerUint8ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_uint8_array_array"
@@ -27245,9 +27245,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUint8NullableArrayArray
 																r.name = "TestRequestIntegerUint8NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_integer_uint8_nullable_array_array"
@@ -27317,9 +27317,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestIntegerUintArrayArray
 														r.name = "TestRequestIntegerUintArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_integer_uint_array_array"
@@ -27391,9 +27391,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUintNullableArrayArray
 															r.name = "TestRequestIntegerUintNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_uint_nullable_array_array"
@@ -27533,9 +27533,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestIntegerUnixMicroArrayArray
 																	r.name = "TestRequestIntegerUnixMicroArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-micro_array_array"
@@ -27607,9 +27607,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestIntegerUnixMicroNullableArrayArray
 																		r.name = "TestRequestIntegerUnixMicroNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_integer_unix-micro_nullable_array_array"
@@ -27702,9 +27702,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestIntegerUnixMilliArrayArray
 																	r.name = "TestRequestIntegerUnixMilliArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-milli_array_array"
@@ -27776,9 +27776,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestIntegerUnixMilliNullableArrayArray
 																		r.name = "TestRequestIntegerUnixMilliNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_integer_unix-milli_nullable_array_array"
@@ -27874,9 +27874,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUnixNanoArrayArray
 																r.name = "TestRequestIntegerUnixNanoArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-nano_array_array"
@@ -27948,9 +27948,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestIntegerUnixNanoNullableArrayArray
 																	r.name = "TestRequestIntegerUnixNanoNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-nano_nullable_array_array"
@@ -28043,9 +28043,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUnixSecondsArrayArray
 																r.name = "TestRequestIntegerUnixSecondsArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_integer_unix-seconds_array_array"
@@ -28117,9 +28117,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestIntegerUnixSecondsNullableArrayArray
 																	r.name = "TestRequestIntegerUnixSecondsNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_integer_unix-seconds_nullable_array_array"
@@ -28192,9 +28192,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestIntegerUnixArrayArray
 														r.name = "TestRequestIntegerUnixArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_integer_unix_array_array"
@@ -28266,9 +28266,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUnixNullableArrayArray
 															r.name = "TestRequestIntegerUnixNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_integer_unix_nullable_array_array"
@@ -28382,9 +28382,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestNullArrayArray
 												r.name = "TestRequestNullArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_null_array_array"
@@ -28456,9 +28456,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestNullNullableArrayArray
 													r.name = "TestRequestNullNullableArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_null_nullable_array_array"
@@ -28551,9 +28551,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestNumberArrayArray
 												r.name = "TestRequestNumberArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_number_array_array"
@@ -28637,9 +28637,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestNumberDoubleArrayArray
 														r.name = "TestRequestNumberDoubleArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_number_double_array_array"
@@ -28711,9 +28711,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestNumberDoubleNullableArrayArray
 															r.name = "TestRequestNumberDoubleNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_number_double_nullable_array_array"
@@ -28806,9 +28806,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestNumberFloatArrayArray
 														r.name = "TestRequestNumberFloatArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_number_float_array_array"
@@ -28880,9 +28880,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestNumberFloatNullableArrayArray
 															r.name = "TestRequestNumberFloatNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_number_float_nullable_array_array"
@@ -28987,9 +28987,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestNumberInt32ArrayArray
 															r.name = "TestRequestNumberInt32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_number_int32_array_array"
@@ -29061,9 +29061,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestNumberInt32NullableArrayArray
 																r.name = "TestRequestNumberInt32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_number_int32_nullable_array_array"
@@ -29156,9 +29156,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestNumberInt64ArrayArray
 															r.name = "TestRequestNumberInt64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_number_int64_array_array"
@@ -29230,9 +29230,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestNumberInt64NullableArrayArray
 																r.name = "TestRequestNumberInt64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_number_int64_nullable_array_array"
@@ -29316,9 +29316,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestNumberNullableArrayArray
 													r.name = "TestRequestNumberNullableArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_number_nullable_array_array"
@@ -29368,9 +29368,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: TestRequestRequiredAny
 									r.name = "TestRequestRequiredAny"
 									r.summary = ""
 									r.operationID = "test_request_required_Any"
@@ -29393,9 +29393,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: TestRequestRequiredEmptyStruct
 									r.name = "TestRequestRequiredEmptyStruct"
 									r.summary = ""
 									r.operationID = "test_request_required_EmptyStruct"
@@ -29418,9 +29418,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
+								// Leaf node.
 								switch method {
 								case "POST":
-									// Leaf: TestRequestRequiredFormatTest
 									r.name = "TestRequestRequiredFormatTest"
 									r.summary = ""
 									r.operationID = "test_request_required_FormatTest"
@@ -29501,9 +29501,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestRequiredBooleanArrayArray
 												r.name = "TestRequestRequiredBooleanArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_required_boolean_array_array"
@@ -29575,9 +29575,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestRequiredBooleanNullableArrayArray
 													r.name = "TestRequestRequiredBooleanNullableArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_required_boolean_nullable_array_array"
@@ -29670,9 +29670,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestRequiredIntegerArrayArray
 												r.name = "TestRequestRequiredIntegerArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_required_integer_array_array"
@@ -29768,9 +29768,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredIntegerInt16ArrayArray
 															r.name = "TestRequestRequiredIntegerInt16ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int16_array_array"
@@ -29842,9 +29842,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerInt16NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt16NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int16_nullable_array_array"
@@ -29937,9 +29937,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredIntegerInt32ArrayArray
 															r.name = "TestRequestRequiredIntegerInt32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int32_array_array"
@@ -30011,9 +30011,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerInt32NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int32_nullable_array_array"
@@ -30106,9 +30106,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredIntegerInt64ArrayArray
 															r.name = "TestRequestRequiredIntegerInt64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int64_array_array"
@@ -30180,9 +30180,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerInt64NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int64_nullable_array_array"
@@ -30275,9 +30275,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredIntegerInt8ArrayArray
 															r.name = "TestRequestRequiredIntegerInt8ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_integer_int8_array_array"
@@ -30349,9 +30349,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerInt8NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt8NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_int8_nullable_array_array"
@@ -30435,9 +30435,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestRequiredIntegerNullableArrayArray
 													r.name = "TestRequestRequiredIntegerNullableArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_required_integer_nullable_array_array"
@@ -30559,9 +30559,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUint16ArrayArray
 																r.name = "TestRequestRequiredIntegerUint16ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint16_array_array"
@@ -30633,9 +30633,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUint16NullableArrayArray
 																	r.name = "TestRequestRequiredIntegerUint16NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint16_nullable_array_array"
@@ -30728,9 +30728,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUint32ArrayArray
 																r.name = "TestRequestRequiredIntegerUint32ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint32_array_array"
@@ -30802,9 +30802,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUint32NullableArrayArray
 																	r.name = "TestRequestRequiredIntegerUint32NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint32_nullable_array_array"
@@ -30897,9 +30897,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUint64ArrayArray
 																r.name = "TestRequestRequiredIntegerUint64ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint64_array_array"
@@ -30971,9 +30971,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUint64NullableArrayArray
 																	r.name = "TestRequestRequiredIntegerUint64NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint64_nullable_array_array"
@@ -31066,9 +31066,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUint8ArrayArray
 																r.name = "TestRequestRequiredIntegerUint8ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint8_array_array"
@@ -31140,9 +31140,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUint8NullableArrayArray
 																	r.name = "TestRequestRequiredIntegerUint8NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_uint8_nullable_array_array"
@@ -31212,9 +31212,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredIntegerUintArrayArray
 															r.name = "TestRequestRequiredIntegerUintArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_integer_uint_array_array"
@@ -31286,9 +31286,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUintNullableArrayArray
 																r.name = "TestRequestRequiredIntegerUintNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_uint_nullable_array_array"
@@ -31428,9 +31428,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredIntegerUnixMicroArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixMicroArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-micro_array_array"
@@ -31502,9 +31502,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "POST":
-																			// Leaf: TestRequestRequiredIntegerUnixMicroNullableArrayArray
 																			r.name = "TestRequestRequiredIntegerUnixMicroNullableArrayArray"
 																			r.summary = ""
 																			r.operationID = "test_request_required_integer_unix-micro_nullable_array_array"
@@ -31597,9 +31597,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredIntegerUnixMilliArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixMilliArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-milli_array_array"
@@ -31671,9 +31671,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "POST":
-																			// Leaf: TestRequestRequiredIntegerUnixMilliNullableArrayArray
 																			r.name = "TestRequestRequiredIntegerUnixMilliNullableArrayArray"
 																			r.summary = ""
 																			r.operationID = "test_request_required_integer_unix-milli_nullable_array_array"
@@ -31769,9 +31769,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUnixNanoArrayArray
 																	r.name = "TestRequestRequiredIntegerUnixNanoArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-nano_array_array"
@@ -31843,9 +31843,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredIntegerUnixNanoNullableArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixNanoNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-nano_nullable_array_array"
@@ -31938,9 +31938,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUnixSecondsArrayArray
 																	r.name = "TestRequestRequiredIntegerUnixSecondsArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_integer_unix-seconds_array_array"
@@ -32012,9 +32012,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredIntegerUnixSecondsNullableArrayArray
 																		r.name = "TestRequestRequiredIntegerUnixSecondsNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_integer_unix-seconds_nullable_array_array"
@@ -32087,9 +32087,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredIntegerUnixArrayArray
 															r.name = "TestRequestRequiredIntegerUnixArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_integer_unix_array_array"
@@ -32161,9 +32161,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUnixNullableArrayArray
 																r.name = "TestRequestRequiredIntegerUnixNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_integer_unix_nullable_array_array"
@@ -32277,9 +32277,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestRequiredNullArrayArray
 													r.name = "TestRequestRequiredNullArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_required_null_array_array"
@@ -32351,9 +32351,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredNullNullableArrayArray
 														r.name = "TestRequestRequiredNullNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_required_null_nullable_array_array"
@@ -32446,9 +32446,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestRequiredNumberArrayArray
 													r.name = "TestRequestRequiredNumberArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_required_number_array_array"
@@ -32532,9 +32532,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredNumberDoubleArrayArray
 															r.name = "TestRequestRequiredNumberDoubleArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_number_double_array_array"
@@ -32606,9 +32606,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredNumberDoubleNullableArrayArray
 																r.name = "TestRequestRequiredNumberDoubleNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_number_double_nullable_array_array"
@@ -32701,9 +32701,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredNumberFloatArrayArray
 															r.name = "TestRequestRequiredNumberFloatArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_number_float_array_array"
@@ -32775,9 +32775,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredNumberFloatNullableArrayArray
 																r.name = "TestRequestRequiredNumberFloatNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_number_float_nullable_array_array"
@@ -32882,9 +32882,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredNumberInt32ArrayArray
 																r.name = "TestRequestRequiredNumberInt32ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_number_int32_array_array"
@@ -32956,9 +32956,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredNumberInt32NullableArrayArray
 																	r.name = "TestRequestRequiredNumberInt32NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_number_int32_nullable_array_array"
@@ -33051,9 +33051,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredNumberInt64ArrayArray
 																r.name = "TestRequestRequiredNumberInt64ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_number_int64_array_array"
@@ -33125,9 +33125,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredNumberInt64NullableArrayArray
 																	r.name = "TestRequestRequiredNumberInt64NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_number_int64_nullable_array_array"
@@ -33211,9 +33211,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredNumberNullableArrayArray
 														r.name = "TestRequestRequiredNumberNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_required_number_nullable_array_array"
@@ -33309,9 +33309,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestRequiredStringArrayArray
 												r.name = "TestRequestRequiredStringArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_required_string_array_array"
@@ -33407,9 +33407,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringBase64ArrayArray
 															r.name = "TestRequestRequiredStringBase64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_base64_array_array"
@@ -33481,9 +33481,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringBase64NullableArrayArray
 																r.name = "TestRequestRequiredStringBase64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_base64_nullable_array_array"
@@ -33576,9 +33576,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringBinaryArrayArray
 															r.name = "TestRequestRequiredStringBinaryArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_binary_array_array"
@@ -33650,9 +33650,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringBinaryNullableArrayArray
 																r.name = "TestRequestRequiredStringBinaryNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_binary_nullable_array_array"
@@ -33745,9 +33745,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringByteArrayArray
 															r.name = "TestRequestRequiredStringByteArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_byte_array_array"
@@ -33819,9 +33819,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringByteNullableArrayArray
 																r.name = "TestRequestRequiredStringByteNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_byte_nullable_array_array"
@@ -33952,9 +33952,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringDateTimeArrayArray
 																r.name = "TestRequestRequiredStringDateTimeArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_date-time_array_array"
@@ -34026,9 +34026,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringDateTimeNullableArrayArray
 																	r.name = "TestRequestRequiredStringDateTimeNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_date-time_nullable_array_array"
@@ -34098,9 +34098,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringDateArrayArray
 															r.name = "TestRequestRequiredStringDateArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_date_array_array"
@@ -34172,9 +34172,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringDateNullableArrayArray
 																r.name = "TestRequestRequiredStringDateNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_date_nullable_array_array"
@@ -34267,9 +34267,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringDurationArrayArray
 															r.name = "TestRequestRequiredStringDurationArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_duration_array_array"
@@ -34341,9 +34341,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringDurationNullableArrayArray
 																r.name = "TestRequestRequiredStringDurationNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_duration_nullable_array_array"
@@ -34439,9 +34439,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredStringEmailArrayArray
 														r.name = "TestRequestRequiredStringEmailArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_required_string_email_array_array"
@@ -34513,9 +34513,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringEmailNullableArrayArray
 															r.name = "TestRequestRequiredStringEmailNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_email_nullable_array_array"
@@ -34620,9 +34620,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringFloat32ArrayArray
 															r.name = "TestRequestRequiredStringFloat32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_float32_array_array"
@@ -34694,9 +34694,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringFloat32NullableArrayArray
 																r.name = "TestRequestRequiredStringFloat32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_float32_nullable_array_array"
@@ -34789,9 +34789,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringFloat64ArrayArray
 															r.name = "TestRequestRequiredStringFloat64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_float64_array_array"
@@ -34863,9 +34863,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringFloat64NullableArrayArray
 																r.name = "TestRequestRequiredStringFloat64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_float64_nullable_array_array"
@@ -34961,9 +34961,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredStringHostnameArrayArray
 														r.name = "TestRequestRequiredStringHostnameArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_required_string_hostname_array_array"
@@ -35035,9 +35035,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringHostnameNullableArrayArray
 															r.name = "TestRequestRequiredStringHostnameNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_hostname_nullable_array_array"
@@ -35165,9 +35165,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringInt16ArrayArray
 																r.name = "TestRequestRequiredStringInt16ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_int16_array_array"
@@ -35239,9 +35239,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringInt16NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt16NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int16_nullable_array_array"
@@ -35334,9 +35334,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringInt32ArrayArray
 																r.name = "TestRequestRequiredStringInt32ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_int32_array_array"
@@ -35408,9 +35408,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringInt32NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt32NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int32_nullable_array_array"
@@ -35503,9 +35503,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringInt64ArrayArray
 																r.name = "TestRequestRequiredStringInt64ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_int64_array_array"
@@ -35577,9 +35577,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringInt64NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt64NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int64_nullable_array_array"
@@ -35672,9 +35672,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringInt8ArrayArray
 																r.name = "TestRequestRequiredStringInt8ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_int8_array_array"
@@ -35746,9 +35746,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringInt8NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt8NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_int8_nullable_array_array"
@@ -35818,9 +35818,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringIntArrayArray
 															r.name = "TestRequestRequiredStringIntArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_int_array_array"
@@ -35892,9 +35892,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringIntNullableArrayArray
 																r.name = "TestRequestRequiredStringIntNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_int_nullable_array_array"
@@ -35987,9 +35987,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringIPArrayArray
 															r.name = "TestRequestRequiredStringIPArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_ip_array_array"
@@ -36061,9 +36061,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringIPNullableArrayArray
 																r.name = "TestRequestRequiredStringIPNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_ip_nullable_array_array"
@@ -36165,9 +36165,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringIpv4ArrayArray
 																	r.name = "TestRequestRequiredStringIpv4ArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_ipv4_array_array"
@@ -36239,9 +36239,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredStringIpv4NullableArrayArray
 																		r.name = "TestRequestRequiredStringIpv4NullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_ipv4_nullable_array_array"
@@ -36334,9 +36334,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringIpv6ArrayArray
 																	r.name = "TestRequestRequiredStringIpv6ArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_ipv6_array_array"
@@ -36408,9 +36408,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredStringIpv6NullableArrayArray
 																		r.name = "TestRequestRequiredStringIpv6NullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_ipv6_nullable_array_array"
@@ -36512,9 +36512,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredStringMACArrayArray
 														r.name = "TestRequestRequiredStringMACArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_required_string_mac_array_array"
@@ -36586,9 +36586,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringMACNullableArrayArray
 															r.name = "TestRequestRequiredStringMACNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_mac_nullable_array_array"
@@ -36669,9 +36669,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestRequiredStringNullableArrayArray
 													r.name = "TestRequestRequiredStringNullableArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_required_string_nullable_array_array"
@@ -36758,9 +36758,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredStringPasswordArrayArray
 														r.name = "TestRequestRequiredStringPasswordArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_required_string_password_array_array"
@@ -36832,9 +36832,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringPasswordNullableArrayArray
 															r.name = "TestRequestRequiredStringPasswordNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_password_nullable_array_array"
@@ -36927,9 +36927,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredStringTimeArrayArray
 														r.name = "TestRequestRequiredStringTimeArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_required_string_time_array_array"
@@ -37001,9 +37001,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringTimeNullableArrayArray
 															r.name = "TestRequestRequiredStringTimeNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_time_nullable_array_array"
@@ -37131,9 +37131,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringUint16ArrayArray
 																r.name = "TestRequestRequiredStringUint16ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint16_array_array"
@@ -37205,9 +37205,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringUint16NullableArrayArray
 																	r.name = "TestRequestRequiredStringUint16NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint16_nullable_array_array"
@@ -37300,9 +37300,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringUint32ArrayArray
 																r.name = "TestRequestRequiredStringUint32ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint32_array_array"
@@ -37374,9 +37374,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringUint32NullableArrayArray
 																	r.name = "TestRequestRequiredStringUint32NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint32_nullable_array_array"
@@ -37469,9 +37469,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringUint64ArrayArray
 																r.name = "TestRequestRequiredStringUint64ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint64_array_array"
@@ -37543,9 +37543,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringUint64NullableArrayArray
 																	r.name = "TestRequestRequiredStringUint64NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint64_nullable_array_array"
@@ -37638,9 +37638,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringUint8ArrayArray
 																r.name = "TestRequestRequiredStringUint8ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint8_array_array"
@@ -37712,9 +37712,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringUint8NullableArrayArray
 																	r.name = "TestRequestRequiredStringUint8NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_uint8_nullable_array_array"
@@ -37784,9 +37784,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringUintArrayArray
 															r.name = "TestRequestRequiredStringUintArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_uint_array_array"
@@ -37858,9 +37858,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringUintNullableArrayArray
 																r.name = "TestRequestRequiredStringUintNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_uint_nullable_array_array"
@@ -38000,9 +38000,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredStringUnixMicroArrayArray
 																		r.name = "TestRequestRequiredStringUnixMicroArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-micro_array_array"
@@ -38074,9 +38074,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "POST":
-																			// Leaf: TestRequestRequiredStringUnixMicroNullableArrayArray
 																			r.name = "TestRequestRequiredStringUnixMicroNullableArrayArray"
 																			r.summary = ""
 																			r.operationID = "test_request_required_string_unix-micro_nullable_array_array"
@@ -38169,9 +38169,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredStringUnixMilliArrayArray
 																		r.name = "TestRequestRequiredStringUnixMilliArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-milli_array_array"
@@ -38243,9 +38243,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
+																		// Leaf node.
 																		switch method {
 																		case "POST":
-																			// Leaf: TestRequestRequiredStringUnixMilliNullableArrayArray
 																			r.name = "TestRequestRequiredStringUnixMilliNullableArrayArray"
 																			r.summary = ""
 																			r.operationID = "test_request_required_string_unix-milli_nullable_array_array"
@@ -38341,9 +38341,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringUnixNanoArrayArray
 																	r.name = "TestRequestRequiredStringUnixNanoArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-nano_array_array"
@@ -38415,9 +38415,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredStringUnixNanoNullableArrayArray
 																		r.name = "TestRequestRequiredStringUnixNanoNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-nano_nullable_array_array"
@@ -38510,9 +38510,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredStringUnixSecondsArrayArray
 																	r.name = "TestRequestRequiredStringUnixSecondsArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_required_string_unix-seconds_array_array"
@@ -38584,9 +38584,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestRequiredStringUnixSecondsNullableArrayArray
 																		r.name = "TestRequestRequiredStringUnixSecondsNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_required_string_unix-seconds_nullable_array_array"
@@ -38659,9 +38659,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringUnixArrayArray
 															r.name = "TestRequestRequiredStringUnixArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_unix_array_array"
@@ -38733,9 +38733,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringUnixNullableArrayArray
 																r.name = "TestRequestRequiredStringUnixNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_unix_nullable_array_array"
@@ -38828,9 +38828,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringURIArrayArray
 															r.name = "TestRequestRequiredStringURIArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_uri_array_array"
@@ -38902,9 +38902,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringURINullableArrayArray
 																r.name = "TestRequestRequiredStringURINullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_uri_nullable_array_array"
@@ -38997,9 +38997,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredStringUUIDArrayArray
 															r.name = "TestRequestRequiredStringUUIDArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_required_string_uuid_array_array"
@@ -39071,9 +39071,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredStringUUIDNullableArrayArray
 																r.name = "TestRequestRequiredStringUUIDNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_required_string_uuid_nullable_array_array"
@@ -39178,9 +39178,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: TestRequestStringArrayArray
 											r.name = "TestRequestStringArrayArray"
 											r.summary = ""
 											r.operationID = "test_request_string_array_array"
@@ -39276,9 +39276,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringBase64ArrayArray
 														r.name = "TestRequestStringBase64ArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_base64_array_array"
@@ -39350,9 +39350,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringBase64NullableArrayArray
 															r.name = "TestRequestStringBase64NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_base64_nullable_array_array"
@@ -39445,9 +39445,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringBinaryArrayArray
 														r.name = "TestRequestStringBinaryArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_binary_array_array"
@@ -39519,9 +39519,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringBinaryNullableArrayArray
 															r.name = "TestRequestStringBinaryNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_binary_nullable_array_array"
@@ -39614,9 +39614,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringByteArrayArray
 														r.name = "TestRequestStringByteArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_byte_array_array"
@@ -39688,9 +39688,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringByteNullableArrayArray
 															r.name = "TestRequestStringByteNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_byte_nullable_array_array"
@@ -39821,9 +39821,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringDateTimeArrayArray
 															r.name = "TestRequestStringDateTimeArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_date-time_array_array"
@@ -39895,9 +39895,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringDateTimeNullableArrayArray
 																r.name = "TestRequestStringDateTimeNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_date-time_nullable_array_array"
@@ -39967,9 +39967,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringDateArrayArray
 														r.name = "TestRequestStringDateArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_date_array_array"
@@ -40041,9 +40041,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringDateNullableArrayArray
 															r.name = "TestRequestStringDateNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_date_nullable_array_array"
@@ -40136,9 +40136,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringDurationArrayArray
 														r.name = "TestRequestStringDurationArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_duration_array_array"
@@ -40210,9 +40210,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringDurationNullableArrayArray
 															r.name = "TestRequestStringDurationNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_duration_nullable_array_array"
@@ -40308,9 +40308,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestStringEmailArrayArray
 													r.name = "TestRequestStringEmailArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_string_email_array_array"
@@ -40382,9 +40382,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringEmailNullableArrayArray
 														r.name = "TestRequestStringEmailNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_email_nullable_array_array"
@@ -40489,9 +40489,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringFloat32ArrayArray
 														r.name = "TestRequestStringFloat32ArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_float32_array_array"
@@ -40563,9 +40563,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringFloat32NullableArrayArray
 															r.name = "TestRequestStringFloat32NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_float32_nullable_array_array"
@@ -40658,9 +40658,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringFloat64ArrayArray
 														r.name = "TestRequestStringFloat64ArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_float64_array_array"
@@ -40732,9 +40732,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringFloat64NullableArrayArray
 															r.name = "TestRequestStringFloat64NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_float64_nullable_array_array"
@@ -40830,9 +40830,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestStringHostnameArrayArray
 													r.name = "TestRequestStringHostnameArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_string_hostname_array_array"
@@ -40904,9 +40904,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringHostnameNullableArrayArray
 														r.name = "TestRequestStringHostnameNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_hostname_nullable_array_array"
@@ -41034,9 +41034,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringInt16ArrayArray
 															r.name = "TestRequestStringInt16ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_int16_array_array"
@@ -41108,9 +41108,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringInt16NullableArrayArray
 																r.name = "TestRequestStringInt16NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_int16_nullable_array_array"
@@ -41203,9 +41203,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringInt32ArrayArray
 															r.name = "TestRequestStringInt32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_int32_array_array"
@@ -41277,9 +41277,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringInt32NullableArrayArray
 																r.name = "TestRequestStringInt32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_int32_nullable_array_array"
@@ -41372,9 +41372,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringInt64ArrayArray
 															r.name = "TestRequestStringInt64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_int64_array_array"
@@ -41446,9 +41446,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringInt64NullableArrayArray
 																r.name = "TestRequestStringInt64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_int64_nullable_array_array"
@@ -41541,9 +41541,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringInt8ArrayArray
 															r.name = "TestRequestStringInt8ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_int8_array_array"
@@ -41615,9 +41615,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringInt8NullableArrayArray
 																r.name = "TestRequestStringInt8NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_int8_nullable_array_array"
@@ -41687,9 +41687,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringIntArrayArray
 														r.name = "TestRequestStringIntArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_int_array_array"
@@ -41761,9 +41761,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringIntNullableArrayArray
 															r.name = "TestRequestStringIntNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_int_nullable_array_array"
@@ -41856,9 +41856,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringIPArrayArray
 														r.name = "TestRequestStringIPArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_ip_array_array"
@@ -41930,9 +41930,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringIPNullableArrayArray
 															r.name = "TestRequestStringIPNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_ip_nullable_array_array"
@@ -42034,9 +42034,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringIpv4ArrayArray
 																r.name = "TestRequestStringIpv4ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_ipv4_array_array"
@@ -42108,9 +42108,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestStringIpv4NullableArrayArray
 																	r.name = "TestRequestStringIpv4NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_string_ipv4_nullable_array_array"
@@ -42203,9 +42203,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringIpv6ArrayArray
 																r.name = "TestRequestStringIpv6ArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_ipv6_array_array"
@@ -42277,9 +42277,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestStringIpv6NullableArrayArray
 																	r.name = "TestRequestStringIpv6NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_string_ipv6_nullable_array_array"
@@ -42381,9 +42381,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestStringMACArrayArray
 													r.name = "TestRequestStringMACArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_string_mac_array_array"
@@ -42455,9 +42455,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringMACNullableArrayArray
 														r.name = "TestRequestStringMACNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_mac_nullable_array_array"
@@ -42538,9 +42538,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestRequestStringNullableArrayArray
 												r.name = "TestRequestStringNullableArrayArray"
 												r.summary = ""
 												r.operationID = "test_request_string_nullable_array_array"
@@ -42627,9 +42627,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestStringPasswordArrayArray
 													r.name = "TestRequestStringPasswordArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_string_password_array_array"
@@ -42701,9 +42701,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringPasswordNullableArrayArray
 														r.name = "TestRequestStringPasswordNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_password_nullable_array_array"
@@ -42796,9 +42796,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestRequestStringTimeArrayArray
 													r.name = "TestRequestStringTimeArrayArray"
 													r.summary = ""
 													r.operationID = "test_request_string_time_array_array"
@@ -42870,9 +42870,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringTimeNullableArrayArray
 														r.name = "TestRequestStringTimeNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_time_nullable_array_array"
@@ -43000,9 +43000,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringUint16ArrayArray
 															r.name = "TestRequestStringUint16ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_uint16_array_array"
@@ -43074,9 +43074,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringUint16NullableArrayArray
 																r.name = "TestRequestStringUint16NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_uint16_nullable_array_array"
@@ -43169,9 +43169,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringUint32ArrayArray
 															r.name = "TestRequestStringUint32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_uint32_array_array"
@@ -43243,9 +43243,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringUint32NullableArrayArray
 																r.name = "TestRequestStringUint32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_uint32_nullable_array_array"
@@ -43338,9 +43338,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringUint64ArrayArray
 															r.name = "TestRequestStringUint64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_uint64_array_array"
@@ -43412,9 +43412,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringUint64NullableArrayArray
 																r.name = "TestRequestStringUint64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_uint64_nullable_array_array"
@@ -43507,9 +43507,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringUint8ArrayArray
 															r.name = "TestRequestStringUint8ArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_uint8_array_array"
@@ -43581,9 +43581,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringUint8NullableArrayArray
 																r.name = "TestRequestStringUint8NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_uint8_nullable_array_array"
@@ -43653,9 +43653,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringUintArrayArray
 														r.name = "TestRequestStringUintArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_uint_array_array"
@@ -43727,9 +43727,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringUintNullableArrayArray
 															r.name = "TestRequestStringUintNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_uint_nullable_array_array"
@@ -43869,9 +43869,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestStringUnixMicroArrayArray
 																	r.name = "TestRequestStringUnixMicroArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-micro_array_array"
@@ -43943,9 +43943,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestStringUnixMicroNullableArrayArray
 																		r.name = "TestRequestStringUnixMicroNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_string_unix-micro_nullable_array_array"
@@ -44038,9 +44038,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestStringUnixMilliArrayArray
 																	r.name = "TestRequestStringUnixMilliArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-milli_array_array"
@@ -44112,9 +44112,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestRequestStringUnixMilliNullableArrayArray
 																		r.name = "TestRequestStringUnixMilliNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_request_string_unix-milli_nullable_array_array"
@@ -44210,9 +44210,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringUnixNanoArrayArray
 																r.name = "TestRequestStringUnixNanoArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_unix-nano_array_array"
@@ -44284,9 +44284,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestStringUnixNanoNullableArrayArray
 																	r.name = "TestRequestStringUnixNanoNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-nano_nullable_array_array"
@@ -44379,9 +44379,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestRequestStringUnixSecondsArrayArray
 																r.name = "TestRequestStringUnixSecondsArrayArray"
 																r.summary = ""
 																r.operationID = "test_request_string_unix-seconds_array_array"
@@ -44453,9 +44453,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestStringUnixSecondsNullableArrayArray
 																	r.name = "TestRequestStringUnixSecondsNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_request_string_unix-seconds_nullable_array_array"
@@ -44528,9 +44528,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringUnixArrayArray
 														r.name = "TestRequestStringUnixArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_unix_array_array"
@@ -44602,9 +44602,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringUnixNullableArrayArray
 															r.name = "TestRequestStringUnixNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_unix_nullable_array_array"
@@ -44697,9 +44697,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringURIArrayArray
 														r.name = "TestRequestStringURIArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_uri_array_array"
@@ -44771,9 +44771,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringURINullableArrayArray
 															r.name = "TestRequestStringURINullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_uri_nullable_array_array"
@@ -44866,9 +44866,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestRequestStringUUIDArrayArray
 														r.name = "TestRequestStringUUIDArrayArray"
 														r.summary = ""
 														r.operationID = "test_request_string_uuid_array_array"
@@ -44940,9 +44940,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestRequestStringUUIDNullableArrayArray
 															r.name = "TestRequestStringUUIDNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_request_string_uuid_nullable_array_array"
@@ -45001,9 +45001,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestResponseAny
 								r.name = "TestResponseAny"
 								r.summary = ""
 								r.operationID = "test_response_Any"
@@ -45026,9 +45026,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestResponseEmptyStruct
 								r.name = "TestResponseEmptyStruct"
 								r.summary = ""
 								r.operationID = "test_response_EmptyStruct"
@@ -45051,9 +45051,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestResponseFormatTest
 								r.name = "TestResponseFormatTest"
 								r.summary = ""
 								r.operationID = "test_response_FormatTest"
@@ -45134,9 +45134,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: TestResponseBooleanArrayArray
 											r.name = "TestResponseBooleanArrayArray"
 											r.summary = ""
 											r.operationID = "test_response_boolean_array_array"
@@ -45208,9 +45208,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestResponseBooleanNullableArrayArray
 												r.name = "TestResponseBooleanNullableArrayArray"
 												r.summary = ""
 												r.operationID = "test_response_boolean_nullable_array_array"
@@ -45303,9 +45303,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: TestResponseIntegerArrayArray
 											r.name = "TestResponseIntegerArrayArray"
 											r.summary = ""
 											r.operationID = "test_response_integer_array_array"
@@ -45401,9 +45401,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseIntegerInt16ArrayArray
 														r.name = "TestResponseIntegerInt16ArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_integer_int16_array_array"
@@ -45475,9 +45475,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerInt16NullableArrayArray
 															r.name = "TestResponseIntegerInt16NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_int16_nullable_array_array"
@@ -45570,9 +45570,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseIntegerInt32ArrayArray
 														r.name = "TestResponseIntegerInt32ArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_integer_int32_array_array"
@@ -45644,9 +45644,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerInt32NullableArrayArray
 															r.name = "TestResponseIntegerInt32NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_int32_nullable_array_array"
@@ -45739,9 +45739,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseIntegerInt64ArrayArray
 														r.name = "TestResponseIntegerInt64ArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_integer_int64_array_array"
@@ -45813,9 +45813,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerInt64NullableArrayArray
 															r.name = "TestResponseIntegerInt64NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_int64_nullable_array_array"
@@ -45908,9 +45908,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseIntegerInt8ArrayArray
 														r.name = "TestResponseIntegerInt8ArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_integer_int8_array_array"
@@ -45982,9 +45982,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerInt8NullableArrayArray
 															r.name = "TestResponseIntegerInt8NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_int8_nullable_array_array"
@@ -46068,9 +46068,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestResponseIntegerNullableArrayArray
 												r.name = "TestResponseIntegerNullableArrayArray"
 												r.summary = ""
 												r.operationID = "test_response_integer_nullable_array_array"
@@ -46192,9 +46192,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUint16ArrayArray
 															r.name = "TestResponseIntegerUint16ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_uint16_array_array"
@@ -46266,9 +46266,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUint16NullableArrayArray
 																r.name = "TestResponseIntegerUint16NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_integer_uint16_nullable_array_array"
@@ -46361,9 +46361,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUint32ArrayArray
 															r.name = "TestResponseIntegerUint32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_uint32_array_array"
@@ -46435,9 +46435,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUint32NullableArrayArray
 																r.name = "TestResponseIntegerUint32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_integer_uint32_nullable_array_array"
@@ -46530,9 +46530,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUint64ArrayArray
 															r.name = "TestResponseIntegerUint64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_uint64_array_array"
@@ -46604,9 +46604,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUint64NullableArrayArray
 																r.name = "TestResponseIntegerUint64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_integer_uint64_nullable_array_array"
@@ -46699,9 +46699,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUint8ArrayArray
 															r.name = "TestResponseIntegerUint8ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_uint8_array_array"
@@ -46773,9 +46773,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUint8NullableArrayArray
 																r.name = "TestResponseIntegerUint8NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_integer_uint8_nullable_array_array"
@@ -46845,9 +46845,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseIntegerUintArrayArray
 														r.name = "TestResponseIntegerUintArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_integer_uint_array_array"
@@ -46919,9 +46919,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUintNullableArrayArray
 															r.name = "TestResponseIntegerUintNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_uint_nullable_array_array"
@@ -47061,9 +47061,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseIntegerUnixMicroArrayArray
 																	r.name = "TestResponseIntegerUnixMicroArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-micro_array_array"
@@ -47135,9 +47135,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestResponseIntegerUnixMicroNullableArrayArray
 																		r.name = "TestResponseIntegerUnixMicroNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_response_integer_unix-micro_nullable_array_array"
@@ -47230,9 +47230,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseIntegerUnixMilliArrayArray
 																	r.name = "TestResponseIntegerUnixMilliArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-milli_array_array"
@@ -47304,9 +47304,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestResponseIntegerUnixMilliNullableArrayArray
 																		r.name = "TestResponseIntegerUnixMilliNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_response_integer_unix-milli_nullable_array_array"
@@ -47402,9 +47402,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUnixNanoArrayArray
 																r.name = "TestResponseIntegerUnixNanoArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-nano_array_array"
@@ -47476,9 +47476,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseIntegerUnixNanoNullableArrayArray
 																	r.name = "TestResponseIntegerUnixNanoNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-nano_nullable_array_array"
@@ -47571,9 +47571,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUnixSecondsArrayArray
 																r.name = "TestResponseIntegerUnixSecondsArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_integer_unix-seconds_array_array"
@@ -47645,9 +47645,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseIntegerUnixSecondsNullableArrayArray
 																	r.name = "TestResponseIntegerUnixSecondsNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_integer_unix-seconds_nullable_array_array"
@@ -47720,9 +47720,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseIntegerUnixArrayArray
 														r.name = "TestResponseIntegerUnixArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_integer_unix_array_array"
@@ -47794,9 +47794,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUnixNullableArrayArray
 															r.name = "TestResponseIntegerUnixNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_integer_unix_nullable_array_array"
@@ -47910,9 +47910,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestResponseNullArrayArray
 												r.name = "TestResponseNullArrayArray"
 												r.summary = ""
 												r.operationID = "test_response_null_array_array"
@@ -47984,9 +47984,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestResponseNullNullableArrayArray
 													r.name = "TestResponseNullNullableArrayArray"
 													r.summary = ""
 													r.operationID = "test_response_null_nullable_array_array"
@@ -48079,9 +48079,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestResponseNumberArrayArray
 												r.name = "TestResponseNumberArrayArray"
 												r.summary = ""
 												r.operationID = "test_response_number_array_array"
@@ -48165,9 +48165,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseNumberDoubleArrayArray
 														r.name = "TestResponseNumberDoubleArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_number_double_array_array"
@@ -48239,9 +48239,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseNumberDoubleNullableArrayArray
 															r.name = "TestResponseNumberDoubleNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_number_double_nullable_array_array"
@@ -48334,9 +48334,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseNumberFloatArrayArray
 														r.name = "TestResponseNumberFloatArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_number_float_array_array"
@@ -48408,9 +48408,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseNumberFloatNullableArrayArray
 															r.name = "TestResponseNumberFloatNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_number_float_nullable_array_array"
@@ -48515,9 +48515,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseNumberInt32ArrayArray
 															r.name = "TestResponseNumberInt32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_number_int32_array_array"
@@ -48589,9 +48589,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseNumberInt32NullableArrayArray
 																r.name = "TestResponseNumberInt32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_number_int32_nullable_array_array"
@@ -48684,9 +48684,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseNumberInt64ArrayArray
 															r.name = "TestResponseNumberInt64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_number_int64_array_array"
@@ -48758,9 +48758,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseNumberInt64NullableArrayArray
 																r.name = "TestResponseNumberInt64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_number_int64_nullable_array_array"
@@ -48844,9 +48844,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestResponseNumberNullableArrayArray
 													r.name = "TestResponseNumberNullableArrayArray"
 													r.summary = ""
 													r.operationID = "test_response_number_nullable_array_array"
@@ -48942,9 +48942,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
+										// Leaf node.
 										switch method {
 										case "POST":
-											// Leaf: TestResponseStringArrayArray
 											r.name = "TestResponseStringArrayArray"
 											r.summary = ""
 											r.operationID = "test_response_string_array_array"
@@ -49040,9 +49040,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringBase64ArrayArray
 														r.name = "TestResponseStringBase64ArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_base64_array_array"
@@ -49114,9 +49114,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringBase64NullableArrayArray
 															r.name = "TestResponseStringBase64NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_base64_nullable_array_array"
@@ -49209,9 +49209,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringBinaryArrayArray
 														r.name = "TestResponseStringBinaryArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_binary_array_array"
@@ -49283,9 +49283,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringBinaryNullableArrayArray
 															r.name = "TestResponseStringBinaryNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_binary_nullable_array_array"
@@ -49378,9 +49378,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringByteArrayArray
 														r.name = "TestResponseStringByteArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_byte_array_array"
@@ -49452,9 +49452,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringByteNullableArrayArray
 															r.name = "TestResponseStringByteNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_byte_nullable_array_array"
@@ -49585,9 +49585,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringDateTimeArrayArray
 															r.name = "TestResponseStringDateTimeArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_date-time_array_array"
@@ -49659,9 +49659,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringDateTimeNullableArrayArray
 																r.name = "TestResponseStringDateTimeNullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_date-time_nullable_array_array"
@@ -49731,9 +49731,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringDateArrayArray
 														r.name = "TestResponseStringDateArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_date_array_array"
@@ -49805,9 +49805,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringDateNullableArrayArray
 															r.name = "TestResponseStringDateNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_date_nullable_array_array"
@@ -49900,9 +49900,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringDurationArrayArray
 														r.name = "TestResponseStringDurationArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_duration_array_array"
@@ -49974,9 +49974,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringDurationNullableArrayArray
 															r.name = "TestResponseStringDurationNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_duration_nullable_array_array"
@@ -50072,9 +50072,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestResponseStringEmailArrayArray
 													r.name = "TestResponseStringEmailArrayArray"
 													r.summary = ""
 													r.operationID = "test_response_string_email_array_array"
@@ -50146,9 +50146,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringEmailNullableArrayArray
 														r.name = "TestResponseStringEmailNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_email_nullable_array_array"
@@ -50253,9 +50253,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringFloat32ArrayArray
 														r.name = "TestResponseStringFloat32ArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_float32_array_array"
@@ -50327,9 +50327,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringFloat32NullableArrayArray
 															r.name = "TestResponseStringFloat32NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_float32_nullable_array_array"
@@ -50422,9 +50422,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringFloat64ArrayArray
 														r.name = "TestResponseStringFloat64ArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_float64_array_array"
@@ -50496,9 +50496,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringFloat64NullableArrayArray
 															r.name = "TestResponseStringFloat64NullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_float64_nullable_array_array"
@@ -50594,9 +50594,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestResponseStringHostnameArrayArray
 													r.name = "TestResponseStringHostnameArrayArray"
 													r.summary = ""
 													r.operationID = "test_response_string_hostname_array_array"
@@ -50668,9 +50668,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringHostnameNullableArrayArray
 														r.name = "TestResponseStringHostnameNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_hostname_nullable_array_array"
@@ -50798,9 +50798,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringInt16ArrayArray
 															r.name = "TestResponseStringInt16ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_int16_array_array"
@@ -50872,9 +50872,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringInt16NullableArrayArray
 																r.name = "TestResponseStringInt16NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_int16_nullable_array_array"
@@ -50967,9 +50967,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringInt32ArrayArray
 															r.name = "TestResponseStringInt32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_int32_array_array"
@@ -51041,9 +51041,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringInt32NullableArrayArray
 																r.name = "TestResponseStringInt32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_int32_nullable_array_array"
@@ -51136,9 +51136,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringInt64ArrayArray
 															r.name = "TestResponseStringInt64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_int64_array_array"
@@ -51210,9 +51210,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringInt64NullableArrayArray
 																r.name = "TestResponseStringInt64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_int64_nullable_array_array"
@@ -51305,9 +51305,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringInt8ArrayArray
 															r.name = "TestResponseStringInt8ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_int8_array_array"
@@ -51379,9 +51379,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringInt8NullableArrayArray
 																r.name = "TestResponseStringInt8NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_int8_nullable_array_array"
@@ -51451,9 +51451,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringIntArrayArray
 														r.name = "TestResponseStringIntArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_int_array_array"
@@ -51525,9 +51525,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringIntNullableArrayArray
 															r.name = "TestResponseStringIntNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_int_nullable_array_array"
@@ -51620,9 +51620,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringIPArrayArray
 														r.name = "TestResponseStringIPArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_ip_array_array"
@@ -51694,9 +51694,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringIPNullableArrayArray
 															r.name = "TestResponseStringIPNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_ip_nullable_array_array"
@@ -51798,9 +51798,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringIpv4ArrayArray
 																r.name = "TestResponseStringIpv4ArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_ipv4_array_array"
@@ -51872,9 +51872,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseStringIpv4NullableArrayArray
 																	r.name = "TestResponseStringIpv4NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_string_ipv4_nullable_array_array"
@@ -51967,9 +51967,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringIpv6ArrayArray
 																r.name = "TestResponseStringIpv6ArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_ipv6_array_array"
@@ -52041,9 +52041,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseStringIpv6NullableArrayArray
 																	r.name = "TestResponseStringIpv6NullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_string_ipv6_nullable_array_array"
@@ -52145,9 +52145,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestResponseStringMACArrayArray
 													r.name = "TestResponseStringMACArrayArray"
 													r.summary = ""
 													r.operationID = "test_response_string_mac_array_array"
@@ -52219,9 +52219,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringMACNullableArrayArray
 														r.name = "TestResponseStringMACNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_mac_nullable_array_array"
@@ -52302,9 +52302,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
+											// Leaf node.
 											switch method {
 											case "POST":
-												// Leaf: TestResponseStringNullableArrayArray
 												r.name = "TestResponseStringNullableArrayArray"
 												r.summary = ""
 												r.operationID = "test_response_string_nullable_array_array"
@@ -52391,9 +52391,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestResponseStringPasswordArrayArray
 													r.name = "TestResponseStringPasswordArrayArray"
 													r.summary = ""
 													r.operationID = "test_response_string_password_array_array"
@@ -52465,9 +52465,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringPasswordNullableArrayArray
 														r.name = "TestResponseStringPasswordNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_password_nullable_array_array"
@@ -52560,9 +52560,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
+												// Leaf node.
 												switch method {
 												case "POST":
-													// Leaf: TestResponseStringTimeArrayArray
 													r.name = "TestResponseStringTimeArrayArray"
 													r.summary = ""
 													r.operationID = "test_response_string_time_array_array"
@@ -52634,9 +52634,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringTimeNullableArrayArray
 														r.name = "TestResponseStringTimeNullableArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_time_nullable_array_array"
@@ -52764,9 +52764,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringUint16ArrayArray
 															r.name = "TestResponseStringUint16ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_uint16_array_array"
@@ -52838,9 +52838,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringUint16NullableArrayArray
 																r.name = "TestResponseStringUint16NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_uint16_nullable_array_array"
@@ -52933,9 +52933,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringUint32ArrayArray
 															r.name = "TestResponseStringUint32ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_uint32_array_array"
@@ -53007,9 +53007,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringUint32NullableArrayArray
 																r.name = "TestResponseStringUint32NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_uint32_nullable_array_array"
@@ -53102,9 +53102,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringUint64ArrayArray
 															r.name = "TestResponseStringUint64ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_uint64_array_array"
@@ -53176,9 +53176,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringUint64NullableArrayArray
 																r.name = "TestResponseStringUint64NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_uint64_nullable_array_array"
@@ -53271,9 +53271,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringUint8ArrayArray
 															r.name = "TestResponseStringUint8ArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_uint8_array_array"
@@ -53345,9 +53345,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringUint8NullableArrayArray
 																r.name = "TestResponseStringUint8NullableArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_uint8_nullable_array_array"
@@ -53417,9 +53417,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringUintArrayArray
 														r.name = "TestResponseStringUintArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_uint_array_array"
@@ -53491,9 +53491,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringUintNullableArrayArray
 															r.name = "TestResponseStringUintNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_uint_nullable_array_array"
@@ -53633,9 +53633,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseStringUnixMicroArrayArray
 																	r.name = "TestResponseStringUnixMicroArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-micro_array_array"
@@ -53707,9 +53707,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestResponseStringUnixMicroNullableArrayArray
 																		r.name = "TestResponseStringUnixMicroNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_response_string_unix-micro_nullable_array_array"
@@ -53802,9 +53802,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseStringUnixMilliArrayArray
 																	r.name = "TestResponseStringUnixMilliArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-milli_array_array"
@@ -53876,9 +53876,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
+																	// Leaf node.
 																	switch method {
 																	case "POST":
-																		// Leaf: TestResponseStringUnixMilliNullableArrayArray
 																		r.name = "TestResponseStringUnixMilliNullableArrayArray"
 																		r.summary = ""
 																		r.operationID = "test_response_string_unix-milli_nullable_array_array"
@@ -53974,9 +53974,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringUnixNanoArrayArray
 																r.name = "TestResponseStringUnixNanoArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_unix-nano_array_array"
@@ -54048,9 +54048,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseStringUnixNanoNullableArrayArray
 																	r.name = "TestResponseStringUnixNanoNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-nano_nullable_array_array"
@@ -54143,9 +54143,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
+															// Leaf node.
 															switch method {
 															case "POST":
-																// Leaf: TestResponseStringUnixSecondsArrayArray
 																r.name = "TestResponseStringUnixSecondsArrayArray"
 																r.summary = ""
 																r.operationID = "test_response_string_unix-seconds_array_array"
@@ -54217,9 +54217,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
+																// Leaf node.
 																switch method {
 																case "POST":
-																	// Leaf: TestResponseStringUnixSecondsNullableArrayArray
 																	r.name = "TestResponseStringUnixSecondsNullableArrayArray"
 																	r.summary = ""
 																	r.operationID = "test_response_string_unix-seconds_nullable_array_array"
@@ -54292,9 +54292,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringUnixArrayArray
 														r.name = "TestResponseStringUnixArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_unix_array_array"
@@ -54366,9 +54366,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringUnixNullableArrayArray
 															r.name = "TestResponseStringUnixNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_unix_nullable_array_array"
@@ -54461,9 +54461,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringURIArrayArray
 														r.name = "TestResponseStringURIArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_uri_array_array"
@@ -54535,9 +54535,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringURINullableArrayArray
 															r.name = "TestResponseStringURINullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_uri_nullable_array_array"
@@ -54630,9 +54630,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
+													// Leaf node.
 													switch method {
 													case "POST":
-														// Leaf: TestResponseStringUUIDArrayArray
 														r.name = "TestResponseStringUUIDArrayArray"
 														r.summary = ""
 														r.operationID = "test_response_string_uuid_array_array"
@@ -54704,9 +54704,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
+														// Leaf node.
 														switch method {
 														case "POST":
-															// Leaf: TestResponseStringUUIDNullableArrayArray
 															r.name = "TestResponseStringUUIDNullableArrayArray"
 															r.summary = ""
 															r.operationID = "test_response_string_uuid_nullable_array_array"

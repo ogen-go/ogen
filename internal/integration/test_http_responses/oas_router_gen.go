@@ -548,9 +548,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: AnyContentTypeBinaryStringSchemaDefault
 							r.name = "AnyContentTypeBinaryStringSchemaDefault"
 							r.summary = ""
 							r.operationID = "anyContentTypeBinaryStringSchemaDefault"
@@ -576,9 +576,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: Combined
 						r.name = "Combined"
 						r.summary = ""
 						r.operationID = "combined"
@@ -613,9 +613,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: Headers200
 							r.name = "Headers200"
 							r.summary = ""
 							r.operationID = "headers200"
@@ -638,9 +638,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: HeadersCombined
 							r.name = "HeadersCombined"
 							r.summary = ""
 							r.operationID = "headersCombined"
@@ -663,9 +663,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: HeadersDefault
 							r.name = "HeadersDefault"
 							r.summary = ""
 							r.operationID = "headersDefault"
@@ -688,9 +688,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: HeadersJSON
 							r.name = "HeadersJSON"
 							r.summary = ""
 							r.operationID = "headersJSON"
@@ -713,9 +713,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: HeadersPattern
 							r.name = "HeadersPattern"
 							r.summary = ""
 							r.operationID = "headersPattern"
@@ -741,9 +741,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: IntersectPatternCode
 						r.name = "IntersectPatternCode"
 						r.summary = ""
 						r.operationID = "intersectPatternCode"
@@ -766,9 +766,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: MultipleGenericResponses
 						r.name = "MultipleGenericResponses"
 						r.summary = ""
 						r.operationID = "multipleGenericResponses"
@@ -815,9 +815,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: OctetStreamBinaryStringSchema
 								r.name = "OctetStreamBinaryStringSchema"
 								r.summary = ""
 								r.operationID = "octetStreamBinaryStringSchema"
@@ -840,9 +840,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "GET":
-								// Leaf: OctetStreamEmptySchema
 								r.name = "OctetStreamEmptySchema"
 								r.summary = ""
 								r.operationID = "octetStreamEmptySchema"
@@ -868,9 +868,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "GET":
-							// Leaf: OptionalHeaders
 							r.name = "OptionalHeaders"
 							r.summary = ""
 							r.operationID = "optionalHeaders"
@@ -896,9 +896,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "POST":
-						// Leaf: StreamJSON
 						r.name = "StreamJSON"
 						r.summary = ""
 						r.operationID = "streamJSON"
@@ -921,9 +921,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
+					// Leaf node.
 					switch method {
 					case "GET":
-						// Leaf: TextPlainBinaryStringSchema
 						r.name = "TextPlainBinaryStringSchema"
 						r.summary = ""
 						r.operationID = "textPlainBinaryStringSchema"

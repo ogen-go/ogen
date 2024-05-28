@@ -426,9 +426,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: OnlyForm
 							r.name = "OnlyForm"
 							r.summary = ""
 							r.operationID = "onlyForm"
@@ -463,9 +463,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: OnlyMultipartFile
 								r.name = "OnlyMultipartFile"
 								r.summary = ""
 								r.operationID = "onlyMultipartFile"
@@ -488,9 +488,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: OnlyMultipartForm
 								r.name = "OnlyMultipartForm"
 								r.summary = ""
 								r.operationID = "onlyMultipartForm"
@@ -531,9 +531,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: TestFormURLEncoded
 							r.name = "TestFormURLEncoded"
 							r.summary = ""
 							r.operationID = "testFormURLEncoded"
@@ -579,9 +579,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestMultipartUpload
 								r.name = "TestMultipartUpload"
 								r.summary = ""
 								r.operationID = "testMultipartUpload"
@@ -619,9 +619,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestReuseFormOptionalSchema
 								r.name = "TestReuseFormOptionalSchema"
 								r.summary = ""
 								r.operationID = "testReuseFormOptionalSchema"
@@ -644,9 +644,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
+							// Leaf node.
 							switch method {
 							case "POST":
-								// Leaf: TestReuseFormSchema
 								r.name = "TestReuseFormSchema"
 								r.summary = ""
 								r.operationID = "testReuseFormSchema"
@@ -672,9 +672,9 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
+						// Leaf node.
 						switch method {
 						case "POST":
-							// Leaf: TestShareFormSchema
 							r.name = "TestShareFormSchema"
 							r.summary = ""
 							r.operationID = "testShareFormSchema"
