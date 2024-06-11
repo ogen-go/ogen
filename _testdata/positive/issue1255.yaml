@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: API
+  version: 0.1.0
+paths:
+  /test:
+    get:
+      operationId: test
+      responses:
+        "200":
+          description: Teste
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HistoryEntry"
+components:
+  schemas:
+    HistoryEntry:
+      description: "Properties common for each entry in the scaling history."
+      type: object
+      oneOf:
+        - $ref: "#/components/schemas/HistoryErrorEntry"
+        - $ref: "#/components/schemas/HistoryIgnoreEntry"
+        - $ref: "#/components/schemas/HistorySuccessEntry"
+      properties:
+        message:
+          type: string
+          description: Textual information about the scaling event.
+          example: app
+    HistoryErrorEntry:
+      description: Description of a failed scaling even in history.
+      type: object
+      properties:
+        error:
+          type: string
+          description: |
+            In case the scaling failed, the reason is provided in this field.
+          example: failed to compute new app instances
+    HistoryIgnoreEntry:
+      description: Description of an ignored scaling event in history.
+      type: object
+      properties:
+        ignore_reason:
+          type: string
+          description: |
+            In case the scaling was ignored, the reason is provided in this field.
+          example: app in cooldown period
+    HistorySuccessEntry:
+      description: Description of a successful scaling event event in history.
+      type: object
+      properties: {} # No extra fields needed in this variant
