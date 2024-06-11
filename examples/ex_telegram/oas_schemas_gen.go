@@ -7,7 +7,6 @@ import (
 	"net/url"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 )
 
 func (s *ErrorStatusCode) Error() string {
@@ -1112,16 +1111,7 @@ func (s *BotCommandScopeDefault) SetType(val string) {
 
 // A placeholder, currently holds no information. Use BotFather to set up your game.
 // Ref: #/components/schemas/CallbackGame
-type CallbackGame map[string]jx.Raw
-
-func (s *CallbackGame) init() CallbackGame {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type CallbackGame struct{}
 
 // This object represents an incoming callback query from a callback button in an inline keyboard. If
 // the button that originated the query was attached to a message sent by the bot, the field message
@@ -4976,8 +4966,8 @@ type InlineKeyboardButton struct {
 	// current chat's input field. Can be empty, in which case only the bot's username will be inserted.
 	// This offers a quick way for the user to open your bot in inline mode in the same chat – good for
 	// selecting something from multiple options.
-	SwitchInlineQueryCurrentChat OptString       `json:"switch_inline_query_current_chat"`
-	CallbackGame                 OptCallbackGame `json:"callback_game"`
+	SwitchInlineQueryCurrentChat OptString     `json:"switch_inline_query_current_chat"`
+	CallbackGame                 *CallbackGame `json:"callback_game"`
 	// Specify True, to send a Pay button.NOTE: This type of button must always be the first button in
 	// the first row and can only be used in invoice messages.
 	Pay OptBool `json:"pay"`
@@ -5014,7 +5004,7 @@ func (s *InlineKeyboardButton) GetSwitchInlineQueryCurrentChat() OptString {
 }
 
 // GetCallbackGame returns the value of CallbackGame.
-func (s *InlineKeyboardButton) GetCallbackGame() OptCallbackGame {
+func (s *InlineKeyboardButton) GetCallbackGame() *CallbackGame {
 	return s.CallbackGame
 }
 
@@ -5054,7 +5044,7 @@ func (s *InlineKeyboardButton) SetSwitchInlineQueryCurrentChat(val OptString) {
 }
 
 // SetCallbackGame sets the value of CallbackGame.
-func (s *InlineKeyboardButton) SetCallbackGame(val OptCallbackGame) {
+func (s *InlineKeyboardButton) SetCallbackGame(val *CallbackGame) {
 	s.CallbackGame = val
 }
 
@@ -10430,7 +10420,7 @@ type Message struct {
 	PassportData                 OptPassportData                 `json:"passport_data"`
 	ProximityAlertTriggered      OptProximityAlertTriggered      `json:"proximity_alert_triggered"`
 	VoiceChatScheduled           OptVoiceChatScheduled           `json:"voice_chat_scheduled"`
-	VoiceChatStarted             OptVoiceChatStarted             `json:"voice_chat_started"`
+	VoiceChatStarted             *VoiceChatStarted               `json:"voice_chat_started"`
 	VoiceChatEnded               OptVoiceChatEnded               `json:"voice_chat_ended"`
 	VoiceChatParticipantsInvited OptVoiceChatParticipantsInvited `json:"voice_chat_participants_invited"`
 	ReplyMarkup                  OptInlineKeyboardMarkup         `json:"reply_markup"`
@@ -10707,7 +10697,7 @@ func (s *Message) GetVoiceChatScheduled() OptVoiceChatScheduled {
 }
 
 // GetVoiceChatStarted returns the value of VoiceChatStarted.
-func (s *Message) GetVoiceChatStarted() OptVoiceChatStarted {
+func (s *Message) GetVoiceChatStarted() *VoiceChatStarted {
 	return s.VoiceChatStarted
 }
 
@@ -10997,7 +10987,7 @@ func (s *Message) SetVoiceChatScheduled(val OptVoiceChatScheduled) {
 }
 
 // SetVoiceChatStarted sets the value of VoiceChatStarted.
-func (s *Message) SetVoiceChatStarted(val OptVoiceChatStarted) {
+func (s *Message) SetVoiceChatStarted(val *VoiceChatStarted) {
 	s.VoiceChatStarted = val
 }
 
@@ -11448,52 +11438,6 @@ func (o OptBotCommandScope) Get() (v BotCommandScope, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptBotCommandScope) Or(d BotCommandScope) BotCommandScope {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptCallbackGame returns new OptCallbackGame with value set to v.
-func NewOptCallbackGame(v CallbackGame) OptCallbackGame {
-	return OptCallbackGame{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptCallbackGame is optional CallbackGame.
-type OptCallbackGame struct {
-	Value CallbackGame
-	Set   bool
-}
-
-// IsSet returns true if OptCallbackGame was set.
-func (o OptCallbackGame) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptCallbackGame) Reset() {
-	var v CallbackGame
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptCallbackGame) SetTo(v CallbackGame) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptCallbackGame) Get() (v CallbackGame, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptCallbackGame) Or(d CallbackGame) CallbackGame {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -14898,52 +14842,6 @@ func (o OptVoiceChatScheduled) Get() (v VoiceChatScheduled, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptVoiceChatScheduled) Or(d VoiceChatScheduled) VoiceChatScheduled {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptVoiceChatStarted returns new OptVoiceChatStarted with value set to v.
-func NewOptVoiceChatStarted(v VoiceChatStarted) OptVoiceChatStarted {
-	return OptVoiceChatStarted{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptVoiceChatStarted is optional VoiceChatStarted.
-type OptVoiceChatStarted struct {
-	Value VoiceChatStarted
-	Set   bool
-}
-
-// IsSet returns true if OptVoiceChatStarted was set.
-func (o OptVoiceChatStarted) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptVoiceChatStarted) Reset() {
-	var v VoiceChatStarted
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptVoiceChatStarted) SetTo(v VoiceChatStarted) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptVoiceChatStarted) Get() (v VoiceChatStarted, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptVoiceChatStarted) Or(d VoiceChatStarted) VoiceChatStarted {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -23975,16 +23873,7 @@ func (s *VoiceChatScheduled) SetStartDate(val int) {
 // This object represents a service message about a voice chat started in the chat. Currently holds
 // no information.
 // Ref: #/components/schemas/VoiceChatStarted
-type VoiceChatStarted map[string]jx.Raw
-
-func (s *VoiceChatStarted) init() VoiceChatStarted {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type VoiceChatStarted struct{}
 
 // Contains information about the current status of a webhook.
 // Ref: #/components/schemas/WebhookInfo

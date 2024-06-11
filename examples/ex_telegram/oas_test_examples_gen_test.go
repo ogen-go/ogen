@@ -241,7 +241,6 @@ func TestBotCommandScopeDefault_EncodeDecode(t *testing.T) {
 }
 func TestCallbackGame_EncodeDecode(t *testing.T) {
 	var typ CallbackGame
-	typ = make(CallbackGame)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -250,7 +249,6 @@ func TestCallbackGame_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 CallbackGame
-	typ2 = make(CallbackGame)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestCallbackQuery_EncodeDecode(t *testing.T) {
@@ -3003,7 +3001,6 @@ func TestVoiceChatScheduled_EncodeDecode(t *testing.T) {
 }
 func TestVoiceChatStarted_EncodeDecode(t *testing.T) {
 	var typ VoiceChatStarted
-	typ = make(VoiceChatStarted)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -3012,7 +3009,6 @@ func TestVoiceChatStarted_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 VoiceChatStarted
-	typ2 = make(VoiceChatStarted)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestWebhookInfo_EncodeDecode(t *testing.T) {

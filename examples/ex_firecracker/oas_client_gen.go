@@ -91,13 +91,13 @@ type Invoker interface {
 	// Updates the MMDS data store.
 	//
 	// PATCH /mmds
-	MmdsPatch(ctx context.Context, request OptMmdsPatchReq) (MmdsPatchRes, error)
+	MmdsPatch(ctx context.Context, request *MmdsPatchReq) (MmdsPatchRes, error)
 	// MmdsPut invokes PUT /mmds operation.
 	//
 	// Creates a MMDS (Microvm Metadata Service) data store.
 	//
 	// PUT /mmds
-	MmdsPut(ctx context.Context, request OptMmdsPutReq) (MmdsPutRes, error)
+	MmdsPut(ctx context.Context, request *MmdsPutReq) (MmdsPutRes, error)
 	// PatchBalloon invokes patchBalloon operation.
 	//
 	// Updates an existing balloon device, before or after machine startup. Will fail if update is not
@@ -985,12 +985,12 @@ func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 // Updates the MMDS data store.
 //
 // PATCH /mmds
-func (c *Client) MmdsPatch(ctx context.Context, request OptMmdsPatchReq) (MmdsPatchRes, error) {
+func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (MmdsPatchRes, error) {
 	res, err := c.sendMmdsPatch(ctx, request)
 	return res, err
 }
 
-func (c *Client) sendMmdsPatch(ctx context.Context, request OptMmdsPatchReq) (res MmdsPatchRes, err error) {
+func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/mmds"),
@@ -1059,12 +1059,12 @@ func (c *Client) sendMmdsPatch(ctx context.Context, request OptMmdsPatchReq) (re
 // Creates a MMDS (Microvm Metadata Service) data store.
 //
 // PUT /mmds
-func (c *Client) MmdsPut(ctx context.Context, request OptMmdsPutReq) (MmdsPutRes, error) {
+func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (MmdsPutRes, error) {
 	res, err := c.sendMmdsPut(ctx, request)
 	return res, err
 }
 
-func (c *Client) sendMmdsPut(ctx context.Context, request OptMmdsPutReq) (res MmdsPutRes, err error) {
+func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
 	otelAttrs := []attribute.KeyValue{
 		semconv.HTTPMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/mmds"),

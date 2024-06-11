@@ -2373,10 +2373,10 @@ func (s *OneOfMappingReferenceA) SetDescription(val OptString) {
 
 // Ref: #/components/schemas/OneOfMappingReferenceB
 type OneOfMappingReferenceB struct {
-	InfoType OptString                     `json:"infoType"`
-	Code     OptInt32                      `json:"code"`
-	Data     OptOneOfMappingReferenceBData `json:"data"`
-	Info     OptString                     `json:"info"`
+	InfoType OptString                   `json:"infoType"`
+	Code     OptInt32                    `json:"code"`
+	Data     *OneOfMappingReferenceBData `json:"data"`
+	Info     OptString                   `json:"info"`
 }
 
 // GetInfoType returns the value of InfoType.
@@ -2390,7 +2390,7 @@ func (s *OneOfMappingReferenceB) GetCode() OptInt32 {
 }
 
 // GetData returns the value of Data.
-func (s *OneOfMappingReferenceB) GetData() OptOneOfMappingReferenceBData {
+func (s *OneOfMappingReferenceB) GetData() *OneOfMappingReferenceBData {
 	return s.Data
 }
 
@@ -2410,7 +2410,7 @@ func (s *OneOfMappingReferenceB) SetCode(val OptInt32) {
 }
 
 // SetData sets the value of Data.
-func (s *OneOfMappingReferenceB) SetData(val OptOneOfMappingReferenceBData) {
+func (s *OneOfMappingReferenceB) SetData(val *OneOfMappingReferenceBData) {
 	s.Data = val
 }
 
@@ -2419,16 +2419,7 @@ func (s *OneOfMappingReferenceB) SetInfo(val OptString) {
 	s.Info = val
 }
 
-type OneOfMappingReferenceBData map[string]jx.Raw
-
-func (s *OneOfMappingReferenceBData) init() OneOfMappingReferenceBData {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type OneOfMappingReferenceBData struct{}
 
 // Ref: #/components/schemas/OneOfNullables
 // OneOfNullables represents sum type.
@@ -4247,52 +4238,6 @@ func (o OptOneOfMappingReference) Get() (v OneOfMappingReference, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptOneOfMappingReference) Or(d OneOfMappingReference) OneOfMappingReference {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptOneOfMappingReferenceBData returns new OptOneOfMappingReferenceBData with value set to v.
-func NewOptOneOfMappingReferenceBData(v OneOfMappingReferenceBData) OptOneOfMappingReferenceBData {
-	return OptOneOfMappingReferenceBData{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptOneOfMappingReferenceBData is optional OneOfMappingReferenceBData.
-type OptOneOfMappingReferenceBData struct {
-	Value OneOfMappingReferenceBData
-	Set   bool
-}
-
-// IsSet returns true if OptOneOfMappingReferenceBData was set.
-func (o OptOneOfMappingReferenceBData) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptOneOfMappingReferenceBData) Reset() {
-	var v OneOfMappingReferenceBData
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptOneOfMappingReferenceBData) SetTo(v OneOfMappingReferenceBData) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptOneOfMappingReferenceBData) Get() (v OneOfMappingReferenceBData, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptOneOfMappingReferenceBData) Or(d OneOfMappingReferenceBData) OneOfMappingReferenceBData {
 	if v, ok := o.Get(); ok {
 		return v
 	}

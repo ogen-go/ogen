@@ -176,17 +176,13 @@ func encodeTestRequestBooleanNullableArrayArrayRequest(
 }
 
 func encodeTestRequestEmptyStructRequest(
-	req OptTestRequestEmptyStructReq,
+	req *TestRequestEmptyStructReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	if !req.Set {
-		// Keep request with empty body if value is not set.
-		return nil
-	}
 	e := new(jx.Encoder)
 	{
-		if req.Set {
+		if req != nil {
 			req.Encode(e)
 		}
 	}
@@ -3032,7 +3028,7 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayRequest(
 }
 
 func encodeTestRequestRequiredEmptyStructRequest(
-	req TestRequestRequiredEmptyStructReq,
+	req *TestRequestRequiredEmptyStructReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"

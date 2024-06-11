@@ -79,7 +79,7 @@ func (UnimplementedHandler) TestRequestBooleanNullableArrayArray(ctx context.Con
 // TestRequestEmptyStruct implements test_request_EmptyStruct operation.
 //
 // POST /test_request_EmptyStruct
-func (UnimplementedHandler) TestRequestEmptyStruct(ctx context.Context, req OptTestRequestEmptyStructReq) (r *Error, _ error) {
+func (UnimplementedHandler) TestRequestEmptyStruct(ctx context.Context, req *TestRequestEmptyStructReq) (r *Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1024,7 +1024,7 @@ func (UnimplementedHandler) TestRequestRequiredBooleanNullableArrayArray(ctx con
 // TestRequestRequiredEmptyStruct implements test_request_required_EmptyStruct operation.
 //
 // POST /test_request_required_EmptyStruct
-func (UnimplementedHandler) TestRequestRequiredEmptyStruct(ctx context.Context, req TestRequestRequiredEmptyStructReq) (r *Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredEmptyStruct(ctx context.Context, req *TestRequestRequiredEmptyStructReq) (r *Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4825,8 +4825,8 @@ func (UnimplementedHandler) TestResponseBooleanNullableArrayArray(ctx context.Co
 // TestResponseEmptyStruct implements test_response_EmptyStruct operation.
 //
 // POST /test_response_EmptyStruct
-func (UnimplementedHandler) TestResponseEmptyStruct(ctx context.Context, req string) (r TestResponseEmptyStructOK, _ error) {
-	return r, ht.ErrNotImplemented
+func (UnimplementedHandler) TestResponseEmptyStruct(ctx context.Context, req string) error {
+	return ht.ErrNotImplemented
 }
 
 // TestResponseFormatTest implements test_response_FormatTest operation.

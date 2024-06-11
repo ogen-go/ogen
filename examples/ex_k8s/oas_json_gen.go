@@ -2212,43 +2212,29 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) UnmarshalJSON(data
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Encoder) {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sAPIApiserverinternalV1alpha1StorageVersionSpec = [0]string{}
 
 // Decode decodes IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec from json.
 func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec")
 	}
@@ -2257,7 +2243,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Decode(d *jx.Decod
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) MarshalJSON() ([]byte, error) {
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -2404,7 +2390,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Data.Set {
+		if s.Data != nil {
 			e.FieldStart("data")
 			s.Data.Encode(e)
 		}
@@ -2456,10 +2442,12 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 			}
 		case "data":
 			if err := func() error {
-				s.Data.Reset()
-				if err := s.Data.Decode(d); err != nil {
+				s.Data = nil
+				var elem IoK8sApimachineryPkgRuntimeRawExtension
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Data = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"data\"")
@@ -70472,43 +70460,29 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Encoder) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus = [0]string{}
 
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus from json.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus")
 	}
@@ -70517,7 +70491,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) MarshalJSON() ([]byte, error) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -70545,7 +70519,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 		}
 	}
 	{
-		if s.Status.Set {
+		if s.Status != nil {
 			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
@@ -70577,10 +70551,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 			}
 		case "status":
 			if err := func() error {
-				s.Status.Reset()
-				if err := s.Status.Decode(d); err != nil {
+				s.Status = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Status = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"status\"")
@@ -70753,43 +70729,29 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Encoder) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON = [0]string{}
 
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON from json.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON")
 	}
@@ -70798,7 +70760,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Dec
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) MarshalJSON() ([]byte, error) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -70832,13 +70794,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) encod
 		}
 	}
 	{
-		if s.AdditionalItems.Set {
+		if s.AdditionalItems != nil {
 			e.FieldStart("additionalItems")
 			s.AdditionalItems.Encode(e)
 		}
 	}
 	{
-		if s.AdditionalProperties.Set {
+		if s.AdditionalProperties != nil {
 			e.FieldStart("additionalProperties")
 			s.AdditionalProperties.Encode(e)
 		}
@@ -70864,7 +70826,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) encod
 		}
 	}
 	{
-		if s.Default.Set {
+		if s.Default != nil {
 			e.FieldStart("default")
 			s.Default.Encode(e)
 		}
@@ -70898,7 +70860,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) encod
 		}
 	}
 	{
-		if s.Example.Set {
+		if s.Example != nil {
 			e.FieldStart("example")
 			s.Example.Encode(e)
 		}
@@ -70934,7 +70896,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) encod
 		}
 	}
 	{
-		if s.Items.Set {
+		if s.Items != nil {
 			e.FieldStart("items")
 			s.Items.Encode(e)
 		}
@@ -71179,20 +71141,24 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "additionalItems":
 			if err := func() error {
-				s.AdditionalItems.Reset()
-				if err := s.AdditionalItems.Decode(d); err != nil {
+				s.AdditionalItems = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.AdditionalItems = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"additionalItems\"")
 			}
 		case "additionalProperties":
 			if err := func() error {
-				s.AdditionalProperties.Reset()
-				if err := s.AdditionalProperties.Decode(d); err != nil {
+				s.AdditionalProperties = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.AdditionalProperties = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"additionalProperties\"")
@@ -71233,10 +71199,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "default":
 			if err := func() error {
-				s.Default.Reset()
-				if err := s.Default.Decode(d); err != nil {
+				s.Default = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Default = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"default\"")
@@ -71290,10 +71258,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "example":
 			if err := func() error {
-				s.Example.Reset()
-				if err := s.Example.Decode(d); err != nil {
+				s.Example = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -71350,10 +71320,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 			}
 		case "items":
 			if err := func() error {
-				s.Items.Reset()
-				if err := s.Items.Decode(d); err != nil {
+				s.Items = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Items = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"items\"")
@@ -71768,43 +71740,29 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepende
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Encoder) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray = [0]string{}
 
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray from json.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray")
 	}
@@ -71813,7 +71771,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) MarshalJSON() ([]byte, error) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -71826,43 +71784,29 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Encoder) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool = [0]string{}
 
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool from json.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool")
 	}
@@ -71871,7 +71815,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) MarshalJSON() ([]byte, error) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -71884,43 +71828,29 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Encode(e *jx.Encoder) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray = [0]string{}
 
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray from json.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray")
 	}
@@ -71929,7 +71859,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) MarshalJSON() ([]byte, error) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -73593,43 +73523,29 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) UnmarshalJSON(data []byte) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Encoder) {
+func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1FieldsV1 = [0]string{}
 
 // Decode decodes IoK8sApimachineryPkgApisMetaV1FieldsV1 from json.
 func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1FieldsV1 to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1FieldsV1")
 	}
@@ -73638,7 +73554,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) MarshalJSON() ([]byte, error) {
+func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -74189,7 +74105,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) encodeFields(e *jx.En
 		}
 	}
 	{
-		if s.FieldsV1.Set {
+		if s.FieldsV1 != nil {
 			e.FieldStart("fieldsV1")
 			s.FieldsV1.Encode(e)
 		}
@@ -74260,10 +74176,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 			}
 		case "fieldsV1":
 			if err := func() error {
-				s.FieldsV1.Reset()
-				if err := s.FieldsV1.Decode(d); err != nil {
+				s.FieldsV1 = nil
+				var elem IoK8sApimachineryPkgApisMetaV1FieldsV1
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.FieldsV1 = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"fieldsV1\"")
@@ -75283,43 +75201,29 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) UnmarshalJSON(data []byte) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Encoder) {
+func (s *IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s IoK8sApimachineryPkgRuntimeRawExtension) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *IoK8sApimachineryPkgRuntimeRawExtension) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfIoK8sApimachineryPkgRuntimeRawExtension = [0]string{}
 
 // Decode decodes IoK8sApimachineryPkgRuntimeRawExtension from json.
 func (s *IoK8sApimachineryPkgRuntimeRawExtension) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgRuntimeRawExtension to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgRuntimeRawExtension")
 	}
@@ -75328,7 +75232,7 @@ func (s *IoK8sApimachineryPkgRuntimeRawExtension) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s IoK8sApimachineryPkgRuntimeRawExtension) MarshalJSON() ([]byte, error) {
+func (s *IoK8sApimachineryPkgRuntimeRawExtension) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -85258,40 +85162,6 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 	return s.Decode(d)
 }
 
-// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus from json.
-func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus to nil")
-	}
-	o.Set = true
-	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -85387,40 +85257,6 @@ func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentatio
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON from json.
-func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON to nil")
-	}
-	o.Set = true
-	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -85522,74 +85358,6 @@ func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepen
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray from json.
-func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray to nil")
-	}
-	o.Set = true
-	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool from json.
-func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool to nil")
-	}
-	o.Set = true
-	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -85790,40 +85558,6 @@ func (s OptIoK8sApimachineryPkgAPIResourceQuantity) MarshalJSON() ([]byte, error
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptIoK8sApimachineryPkgAPIResourceQuantity) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes IoK8sApimachineryPkgApisMetaV1FieldsV1 as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes IoK8sApimachineryPkgApisMetaV1FieldsV1 from json.
-func (o *OptIoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1FieldsV1 to nil")
-	}
-	o.Set = true
-	o.Value = make(IoK8sApimachineryPkgApisMetaV1FieldsV1)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptIoK8sApimachineryPkgApisMetaV1FieldsV1) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptIoK8sApimachineryPkgApisMetaV1FieldsV1) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -86124,40 +85858,6 @@ func (s OptIoK8sApimachineryPkgApisMetaV1Time) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptIoK8sApimachineryPkgApisMetaV1Time) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes IoK8sApimachineryPkgRuntimeRawExtension as json.
-func (o OptIoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes IoK8sApimachineryPkgRuntimeRawExtension from json.
-func (o *OptIoK8sApimachineryPkgRuntimeRawExtension) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgRuntimeRawExtension to nil")
-	}
-	o.Set = true
-	o.Value = make(IoK8sApimachineryPkgRuntimeRawExtension)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptIoK8sApimachineryPkgRuntimeRawExtension) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptIoK8sApimachineryPkgRuntimeRawExtension) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

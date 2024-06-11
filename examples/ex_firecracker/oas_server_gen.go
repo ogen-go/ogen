@@ -76,13 +76,13 @@ type Handler interface {
 	// Updates the MMDS data store.
 	//
 	// PATCH /mmds
-	MmdsPatch(ctx context.Context, req OptMmdsPatchReq) (MmdsPatchRes, error)
+	MmdsPatch(ctx context.Context, req *MmdsPatchReq) (MmdsPatchRes, error)
 	// MmdsPut implements PUT /mmds operation.
 	//
 	// Creates a MMDS (Microvm Metadata Service) data store.
 	//
 	// PUT /mmds
-	MmdsPut(ctx context.Context, req OptMmdsPutReq) (MmdsPutRes, error)
+	MmdsPut(ctx context.Context, req *MmdsPutReq) (MmdsPutRes, error)
 	// PatchBalloon implements patchBalloon operation.
 	//
 	// Updates an existing balloon device, before or after machine startup. Will fail if update is not
