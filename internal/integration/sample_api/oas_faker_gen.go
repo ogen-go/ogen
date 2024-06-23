@@ -780,8 +780,8 @@ func (s *OneOfMappingReferenceB) SetFake() {
 		}
 	}
 	{
-		{
-			s.Data.SetFake()
+		{ // Keep pointer nil to prevent infinite recursion.
+			s.Data = nil
 		}
 	}
 	{
@@ -793,13 +793,6 @@ func (s *OneOfMappingReferenceB) SetFake() {
 
 // SetFake set fake values.
 func (s *OneOfMappingReferenceBData) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -1154,15 +1147,6 @@ func (s *OptNullableEnums) SetFake() {
 // SetFake set fake values.
 func (s *OptOneOfMappingReference) SetFake() {
 	var elem OneOfMappingReference
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
-func (s *OptOneOfMappingReferenceBData) SetFake() {
-	var elem OneOfMappingReferenceBData
 	{
 		elem.SetFake()
 	}

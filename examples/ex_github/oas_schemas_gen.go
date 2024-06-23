@@ -186,16 +186,7 @@ func (s *APIOverviewSSHKeyFingerprints) SetSHA256ED25519(val OptString) {
 	s.SHA256ED25519 = val
 }
 
-type Accepted map[string]jx.Raw
-
-func (s *Accepted) init() Accepted {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type Accepted struct{}
 
 func (*Accepted) appsRedeliverWebhookDeliveryRes()  {}
 func (*Accepted) orgsRedeliverWebhookDeliveryRes()  {}
@@ -6224,8 +6215,8 @@ type AuthenticationToken struct {
 	// The token used for authentication.
 	Token string `json:"token"`
 	// The time this token expires.
-	ExpiresAt   time.Time                         `json:"expires_at"`
-	Permissions OptAuthenticationTokenPermissions `json:"permissions"`
+	ExpiresAt   time.Time                       `json:"expires_at"`
+	Permissions *AuthenticationTokenPermissions `json:"permissions"`
 	// The repositories this token has access to.
 	Repositories []Repository `json:"repositories"`
 	SingleFile   OptNilString `json:"single_file"`
@@ -6244,7 +6235,7 @@ func (s *AuthenticationToken) GetExpiresAt() time.Time {
 }
 
 // GetPermissions returns the value of Permissions.
-func (s *AuthenticationToken) GetPermissions() OptAuthenticationTokenPermissions {
+func (s *AuthenticationToken) GetPermissions() *AuthenticationTokenPermissions {
 	return s.Permissions
 }
 
@@ -6274,7 +6265,7 @@ func (s *AuthenticationToken) SetExpiresAt(val time.Time) {
 }
 
 // SetPermissions sets the value of Permissions.
-func (s *AuthenticationToken) SetPermissions(val OptAuthenticationTokenPermissions) {
+func (s *AuthenticationToken) SetPermissions(val *AuthenticationTokenPermissions) {
 	s.Permissions = val
 }
 
@@ -6293,16 +6284,7 @@ func (s *AuthenticationToken) SetRepositorySelection(val OptAuthenticationTokenR
 	s.RepositorySelection = val
 }
 
-type AuthenticationTokenPermissions map[string]jx.Raw
-
-func (s *AuthenticationTokenPermissions) init() AuthenticationTokenPermissions {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type AuthenticationTokenPermissions struct{}
 
 // Describe whether all repositories have been selected or there's a selection involved.
 type AuthenticationTokenRepositorySelection string
@@ -16719,16 +16701,7 @@ func NewAnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsIte
 	return s
 }
 
-type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 map[string]jx.Raw
-
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) init() EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 struct{}
 
 type EnterpriseAdminUpdateAttributeForEnterpriseUserReq struct {
 	// The SCIM schema URIs.
@@ -16757,16 +16730,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) SetOperations(val [
 	s.Operations = val
 }
 
-type EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem map[string]jx.Raw
-
-func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem) init() EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem struct{}
 
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq struct {
 	// Name of the runner group.
@@ -43041,52 +43005,6 @@ func (o OptAuditLogOrder) Get() (v AuditLogOrder, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptAuditLogOrder) Or(d AuditLogOrder) AuditLogOrder {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptAuthenticationTokenPermissions returns new OptAuthenticationTokenPermissions with value set to v.
-func NewOptAuthenticationTokenPermissions(v AuthenticationTokenPermissions) OptAuthenticationTokenPermissions {
-	return OptAuthenticationTokenPermissions{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptAuthenticationTokenPermissions is optional AuthenticationTokenPermissions.
-type OptAuthenticationTokenPermissions struct {
-	Value AuthenticationTokenPermissions
-	Set   bool
-}
-
-// IsSet returns true if OptAuthenticationTokenPermissions was set.
-func (o OptAuthenticationTokenPermissions) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptAuthenticationTokenPermissions) Reset() {
-	var v AuthenticationTokenPermissions
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptAuthenticationTokenPermissions) SetTo(v AuthenticationTokenPermissions) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptAuthenticationTokenPermissions) Get() (v AuthenticationTokenPermissions, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptAuthenticationTokenPermissions) Or(d AuthenticationTokenPermissions) AuthenticationTokenPermissions {
 	if v, ok := o.Get(); ok {
 		return v
 	}

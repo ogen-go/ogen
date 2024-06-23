@@ -3,10 +3,7 @@
 package api
 
 import (
-	"fmt"
 	"net/url"
-
-	"github.com/go-faster/jx"
 )
 
 // SetFake set fake values.
@@ -427,13 +424,6 @@ func (s *BotCommandScopeDefault) SetFake() {
 
 // SetFake set fake values.
 func (s *CallbackGame) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -2012,8 +2002,8 @@ func (s *InlineKeyboardButton) SetFake() {
 		}
 	}
 	{
-		{
-			s.CallbackGame.SetFake()
+		{ // Keep pointer nil to prevent infinite recursion.
+			s.CallbackGame = nil
 		}
 	}
 	{
@@ -4364,8 +4354,8 @@ func (s *Message) SetFake() {
 		}
 	}
 	{
-		{
-			s.VoiceChatStarted.SetFake()
+		{ // Keep pointer nil to prevent infinite recursion.
+			s.VoiceChatStarted = nil
 		}
 	}
 	{
@@ -4472,15 +4462,6 @@ func (s *OptBool) SetFake() {
 // SetFake set fake values.
 func (s *OptBotCommandScope) SetFake() {
 	var elem BotCommandScope
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
-func (s *OptCallbackGame) SetFake() {
-	var elem CallbackGame
 	{
 		elem.SetFake()
 	}
@@ -5147,15 +5128,6 @@ func (s *OptVoiceChatParticipantsInvited) SetFake() {
 // SetFake set fake values.
 func (s *OptVoiceChatScheduled) SetFake() {
 	var elem VoiceChatScheduled
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
-func (s *OptVoiceChatStarted) SetFake() {
-	var elem VoiceChatStarted
 	{
 		elem.SetFake()
 	}
@@ -8357,13 +8329,6 @@ func (s *VoiceChatScheduled) SetFake() {
 
 // SetFake set fake values.
 func (s *VoiceChatStarted) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.

@@ -2,12 +2,6 @@
 
 package api
 
-import (
-	"fmt"
-
-	"github.com/go-faster/jx"
-)
-
 // SetFake set fake values.
 func (s *Balloon) SetFake() {
 	{
@@ -375,35 +369,14 @@ func (s *MmdsConfig) SetFake() {
 
 // SetFake set fake values.
 func (s *MmdsGetOK) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
 func (s *MmdsPatchReq) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
 func (s *MmdsPutReq) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -533,24 +506,6 @@ func (s *OptMetrics) SetFake() {
 // SetFake set fake values.
 func (s *OptMmdsConfig) SetFake() {
 	var elem MmdsConfig
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
-func (s *OptMmdsPatchReq) SetFake() {
-	var elem MmdsPatchReq
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
-func (s *OptMmdsPutReq) SetFake() {
-	var elem MmdsPutReq
 	{
 		elem.SetFake()
 	}

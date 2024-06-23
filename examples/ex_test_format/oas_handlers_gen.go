@@ -1431,7 +1431,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, argsEscaped
 		}
 
 		type (
-			Request  = OptTestRequestEmptyStructReq
+			Request  = *TestRequestEmptyStructReq
 			Params   = struct{}
 			Response = *Error
 		)
@@ -16281,7 +16281,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, arg
 		}
 
 		type (
-			Request  = TestRequestRequiredEmptyStructReq
+			Request  = *TestRequestRequiredEmptyStructReq
 			Params   = struct{}
 			Response = *Error
 		)
@@ -75998,7 +75998,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, argsEscape
 		}
 	}()
 
-	var response TestResponseEmptyStructOK
+	var response *TestResponseEmptyStructOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -76013,7 +76013,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, argsEscape
 		type (
 			Request  = string
 			Params   = struct{}
-			Response = TestResponseEmptyStructOK
+			Response = *TestResponseEmptyStructOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -76024,12 +76024,12 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, argsEscape
 			mreq,
 			nil,
 			func(ctx context.Context, request Request, params Params) (response Response, err error) {
-				response, err = s.h.TestResponseEmptyStruct(ctx, request)
+				err = s.h.TestResponseEmptyStruct(ctx, request)
 				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.TestResponseEmptyStruct(ctx, request)
+		err = s.h.TestResponseEmptyStruct(ctx, request)
 	}
 	if err != nil {
 		defer recordError("Internal", err)

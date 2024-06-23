@@ -261,14 +261,12 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		hasProps := len(schema.Properties) > 0
 		hasAdditionalProps := false
 		denyAdditionalProps := false
-		hasPatternProps := len(schema.PatternProperties) > 0
-		isPatternSingle := len(schema.PatternProperties) == 1
 		if p := schema.AdditionalProperties; p != nil {
 			hasAdditionalProps = *p
 			denyAdditionalProps = !*p
-		} else if !hasProps && !hasPatternProps {
-			hasAdditionalProps = true
 		}
+		hasPatternProps := len(schema.PatternProperties) > 0
+		isPatternSingle := len(schema.PatternProperties) == 1
 
 		if !hasProps {
 			if (!hasAdditionalProps && isPatternSingle) || (hasAdditionalProps && !hasPatternProps) {

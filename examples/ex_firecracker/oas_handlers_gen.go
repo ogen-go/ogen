@@ -1213,7 +1213,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 		}
 
 		type (
-			Request  = OptMmdsPatchReq
+			Request  = *MmdsPatchReq
 			Params   = struct{}
 			Response = MmdsPatchRes
 		)
@@ -1335,7 +1335,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.R
 		}
 
 		type (
-			Request  = OptMmdsPutReq
+			Request  = *MmdsPutReq
 			Params   = struct{}
 			Response = MmdsPutRes
 		)

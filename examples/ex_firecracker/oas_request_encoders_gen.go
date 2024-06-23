@@ -68,17 +68,13 @@ func encodeMmdsConfigPutRequest(
 }
 
 func encodeMmdsPatchRequest(
-	req OptMmdsPatchReq,
+	req *MmdsPatchReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	if !req.Set {
-		// Keep request with empty body if value is not set.
-		return nil
-	}
 	e := new(jx.Encoder)
 	{
-		if req.Set {
+		if req != nil {
 			req.Encode(e)
 		}
 	}
@@ -88,17 +84,13 @@ func encodeMmdsPatchRequest(
 }
 
 func encodeMmdsPutRequest(
-	req OptMmdsPutReq,
+	req *MmdsPutReq,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
-	if !req.Set {
-		// Keep request with empty body if value is not set.
-		return nil
-	}
 	e := new(jx.Encoder)
 	{
-		if req.Set {
+		if req != nil {
 			req.Encode(e)
 		}
 	}

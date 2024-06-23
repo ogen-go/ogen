@@ -6371,52 +6371,6 @@ func (o OptStringUnixSeconds) Or(d time.Time) time.Time {
 	return d
 }
 
-// NewOptTestRequestEmptyStructReq returns new OptTestRequestEmptyStructReq with value set to v.
-func NewOptTestRequestEmptyStructReq(v TestRequestEmptyStructReq) OptTestRequestEmptyStructReq {
-	return OptTestRequestEmptyStructReq{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptTestRequestEmptyStructReq is optional TestRequestEmptyStructReq.
-type OptTestRequestEmptyStructReq struct {
-	Value TestRequestEmptyStructReq
-	Set   bool
-}
-
-// IsSet returns true if OptTestRequestEmptyStructReq was set.
-func (o OptTestRequestEmptyStructReq) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptTestRequestEmptyStructReq) Reset() {
-	var v TestRequestEmptyStructReq
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptTestRequestEmptyStructReq) SetTo(v TestRequestEmptyStructReq) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptTestRequestEmptyStructReq) Get() (v TestRequestEmptyStructReq, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptTestRequestEmptyStructReq) Or(d TestRequestEmptyStructReq) TestRequestEmptyStructReq {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
 // NewOptTestRequestFormatTestReq returns new OptTestRequestFormatTestReq with value set to v.
 func NewOptTestRequestFormatTestReq(v TestRequestFormatTestReq) OptTestRequestFormatTestReq {
 	return OptTestRequestFormatTestReq{
@@ -7015,16 +6969,7 @@ func (o OptUnixSeconds) Or(d time.Time) time.Time {
 	return d
 }
 
-type TestRequestEmptyStructReq map[string]jx.Raw
-
-func (s *TestRequestEmptyStructReq) init() TestRequestEmptyStructReq {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type TestRequestEmptyStructReq struct{}
 
 type TestRequestFormatTestReq struct {
 	RequiredAny                                jx.Raw               `json:"required_any"`
@@ -10791,16 +10736,7 @@ func (s *TestRequestFormatTestReq) SetOptionalStringUUID(val OptUUID) {
 	s.OptionalStringUUID = val
 }
 
-type TestRequestRequiredEmptyStructReq map[string]jx.Raw
-
-func (s *TestRequestRequiredEmptyStructReq) init() TestRequestRequiredEmptyStructReq {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type TestRequestRequiredEmptyStructReq struct{}
 
 type TestRequestRequiredFormatTestReq struct {
 	RequiredAny                                jx.Raw               `json:"required_any"`
@@ -14567,16 +14503,7 @@ func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUUID(val OptUUID) {
 	s.OptionalStringUUID = val
 }
 
-type TestResponseEmptyStructOK map[string]jx.Raw
-
-func (s *TestResponseEmptyStructOK) init() TestResponseEmptyStructOK {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type TestResponseEmptyStructOK struct{}
 
 type TestResponseFormatTestOK struct {
 	RequiredAny                                jx.Raw               `json:"required_any"`

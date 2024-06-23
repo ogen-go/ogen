@@ -284,7 +284,7 @@ func (s *Server) decodeMmdsConfigPutRequest(r *http.Request) (
 }
 
 func (s *Server) decodeMmdsPatchRequest(r *http.Request) (
-	req OptMmdsPatchReq,
+	req *MmdsPatchReq,
 	close func() error,
 	rerr error,
 ) {
@@ -326,12 +326,14 @@ func (s *Server) decodeMmdsPatchRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptMmdsPatchReq
+		var request *MmdsPatchReq
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			var elem MmdsPatchReq
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			request = &elem
 			if err := d.Skip(); err != io.EOF {
 				return errors.New("unexpected trailing data")
 			}
@@ -351,7 +353,7 @@ func (s *Server) decodeMmdsPatchRequest(r *http.Request) (
 }
 
 func (s *Server) decodeMmdsPutRequest(r *http.Request) (
-	req OptMmdsPutReq,
+	req *MmdsPutReq,
 	close func() error,
 	rerr error,
 ) {
@@ -393,12 +395,14 @@ func (s *Server) decodeMmdsPutRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptMmdsPutReq
+		var request *MmdsPutReq
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			var elem MmdsPutReq
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			request = &elem
 			if err := d.Skip(); err != io.EOF {
 				return errors.New("unexpected trailing data")
 			}
