@@ -327,6 +327,40 @@ type PathItem struct {
 	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
+func (s *PathItem) MarshalJSON() ([]byte, error) {
+	type Alias PathItem
+	originalJSON, err := json.Marshal(Alias(*s))
+	if err != nil {
+		return nil, err
+	}
+
+	d := jx.DecodeBytes(originalJSON)
+	e := jx.Encoder{}
+
+	e.ObjStart()
+	if err := d.Obj(func(d *jx.Decoder, key string) error {
+		e.FieldStart(key)
+		raw, err := d.Raw()
+		if err != nil {
+			return err
+		}
+
+		e.Raw(raw)
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+
+	for extK, extV := range s.Common.Extensions {
+		e.FieldStart(extK)
+		e.Str(extV.Value)
+	}
+
+	e.ObjEnd()
+
+	return e.Bytes(), nil
+}
+
 // Operation describes a single API operation on a path.
 //
 // See https://spec.openapis.org/oas/v3.1.0#operation-object.
@@ -379,6 +413,40 @@ type Operation struct {
 	Servers []Server `json:"servers,omitempty" yaml:"servers,omitempty"`
 
 	Common OpenAPICommon `json:"-" yaml:",inline"`
+}
+
+func (s *Operation) MarshalJSON() ([]byte, error) {
+	type Alias Operation
+	originalJSON, err := json.Marshal(Alias(*s))
+	if err != nil {
+		return nil, err
+	}
+
+	d := jx.DecodeBytes(originalJSON)
+	e := jx.Encoder{}
+
+	e.ObjStart()
+	if err := d.Obj(func(d *jx.Decoder, key string) error {
+		e.FieldStart(key)
+		raw, err := d.Raw()
+		if err != nil {
+			return err
+		}
+		log.Info(string(raw))
+		e.Raw(raw)
+		return nil
+	}); err != nil {
+		return nil, err
+	}
+
+	for extK, extV := range s.Common.Extensions {
+		e.FieldStart(extK)
+		e.Str(extV.Value)
+	}
+
+	e.ObjEnd()
+
+	return e.Bytes(), nil
 }
 
 // ExternalDocumentation describes a reference to external resource for extended documentation.
