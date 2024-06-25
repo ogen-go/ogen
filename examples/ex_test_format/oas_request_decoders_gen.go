@@ -650,7 +650,7 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request) (
-	req OptTestRequestEmptyStructReq,
+	req *TestRequestEmptyStructReq,
 	close func() error,
 	rerr error,
 ) {
@@ -692,12 +692,14 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 
-		var request OptTestRequestEmptyStructReq
+		var request *TestRequestEmptyStructReq
 		if err := func() error {
-			request.Reset()
-			if err := request.Decode(d); err != nil {
+			request = nil
+			var elem TestRequestEmptyStructReq
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
+			request = &elem
 			if err := d.Skip(); err != io.EOF {
 				return errors.New("unexpected trailing data")
 			}
@@ -12098,7 +12100,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request) (
-	req TestRequestRequiredEmptyStructReq,
+	req *TestRequestRequiredEmptyStructReq,
 	close func() error,
 	rerr error,
 ) {
@@ -12154,7 +12156,7 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request) (
 			}
 			return req, close, err
 		}
-		return request, close, nil
+		return &request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

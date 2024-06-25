@@ -2705,43 +2705,29 @@ func (s *BotCommandScopeDefault) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s CallbackGame) Encode(e *jx.Encoder) {
+func (s *CallbackGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s CallbackGame) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *CallbackGame) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfCallbackGame = [0]string{}
 
 // Decode decodes CallbackGame from json.
 func (s *CallbackGame) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode CallbackGame to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode CallbackGame")
 	}
@@ -2750,7 +2736,7 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s CallbackGame) MarshalJSON() ([]byte, error) {
+func (s *CallbackGame) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
@@ -11567,7 +11553,7 @@ func (s *InlineKeyboardButton) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.CallbackGame.Set {
+		if s.CallbackGame != nil {
 			e.FieldStart("callback_game")
 			s.CallbackGame.Encode(e)
 		}
@@ -11664,10 +11650,12 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 			}
 		case "callback_game":
 			if err := func() error {
-				s.CallbackGame.Reset()
-				if err := s.CallbackGame.Decode(d); err != nil {
+				s.CallbackGame = nil
+				var elem CallbackGame
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.CallbackGame = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"callback_game\"")
@@ -23027,7 +23015,7 @@ func (s *Message) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.VoiceChatStarted.Set {
+		if s.VoiceChatStarted != nil {
 			e.FieldStart("voice_chat_started")
 			s.VoiceChatStarted.Encode(e)
 		}
@@ -23707,10 +23695,12 @@ func (s *Message) Decode(d *jx.Decoder) error {
 			}
 		case "voice_chat_started":
 			if err := func() error {
-				s.VoiceChatStarted.Reset()
-				if err := s.VoiceChatStarted.Decode(d); err != nil {
+				s.VoiceChatStarted = nil
+				var elem VoiceChatStarted
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.VoiceChatStarted = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"voice_chat_started\"")
@@ -24376,40 +24366,6 @@ func (s OptBotCommandScope) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptBotCommandScope) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes CallbackGame as json.
-func (o OptCallbackGame) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes CallbackGame from json.
-func (o *OptCallbackGame) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptCallbackGame to nil")
-	}
-	o.Set = true
-	o.Value = make(CallbackGame)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptCallbackGame) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptCallbackGame) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -26862,40 +26818,6 @@ func (s OptVoiceChatScheduled) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptVoiceChatScheduled) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes VoiceChatStarted as json.
-func (o OptVoiceChatStarted) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes VoiceChatStarted from json.
-func (o *OptVoiceChatStarted) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptVoiceChatStarted to nil")
-	}
-	o.Set = true
-	o.Value = make(VoiceChatStarted)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptVoiceChatStarted) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptVoiceChatStarted) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -45570,43 +45492,29 @@ func (s *VoiceChatScheduled) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s VoiceChatStarted) Encode(e *jx.Encoder) {
+func (s *VoiceChatStarted) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
-func (s VoiceChatStarted) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
+// encodeFields encodes fields.
+func (s *VoiceChatStarted) encodeFields(e *jx.Encoder) {
 }
+
+var jsonFieldsNameOfVoiceChatStarted = [0]string{}
 
 // Decode decodes VoiceChatStarted from json.
 func (s *VoiceChatStarted) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode VoiceChatStarted to nil")
 	}
-	m := s.init()
+
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
+		switch string(k) {
+		default:
+			return d.Skip()
 		}
-		m[string(k)] = elem
-		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode VoiceChatStarted")
 	}
@@ -45615,7 +45523,7 @@ func (s *VoiceChatStarted) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s VoiceChatStarted) MarshalJSON() ([]byte, error) {
+func (s *VoiceChatStarted) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil

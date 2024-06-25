@@ -253,7 +253,6 @@ func TestBotCommandScopeDefault_EncodeDecode(t *testing.T) {
 }
 func TestCallbackGame_EncodeDecode(t *testing.T) {
 	var typ CallbackGame
-	typ = make(CallbackGame)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -262,7 +261,6 @@ func TestCallbackGame_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 CallbackGame
-	typ2 = make(CallbackGame)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestCallbackQuery_EncodeDecode(t *testing.T) {
@@ -2979,7 +2977,6 @@ func TestVideoChatScheduled_EncodeDecode(t *testing.T) {
 }
 func TestVideoChatStarted_EncodeDecode(t *testing.T) {
 	var typ VideoChatStarted
-	typ = make(VideoChatStarted)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -2988,7 +2985,6 @@ func TestVideoChatStarted_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 VideoChatStarted
-	typ2 = make(VideoChatStarted)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestVideoNote_EncodeDecode(t *testing.T) {

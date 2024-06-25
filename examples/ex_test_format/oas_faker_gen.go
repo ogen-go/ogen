@@ -3,7 +3,6 @@
 package api
 
 import (
-	"fmt"
 	"net"
 	"net/netip"
 	"net/url"
@@ -815,15 +814,6 @@ func (s *OptStringUnixSeconds) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptTestRequestEmptyStructReq) SetFake() {
-	var elem TestRequestEmptyStructReq
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
 func (s *OptTestRequestFormatTestReq) SetFake() {
 	var elem TestRequestFormatTestReq
 	{
@@ -942,13 +932,6 @@ func (s *OptUnixSeconds) SetFake() {
 
 // SetFake set fake values.
 func (s *TestRequestEmptyStructReq) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -5061,13 +5044,6 @@ func (s *TestRequestFormatTestReq) SetFake() {
 
 // SetFake set fake values.
 func (s *TestRequestRequiredEmptyStructReq) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -9180,13 +9156,6 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 
 // SetFake set fake values.
 func (s *TestResponseEmptyStructOK) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
