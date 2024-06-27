@@ -13,6 +13,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -187,6 +188,15 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 		}
 
 		g.operations = append(g.operations, op)
+	}
+
+	types := g.Types()
+	for _, key := range xmaps.SortedKeys(types) {
+		if t := types[key]; t.IsStruct() {
+			if err := checkStructRecursions(t); err != nil {
+				return errors.Wrap(err, t.Name)
+			}
+		}
 	}
 
 	sortOperations(g.operations)

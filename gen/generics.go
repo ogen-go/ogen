@@ -7,7 +7,7 @@ import (
 	"github.com/ogen-go/ogen/internal/naming"
 )
 
-func checkStructRecursions(ctx *genctx, s *ir.Type) error {
+func checkStructRecursions(s *ir.Type) error {
 	for _, field := range s.Fields {
 		if field.Spec == nil {
 			continue
@@ -36,11 +36,6 @@ func checkStructRecursions(ctx *genctx, s *ir.Type) error {
 					if err != nil {
 						return nil, err
 					}
-
-					if err := ctx.saveType(t); err != nil {
-						return nil, err
-					}
-
 					return ir.Pointer(t, ir.NilNull), nil
 				default:
 					// Required.

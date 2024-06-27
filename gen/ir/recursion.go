@@ -27,14 +27,14 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 		}
 	}
 
-	if reflect.DeepEqual(t, target) {
+	if t == target || reflect.DeepEqual(t, target) {
 		return true
 	}
-
 	if path.has(target) {
-		return false
+		return true
 	}
-	path = path.append(target)
+	path.add(target)
+	defer path.delete(target)
 
 	switch target.Kind {
 	case KindAlias:
@@ -42,11 +42,7 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 	case KindGeneric:
 		return t.recursive(target.GenericOf, path)
 	case KindStruct:
-		return slices.ContainsFunc(target.Fields, func(f *Field) bool {
-			// Ignore optional fields: we are using pointers for them.
-			if f.Spec != nil && !f.Spec.Required {
-				return false
-			}
+		return slices.ContainsFunc(target.Fields, func(f *Field) (r bool) {
 			return t.recursive(f.Type, path)
 		})
 	case KindSum:
@@ -59,18 +55,21 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 }
 
 type walkpath struct {
-	nodes []*Type
+	nodes map[*Type]struct{}
 }
 
 func (wp *walkpath) has(t *Type) bool {
-	return slices.Contains(wp.nodes, t)
+	_, ok := wp.nodes[t]
+	return ok
 }
 
-func (wp *walkpath) append(t *Type) *walkpath {
-	return &walkpath{
-		append(
-			wp.nodes[:len(wp.nodes):len(wp.nodes)],
-			t,
-		),
+func (wp *walkpath) add(t *Type) {
+	if wp.nodes == nil {
+		wp.nodes = map[*Type]struct{}{}
 	}
+	wp.nodes[t] = struct{}{}
+}
+
+func (wp *walkpath) delete(t *Type) {
+	delete(wp.nodes, t)
 }
