@@ -439,8 +439,8 @@ func (s *CallbackQuery) SetFake() {
 		}
 	}
 	{
-		{
-			s.Message.SetFake()
+		{ // Keep pointer nil to prevent infinite recursion.
+			s.Message = nil
 		}
 	}
 	{

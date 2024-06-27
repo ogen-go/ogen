@@ -702,7 +702,7 @@ type Header struct {
 	Style           OptString               `json:"style"`
 	Explode         OptBool                 `json:"explode"`
 	AllowReserved   OptBool                 `json:"allowReserved"`
-	Schema          OptSchemaOrReference    `json:"schema"`
+	Schema          *SchemaOrReference      `json:"schema"`
 	Example         Any                     `json:"example"`
 	Examples        OptExamplesOrReferences `json:"examples"`
 	Content         OptMediaTypes           `json:"content"`
@@ -746,7 +746,7 @@ func (s *Header) GetAllowReserved() OptBool {
 }
 
 // GetSchema returns the value of Schema.
-func (s *Header) GetSchema() OptSchemaOrReference {
+func (s *Header) GetSchema() *SchemaOrReference {
 	return s.Schema
 }
 
@@ -806,7 +806,7 @@ func (s *Header) SetAllowReserved(val OptBool) {
 }
 
 // SetSchema sets the value of Schema.
-func (s *Header) SetSchema(val OptSchemaOrReference) {
+func (s *Header) SetSchema(val *SchemaOrReference) {
 	s.Schema = val
 }
 
@@ -1245,7 +1245,7 @@ type Maximum float64
 // Each Media Type Object provides schema and examples for the media type identified by its key.
 // Ref: #/definitions/mediaType
 type MediaType struct {
-	Schema   OptSchemaOrReference    `json:"schema"`
+	Schema   *SchemaOrReference      `json:"schema"`
 	Example  Any                     `json:"example"`
 	Examples OptExamplesOrReferences `json:"examples"`
 	Encoding OptEncodings            `json:"encoding"`
@@ -1254,7 +1254,7 @@ type MediaType struct {
 }
 
 // GetSchema returns the value of Schema.
-func (s *MediaType) GetSchema() OptSchemaOrReference {
+func (s *MediaType) GetSchema() *SchemaOrReference {
 	return s.Schema
 }
 
@@ -1279,7 +1279,7 @@ func (s *MediaType) GetPattern0Props() MediaTypePattern0 {
 }
 
 // SetSchema sets the value of Schema.
-func (s *MediaType) SetSchema(val OptSchemaOrReference) {
+func (s *MediaType) SetSchema(val *SchemaOrReference) {
 	s.Schema = val
 }
 
@@ -3625,7 +3625,7 @@ type Parameter struct {
 	Style           OptParameterStyle       `json:"style"`
 	Explode         OptBool                 `json:"explode"`
 	AllowReserved   OptBool                 `json:"allowReserved"`
-	Schema          OptSchemaOrReference    `json:"schema"`
+	Schema          *SchemaOrReference      `json:"schema"`
 	Example         Any                     `json:"example"`
 	Examples        OptExamplesOrReferences `json:"examples"`
 	Content         OptMediaTypes           `json:"content"`
@@ -3679,7 +3679,7 @@ func (s *Parameter) GetAllowReserved() OptBool {
 }
 
 // GetSchema returns the value of Schema.
-func (s *Parameter) GetSchema() OptSchemaOrReference {
+func (s *Parameter) GetSchema() *SchemaOrReference {
 	return s.Schema
 }
 
@@ -3749,7 +3749,7 @@ func (s *Parameter) SetAllowReserved(val OptBool) {
 }
 
 // SetSchema sets the value of Schema.
-func (s *Parameter) SetSchema(val OptSchemaOrReference) {
+func (s *Parameter) SetSchema(val *SchemaOrReference) {
 	s.Schema = val
 }
 
@@ -7995,7 +7995,7 @@ func (s *Header) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Schema.Set {
+		if s.Schema != nil {
 			e.FieldStart("schema")
 			s.Schema.Encode(e)
 		}
@@ -8118,10 +8118,12 @@ func (s *Header) Decode(d *jx.Decoder) error {
 			}
 		case "schema":
 			if err := func() error {
-				s.Schema.Reset()
-				if err := s.Schema.Decode(d); err != nil {
+				s.Schema = nil
+				var elem SchemaOrReference
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Schema = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"schema\"")
@@ -9410,7 +9412,7 @@ func (s *MediaType) Encode(e *jx.Encoder) {
 // encodeFields encodes fields.
 func (s *MediaType) encodeFields(e *jx.Encoder) {
 	{
-		if s.Schema.Set {
+		if s.Schema != nil {
 			e.FieldStart("schema")
 			s.Schema.Encode(e)
 		}
@@ -9456,10 +9458,12 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		case "schema":
 			if err := func() error {
-				s.Schema.Reset()
-				if err := s.Schema.Decode(d); err != nil {
+				s.Schema = nil
+				var elem SchemaOrReference
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Schema = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"schema\"")
@@ -12047,7 +12051,7 @@ func (s *Parameter) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-		if s.Schema.Set {
+		if s.Schema != nil {
 			e.FieldStart("schema")
 			s.Schema.Encode(e)
 		}
@@ -12195,10 +12199,12 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 			}
 		case "schema":
 			if err := func() error {
-				s.Schema.Reset()
-				if err := s.Schema.Decode(d); err != nil {
+				s.Schema = nil
+				var elem SchemaOrReference
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Schema = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"schema\"")
@@ -18143,15 +18149,16 @@ func (s *Header) Validate() error {
 
 	var failures []validate.FieldError
 	if err := func() error {
-		if value, ok := s.Schema.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
+		if s.Schema == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Schema.Validate(); err != nil {
 				return err
 			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
 		}
 		return nil
 	}(); err != nil {
@@ -18235,15 +18242,16 @@ func (s *MediaType) Validate() error {
 
 	var failures []validate.FieldError
 	if err := func() error {
-		if value, ok := s.Schema.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
+		if s.Schema == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Schema.Validate(); err != nil {
 				return err
 			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
 		}
 		return nil
 	}(); err != nil {
@@ -18468,15 +18476,16 @@ func (s *Parameter) Validate() error {
 		})
 	}
 	if err := func() error {
-		if value, ok := s.Schema.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
+		if s.Schema == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Schema.Validate(); err != nil {
 				return err
 			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
 		}
 		return nil
 	}(); err != nil {

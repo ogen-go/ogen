@@ -70139,7 +70139,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		e.Str(s.Name)
 	}
 	{
-		if s.Schema.Set {
+		if s.Schema != nil {
 			e.FieldStart("schema")
 			s.Schema.Encode(e)
 		}
@@ -70231,10 +70231,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 			}
 		case "schema":
 			if err := func() error {
-				s.Schema.Reset()
-				if err := s.Schema.Decode(d); err != nil {
+				s.Schema = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Schema = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"schema\"")
@@ -70595,7 +70597,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 // encodeFields encodes fields.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) encodeFields(e *jx.Encoder) {
 	{
-		if s.OpenAPIV3Schema.Set {
+		if s.OpenAPIV3Schema != nil {
 			e.FieldStart("openAPIV3Schema")
 			s.OpenAPIV3Schema.Encode(e)
 		}
@@ -70616,10 +70618,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 		switch string(k) {
 		case "openAPIV3Schema":
 			if err := func() error {
-				s.OpenAPIV3Schema.Reset()
-				if err := s.OpenAPIV3Schema.Decode(d); err != nil {
+				s.OpenAPIV3Schema = nil
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.OpenAPIV3Schema = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"openAPIV3Schema\"")
