@@ -1,6 +1,7 @@
 package ogen_test
 
 import (
+	"encoding/json"
 	"reflect"
 	"testing"
 
@@ -62,5 +63,54 @@ func TestSwaggerExtraction(t *testing.T) {
 		)
 		a.NoError(yaml.Unmarshal([]byte(input), &s))
 		a.Equal("2.0.0", s.Swagger)
+	}
+}
+
+func TestExtensionsMarshal(t *testing.T) {
+	a := require.New(t)
+
+	extensionValueFunc := func(key, value string) ogen.OpenAPICommon {
+		return ogen.OpenAPICommon{
+			Extensions: ogen.Extensions{
+				key: yaml.Node{Kind: yaml.ScalarNode, Value: value},
+			},
+		}
+	}
+
+	extentionKey := "x-ogen-extension"
+	extenstionValue := "handler"
+
+	{
+		pathItem := ogen.NewPathItem()
+		pathItem.Common = extensionValueFunc(extentionKey, extenstionValue)
+
+		pathItemJSON, err := json.Marshal(pathItem)
+		a.NoError(err)
+
+		var output map[string]interface{}
+		err = json.Unmarshal(pathItemJSON, &output)
+		a.NoError(err)
+
+		v, ok := output[extentionKey]
+		a.True(ok)
+
+		a.Equal(extenstionValue, v)
+	}
+
+	{
+		op := ogen.NewOperation()
+		op.Common = extensionValueFunc(extentionKey, extenstionValue)
+
+		pathItemJSON, err := json.Marshal(op)
+		a.NoError(err)
+
+		var output map[string]interface{}
+		err = json.Unmarshal(pathItemJSON, &output)
+		a.NoError(err)
+
+		v, ok := output[extentionKey]
+		a.True(ok)
+
+		a.Equal(extenstionValue, v)
 	}
 }
