@@ -84,11 +84,11 @@ func TestExtensionsMarshal(t *testing.T) {
 		pathItem := ogen.NewPathItem()
 		pathItem.Common = extensionValueFunc(extentionKey, extenstionValue)
 
-		pathItemJson, err := json.Marshal(pathItem)
+		pathItemJSON, err := json.Marshal(pathItem)
 		a.NoError(err)
 
 		var output map[string]interface{}
-		err = json.Unmarshal(pathItemJson, &output)
+		err = json.Unmarshal(pathItemJSON, &output)
 		a.NoError(err)
 
 		v, ok := output[extentionKey]
@@ -101,11 +101,11 @@ func TestExtensionsMarshal(t *testing.T) {
 		op := ogen.NewOperation()
 		op.Common = extensionValueFunc(extentionKey, extenstionValue)
 
-		pathItemJson, err := json.Marshal(op)
+		pathItemJSON, err := json.Marshal(op)
 		a.NoError(err)
 
 		var output map[string]interface{}
-		err = json.Unmarshal(pathItemJson, &output)
+		err = json.Unmarshal(pathItemJSON, &output)
 		a.NoError(err)
 
 		v, ok := output[extentionKey]

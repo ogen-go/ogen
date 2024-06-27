@@ -328,6 +328,7 @@ type PathItem struct {
 	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
+// MarshalJSON implements [json.Marshaler].
 func (s *PathItem) MarshalJSON() ([]byte, error) {
 	type Alias PathItem
 	originalJSON, err := json.Marshal(Alias(*s))
@@ -416,6 +417,7 @@ type Operation struct {
 	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
+// MarshalJSON implements [json.Marshaler].
 func (s *Operation) MarshalJSON() ([]byte, error) {
 	type Alias Operation
 	originalJSON, err := json.Marshal(Alias(*s))
