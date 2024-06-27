@@ -378,15 +378,16 @@ func (s *CallbackQuery) Validate() error {
 
 	var failures []validate.FieldError
 	if err := func() error {
-		if value, ok := s.Message.Get(); ok {
-			if err := func() error {
-				if err := value.Validate(); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
+		if s.Message == nil {
+			return nil // optional
+		}
+		if err := func() error {
+			if err := s.Message.Validate(); err != nil {
 				return err
 			}
+			return nil
+		}(); err != nil {
+			return errors.Wrap(err, "pointer")
 		}
 		return nil
 	}(); err != nil {

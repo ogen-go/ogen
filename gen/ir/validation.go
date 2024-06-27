@@ -136,8 +136,8 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 	if path.has(t) {
 		return false
 	}
-
-	path = path.append(t)
+	path.add(t)
+	defer path.delete(t)
 
 	switch t.Kind {
 	case KindPrimitive:

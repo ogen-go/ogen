@@ -2766,7 +2766,7 @@ func (s *CallbackQuery) encodeFields(e *jx.Encoder) {
 		s.From.Encode(e)
 	}
 	{
-		if s.Message.Set {
+		if s.Message != nil {
 			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
@@ -2838,10 +2838,12 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 			}
 		case "message":
 			if err := func() error {
-				s.Message.Reset()
-				if err := s.Message.Decode(d); err != nil {
+				s.Message = nil
+				var elem Message
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Message = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"message\"")

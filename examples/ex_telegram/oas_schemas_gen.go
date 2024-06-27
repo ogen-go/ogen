@@ -1121,9 +1121,9 @@ type CallbackGame struct{}
 // Ref: #/components/schemas/CallbackQuery
 type CallbackQuery struct {
 	// Unique identifier for this query.
-	ID      string     `json:"id"`
-	From    User       `json:"from"`
-	Message OptMessage `json:"message"`
+	ID      string   `json:"id"`
+	From    User     `json:"from"`
+	Message *Message `json:"message"`
 	// Identifier of the message sent via the bot in inline mode, that originated the query.
 	InlineMessageID OptString `json:"inline_message_id"`
 	// Global identifier, uniquely corresponding to the chat to which the message with the callback
@@ -1147,7 +1147,7 @@ func (s *CallbackQuery) GetFrom() User {
 }
 
 // GetMessage returns the value of Message.
-func (s *CallbackQuery) GetMessage() OptMessage {
+func (s *CallbackQuery) GetMessage() *Message {
 	return s.Message
 }
 
@@ -1182,7 +1182,7 @@ func (s *CallbackQuery) SetFrom(val User) {
 }
 
 // SetMessage sets the value of Message.
-func (s *CallbackQuery) SetMessage(val OptMessage) {
+func (s *CallbackQuery) SetMessage(val *Message) {
 	s.Message = val
 }
 

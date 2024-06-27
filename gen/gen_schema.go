@@ -8,28 +8,18 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func saveSchemaTypes(ctx *genctx, gen *schemaGen, refEncoding map[jsonschema.Ref]ir.Encoding) error {
 	for _, t := range gen.side {
-		if t.IsStruct() {
-			if err := checkStructRecursions(ctx, t); err != nil {
-				return errors.Wrap(err, t.Name)
-			}
-		}
-
 		if err := ctx.saveType(t); err != nil {
 			return errors.Wrap(err, "save inlined type")
 		}
 	}
 
 	for ref, t := range gen.localRefs {
-		if t.IsStruct() {
-			if err := checkStructRecursions(ctx, t); err != nil {
-				return errors.Wrap(err, ref.String())
-			}
-		}
 		encoding := ir.EncodingJSON
 		if e, ok := refEncoding[ref]; ok {
 			encoding = e
@@ -177,6 +167,15 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 
 	if err := saveSchemaTypes(ctx, gen, nil); err != nil {
 		return errors.Wrap(err, "save schema types")
+	}
+
+	types := ctx.local.types
+	for _, key := range xmaps.SortedKeys(types) {
+		if t := types[key]; t.IsStruct() {
+			if err := checkStructRecursions(t); err != nil {
+				return errors.Wrap(err, t.Name)
+			}
+		}
 	}
 
 	w := &writer{

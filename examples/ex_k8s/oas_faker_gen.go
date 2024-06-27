@@ -14276,8 +14276,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 		}
 	}
 	{
-		{
-			s.Schema.SetFake()
+		{ // Keep pointer nil to prevent infinite recursion.
+			s.Schema = nil
 		}
 	}
 	{
@@ -14337,8 +14337,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // SetFake set fake values.
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) SetFake() {
 	{
-		{
-			s.OpenAPIV3Schema.SetFake()
+		{ // Keep pointer nil to prevent infinite recursion.
+			s.OpenAPIV3Schema = nil
 		}
 	}
 }

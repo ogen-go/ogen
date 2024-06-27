@@ -31776,8 +31776,8 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVe
 	DeprecationWarning OptString `json:"deprecationWarning"`
 	// Name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under
 	// this version at `/apis/<group>/<version>/...` if `served` is true.
-	Name   string                                                                       `json:"name"`
-	Schema OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation `json:"schema"`
+	Name   string                                                                     `json:"name"`
+	Schema *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation `json:"schema"`
 	// Served is a flag enabling/disabling this version from being served via REST APIs.
 	Served bool `json:"served"`
 	// Storage indicates this version should be used when persisting custom resources to storage. There
@@ -31807,7 +31807,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // GetSchema returns the value of Schema.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSchema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSchema() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
 	return s.Schema
 }
 
@@ -31847,7 +31847,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // SetSchema sets the value of Schema.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetSchema(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetSchema(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) {
 	s.Schema = val
 }
 
@@ -31958,16 +31958,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // CustomResourceValidation is a list of validation methods for CustomResources.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceValidation
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation struct {
-	OpenAPIV3Schema OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps `json:"openAPIV3Schema"`
+	OpenAPIV3Schema *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps `json:"openAPIV3Schema"`
 }
 
 // GetOpenAPIV3Schema returns the value of OpenAPIV3Schema.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) GetOpenAPIV3Schema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) GetOpenAPIV3Schema() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
 	return s.OpenAPIV3Schema
 }
 
 // SetOpenAPIV3Schema sets the value of OpenAPIV3Schema.
-func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) SetOpenAPIV3Schema(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) SetOpenAPIV3Schema(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
 	s.OpenAPIV3Schema = val
 }
 
