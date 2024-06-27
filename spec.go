@@ -433,7 +433,6 @@ func (s *Operation) MarshalJSON() ([]byte, error) {
 		if err != nil {
 			return err
 		}
-		log.Info(string(raw))
 		e.Raw(raw)
 		return nil
 	}); err != nil {
