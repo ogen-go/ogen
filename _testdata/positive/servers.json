@@ -38,6 +38,15 @@
     {
       "x-ogen-server-name": "const",
       "url": "https://cdn.example.com/v1"
+    },
+    {
+      "x-ogen-server-name": "optionalVars",
+      "url": "https://cdn.example.com/{version}",
+      "variables": {
+        "version": {
+          "default": "v1"
+        }
+      }
     }
   ],
   "info": {
