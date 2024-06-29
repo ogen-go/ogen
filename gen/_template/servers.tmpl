@@ -50,6 +50,7 @@ func (s {{ $s.Name }}) Build() (string, error) {
 	}
 	{{- range $p := $s.Params }}
 	s.{{ $p.Name }} = zeroOr(s.{{ $p.Name }}, {{ quote $p.Spec.Default }})
+	{{- if $p.Spec.Enum }}
 	// Validate {{ quote $p.Spec.Name }}
 	switch s.{{ $p.Name }} {
 	{{- range $e := $p.Spec.Enum }}
@@ -58,6 +59,7 @@ func (s {{ $s.Name }}) Build() (string, error) {
 	default:
 		return "", errors.Errorf("param %q: unexpected value %q", {{ quote $p.Spec.Name }}, s.{{ $p.Name }})
 	}
+	{{- end }}
 	{{- end }}
 	return fmt.Sprintf({{ $s.FormatString | quote }},
 		{{- range $p := $s.Params }}
