@@ -129,6 +129,53 @@ func (s PrefixServer) Build() (string, error) {
 	), nil
 }
 
+// OptionalVarsServer is a server URL template.
+type OptionalVarsServer struct {
+	Version string `json:"version" yaml:"version"`
+}
+
+// MustPath returns the computed path. It panics if any error occurs.
+func (s OptionalVarsServer) MustPath() string {
+	return errors.Must(s.Path())
+}
+
+// Path returns the computed path.
+func (s OptionalVarsServer) Path() (string, error) {
+	raw, err := s.Build()
+	if err != nil {
+		return "", err
+	}
+	u, err := url.Parse(raw)
+	if err != nil {
+		return "", err
+	}
+	return u.Path, nil
+}
+
+// MustBuild returns the computed server URL. It panics if any error occurs.
+func (s OptionalVarsServer) MustBuild() string {
+	return errors.Must(s.Build())
+}
+
+// Build returns the computed server URL.
+//
+// If variable is empty, it uses the default value.
+// If spec defines an enum and given value is not in the enum, it returns an error.
+//
+// Notice that given values will not be escaped and may cause invalid URL.
+func (s OptionalVarsServer) Build() (string, error) {
+	zeroOr := func(s string, def string) string {
+		if s == "" {
+			return def
+		}
+		return s
+	}
+	s.Version = zeroOr(s.Version, "v1")
+	return fmt.Sprintf("https://cdn.example.com/%s",
+		s.Version,
+	), nil
+}
+
 type serverConst string
 
 // MustPath returns the computed path. It panics if any error occurs.
