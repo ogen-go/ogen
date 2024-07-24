@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -95,7 +95,7 @@ func (c *Client) IntegerNumber(ctx context.Context) (*IntegerNumber, error) {
 func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("integerNumber"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/integerNumber"),
 	}
 
@@ -165,7 +165,7 @@ func (c *Client) JaegerAnyOf(ctx context.Context) (*JaegerAnyOf, error) {
 func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("jaegerAnyOf"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/jaegerAnyOf"),
 	}
 
@@ -235,7 +235,7 @@ func (c *Client) OneUUID(ctx context.Context) (*OneUUID, error) {
 func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneUUID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/oneUUID"),
 	}
 

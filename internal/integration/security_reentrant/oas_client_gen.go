@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -102,7 +102,7 @@ func (c *Client) CustomSecurity(ctx context.Context) error {
 func (c *Client) sendCustomSecurity(ctx context.Context) (res *CustomSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("customSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/customSecurity"),
 	}
 
@@ -205,7 +205,7 @@ func (c *Client) DisjointSecurity(ctx context.Context) error {
 func (c *Client) sendDisjointSecurity(ctx context.Context) (res *DisjointSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("disjointSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/disjointSecurity"),
 	}
 
@@ -342,7 +342,7 @@ func (c *Client) IntersectSecurity(ctx context.Context) error {
 func (c *Client) sendIntersectSecurity(ctx context.Context) (res *IntersectSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/intersectSecurity"),
 	}
 
@@ -468,7 +468,7 @@ func (c *Client) OptionalSecurity(ctx context.Context) error {
 func (c *Client) sendOptionalSecurity(ctx context.Context) (res *OptionalSecurityOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalSecurity"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/optionalSecurity"),
 	}
 

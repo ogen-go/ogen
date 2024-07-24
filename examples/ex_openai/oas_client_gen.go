@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -290,7 +290,7 @@ func (c *Client) CancelFineTune(ctx context.Context, params CancelFineTuneParams
 func (c *Client) sendCancelFineTune(ctx context.Context, params CancelFineTuneParams) (res FineTune, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cancelFineTune"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/cancel"),
 	}
 
@@ -386,7 +386,7 @@ func (c *Client) CreateAnswer(ctx context.Context, request *CreateAnswerRequest)
 func (c *Client) sendCreateAnswer(ctx context.Context, request *CreateAnswerRequest) (res *CreateAnswerResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createAnswer"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answers"),
 	}
 
@@ -461,7 +461,7 @@ func (c *Client) CreateChatCompletion(ctx context.Context, request *CreateChatCo
 func (c *Client) sendCreateChatCompletion(ctx context.Context, request *CreateChatCompletionRequest) (res *CreateChatCompletionResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatCompletion"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/chat/completions"),
 	}
 
@@ -544,7 +544,7 @@ func (c *Client) CreateClassification(ctx context.Context, request *CreateClassi
 func (c *Client) sendCreateClassification(ctx context.Context, request *CreateClassificationRequest) (res *CreateClassificationResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createClassification"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/classifications"),
 	}
 
@@ -619,7 +619,7 @@ func (c *Client) CreateCompletion(ctx context.Context, request *CreateCompletion
 func (c *Client) sendCreateCompletion(ctx context.Context, request *CreateCompletionRequest) (res *CreateCompletionResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createCompletion"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/completions"),
 	}
 
@@ -694,7 +694,7 @@ func (c *Client) CreateEdit(ctx context.Context, request *CreateEditRequest) (*C
 func (c *Client) sendCreateEdit(ctx context.Context, request *CreateEditRequest) (res *CreateEditResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEdit"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/edits"),
 	}
 
@@ -769,7 +769,7 @@ func (c *Client) CreateEmbedding(ctx context.Context, request *CreateEmbeddingRe
 func (c *Client) sendCreateEmbedding(ctx context.Context, request *CreateEmbeddingRequest) (res *CreateEmbeddingResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEmbedding"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/embeddings"),
 	}
 
@@ -846,7 +846,7 @@ func (c *Client) CreateFile(ctx context.Context, request *CreateFileRequestMulti
 func (c *Client) sendCreateFile(ctx context.Context, request *CreateFileRequestMultipart) (res OpenAIFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFile"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/files"),
 	}
 
@@ -924,7 +924,7 @@ func (c *Client) CreateFineTune(ctx context.Context, request *CreateFineTuneRequ
 func (c *Client) sendCreateFineTune(ctx context.Context, request *CreateFineTuneRequest) (res FineTune, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFineTune"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/fine-tunes"),
 	}
 
@@ -999,7 +999,7 @@ func (c *Client) CreateImage(ctx context.Context, request *CreateImageRequest) (
 func (c *Client) sendCreateImage(ctx context.Context, request *CreateImageRequest) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/generations"),
 	}
 
@@ -1074,7 +1074,7 @@ func (c *Client) CreateImageEdit(ctx context.Context, request *CreateImageEditRe
 func (c *Client) sendCreateImageEdit(ctx context.Context, request *CreateImageEditRequestMultipart) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageEdit"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/edits"),
 	}
 
@@ -1149,7 +1149,7 @@ func (c *Client) CreateImageVariation(ctx context.Context, request *CreateImageV
 func (c *Client) sendCreateImageVariation(ctx context.Context, request *CreateImageVariationRequestMultipart) (res ImagesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageVariation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/variations"),
 	}
 
@@ -1224,7 +1224,7 @@ func (c *Client) CreateModeration(ctx context.Context, request *CreateModeration
 func (c *Client) sendCreateModeration(ctx context.Context, request *CreateModerationRequest) (res *CreateModerationResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createModeration"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/moderations"),
 	}
 
@@ -1308,7 +1308,7 @@ func (c *Client) CreateSearch(ctx context.Context, request *CreateSearchRequest,
 func (c *Client) sendCreateSearch(ctx context.Context, request *CreateSearchRequest, params CreateSearchParams) (res *CreateSearchResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSearch"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/engines/{engine_id}/search"),
 	}
 
@@ -1402,7 +1402,7 @@ func (c *Client) CreateTranscription(ctx context.Context, request *CreateTranscr
 func (c *Client) sendCreateTranscription(ctx context.Context, request *CreateTranscriptionRequestMultipart) (res *CreateTranscriptionResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranscription"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/audio/transcriptions"),
 	}
 
@@ -1477,7 +1477,7 @@ func (c *Client) CreateTranslation(ctx context.Context, request *CreateTranslati
 func (c *Client) sendCreateTranslation(ctx context.Context, request *CreateTranslationRequestMultipart) (res *CreateTranslationResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranslation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/audio/translations"),
 	}
 
@@ -1552,7 +1552,7 @@ func (c *Client) DeleteFile(ctx context.Context, params DeleteFileParams) (*Dele
 func (c *Client) sendDeleteFile(ctx context.Context, params DeleteFileParams) (res *DeleteFileResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteFile"),
-		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/files/{file_id}"),
 	}
 
@@ -1642,7 +1642,7 @@ func (c *Client) DeleteModel(ctx context.Context, params DeleteModelParams) (*De
 func (c *Client) sendDeleteModel(ctx context.Context, params DeleteModelParams) (res *DeleteModelResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteModel"),
-		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/models/{model}"),
 	}
 
@@ -1732,7 +1732,7 @@ func (c *Client) DownloadFile(ctx context.Context, params DownloadFileParams) (s
 func (c *Client) sendDownloadFile(ctx context.Context, params DownloadFileParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("downloadFile"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files/{file_id}/content"),
 	}
 
@@ -1826,7 +1826,7 @@ func (c *Client) ListEngines(ctx context.Context) (*ListEnginesResponse, error) 
 func (c *Client) sendListEngines(ctx context.Context) (res *ListEnginesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEngines"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/engines"),
 	}
 
@@ -1898,7 +1898,7 @@ func (c *Client) ListFiles(ctx context.Context) (*ListFilesResponse, error) {
 func (c *Client) sendListFiles(ctx context.Context) (res *ListFilesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFiles"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files"),
 	}
 
@@ -1970,7 +1970,7 @@ func (c *Client) ListFineTuneEvents(ctx context.Context, params ListFineTuneEven
 func (c *Client) sendListFineTuneEvents(ctx context.Context, params ListFineTuneEventsParams) (res *ListFineTuneEventsResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTuneEvents"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/events"),
 	}
 
@@ -2082,7 +2082,7 @@ func (c *Client) ListFineTunes(ctx context.Context) (*ListFineTunesResponse, err
 func (c *Client) sendListFineTunes(ctx context.Context) (res *ListFineTunesResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTunes"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes"),
 	}
 
@@ -2155,7 +2155,7 @@ func (c *Client) ListModels(ctx context.Context) (*ListModelsResponse, error) {
 func (c *Client) sendListModels(ctx context.Context) (res *ListModelsResponse, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listModels"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/models"),
 	}
 
@@ -2230,7 +2230,7 @@ func (c *Client) RetrieveEngine(ctx context.Context, params RetrieveEngineParams
 func (c *Client) sendRetrieveEngine(ctx context.Context, params RetrieveEngineParams) (res Engine, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveEngine"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/engines/{engine_id}"),
 	}
 
@@ -2320,7 +2320,7 @@ func (c *Client) RetrieveFile(ctx context.Context, params RetrieveFileParams) (O
 func (c *Client) sendRetrieveFile(ctx context.Context, params RetrieveFileParams) (res OpenAIFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFile"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files/{file_id}"),
 	}
 
@@ -2411,7 +2411,7 @@ func (c *Client) RetrieveFineTune(ctx context.Context, params RetrieveFineTunePa
 func (c *Client) sendRetrieveFineTune(ctx context.Context, params RetrieveFineTuneParams) (res FineTune, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFineTune"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}"),
 	}
 
@@ -2502,7 +2502,7 @@ func (c *Client) RetrieveModel(ctx context.Context, params RetrieveModelParams) 
 func (c *Client) sendRetrieveModel(ctx context.Context, params RetrieveModelParams) (res Model, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveModel"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/models/{model}"),
 	}
 

@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -94,7 +94,7 @@ func (c *Client) FooBarBazGet(ctx context.Context) (string, error) {
 
 func (c *Client) sendFooBarBazGet(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo/bar/baz"),
 	}
 
@@ -163,7 +163,7 @@ func (c *Client) FooBarQuxGet(ctx context.Context) (string, error) {
 
 func (c *Client) sendFooBarQuxGet(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo/bar/qux"),
 	}
 
@@ -232,7 +232,7 @@ func (c *Client) FooParamXyzGet(ctx context.Context, params FooParamXyzGetParams
 
 func (c *Client) sendFooParamXyzGet(ctx context.Context, params FooParamXyzGetParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo/{param}/xyz"),
 	}
 

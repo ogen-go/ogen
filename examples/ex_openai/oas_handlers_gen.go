@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -28,7 +28,7 @@ import (
 func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cancelFineTune"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/cancel"),
 	}
 
@@ -145,7 +145,7 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createAnswer"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answers"),
 	}
 
@@ -257,7 +257,7 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatCompletion"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/chat/completions"),
 	}
 
@@ -377,7 +377,7 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createClassification"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/classifications"),
 	}
 
@@ -489,7 +489,7 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createCompletion"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/completions"),
 	}
 
@@ -601,7 +601,7 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEdit"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/edits"),
 	}
 
@@ -713,7 +713,7 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createEmbedding"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/embeddings"),
 	}
 
@@ -827,7 +827,7 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFile"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/files"),
 	}
 
@@ -942,7 +942,7 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createFineTune"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/fine-tunes"),
 	}
 
@@ -1054,7 +1054,7 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/generations"),
 	}
 
@@ -1166,7 +1166,7 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageEdit"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/edits"),
 	}
 
@@ -1278,7 +1278,7 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createImageVariation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/images/variations"),
 	}
 
@@ -1390,7 +1390,7 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createModeration"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/moderations"),
 	}
 
@@ -1511,7 +1511,7 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createSearch"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/engines/{engine_id}/search"),
 	}
 
@@ -1638,7 +1638,7 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranscription"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/audio/transcriptions"),
 	}
 
@@ -1750,7 +1750,7 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createTranslation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/audio/translations"),
 	}
 
@@ -1862,7 +1862,7 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteFile"),
-		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/files/{file_id}"),
 	}
 
@@ -1974,7 +1974,7 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteModel"),
-		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/models/{model}"),
 	}
 
@@ -2086,7 +2086,7 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("downloadFile"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files/{file_id}/content"),
 	}
 
@@ -2201,7 +2201,7 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listEngines"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/engines"),
 	}
 
@@ -2294,7 +2294,7 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFiles"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files"),
 	}
 
@@ -2387,7 +2387,7 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTuneEvents"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}/events"),
 	}
 
@@ -2503,7 +2503,7 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listFineTunes"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes"),
 	}
 
@@ -2597,7 +2597,7 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listModels"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/models"),
 	}
 
@@ -2693,7 +2693,7 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveEngine"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/engines/{engine_id}"),
 	}
 
@@ -2805,7 +2805,7 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFile"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/files/{file_id}"),
 	}
 
@@ -2918,7 +2918,7 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveFineTune"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/fine-tunes/{fine_tune_id}"),
 	}
 
@@ -3031,7 +3031,7 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("retrieveModel"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/models/{model}"),
 	}
 
