@@ -38,7 +38,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			{{ $attr.String }},
 			{{- end }}
 			{{- if not $op.WebhookInfo }}
-			semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
+			semconv.HTTPRequestMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
 			semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
 			{{- end }}
 		}
