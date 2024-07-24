@@ -16,7 +16,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -31,7 +31,7 @@ import (
 func (s *Server) handleTestQueryParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_query_parameter"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_query_parameter"),
 	}
 
@@ -592,7 +592,7 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, argsEscaped boo
 func (s *Server) handleTestRequestAnyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_Any"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_Any"),
 	}
 
@@ -702,7 +702,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, argsEscaped bool, w
 func (s *Server) handleTestRequestBooleanRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean"),
 	}
 
@@ -812,7 +812,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, argsEscaped boo
 func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_array"),
 	}
 
@@ -922,7 +922,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, argsEscape
 func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_array_array"),
 	}
 
@@ -1032,7 +1032,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_nullable"),
 	}
 
@@ -1142,7 +1142,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_nullable_array"),
 	}
 
@@ -1252,7 +1252,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_boolean_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_nullable_array_array"),
 	}
 
@@ -1362,7 +1362,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_EmptyStruct"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_EmptyStruct"),
 	}
 
@@ -1472,7 +1472,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestFormatTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_FormatTest"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_FormatTest"),
 	}
 
@@ -1582,7 +1582,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestIntegerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer"),
 	}
 
@@ -1692,7 +1692,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, argsEscaped boo
 func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_array"),
 	}
 
@@ -1802,7 +1802,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, argsEscape
 func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_array_array"),
 	}
 
@@ -1912,7 +1912,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestIntegerInt16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16"),
 	}
 
@@ -2022,7 +2022,7 @@ func (s *Server) handleTestRequestIntegerInt16Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestIntegerInt16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_array"),
 	}
 
@@ -2132,7 +2132,7 @@ func (s *Server) handleTestRequestIntegerInt16ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestIntegerInt16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_array_array"),
 	}
 
@@ -2242,7 +2242,7 @@ func (s *Server) handleTestRequestIntegerInt16ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestIntegerInt16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable"),
 	}
 
@@ -2352,7 +2352,7 @@ func (s *Server) handleTestRequestIntegerInt16NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestIntegerInt16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable_array"),
 	}
 
@@ -2462,7 +2462,7 @@ func (s *Server) handleTestRequestIntegerInt16NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestIntegerInt16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable_array_array"),
 	}
 
@@ -2572,7 +2572,7 @@ func (s *Server) handleTestRequestIntegerInt16NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32"),
 	}
 
@@ -2682,7 +2682,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_array"),
 	}
 
@@ -2792,7 +2792,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_array_array"),
 	}
 
@@ -2902,7 +2902,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable"),
 	}
 
@@ -3012,7 +3012,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable_array"),
 	}
 
@@ -3122,7 +3122,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable_array_array"),
 	}
 
@@ -3232,7 +3232,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64"),
 	}
 
@@ -3342,7 +3342,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_array"),
 	}
 
@@ -3452,7 +3452,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_array_array"),
 	}
 
@@ -3562,7 +3562,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable"),
 	}
 
@@ -3672,7 +3672,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable_array"),
 	}
 
@@ -3782,7 +3782,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable_array_array"),
 	}
 
@@ -3892,7 +3892,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestIntegerInt8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8"),
 	}
 
@@ -4002,7 +4002,7 @@ func (s *Server) handleTestRequestIntegerInt8Request(args [0]string, argsEscaped
 func (s *Server) handleTestRequestIntegerInt8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_array"),
 	}
 
@@ -4112,7 +4112,7 @@ func (s *Server) handleTestRequestIntegerInt8ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestIntegerInt8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_array_array"),
 	}
 
@@ -4222,7 +4222,7 @@ func (s *Server) handleTestRequestIntegerInt8ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerInt8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable"),
 	}
 
@@ -4332,7 +4332,7 @@ func (s *Server) handleTestRequestIntegerInt8NullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestIntegerInt8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable_array"),
 	}
 
@@ -4442,7 +4442,7 @@ func (s *Server) handleTestRequestIntegerInt8NullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestIntegerInt8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_int8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable_array_array"),
 	}
 
@@ -4552,7 +4552,7 @@ func (s *Server) handleTestRequestIntegerInt8NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_nullable"),
 	}
 
@@ -4662,7 +4662,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_nullable_array"),
 	}
 
@@ -4772,7 +4772,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_nullable_array_array"),
 	}
 
@@ -4882,7 +4882,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint"),
 	}
 
@@ -4992,7 +4992,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestIntegerUint16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16"),
 	}
 
@@ -5102,7 +5102,7 @@ func (s *Server) handleTestRequestIntegerUint16Request(args [0]string, argsEscap
 func (s *Server) handleTestRequestIntegerUint16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_array"),
 	}
 
@@ -5212,7 +5212,7 @@ func (s *Server) handleTestRequestIntegerUint16ArrayRequest(args [0]string, args
 func (s *Server) handleTestRequestIntegerUint16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_array_array"),
 	}
 
@@ -5322,7 +5322,7 @@ func (s *Server) handleTestRequestIntegerUint16ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestRequestIntegerUint16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable"),
 	}
 
@@ -5432,7 +5432,7 @@ func (s *Server) handleTestRequestIntegerUint16NullableRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerUint16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable_array"),
 	}
 
@@ -5542,7 +5542,7 @@ func (s *Server) handleTestRequestIntegerUint16NullableArrayRequest(args [0]stri
 func (s *Server) handleTestRequestIntegerUint16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable_array_array"),
 	}
 
@@ -5652,7 +5652,7 @@ func (s *Server) handleTestRequestIntegerUint16NullableArrayArrayRequest(args [0
 func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32"),
 	}
 
@@ -5762,7 +5762,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, argsEscap
 func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_array"),
 	}
 
@@ -5872,7 +5872,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, args
 func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_array_array"),
 	}
 
@@ -5982,7 +5982,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable"),
 	}
 
@@ -6092,7 +6092,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable_array"),
 	}
 
@@ -6202,7 +6202,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable_array_array"),
 	}
 
@@ -6312,7 +6312,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64"),
 	}
 
@@ -6422,7 +6422,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, argsEscap
 func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_array"),
 	}
 
@@ -6532,7 +6532,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, args
 func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_array_array"),
 	}
 
@@ -6642,7 +6642,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable"),
 	}
 
@@ -6752,7 +6752,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable_array"),
 	}
 
@@ -6862,7 +6862,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable_array_array"),
 	}
 
@@ -6972,7 +6972,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 func (s *Server) handleTestRequestIntegerUint8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8"),
 	}
 
@@ -7082,7 +7082,7 @@ func (s *Server) handleTestRequestIntegerUint8Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestIntegerUint8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_array"),
 	}
 
@@ -7192,7 +7192,7 @@ func (s *Server) handleTestRequestIntegerUint8ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestIntegerUint8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_array_array"),
 	}
 
@@ -7302,7 +7302,7 @@ func (s *Server) handleTestRequestIntegerUint8ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestIntegerUint8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable"),
 	}
 
@@ -7412,7 +7412,7 @@ func (s *Server) handleTestRequestIntegerUint8NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestIntegerUint8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable_array"),
 	}
 
@@ -7522,7 +7522,7 @@ func (s *Server) handleTestRequestIntegerUint8NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestIntegerUint8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable_array_array"),
 	}
 
@@ -7632,7 +7632,7 @@ func (s *Server) handleTestRequestIntegerUint8NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_array"),
 	}
 
@@ -7742,7 +7742,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_array_array"),
 	}
 
@@ -7852,7 +7852,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable"),
 	}
 
@@ -7962,7 +7962,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable_array"),
 	}
 
@@ -8072,7 +8072,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_uint_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable_array_array"),
 	}
 
@@ -8182,7 +8182,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix"),
 	}
 
@@ -8292,7 +8292,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_array"),
 	}
 
@@ -8402,7 +8402,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_array_array"),
 	}
 
@@ -8512,7 +8512,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro"),
 	}
 
@@ -8622,7 +8622,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_array"),
 	}
 
@@ -8732,7 +8732,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_array_array"),
 	}
 
@@ -8842,7 +8842,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable"),
 	}
 
@@ -8952,7 +8952,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable_array"),
 	}
 
@@ -9062,7 +9062,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-micro_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable_array_array"),
 	}
 
@@ -9172,7 +9172,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli"),
 	}
 
@@ -9282,7 +9282,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_array"),
 	}
 
@@ -9392,7 +9392,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_array_array"),
 	}
 
@@ -9502,7 +9502,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable"),
 	}
 
@@ -9612,7 +9612,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable_array"),
 	}
 
@@ -9722,7 +9722,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-milli_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable_array_array"),
 	}
 
@@ -9832,7 +9832,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano"),
 	}
 
@@ -9942,7 +9942,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_array"),
 	}
 
@@ -10052,7 +10052,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_array_array"),
 	}
 
@@ -10162,7 +10162,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable"),
 	}
 
@@ -10272,7 +10272,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable_array"),
 	}
 
@@ -10382,7 +10382,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-nano_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable_array_array"),
 	}
 
@@ -10492,7 +10492,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable"),
 	}
 
@@ -10602,7 +10602,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable_array"),
 	}
 
@@ -10712,7 +10712,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable_array_array"),
 	}
 
@@ -10822,7 +10822,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds"),
 	}
 
@@ -10932,7 +10932,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, args
 func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_array"),
 	}
 
@@ -11042,7 +11042,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_array_array"),
 	}
 
@@ -11152,7 +11152,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable"),
 	}
 
@@ -11262,7 +11262,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable_array"),
 	}
 
@@ -11372,7 +11372,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable_array_array"),
 	}
 
@@ -11482,7 +11482,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestNullRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null"),
 	}
 
@@ -11592,7 +11592,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleTestRequestNullArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_array"),
 	}
 
@@ -11702,7 +11702,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, argsEscaped b
 func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_array_array"),
 	}
 
@@ -11812,7 +11812,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestNullNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_nullable"),
 	}
 
@@ -11922,7 +11922,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, argsEscape
 func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_nullable_array"),
 	}
 
@@ -12032,7 +12032,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_nullable_array_array"),
 	}
 
@@ -12142,7 +12142,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestNumberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number"),
 	}
 
@@ -12252,7 +12252,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, argsEscaped bool
 func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_array"),
 	}
 
@@ -12362,7 +12362,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_array_array"),
 	}
 
@@ -12472,7 +12472,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double"),
 	}
 
@@ -12582,7 +12582,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, argsEscape
 func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_array"),
 	}
 
@@ -12692,7 +12692,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_array_array"),
 	}
 
@@ -12802,7 +12802,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_nullable"),
 	}
 
@@ -12912,7 +12912,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_nullable_array"),
 	}
 
@@ -13022,7 +13022,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_double_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_nullable_array_array"),
 	}
 
@@ -13132,7 +13132,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float"),
 	}
 
@@ -13242,7 +13242,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_array"),
 	}
 
@@ -13352,7 +13352,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_array_array"),
 	}
 
@@ -13462,7 +13462,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_nullable"),
 	}
 
@@ -13572,7 +13572,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_nullable_array"),
 	}
 
@@ -13682,7 +13682,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_float_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_nullable_array_array"),
 	}
 
@@ -13792,7 +13792,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestNumberInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32"),
 	}
 
@@ -13902,7 +13902,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, argsEscaped
 func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_array"),
 	}
 
@@ -14012,7 +14012,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_array_array"),
 	}
 
@@ -14122,7 +14122,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable"),
 	}
 
@@ -14232,7 +14232,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable_array"),
 	}
 
@@ -14342,7 +14342,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable_array_array"),
 	}
 
@@ -14452,7 +14452,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestNumberInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64"),
 	}
 
@@ -14562,7 +14562,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, argsEscaped
 func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_array"),
 	}
 
@@ -14672,7 +14672,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_array_array"),
 	}
 
@@ -14782,7 +14782,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable"),
 	}
 
@@ -14892,7 +14892,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable_array"),
 	}
 
@@ -15002,7 +15002,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable_array_array"),
 	}
 
@@ -15112,7 +15112,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_nullable"),
 	}
 
@@ -15222,7 +15222,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_nullable_array"),
 	}
 
@@ -15332,7 +15332,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_number_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_nullable_array_array"),
 	}
 
@@ -15442,7 +15442,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_Any"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_Any"),
 	}
 
@@ -15552,7 +15552,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean"),
 	}
 
@@ -15662,7 +15662,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_array"),
 	}
 
@@ -15772,7 +15772,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_array_array"),
 	}
 
@@ -15882,7 +15882,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable"),
 	}
 
@@ -15992,7 +15992,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable_array"),
 	}
 
@@ -16102,7 +16102,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_boolean_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable_array_array"),
 	}
 
@@ -16212,7 +16212,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_EmptyStruct"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_EmptyStruct"),
 	}
 
@@ -16322,7 +16322,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, arg
 func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_FormatTest"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_FormatTest"),
 	}
 
@@ -16432,7 +16432,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, args
 func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer"),
 	}
 
@@ -16542,7 +16542,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_array"),
 	}
 
@@ -16652,7 +16652,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_array_array"),
 	}
 
@@ -16762,7 +16762,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredIntegerInt16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16"),
 	}
 
@@ -16872,7 +16872,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt16Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredIntegerInt16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_array"),
 	}
 
@@ -16982,7 +16982,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt16ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredIntegerInt16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_array_array"),
 	}
 
@@ -17092,7 +17092,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt16ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredIntegerInt16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable"),
 	}
 
@@ -17202,7 +17202,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable_array"),
 	}
 
@@ -17312,7 +17312,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable_array_array"),
 	}
 
@@ -17422,7 +17422,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt16NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32"),
 	}
 
@@ -17532,7 +17532,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_array"),
 	}
 
@@ -17642,7 +17642,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_array_array"),
 	}
 
@@ -17752,7 +17752,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable"),
 	}
 
@@ -17862,7 +17862,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable_array"),
 	}
 
@@ -17972,7 +17972,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable_array_array"),
 	}
 
@@ -18082,7 +18082,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64"),
 	}
 
@@ -18192,7 +18192,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_array"),
 	}
 
@@ -18302,7 +18302,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_array_array"),
 	}
 
@@ -18412,7 +18412,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable"),
 	}
 
@@ -18522,7 +18522,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable_array"),
 	}
 
@@ -18632,7 +18632,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable_array_array"),
 	}
 
@@ -18742,7 +18742,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredIntegerInt8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8"),
 	}
 
@@ -18852,7 +18852,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt8Request(args [0]string, arg
 func (s *Server) handleTestRequestRequiredIntegerInt8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_array"),
 	}
 
@@ -18962,7 +18962,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt8ArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredIntegerInt8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_array_array"),
 	}
 
@@ -19072,7 +19072,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt8ArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerInt8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable"),
 	}
 
@@ -19182,7 +19182,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable_array"),
 	}
 
@@ -19292,7 +19292,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_int8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable_array_array"),
 	}
 
@@ -19402,7 +19402,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt8NullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable"),
 	}
 
@@ -19512,7 +19512,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable_array"),
 	}
 
@@ -19622,7 +19622,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable_array_array"),
 	}
 
@@ -19732,7 +19732,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint"),
 	}
 
@@ -19842,7 +19842,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, arg
 func (s *Server) handleTestRequestRequiredIntegerUint16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16"),
 	}
 
@@ -19952,7 +19952,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint16Request(args [0]string, a
 func (s *Server) handleTestRequestRequiredIntegerUint16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_array"),
 	}
 
@@ -20062,7 +20062,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint16ArrayRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredIntegerUint16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_array_array"),
 	}
 
@@ -20172,7 +20172,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint16ArrayArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredIntegerUint16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable"),
 	}
 
@@ -20282,7 +20282,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable_array"),
 	}
 
@@ -20392,7 +20392,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayRequest(args
 func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable_array_array"),
 	}
 
@@ -20502,7 +20502,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint16NullableArrayArrayRequest
 func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32"),
 	}
 
@@ -20612,7 +20612,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, a
 func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_array"),
 	}
 
@@ -20722,7 +20722,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_array_array"),
 	}
 
@@ -20832,7 +20832,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable"),
 	}
 
@@ -20942,7 +20942,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable_array"),
 	}
 
@@ -21052,7 +21052,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable_array_array"),
 	}
 
@@ -21162,7 +21162,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64"),
 	}
 
@@ -21272,7 +21272,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, a
 func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_array"),
 	}
 
@@ -21382,7 +21382,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_array_array"),
 	}
 
@@ -21492,7 +21492,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable"),
 	}
 
@@ -21602,7 +21602,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable_array"),
 	}
 
@@ -21712,7 +21712,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable_array_array"),
 	}
 
@@ -21822,7 +21822,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 func (s *Server) handleTestRequestRequiredIntegerUint8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8"),
 	}
 
@@ -21932,7 +21932,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint8Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredIntegerUint8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_array"),
 	}
 
@@ -22042,7 +22042,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint8ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredIntegerUint8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_array_array"),
 	}
 
@@ -22152,7 +22152,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint8ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredIntegerUint8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable"),
 	}
 
@@ -22262,7 +22262,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable_array"),
 	}
 
@@ -22372,7 +22372,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable_array_array"),
 	}
 
@@ -22482,7 +22482,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint8NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_array"),
 	}
 
@@ -22592,7 +22592,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_array_array"),
 	}
 
@@ -22702,7 +22702,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable"),
 	}
 
@@ -22812,7 +22812,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable_array"),
 	}
 
@@ -22922,7 +22922,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_uint_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable_array_array"),
 	}
 
@@ -23032,7 +23032,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix"),
 	}
 
@@ -23142,7 +23142,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, arg
 func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_array"),
 	}
 
@@ -23252,7 +23252,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_array_array"),
 	}
 
@@ -23362,7 +23362,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro"),
 	}
 
@@ -23472,7 +23472,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_array"),
 	}
 
@@ -23582,7 +23582,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_array_array"),
 	}
 
@@ -23692,7 +23692,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable"),
 	}
 
@@ -23802,7 +23802,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable_array"),
 	}
 
@@ -23912,7 +23912,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable_array_array"),
 	}
 
@@ -24022,7 +24022,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli"),
 	}
 
@@ -24132,7 +24132,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_array"),
 	}
 
@@ -24242,7 +24242,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_array_array"),
 	}
 
@@ -24352,7 +24352,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable"),
 	}
 
@@ -24462,7 +24462,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable_array"),
 	}
 
@@ -24572,7 +24572,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable_array_array"),
 	}
 
@@ -24682,7 +24682,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano"),
 	}
 
@@ -24792,7 +24792,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_array"),
 	}
 
@@ -24902,7 +24902,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_array_array"),
 	}
 
@@ -25012,7 +25012,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable"),
 	}
 
@@ -25122,7 +25122,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable_array"),
 	}
 
@@ -25232,7 +25232,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable_array_array"),
 	}
 
@@ -25342,7 +25342,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable"),
 	}
 
@@ -25452,7 +25452,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable_array"),
 	}
 
@@ -25562,7 +25562,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable_array_array"),
 	}
 
@@ -25672,7 +25672,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds"),
 	}
 
@@ -25782,7 +25782,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_array"),
 	}
 
@@ -25892,7 +25892,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_array_array"),
 	}
 
@@ -26002,7 +26002,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable"),
 	}
 
@@ -26112,7 +26112,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable_array"),
 	}
 
@@ -26222,7 +26222,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable_array_array"),
 	}
 
@@ -26332,7 +26332,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null"),
 	}
 
@@ -26442,7 +26442,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, argsEscape
 func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_array"),
 	}
 
@@ -26552,7 +26552,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_array_array"),
 	}
 
@@ -26662,7 +26662,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_nullable"),
 	}
 
@@ -26772,7 +26772,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_nullable_array"),
 	}
 
@@ -26882,7 +26882,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_null_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_nullable_array_array"),
 	}
 
@@ -26992,7 +26992,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number"),
 	}
 
@@ -27102,7 +27102,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_array"),
 	}
 
@@ -27212,7 +27212,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_array_array"),
 	}
 
@@ -27322,7 +27322,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double"),
 	}
 
@@ -27432,7 +27432,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, ar
 func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_array"),
 	}
 
@@ -27542,7 +27542,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_array_array"),
 	}
 
@@ -27652,7 +27652,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable"),
 	}
 
@@ -27762,7 +27762,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable_array"),
 	}
 
@@ -27872,7 +27872,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_double_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable_array_array"),
 	}
 
@@ -27982,7 +27982,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float"),
 	}
 
@@ -28092,7 +28092,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, arg
 func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_array"),
 	}
 
@@ -28202,7 +28202,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_array_array"),
 	}
 
@@ -28312,7 +28312,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable"),
 	}
 
@@ -28422,7 +28422,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable_array"),
 	}
 
@@ -28532,7 +28532,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_float_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable_array_array"),
 	}
 
@@ -28642,7 +28642,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32"),
 	}
 
@@ -28752,7 +28752,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, arg
 func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_array"),
 	}
 
@@ -28862,7 +28862,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_array_array"),
 	}
 
@@ -28972,7 +28972,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable"),
 	}
 
@@ -29082,7 +29082,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable_array"),
 	}
 
@@ -29192,7 +29192,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable_array_array"),
 	}
 
@@ -29302,7 +29302,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64"),
 	}
 
@@ -29412,7 +29412,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, arg
 func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_array"),
 	}
 
@@ -29522,7 +29522,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_array_array"),
 	}
 
@@ -29632,7 +29632,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable"),
 	}
 
@@ -29742,7 +29742,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable_array"),
 	}
 
@@ -29852,7 +29852,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable_array_array"),
 	}
 
@@ -29962,7 +29962,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_nullable"),
 	}
 
@@ -30072,7 +30072,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_nullable_array"),
 	}
 
@@ -30182,7 +30182,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_number_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_nullable_array_array"),
 	}
 
@@ -30292,7 +30292,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string"),
 	}
 
@@ -30402,7 +30402,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_array"),
 	}
 
@@ -30512,7 +30512,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_array_array"),
 	}
 
@@ -30622,7 +30622,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64"),
 	}
 
@@ -30732,7 +30732,7 @@ func (s *Server) handleTestRequestRequiredStringBase64Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_array"),
 	}
 
@@ -30842,7 +30842,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_array_array"),
 	}
 
@@ -30952,7 +30952,7 @@ func (s *Server) handleTestRequestRequiredStringBase64ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable"),
 	}
 
@@ -31062,7 +31062,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable_array"),
 	}
 
@@ -31172,7 +31172,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_base64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable_array_array"),
 	}
 
@@ -31282,7 +31282,7 @@ func (s *Server) handleTestRequestRequiredStringBase64NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary"),
 	}
 
@@ -31392,7 +31392,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, ar
 func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_array"),
 	}
 
@@ -31502,7 +31502,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_array_array"),
 	}
 
@@ -31612,7 +31612,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable"),
 	}
 
@@ -31722,7 +31722,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable_array"),
 	}
 
@@ -31832,7 +31832,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_binary_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable_array_array"),
 	}
 
@@ -31942,7 +31942,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte"),
 	}
 
@@ -32052,7 +32052,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_array"),
 	}
 
@@ -32162,7 +32162,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_array_array"),
 	}
 
@@ -32272,7 +32272,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable"),
 	}
 
@@ -32382,7 +32382,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable_array"),
 	}
 
@@ -32492,7 +32492,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_byte_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable_array_array"),
 	}
 
@@ -32602,7 +32602,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date"),
 	}
 
@@ -32712,7 +32712,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_array"),
 	}
 
@@ -32822,7 +32822,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_array_array"),
 	}
 
@@ -32932,7 +32932,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable"),
 	}
 
@@ -33042,7 +33042,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable_array"),
 	}
 
@@ -33152,7 +33152,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable_array_array"),
 	}
 
@@ -33262,7 +33262,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time"),
 	}
 
@@ -33372,7 +33372,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_array"),
 	}
 
@@ -33482,7 +33482,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_array_array"),
 	}
 
@@ -33592,7 +33592,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable"),
 	}
 
@@ -33702,7 +33702,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable_array"),
 	}
 
@@ -33812,7 +33812,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_date-time_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable_array_array"),
 	}
 
@@ -33922,7 +33922,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration"),
 	}
 
@@ -34032,7 +34032,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_array"),
 	}
 
@@ -34142,7 +34142,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_array_array"),
 	}
 
@@ -34252,7 +34252,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable"),
 	}
 
@@ -34362,7 +34362,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable_array"),
 	}
 
@@ -34472,7 +34472,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_duration_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable_array_array"),
 	}
 
@@ -34582,7 +34582,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email"),
 	}
 
@@ -34692,7 +34692,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, arg
 func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_array"),
 	}
 
@@ -34802,7 +34802,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_array_array"),
 	}
 
@@ -34912,7 +34912,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable"),
 	}
 
@@ -35022,7 +35022,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable_array"),
 	}
 
@@ -35132,7 +35132,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_email_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable_array_array"),
 	}
 
@@ -35242,7 +35242,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredStringFloat32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32"),
 	}
 
@@ -35352,7 +35352,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32Request(args [0]string, a
 func (s *Server) handleTestRequestRequiredStringFloat32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_array"),
 	}
 
@@ -35462,7 +35462,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32ArrayRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringFloat32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_array_array"),
 	}
 
@@ -35572,7 +35572,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32ArrayArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringFloat32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable"),
 	}
 
@@ -35682,7 +35682,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable_array"),
 	}
 
@@ -35792,7 +35792,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayRequest(args
 func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable_array_array"),
 	}
 
@@ -35902,7 +35902,7 @@ func (s *Server) handleTestRequestRequiredStringFloat32NullableArrayArrayRequest
 func (s *Server) handleTestRequestRequiredStringFloat64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64"),
 	}
 
@@ -36012,7 +36012,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64Request(args [0]string, a
 func (s *Server) handleTestRequestRequiredStringFloat64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_array"),
 	}
 
@@ -36122,7 +36122,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64ArrayRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringFloat64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_array_array"),
 	}
 
@@ -36232,7 +36232,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64ArrayArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringFloat64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable"),
 	}
 
@@ -36342,7 +36342,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable_array"),
 	}
 
@@ -36452,7 +36452,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayRequest(args
 func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_float64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable_array_array"),
 	}
 
@@ -36562,7 +36562,7 @@ func (s *Server) handleTestRequestRequiredStringFloat64NullableArrayArrayRequest
 func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname"),
 	}
 
@@ -36672,7 +36672,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_array"),
 	}
 
@@ -36782,7 +36782,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_array_array"),
 	}
 
@@ -36892,7 +36892,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable"),
 	}
 
@@ -37002,7 +37002,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable_array"),
 	}
 
@@ -37112,7 +37112,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_hostname_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable_array_array"),
 	}
 
@@ -37222,7 +37222,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip"),
 	}
 
@@ -37332,7 +37332,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_array"),
 	}
 
@@ -37442,7 +37442,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_array_array"),
 	}
 
@@ -37552,7 +37552,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable"),
 	}
 
@@ -37662,7 +37662,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable_array"),
 	}
 
@@ -37772,7 +37772,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable_array_array"),
 	}
 
@@ -37882,7 +37882,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 func (s *Server) handleTestRequestRequiredStringIntRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int"),
 	}
 
@@ -37992,7 +37992,7 @@ func (s *Server) handleTestRequestRequiredStringIntRequest(args [0]string, argsE
 func (s *Server) handleTestRequestRequiredStringInt16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16"),
 	}
 
@@ -38102,7 +38102,7 @@ func (s *Server) handleTestRequestRequiredStringInt16Request(args [0]string, arg
 func (s *Server) handleTestRequestRequiredStringInt16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_array"),
 	}
 
@@ -38212,7 +38212,7 @@ func (s *Server) handleTestRequestRequiredStringInt16ArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredStringInt16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_array_array"),
 	}
 
@@ -38322,7 +38322,7 @@ func (s *Server) handleTestRequestRequiredStringInt16ArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringInt16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable"),
 	}
 
@@ -38432,7 +38432,7 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringInt16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable_array"),
 	}
 
@@ -38542,7 +38542,7 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringInt16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable_array_array"),
 	}
 
@@ -38652,7 +38652,7 @@ func (s *Server) handleTestRequestRequiredStringInt16NullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32"),
 	}
 
@@ -38762,7 +38762,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, arg
 func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_array"),
 	}
 
@@ -38872,7 +38872,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_array_array"),
 	}
 
@@ -38982,7 +38982,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable"),
 	}
 
@@ -39092,7 +39092,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable_array"),
 	}
 
@@ -39202,7 +39202,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable_array_array"),
 	}
 
@@ -39312,7 +39312,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64"),
 	}
 
@@ -39422,7 +39422,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, arg
 func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_array"),
 	}
 
@@ -39532,7 +39532,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_array_array"),
 	}
 
@@ -39642,7 +39642,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable"),
 	}
 
@@ -39752,7 +39752,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable_array"),
 	}
 
@@ -39862,7 +39862,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable_array_array"),
 	}
 
@@ -39972,7 +39972,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredStringInt8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8"),
 	}
 
@@ -40082,7 +40082,7 @@ func (s *Server) handleTestRequestRequiredStringInt8Request(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringInt8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_array"),
 	}
 
@@ -40192,7 +40192,7 @@ func (s *Server) handleTestRequestRequiredStringInt8ArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringInt8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_array_array"),
 	}
 
@@ -40302,7 +40302,7 @@ func (s *Server) handleTestRequestRequiredStringInt8ArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringInt8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable"),
 	}
 
@@ -40412,7 +40412,7 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringInt8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable_array"),
 	}
 
@@ -40522,7 +40522,7 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringInt8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable_array_array"),
 	}
 
@@ -40632,7 +40632,7 @@ func (s *Server) handleTestRequestRequiredStringInt8NullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringIntArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_array"),
 	}
 
@@ -40742,7 +40742,7 @@ func (s *Server) handleTestRequestRequiredStringIntArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringIntArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_array_array"),
 	}
 
@@ -40852,7 +40852,7 @@ func (s *Server) handleTestRequestRequiredStringIntArrayArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringIntNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable"),
 	}
 
@@ -40962,7 +40962,7 @@ func (s *Server) handleTestRequestRequiredStringIntNullableRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringIntNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable_array"),
 	}
 
@@ -41072,7 +41072,7 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringIntNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable_array_array"),
 	}
 
@@ -41182,7 +41182,7 @@ func (s *Server) handleTestRequestRequiredStringIntNullableArrayArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4"),
 	}
 
@@ -41292,7 +41292,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_array"),
 	}
 
@@ -41402,7 +41402,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_array_array"),
 	}
 
@@ -41512,7 +41512,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable"),
 	}
 
@@ -41622,7 +41622,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable_array"),
 	}
 
@@ -41732,7 +41732,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable_array_array"),
 	}
 
@@ -41842,7 +41842,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6"),
 	}
 
@@ -41952,7 +41952,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_array"),
 	}
 
@@ -42062,7 +42062,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_array_array"),
 	}
 
@@ -42172,7 +42172,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable"),
 	}
 
@@ -42282,7 +42282,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable_array"),
 	}
 
@@ -42392,7 +42392,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable_array_array"),
 	}
 
@@ -42502,7 +42502,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringMACRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_mac"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac"),
 	}
 
@@ -42612,7 +42612,7 @@ func (s *Server) handleTestRequestRequiredStringMACRequest(args [0]string, argsE
 func (s *Server) handleTestRequestRequiredStringMACArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_mac_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_array"),
 	}
 
@@ -42722,7 +42722,7 @@ func (s *Server) handleTestRequestRequiredStringMACArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringMACArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_mac_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_array_array"),
 	}
 
@@ -42832,7 +42832,7 @@ func (s *Server) handleTestRequestRequiredStringMACArrayArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringMACNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_mac_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable"),
 	}
 
@@ -42942,7 +42942,7 @@ func (s *Server) handleTestRequestRequiredStringMACNullableRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringMACNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_mac_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable_array"),
 	}
 
@@ -43052,7 +43052,7 @@ func (s *Server) handleTestRequestRequiredStringMACNullableArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringMACNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_mac_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable_array_array"),
 	}
 
@@ -43162,7 +43162,7 @@ func (s *Server) handleTestRequestRequiredStringMACNullableArrayArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_nullable"),
 	}
 
@@ -43272,7 +43272,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_nullable_array"),
 	}
 
@@ -43382,7 +43382,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_nullable_array_array"),
 	}
 
@@ -43492,7 +43492,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password"),
 	}
 
@@ -43602,7 +43602,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_array"),
 	}
 
@@ -43712,7 +43712,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_array_array"),
 	}
 
@@ -43822,7 +43822,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable"),
 	}
 
@@ -43932,7 +43932,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable_array"),
 	}
 
@@ -44042,7 +44042,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_password_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable_array_array"),
 	}
 
@@ -44152,7 +44152,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time"),
 	}
 
@@ -44262,7 +44262,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_array"),
 	}
 
@@ -44372,7 +44372,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_array_array"),
 	}
 
@@ -44482,7 +44482,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable"),
 	}
 
@@ -44592,7 +44592,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable_array"),
 	}
 
@@ -44702,7 +44702,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_time_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable_array_array"),
 	}
 
@@ -44812,7 +44812,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri"),
 	}
 
@@ -44922,7 +44922,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, argsE
 func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_array"),
 	}
 
@@ -45032,7 +45032,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_array_array"),
 	}
 
@@ -45142,7 +45142,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable"),
 	}
 
@@ -45252,7 +45252,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable_array"),
 	}
 
@@ -45362,7 +45362,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uri_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable_array_array"),
 	}
 
@@ -45472,7 +45472,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid"),
 	}
 
@@ -45582,7 +45582,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_array"),
 	}
 
@@ -45692,7 +45692,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_array_array"),
 	}
 
@@ -45802,7 +45802,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable"),
 	}
 
@@ -45912,7 +45912,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable_array"),
 	}
 
@@ -46022,7 +46022,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uuid_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable_array_array"),
 	}
 
@@ -46132,7 +46132,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringUintRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint"),
 	}
 
@@ -46242,7 +46242,7 @@ func (s *Server) handleTestRequestRequiredStringUintRequest(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringUint16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16"),
 	}
 
@@ -46352,7 +46352,7 @@ func (s *Server) handleTestRequestRequiredStringUint16Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredStringUint16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_array"),
 	}
 
@@ -46462,7 +46462,7 @@ func (s *Server) handleTestRequestRequiredStringUint16ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringUint16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_array_array"),
 	}
 
@@ -46572,7 +46572,7 @@ func (s *Server) handleTestRequestRequiredStringUint16ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringUint16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable"),
 	}
 
@@ -46682,7 +46682,7 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUint16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable_array"),
 	}
 
@@ -46792,7 +46792,7 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredStringUint16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable_array_array"),
 	}
 
@@ -46902,7 +46902,7 @@ func (s *Server) handleTestRequestRequiredStringUint16NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredStringUint32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32"),
 	}
 
@@ -47012,7 +47012,7 @@ func (s *Server) handleTestRequestRequiredStringUint32Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredStringUint32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_array"),
 	}
 
@@ -47122,7 +47122,7 @@ func (s *Server) handleTestRequestRequiredStringUint32ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringUint32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_array_array"),
 	}
 
@@ -47232,7 +47232,7 @@ func (s *Server) handleTestRequestRequiredStringUint32ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringUint32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable"),
 	}
 
@@ -47342,7 +47342,7 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUint32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable_array"),
 	}
 
@@ -47452,7 +47452,7 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredStringUint32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable_array_array"),
 	}
 
@@ -47562,7 +47562,7 @@ func (s *Server) handleTestRequestRequiredStringUint32NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredStringUint64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64"),
 	}
 
@@ -47672,7 +47672,7 @@ func (s *Server) handleTestRequestRequiredStringUint64Request(args [0]string, ar
 func (s *Server) handleTestRequestRequiredStringUint64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_array"),
 	}
 
@@ -47782,7 +47782,7 @@ func (s *Server) handleTestRequestRequiredStringUint64ArrayRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringUint64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_array_array"),
 	}
 
@@ -47892,7 +47892,7 @@ func (s *Server) handleTestRequestRequiredStringUint64ArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringUint64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable"),
 	}
 
@@ -48002,7 +48002,7 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUint64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable_array"),
 	}
 
@@ -48112,7 +48112,7 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayRequest(args 
 func (s *Server) handleTestRequestRequiredStringUint64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable_array_array"),
 	}
 
@@ -48222,7 +48222,7 @@ func (s *Server) handleTestRequestRequiredStringUint64NullableArrayArrayRequest(
 func (s *Server) handleTestRequestRequiredStringUint8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8"),
 	}
 
@@ -48332,7 +48332,7 @@ func (s *Server) handleTestRequestRequiredStringUint8Request(args [0]string, arg
 func (s *Server) handleTestRequestRequiredStringUint8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_array"),
 	}
 
@@ -48442,7 +48442,7 @@ func (s *Server) handleTestRequestRequiredStringUint8ArrayRequest(args [0]string
 func (s *Server) handleTestRequestRequiredStringUint8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_array_array"),
 	}
 
@@ -48552,7 +48552,7 @@ func (s *Server) handleTestRequestRequiredStringUint8ArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestRequiredStringUint8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable"),
 	}
 
@@ -48662,7 +48662,7 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringUint8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable_array"),
 	}
 
@@ -48772,7 +48772,7 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringUint8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable_array_array"),
 	}
 
@@ -48882,7 +48882,7 @@ func (s *Server) handleTestRequestRequiredStringUint8NullableArrayArrayRequest(a
 func (s *Server) handleTestRequestRequiredStringUintArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_array"),
 	}
 
@@ -48992,7 +48992,7 @@ func (s *Server) handleTestRequestRequiredStringUintArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringUintArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_array_array"),
 	}
 
@@ -49102,7 +49102,7 @@ func (s *Server) handleTestRequestRequiredStringUintArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUintNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable"),
 	}
 
@@ -49212,7 +49212,7 @@ func (s *Server) handleTestRequestRequiredStringUintNullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringUintNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable_array"),
 	}
 
@@ -49322,7 +49322,7 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringUintNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_uint_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable_array_array"),
 	}
 
@@ -49432,7 +49432,7 @@ func (s *Server) handleTestRequestRequiredStringUintNullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix"),
 	}
 
@@ -49542,7 +49542,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, args
 func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_array"),
 	}
 
@@ -49652,7 +49652,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_array_array"),
 	}
 
@@ -49762,7 +49762,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro"),
 	}
 
@@ -49872,7 +49872,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_array"),
 	}
 
@@ -49982,7 +49982,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_array_array"),
 	}
 
@@ -50092,7 +50092,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable"),
 	}
 
@@ -50202,7 +50202,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable_array"),
 	}
 
@@ -50312,7 +50312,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable_array_array"),
 	}
 
@@ -50422,7 +50422,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli"),
 	}
 
@@ -50532,7 +50532,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_array"),
 	}
 
@@ -50642,7 +50642,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_array_array"),
 	}
 
@@ -50752,7 +50752,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable"),
 	}
 
@@ -50862,7 +50862,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable_array"),
 	}
 
@@ -50972,7 +50972,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable_array_array"),
 	}
 
@@ -51082,7 +51082,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano"),
 	}
 
@@ -51192,7 +51192,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_array"),
 	}
 
@@ -51302,7 +51302,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_array_array"),
 	}
 
@@ -51412,7 +51412,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable"),
 	}
 
@@ -51522,7 +51522,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable_array"),
 	}
 
@@ -51632,7 +51632,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable_array_array"),
 	}
 
@@ -51742,7 +51742,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable"),
 	}
 
@@ -51852,7 +51852,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable_array"),
 	}
 
@@ -51962,7 +51962,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable_array_array"),
 	}
 
@@ -52072,7 +52072,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds"),
 	}
 
@@ -52182,7 +52182,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_array"),
 	}
 
@@ -52292,7 +52292,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_array_array"),
 	}
 
@@ -52402,7 +52402,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable"),
 	}
 
@@ -52512,7 +52512,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable_array"),
 	}
 
@@ -52622,7 +52622,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable_array_array"),
 	}
 
@@ -52732,7 +52732,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 func (s *Server) handleTestRequestStringRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string"),
 	}
 
@@ -52842,7 +52842,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, argsEscaped bool
 func (s *Server) handleTestRequestStringArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_array"),
 	}
 
@@ -52952,7 +52952,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_array_array"),
 	}
 
@@ -53062,7 +53062,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestStringBase64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64"),
 	}
 
@@ -53172,7 +53172,7 @@ func (s *Server) handleTestRequestStringBase64Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_array"),
 	}
 
@@ -53282,7 +53282,7 @@ func (s *Server) handleTestRequestStringBase64ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_array_array"),
 	}
 
@@ -53392,7 +53392,7 @@ func (s *Server) handleTestRequestStringBase64ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable"),
 	}
 
@@ -53502,7 +53502,7 @@ func (s *Server) handleTestRequestStringBase64NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable_array"),
 	}
 
@@ -53612,7 +53612,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_base64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable_array_array"),
 	}
 
@@ -53722,7 +53722,7 @@ func (s *Server) handleTestRequestStringBase64NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary"),
 	}
 
@@ -53832,7 +53832,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, argsEscape
 func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_array"),
 	}
 
@@ -53942,7 +53942,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_array_array"),
 	}
 
@@ -54052,7 +54052,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable"),
 	}
 
@@ -54162,7 +54162,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable_array"),
 	}
 
@@ -54272,7 +54272,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_binary_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable_array_array"),
 	}
 
@@ -54382,7 +54382,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestStringByteRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte"),
 	}
 
@@ -54492,7 +54492,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_array"),
 	}
 
@@ -54602,7 +54602,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_array_array"),
 	}
 
@@ -54712,7 +54712,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable"),
 	}
 
@@ -54822,7 +54822,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable_array"),
 	}
 
@@ -54932,7 +54932,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_byte_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable_array_array"),
 	}
 
@@ -55042,7 +55042,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringDateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date"),
 	}
 
@@ -55152,7 +55152,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_array"),
 	}
 
@@ -55262,7 +55262,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_array_array"),
 	}
 
@@ -55372,7 +55372,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_nullable"),
 	}
 
@@ -55482,7 +55482,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_nullable_array"),
 	}
 
@@ -55592,7 +55592,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_nullable_array_array"),
 	}
 
@@ -55702,7 +55702,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time"),
 	}
 
@@ -55812,7 +55812,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_array"),
 	}
 
@@ -55922,7 +55922,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_array_array"),
 	}
 
@@ -56032,7 +56032,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable"),
 	}
 
@@ -56142,7 +56142,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable_array"),
 	}
 
@@ -56252,7 +56252,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_date-time_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable_array_array"),
 	}
 
@@ -56362,7 +56362,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 func (s *Server) handleTestRequestStringDurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration"),
 	}
 
@@ -56472,7 +56472,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_array"),
 	}
 
@@ -56582,7 +56582,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_array_array"),
 	}
 
@@ -56692,7 +56692,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable"),
 	}
 
@@ -56802,7 +56802,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable_array"),
 	}
 
@@ -56912,7 +56912,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_duration_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable_array_array"),
 	}
 
@@ -57022,7 +57022,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 func (s *Server) handleTestRequestStringEmailRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email"),
 	}
 
@@ -57132,7 +57132,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, argsEscaped
 func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_array"),
 	}
 
@@ -57242,7 +57242,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_array_array"),
 	}
 
@@ -57352,7 +57352,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_nullable"),
 	}
 
@@ -57462,7 +57462,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_nullable_array"),
 	}
 
@@ -57572,7 +57572,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_email_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_nullable_array_array"),
 	}
 
@@ -57682,7 +57682,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestStringFloat32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32"),
 	}
 
@@ -57792,7 +57792,7 @@ func (s *Server) handleTestRequestStringFloat32Request(args [0]string, argsEscap
 func (s *Server) handleTestRequestStringFloat32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_array"),
 	}
 
@@ -57902,7 +57902,7 @@ func (s *Server) handleTestRequestStringFloat32ArrayRequest(args [0]string, args
 func (s *Server) handleTestRequestStringFloat32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_array_array"),
 	}
 
@@ -58012,7 +58012,7 @@ func (s *Server) handleTestRequestStringFloat32ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringFloat32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable"),
 	}
 
@@ -58122,7 +58122,7 @@ func (s *Server) handleTestRequestStringFloat32NullableRequest(args [0]string, a
 func (s *Server) handleTestRequestStringFloat32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable_array"),
 	}
 
@@ -58232,7 +58232,7 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayRequest(args [0]stri
 func (s *Server) handleTestRequestStringFloat32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable_array_array"),
 	}
 
@@ -58342,7 +58342,7 @@ func (s *Server) handleTestRequestStringFloat32NullableArrayArrayRequest(args [0
 func (s *Server) handleTestRequestStringFloat64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64"),
 	}
 
@@ -58452,7 +58452,7 @@ func (s *Server) handleTestRequestStringFloat64Request(args [0]string, argsEscap
 func (s *Server) handleTestRequestStringFloat64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_array"),
 	}
 
@@ -58562,7 +58562,7 @@ func (s *Server) handleTestRequestStringFloat64ArrayRequest(args [0]string, args
 func (s *Server) handleTestRequestStringFloat64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_array_array"),
 	}
 
@@ -58672,7 +58672,7 @@ func (s *Server) handleTestRequestStringFloat64ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringFloat64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable"),
 	}
 
@@ -58782,7 +58782,7 @@ func (s *Server) handleTestRequestStringFloat64NullableRequest(args [0]string, a
 func (s *Server) handleTestRequestStringFloat64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable_array"),
 	}
 
@@ -58892,7 +58892,7 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayRequest(args [0]stri
 func (s *Server) handleTestRequestStringFloat64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_float64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable_array_array"),
 	}
 
@@ -59002,7 +59002,7 @@ func (s *Server) handleTestRequestStringFloat64NullableArrayArrayRequest(args [0
 func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname"),
 	}
 
@@ -59112,7 +59112,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_array"),
 	}
 
@@ -59222,7 +59222,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_array_array"),
 	}
 
@@ -59332,7 +59332,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable"),
 	}
 
@@ -59442,7 +59442,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable_array"),
 	}
 
@@ -59552,7 +59552,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_hostname_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable_array_array"),
 	}
 
@@ -59662,7 +59662,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 func (s *Server) handleTestRequestStringIPRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip"),
 	}
 
@@ -59772,7 +59772,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, argsEscaped bo
 func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_array"),
 	}
 
@@ -59882,7 +59882,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, argsEscap
 func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_array_array"),
 	}
 
@@ -59992,7 +59992,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, args
 func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable"),
 	}
 
@@ -60102,7 +60102,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable_array"),
 	}
 
@@ -60212,7 +60212,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable_array_array"),
 	}
 
@@ -60322,7 +60322,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 func (s *Server) handleTestRequestStringIntRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int"),
 	}
 
@@ -60432,7 +60432,7 @@ func (s *Server) handleTestRequestStringIntRequest(args [0]string, argsEscaped b
 func (s *Server) handleTestRequestStringInt16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16"),
 	}
 
@@ -60542,7 +60542,7 @@ func (s *Server) handleTestRequestStringInt16Request(args [0]string, argsEscaped
 func (s *Server) handleTestRequestStringInt16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_array"),
 	}
 
@@ -60652,7 +60652,7 @@ func (s *Server) handleTestRequestStringInt16ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestStringInt16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_array_array"),
 	}
 
@@ -60762,7 +60762,7 @@ func (s *Server) handleTestRequestStringInt16ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestStringInt16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable"),
 	}
 
@@ -60872,7 +60872,7 @@ func (s *Server) handleTestRequestStringInt16NullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringInt16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable_array"),
 	}
 
@@ -60982,7 +60982,7 @@ func (s *Server) handleTestRequestStringInt16NullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringInt16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable_array_array"),
 	}
 
@@ -61092,7 +61092,7 @@ func (s *Server) handleTestRequestStringInt16NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestStringInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32"),
 	}
 
@@ -61202,7 +61202,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, argsEscaped
 func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_array"),
 	}
 
@@ -61312,7 +61312,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_array_array"),
 	}
 
@@ -61422,7 +61422,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable"),
 	}
 
@@ -61532,7 +61532,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable_array"),
 	}
 
@@ -61642,7 +61642,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable_array_array"),
 	}
 
@@ -61752,7 +61752,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestStringInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64"),
 	}
 
@@ -61862,7 +61862,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, argsEscaped
 func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_array"),
 	}
 
@@ -61972,7 +61972,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_array_array"),
 	}
 
@@ -62082,7 +62082,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable"),
 	}
 
@@ -62192,7 +62192,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable_array"),
 	}
 
@@ -62302,7 +62302,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable_array_array"),
 	}
 
@@ -62412,7 +62412,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestStringInt8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8"),
 	}
 
@@ -62522,7 +62522,7 @@ func (s *Server) handleTestRequestStringInt8Request(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringInt8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_array"),
 	}
 
@@ -62632,7 +62632,7 @@ func (s *Server) handleTestRequestStringInt8ArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringInt8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_array_array"),
 	}
 
@@ -62742,7 +62742,7 @@ func (s *Server) handleTestRequestStringInt8ArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringInt8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable"),
 	}
 
@@ -62852,7 +62852,7 @@ func (s *Server) handleTestRequestStringInt8NullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringInt8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable_array"),
 	}
 
@@ -62962,7 +62962,7 @@ func (s *Server) handleTestRequestStringInt8NullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringInt8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable_array_array"),
 	}
 
@@ -63072,7 +63072,7 @@ func (s *Server) handleTestRequestStringInt8NullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringIntArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_array"),
 	}
 
@@ -63182,7 +63182,7 @@ func (s *Server) handleTestRequestStringIntArrayRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringIntArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_array_array"),
 	}
 
@@ -63292,7 +63292,7 @@ func (s *Server) handleTestRequestStringIntArrayArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringIntNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_nullable"),
 	}
 
@@ -63402,7 +63402,7 @@ func (s *Server) handleTestRequestStringIntNullableRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringIntNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_nullable_array"),
 	}
 
@@ -63512,7 +63512,7 @@ func (s *Server) handleTestRequestStringIntNullableArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringIntNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_nullable_array_array"),
 	}
 
@@ -63622,7 +63622,7 @@ func (s *Server) handleTestRequestStringIntNullableArrayArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringIpv4Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4"),
 	}
 
@@ -63732,7 +63732,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_array"),
 	}
 
@@ -63842,7 +63842,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_array_array"),
 	}
 
@@ -63952,7 +63952,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable"),
 	}
 
@@ -64062,7 +64062,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable_array"),
 	}
 
@@ -64172,7 +64172,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable_array_array"),
 	}
 
@@ -64282,7 +64282,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringIpv6Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6"),
 	}
 
@@ -64392,7 +64392,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_array"),
 	}
 
@@ -64502,7 +64502,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_array_array"),
 	}
 
@@ -64612,7 +64612,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable"),
 	}
 
@@ -64722,7 +64722,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable_array"),
 	}
 
@@ -64832,7 +64832,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable_array_array"),
 	}
 
@@ -64942,7 +64942,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringMACRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_mac"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac"),
 	}
 
@@ -65052,7 +65052,7 @@ func (s *Server) handleTestRequestStringMACRequest(args [0]string, argsEscaped b
 func (s *Server) handleTestRequestStringMACArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_mac_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_array"),
 	}
 
@@ -65162,7 +65162,7 @@ func (s *Server) handleTestRequestStringMACArrayRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringMACArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_mac_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_array_array"),
 	}
 
@@ -65272,7 +65272,7 @@ func (s *Server) handleTestRequestStringMACArrayArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringMACNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_mac_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable"),
 	}
 
@@ -65382,7 +65382,7 @@ func (s *Server) handleTestRequestStringMACNullableRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringMACNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_mac_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable_array"),
 	}
 
@@ -65492,7 +65492,7 @@ func (s *Server) handleTestRequestStringMACNullableArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringMACNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_mac_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable_array_array"),
 	}
 
@@ -65602,7 +65602,7 @@ func (s *Server) handleTestRequestStringMACNullableArrayArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_nullable"),
 	}
 
@@ -65712,7 +65712,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_nullable_array"),
 	}
 
@@ -65822,7 +65822,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_nullable_array_array"),
 	}
 
@@ -65932,7 +65932,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password"),
 	}
 
@@ -66042,7 +66042,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_array"),
 	}
 
@@ -66152,7 +66152,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_array_array"),
 	}
 
@@ -66262,7 +66262,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_nullable"),
 	}
 
@@ -66372,7 +66372,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_nullable_array"),
 	}
 
@@ -66482,7 +66482,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_password_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_nullable_array_array"),
 	}
 
@@ -66592,7 +66592,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 func (s *Server) handleTestRequestStringTimeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time"),
 	}
 
@@ -66702,7 +66702,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_array"),
 	}
 
@@ -66812,7 +66812,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_array_array"),
 	}
 
@@ -66922,7 +66922,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_nullable"),
 	}
 
@@ -67032,7 +67032,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_nullable_array"),
 	}
 
@@ -67142,7 +67142,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_time_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_nullable_array_array"),
 	}
 
@@ -67252,7 +67252,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringURIRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri"),
 	}
 
@@ -67362,7 +67362,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, argsEscaped b
 func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_array"),
 	}
 
@@ -67472,7 +67472,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_array_array"),
 	}
 
@@ -67582,7 +67582,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable"),
 	}
 
@@ -67692,7 +67692,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable_array"),
 	}
 
@@ -67802,7 +67802,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uri_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable_array_array"),
 	}
 
@@ -67912,7 +67912,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid"),
 	}
 
@@ -68022,7 +68022,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_array"),
 	}
 
@@ -68132,7 +68132,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_array_array"),
 	}
 
@@ -68242,7 +68242,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable"),
 	}
 
@@ -68352,7 +68352,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable_array"),
 	}
 
@@ -68462,7 +68462,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uuid_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable_array_array"),
 	}
 
@@ -68572,7 +68572,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringUintRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint"),
 	}
 
@@ -68682,7 +68682,7 @@ func (s *Server) handleTestRequestStringUintRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringUint16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16"),
 	}
 
@@ -68792,7 +68792,7 @@ func (s *Server) handleTestRequestStringUint16Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestStringUint16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_array"),
 	}
 
@@ -68902,7 +68902,7 @@ func (s *Server) handleTestRequestStringUint16ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringUint16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_array_array"),
 	}
 
@@ -69012,7 +69012,7 @@ func (s *Server) handleTestRequestStringUint16ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringUint16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable"),
 	}
 
@@ -69122,7 +69122,7 @@ func (s *Server) handleTestRequestStringUint16NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUint16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable_array"),
 	}
 
@@ -69232,7 +69232,7 @@ func (s *Server) handleTestRequestStringUint16NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestStringUint16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable_array_array"),
 	}
 
@@ -69342,7 +69342,7 @@ func (s *Server) handleTestRequestStringUint16NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestStringUint32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32"),
 	}
 
@@ -69452,7 +69452,7 @@ func (s *Server) handleTestRequestStringUint32Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestStringUint32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_array"),
 	}
 
@@ -69562,7 +69562,7 @@ func (s *Server) handleTestRequestStringUint32ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringUint32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_array_array"),
 	}
 
@@ -69672,7 +69672,7 @@ func (s *Server) handleTestRequestStringUint32ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringUint32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable"),
 	}
 
@@ -69782,7 +69782,7 @@ func (s *Server) handleTestRequestStringUint32NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUint32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable_array"),
 	}
 
@@ -69892,7 +69892,7 @@ func (s *Server) handleTestRequestStringUint32NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestStringUint32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable_array_array"),
 	}
 
@@ -70002,7 +70002,7 @@ func (s *Server) handleTestRequestStringUint32NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestStringUint64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64"),
 	}
 
@@ -70112,7 +70112,7 @@ func (s *Server) handleTestRequestStringUint64Request(args [0]string, argsEscape
 func (s *Server) handleTestRequestStringUint64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_array"),
 	}
 
@@ -70222,7 +70222,7 @@ func (s *Server) handleTestRequestStringUint64ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringUint64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_array_array"),
 	}
 
@@ -70332,7 +70332,7 @@ func (s *Server) handleTestRequestStringUint64ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringUint64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable"),
 	}
 
@@ -70442,7 +70442,7 @@ func (s *Server) handleTestRequestStringUint64NullableRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUint64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable_array"),
 	}
 
@@ -70552,7 +70552,7 @@ func (s *Server) handleTestRequestStringUint64NullableArrayRequest(args [0]strin
 func (s *Server) handleTestRequestStringUint64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable_array_array"),
 	}
 
@@ -70662,7 +70662,7 @@ func (s *Server) handleTestRequestStringUint64NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestRequestStringUint8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8"),
 	}
 
@@ -70772,7 +70772,7 @@ func (s *Server) handleTestRequestStringUint8Request(args [0]string, argsEscaped
 func (s *Server) handleTestRequestStringUint8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_array"),
 	}
 
@@ -70882,7 +70882,7 @@ func (s *Server) handleTestRequestStringUint8ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestRequestStringUint8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_array_array"),
 	}
 
@@ -70992,7 +70992,7 @@ func (s *Server) handleTestRequestStringUint8ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestRequestStringUint8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable"),
 	}
 
@@ -71102,7 +71102,7 @@ func (s *Server) handleTestRequestStringUint8NullableRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringUint8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable_array"),
 	}
 
@@ -71212,7 +71212,7 @@ func (s *Server) handleTestRequestStringUint8NullableArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringUint8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable_array_array"),
 	}
 
@@ -71322,7 +71322,7 @@ func (s *Server) handleTestRequestStringUint8NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestRequestStringUintArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_array"),
 	}
 
@@ -71432,7 +71432,7 @@ func (s *Server) handleTestRequestStringUintArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringUintArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_array_array"),
 	}
 
@@ -71542,7 +71542,7 @@ func (s *Server) handleTestRequestStringUintArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUintNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable"),
 	}
 
@@ -71652,7 +71652,7 @@ func (s *Server) handleTestRequestStringUintNullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringUintNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable_array"),
 	}
 
@@ -71762,7 +71762,7 @@ func (s *Server) handleTestRequestStringUintNullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringUintNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_uint_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable_array_array"),
 	}
 
@@ -71872,7 +71872,7 @@ func (s *Server) handleTestRequestStringUintNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringUnixRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix"),
 	}
 
@@ -71982,7 +71982,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_array"),
 	}
 
@@ -72092,7 +72092,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_array_array"),
 	}
 
@@ -72202,7 +72202,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro"),
 	}
 
@@ -72312,7 +72312,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_array"),
 	}
 
@@ -72422,7 +72422,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_array_array"),
 	}
 
@@ -72532,7 +72532,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable"),
 	}
 
@@ -72642,7 +72642,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable_array"),
 	}
 
@@ -72752,7 +72752,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable_array_array"),
 	}
 
@@ -72862,7 +72862,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli"),
 	}
 
@@ -72972,7 +72972,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, argsEsc
 func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_array"),
 	}
 
@@ -73082,7 +73082,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, ar
 func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_array_array"),
 	}
 
@@ -73192,7 +73192,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable"),
 	}
 
@@ -73302,7 +73302,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable_array"),
 	}
 
@@ -73412,7 +73412,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable_array_array"),
 	}
 
@@ -73522,7 +73522,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano"),
 	}
 
@@ -73632,7 +73632,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, argsEsca
 func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_array"),
 	}
 
@@ -73742,7 +73742,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, arg
 func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_array_array"),
 	}
 
@@ -73852,7 +73852,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable"),
 	}
 
@@ -73962,7 +73962,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable_array"),
 	}
 
@@ -74072,7 +74072,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable_array_array"),
 	}
 
@@ -74182,7 +74182,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable"),
 	}
 
@@ -74292,7 +74292,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, args
 func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable_array"),
 	}
 
@@ -74402,7 +74402,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable_array_array"),
 	}
 
@@ -74512,7 +74512,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds"),
 	}
 
@@ -74622,7 +74622,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, argsE
 func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_array"),
 	}
 
@@ -74732,7 +74732,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_array_array"),
 	}
 
@@ -74842,7 +74842,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable"),
 	}
 
@@ -74952,7 +74952,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable_array"),
 	}
 
@@ -75062,7 +75062,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable_array_array"),
 	}
 
@@ -75172,7 +75172,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 func (s *Server) handleTestResponseAnyRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_Any"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_Any"),
 	}
 
@@ -75282,7 +75282,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleTestResponseBooleanRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean"),
 	}
 
@@ -75392,7 +75392,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, argsEscaped bo
 func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_array"),
 	}
 
@@ -75502,7 +75502,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, argsEscap
 func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_array_array"),
 	}
 
@@ -75612,7 +75612,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_nullable"),
 	}
 
@@ -75722,7 +75722,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_nullable_array"),
 	}
 
@@ -75832,7 +75832,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_boolean_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_nullable_array_array"),
 	}
 
@@ -75942,7 +75942,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_EmptyStruct"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_EmptyStruct"),
 	}
 
@@ -76052,7 +76052,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, argsEscape
 func (s *Server) handleTestResponseFormatTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_FormatTest"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_FormatTest"),
 	}
 
@@ -76162,7 +76162,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, argsEscaped
 func (s *Server) handleTestResponseIntegerRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer"),
 	}
 
@@ -76272,7 +76272,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, argsEscaped bo
 func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_array"),
 	}
 
@@ -76382,7 +76382,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, argsEscap
 func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_array_array"),
 	}
 
@@ -76492,7 +76492,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseIntegerInt16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16"),
 	}
 
@@ -76602,7 +76602,7 @@ func (s *Server) handleTestResponseIntegerInt16Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseIntegerInt16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_array"),
 	}
 
@@ -76712,7 +76712,7 @@ func (s *Server) handleTestResponseIntegerInt16ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseIntegerInt16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_array_array"),
 	}
 
@@ -76822,7 +76822,7 @@ func (s *Server) handleTestResponseIntegerInt16ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseIntegerInt16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable"),
 	}
 
@@ -76932,7 +76932,7 @@ func (s *Server) handleTestResponseIntegerInt16NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseIntegerInt16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable_array"),
 	}
 
@@ -77042,7 +77042,7 @@ func (s *Server) handleTestResponseIntegerInt16NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseIntegerInt16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable_array_array"),
 	}
 
@@ -77152,7 +77152,7 @@ func (s *Server) handleTestResponseIntegerInt16NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32"),
 	}
 
@@ -77262,7 +77262,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_array"),
 	}
 
@@ -77372,7 +77372,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_array_array"),
 	}
 
@@ -77482,7 +77482,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable"),
 	}
 
@@ -77592,7 +77592,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable_array"),
 	}
 
@@ -77702,7 +77702,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable_array_array"),
 	}
 
@@ -77812,7 +77812,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64"),
 	}
 
@@ -77922,7 +77922,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_array"),
 	}
 
@@ -78032,7 +78032,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_array_array"),
 	}
 
@@ -78142,7 +78142,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable"),
 	}
 
@@ -78252,7 +78252,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable_array"),
 	}
 
@@ -78362,7 +78362,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable_array_array"),
 	}
 
@@ -78472,7 +78472,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseIntegerInt8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8"),
 	}
 
@@ -78582,7 +78582,7 @@ func (s *Server) handleTestResponseIntegerInt8Request(args [0]string, argsEscape
 func (s *Server) handleTestResponseIntegerInt8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_array"),
 	}
 
@@ -78692,7 +78692,7 @@ func (s *Server) handleTestResponseIntegerInt8ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseIntegerInt8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_array_array"),
 	}
 
@@ -78802,7 +78802,7 @@ func (s *Server) handleTestResponseIntegerInt8ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerInt8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable"),
 	}
 
@@ -78912,7 +78912,7 @@ func (s *Server) handleTestResponseIntegerInt8NullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseIntegerInt8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable_array"),
 	}
 
@@ -79022,7 +79022,7 @@ func (s *Server) handleTestResponseIntegerInt8NullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseIntegerInt8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_int8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable_array_array"),
 	}
 
@@ -79132,7 +79132,7 @@ func (s *Server) handleTestResponseIntegerInt8NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_nullable"),
 	}
 
@@ -79242,7 +79242,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_nullable_array"),
 	}
 
@@ -79352,7 +79352,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_nullable_array_array"),
 	}
 
@@ -79462,7 +79462,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint"),
 	}
 
@@ -79572,7 +79572,7 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, argsEscape
 func (s *Server) handleTestResponseIntegerUint16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16"),
 	}
 
@@ -79682,7 +79682,7 @@ func (s *Server) handleTestResponseIntegerUint16Request(args [0]string, argsEsca
 func (s *Server) handleTestResponseIntegerUint16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_array"),
 	}
 
@@ -79792,7 +79792,7 @@ func (s *Server) handleTestResponseIntegerUint16ArrayRequest(args [0]string, arg
 func (s *Server) handleTestResponseIntegerUint16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_array_array"),
 	}
 
@@ -79902,7 +79902,7 @@ func (s *Server) handleTestResponseIntegerUint16ArrayArrayRequest(args [0]string
 func (s *Server) handleTestResponseIntegerUint16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable"),
 	}
 
@@ -80012,7 +80012,7 @@ func (s *Server) handleTestResponseIntegerUint16NullableRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerUint16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable_array"),
 	}
 
@@ -80122,7 +80122,7 @@ func (s *Server) handleTestResponseIntegerUint16NullableArrayRequest(args [0]str
 func (s *Server) handleTestResponseIntegerUint16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable_array_array"),
 	}
 
@@ -80232,7 +80232,7 @@ func (s *Server) handleTestResponseIntegerUint16NullableArrayArrayRequest(args [
 func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32"),
 	}
 
@@ -80342,7 +80342,7 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, argsEsca
 func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_array"),
 	}
 
@@ -80452,7 +80452,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, arg
 func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_array_array"),
 	}
 
@@ -80562,7 +80562,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable"),
 	}
 
@@ -80672,7 +80672,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable_array"),
 	}
 
@@ -80782,7 +80782,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable_array_array"),
 	}
 
@@ -80892,7 +80892,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64"),
 	}
 
@@ -81002,7 +81002,7 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, argsEsca
 func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_array"),
 	}
 
@@ -81112,7 +81112,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, arg
 func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_array_array"),
 	}
 
@@ -81222,7 +81222,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable"),
 	}
 
@@ -81332,7 +81332,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable_array"),
 	}
 
@@ -81442,7 +81442,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable_array_array"),
 	}
 
@@ -81552,7 +81552,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 func (s *Server) handleTestResponseIntegerUint8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8"),
 	}
 
@@ -81662,7 +81662,7 @@ func (s *Server) handleTestResponseIntegerUint8Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseIntegerUint8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_array"),
 	}
 
@@ -81772,7 +81772,7 @@ func (s *Server) handleTestResponseIntegerUint8ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseIntegerUint8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_array_array"),
 	}
 
@@ -81882,7 +81882,7 @@ func (s *Server) handleTestResponseIntegerUint8ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseIntegerUint8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable"),
 	}
 
@@ -81992,7 +81992,7 @@ func (s *Server) handleTestResponseIntegerUint8NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseIntegerUint8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable_array"),
 	}
 
@@ -82102,7 +82102,7 @@ func (s *Server) handleTestResponseIntegerUint8NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseIntegerUint8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable_array_array"),
 	}
 
@@ -82212,7 +82212,7 @@ func (s *Server) handleTestResponseIntegerUint8NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_array"),
 	}
 
@@ -82322,7 +82322,7 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_array_array"),
 	}
 
@@ -82432,7 +82432,7 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable"),
 	}
 
@@ -82542,7 +82542,7 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable_array"),
 	}
 
@@ -82652,7 +82652,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_uint_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable_array_array"),
 	}
 
@@ -82762,7 +82762,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix"),
 	}
 
@@ -82872,7 +82872,7 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, argsEscape
 func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_array"),
 	}
 
@@ -82982,7 +82982,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_array_array"),
 	}
 
@@ -83092,7 +83092,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro"),
 	}
 
@@ -83202,7 +83202,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, argsE
 func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_array"),
 	}
 
@@ -83312,7 +83312,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_array_array"),
 	}
 
@@ -83422,7 +83422,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable"),
 	}
 
@@ -83532,7 +83532,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable_array"),
 	}
 
@@ -83642,7 +83642,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-micro_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable_array_array"),
 	}
 
@@ -83752,7 +83752,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli"),
 	}
 
@@ -83862,7 +83862,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, argsE
 func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_array"),
 	}
 
@@ -83972,7 +83972,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_array_array"),
 	}
 
@@ -84082,7 +84082,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable"),
 	}
 
@@ -84192,7 +84192,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable_array"),
 	}
 
@@ -84302,7 +84302,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-milli_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable_array_array"),
 	}
 
@@ -84412,7 +84412,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano"),
 	}
 
@@ -84522,7 +84522,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_array"),
 	}
 
@@ -84632,7 +84632,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_array_array"),
 	}
 
@@ -84742,7 +84742,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable"),
 	}
 
@@ -84852,7 +84852,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable_array"),
 	}
 
@@ -84962,7 +84962,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-nano_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable_array_array"),
 	}
 
@@ -85072,7 +85072,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable"),
 	}
 
@@ -85182,7 +85182,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable_array"),
 	}
 
@@ -85292,7 +85292,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable_array_array"),
 	}
 
@@ -85402,7 +85402,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds"),
 	}
 
@@ -85512,7 +85512,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, arg
 func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_array"),
 	}
 
@@ -85622,7 +85622,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_array_array"),
 	}
 
@@ -85732,7 +85732,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable"),
 	}
 
@@ -85842,7 +85842,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable_array"),
 	}
 
@@ -85952,7 +85952,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable_array_array"),
 	}
 
@@ -86062,7 +86062,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 func (s *Server) handleTestResponseNullRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null"),
 	}
 
@@ -86172,7 +86172,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, argsEscaped bool,
 func (s *Server) handleTestResponseNullArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_array"),
 	}
 
@@ -86282,7 +86282,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_array_array"),
 	}
 
@@ -86392,7 +86392,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseNullNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_nullable"),
 	}
 
@@ -86502,7 +86502,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, argsEscap
 func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_nullable_array"),
 	}
 
@@ -86612,7 +86612,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_null_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_nullable_array_array"),
 	}
 
@@ -86722,7 +86722,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseNumberRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number"),
 	}
 
@@ -86832,7 +86832,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, argsEscaped boo
 func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_array"),
 	}
 
@@ -86942,7 +86942,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, argsEscape
 func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_array_array"),
 	}
 
@@ -87052,7 +87052,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double"),
 	}
 
@@ -87162,7 +87162,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, argsEscap
 func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_array"),
 	}
 
@@ -87272,7 +87272,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_array_array"),
 	}
 
@@ -87382,7 +87382,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_nullable"),
 	}
 
@@ -87492,7 +87492,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, a
 func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_nullable_array"),
 	}
 
@@ -87602,7 +87602,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_double_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_nullable_array_array"),
 	}
 
@@ -87712,7 +87712,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float"),
 	}
 
@@ -87822,7 +87822,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, argsEscape
 func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_array"),
 	}
 
@@ -87932,7 +87932,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_array_array"),
 	}
 
@@ -88042,7 +88042,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_nullable"),
 	}
 
@@ -88152,7 +88152,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_nullable_array"),
 	}
 
@@ -88262,7 +88262,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_float_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_nullable_array_array"),
 	}
 
@@ -88372,7 +88372,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseNumberInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32"),
 	}
 
@@ -88482,7 +88482,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, argsEscape
 func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_array"),
 	}
 
@@ -88592,7 +88592,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_array_array"),
 	}
 
@@ -88702,7 +88702,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable"),
 	}
 
@@ -88812,7 +88812,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable_array"),
 	}
 
@@ -88922,7 +88922,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable_array_array"),
 	}
 
@@ -89032,7 +89032,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseNumberInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64"),
 	}
 
@@ -89142,7 +89142,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, argsEscape
 func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_array"),
 	}
 
@@ -89252,7 +89252,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_array_array"),
 	}
 
@@ -89362,7 +89362,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable"),
 	}
 
@@ -89472,7 +89472,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable_array"),
 	}
 
@@ -89582,7 +89582,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable_array_array"),
 	}
 
@@ -89692,7 +89692,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_nullable"),
 	}
 
@@ -89802,7 +89802,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_nullable_array"),
 	}
 
@@ -89912,7 +89912,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_number_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_nullable_array_array"),
 	}
 
@@ -90022,7 +90022,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string"),
 	}
 
@@ -90132,7 +90132,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, argsEscaped boo
 func (s *Server) handleTestResponseStringArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_array"),
 	}
 
@@ -90242,7 +90242,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, argsEscape
 func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_array_array"),
 	}
 
@@ -90352,7 +90352,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseStringBase64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64"),
 	}
 
@@ -90462,7 +90462,7 @@ func (s *Server) handleTestResponseStringBase64Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_array"),
 	}
 
@@ -90572,7 +90572,7 @@ func (s *Server) handleTestResponseStringBase64ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_array_array"),
 	}
 
@@ -90682,7 +90682,7 @@ func (s *Server) handleTestResponseStringBase64ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable"),
 	}
 
@@ -90792,7 +90792,7 @@ func (s *Server) handleTestResponseStringBase64NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable_array"),
 	}
 
@@ -90902,7 +90902,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_base64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable_array_array"),
 	}
 
@@ -91012,7 +91012,7 @@ func (s *Server) handleTestResponseStringBase64NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary"),
 	}
 
@@ -91122,7 +91122,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, argsEscap
 func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_array"),
 	}
 
@@ -91232,7 +91232,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_array_array"),
 	}
 
@@ -91342,7 +91342,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable"),
 	}
 
@@ -91452,7 +91452,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, a
 func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable_array"),
 	}
 
@@ -91562,7 +91562,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_binary_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable_array_array"),
 	}
 
@@ -91672,7 +91672,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseStringByteRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte"),
 	}
 
@@ -91782,7 +91782,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_array"),
 	}
 
@@ -91892,7 +91892,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_array_array"),
 	}
 
@@ -92002,7 +92002,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable"),
 	}
 
@@ -92112,7 +92112,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable_array"),
 	}
 
@@ -92222,7 +92222,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_byte_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable_array_array"),
 	}
 
@@ -92332,7 +92332,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringDateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date"),
 	}
 
@@ -92442,7 +92442,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_array"),
 	}
 
@@ -92552,7 +92552,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_array_array"),
 	}
 
@@ -92662,7 +92662,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_nullable"),
 	}
 
@@ -92772,7 +92772,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_nullable_array"),
 	}
 
@@ -92882,7 +92882,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_nullable_array_array"),
 	}
 
@@ -92992,7 +92992,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time"),
 	}
 
@@ -93102,7 +93102,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_array"),
 	}
 
@@ -93212,7 +93212,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_array_array"),
 	}
 
@@ -93322,7 +93322,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable"),
 	}
 
@@ -93432,7 +93432,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable_array"),
 	}
 
@@ -93542,7 +93542,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_date-time_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable_array_array"),
 	}
 
@@ -93652,7 +93652,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 func (s *Server) handleTestResponseStringDurationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration"),
 	}
 
@@ -93762,7 +93762,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_array"),
 	}
 
@@ -93872,7 +93872,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_array_array"),
 	}
 
@@ -93982,7 +93982,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable"),
 	}
 
@@ -94092,7 +94092,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable_array"),
 	}
 
@@ -94202,7 +94202,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_duration_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable_array_array"),
 	}
 
@@ -94312,7 +94312,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 func (s *Server) handleTestResponseStringEmailRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email"),
 	}
 
@@ -94422,7 +94422,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, argsEscape
 func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_array"),
 	}
 
@@ -94532,7 +94532,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_array_array"),
 	}
 
@@ -94642,7 +94642,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_nullable"),
 	}
 
@@ -94752,7 +94752,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_nullable_array"),
 	}
 
@@ -94862,7 +94862,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_email_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_nullable_array_array"),
 	}
 
@@ -94972,7 +94972,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseStringFloat32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32"),
 	}
 
@@ -95082,7 +95082,7 @@ func (s *Server) handleTestResponseStringFloat32Request(args [0]string, argsEsca
 func (s *Server) handleTestResponseStringFloat32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_array"),
 	}
 
@@ -95192,7 +95192,7 @@ func (s *Server) handleTestResponseStringFloat32ArrayRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringFloat32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_array_array"),
 	}
 
@@ -95302,7 +95302,7 @@ func (s *Server) handleTestResponseStringFloat32ArrayArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringFloat32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable"),
 	}
 
@@ -95412,7 +95412,7 @@ func (s *Server) handleTestResponseStringFloat32NullableRequest(args [0]string, 
 func (s *Server) handleTestResponseStringFloat32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable_array"),
 	}
 
@@ -95522,7 +95522,7 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayRequest(args [0]str
 func (s *Server) handleTestResponseStringFloat32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable_array_array"),
 	}
 
@@ -95632,7 +95632,7 @@ func (s *Server) handleTestResponseStringFloat32NullableArrayArrayRequest(args [
 func (s *Server) handleTestResponseStringFloat64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64"),
 	}
 
@@ -95742,7 +95742,7 @@ func (s *Server) handleTestResponseStringFloat64Request(args [0]string, argsEsca
 func (s *Server) handleTestResponseStringFloat64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_array"),
 	}
 
@@ -95852,7 +95852,7 @@ func (s *Server) handleTestResponseStringFloat64ArrayRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringFloat64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_array_array"),
 	}
 
@@ -95962,7 +95962,7 @@ func (s *Server) handleTestResponseStringFloat64ArrayArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringFloat64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable"),
 	}
 
@@ -96072,7 +96072,7 @@ func (s *Server) handleTestResponseStringFloat64NullableRequest(args [0]string, 
 func (s *Server) handleTestResponseStringFloat64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable_array"),
 	}
 
@@ -96182,7 +96182,7 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayRequest(args [0]str
 func (s *Server) handleTestResponseStringFloat64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_float64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable_array_array"),
 	}
 
@@ -96292,7 +96292,7 @@ func (s *Server) handleTestResponseStringFloat64NullableArrayArrayRequest(args [
 func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname"),
 	}
 
@@ -96402,7 +96402,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_array"),
 	}
 
@@ -96512,7 +96512,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_array_array"),
 	}
 
@@ -96622,7 +96622,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable"),
 	}
 
@@ -96732,7 +96732,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable_array"),
 	}
 
@@ -96842,7 +96842,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_hostname_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable_array_array"),
 	}
 
@@ -96952,7 +96952,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 func (s *Server) handleTestResponseStringIPRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip"),
 	}
 
@@ -97062,7 +97062,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, argsEscaped b
 func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_array"),
 	}
 
@@ -97172,7 +97172,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, argsEsca
 func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_array_array"),
 	}
 
@@ -97282,7 +97282,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable"),
 	}
 
@@ -97392,7 +97392,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, argsE
 func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable_array"),
 	}
 
@@ -97502,7 +97502,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable_array_array"),
 	}
 
@@ -97612,7 +97612,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 func (s *Server) handleTestResponseStringIntRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int"),
 	}
 
@@ -97722,7 +97722,7 @@ func (s *Server) handleTestResponseStringIntRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestResponseStringInt16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16"),
 	}
 
@@ -97832,7 +97832,7 @@ func (s *Server) handleTestResponseStringInt16Request(args [0]string, argsEscape
 func (s *Server) handleTestResponseStringInt16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_array"),
 	}
 
@@ -97942,7 +97942,7 @@ func (s *Server) handleTestResponseStringInt16ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseStringInt16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_array_array"),
 	}
 
@@ -98052,7 +98052,7 @@ func (s *Server) handleTestResponseStringInt16ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseStringInt16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable"),
 	}
 
@@ -98162,7 +98162,7 @@ func (s *Server) handleTestResponseStringInt16NullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringInt16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable_array"),
 	}
 
@@ -98272,7 +98272,7 @@ func (s *Server) handleTestResponseStringInt16NullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringInt16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable_array_array"),
 	}
 
@@ -98382,7 +98382,7 @@ func (s *Server) handleTestResponseStringInt16NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseStringInt32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32"),
 	}
 
@@ -98492,7 +98492,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, argsEscape
 func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_array"),
 	}
 
@@ -98602,7 +98602,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_array_array"),
 	}
 
@@ -98712,7 +98712,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable"),
 	}
 
@@ -98822,7 +98822,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable_array"),
 	}
 
@@ -98932,7 +98932,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable_array_array"),
 	}
 
@@ -99042,7 +99042,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseStringInt64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64"),
 	}
 
@@ -99152,7 +99152,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, argsEscape
 func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_array"),
 	}
 
@@ -99262,7 +99262,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_array_array"),
 	}
 
@@ -99372,7 +99372,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable"),
 	}
 
@@ -99482,7 +99482,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable_array"),
 	}
 
@@ -99592,7 +99592,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable_array_array"),
 	}
 
@@ -99702,7 +99702,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseStringInt8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8"),
 	}
 
@@ -99812,7 +99812,7 @@ func (s *Server) handleTestResponseStringInt8Request(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringInt8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_array"),
 	}
 
@@ -99922,7 +99922,7 @@ func (s *Server) handleTestResponseStringInt8ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringInt8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_array_array"),
 	}
 
@@ -100032,7 +100032,7 @@ func (s *Server) handleTestResponseStringInt8ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringInt8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable"),
 	}
 
@@ -100142,7 +100142,7 @@ func (s *Server) handleTestResponseStringInt8NullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringInt8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable_array"),
 	}
 
@@ -100252,7 +100252,7 @@ func (s *Server) handleTestResponseStringInt8NullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringInt8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable_array_array"),
 	}
 
@@ -100362,7 +100362,7 @@ func (s *Server) handleTestResponseStringInt8NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringIntArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_array"),
 	}
 
@@ -100472,7 +100472,7 @@ func (s *Server) handleTestResponseStringIntArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringIntArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_array_array"),
 	}
 
@@ -100582,7 +100582,7 @@ func (s *Server) handleTestResponseStringIntArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringIntNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_nullable"),
 	}
 
@@ -100692,7 +100692,7 @@ func (s *Server) handleTestResponseStringIntNullableRequest(args [0]string, args
 func (s *Server) handleTestResponseStringIntNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_nullable_array"),
 	}
 
@@ -100802,7 +100802,7 @@ func (s *Server) handleTestResponseStringIntNullableArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringIntNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_nullable_array_array"),
 	}
 
@@ -100912,7 +100912,7 @@ func (s *Server) handleTestResponseStringIntNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringIpv4Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4"),
 	}
 
@@ -101022,7 +101022,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_array"),
 	}
 
@@ -101132,7 +101132,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_array_array"),
 	}
 
@@ -101242,7 +101242,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable"),
 	}
 
@@ -101352,7 +101352,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable_array"),
 	}
 
@@ -101462,7 +101462,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable_array_array"),
 	}
 
@@ -101572,7 +101572,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringIpv6Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6"),
 	}
 
@@ -101682,7 +101682,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_array"),
 	}
 
@@ -101792,7 +101792,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_array_array"),
 	}
 
@@ -101902,7 +101902,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable"),
 	}
 
@@ -102012,7 +102012,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable_array"),
 	}
 
@@ -102122,7 +102122,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable_array_array"),
 	}
 
@@ -102232,7 +102232,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringMACRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_mac"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac"),
 	}
 
@@ -102342,7 +102342,7 @@ func (s *Server) handleTestResponseStringMACRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestResponseStringMACArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_mac_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_array"),
 	}
 
@@ -102452,7 +102452,7 @@ func (s *Server) handleTestResponseStringMACArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringMACArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_mac_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_array_array"),
 	}
 
@@ -102562,7 +102562,7 @@ func (s *Server) handleTestResponseStringMACArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringMACNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_mac_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable"),
 	}
 
@@ -102672,7 +102672,7 @@ func (s *Server) handleTestResponseStringMACNullableRequest(args [0]string, args
 func (s *Server) handleTestResponseStringMACNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_mac_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable_array"),
 	}
 
@@ -102782,7 +102782,7 @@ func (s *Server) handleTestResponseStringMACNullableArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringMACNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_mac_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable_array_array"),
 	}
 
@@ -102892,7 +102892,7 @@ func (s *Server) handleTestResponseStringMACNullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_nullable"),
 	}
 
@@ -103002,7 +103002,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_nullable_array"),
 	}
 
@@ -103112,7 +103112,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_nullable_array_array"),
 	}
 
@@ -103222,7 +103222,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password"),
 	}
 
@@ -103332,7 +103332,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_array"),
 	}
 
@@ -103442,7 +103442,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_array_array"),
 	}
 
@@ -103552,7 +103552,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_nullable"),
 	}
 
@@ -103662,7 +103662,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_nullable_array"),
 	}
 
@@ -103772,7 +103772,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_password_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_nullable_array_array"),
 	}
 
@@ -103882,7 +103882,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 func (s *Server) handleTestResponseStringTimeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time"),
 	}
 
@@ -103992,7 +103992,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_array"),
 	}
 
@@ -104102,7 +104102,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_array_array"),
 	}
 
@@ -104212,7 +104212,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_nullable"),
 	}
 
@@ -104322,7 +104322,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_nullable_array"),
 	}
 
@@ -104432,7 +104432,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_time_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_nullable_array_array"),
 	}
 
@@ -104542,7 +104542,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringURIRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri"),
 	}
 
@@ -104652,7 +104652,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, argsEscaped 
 func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_array"),
 	}
 
@@ -104762,7 +104762,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_array_array"),
 	}
 
@@ -104872,7 +104872,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable"),
 	}
 
@@ -104982,7 +104982,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, args
 func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable_array"),
 	}
 
@@ -105092,7 +105092,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uri_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable_array_array"),
 	}
 
@@ -105202,7 +105202,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid"),
 	}
 
@@ -105312,7 +105312,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_array"),
 	}
 
@@ -105422,7 +105422,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_array_array"),
 	}
 
@@ -105532,7 +105532,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable"),
 	}
 
@@ -105642,7 +105642,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable_array"),
 	}
 
@@ -105752,7 +105752,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uuid_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable_array_array"),
 	}
 
@@ -105862,7 +105862,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringUintRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint"),
 	}
 
@@ -105972,7 +105972,7 @@ func (s *Server) handleTestResponseStringUintRequest(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringUint16Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16"),
 	}
 
@@ -106082,7 +106082,7 @@ func (s *Server) handleTestResponseStringUint16Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseStringUint16ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_array"),
 	}
 
@@ -106192,7 +106192,7 @@ func (s *Server) handleTestResponseStringUint16ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseStringUint16ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_array_array"),
 	}
 
@@ -106302,7 +106302,7 @@ func (s *Server) handleTestResponseStringUint16ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringUint16NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable"),
 	}
 
@@ -106412,7 +106412,7 @@ func (s *Server) handleTestResponseStringUint16NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUint16NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable_array"),
 	}
 
@@ -106522,7 +106522,7 @@ func (s *Server) handleTestResponseStringUint16NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseStringUint16NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint16_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable_array_array"),
 	}
 
@@ -106632,7 +106632,7 @@ func (s *Server) handleTestResponseStringUint16NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseStringUint32Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32"),
 	}
 
@@ -106742,7 +106742,7 @@ func (s *Server) handleTestResponseStringUint32Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseStringUint32ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_array"),
 	}
 
@@ -106852,7 +106852,7 @@ func (s *Server) handleTestResponseStringUint32ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseStringUint32ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_array_array"),
 	}
 
@@ -106962,7 +106962,7 @@ func (s *Server) handleTestResponseStringUint32ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringUint32NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable"),
 	}
 
@@ -107072,7 +107072,7 @@ func (s *Server) handleTestResponseStringUint32NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUint32NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable_array"),
 	}
 
@@ -107182,7 +107182,7 @@ func (s *Server) handleTestResponseStringUint32NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseStringUint32NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint32_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable_array_array"),
 	}
 
@@ -107292,7 +107292,7 @@ func (s *Server) handleTestResponseStringUint32NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseStringUint64Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64"),
 	}
 
@@ -107402,7 +107402,7 @@ func (s *Server) handleTestResponseStringUint64Request(args [0]string, argsEscap
 func (s *Server) handleTestResponseStringUint64ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_array"),
 	}
 
@@ -107512,7 +107512,7 @@ func (s *Server) handleTestResponseStringUint64ArrayRequest(args [0]string, args
 func (s *Server) handleTestResponseStringUint64ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_array_array"),
 	}
 
@@ -107622,7 +107622,7 @@ func (s *Server) handleTestResponseStringUint64ArrayArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringUint64NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable"),
 	}
 
@@ -107732,7 +107732,7 @@ func (s *Server) handleTestResponseStringUint64NullableRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUint64NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable_array"),
 	}
 
@@ -107842,7 +107842,7 @@ func (s *Server) handleTestResponseStringUint64NullableArrayRequest(args [0]stri
 func (s *Server) handleTestResponseStringUint64NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint64_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable_array_array"),
 	}
 
@@ -107952,7 +107952,7 @@ func (s *Server) handleTestResponseStringUint64NullableArrayArrayRequest(args [0
 func (s *Server) handleTestResponseStringUint8Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8"),
 	}
 
@@ -108062,7 +108062,7 @@ func (s *Server) handleTestResponseStringUint8Request(args [0]string, argsEscape
 func (s *Server) handleTestResponseStringUint8ArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_array"),
 	}
 
@@ -108172,7 +108172,7 @@ func (s *Server) handleTestResponseStringUint8ArrayRequest(args [0]string, argsE
 func (s *Server) handleTestResponseStringUint8ArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_array_array"),
 	}
 
@@ -108282,7 +108282,7 @@ func (s *Server) handleTestResponseStringUint8ArrayArrayRequest(args [0]string, 
 func (s *Server) handleTestResponseStringUint8NullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable"),
 	}
 
@@ -108392,7 +108392,7 @@ func (s *Server) handleTestResponseStringUint8NullableRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringUint8NullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable_array"),
 	}
 
@@ -108502,7 +108502,7 @@ func (s *Server) handleTestResponseStringUint8NullableArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringUint8NullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint8_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable_array_array"),
 	}
 
@@ -108612,7 +108612,7 @@ func (s *Server) handleTestResponseStringUint8NullableArrayArrayRequest(args [0]
 func (s *Server) handleTestResponseStringUintArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_array"),
 	}
 
@@ -108722,7 +108722,7 @@ func (s *Server) handleTestResponseStringUintArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringUintArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_array_array"),
 	}
 
@@ -108832,7 +108832,7 @@ func (s *Server) handleTestResponseStringUintArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUintNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable"),
 	}
 
@@ -108942,7 +108942,7 @@ func (s *Server) handleTestResponseStringUintNullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringUintNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable_array"),
 	}
 
@@ -109052,7 +109052,7 @@ func (s *Server) handleTestResponseStringUintNullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringUintNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_uint_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable_array_array"),
 	}
 
@@ -109162,7 +109162,7 @@ func (s *Server) handleTestResponseStringUintNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringUnixRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix"),
 	}
 
@@ -109272,7 +109272,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, argsEscaped
 func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_array"),
 	}
 
@@ -109382,7 +109382,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_array_array"),
 	}
 
@@ -109492,7 +109492,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro"),
 	}
 
@@ -109602,7 +109602,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_array"),
 	}
 
@@ -109712,7 +109712,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_array_array"),
 	}
 
@@ -109822,7 +109822,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable"),
 	}
 
@@ -109932,7 +109932,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable_array"),
 	}
 
@@ -110042,7 +110042,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable_array_array"),
 	}
 
@@ -110152,7 +110152,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli"),
 	}
 
@@ -110262,7 +110262,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, argsEs
 func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_array"),
 	}
 
@@ -110372,7 +110372,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, a
 func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_array_array"),
 	}
 
@@ -110482,7 +110482,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable"),
 	}
 
@@ -110592,7 +110592,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable_array"),
 	}
 
@@ -110702,7 +110702,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable_array_array"),
 	}
 
@@ -110812,7 +110812,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano"),
 	}
 
@@ -110922,7 +110922,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, argsEsc
 func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_array"),
 	}
 
@@ -111032,7 +111032,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, ar
 func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_array_array"),
 	}
 
@@ -111142,7 +111142,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable"),
 	}
 
@@ -111252,7 +111252,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable_array"),
 	}
 
@@ -111362,7 +111362,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable_array_array"),
 	}
 
@@ -111472,7 +111472,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable"),
 	}
 
@@ -111582,7 +111582,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, arg
 func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable_array"),
 	}
 
@@ -111692,7 +111692,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable_array_array"),
 	}
 
@@ -111802,7 +111802,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds"),
 	}
 
@@ -111912,7 +111912,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, args
 func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_array"),
 	}
 
@@ -112022,7 +112022,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_array_array"),
 	}
 
@@ -112132,7 +112132,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable"),
 	}
 
@@ -112242,7 +112242,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable_array"),
 	}
 
@@ -112352,7 +112352,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array_array"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable_array_array"),
 	}
 

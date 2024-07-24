@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -26,7 +26,7 @@ import (
 // GET /market/bonds
 func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/bonds"),
 	}
 
@@ -166,7 +166,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 // GET /market/candles
 func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/candles"),
 	}
 
@@ -333,7 +333,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 // GET /market/currencies
 func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/currencies"),
 	}
 
@@ -473,7 +473,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 // GET /market/etfs
 func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/etfs"),
 	}
 
@@ -613,7 +613,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 // GET /market/orderbook
 func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/orderbook"),
 	}
 
@@ -772,7 +772,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 // GET /market/search/by-figi
 func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/search/by-figi"),
 	}
 
@@ -927,7 +927,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 // GET /market/search/by-ticker
 func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/search/by-ticker"),
 	}
 
@@ -1082,7 +1082,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 // GET /market/stocks
 func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/market/stocks"),
 	}
 
@@ -1222,7 +1222,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 // GET /operations
 func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/operations"),
 	}
 
@@ -1389,7 +1389,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 // POST /orders/cancel
 func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orders/cancel"),
 	}
 
@@ -1548,7 +1548,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 // GET /orders
 func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/orders"),
 	}
 
@@ -1703,7 +1703,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 // POST /orders/limit-order
 func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orders/limit-order"),
 	}
 
@@ -1877,7 +1877,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 // POST /orders/market-order
 func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/orders/market-order"),
 	}
 
@@ -2051,7 +2051,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 // GET /portfolio/currencies
 func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/portfolio/currencies"),
 	}
 
@@ -2206,7 +2206,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 // GET /portfolio
 func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/portfolio"),
 	}
 
@@ -2361,7 +2361,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 // POST /sandbox/clear
 func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/clear"),
 	}
 
@@ -2516,7 +2516,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 // POST /sandbox/currencies/balance
 func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/currencies/balance"),
 	}
 
@@ -2686,7 +2686,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 // POST /sandbox/positions/balance
 func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/positions/balance"),
 	}
 
@@ -2856,7 +2856,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 // POST /sandbox/register
 func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/register"),
 	}
 
@@ -3011,7 +3011,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 // POST /sandbox/remove
 func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sandbox/remove"),
 	}
 
@@ -3166,7 +3166,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 // GET /user/accounts
 func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/user/accounts"),
 	}
 

@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -101,7 +101,7 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (*Data, error)
 func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataCreate"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/data"),
 	}
 
@@ -176,7 +176,7 @@ func (c *Client) DataGet(ctx context.Context) (*Data, error) {
 func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/data"),
 	}
 

@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -415,7 +415,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, request *AddStickerToSet) 
 func (c *Client) sendAddStickerToSet(ctx context.Context, request *AddStickerToSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("addStickerToSet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/addStickerToSet"),
 	}
 
@@ -488,7 +488,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request *AnswerCallbac
 func (c *Client) sendAnswerCallbackQuery(ctx context.Context, request *AnswerCallbackQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerCallbackQuery"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerCallbackQuery"),
 	}
 
@@ -561,7 +561,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request *AnswerInlineQue
 func (c *Client) sendAnswerInlineQuery(ctx context.Context, request *AnswerInlineQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerInlineQuery"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerInlineQuery"),
 	}
 
@@ -634,7 +634,7 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreC
 func (c *Client) sendAnswerPreCheckoutQuery(ctx context.Context, request *AnswerPreCheckoutQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerPreCheckoutQuery"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerPreCheckoutQuery"),
 	}
 
@@ -707,7 +707,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request *AnswerShippin
 func (c *Client) sendAnswerShippingQuery(ctx context.Context, request *AnswerShippingQuery) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("answerShippingQuery"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/answerShippingQuery"),
 	}
 
@@ -780,7 +780,7 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request *ApproveCha
 func (c *Client) sendApproveChatJoinRequest(ctx context.Context, request *ApproveChatJoinRequest) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("approveChatJoinRequest"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/approveChatJoinRequest"),
 	}
 
@@ -853,7 +853,7 @@ func (c *Client) BanChatMember(ctx context.Context, request *BanChatMember) (*Re
 func (c *Client) sendBanChatMember(ctx context.Context, request *BanChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatMember"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/banChatMember"),
 	}
 
@@ -926,7 +926,7 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request *BanChatSenderCh
 func (c *Client) sendBanChatSenderChat(ctx context.Context, request *BanChatSenderChat) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("banChatSenderChat"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/banChatSenderChat"),
 	}
 
@@ -999,7 +999,7 @@ func (c *Client) Close(ctx context.Context) (*Result, error) {
 func (c *Client) sendClose(ctx context.Context) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("close"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/close"),
 	}
 
@@ -1069,7 +1069,7 @@ func (c *Client) CopyMessage(ctx context.Context, request *CopyMessage) (*Result
 func (c *Client) sendCopyMessage(ctx context.Context, request *CopyMessage) (res *ResultMessageId, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("copyMessage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/copyMessage"),
 	}
 
@@ -1142,7 +1142,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request *CreateChatIn
 func (c *Client) sendCreateChatInviteLink(ctx context.Context, request *CreateChatInviteLink) (res *ResultChatInviteLink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createChatInviteLink"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/createChatInviteLink"),
 	}
 
@@ -1215,7 +1215,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request *CreateNewStic
 func (c *Client) sendCreateNewStickerSet(ctx context.Context, request *CreateNewStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createNewStickerSet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/createNewStickerSet"),
 	}
 
@@ -1288,7 +1288,7 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request *DeclineCha
 func (c *Client) sendDeclineChatJoinRequest(ctx context.Context, request *DeclineChatJoinRequest) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("declineChatJoinRequest"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/declineChatJoinRequest"),
 	}
 
@@ -1361,7 +1361,7 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) 
 func (c *Client) sendDeleteChatPhoto(ctx context.Context, request *DeleteChatPhoto) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatPhoto"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteChatPhoto"),
 	}
 
@@ -1434,7 +1434,7 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request *DeleteChatSt
 func (c *Client) sendDeleteChatStickerSet(ctx context.Context, request *DeleteChatStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteChatStickerSet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteChatStickerSet"),
 	}
 
@@ -1507,7 +1507,7 @@ func (c *Client) DeleteMessage(ctx context.Context, request *DeleteMessage) (*Re
 func (c *Client) sendDeleteMessage(ctx context.Context, request *DeleteMessage) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMessage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteMessage"),
 	}
 
@@ -1580,7 +1580,7 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 func (c *Client) sendDeleteMyCommands(ctx context.Context, request OptDeleteMyCommands) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteMyCommands"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteMyCommands"),
 	}
 
@@ -1653,7 +1653,7 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request *DeleteSticke
 func (c *Client) sendDeleteStickerFromSet(ctx context.Context, request *DeleteStickerFromSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteStickerFromSet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteStickerFromSet"),
 	}
 
@@ -1726,7 +1726,7 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (*
 func (c *Client) sendDeleteWebhook(ctx context.Context, request OptDeleteWebhook) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deleteWebhook"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/deleteWebhook"),
 	}
 
@@ -1799,7 +1799,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request *EditChatInvite
 func (c *Client) sendEditChatInviteLink(ctx context.Context, request *EditChatInviteLink) (res *ResultChatInviteLink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editChatInviteLink"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editChatInviteLink"),
 	}
 
@@ -1872,7 +1872,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, request *EditMessageCap
 func (c *Client) sendEditMessageCaption(ctx context.Context, request *EditMessageCaption) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageCaption"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageCaption"),
 	}
 
@@ -1945,7 +1945,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request *EditMessa
 func (c *Client) sendEditMessageLiveLocation(ctx context.Context, request *EditMessageLiveLocation) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageLiveLocation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageLiveLocation"),
 	}
 
@@ -2018,7 +2018,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, request *EditMessageMedia
 func (c *Client) sendEditMessageMedia(ctx context.Context, request *EditMessageMedia) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageMedia"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageMedia"),
 	}
 
@@ -2091,7 +2091,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request *EditMessag
 func (c *Client) sendEditMessageReplyMarkup(ctx context.Context, request *EditMessageReplyMarkup) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageReplyMarkup"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageReplyMarkup"),
 	}
 
@@ -2164,7 +2164,7 @@ func (c *Client) EditMessageText(ctx context.Context, request *EditMessageText) 
 func (c *Client) sendEditMessageText(ctx context.Context, request *EditMessageText) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("editMessageText"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/editMessageText"),
 	}
 
@@ -2237,7 +2237,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request *ExportChatIn
 func (c *Client) sendExportChatInviteLink(ctx context.Context, request *ExportChatInviteLink) (res *ResultString, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("exportChatInviteLink"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/exportChatInviteLink"),
 	}
 
@@ -2310,7 +2310,7 @@ func (c *Client) ForwardMessage(ctx context.Context, request *ForwardMessage) (*
 func (c *Client) sendForwardMessage(ctx context.Context, request *ForwardMessage) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("forwardMessage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/forwardMessage"),
 	}
 
@@ -2383,7 +2383,7 @@ func (c *Client) GetChat(ctx context.Context, request *GetChat) (*ResultChat, er
 func (c *Client) sendGetChat(ctx context.Context, request *GetChat) (res *ResultChat, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChat"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChat"),
 	}
 
@@ -2456,7 +2456,7 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request *GetChatAdmi
 func (c *Client) sendGetChatAdministrators(ctx context.Context, request *GetChatAdministrators) (res *ResultArrayOfChatMember, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatAdministrators"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChatAdministrators"),
 	}
 
@@ -2529,7 +2529,7 @@ func (c *Client) GetChatMember(ctx context.Context, request *GetChatMember) (*Re
 func (c *Client) sendGetChatMember(ctx context.Context, request *GetChatMember) (res *ResultChatMember, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMember"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChatMember"),
 	}
 
@@ -2602,7 +2602,7 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request *GetChatMemberC
 func (c *Client) sendGetChatMemberCount(ctx context.Context, request *GetChatMemberCount) (res *ResultInt, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getChatMemberCount"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getChatMemberCount"),
 	}
 
@@ -2675,7 +2675,7 @@ func (c *Client) GetFile(ctx context.Context, request *GetFile) (*Result, error)
 func (c *Client) sendGetFile(ctx context.Context, request *GetFile) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getFile"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getFile"),
 	}
 
@@ -2748,7 +2748,7 @@ func (c *Client) GetGameHighScores(ctx context.Context, request *GetGameHighScor
 func (c *Client) sendGetGameHighScores(ctx context.Context, request *GetGameHighScores) (res *ResultArrayOfGameHighScore, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getGameHighScores"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getGameHighScores"),
 	}
 
@@ -2821,7 +2821,7 @@ func (c *Client) GetMe(ctx context.Context) (*ResultUser, error) {
 func (c *Client) sendGetMe(ctx context.Context) (res *ResultUser, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMe"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getMe"),
 	}
 
@@ -2891,7 +2891,7 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (*
 func (c *Client) sendGetMyCommands(ctx context.Context, request OptGetMyCommands) (res *ResultArrayOfBotCommand, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMyCommands"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getMyCommands"),
 	}
 
@@ -2964,7 +2964,7 @@ func (c *Client) GetStickerSet(ctx context.Context, request *GetStickerSet) (*Re
 func (c *Client) sendGetStickerSet(ctx context.Context, request *GetStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getStickerSet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getStickerSet"),
 	}
 
@@ -3037,7 +3037,7 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (*Result
 func (c *Client) sendGetUpdates(ctx context.Context, request OptGetUpdates) (res *ResultArrayOfUpdate, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUpdates"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getUpdates"),
 	}
 
@@ -3110,7 +3110,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request *GetUserProfi
 func (c *Client) sendGetUserProfilePhotos(ctx context.Context, request *GetUserProfilePhotos) (res *ResultUserProfilePhotos, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getUserProfilePhotos"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getUserProfilePhotos"),
 	}
 
@@ -3183,7 +3183,7 @@ func (c *Client) GetWebhookInfo(ctx context.Context) (*ResultWebhookInfo, error)
 func (c *Client) sendGetWebhookInfo(ctx context.Context) (res *ResultWebhookInfo, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getWebhookInfo"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/getWebhookInfo"),
 	}
 
@@ -3253,7 +3253,7 @@ func (c *Client) LeaveChat(ctx context.Context, request *LeaveChat) (*Result, er
 func (c *Client) sendLeaveChat(ctx context.Context, request *LeaveChat) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("leaveChat"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/leaveChat"),
 	}
 
@@ -3326,7 +3326,7 @@ func (c *Client) LogOut(ctx context.Context) (*Result, error) {
 func (c *Client) sendLogOut(ctx context.Context) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("logOut"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/logOut"),
 	}
 
@@ -3396,7 +3396,7 @@ func (c *Client) PinChatMessage(ctx context.Context, request *PinChatMessage) (*
 func (c *Client) sendPinChatMessage(ctx context.Context, request *PinChatMessage) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pinChatMessage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pinChatMessage"),
 	}
 
@@ -3469,7 +3469,7 @@ func (c *Client) PromoteChatMember(ctx context.Context, request *PromoteChatMemb
 func (c *Client) sendPromoteChatMember(ctx context.Context, request *PromoteChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("promoteChatMember"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/promoteChatMember"),
 	}
 
@@ -3542,7 +3542,7 @@ func (c *Client) RestrictChatMember(ctx context.Context, request *RestrictChatMe
 func (c *Client) sendRestrictChatMember(ctx context.Context, request *RestrictChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("restrictChatMember"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/restrictChatMember"),
 	}
 
@@ -3615,7 +3615,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request *RevokeChatIn
 func (c *Client) sendRevokeChatInviteLink(ctx context.Context, request *RevokeChatInviteLink) (res *ResultChatInviteLink, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("revokeChatInviteLink"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/revokeChatInviteLink"),
 	}
 
@@ -3688,7 +3688,7 @@ func (c *Client) SendAnimation(ctx context.Context, request *SendAnimation) (*Re
 func (c *Client) sendSendAnimation(ctx context.Context, request *SendAnimation) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAnimation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendAnimation"),
 	}
 
@@ -3761,7 +3761,7 @@ func (c *Client) SendAudio(ctx context.Context, request *SendAudio) (*ResultMess
 func (c *Client) sendSendAudio(ctx context.Context, request *SendAudio) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendAudio"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendAudio"),
 	}
 
@@ -3834,7 +3834,7 @@ func (c *Client) SendChatAction(ctx context.Context, request *SendChatAction) (*
 func (c *Client) sendSendChatAction(ctx context.Context, request *SendChatAction) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendChatAction"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendChatAction"),
 	}
 
@@ -3907,7 +3907,7 @@ func (c *Client) SendContact(ctx context.Context, request *SendContact) (*Result
 func (c *Client) sendSendContact(ctx context.Context, request *SendContact) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendContact"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendContact"),
 	}
 
@@ -3980,7 +3980,7 @@ func (c *Client) SendDice(ctx context.Context, request *SendDice) (*ResultMessag
 func (c *Client) sendSendDice(ctx context.Context, request *SendDice) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDice"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendDice"),
 	}
 
@@ -4053,7 +4053,7 @@ func (c *Client) SendDocument(ctx context.Context, request *SendDocument) (*Resu
 func (c *Client) sendSendDocument(ctx context.Context, request *SendDocument) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendDocument"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendDocument"),
 	}
 
@@ -4126,7 +4126,7 @@ func (c *Client) SendGame(ctx context.Context, request *SendGame) (*ResultMessag
 func (c *Client) sendSendGame(ctx context.Context, request *SendGame) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendGame"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendGame"),
 	}
 
@@ -4199,7 +4199,7 @@ func (c *Client) SendInvoice(ctx context.Context, request *SendInvoice) (*Result
 func (c *Client) sendSendInvoice(ctx context.Context, request *SendInvoice) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendInvoice"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendInvoice"),
 	}
 
@@ -4272,7 +4272,7 @@ func (c *Client) SendLocation(ctx context.Context, request *SendLocation) (*Resu
 func (c *Client) sendSendLocation(ctx context.Context, request *SendLocation) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendLocation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendLocation"),
 	}
 
@@ -4345,7 +4345,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, request *SendMediaGroup) (*
 func (c *Client) sendSendMediaGroup(ctx context.Context, request *SendMediaGroup) (res *ResultArrayOfMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMediaGroup"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendMediaGroup"),
 	}
 
@@ -4418,7 +4418,7 @@ func (c *Client) SendMessage(ctx context.Context, request *SendMessage) (*Result
 func (c *Client) sendSendMessage(ctx context.Context, request *SendMessage) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendMessage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendMessage"),
 	}
 
@@ -4491,7 +4491,7 @@ func (c *Client) SendPhoto(ctx context.Context, request *SendPhoto) (*ResultMess
 func (c *Client) sendSendPhoto(ctx context.Context, request *SendPhoto) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPhoto"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendPhoto"),
 	}
 
@@ -4564,7 +4564,7 @@ func (c *Client) SendPoll(ctx context.Context, request *SendPoll) (*ResultMessag
 func (c *Client) sendSendPoll(ctx context.Context, request *SendPoll) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendPoll"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendPoll"),
 	}
 
@@ -4637,7 +4637,7 @@ func (c *Client) SendSticker(ctx context.Context, request *SendSticker) (*Result
 func (c *Client) sendSendSticker(ctx context.Context, request *SendSticker) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendSticker"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendSticker"),
 	}
 
@@ -4710,7 +4710,7 @@ func (c *Client) SendVenue(ctx context.Context, request *SendVenue) (*ResultMess
 func (c *Client) sendSendVenue(ctx context.Context, request *SendVenue) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVenue"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVenue"),
 	}
 
@@ -4783,7 +4783,7 @@ func (c *Client) SendVideo(ctx context.Context, request *SendVideo) (*ResultMess
 func (c *Client) sendSendVideo(ctx context.Context, request *SendVideo) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideo"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVideo"),
 	}
 
@@ -4856,7 +4856,7 @@ func (c *Client) SendVideoNote(ctx context.Context, request *SendVideoNote) (*Re
 func (c *Client) sendSendVideoNote(ctx context.Context, request *SendVideoNote) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVideoNote"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVideoNote"),
 	}
 
@@ -4929,7 +4929,7 @@ func (c *Client) SendVoice(ctx context.Context, request *SendVoice) (*ResultMess
 func (c *Client) sendSendVoice(ctx context.Context, request *SendVoice) (res *ResultMessage, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sendVoice"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/sendVoice"),
 	}
 
@@ -5002,7 +5002,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request *S
 func (c *Client) sendSetChatAdministratorCustomTitle(ctx context.Context, request *SetChatAdministratorCustomTitle) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatAdministratorCustomTitle"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatAdministratorCustomTitle"),
 	}
 
@@ -5075,7 +5075,7 @@ func (c *Client) SetChatDescription(ctx context.Context, request *SetChatDescrip
 func (c *Client) sendSetChatDescription(ctx context.Context, request *SetChatDescription) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatDescription"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatDescription"),
 	}
 
@@ -5148,7 +5148,7 @@ func (c *Client) SetChatPermissions(ctx context.Context, request *SetChatPermiss
 func (c *Client) sendSetChatPermissions(ctx context.Context, request *SetChatPermissions) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPermissions"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatPermissions"),
 	}
 
@@ -5221,7 +5221,7 @@ func (c *Client) SetChatPhoto(ctx context.Context, request *SetChatPhoto) (*Resu
 func (c *Client) sendSetChatPhoto(ctx context.Context, request *SetChatPhoto) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatPhoto"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatPhoto"),
 	}
 
@@ -5294,7 +5294,7 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request *SetChatStickerS
 func (c *Client) sendSetChatStickerSet(ctx context.Context, request *SetChatStickerSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatStickerSet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatStickerSet"),
 	}
 
@@ -5367,7 +5367,7 @@ func (c *Client) SetChatTitle(ctx context.Context, request *SetChatTitle) (*Resu
 func (c *Client) sendSetChatTitle(ctx context.Context, request *SetChatTitle) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setChatTitle"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setChatTitle"),
 	}
 
@@ -5440,7 +5440,7 @@ func (c *Client) SetGameScore(ctx context.Context, request *SetGameScore) (*Resu
 func (c *Client) sendSetGameScore(ctx context.Context, request *SetGameScore) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setGameScore"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setGameScore"),
 	}
 
@@ -5513,7 +5513,7 @@ func (c *Client) SetMyCommands(ctx context.Context, request *SetMyCommands) (*Re
 func (c *Client) sendSetMyCommands(ctx context.Context, request *SetMyCommands) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setMyCommands"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setMyCommands"),
 	}
 
@@ -5586,7 +5586,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request *SetPassport
 func (c *Client) sendSetPassportDataErrors(ctx context.Context, request *SetPassportDataErrors) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setPassportDataErrors"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setPassportDataErrors"),
 	}
 
@@ -5659,7 +5659,7 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request *SetSticke
 func (c *Client) sendSetStickerPositionInSet(ctx context.Context, request *SetStickerPositionInSet) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerPositionInSet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setStickerPositionInSet"),
 	}
 
@@ -5732,7 +5732,7 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request *SetStickerSetT
 func (c *Client) sendSetStickerSetThumb(ctx context.Context, request *SetStickerSetThumb) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setStickerSetThumb"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setStickerSetThumb"),
 	}
 
@@ -5805,7 +5805,7 @@ func (c *Client) SetWebhook(ctx context.Context, request *SetWebhook) (*Result, 
 func (c *Client) sendSetWebhook(ctx context.Context, request *SetWebhook) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("setWebhook"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/setWebhook"),
 	}
 
@@ -5878,7 +5878,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request *StopMessa
 func (c *Client) sendStopMessageLiveLocation(ctx context.Context, request *StopMessageLiveLocation) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopMessageLiveLocation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/stopMessageLiveLocation"),
 	}
 
@@ -5951,7 +5951,7 @@ func (c *Client) StopPoll(ctx context.Context, request *StopPoll) (*ResultPoll, 
 func (c *Client) sendStopPoll(ctx context.Context, request *StopPoll) (res *ResultPoll, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stopPoll"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/stopPoll"),
 	}
 
@@ -6024,7 +6024,7 @@ func (c *Client) UnbanChatMember(ctx context.Context, request *UnbanChatMember) 
 func (c *Client) sendUnbanChatMember(ctx context.Context, request *UnbanChatMember) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatMember"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unbanChatMember"),
 	}
 
@@ -6097,7 +6097,7 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request *UnbanChatSend
 func (c *Client) sendUnbanChatSenderChat(ctx context.Context, request *UnbanChatSenderChat) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unbanChatSenderChat"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unbanChatSenderChat"),
 	}
 
@@ -6170,7 +6170,7 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request *UnpinAllChat
 func (c *Client) sendUnpinAllChatMessages(ctx context.Context, request *UnpinAllChatMessages) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinAllChatMessages"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unpinAllChatMessages"),
 	}
 
@@ -6243,7 +6243,7 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request *UnpinChatMessage
 func (c *Client) sendUnpinChatMessage(ctx context.Context, request *UnpinChatMessage) (res *Result, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("unpinChatMessage"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/unpinChatMessage"),
 	}
 
@@ -6316,7 +6316,7 @@ func (c *Client) UploadStickerFile(ctx context.Context, request *UploadStickerFi
 func (c *Client) sendUploadStickerFile(ctx context.Context, request *UploadStickerFile) (res *ResultFile, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("uploadStickerFile"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/uploadStickerFile"),
 	}
 

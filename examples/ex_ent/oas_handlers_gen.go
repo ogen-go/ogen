@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -28,7 +28,7 @@ import (
 func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPet"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -140,7 +140,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetCategories"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets/{id}/categories"),
 	}
 
@@ -267,7 +267,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetFriends"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets/{id}/friends"),
 	}
 
@@ -394,7 +394,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetOwner"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets/{id}/owner"),
 	}
 
@@ -521,7 +521,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
-		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
@@ -633,7 +633,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePetOwner"),
-		semconv.HTTPMethodKey.String("DELETE"),
+		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/pets/{id}/owner"),
 	}
 
@@ -745,7 +745,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w
 func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -861,7 +861,7 @@ func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.R
 func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetCategories"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}/categories"),
 	}
 
@@ -981,7 +981,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool
 func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetFriends"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}/friends"),
 	}
 
@@ -1101,7 +1101,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w
 func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 
@@ -1213,7 +1213,7 @@ func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.R
 func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPetOwner"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{id}/owner"),
 	}
 
@@ -1325,7 +1325,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w h
 func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updatePet"),
-		semconv.HTTPMethodKey.String("PATCH"),
+		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/pets/{id}"),
 	}
 

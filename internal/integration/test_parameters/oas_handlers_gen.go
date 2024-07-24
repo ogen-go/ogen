@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -25,7 +25,7 @@ import (
 // GET /complicatedParameterName
 func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/complicatedParameterName"),
 	}
 
@@ -151,7 +151,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("contentParameters"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/contentParameters/{path}"),
 	}
 
@@ -275,7 +275,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("cookieParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/cookieParameter"),
 	}
 
@@ -387,7 +387,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headerParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headerParameter"),
 	}
 
@@ -497,7 +497,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectCookieParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/objectCookieParameter"),
 	}
 
@@ -607,7 +607,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectQueryParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/objectQueryParameter"),
 	}
 
@@ -721,7 +721,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalArrayParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/optionalArrayParameter"),
 	}
 
@@ -837,7 +837,7 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("pathParameter"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pathParameter/{value}"),
 	}
 
@@ -949,7 +949,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("sameName"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/same_name/{param}"),
 	}
 
@@ -1065,7 +1065,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("similarNames"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/similarNames"),
 	}
 

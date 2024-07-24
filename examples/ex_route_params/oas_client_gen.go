@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -104,7 +104,7 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (string, err
 func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}/{key}"),
 	}
 
@@ -213,7 +213,7 @@ func (c *Client) DataGetAny(ctx context.Context) (string, error) {
 func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetAny"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name"),
 	}
 
@@ -285,7 +285,7 @@ func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (string,
 func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res string, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}"),
 	}
 

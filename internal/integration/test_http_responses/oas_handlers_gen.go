@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -26,7 +26,7 @@ import (
 func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchema"),
 	}
 
@@ -117,7 +117,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/anyContentTypeBinaryStringSchemaDefault"),
 	}
 
@@ -208,7 +208,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/combined"),
 	}
 
@@ -318,7 +318,7 @@ func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.
 func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headers200"),
 	}
 
@@ -409,7 +409,7 @@ func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w htt
 func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersCombined"),
 	}
 
@@ -519,7 +519,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersDefault"),
 	}
 
@@ -610,7 +610,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w
 func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersJSON"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersJSON"),
 	}
 
@@ -701,7 +701,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w ht
 func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/headersPattern"),
 	}
 
@@ -795,7 +795,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/intersectPatternCode"),
 	}
 
@@ -905,7 +905,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped b
 func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/multipleGenericResponses"),
 	}
 
@@ -996,7 +996,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscap
 func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/octetStreamBinaryStringSchema"),
 	}
 
@@ -1087,7 +1087,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, args
 func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/octetStreamEmptySchema"),
 	}
 
@@ -1180,7 +1180,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped
 func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalHeaders"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/optionalHeaders"),
 	}
 
@@ -1271,7 +1271,7 @@ func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 
@@ -1381,7 +1381,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/textPlainBinaryStringSchema"),
 	}
 

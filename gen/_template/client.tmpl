@@ -200,7 +200,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 			{{ $attr.String }},
 			{{- end }}
 			{{- if not $op.WebhookInfo }}
-			semconv.HTTPMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
+			semconv.HTTPRequestMethodKey.String({{ upper $op.Spec.HTTPMethod | quote }}),
 			semconv.HTTPRouteKey.String({{ quote $op.Spec.Path }}),
 			{{- end }}
 		}

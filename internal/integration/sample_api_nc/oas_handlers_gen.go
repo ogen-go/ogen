@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -28,7 +28,7 @@ import (
 func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("dataGetFormat"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}/{foo}1234{bar}-{baz}!{kek}"),
 	}
 
@@ -154,7 +154,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("defaultTest"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/defaultTest"),
 	}
 
@@ -281,7 +281,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("errorGet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/error"),
 	}
 
@@ -374,7 +374,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarGet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foobar"),
 	}
 
@@ -490,7 +490,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("foobarPost"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/foobar"),
 	}
 
@@ -599,7 +599,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 // PUT /foobar
 func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("PUT"),
+		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/foobar"),
 	}
 
@@ -690,7 +690,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("noAdditionalPropertiesTest"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/noAdditionalPropertiesTest"),
 	}
 
@@ -781,7 +781,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableDefaultResponse"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/nullableDefaultResponse"),
 	}
 
@@ -872,7 +872,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("oneofBug"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/oneofBug"),
 	}
 
@@ -981,7 +981,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 // GET /patternRecursiveMap
 func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/patternRecursiveMap"),
 	}
 
@@ -1074,7 +1074,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petCreate"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet"),
 	}
 
@@ -1186,7 +1186,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petFriendsNamesByID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/friendNames/{id}"),
 	}
 
@@ -1298,7 +1298,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGet"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet"),
 	}
 
@@ -1422,7 +1422,7 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/avatar"),
 	}
 
@@ -1534,7 +1534,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetAvatarByName"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/{name}/avatar"),
 	}
 
@@ -1646,7 +1646,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petGetByName"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/{name}"),
 	}
 
@@ -1758,7 +1758,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petNameByID"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pet/name/{id}"),
 	}
 
@@ -1867,7 +1867,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 // POST /pet/updateNameAlias
 func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/updateNameAlias"),
 	}
 
@@ -1976,7 +1976,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 // POST /pet/updateName
 func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/updateName"),
 	}
 
@@ -2088,7 +2088,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("petUploadAvatarByID"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pet/avatar"),
 	}
 
@@ -2212,7 +2212,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 // GET /recursiveArray
 func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/recursiveArray"),
 	}
 
@@ -2302,7 +2302,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 // GET /recursiveMap
 func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/recursiveMap"),
 	}
 
@@ -2393,7 +2393,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("securityTest"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/securityTest"),
 	}
 
@@ -2531,7 +2531,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 // GET /stringIntMap
 func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/stringIntMap"),
 	}
 
@@ -2622,7 +2622,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFloatValidation"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testFloatValidation"),
 	}
 
@@ -2732,7 +2732,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testInlineOneof"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testInlineOneof"),
 	}
 
@@ -2823,7 +2823,7 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testNullableOneofs"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testNullableOneofs"),
 	}
 
@@ -2914,7 +2914,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testTuple"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testTuple"),
 	}
 
@@ -3005,7 +3005,7 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testTupleNamed"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testTupleNamed"),
 	}
 
@@ -3096,7 +3096,7 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testUniqueItems"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/testUniqueItems"),
 	}
 

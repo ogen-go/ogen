@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -108,7 +108,7 @@ func (c *Client) CreatePets(ctx context.Context) error {
 func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPets"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -180,7 +180,7 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (*PetsHead
 func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *PetsHeaders, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPets"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
 
@@ -273,7 +273,7 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (*Pe
 func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) (res *Pet, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("showPetById"),
-		semconv.HTTPMethodKey.String("GET"),
+		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{petId}"),
 	}
 

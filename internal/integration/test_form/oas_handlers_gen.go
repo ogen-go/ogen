@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -26,7 +26,7 @@ import (
 func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyForm"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/onlyForm"),
 	}
 
@@ -136,7 +136,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartFile"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/onlyMultipartFile"),
 	}
 
@@ -246,7 +246,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("onlyMultipartForm"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/onlyMultipartForm"),
 	}
 
@@ -356,7 +356,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testFormURLEncoded"),
 	}
 
@@ -466,7 +466,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipart"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testMultipart"),
 	}
 
@@ -576,7 +576,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testMultipartUpload"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testMultipartUpload"),
 	}
 
@@ -686,7 +686,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormOptionalSchema"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testReuseFormOptionalSchema"),
 	}
 
@@ -796,7 +796,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testReuseFormSchema"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testReuseFormSchema"),
 	}
 
@@ -906,7 +906,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testShareFormSchema"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testShareFormSchema"),
 	}
 

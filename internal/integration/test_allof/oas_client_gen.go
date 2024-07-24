@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -156,7 +156,7 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/nullableStrings"),
 	}
 
@@ -240,7 +240,7 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingArrayProperty"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/objectsWithConflictingArrayProperty"),
 	}
 
@@ -324,7 +324,7 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("objectsWithConflictingProperties"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/objectsWithConflictingProperties"),
 	}
 
@@ -422,7 +422,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllof"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/referencedAllof"),
 	}
 
@@ -522,7 +522,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("referencedAllofOptional"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/referencedAllofOptional"),
 	}
 
@@ -615,7 +615,7 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleInteger"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/simpleInteger"),
 	}
 
@@ -690,7 +690,7 @@ func (c *Client) SimpleObjects(ctx context.Context, request *SimpleObjectsReq) e
 func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsReq) (res *SimpleObjectsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("simpleObjects"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/simpleObjects"),
 	}
 
@@ -787,7 +787,7 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 	}
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("stringsNotype"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/stringsNotype"),
 	}
 

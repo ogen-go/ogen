@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
@@ -26,7 +26,7 @@ import (
 func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/allRequestBodies"),
 	}
 
@@ -136,7 +136,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/allRequestBodiesOptional"),
 	}
 
@@ -246,7 +246,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("base64Request"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/base64Request"),
 	}
 
@@ -356,7 +356,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentType"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/maskContentType"),
 	}
 
@@ -466,7 +466,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("maskContentTypeOptional"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/maskContentTypeOptional"),
 	}
 
@@ -576,7 +576,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("streamJSON"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
 

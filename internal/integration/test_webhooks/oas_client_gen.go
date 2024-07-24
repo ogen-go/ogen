@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.19.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -92,7 +92,7 @@ func (c *Client) PublishEvent(ctx context.Context, request OptEvent) (*Event, er
 func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *Event, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("publishEvent"),
-		semconv.HTTPMethodKey.String("POST"),
+		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/event"),
 	}
 
