@@ -23,7 +23,7 @@ func Array(item *Type, sem NilSemantic, schema *jsonschema.Schema) *Type {
 func Alias(name string, to *Type) *Type {
 	return &Type{
 		Kind:       KindAlias,
-		Name:       name,
+		name:       name,
 		AliasTo:    to,
 		Validators: to.Validators,
 		Features:   to.CloneFeatures(),
@@ -32,7 +32,7 @@ func Alias(name string, to *Type) *Type {
 
 func Interface(name string) *Type {
 	return &Type{
-		Name:             name,
+		name:             name,
 		Kind:             KindInterface,
 		InterfaceMethods: map[string]struct{}{},
 		Implementations:  map[*Type]struct{}{},
@@ -49,9 +49,8 @@ func Pointer(to *Type, sem NilSemantic) *Type {
 }
 
 func Generic(name string, of *Type, v GenericVariant) *Type {
-	name = v.Name() + name
 	return &Type{
-		Name:           name,
+		name:           name,
 		Kind:           KindGeneric,
 		GenericOf:      of,
 		GenericVariant: v,
@@ -69,7 +68,7 @@ func Any(schema *jsonschema.Schema) *Type {
 func Stream(name string, schema *jsonschema.Schema) *Type {
 	return &Type{
 		Kind:   KindStream,
-		Name:   name,
+		name:   name,
 		Schema: schema,
 	}
 }
