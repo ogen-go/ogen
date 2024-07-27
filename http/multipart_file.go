@@ -5,9 +5,8 @@ import (
 	"io"
 	"mime/multipart"
 	"net/textproto"
+	"slices"
 	"strings"
-
-	"golang.org/x/exp/slices"
 )
 
 // MultipartFile is multipart form file.

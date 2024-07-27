@@ -8,12 +8,12 @@ import (
 	"path/filepath"
 	"regexp"
 	"runtime"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
 	"go.uber.org/zap"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/urlpath"

@@ -1,7 +1,7 @@
 // Package xslices provides some generic utilities missed from x/exp/slices.
 package xslices
 
-import "golang.org/x/exp/slices"
+import "slices"
 
 // Filter performs in-place filtering of a slice.
 func Filter[S ~[]E, E any](s S, keep func(E) bool) S {

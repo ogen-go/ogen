@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"go/token"
 	"math/big"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
-	"golang.org/x/exp/slices"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonpointer"

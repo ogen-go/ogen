@@ -2,10 +2,10 @@ package jsonschema
 
 import (
 	"encoding/json"
+	"slices"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/xslices"
 )

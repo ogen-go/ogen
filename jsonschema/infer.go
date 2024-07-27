@@ -1,11 +1,11 @@
 package jsonschema
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"golang.org/x/exp/slices"
 )
 
 // Infer returns a JSON Schema that is inferred from the given JSON.

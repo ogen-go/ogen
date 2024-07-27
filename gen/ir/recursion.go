@@ -3,8 +3,7 @@ package ir
 import (
 	"fmt"
 	"reflect"
-
-	"golang.org/x/exp/slices"
+	"slices"
 )
 
 func (t *Type) RecursiveTo(target *Type) bool {

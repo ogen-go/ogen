@@ -2,10 +2,10 @@ package gen
 
 import (
 	"fmt"
+	"slices"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
-	"golang.org/x/exp/slices"
 )
 
 // Feature is an ogen feature.

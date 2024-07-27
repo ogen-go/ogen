@@ -2,9 +2,8 @@ package ir
 
 import (
 	"fmt"
+	"slices"
 	"strings"
-
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"

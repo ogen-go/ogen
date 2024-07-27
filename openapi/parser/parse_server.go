@@ -3,9 +3,9 @@ package parser
 import (
 	"fmt"
 	"go/token"
+	"slices"
 
 	"github.com/go-faster/errors"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonpointer"
