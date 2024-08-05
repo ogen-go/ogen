@@ -57,7 +57,7 @@ generator:
 
   # contains filters to skip operations.
   filters:
-    path_regex: "*"
+    path_regex: ".*"
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
   # functions to ignore
