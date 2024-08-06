@@ -1,10 +1,10 @@
 package ir
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/go-faster/jx"
-	"golang.org/x/exp/slices"
 )
 
 func (t *Type) Examples() (r []string) {

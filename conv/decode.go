@@ -4,11 +4,11 @@ import (
 	"net"
 	"net/netip"
 	"net/url"
+	"slices"
 	"strconv"
 	"time"
 
 	"github.com/google/uuid"
-	"golang.org/x/exp/slices"
 )
 
 func ToInt(s string) (int, error) {

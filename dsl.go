@@ -2,10 +2,10 @@ package ogen
 
 import (
 	"encoding/json"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/jx"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"

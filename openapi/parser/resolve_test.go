@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
+	"slices"
 	"strings"
 	"testing"
 
 	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/require"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"

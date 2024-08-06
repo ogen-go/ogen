@@ -1,9 +1,8 @@
 package ir
 
 import (
+	"slices"
 	"strings"
-
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/bitset"
 	"github.com/ogen-go/ogen/internal/naming"

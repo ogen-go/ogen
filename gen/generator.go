@@ -3,13 +3,13 @@ package gen
 import (
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
 	"go.uber.org/zap"
 	"golang.org/x/exp/maps"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen/ir"

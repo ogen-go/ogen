@@ -8,11 +8,11 @@ import (
 	"regexp"
 	"runtime"
 	"runtime/pprof"
+	"slices"
 	"sync"
 	"text/template"
 
 	"github.com/go-faster/errors"
-	"golang.org/x/exp/slices"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/tools/imports"
 

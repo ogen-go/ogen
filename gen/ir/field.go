@@ -2,10 +2,9 @@ package ir
 
 import (
 	"fmt"
+	"slices"
 	"strconv"
 	"strings"
-
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/jsonschema"

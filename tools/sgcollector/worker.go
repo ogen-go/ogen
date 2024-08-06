@@ -7,13 +7,13 @@ import (
 	"net/http"
 	"net/url"
 	"regexp"
+	"slices"
 	"strings"
 	"time"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/go-faster/yaml"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"

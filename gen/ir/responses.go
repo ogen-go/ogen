@@ -2,9 +2,8 @@ package ir
 
 import (
 	"fmt"
+	"slices"
 	"strings"
-
-	"golang.org/x/exp/slices"
 )
 
 type ResponseInfo struct {
