@@ -40,6 +40,9 @@ func (v *Validators) SetString(schema *jsonschema.Schema) (err error) {
 	if schema.Format == "hostname" {
 		v.String.Hostname = true
 	}
+	if schema.Format == "byte" {
+		v.String.Byte = true
+	}
 	return nil
 }
 
