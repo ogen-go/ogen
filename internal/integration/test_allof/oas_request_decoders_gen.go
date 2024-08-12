@@ -84,6 +84,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        false,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        regexMap["^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"],
 					}).Validate(string(value)); err != nil {
@@ -837,6 +838,7 @@ func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 						MaxLength:    15,
 						MaxLengthSet: true,
 						Email:        false,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {

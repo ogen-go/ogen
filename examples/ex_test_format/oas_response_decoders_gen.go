@@ -38912,6 +38912,7 @@ func decodeTestResponseStringEmailResponse(resp *http.Response) (res string, _ e
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(response)); err != nil {
@@ -38986,6 +38987,7 @@ func decodeTestResponseStringEmailArrayResponse(resp *http.Response) (res []stri
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -39085,6 +39087,7 @@ func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response) (res [
 									MaxLength:    0,
 									MaxLengthSet: false,
 									Email:        true,
+									Byte:         false,
 									Hostname:     false,
 									Regex:        nil,
 								}).Validate(string(elem)); err != nil {
@@ -39167,6 +39170,7 @@ func decodeTestResponseStringEmailNullableResponse(resp *http.Response) (res Nil
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        true,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(value)); err != nil {
@@ -39246,6 +39250,7 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response) (re
 									MaxLength:    0,
 									MaxLengthSet: false,
 									Email:        true,
+									Byte:         false,
 									Hostname:     false,
 									Regex:        nil,
 								}).Validate(string(value)); err != nil {
@@ -39350,6 +39355,7 @@ func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response
 											MaxLength:    0,
 											MaxLengthSet: false,
 											Email:        true,
+											Byte:         false,
 											Hostname:     false,
 											Regex:        nil,
 										}).Validate(string(value)); err != nil {
@@ -40391,6 +40397,7 @@ func decodeTestResponseStringHostnameResponse(resp *http.Response) (res string, 
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(response)); err != nil {
@@ -40465,6 +40472,7 @@ func decodeTestResponseStringHostnameArrayResponse(resp *http.Response) (res []s
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -40564,6 +40572,7 @@ func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response) (re
 									MaxLength:    0,
 									MaxLengthSet: false,
 									Email:        false,
+									Byte:         false,
 									Hostname:     true,
 									Regex:        nil,
 								}).Validate(string(elem)); err != nil {
@@ -40646,6 +40655,7 @@ func decodeTestResponseStringHostnameNullableResponse(resp *http.Response) (res 
 							MaxLength:    0,
 							MaxLengthSet: false,
 							Email:        false,
+							Byte:         false,
 							Hostname:     true,
 							Regex:        nil,
 						}).Validate(string(value)); err != nil {
@@ -40725,6 +40735,7 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response) 
 									MaxLength:    0,
 									MaxLengthSet: false,
 									Email:        false,
+									Byte:         false,
 									Hostname:     true,
 									Regex:        nil,
 								}).Validate(string(value)); err != nil {
@@ -40829,6 +40840,7 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 											MaxLength:    0,
 											MaxLengthSet: false,
 											Email:        false,
+											Byte:         false,
 											Hostname:     true,
 											Regex:        nil,
 										}).Validate(string(value)); err != nil {
