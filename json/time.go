@@ -59,18 +59,18 @@ func DecodeDateTime(i *jx.Decoder) (v time.Time, err error) {
 	if err != nil {
 		return v, err
 	}
-	return time.Parse(time.RFC3339, s)
+	return time.Parse(time.RFC3339Nano, s)
 }
 
 // EncodeDateTime encodes date-time to json.
 func EncodeDateTime(s *jx.Encoder, v time.Time) {
 	const (
 		roundTo  = 8
-		length   = len(time.RFC3339)
+		length   = len(time.RFC3339Nano)
 		allocate = ((length + roundTo - 1) / roundTo) * roundTo
 	)
 	b := make([]byte, allocate)
-	b = v.AppendFormat(b[:0], time.RFC3339)
+	b = v.AppendFormat(b[:0], time.RFC3339Nano)
 	s.ByteStr(b)
 }
 
