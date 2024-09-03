@@ -33,7 +33,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
-var oauth2Scopes = map[string][]string{
+var oauth2ScopesOAuth2 = map[string][]string{
 	"AddPet": []string{
 		"admin",
 	},
@@ -55,7 +55,7 @@ func (s *Server) securityOAuth2(ctx context.Context, operationName string, req *
 		return ctx, false, nil
 	}
 	t.Token = token
-	t.Scopes = oauth2Scopes[operationName]
+	t.Scopes = oauth2ScopesOAuth2[operationName]
 	rctx, err := s.sec.HandleOAuth2(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
