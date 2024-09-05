@@ -4,6 +4,8 @@ linters-settings:
       # Maximum allowed permissions mode file creation
       # Default: "0600"
       G306: "0644"
+    excludes:
+      - G115 # Annoying and have a lot of false-positive results.
   gocyclo:
     min-complexity: 15
   maligned:
