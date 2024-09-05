@@ -34,7 +34,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 
 {{ range $s := $.Securities }}
 {{- if $s.Format.IsOAuth2Security }}
-var oauth2Scopes = map[string][]string {
+var oauth2Scopes{{ $s.Type.Name }} = map[string][]string {
 {{- range $operationName, $scopes := $s.Scopes }}
 	{{ quote $operationName }}: []string{
 		{{- range $scope := $scopes }}
@@ -99,7 +99,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 			return ctx, false, nil
 		}
 		t.Token = token
-		t.Scopes = oauth2Scopes[operationName]
+		t.Scopes = oauth2Scopes{{ $s.Type.Name }}[operationName]
 	{{- else if $s.Format.IsCustomSecurity }}
 		t := req
 	{{- else }}
