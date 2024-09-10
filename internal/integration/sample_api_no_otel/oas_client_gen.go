@@ -145,6 +145,10 @@ type Invoker interface {
 	//
 	// GET /testInlineOneof
 	TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error)
+	// TestIssue1310 invokes testIssue1310 operation.
+	//
+	// GET /testIssue1310
+	TestIssue1310(ctx context.Context) (*Issue1310, error)
 	// TestNullableOneofs invokes testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs
@@ -1496,6 +1500,40 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 	defer resp.Body.Close()
 
 	result, err := decodeTestInlineOneofResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestIssue1310 invokes testIssue1310 operation.
+//
+// GET /testIssue1310
+func (c *Client) TestIssue1310(ctx context.Context) (*Issue1310, error) {
+	res, err := c.sendTestIssue1310(ctx)
+	return res, err
+}
+
+func (c *Client) sendTestIssue1310(ctx context.Context) (res *Issue1310, err error) {
+
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/testIssue1310"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestIssue1310Response(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

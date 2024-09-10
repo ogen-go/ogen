@@ -74,7 +74,12 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 			return err
 		}
 		o.Value = v
-	{{- else if or ($g.IsStruct) ($g.IsEnum) ($g.IsPointer) ($g.IsSum) ($g.IsAlias)  }}
+	{{- else if $g.IsPointer }}
+		o.Value = new({{ $g.PointerTo.Go }})
+		if err := o.Value.Decode(d); err != nil {
+			return err
+		}
+	{{- else if or ($g.IsStruct) ($g.IsEnum) ($g.IsSum) ($g.IsAlias)  }}
 		if err := o.Value.Decode(d); err != nil {
 			return err
 		}

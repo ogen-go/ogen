@@ -798,6 +798,23 @@
           }
         }
       }
+    },
+    "/testIssue1310": {
+      "get": {
+        "operationId": "testIssue1310",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue1310"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1971,6 +1988,27 @@
           },
           "bar": {
             "type": "string"
+          }
+        }
+      },
+      "Issue1310": {
+        "description": "An API error",
+        "type": "object",
+        "properties": {
+          "title": {
+            "description": "A short, human-readable summary of the problem type. This value should not change between occurrences of the error.",
+            "example": "Bad Request",
+            "type": "string"
+          },
+          "details": {
+            "description": "A human-readable explanation specific to this occurrence of the problem.",
+            "example": "Property foo is required but is missing.",
+            "type": "string"
+          },
+          "properties": {
+            "description": "Optional map of properties",
+            "nullable": true,
+            "type": "object"
           }
         }
       }

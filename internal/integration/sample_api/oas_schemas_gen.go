@@ -911,6 +911,51 @@ func NewInlineOneOfBarInlineUniqueFieldsOneOfSum(v InlineOneOfBar) InlineUniqueF
 	return s
 }
 
+// An API error.
+// Ref: #/components/schemas/Issue1310
+type Issue1310 struct {
+	// A short, human-readable summary of the problem type. This value should not change between
+	// occurrences of the error.
+	Title OptString `json:"title"`
+	// A human-readable explanation specific to this occurrence of the problem.
+	Details OptString `json:"details"`
+	// Optional map of properties.
+	Properties OptIssue1310Properties `json:"properties"`
+}
+
+// GetTitle returns the value of Title.
+func (s *Issue1310) GetTitle() OptString {
+	return s.Title
+}
+
+// GetDetails returns the value of Details.
+func (s *Issue1310) GetDetails() OptString {
+	return s.Details
+}
+
+// GetProperties returns the value of Properties.
+func (s *Issue1310) GetProperties() OptIssue1310Properties {
+	return s.Properties
+}
+
+// SetTitle sets the value of Title.
+func (s *Issue1310) SetTitle(val OptString) {
+	s.Title = val
+}
+
+// SetDetails sets the value of Details.
+func (s *Issue1310) SetDetails(val OptString) {
+	s.Details = val
+}
+
+// SetProperties sets the value of Properties.
+func (s *Issue1310) SetProperties(val OptIssue1310Properties) {
+	s.Properties = val
+}
+
+// Optional map of properties.
+type Issue1310Properties struct{}
+
 // Ref: #/components/schemas/Issue143
 // Issue143 represents sum type.
 type Issue143 struct {
@@ -3698,6 +3743,52 @@ func (o OptInt32) Get() (v int32, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIssue1310Properties returns new OptIssue1310Properties with value set to v.
+func NewOptIssue1310Properties(v *Issue1310Properties) OptIssue1310Properties {
+	return OptIssue1310Properties{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssue1310Properties is optional *Issue1310Properties.
+type OptIssue1310Properties struct {
+	Value *Issue1310Properties
+	Set   bool
+}
+
+// IsSet returns true if OptIssue1310Properties was set.
+func (o OptIssue1310Properties) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssue1310Properties) Reset() {
+	var v *Issue1310Properties
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssue1310Properties) SetTo(v *Issue1310Properties) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssue1310Properties) Get() (v *Issue1310Properties, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssue1310Properties) Or(d *Issue1310Properties) *Issue1310Properties {
 	if v, ok := o.Get(); ok {
 		return v
 	}
