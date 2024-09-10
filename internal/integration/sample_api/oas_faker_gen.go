@@ -356,6 +356,29 @@ func (s *InlineUniqueFieldsOneOfSum) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *Issue1310) SetFake() {
+	{
+		{
+			s.Title.SetFake()
+		}
+	}
+	{
+		{
+			s.Details.SetFake()
+		}
+	}
+	{
+		{
+			s.Properties.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue1310Properties) SetFake() {
+}
+
+// SetFake set fake values.
 func (s *Issue143) SetFake() {
 	var variant Issue1430
 
@@ -1056,6 +1079,15 @@ func (s *OptInt32) SetFake() {
 	var elem int32
 	{
 		elem = int32(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIssue1310Properties) SetFake() {
+	var elem *Issue1310Properties
+	{ // Keep pointer nil to prevent infinite recursion.
+		elem = nil
 	}
 	s.SetTo(elem)
 }

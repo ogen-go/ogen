@@ -724,24 +724,60 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					elem = origElem
-				case 'I': // Prefix: "InlineOneof"
+				case 'I': // Prefix: "I"
 					origElem := elem
-					if l := len("InlineOneof"); len(elem) >= l && elem[0:l] == "InlineOneof" {
+					if l := len("I"); len(elem) >= l && elem[0:l] == "I" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
-						switch r.Method {
-						case "GET":
-							s.handleTestInlineOneofRequest([0]string{}, elemIsEscaped, w, r)
-						default:
-							s.notAllowed(w, r, "GET")
+						break
+					}
+					switch elem[0] {
+					case 'n': // Prefix: "nlineOneof"
+						origElem := elem
+						if l := len("nlineOneof"); len(elem) >= l && elem[0:l] == "nlineOneof" {
+							elem = elem[l:]
+						} else {
+							break
 						}
 
-						return
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleTestInlineOneofRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+
+						elem = origElem
+					case 's': // Prefix: "ssue1310"
+						origElem := elem
+						if l := len("ssue1310"); len(elem) >= l && elem[0:l] == "ssue1310" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "GET":
+								s.handleTestIssue1310Request([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "GET")
+							}
+
+							return
+						}
+
+						elem = origElem
 					}
 
 					elem = origElem
@@ -1685,28 +1721,68 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 
 					elem = origElem
-				case 'I': // Prefix: "InlineOneof"
+				case 'I': // Prefix: "I"
 					origElem := elem
-					if l := len("InlineOneof"); len(elem) >= l && elem[0:l] == "InlineOneof" {
+					if l := len("I"); len(elem) >= l && elem[0:l] == "I" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf node.
-						switch method {
-						case "GET":
-							r.name = "TestInlineOneof"
-							r.summary = ""
-							r.operationID = "testInlineOneof"
-							r.pathPattern = "/testInlineOneof"
-							r.args = args
-							r.count = 0
-							return r, true
-						default:
-							return
+						break
+					}
+					switch elem[0] {
+					case 'n': // Prefix: "nlineOneof"
+						origElem := elem
+						if l := len("nlineOneof"); len(elem) >= l && elem[0:l] == "nlineOneof" {
+							elem = elem[l:]
+						} else {
+							break
 						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch method {
+							case "GET":
+								r.name = "TestInlineOneof"
+								r.summary = ""
+								r.operationID = "testInlineOneof"
+								r.pathPattern = "/testInlineOneof"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
+						elem = origElem
+					case 's': // Prefix: "ssue1310"
+						origElem := elem
+						if l := len("ssue1310"); len(elem) >= l && elem[0:l] == "ssue1310" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch method {
+							case "GET":
+								r.name = "TestIssue1310"
+								r.summary = ""
+								r.operationID = "testIssue1310"
+								r.pathPattern = "/testIssue1310"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
+						elem = origElem
 					}
 
 					elem = origElem

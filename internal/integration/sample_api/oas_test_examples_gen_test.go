@@ -217,6 +217,30 @@ func TestInlineUniqueFieldsOneOfSum_EncodeDecode(t *testing.T) {
 	var typ2 InlineUniqueFieldsOneOfSum
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestIssue1310_EncodeDecode(t *testing.T) {
+	var typ Issue1310
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue1310
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue1310Properties_EncodeDecode(t *testing.T) {
+	var typ Issue1310Properties
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue1310Properties
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestIssue143_EncodeDecode(t *testing.T) {
 	var typ Issue143
 	typ.SetFake()

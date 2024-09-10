@@ -136,6 +136,10 @@ type Handler interface {
 	//
 	// GET /testInlineOneof
 	TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error)
+	// TestIssue1310 implements testIssue1310 operation.
+	//
+	// GET /testIssue1310
+	TestIssue1310(ctx context.Context) (*Issue1310, error)
 	// TestNullableOneofs implements testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs
