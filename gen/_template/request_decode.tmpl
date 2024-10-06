@@ -235,7 +235,8 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 			cfg := uri.QueryParameterDecodingConfig{
 				Name:    {{ quote $p.Spec.Name }},
 				Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
-				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+				{{- /* NOTE: set Explode to false for multipart form arrays, see: https://github.com/ogen-go/ogen/pull/1323 */}}
+				Explode: {{ if and ($p.Spec.Explode) (ne $p.Type.Kind "array") }}true{{ else }}false{{ end }},
 				{{- if isObjectParam $p }}
 				Fields: {{ paramObjectFields $p.Type }},
 				{{- end }}

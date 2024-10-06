@@ -418,7 +418,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 			cfg := uri.QueryParameterDecodingConfig{
 				Name:    "array",
 				Style:   uri.QueryStyleForm,
-				Explode: true,
+				Explode: false,
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
@@ -636,7 +636,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 			cfg := uri.QueryParameterDecodingConfig{
 				Name:    "array",
 				Style:   uri.QueryStyleForm,
-				Explode: true,
+				Explode: false,
 			}
 			if err := q.HasParam(cfg); err == nil {
 				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
