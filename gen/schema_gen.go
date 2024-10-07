@@ -252,6 +252,18 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			return nil, err
 		}
 		oneOf = t
+	case len(schema.Enum) > 0:
+		switch schema.Type {
+		case jsonschema.String,
+			jsonschema.Integer,
+			jsonschema.Number,
+			jsonschema.Boolean,
+			jsonschema.Null:
+		default:
+			return nil, &ErrNotImplemented{
+				Name: "non-primitive enum",
+			}
+		}
 	}
 
 	switch schema.Type {

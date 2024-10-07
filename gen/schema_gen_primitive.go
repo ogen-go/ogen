@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/location"
 )
 
 func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type, error) {
@@ -27,6 +28,9 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 	}
 	if f := schema.Format; f != "" && !t.IsNumeric() {
 		return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)
+	}
+	if err := g.validateEnumValues(schema); err != nil {
+		return nil, errors.Wrap(err, "validate enum")
 	}
 
 	type namingStrategy int
@@ -144,6 +148,64 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		EnumVariants: variants,
 		Schema:       schema,
 	}, nil
+}
+
+func (g *schemaGen) validateEnumValues(s *jsonschema.Schema) error {
+	reportErr := func(idx int, err error) error {
+		pos, ok := s.Pointer.Field("enum").Index(idx).Position()
+		if !ok {
+			return err
+		}
+		return &location.Error{
+			File: s.Pointer.File(),
+			Pos:  pos,
+			Err:  err,
+		}
+	}
+
+	switch typ := s.Type; typ {
+	case jsonschema.Object, jsonschema.Array, jsonschema.Empty:
+		return &ErrNotImplemented{Name: "non-primitive enum"}
+	case jsonschema.Integer:
+		for idx, val := range s.Enum {
+			if _, ok := val.(int64); !ok {
+				return reportErr(idx, errors.Errorf("enum value should be an integer, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.Number:
+		for idx, val := range s.Enum {
+			switch val.(type) {
+			case int64, float64:
+			default:
+				return reportErr(idx, errors.Errorf("enum value should be a number, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.String:
+		for idx, val := range s.Enum {
+			if _, ok := val.(string); !ok {
+				return reportErr(idx, errors.Errorf("enum value should be a string, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.Boolean:
+		for idx, val := range s.Enum {
+			if _, ok := val.(bool); !ok {
+				return reportErr(idx, errors.Errorf("enum value should be a boolean, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.Null:
+		for idx, val := range s.Enum {
+			if val != nil {
+				return reportErr(idx, errors.Errorf("enum value should be a null, got %T", val))
+			}
+		}
+		return nil
+	default:
+		panic(fmt.Sprintf("unexpected schema type %q", typ))
+	}
 }
 
 func (g *schemaGen) parseSimple(schema *jsonschema.Schema) *ir.Type {
