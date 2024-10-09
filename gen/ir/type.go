@@ -65,7 +65,7 @@ func (s SumSpec) PickMappingEntryFor(t *Type) *SumSpecMap {
 type Type struct {
 	Doc                 string              // ogen documentation
 	Kind                Kind                // kind
-	Name                string              // only for struct, alias, interface, enum, stream, generic, map, sum
+	name                string              // only for struct, alias, interface, enum, stream, generic, map, sum
 	Primitive           PrimitiveType       // only for primitive, enum
 	AliasTo             *Type               // only for alias
 	PointerTo           *Type               // only for pointer
@@ -92,6 +92,23 @@ type Type struct {
 	// If some of these features are set, generator
 	// generates additional encoding methods if needed.
 	Features []string
+}
+
+type NameOpt struct {
+	CallerContext
+}
+
+func (t Type) Name(o NameOpt) string {
+	if t.Is(KindGeneric) {
+		isFeatureTurnedOn := true // generate non Opt* for default valued params, or not
+		if isFeatureTurnedOn && o.ServerClient == ServerClientServer && t.Default().Set {
+			return t.name
+		}
+
+		return t.GenericVariant.Name() + t.name
+	}
+
+	return t.name
 }
 
 // GoDoc returns type godoc.
@@ -165,19 +182,37 @@ func (t *Type) Is(vs ...Kind) bool {
 	return false
 }
 
+type GoOpt struct {
+	CallerContext
+}
+
+// ServerClient tells if template method being called is for client or server side code generation
+type ServerClient int
+
+const (
+	ServerClientNone = iota
+	ServerClientClient
+	ServerClientServer
+)
+
+// CallerContext holds information about the caller side context of the template method being invoked
+type CallerContext struct {
+	ServerClient
+}
+
 // Go returns valid Go type for this Type.
-func (t *Type) Go() string {
+func (t *Type) Go(opt GoOpt) string {
 	switch t.Kind {
 	case KindPrimitive:
 		return t.Primitive.String()
 	case KindAny:
 		return "jx.Raw"
 	case KindArray:
-		return "[]" + t.Item.Go()
+		return "[]" + t.Item.Go(opt)
 	case KindPointer:
-		return "*" + t.PointerTo.Go()
+		return "*" + t.PointerTo.Go(opt)
 	case KindStruct, KindMap, KindAlias, KindInterface, KindGeneric, KindEnum, KindSum, KindStream:
-		return t.Name
+		return t.Name(NameOpt{CallerContext{opt.CallerContext.ServerClient}})
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
