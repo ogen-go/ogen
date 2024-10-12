@@ -168,7 +168,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 			return errors.Wrap(err, "flush streaming")
 		}
 		{{- else }}
-		e := new(jx.Encoder)
+		e := new(jx.Encoder);
 		{{- template "json/enc" elem $type $var }}
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
