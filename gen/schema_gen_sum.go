@@ -836,6 +836,9 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		case s1.AdditionalProperties == nil && s2.AdditionalProperties != nil:
 			r.AdditionalProperties = s2.AdditionalProperties
 			r.Item = s2.Item
+		case reflect.DeepEqual(s1.AdditionalProperties, s2.AdditionalProperties) && reflect.DeepEqual(s1.Item, s2.Item):
+			r.AdditionalProperties = s1.AdditionalProperties
+			r.Item = s1.Item
 		case s1.AdditionalProperties != nil && s2.AdditionalProperties != nil:
 			return nil, &ErrNotImplemented{Name: "allOf additionalProperties merging"}
 		}
