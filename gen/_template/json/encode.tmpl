@@ -70,7 +70,7 @@ if {{ $.Var }}.Set {
 {{/* Encode value that implements jx.Encoder with respect to nil semantic */}}
 {{- define "json/enc_value" -}}
 {{- $t := $.Type -}}
-{{- if or ($t.NilSemantic.Invalid) ($t.NilSemantic.Optional) -}}
+{{- if or ($t.NilSemantic.Invalid) ($t.NilSemantic.Optional) }}
 	if {{ $.Var }} != nil {
 		{{- template "json/enc_field" $ }}
 		{{ $.Var }}.Encode(e)
