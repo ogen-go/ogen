@@ -23,6 +23,7 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
 		}).Validate(string(s.EncryptedValue)); err != nil {
@@ -56,6 +57,7 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
 				}).Validate(string(value)); err != nil {
@@ -118,6 +120,7 @@ func (s *ActionsCreateOrUpdateRepoSecretReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        regexMap["^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"],
 				}).Validate(string(value)); err != nil {
@@ -2465,6 +2468,7 @@ func (s *AppsCreateContentAttachmentReq) Validate() error {
 			MaxLength:    1024,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Title)); err != nil {
@@ -2484,6 +2488,7 @@ func (s *AppsCreateContentAttachmentReq) Validate() error {
 			MaxLength:    262144,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Body)); err != nil {
@@ -4256,6 +4261,7 @@ func (s CodeScanningAnalysisCommitSha) Validate() error {
 		MaxLength:    40,
 		MaxLengthSet: true,
 		Email:        false,
+		Byte:         false,
 		Hostname:     false,
 		Regex:        regexMap["^[0-9a-fA-F]+$"],
 	}).Validate(string(alias)); err != nil {
@@ -4750,6 +4756,7 @@ func (s *ContentReferenceAttachment) Validate() error {
 			MaxLength:    1024,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Title)); err != nil {
@@ -4769,6 +4776,7 @@ func (s *ContentReferenceAttachment) Validate() error {
 			MaxLength:    262144,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Body)); err != nil {
@@ -4894,6 +4902,7 @@ func (s *DeploymentStatus) Validate() error {
 			MaxLength:    140,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Description)); err != nil {
@@ -5042,6 +5051,7 @@ func (s *Email) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        true,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Email)); err != nil {
@@ -6121,6 +6131,7 @@ func (s *GistComment) Validate() error {
 			MaxLength:    65535,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Body)); err != nil {
@@ -6304,6 +6315,7 @@ func (s *GistsCreateCommentReq) Validate() error {
 			MaxLength:    65535,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Body)); err != nil {
@@ -6585,6 +6597,7 @@ func (s *GistsUpdateCommentReq) Validate() error {
 			MaxLength:    65535,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Body)); err != nil {
@@ -6902,6 +6915,7 @@ func (s *GitRefObject) Validate() error {
 			MaxLength:    40,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Sha)); err != nil {
@@ -8877,6 +8891,7 @@ func (s *MarketplaceAccount) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -8903,6 +8918,7 @@ func (s *MarketplaceAccount) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9653,6 +9669,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 					MaxLength:    20,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9679,6 +9696,7 @@ func (s *OAuthAuthorizationsCreateAuthorizationReq) Validate() error {
 					MaxLength:    40,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9731,6 +9749,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Val
 			MaxLength:    40,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ClientSecret)); err != nil {
@@ -9796,6 +9815,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) Validate() error 
 			MaxLength:    40,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ClientSecret)); err != nil {
@@ -10108,6 +10128,7 @@ func (s *OrganizationFull) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -10134,6 +10155,7 @@ func (s *OrganizationFull) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -11462,6 +11484,7 @@ func (s *PrivateUser) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -11840,6 +11863,7 @@ func (s *ProjectsMoveCardReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        regexMap["^(?:top|bottom|after:\\d+)$"],
 		}).Validate(string(s.Position)); err != nil {
@@ -11871,6 +11895,7 @@ func (s *ProjectsMoveColumnReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        regexMap["^(?:first|last|after:\\d+)$"],
 		}).Validate(string(s.Position)); err != nil {
@@ -12118,6 +12143,7 @@ func (s *PublicUser) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -14804,6 +14830,7 @@ func (s *ReposCreateDispatchEventReq) Validate() error {
 			MaxLength:    100,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.EventType)); err != nil {
@@ -19184,6 +19211,7 @@ func (s *UserSearchResultItem) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -19252,6 +19280,7 @@ func (s UsersAddEmailForAuthenticatedReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -19295,6 +19324,7 @@ func (s *UsersAddEmailForAuthenticatedReq0) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -19337,6 +19367,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        regexMap["^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) "],
 		}).Validate(string(s.Key)); err != nil {
@@ -19375,6 +19406,7 @@ func (s UsersDeleteEmailForAuthenticatedReq) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
@@ -19418,6 +19450,7 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(elem)); err != nil {
