@@ -4,11 +4,14 @@ on:
   push:
     tags:
       - v*
+  workflow_dispatch:
 
 jobs:
   docker:
-    permissions: write-all
-    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
