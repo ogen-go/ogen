@@ -17,6 +17,8 @@ func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if $g.Format }}, format
 {{- end }}
 {{- if $g.Format }}
 	format(e, o.Value)
+{{- else if $g.JSON.TimeFormat }}
+	json.EncodeTimeFormat(e, o.Value, {{ $g.JSON.TimeFormat }})
 {{- else if $g.JSON.Format }}
 	json.Encode{{ $g.JSON.Format }}(e, o.Value)
 {{- else if $g.JSON.Fn }}
@@ -31,7 +33,7 @@ func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if $g.Format }}, format
 {{- else if or ($g.IsStruct) ($g.IsMap) ($g.IsEnum) ($g.IsPointer) ($g.IsSum) ($g.IsAlias) }}
 	o.Value.Encode(e)
 {{- else }}
-    {{ errorf "unexpected kind %s" $g.Kind }}
+	{{ errorf "unexpected kind %s" $g.Kind }}
 {{- end }}
 }
 
@@ -64,6 +66,12 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 	{{- end }}
 	{{- if $g.Format }}
 		v, err := format(d)
+		if err != nil {
+			return err
+		}
+		o.Value = v
+	{{- else if $g.JSON.TimeFormat }}
+		v, err := json.DecodeTimeFormat(d, {{ $g.JSON.TimeFormat }})
 		if err != nil {
 			return err
 		}

@@ -103,6 +103,8 @@ type Schema struct {
 	// ExtraTags is a map of extra struct field tags
 	ExtraTags map[string]string
 
+	XOgenTimeFormat string // Time format for time.Time.
+
 	location.Pointer `json:"-" yaml:"-"`
 }
 

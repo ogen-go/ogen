@@ -2,6 +2,7 @@ package ir
 
 import (
 	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/bitset"
@@ -316,6 +317,15 @@ func (j JSON) Fn() string {
 // IsBase64 whether field has base64 encoding.
 func (j JSON) IsBase64() bool {
 	return j.t.Primitive == ByteSlice
+}
+
+// TimeFormat returns time format for json encoding and decoding.
+func (j JSON) TimeFormat() string {
+	s := j.t.Schema
+	if s == nil || s.XOgenTimeFormat == "" {
+		return ""
+	}
+	return strconv.Quote(s.XOgenTimeFormat)
 }
 
 // Sum returns specification for parsing value as sum type.
