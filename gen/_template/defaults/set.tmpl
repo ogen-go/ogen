@@ -16,7 +16,7 @@
 		{{ $.Var }}.SetTo(val)
 	{{- end }}
 {{- else if $t.IsPointer -}}
-    {{- template "defaults/val" default_elem $t.PointerTo $.Var $.Default }}
+	{{- template "defaults/val" default_elem $t.PointerTo $.Var $.Default }}
 	{{ $.Var }} = &val
 {{- else -}}
 	{{ errorf "unsupported %#v: %s" $.Default.Value $t }}
@@ -26,7 +26,9 @@
 {{- define "defaults/val" -}}
 
 {{ $t := $.Type }}{{ $j := $t.JSON }}{{- $val := print_go $.Default.Value }}
-{{- if $j.Format }}
+{{- if $j.TimeFormat }}
+	val, _ := json.DecodeTimeFormat(jx.DecodeStr({{ quote $val }}), {{ $j.TimeFormat }})
+{{- else if $j.Format }}
 	val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ quote $val }}))
 {{- else if $j.IsBase64 }}
 	val, _ := jx.DecodeStr({{ quote $val }}).Base64()

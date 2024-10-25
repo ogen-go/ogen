@@ -20,6 +20,7 @@ import (
 const (
 	xOgenName       = "x-ogen-name"
 	xOgenProperties = "x-ogen-properties"
+	xOgenTimeFormat = "x-ogen-time-format"
 	xOapiExtraTags  = "x-oapi-codegen-extra-tags"
 )
 
@@ -176,6 +177,11 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 
 					x.Pointer = locator.Field(propName).Pointer(p.file(ctx))
 					s.Properties[idx].X = x
+				}
+
+			case xOgenTimeFormat:
+				if err := val.Decode(&s.XOgenTimeFormat); err != nil {
+					return err
 				}
 
 			case xOapiExtraTags:

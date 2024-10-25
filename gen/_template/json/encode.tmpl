@@ -17,7 +17,7 @@ if {{ $.Var }}.Set {
 	{{- template "json/enc_generic_field" $ }}
 }
 {{- else }}
-    {{- template "json/enc_generic_field" $ }}
+	{{- template "json/enc_generic_field" $ }}
 {{- end -}}
 
 {{- end }}
@@ -28,9 +28,13 @@ if {{ $.Var }}.Set {
 
 {{- template "json/enc_field" $ }}
 {{- if $g.Format }}
-	{{ $.Var }}.Encode(e, json.Encode{{ $g.JSON.Format }})
+	{{ if $g.JSON.TimeFormat -}}
+		{{ $.Var }}.Encode(e, json.NewTimeEncoder({{ $g.JSON.TimeFormat }}))
+	{{- else -}}
+		{{ $.Var }}.Encode(e, json.Encode{{ $g.JSON.Format }})
+	{{- end }}
 {{- else }}
-    {{ $.Var }}.Encode(e)
+	{{ $.Var }}.Encode(e)
 {{- end }}
 
 {{- end }}
@@ -98,17 +102,20 @@ if {{ $.Var }}.Set {
 		{{- template "json/enc_generic" $ }}
 	{{- else if $t.IsArray -}}
 		{{- template "json/enc_array" $ }}
-    {{- else if $t.IsAny }}
+	{{- else if $t.IsAny }}
 		if len({{ $.Var }}) != 0 {
-        	{{- template "json/enc_field" $ }}
+			{{- template "json/enc_field" $ }}
 			e.{{ $j.Fn }}({{ $.Var }})
 		}
-    {{- else if $t.IsNull }}
+	{{- else if $t.IsNull }}
 		_ = {{ $.Var }}
-        {{- template "json/enc_field" $ }}
+		{{- template "json/enc_field" $ }}
 		e.Null()
-    {{- else if $j.Format -}}
-        {{- template "json/enc_field" $ }}
+	{{- else if $j.TimeFormat }}
+		{{- template "json/enc_field" $ }}
+		json.EncodeTimeFormat(e, {{ $.Var }}, {{ $j.TimeFormat }})
+	{{- else if $j.Format -}}
+		{{- template "json/enc_field" $ }}
 		json.Encode{{ $j.Format }}(e, {{ $.Var }})
 	{{- else if $j.Fn -}}
 		{{- template "json/enc_field" $ }}

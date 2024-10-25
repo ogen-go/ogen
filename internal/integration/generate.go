@@ -32,6 +32,7 @@ package integration
 //
 //go:generate go run ../../cmd/ogen -v --clean -target test_enum_naming       ../../_testdata/positive/enum_naming.yml
 //go:generate go run ../../cmd/ogen -v --clean -target test_naming_extensions ../../_testdata/positive/naming_extensions.json
+//go:generate go run ../../cmd/ogen -v --clean -target test_time_extension ../../_testdata/positive/time_extension.yml
 //
 // Regression test.
 //

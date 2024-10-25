@@ -9,7 +9,11 @@
 		return err
 	}
 
-	c, err := conv.{{ $t.FromString }}(val)
+	{{ if $t.JSON.TimeFormat -}}
+		c, err := time.Parse({{ $t.JSON.TimeFormat }}, val)
+	{{- else -}}
+		c, err := conv.{{ $t.FromString }}(val)
+	{{- end }}
 	if err != nil {
 		return err
 	}

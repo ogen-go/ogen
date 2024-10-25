@@ -381,6 +381,14 @@ func TestSchemaExtensions(t *testing.T) {
 		{`{"type": "string", "x-ogen-name": "foo"}`, nil, true},
 		// Invalid type.
 		{`{"type": "string", "x-ogen-name": {}}`, nil, true},
+		{
+			`{"type": "string", "x-ogen-time-format": "2006-01-02T15:04:05.999999999Z07:00"}`,
+			&Schema{
+				Type:            String,
+				XOgenTimeFormat: "2006-01-02T15:04:05.999999999Z07:00",
+			},
+			false,
+		},
 	}
 
 	for i, tt := range tests {

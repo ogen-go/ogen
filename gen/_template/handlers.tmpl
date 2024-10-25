@@ -15,7 +15,7 @@ func recordError(string, error) {}
 
 {{- if $.WebhookServerEnabled }}
 {{- range $op := $.Webhooks }}
-    {{- template "handlers/operation" op_elem $op $ }}
+	{{- template "handlers/operation" op_elem $op $ }}
 {{ end }}
 {{- end }}
 
@@ -128,7 +128,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			for _, requirement := range []bitset{
 				{{- range $req := $op.Security.Requirements }}
 				{
-                	{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end }}
+					{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end }}
 				},
 				{{- end }}
 			} {
@@ -156,7 +156,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			return
 		}
 	}
-    {{- end }}
+	{{- end }}
 
 	{{- if $op.Params }}
 	params, err := decode{{ $op.Name }}Params(args, argsEscaped, r)
