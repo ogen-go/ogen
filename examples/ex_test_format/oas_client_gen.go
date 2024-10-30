@@ -4176,7 +4176,7 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestQueryParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestQueryParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6288,7 +6288,7 @@ func (c *Client) sendTestRequestAny(ctx context.Context, request jx.Raw) (res *E
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestAny",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestAnyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6361,7 +6361,7 @@ func (c *Client) sendTestRequestBoolean(ctx context.Context, request OptBool) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBoolean",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestBooleanOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6434,7 +6434,7 @@ func (c *Client) sendTestRequestBooleanArray(ctx context.Context, request []bool
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestBooleanArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6507,7 +6507,7 @@ func (c *Client) sendTestRequestBooleanArrayArray(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestBooleanArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6580,7 +6580,7 @@ func (c *Client) sendTestRequestBooleanNullable(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestBooleanNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6653,7 +6653,7 @@ func (c *Client) sendTestRequestBooleanNullableArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestBooleanNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6726,7 +6726,7 @@ func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestBooleanNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6799,7 +6799,7 @@ func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request *TestRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestEmptyStruct",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestEmptyStructOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6872,7 +6872,7 @@ func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestR
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestFormatTest",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestFormatTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6945,7 +6945,7 @@ func (c *Client) sendTestRequestInteger(ctx context.Context, request OptInt) (re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestInteger",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7018,7 +7018,7 @@ func (c *Client) sendTestRequestIntegerArray(ctx context.Context, request []int)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7091,7 +7091,7 @@ func (c *Client) sendTestRequestIntegerArrayArray(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7164,7 +7164,7 @@ func (c *Client) sendTestRequestIntegerInt16(ctx context.Context, request OptInt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7237,7 +7237,7 @@ func (c *Client) sendTestRequestIntegerInt16Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7310,7 +7310,7 @@ func (c *Client) sendTestRequestIntegerInt16ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7383,7 +7383,7 @@ func (c *Client) sendTestRequestIntegerInt16Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7456,7 +7456,7 @@ func (c *Client) sendTestRequestIntegerInt16NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7529,7 +7529,7 @@ func (c *Client) sendTestRequestIntegerInt16NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7602,7 +7602,7 @@ func (c *Client) sendTestRequestIntegerInt32(ctx context.Context, request OptInt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7675,7 +7675,7 @@ func (c *Client) sendTestRequestIntegerInt32Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7748,7 +7748,7 @@ func (c *Client) sendTestRequestIntegerInt32ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7821,7 +7821,7 @@ func (c *Client) sendTestRequestIntegerInt32Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7894,7 +7894,7 @@ func (c *Client) sendTestRequestIntegerInt32NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7967,7 +7967,7 @@ func (c *Client) sendTestRequestIntegerInt32NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8040,7 +8040,7 @@ func (c *Client) sendTestRequestIntegerInt64(ctx context.Context, request OptInt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8113,7 +8113,7 @@ func (c *Client) sendTestRequestIntegerInt64Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8186,7 +8186,7 @@ func (c *Client) sendTestRequestIntegerInt64ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8259,7 +8259,7 @@ func (c *Client) sendTestRequestIntegerInt64Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8332,7 +8332,7 @@ func (c *Client) sendTestRequestIntegerInt64NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8405,7 +8405,7 @@ func (c *Client) sendTestRequestIntegerInt64NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8478,7 +8478,7 @@ func (c *Client) sendTestRequestIntegerInt8(ctx context.Context, request OptInt8
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8551,7 +8551,7 @@ func (c *Client) sendTestRequestIntegerInt8Array(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8624,7 +8624,7 @@ func (c *Client) sendTestRequestIntegerInt8ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8697,7 +8697,7 @@ func (c *Client) sendTestRequestIntegerInt8Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8770,7 +8770,7 @@ func (c *Client) sendTestRequestIntegerInt8NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8843,7 +8843,7 @@ func (c *Client) sendTestRequestIntegerInt8NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerInt8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8916,7 +8916,7 @@ func (c *Client) sendTestRequestIntegerNullable(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8989,7 +8989,7 @@ func (c *Client) sendTestRequestIntegerNullableArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9062,7 +9062,7 @@ func (c *Client) sendTestRequestIntegerNullableArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9135,7 +9135,7 @@ func (c *Client) sendTestRequestIntegerUint(ctx context.Context, request OptUint
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUintOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9208,7 +9208,7 @@ func (c *Client) sendTestRequestIntegerUint16(ctx context.Context, request OptUi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9281,7 +9281,7 @@ func (c *Client) sendTestRequestIntegerUint16Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9354,7 +9354,7 @@ func (c *Client) sendTestRequestIntegerUint16ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9427,7 +9427,7 @@ func (c *Client) sendTestRequestIntegerUint16Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9500,7 +9500,7 @@ func (c *Client) sendTestRequestIntegerUint16NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9573,7 +9573,7 @@ func (c *Client) sendTestRequestIntegerUint16NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9646,7 +9646,7 @@ func (c *Client) sendTestRequestIntegerUint32(ctx context.Context, request OptUi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9719,7 +9719,7 @@ func (c *Client) sendTestRequestIntegerUint32Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9792,7 +9792,7 @@ func (c *Client) sendTestRequestIntegerUint32ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9865,7 +9865,7 @@ func (c *Client) sendTestRequestIntegerUint32Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9938,7 +9938,7 @@ func (c *Client) sendTestRequestIntegerUint32NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10011,7 +10011,7 @@ func (c *Client) sendTestRequestIntegerUint32NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10084,7 +10084,7 @@ func (c *Client) sendTestRequestIntegerUint64(ctx context.Context, request OptUi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10157,7 +10157,7 @@ func (c *Client) sendTestRequestIntegerUint64Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10230,7 +10230,7 @@ func (c *Client) sendTestRequestIntegerUint64ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10303,7 +10303,7 @@ func (c *Client) sendTestRequestIntegerUint64Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10376,7 +10376,7 @@ func (c *Client) sendTestRequestIntegerUint64NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10449,7 +10449,7 @@ func (c *Client) sendTestRequestIntegerUint64NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10522,7 +10522,7 @@ func (c *Client) sendTestRequestIntegerUint8(ctx context.Context, request OptUin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10595,7 +10595,7 @@ func (c *Client) sendTestRequestIntegerUint8Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10668,7 +10668,7 @@ func (c *Client) sendTestRequestIntegerUint8ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10741,7 +10741,7 @@ func (c *Client) sendTestRequestIntegerUint8Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10814,7 +10814,7 @@ func (c *Client) sendTestRequestIntegerUint8NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10887,7 +10887,7 @@ func (c *Client) sendTestRequestIntegerUint8NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUint8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10960,7 +10960,7 @@ func (c *Client) sendTestRequestIntegerUintArray(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUintArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11033,7 +11033,7 @@ func (c *Client) sendTestRequestIntegerUintArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUintArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11106,7 +11106,7 @@ func (c *Client) sendTestRequestIntegerUintNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUintNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11179,7 +11179,7 @@ func (c *Client) sendTestRequestIntegerUintNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUintNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11252,7 +11252,7 @@ func (c *Client) sendTestRequestIntegerUintNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUintNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11325,7 +11325,7 @@ func (c *Client) sendTestRequestIntegerUnix(ctx context.Context, request OptUnix
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnix",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11398,7 +11398,7 @@ func (c *Client) sendTestRequestIntegerUnixArray(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11471,7 +11471,7 @@ func (c *Client) sendTestRequestIntegerUnixArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11544,7 +11544,7 @@ func (c *Client) sendTestRequestIntegerUnixMicro(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicro",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMicroOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11617,7 +11617,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMicroArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11690,7 +11690,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMicroArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11763,7 +11763,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullable(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMicroNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11836,7 +11836,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMicroNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11909,7 +11909,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMicroNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11982,7 +11982,7 @@ func (c *Client) sendTestRequestIntegerUnixMilli(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilli",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMilliOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12055,7 +12055,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMilliArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12128,7 +12128,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMilliArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12201,7 +12201,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullable(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMilliNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12274,7 +12274,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMilliNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12347,7 +12347,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixMilliNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12420,7 +12420,7 @@ func (c *Client) sendTestRequestIntegerUnixNano(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNano",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNanoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12493,7 +12493,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNanoArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12566,7 +12566,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNanoArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12639,7 +12639,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNanoNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12712,7 +12712,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNanoNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12785,7 +12785,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNanoNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12858,7 +12858,7 @@ func (c *Client) sendTestRequestIntegerUnixNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12931,7 +12931,7 @@ func (c *Client) sendTestRequestIntegerUnixNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13004,7 +13004,7 @@ func (c *Client) sendTestRequestIntegerUnixNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13077,7 +13077,7 @@ func (c *Client) sendTestRequestIntegerUnixSeconds(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSeconds",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixSecondsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13150,7 +13150,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixSecondsArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13223,7 +13223,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixSecondsArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13296,7 +13296,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixSecondsNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13369,7 +13369,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixSecondsNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13442,7 +13442,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestIntegerUnixSecondsNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13515,7 +13515,7 @@ func (c *Client) sendTestRequestNull(ctx context.Context, request OptNull) (res 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNull",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNullOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13588,7 +13588,7 @@ func (c *Client) sendTestRequestNullArray(ctx context.Context, request []struct{
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNullArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13661,7 +13661,7 @@ func (c *Client) sendTestRequestNullArrayArray(ctx context.Context, request [][]
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNullArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13734,7 +13734,7 @@ func (c *Client) sendTestRequestNullNullable(ctx context.Context, request OptNul
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNullNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13807,7 +13807,7 @@ func (c *Client) sendTestRequestNullNullableArray(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNullNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13880,7 +13880,7 @@ func (c *Client) sendTestRequestNullNullableArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNullNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13953,7 +13953,7 @@ func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumber",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14026,7 +14026,7 @@ func (c *Client) sendTestRequestNumberArray(ctx context.Context, request []float
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14099,7 +14099,7 @@ func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14172,7 +14172,7 @@ func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFlo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDouble",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDoubleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14245,7 +14245,7 @@ func (c *Client) sendTestRequestNumberDoubleArray(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDoubleArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14318,7 +14318,7 @@ func (c *Client) sendTestRequestNumberDoubleArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDoubleArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14391,7 +14391,7 @@ func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDoubleNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14464,7 +14464,7 @@ func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDoubleNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14537,7 +14537,7 @@ func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberDoubleNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14610,7 +14610,7 @@ func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloat",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberFloatOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14683,7 +14683,7 @@ func (c *Client) sendTestRequestNumberFloatArray(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberFloatArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14756,7 +14756,7 @@ func (c *Client) sendTestRequestNumberFloatArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberFloatArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14829,7 +14829,7 @@ func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberFloatNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14902,7 +14902,7 @@ func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberFloatNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14975,7 +14975,7 @@ func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberFloatNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15048,7 +15048,7 @@ func (c *Client) sendTestRequestNumberInt32(ctx context.Context, request OptInt3
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15121,7 +15121,7 @@ func (c *Client) sendTestRequestNumberInt32Array(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15194,7 +15194,7 @@ func (c *Client) sendTestRequestNumberInt32ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15267,7 +15267,7 @@ func (c *Client) sendTestRequestNumberInt32Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15340,7 +15340,7 @@ func (c *Client) sendTestRequestNumberInt32NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15413,7 +15413,7 @@ func (c *Client) sendTestRequestNumberInt32NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15486,7 +15486,7 @@ func (c *Client) sendTestRequestNumberInt64(ctx context.Context, request OptInt6
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15559,7 +15559,7 @@ func (c *Client) sendTestRequestNumberInt64Array(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15632,7 +15632,7 @@ func (c *Client) sendTestRequestNumberInt64ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15705,7 +15705,7 @@ func (c *Client) sendTestRequestNumberInt64Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15778,7 +15778,7 @@ func (c *Client) sendTestRequestNumberInt64NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15851,7 +15851,7 @@ func (c *Client) sendTestRequestNumberInt64NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15924,7 +15924,7 @@ func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptN
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15997,7 +15997,7 @@ func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16070,7 +16070,7 @@ func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestNumberNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16143,7 +16143,7 @@ func (c *Client) sendTestRequestRequiredAny(ctx context.Context, request jx.Raw)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredAny",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredAnyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16216,7 +16216,7 @@ func (c *Client) sendTestRequestRequiredBoolean(ctx context.Context, request boo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBoolean",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredBooleanOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16289,7 +16289,7 @@ func (c *Client) sendTestRequestRequiredBooleanArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredBooleanArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16362,7 +16362,7 @@ func (c *Client) sendTestRequestRequiredBooleanArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredBooleanArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16435,7 +16435,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredBooleanNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16508,7 +16508,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredBooleanNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16581,7 +16581,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredBooleanNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16654,7 +16654,7 @@ func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredEmptyStruct",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredEmptyStructOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16727,7 +16727,7 @@ func (c *Client) sendTestRequestRequiredFormatTest(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredFormatTest",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredFormatTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16800,7 +16800,7 @@ func (c *Client) sendTestRequestRequiredInteger(ctx context.Context, request int
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredInteger",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16873,7 +16873,7 @@ func (c *Client) sendTestRequestRequiredIntegerArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16946,7 +16946,7 @@ func (c *Client) sendTestRequestRequiredIntegerArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17019,7 +17019,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17092,7 +17092,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17165,7 +17165,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17238,7 +17238,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17311,7 +17311,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17384,7 +17384,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17457,7 +17457,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17530,7 +17530,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17603,7 +17603,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17676,7 +17676,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17749,7 +17749,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17822,7 +17822,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17895,7 +17895,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17968,7 +17968,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18041,7 +18041,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18114,7 +18114,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18187,7 +18187,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18260,7 +18260,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18333,7 +18333,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18406,7 +18406,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8Array(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18479,7 +18479,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8ArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18552,7 +18552,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8Nullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18625,7 +18625,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8NullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18698,7 +18698,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8NullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerInt8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18771,7 +18771,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18844,7 +18844,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18917,7 +18917,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18990,7 +18990,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUintOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19063,7 +19063,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19136,7 +19136,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16Array(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19209,7 +19209,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16ArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19282,7 +19282,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16Nullable(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19355,7 +19355,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16NullableArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19428,7 +19428,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16NullableArrayArray(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19501,7 +19501,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19574,7 +19574,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Array(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19647,7 +19647,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32ArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19720,7 +19720,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Nullable(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19793,7 +19793,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19866,7 +19866,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArrayArray(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19939,7 +19939,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20012,7 +20012,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Array(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20085,7 +20085,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64ArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20158,7 +20158,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Nullable(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20231,7 +20231,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20304,7 +20304,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArrayArray(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20377,7 +20377,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20450,7 +20450,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20523,7 +20523,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20596,7 +20596,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20669,7 +20669,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20742,7 +20742,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUint8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20815,7 +20815,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUintArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20888,7 +20888,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUintArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20961,7 +20961,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUintNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21034,7 +21034,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUintNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21107,7 +21107,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUintNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21180,7 +21180,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnix(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnix",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21253,7 +21253,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21326,7 +21326,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21399,7 +21399,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicro(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicro",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMicroOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21472,7 +21472,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMicroArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21545,7 +21545,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMicroArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21618,7 +21618,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullable(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMicroNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21691,7 +21691,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMicroNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21764,7 +21764,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx c
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMicroNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21837,7 +21837,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilli(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilli",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMilliOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21910,7 +21910,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMilliArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21983,7 +21983,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMilliArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22056,7 +22056,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullable(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMilliNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22129,7 +22129,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMilliNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22202,7 +22202,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx c
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixMilliNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22275,7 +22275,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNano(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNano",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNanoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22348,7 +22348,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNanoArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22421,7 +22421,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNanoArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22494,7 +22494,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullable(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNanoNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22567,7 +22567,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNanoNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22640,7 +22640,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNanoNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22713,7 +22713,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22786,7 +22786,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22859,7 +22859,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22932,7 +22932,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSeconds(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSeconds",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixSecondsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23005,7 +23005,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixSecondsArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23078,7 +23078,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixSecondsArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23151,7 +23151,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullable(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixSecondsNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23224,7 +23224,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArray(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixSecondsNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23297,7 +23297,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredIntegerUnixSecondsNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23370,7 +23370,7 @@ func (c *Client) sendTestRequestRequiredNull(ctx context.Context, request struct
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNull",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNullOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23443,7 +23443,7 @@ func (c *Client) sendTestRequestRequiredNullArray(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNullArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23516,7 +23516,7 @@ func (c *Client) sendTestRequestRequiredNullArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNullArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23589,7 +23589,7 @@ func (c *Client) sendTestRequestRequiredNullNullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNullNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23662,7 +23662,7 @@ func (c *Client) sendTestRequestRequiredNullNullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNullNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23735,7 +23735,7 @@ func (c *Client) sendTestRequestRequiredNullNullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNullNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23808,7 +23808,7 @@ func (c *Client) sendTestRequestRequiredNumber(ctx context.Context, request floa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumber",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23881,7 +23881,7 @@ func (c *Client) sendTestRequestRequiredNumberArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23954,7 +23954,7 @@ func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24027,7 +24027,7 @@ func (c *Client) sendTestRequestRequiredNumberDouble(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDouble",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDoubleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24100,7 +24100,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDoubleArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24173,7 +24173,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDoubleArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24246,7 +24246,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDoubleNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24319,7 +24319,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDoubleNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24392,7 +24392,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberDoubleNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24465,7 +24465,7 @@ func (c *Client) sendTestRequestRequiredNumberFloat(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloat",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberFloatOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24538,7 +24538,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberFloatArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24611,7 +24611,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberFloatArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24684,7 +24684,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberFloatNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24757,7 +24757,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberFloatNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24830,7 +24830,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberFloatNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24903,7 +24903,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24976,7 +24976,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32Array(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25049,7 +25049,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32ArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25122,7 +25122,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32Nullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25195,7 +25195,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25268,7 +25268,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25341,7 +25341,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25414,7 +25414,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64Array(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25487,7 +25487,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64ArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25560,7 +25560,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64Nullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25633,7 +25633,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25706,7 +25706,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25779,7 +25779,7 @@ func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25852,7 +25852,7 @@ func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25925,7 +25925,7 @@ func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredNumberNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25998,7 +25998,7 @@ func (c *Client) sendTestRequestRequiredString(ctx context.Context, request stri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredString",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26071,7 +26071,7 @@ func (c *Client) sendTestRequestRequiredStringArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26144,7 +26144,7 @@ func (c *Client) sendTestRequestRequiredStringArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26217,7 +26217,7 @@ func (c *Client) sendTestRequestRequiredStringBase64(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBase64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26290,7 +26290,7 @@ func (c *Client) sendTestRequestRequiredStringBase64Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBase64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26363,7 +26363,7 @@ func (c *Client) sendTestRequestRequiredStringBase64ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBase64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26436,7 +26436,7 @@ func (c *Client) sendTestRequestRequiredStringBase64Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBase64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26509,7 +26509,7 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBase64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26582,7 +26582,7 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBase64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBase64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26655,7 +26655,7 @@ func (c *Client) sendTestRequestRequiredStringBinary(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinary",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBinaryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26728,7 +26728,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBinaryArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26801,7 +26801,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBinaryArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26874,7 +26874,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBinaryNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26947,7 +26947,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBinaryNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27020,7 +27020,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringBinaryNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27093,7 +27093,7 @@ func (c *Client) sendTestRequestRequiredStringByte(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByte",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringByteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27166,7 +27166,7 @@ func (c *Client) sendTestRequestRequiredStringByteArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringByteArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27239,7 +27239,7 @@ func (c *Client) sendTestRequestRequiredStringByteArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringByteArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27312,7 +27312,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringByteNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27385,7 +27385,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringByteNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27458,7 +27458,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringByteNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27531,7 +27531,7 @@ func (c *Client) sendTestRequestRequiredStringDate(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDate",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27604,7 +27604,7 @@ func (c *Client) sendTestRequestRequiredStringDateArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27677,7 +27677,7 @@ func (c *Client) sendTestRequestRequiredStringDateArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27750,7 +27750,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27823,7 +27823,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27896,7 +27896,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27969,7 +27969,7 @@ func (c *Client) sendTestRequestRequiredStringDateTime(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTime",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateTimeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28042,7 +28042,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateTimeArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28115,7 +28115,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateTimeArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28188,7 +28188,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullable(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateTimeNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28261,7 +28261,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateTimeNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28334,7 +28334,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDateTimeNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28407,7 +28407,7 @@ func (c *Client) sendTestRequestRequiredStringDuration(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDuration",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28480,7 +28480,7 @@ func (c *Client) sendTestRequestRequiredStringDurationArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDurationArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28553,7 +28553,7 @@ func (c *Client) sendTestRequestRequiredStringDurationArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDurationArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28626,7 +28626,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullable(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDurationNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28699,7 +28699,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDurationNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28772,7 +28772,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArrayArray(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringDurationNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28845,7 +28845,7 @@ func (c *Client) sendTestRequestRequiredStringEmail(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmail",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringEmailOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28918,7 +28918,7 @@ func (c *Client) sendTestRequestRequiredStringEmailArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringEmailArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28991,7 +28991,7 @@ func (c *Client) sendTestRequestRequiredStringEmailArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringEmailArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29064,7 +29064,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringEmailNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29137,7 +29137,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringEmailNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29210,7 +29210,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringEmailNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29283,7 +29283,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29356,7 +29356,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32Array(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29429,7 +29429,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32ArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29502,7 +29502,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32Nullable(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29575,7 +29575,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32NullableArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29648,7 +29648,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32NullableArrayArray(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29721,7 +29721,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29794,7 +29794,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64Array(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29867,7 +29867,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64ArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29940,7 +29940,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64Nullable(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30013,7 +30013,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64NullableArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30086,7 +30086,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64NullableArrayArray(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringFloat64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringFloat64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30159,7 +30159,7 @@ func (c *Client) sendTestRequestRequiredStringHostname(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostname",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHostnameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30232,7 +30232,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHostnameArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30305,7 +30305,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHostnameArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30378,7 +30378,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHostnameNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30451,7 +30451,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHostnameNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30524,7 +30524,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringHostnameNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30597,7 +30597,7 @@ func (c *Client) sendTestRequestRequiredStringIP(ctx context.Context, request ne
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIP",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIPOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30670,7 +30670,7 @@ func (c *Client) sendTestRequestRequiredStringIPArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIPArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30743,7 +30743,7 @@ func (c *Client) sendTestRequestRequiredStringIPArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIPArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30816,7 +30816,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullable(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIPNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30889,7 +30889,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIPNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30962,7 +30962,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIPNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31035,7 +31035,7 @@ func (c *Client) sendTestRequestRequiredStringInt(ctx context.Context, request i
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIntOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31108,7 +31108,7 @@ func (c *Client) sendTestRequestRequiredStringInt16(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31181,7 +31181,7 @@ func (c *Client) sendTestRequestRequiredStringInt16Array(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31254,7 +31254,7 @@ func (c *Client) sendTestRequestRequiredStringInt16ArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31327,7 +31327,7 @@ func (c *Client) sendTestRequestRequiredStringInt16Nullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31400,7 +31400,7 @@ func (c *Client) sendTestRequestRequiredStringInt16NullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31473,7 +31473,7 @@ func (c *Client) sendTestRequestRequiredStringInt16NullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31546,7 +31546,7 @@ func (c *Client) sendTestRequestRequiredStringInt32(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31619,7 +31619,7 @@ func (c *Client) sendTestRequestRequiredStringInt32Array(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31692,7 +31692,7 @@ func (c *Client) sendTestRequestRequiredStringInt32ArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31765,7 +31765,7 @@ func (c *Client) sendTestRequestRequiredStringInt32Nullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31838,7 +31838,7 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31911,7 +31911,7 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31984,7 +31984,7 @@ func (c *Client) sendTestRequestRequiredStringInt64(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32057,7 +32057,7 @@ func (c *Client) sendTestRequestRequiredStringInt64Array(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32130,7 +32130,7 @@ func (c *Client) sendTestRequestRequiredStringInt64ArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32203,7 +32203,7 @@ func (c *Client) sendTestRequestRequiredStringInt64Nullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32276,7 +32276,7 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32349,7 +32349,7 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32422,7 +32422,7 @@ func (c *Client) sendTestRequestRequiredStringInt8(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32495,7 +32495,7 @@ func (c *Client) sendTestRequestRequiredStringInt8Array(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32568,7 +32568,7 @@ func (c *Client) sendTestRequestRequiredStringInt8ArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32641,7 +32641,7 @@ func (c *Client) sendTestRequestRequiredStringInt8Nullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32714,7 +32714,7 @@ func (c *Client) sendTestRequestRequiredStringInt8NullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32787,7 +32787,7 @@ func (c *Client) sendTestRequestRequiredStringInt8NullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringInt8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32860,7 +32860,7 @@ func (c *Client) sendTestRequestRequiredStringIntArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIntArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIntArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32933,7 +32933,7 @@ func (c *Client) sendTestRequestRequiredStringIntArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIntArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIntArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33006,7 +33006,7 @@ func (c *Client) sendTestRequestRequiredStringIntNullable(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIntNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIntNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33079,7 +33079,7 @@ func (c *Client) sendTestRequestRequiredStringIntNullableArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIntNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIntNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33152,7 +33152,7 @@ func (c *Client) sendTestRequestRequiredStringIntNullableArrayArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIntNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIntNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33225,7 +33225,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv4Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33298,7 +33298,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4Array(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv4ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33371,7 +33371,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4ArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv4ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33444,7 +33444,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4Nullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv4NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33517,7 +33517,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv4NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33590,7 +33590,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv4NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33663,7 +33663,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv6Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33736,7 +33736,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6Array(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv6ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33809,7 +33809,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6ArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv6ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33882,7 +33882,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6Nullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv6NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33955,7 +33955,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv6NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34028,7 +34028,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringIpv6NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34101,7 +34101,7 @@ func (c *Client) sendTestRequestRequiredStringMAC(ctx context.Context, request n
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMAC",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringMACOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34174,7 +34174,7 @@ func (c *Client) sendTestRequestRequiredStringMACArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringMACArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34247,7 +34247,7 @@ func (c *Client) sendTestRequestRequiredStringMACArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringMACArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34320,7 +34320,7 @@ func (c *Client) sendTestRequestRequiredStringMACNullable(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringMACNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34393,7 +34393,7 @@ func (c *Client) sendTestRequestRequiredStringMACNullableArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringMACNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34466,7 +34466,7 @@ func (c *Client) sendTestRequestRequiredStringMACNullableArrayArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringMACNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringMACNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34539,7 +34539,7 @@ func (c *Client) sendTestRequestRequiredStringNullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34612,7 +34612,7 @@ func (c *Client) sendTestRequestRequiredStringNullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34685,7 +34685,7 @@ func (c *Client) sendTestRequestRequiredStringNullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34758,7 +34758,7 @@ func (c *Client) sendTestRequestRequiredStringPassword(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPassword",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringPasswordOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34831,7 +34831,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringPasswordArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34904,7 +34904,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringPasswordArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34977,7 +34977,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullable(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringPasswordNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35050,7 +35050,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringPasswordNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35123,7 +35123,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArrayArray(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringPasswordNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35196,7 +35196,7 @@ func (c *Client) sendTestRequestRequiredStringTime(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTime",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringTimeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35269,7 +35269,7 @@ func (c *Client) sendTestRequestRequiredStringTimeArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringTimeArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35342,7 +35342,7 @@ func (c *Client) sendTestRequestRequiredStringTimeArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringTimeArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35415,7 +35415,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringTimeNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35488,7 +35488,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringTimeNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35561,7 +35561,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringTimeNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35634,7 +35634,7 @@ func (c *Client) sendTestRequestRequiredStringURI(ctx context.Context, request u
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURI",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringURIOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35707,7 +35707,7 @@ func (c *Client) sendTestRequestRequiredStringURIArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringURIArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35780,7 +35780,7 @@ func (c *Client) sendTestRequestRequiredStringURIArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringURIArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35853,7 +35853,7 @@ func (c *Client) sendTestRequestRequiredStringURINullable(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringURINullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35926,7 +35926,7 @@ func (c *Client) sendTestRequestRequiredStringURINullableArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringURINullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35999,7 +35999,7 @@ func (c *Client) sendTestRequestRequiredStringURINullableArrayArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringURINullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36072,7 +36072,7 @@ func (c *Client) sendTestRequestRequiredStringUUID(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUID",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUUIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36145,7 +36145,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUUIDArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36218,7 +36218,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUUIDArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36291,7 +36291,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUUIDNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36364,7 +36364,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUUIDNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36437,7 +36437,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUUIDNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36510,7 +36510,7 @@ func (c *Client) sendTestRequestRequiredStringUint(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUintOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36583,7 +36583,7 @@ func (c *Client) sendTestRequestRequiredStringUint16(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36656,7 +36656,7 @@ func (c *Client) sendTestRequestRequiredStringUint16Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36729,7 +36729,7 @@ func (c *Client) sendTestRequestRequiredStringUint16ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36802,7 +36802,7 @@ func (c *Client) sendTestRequestRequiredStringUint16Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36875,7 +36875,7 @@ func (c *Client) sendTestRequestRequiredStringUint16NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36948,7 +36948,7 @@ func (c *Client) sendTestRequestRequiredStringUint16NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37021,7 +37021,7 @@ func (c *Client) sendTestRequestRequiredStringUint32(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37094,7 +37094,7 @@ func (c *Client) sendTestRequestRequiredStringUint32Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37167,7 +37167,7 @@ func (c *Client) sendTestRequestRequiredStringUint32ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37240,7 +37240,7 @@ func (c *Client) sendTestRequestRequiredStringUint32Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37313,7 +37313,7 @@ func (c *Client) sendTestRequestRequiredStringUint32NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37386,7 +37386,7 @@ func (c *Client) sendTestRequestRequiredStringUint32NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37459,7 +37459,7 @@ func (c *Client) sendTestRequestRequiredStringUint64(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37532,7 +37532,7 @@ func (c *Client) sendTestRequestRequiredStringUint64Array(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37605,7 +37605,7 @@ func (c *Client) sendTestRequestRequiredStringUint64ArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37678,7 +37678,7 @@ func (c *Client) sendTestRequestRequiredStringUint64Nullable(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37751,7 +37751,7 @@ func (c *Client) sendTestRequestRequiredStringUint64NullableArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37824,7 +37824,7 @@ func (c *Client) sendTestRequestRequiredStringUint64NullableArrayArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37897,7 +37897,7 @@ func (c *Client) sendTestRequestRequiredStringUint8(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37970,7 +37970,7 @@ func (c *Client) sendTestRequestRequiredStringUint8Array(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38043,7 +38043,7 @@ func (c *Client) sendTestRequestRequiredStringUint8ArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38116,7 +38116,7 @@ func (c *Client) sendTestRequestRequiredStringUint8Nullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38189,7 +38189,7 @@ func (c *Client) sendTestRequestRequiredStringUint8NullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38262,7 +38262,7 @@ func (c *Client) sendTestRequestRequiredStringUint8NullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUint8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUint8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38335,7 +38335,7 @@ func (c *Client) sendTestRequestRequiredStringUintArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUintArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUintArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38408,7 +38408,7 @@ func (c *Client) sendTestRequestRequiredStringUintArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUintArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUintArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38481,7 +38481,7 @@ func (c *Client) sendTestRequestRequiredStringUintNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUintNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUintNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38554,7 +38554,7 @@ func (c *Client) sendTestRequestRequiredStringUintNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUintNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUintNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38627,7 +38627,7 @@ func (c *Client) sendTestRequestRequiredStringUintNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUintNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUintNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38700,7 +38700,7 @@ func (c *Client) sendTestRequestRequiredStringUnix(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnix",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38773,7 +38773,7 @@ func (c *Client) sendTestRequestRequiredStringUnixArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38846,7 +38846,7 @@ func (c *Client) sendTestRequestRequiredStringUnixArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38919,7 +38919,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicro(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicro",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMicroOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38992,7 +38992,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMicroArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39065,7 +39065,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMicroArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39138,7 +39138,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullable(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMicroNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39211,7 +39211,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMicroNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39284,7 +39284,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArrayArray(ctx co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMicroNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39357,7 +39357,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilli(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilli",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMilliOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39430,7 +39430,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMilliArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39503,7 +39503,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMilliArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39576,7 +39576,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullable(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMilliNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39649,7 +39649,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMilliNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39722,7 +39722,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArrayArray(ctx co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixMilliNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39795,7 +39795,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNano(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNano",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNanoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39868,7 +39868,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNanoArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39941,7 +39941,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNanoArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40014,7 +40014,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullable(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNanoNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40087,7 +40087,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNanoNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40160,7 +40160,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArrayArray(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNanoNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40233,7 +40233,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40306,7 +40306,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40379,7 +40379,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40452,7 +40452,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSeconds(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSeconds",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixSecondsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40525,7 +40525,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixSecondsArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40598,7 +40598,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArrayArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixSecondsArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40671,7 +40671,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullable(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixSecondsNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40744,7 +40744,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArray(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixSecondsNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40817,7 +40817,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestRequiredStringUnixSecondsNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40890,7 +40890,7 @@ func (c *Client) sendTestRequestString(ctx context.Context, request OptString) (
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestString",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40963,7 +40963,7 @@ func (c *Client) sendTestRequestStringArray(ctx context.Context, request []strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41036,7 +41036,7 @@ func (c *Client) sendTestRequestStringArrayArray(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41109,7 +41109,7 @@ func (c *Client) sendTestRequestStringBase64(ctx context.Context, request []byte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBase64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41182,7 +41182,7 @@ func (c *Client) sendTestRequestStringBase64Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBase64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41255,7 +41255,7 @@ func (c *Client) sendTestRequestStringBase64ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBase64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41328,7 +41328,7 @@ func (c *Client) sendTestRequestStringBase64Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBase64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41401,7 +41401,7 @@ func (c *Client) sendTestRequestStringBase64NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBase64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41474,7 +41474,7 @@ func (c *Client) sendTestRequestStringBase64NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBase64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBase64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41547,7 +41547,7 @@ func (c *Client) sendTestRequestStringBinary(ctx context.Context, request OptStr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinary",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBinaryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41620,7 +41620,7 @@ func (c *Client) sendTestRequestStringBinaryArray(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBinaryArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41693,7 +41693,7 @@ func (c *Client) sendTestRequestStringBinaryArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBinaryArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41766,7 +41766,7 @@ func (c *Client) sendTestRequestStringBinaryNullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBinaryNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41839,7 +41839,7 @@ func (c *Client) sendTestRequestStringBinaryNullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBinaryNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41912,7 +41912,7 @@ func (c *Client) sendTestRequestStringBinaryNullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringBinaryNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41985,7 +41985,7 @@ func (c *Client) sendTestRequestStringByte(ctx context.Context, request []byte) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByte",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringByteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42058,7 +42058,7 @@ func (c *Client) sendTestRequestStringByteArray(ctx context.Context, request [][
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringByteArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42131,7 +42131,7 @@ func (c *Client) sendTestRequestStringByteArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringByteArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42204,7 +42204,7 @@ func (c *Client) sendTestRequestStringByteNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringByteNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42277,7 +42277,7 @@ func (c *Client) sendTestRequestStringByteNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringByteNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42350,7 +42350,7 @@ func (c *Client) sendTestRequestStringByteNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringByteNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42423,7 +42423,7 @@ func (c *Client) sendTestRequestStringDate(ctx context.Context, request OptDate)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDate",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42496,7 +42496,7 @@ func (c *Client) sendTestRequestStringDateArray(ctx context.Context, request []t
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42569,7 +42569,7 @@ func (c *Client) sendTestRequestStringDateArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42642,7 +42642,7 @@ func (c *Client) sendTestRequestStringDateNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42715,7 +42715,7 @@ func (c *Client) sendTestRequestStringDateNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42788,7 +42788,7 @@ func (c *Client) sendTestRequestStringDateNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42861,7 +42861,7 @@ func (c *Client) sendTestRequestStringDateTime(ctx context.Context, request OptD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTime",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateTimeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42934,7 +42934,7 @@ func (c *Client) sendTestRequestStringDateTimeArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateTimeArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43007,7 +43007,7 @@ func (c *Client) sendTestRequestStringDateTimeArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateTimeArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43080,7 +43080,7 @@ func (c *Client) sendTestRequestStringDateTimeNullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateTimeNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43153,7 +43153,7 @@ func (c *Client) sendTestRequestStringDateTimeNullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateTimeNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43226,7 +43226,7 @@ func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDateTimeNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43299,7 +43299,7 @@ func (c *Client) sendTestRequestStringDuration(ctx context.Context, request OptD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDuration",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43372,7 +43372,7 @@ func (c *Client) sendTestRequestStringDurationArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDurationArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43445,7 +43445,7 @@ func (c *Client) sendTestRequestStringDurationArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDurationArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43518,7 +43518,7 @@ func (c *Client) sendTestRequestStringDurationNullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDurationNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43591,7 +43591,7 @@ func (c *Client) sendTestRequestStringDurationNullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDurationNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43664,7 +43664,7 @@ func (c *Client) sendTestRequestStringDurationNullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringDurationNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43737,7 +43737,7 @@ func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptStri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmail",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringEmailOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43810,7 +43810,7 @@ func (c *Client) sendTestRequestStringEmailArray(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringEmailArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43883,7 +43883,7 @@ func (c *Client) sendTestRequestStringEmailArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringEmailArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43956,7 +43956,7 @@ func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringEmailNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44029,7 +44029,7 @@ func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringEmailNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44102,7 +44102,7 @@ func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringEmailNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44175,7 +44175,7 @@ func (c *Client) sendTestRequestStringFloat32(ctx context.Context, request OptSt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44248,7 +44248,7 @@ func (c *Client) sendTestRequestStringFloat32Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44321,7 +44321,7 @@ func (c *Client) sendTestRequestStringFloat32ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44394,7 +44394,7 @@ func (c *Client) sendTestRequestStringFloat32Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44467,7 +44467,7 @@ func (c *Client) sendTestRequestStringFloat32NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44540,7 +44540,7 @@ func (c *Client) sendTestRequestStringFloat32NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44613,7 +44613,7 @@ func (c *Client) sendTestRequestStringFloat64(ctx context.Context, request OptSt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44686,7 +44686,7 @@ func (c *Client) sendTestRequestStringFloat64Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44759,7 +44759,7 @@ func (c *Client) sendTestRequestStringFloat64ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44832,7 +44832,7 @@ func (c *Client) sendTestRequestStringFloat64Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44905,7 +44905,7 @@ func (c *Client) sendTestRequestStringFloat64NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44978,7 +44978,7 @@ func (c *Client) sendTestRequestStringFloat64NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringFloat64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringFloat64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45051,7 +45051,7 @@ func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptS
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostname",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHostnameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45124,7 +45124,7 @@ func (c *Client) sendTestRequestStringHostnameArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHostnameArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45197,7 +45197,7 @@ func (c *Client) sendTestRequestStringHostnameArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHostnameArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45270,7 +45270,7 @@ func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHostnameNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45343,7 +45343,7 @@ func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHostnameNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45416,7 +45416,7 @@ func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringHostnameNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45489,7 +45489,7 @@ func (c *Client) sendTestRequestStringIP(ctx context.Context, request OptIP) (re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIP",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIPOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45562,7 +45562,7 @@ func (c *Client) sendTestRequestStringIPArray(ctx context.Context, request []net
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIPArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45635,7 +45635,7 @@ func (c *Client) sendTestRequestStringIPArrayArray(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIPArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45708,7 +45708,7 @@ func (c *Client) sendTestRequestStringIPNullable(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIPNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45781,7 +45781,7 @@ func (c *Client) sendTestRequestStringIPNullableArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIPNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45854,7 +45854,7 @@ func (c *Client) sendTestRequestStringIPNullableArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIPNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45927,7 +45927,7 @@ func (c *Client) sendTestRequestStringInt(ctx context.Context, request OptString
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIntOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46000,7 +46000,7 @@ func (c *Client) sendTestRequestStringInt16(ctx context.Context, request OptStri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46073,7 +46073,7 @@ func (c *Client) sendTestRequestStringInt16Array(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46146,7 +46146,7 @@ func (c *Client) sendTestRequestStringInt16ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46219,7 +46219,7 @@ func (c *Client) sendTestRequestStringInt16Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46292,7 +46292,7 @@ func (c *Client) sendTestRequestStringInt16NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46365,7 +46365,7 @@ func (c *Client) sendTestRequestStringInt16NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46438,7 +46438,7 @@ func (c *Client) sendTestRequestStringInt32(ctx context.Context, request OptStri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46511,7 +46511,7 @@ func (c *Client) sendTestRequestStringInt32Array(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46584,7 +46584,7 @@ func (c *Client) sendTestRequestStringInt32ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46657,7 +46657,7 @@ func (c *Client) sendTestRequestStringInt32Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46730,7 +46730,7 @@ func (c *Client) sendTestRequestStringInt32NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46803,7 +46803,7 @@ func (c *Client) sendTestRequestStringInt32NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46876,7 +46876,7 @@ func (c *Client) sendTestRequestStringInt64(ctx context.Context, request OptStri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46949,7 +46949,7 @@ func (c *Client) sendTestRequestStringInt64Array(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47022,7 +47022,7 @@ func (c *Client) sendTestRequestStringInt64ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47095,7 +47095,7 @@ func (c *Client) sendTestRequestStringInt64Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47168,7 +47168,7 @@ func (c *Client) sendTestRequestStringInt64NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47241,7 +47241,7 @@ func (c *Client) sendTestRequestStringInt64NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47314,7 +47314,7 @@ func (c *Client) sendTestRequestStringInt8(ctx context.Context, request OptStrin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47387,7 +47387,7 @@ func (c *Client) sendTestRequestStringInt8Array(ctx context.Context, request []i
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47460,7 +47460,7 @@ func (c *Client) sendTestRequestStringInt8ArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47533,7 +47533,7 @@ func (c *Client) sendTestRequestStringInt8Nullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47606,7 +47606,7 @@ func (c *Client) sendTestRequestStringInt8NullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47679,7 +47679,7 @@ func (c *Client) sendTestRequestStringInt8NullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringInt8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47752,7 +47752,7 @@ func (c *Client) sendTestRequestStringIntArray(ctx context.Context, request []in
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIntArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIntArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47825,7 +47825,7 @@ func (c *Client) sendTestRequestStringIntArrayArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIntArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIntArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47898,7 +47898,7 @@ func (c *Client) sendTestRequestStringIntNullable(ctx context.Context, request O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIntNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIntNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47971,7 +47971,7 @@ func (c *Client) sendTestRequestStringIntNullableArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIntNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIntNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48044,7 +48044,7 @@ func (c *Client) sendTestRequestStringIntNullableArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIntNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIntNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48117,7 +48117,7 @@ func (c *Client) sendTestRequestStringIpv4(ctx context.Context, request OptIPv4)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv4Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48190,7 +48190,7 @@ func (c *Client) sendTestRequestStringIpv4Array(ctx context.Context, request []n
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv4ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48263,7 +48263,7 @@ func (c *Client) sendTestRequestStringIpv4ArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv4ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48336,7 +48336,7 @@ func (c *Client) sendTestRequestStringIpv4Nullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv4NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48409,7 +48409,7 @@ func (c *Client) sendTestRequestStringIpv4NullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv4NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48482,7 +48482,7 @@ func (c *Client) sendTestRequestStringIpv4NullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv4NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48555,7 +48555,7 @@ func (c *Client) sendTestRequestStringIpv6(ctx context.Context, request OptIPv6)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv6Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48628,7 +48628,7 @@ func (c *Client) sendTestRequestStringIpv6Array(ctx context.Context, request []n
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv6ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48701,7 +48701,7 @@ func (c *Client) sendTestRequestStringIpv6ArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv6ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48774,7 +48774,7 @@ func (c *Client) sendTestRequestStringIpv6Nullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv6NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48847,7 +48847,7 @@ func (c *Client) sendTestRequestStringIpv6NullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv6NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48920,7 +48920,7 @@ func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringIpv6NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48993,7 +48993,7 @@ func (c *Client) sendTestRequestStringMAC(ctx context.Context, request OptHardwa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMAC",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringMACOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49066,7 +49066,7 @@ func (c *Client) sendTestRequestStringMACArray(ctx context.Context, request []ne
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringMACArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49139,7 +49139,7 @@ func (c *Client) sendTestRequestStringMACArrayArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringMACArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49212,7 +49212,7 @@ func (c *Client) sendTestRequestStringMACNullable(ctx context.Context, request O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringMACNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49285,7 +49285,7 @@ func (c *Client) sendTestRequestStringMACNullableArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringMACNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49358,7 +49358,7 @@ func (c *Client) sendTestRequestStringMACNullableArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringMACNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringMACNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49431,7 +49431,7 @@ func (c *Client) sendTestRequestStringNullable(ctx context.Context, request OptN
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49504,7 +49504,7 @@ func (c *Client) sendTestRequestStringNullableArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49577,7 +49577,7 @@ func (c *Client) sendTestRequestStringNullableArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49650,7 +49650,7 @@ func (c *Client) sendTestRequestStringPassword(ctx context.Context, request OptS
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPassword",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringPasswordOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49723,7 +49723,7 @@ func (c *Client) sendTestRequestStringPasswordArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringPasswordArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49796,7 +49796,7 @@ func (c *Client) sendTestRequestStringPasswordArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringPasswordArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49869,7 +49869,7 @@ func (c *Client) sendTestRequestStringPasswordNullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringPasswordNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49942,7 +49942,7 @@ func (c *Client) sendTestRequestStringPasswordNullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringPasswordNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50015,7 +50015,7 @@ func (c *Client) sendTestRequestStringPasswordNullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringPasswordNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50088,7 +50088,7 @@ func (c *Client) sendTestRequestStringTime(ctx context.Context, request OptTime)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTime",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringTimeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50161,7 +50161,7 @@ func (c *Client) sendTestRequestStringTimeArray(ctx context.Context, request []t
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringTimeArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50234,7 +50234,7 @@ func (c *Client) sendTestRequestStringTimeArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringTimeArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50307,7 +50307,7 @@ func (c *Client) sendTestRequestStringTimeNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringTimeNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50380,7 +50380,7 @@ func (c *Client) sendTestRequestStringTimeNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringTimeNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50453,7 +50453,7 @@ func (c *Client) sendTestRequestStringTimeNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringTimeNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50526,7 +50526,7 @@ func (c *Client) sendTestRequestStringURI(ctx context.Context, request OptURI) (
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURI",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringURIOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50599,7 +50599,7 @@ func (c *Client) sendTestRequestStringURIArray(ctx context.Context, request []ur
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringURIArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50672,7 +50672,7 @@ func (c *Client) sendTestRequestStringURIArrayArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringURIArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50745,7 +50745,7 @@ func (c *Client) sendTestRequestStringURINullable(ctx context.Context, request O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringURINullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50818,7 +50818,7 @@ func (c *Client) sendTestRequestStringURINullableArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringURINullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50891,7 +50891,7 @@ func (c *Client) sendTestRequestStringURINullableArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringURINullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50964,7 +50964,7 @@ func (c *Client) sendTestRequestStringUUID(ctx context.Context, request OptUUID)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUID",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUUIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51037,7 +51037,7 @@ func (c *Client) sendTestRequestStringUUIDArray(ctx context.Context, request []u
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUUIDArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51110,7 +51110,7 @@ func (c *Client) sendTestRequestStringUUIDArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUUIDArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51183,7 +51183,7 @@ func (c *Client) sendTestRequestStringUUIDNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUUIDNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51256,7 +51256,7 @@ func (c *Client) sendTestRequestStringUUIDNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUUIDNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51329,7 +51329,7 @@ func (c *Client) sendTestRequestStringUUIDNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUUIDNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51402,7 +51402,7 @@ func (c *Client) sendTestRequestStringUint(ctx context.Context, request OptStrin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUintOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51475,7 +51475,7 @@ func (c *Client) sendTestRequestStringUint16(ctx context.Context, request OptStr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51548,7 +51548,7 @@ func (c *Client) sendTestRequestStringUint16Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51621,7 +51621,7 @@ func (c *Client) sendTestRequestStringUint16ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51694,7 +51694,7 @@ func (c *Client) sendTestRequestStringUint16Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51767,7 +51767,7 @@ func (c *Client) sendTestRequestStringUint16NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51840,7 +51840,7 @@ func (c *Client) sendTestRequestStringUint16NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51913,7 +51913,7 @@ func (c *Client) sendTestRequestStringUint32(ctx context.Context, request OptStr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51986,7 +51986,7 @@ func (c *Client) sendTestRequestStringUint32Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52059,7 +52059,7 @@ func (c *Client) sendTestRequestStringUint32ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52132,7 +52132,7 @@ func (c *Client) sendTestRequestStringUint32Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52205,7 +52205,7 @@ func (c *Client) sendTestRequestStringUint32NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52278,7 +52278,7 @@ func (c *Client) sendTestRequestStringUint32NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52351,7 +52351,7 @@ func (c *Client) sendTestRequestStringUint64(ctx context.Context, request OptStr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52424,7 +52424,7 @@ func (c *Client) sendTestRequestStringUint64Array(ctx context.Context, request [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52497,7 +52497,7 @@ func (c *Client) sendTestRequestStringUint64ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52570,7 +52570,7 @@ func (c *Client) sendTestRequestStringUint64Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52643,7 +52643,7 @@ func (c *Client) sendTestRequestStringUint64NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52716,7 +52716,7 @@ func (c *Client) sendTestRequestStringUint64NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52789,7 +52789,7 @@ func (c *Client) sendTestRequestStringUint8(ctx context.Context, request OptStri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52862,7 +52862,7 @@ func (c *Client) sendTestRequestStringUint8Array(ctx context.Context, request []
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52935,7 +52935,7 @@ func (c *Client) sendTestRequestStringUint8ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53008,7 +53008,7 @@ func (c *Client) sendTestRequestStringUint8Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53081,7 +53081,7 @@ func (c *Client) sendTestRequestStringUint8NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53154,7 +53154,7 @@ func (c *Client) sendTestRequestStringUint8NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUint8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUint8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53227,7 +53227,7 @@ func (c *Client) sendTestRequestStringUintArray(ctx context.Context, request []u
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUintArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUintArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53300,7 +53300,7 @@ func (c *Client) sendTestRequestStringUintArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUintArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUintArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53373,7 +53373,7 @@ func (c *Client) sendTestRequestStringUintNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUintNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUintNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53446,7 +53446,7 @@ func (c *Client) sendTestRequestStringUintNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUintNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUintNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53519,7 +53519,7 @@ func (c *Client) sendTestRequestStringUintNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUintNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUintNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53592,7 +53592,7 @@ func (c *Client) sendTestRequestStringUnix(ctx context.Context, request OptStrin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnix",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53665,7 +53665,7 @@ func (c *Client) sendTestRequestStringUnixArray(ctx context.Context, request []t
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53738,7 +53738,7 @@ func (c *Client) sendTestRequestStringUnixArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53811,7 +53811,7 @@ func (c *Client) sendTestRequestStringUnixMicro(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicro",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMicroOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53884,7 +53884,7 @@ func (c *Client) sendTestRequestStringUnixMicroArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMicroArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53957,7 +53957,7 @@ func (c *Client) sendTestRequestStringUnixMicroArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMicroArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54030,7 +54030,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMicroNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54103,7 +54103,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMicroNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54176,7 +54176,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMicroNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54249,7 +54249,7 @@ func (c *Client) sendTestRequestStringUnixMilli(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilli",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMilliOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54322,7 +54322,7 @@ func (c *Client) sendTestRequestStringUnixMilliArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMilliArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54395,7 +54395,7 @@ func (c *Client) sendTestRequestStringUnixMilliArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMilliArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54468,7 +54468,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMilliNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54541,7 +54541,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMilliNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54614,7 +54614,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixMilliNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54687,7 +54687,7 @@ func (c *Client) sendTestRequestStringUnixNano(ctx context.Context, request OptS
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNano",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNanoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54760,7 +54760,7 @@ func (c *Client) sendTestRequestStringUnixNanoArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNanoArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54833,7 +54833,7 @@ func (c *Client) sendTestRequestStringUnixNanoArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNanoArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54906,7 +54906,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNanoNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54979,7 +54979,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNanoNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55052,7 +55052,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNanoNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55125,7 +55125,7 @@ func (c *Client) sendTestRequestStringUnixNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55198,7 +55198,7 @@ func (c *Client) sendTestRequestStringUnixNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55271,7 +55271,7 @@ func (c *Client) sendTestRequestStringUnixNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55344,7 +55344,7 @@ func (c *Client) sendTestRequestStringUnixSeconds(ctx context.Context, request O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSeconds",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixSecondsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55417,7 +55417,7 @@ func (c *Client) sendTestRequestStringUnixSecondsArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixSecondsArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55490,7 +55490,7 @@ func (c *Client) sendTestRequestStringUnixSecondsArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixSecondsArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55563,7 +55563,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullable(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixSecondsNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55636,7 +55636,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixSecondsNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55709,7 +55709,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestRequestStringUnixSecondsNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55782,7 +55782,7 @@ func (c *Client) sendTestResponseAny(ctx context.Context, request string) (res j
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseAny",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseAnyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55855,7 +55855,7 @@ func (c *Client) sendTestResponseBoolean(ctx context.Context, request string) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBoolean",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseBooleanOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55928,7 +55928,7 @@ func (c *Client) sendTestResponseBooleanArray(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseBooleanArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56001,7 +56001,7 @@ func (c *Client) sendTestResponseBooleanArrayArray(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseBooleanArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56074,7 +56074,7 @@ func (c *Client) sendTestResponseBooleanNullable(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseBooleanNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56147,7 +56147,7 @@ func (c *Client) sendTestResponseBooleanNullableArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseBooleanNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56220,7 +56220,7 @@ func (c *Client) sendTestResponseBooleanNullableArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseBooleanNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56293,7 +56293,7 @@ func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseEmptyStruct",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseEmptyStructOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56366,7 +56366,7 @@ func (c *Client) sendTestResponseFormatTest(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseFormatTest",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseFormatTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56439,7 +56439,7 @@ func (c *Client) sendTestResponseInteger(ctx context.Context, request string) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseInteger",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56512,7 +56512,7 @@ func (c *Client) sendTestResponseIntegerArray(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56585,7 +56585,7 @@ func (c *Client) sendTestResponseIntegerArrayArray(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56658,7 +56658,7 @@ func (c *Client) sendTestResponseIntegerInt16(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56731,7 +56731,7 @@ func (c *Client) sendTestResponseIntegerInt16Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56804,7 +56804,7 @@ func (c *Client) sendTestResponseIntegerInt16ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56877,7 +56877,7 @@ func (c *Client) sendTestResponseIntegerInt16Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56950,7 +56950,7 @@ func (c *Client) sendTestResponseIntegerInt16NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57023,7 +57023,7 @@ func (c *Client) sendTestResponseIntegerInt16NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57096,7 +57096,7 @@ func (c *Client) sendTestResponseIntegerInt32(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57169,7 +57169,7 @@ func (c *Client) sendTestResponseIntegerInt32Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57242,7 +57242,7 @@ func (c *Client) sendTestResponseIntegerInt32ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57315,7 +57315,7 @@ func (c *Client) sendTestResponseIntegerInt32Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57388,7 +57388,7 @@ func (c *Client) sendTestResponseIntegerInt32NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57461,7 +57461,7 @@ func (c *Client) sendTestResponseIntegerInt32NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57534,7 +57534,7 @@ func (c *Client) sendTestResponseIntegerInt64(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57607,7 +57607,7 @@ func (c *Client) sendTestResponseIntegerInt64Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57680,7 +57680,7 @@ func (c *Client) sendTestResponseIntegerInt64ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57753,7 +57753,7 @@ func (c *Client) sendTestResponseIntegerInt64Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57826,7 +57826,7 @@ func (c *Client) sendTestResponseIntegerInt64NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57899,7 +57899,7 @@ func (c *Client) sendTestResponseIntegerInt64NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57972,7 +57972,7 @@ func (c *Client) sendTestResponseIntegerInt8(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58045,7 +58045,7 @@ func (c *Client) sendTestResponseIntegerInt8Array(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58118,7 +58118,7 @@ func (c *Client) sendTestResponseIntegerInt8ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58191,7 +58191,7 @@ func (c *Client) sendTestResponseIntegerInt8Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58264,7 +58264,7 @@ func (c *Client) sendTestResponseIntegerInt8NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58337,7 +58337,7 @@ func (c *Client) sendTestResponseIntegerInt8NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerInt8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58410,7 +58410,7 @@ func (c *Client) sendTestResponseIntegerNullable(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58483,7 +58483,7 @@ func (c *Client) sendTestResponseIntegerNullableArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58556,7 +58556,7 @@ func (c *Client) sendTestResponseIntegerNullableArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58629,7 +58629,7 @@ func (c *Client) sendTestResponseIntegerUint(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUintOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58702,7 +58702,7 @@ func (c *Client) sendTestResponseIntegerUint16(ctx context.Context, request stri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58775,7 +58775,7 @@ func (c *Client) sendTestResponseIntegerUint16Array(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58848,7 +58848,7 @@ func (c *Client) sendTestResponseIntegerUint16ArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58921,7 +58921,7 @@ func (c *Client) sendTestResponseIntegerUint16Nullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58994,7 +58994,7 @@ func (c *Client) sendTestResponseIntegerUint16NullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59067,7 +59067,7 @@ func (c *Client) sendTestResponseIntegerUint16NullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59140,7 +59140,7 @@ func (c *Client) sendTestResponseIntegerUint32(ctx context.Context, request stri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59213,7 +59213,7 @@ func (c *Client) sendTestResponseIntegerUint32Array(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59286,7 +59286,7 @@ func (c *Client) sendTestResponseIntegerUint32ArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59359,7 +59359,7 @@ func (c *Client) sendTestResponseIntegerUint32Nullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59432,7 +59432,7 @@ func (c *Client) sendTestResponseIntegerUint32NullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59505,7 +59505,7 @@ func (c *Client) sendTestResponseIntegerUint32NullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59578,7 +59578,7 @@ func (c *Client) sendTestResponseIntegerUint64(ctx context.Context, request stri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59651,7 +59651,7 @@ func (c *Client) sendTestResponseIntegerUint64Array(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59724,7 +59724,7 @@ func (c *Client) sendTestResponseIntegerUint64ArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59797,7 +59797,7 @@ func (c *Client) sendTestResponseIntegerUint64Nullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59870,7 +59870,7 @@ func (c *Client) sendTestResponseIntegerUint64NullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59943,7 +59943,7 @@ func (c *Client) sendTestResponseIntegerUint64NullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60016,7 +60016,7 @@ func (c *Client) sendTestResponseIntegerUint8(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60089,7 +60089,7 @@ func (c *Client) sendTestResponseIntegerUint8Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60162,7 +60162,7 @@ func (c *Client) sendTestResponseIntegerUint8ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60235,7 +60235,7 @@ func (c *Client) sendTestResponseIntegerUint8Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60308,7 +60308,7 @@ func (c *Client) sendTestResponseIntegerUint8NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60381,7 +60381,7 @@ func (c *Client) sendTestResponseIntegerUint8NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUint8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60454,7 +60454,7 @@ func (c *Client) sendTestResponseIntegerUintArray(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUintArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60527,7 +60527,7 @@ func (c *Client) sendTestResponseIntegerUintArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUintArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60600,7 +60600,7 @@ func (c *Client) sendTestResponseIntegerUintNullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUintNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60673,7 +60673,7 @@ func (c *Client) sendTestResponseIntegerUintNullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUintNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60746,7 +60746,7 @@ func (c *Client) sendTestResponseIntegerUintNullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUintNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60819,7 +60819,7 @@ func (c *Client) sendTestResponseIntegerUnix(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnix",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60892,7 +60892,7 @@ func (c *Client) sendTestResponseIntegerUnixArray(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60965,7 +60965,7 @@ func (c *Client) sendTestResponseIntegerUnixArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61038,7 +61038,7 @@ func (c *Client) sendTestResponseIntegerUnixMicro(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicro",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMicroOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61111,7 +61111,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMicroArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61184,7 +61184,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMicroArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61257,7 +61257,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullable(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMicroNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61330,7 +61330,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMicroNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61403,7 +61403,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArrayArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMicroNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61476,7 +61476,7 @@ func (c *Client) sendTestResponseIntegerUnixMilli(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilli",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMilliOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61549,7 +61549,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMilliArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61622,7 +61622,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMilliArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61695,7 +61695,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullable(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMilliNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61768,7 +61768,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMilliNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61841,7 +61841,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArrayArray(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixMilliNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61914,7 +61914,7 @@ func (c *Client) sendTestResponseIntegerUnixNano(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNano",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNanoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61987,7 +61987,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNanoArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62060,7 +62060,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNanoArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62133,7 +62133,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullable(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNanoNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62206,7 +62206,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNanoNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62279,7 +62279,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNanoNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62352,7 +62352,7 @@ func (c *Client) sendTestResponseIntegerUnixNullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62425,7 +62425,7 @@ func (c *Client) sendTestResponseIntegerUnixNullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62498,7 +62498,7 @@ func (c *Client) sendTestResponseIntegerUnixNullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62571,7 +62571,7 @@ func (c *Client) sendTestResponseIntegerUnixSeconds(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSeconds",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixSecondsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62644,7 +62644,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixSecondsArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62717,7 +62717,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixSecondsArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62790,7 +62790,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullable(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixSecondsNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62863,7 +62863,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixSecondsNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62936,7 +62936,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArrayArray(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseIntegerUnixSecondsNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63009,7 +63009,7 @@ func (c *Client) sendTestResponseNull(ctx context.Context, request string) (res 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNull",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNullOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63082,7 +63082,7 @@ func (c *Client) sendTestResponseNullArray(ctx context.Context, request string) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNullArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63155,7 +63155,7 @@ func (c *Client) sendTestResponseNullArrayArray(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNullArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63228,7 +63228,7 @@ func (c *Client) sendTestResponseNullNullable(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNullNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63301,7 +63301,7 @@ func (c *Client) sendTestResponseNullNullableArray(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNullNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63374,7 +63374,7 @@ func (c *Client) sendTestResponseNullNullableArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNullNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63447,7 +63447,7 @@ func (c *Client) sendTestResponseNumber(ctx context.Context, request string) (re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumber",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63520,7 +63520,7 @@ func (c *Client) sendTestResponseNumberArray(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63593,7 +63593,7 @@ func (c *Client) sendTestResponseNumberArrayArray(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63666,7 +63666,7 @@ func (c *Client) sendTestResponseNumberDouble(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDouble",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDoubleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63739,7 +63739,7 @@ func (c *Client) sendTestResponseNumberDoubleArray(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDoubleArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63812,7 +63812,7 @@ func (c *Client) sendTestResponseNumberDoubleArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDoubleArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63885,7 +63885,7 @@ func (c *Client) sendTestResponseNumberDoubleNullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDoubleNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63958,7 +63958,7 @@ func (c *Client) sendTestResponseNumberDoubleNullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDoubleNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64031,7 +64031,7 @@ func (c *Client) sendTestResponseNumberDoubleNullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberDoubleNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64104,7 +64104,7 @@ func (c *Client) sendTestResponseNumberFloat(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloat",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberFloatOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64177,7 +64177,7 @@ func (c *Client) sendTestResponseNumberFloatArray(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberFloatArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64250,7 +64250,7 @@ func (c *Client) sendTestResponseNumberFloatArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberFloatArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64323,7 +64323,7 @@ func (c *Client) sendTestResponseNumberFloatNullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberFloatNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64396,7 +64396,7 @@ func (c *Client) sendTestResponseNumberFloatNullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberFloatNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64469,7 +64469,7 @@ func (c *Client) sendTestResponseNumberFloatNullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberFloatNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64542,7 +64542,7 @@ func (c *Client) sendTestResponseNumberInt32(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64615,7 +64615,7 @@ func (c *Client) sendTestResponseNumberInt32Array(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64688,7 +64688,7 @@ func (c *Client) sendTestResponseNumberInt32ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64761,7 +64761,7 @@ func (c *Client) sendTestResponseNumberInt32Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64834,7 +64834,7 @@ func (c *Client) sendTestResponseNumberInt32NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64907,7 +64907,7 @@ func (c *Client) sendTestResponseNumberInt32NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64980,7 +64980,7 @@ func (c *Client) sendTestResponseNumberInt64(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65053,7 +65053,7 @@ func (c *Client) sendTestResponseNumberInt64Array(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65126,7 +65126,7 @@ func (c *Client) sendTestResponseNumberInt64ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65199,7 +65199,7 @@ func (c *Client) sendTestResponseNumberInt64Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65272,7 +65272,7 @@ func (c *Client) sendTestResponseNumberInt64NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65345,7 +65345,7 @@ func (c *Client) sendTestResponseNumberInt64NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65418,7 +65418,7 @@ func (c *Client) sendTestResponseNumberNullable(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65491,7 +65491,7 @@ func (c *Client) sendTestResponseNumberNullableArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65564,7 +65564,7 @@ func (c *Client) sendTestResponseNumberNullableArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseNumberNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65637,7 +65637,7 @@ func (c *Client) sendTestResponseString(ctx context.Context, request string) (re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseString",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65710,7 +65710,7 @@ func (c *Client) sendTestResponseStringArray(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65783,7 +65783,7 @@ func (c *Client) sendTestResponseStringArrayArray(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65856,7 +65856,7 @@ func (c *Client) sendTestResponseStringBase64(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBase64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65929,7 +65929,7 @@ func (c *Client) sendTestResponseStringBase64Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBase64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66002,7 +66002,7 @@ func (c *Client) sendTestResponseStringBase64ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBase64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66075,7 +66075,7 @@ func (c *Client) sendTestResponseStringBase64Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBase64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66148,7 +66148,7 @@ func (c *Client) sendTestResponseStringBase64NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBase64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66221,7 +66221,7 @@ func (c *Client) sendTestResponseStringBase64NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBase64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBase64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66294,7 +66294,7 @@ func (c *Client) sendTestResponseStringBinary(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinary",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBinaryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66367,7 +66367,7 @@ func (c *Client) sendTestResponseStringBinaryArray(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBinaryArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66440,7 +66440,7 @@ func (c *Client) sendTestResponseStringBinaryArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBinaryArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66513,7 +66513,7 @@ func (c *Client) sendTestResponseStringBinaryNullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBinaryNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66586,7 +66586,7 @@ func (c *Client) sendTestResponseStringBinaryNullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBinaryNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66659,7 +66659,7 @@ func (c *Client) sendTestResponseStringBinaryNullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringBinaryNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66732,7 +66732,7 @@ func (c *Client) sendTestResponseStringByte(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByte",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringByteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66805,7 +66805,7 @@ func (c *Client) sendTestResponseStringByteArray(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringByteArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66878,7 +66878,7 @@ func (c *Client) sendTestResponseStringByteArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringByteArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66951,7 +66951,7 @@ func (c *Client) sendTestResponseStringByteNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringByteNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67024,7 +67024,7 @@ func (c *Client) sendTestResponseStringByteNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringByteNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67097,7 +67097,7 @@ func (c *Client) sendTestResponseStringByteNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringByteNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67170,7 +67170,7 @@ func (c *Client) sendTestResponseStringDate(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDate",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67243,7 +67243,7 @@ func (c *Client) sendTestResponseStringDateArray(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67316,7 +67316,7 @@ func (c *Client) sendTestResponseStringDateArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67389,7 +67389,7 @@ func (c *Client) sendTestResponseStringDateNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67462,7 +67462,7 @@ func (c *Client) sendTestResponseStringDateNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67535,7 +67535,7 @@ func (c *Client) sendTestResponseStringDateNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67608,7 +67608,7 @@ func (c *Client) sendTestResponseStringDateTime(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTime",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateTimeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67681,7 +67681,7 @@ func (c *Client) sendTestResponseStringDateTimeArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateTimeArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67754,7 +67754,7 @@ func (c *Client) sendTestResponseStringDateTimeArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateTimeArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67827,7 +67827,7 @@ func (c *Client) sendTestResponseStringDateTimeNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateTimeNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67900,7 +67900,7 @@ func (c *Client) sendTestResponseStringDateTimeNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateTimeNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67973,7 +67973,7 @@ func (c *Client) sendTestResponseStringDateTimeNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDateTimeNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68046,7 +68046,7 @@ func (c *Client) sendTestResponseStringDuration(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDuration",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68119,7 +68119,7 @@ func (c *Client) sendTestResponseStringDurationArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDurationArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68192,7 +68192,7 @@ func (c *Client) sendTestResponseStringDurationArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDurationArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68265,7 +68265,7 @@ func (c *Client) sendTestResponseStringDurationNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDurationNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68338,7 +68338,7 @@ func (c *Client) sendTestResponseStringDurationNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDurationNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68411,7 +68411,7 @@ func (c *Client) sendTestResponseStringDurationNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringDurationNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68484,7 +68484,7 @@ func (c *Client) sendTestResponseStringEmail(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmail",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringEmailOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68557,7 +68557,7 @@ func (c *Client) sendTestResponseStringEmailArray(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringEmailArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68630,7 +68630,7 @@ func (c *Client) sendTestResponseStringEmailArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringEmailArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68703,7 +68703,7 @@ func (c *Client) sendTestResponseStringEmailNullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringEmailNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68776,7 +68776,7 @@ func (c *Client) sendTestResponseStringEmailNullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringEmailNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68849,7 +68849,7 @@ func (c *Client) sendTestResponseStringEmailNullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringEmailNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68922,7 +68922,7 @@ func (c *Client) sendTestResponseStringFloat32(ctx context.Context, request stri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68995,7 +68995,7 @@ func (c *Client) sendTestResponseStringFloat32Array(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69068,7 +69068,7 @@ func (c *Client) sendTestResponseStringFloat32ArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69141,7 +69141,7 @@ func (c *Client) sendTestResponseStringFloat32Nullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69214,7 +69214,7 @@ func (c *Client) sendTestResponseStringFloat32NullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69287,7 +69287,7 @@ func (c *Client) sendTestResponseStringFloat32NullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69360,7 +69360,7 @@ func (c *Client) sendTestResponseStringFloat64(ctx context.Context, request stri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69433,7 +69433,7 @@ func (c *Client) sendTestResponseStringFloat64Array(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69506,7 +69506,7 @@ func (c *Client) sendTestResponseStringFloat64ArrayArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69579,7 +69579,7 @@ func (c *Client) sendTestResponseStringFloat64Nullable(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69652,7 +69652,7 @@ func (c *Client) sendTestResponseStringFloat64NullableArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69725,7 +69725,7 @@ func (c *Client) sendTestResponseStringFloat64NullableArrayArray(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringFloat64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringFloat64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69798,7 +69798,7 @@ func (c *Client) sendTestResponseStringHostname(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostname",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHostnameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69871,7 +69871,7 @@ func (c *Client) sendTestResponseStringHostnameArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHostnameArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69944,7 +69944,7 @@ func (c *Client) sendTestResponseStringHostnameArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHostnameArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70017,7 +70017,7 @@ func (c *Client) sendTestResponseStringHostnameNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHostnameNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70090,7 +70090,7 @@ func (c *Client) sendTestResponseStringHostnameNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHostnameNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70163,7 +70163,7 @@ func (c *Client) sendTestResponseStringHostnameNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringHostnameNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70236,7 +70236,7 @@ func (c *Client) sendTestResponseStringIP(ctx context.Context, request string) (
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIP",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIPOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70309,7 +70309,7 @@ func (c *Client) sendTestResponseStringIPArray(ctx context.Context, request stri
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIPArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70382,7 +70382,7 @@ func (c *Client) sendTestResponseStringIPArrayArray(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIPArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70455,7 +70455,7 @@ func (c *Client) sendTestResponseStringIPNullable(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIPNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70528,7 +70528,7 @@ func (c *Client) sendTestResponseStringIPNullableArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIPNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70601,7 +70601,7 @@ func (c *Client) sendTestResponseStringIPNullableArrayArray(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIPNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70674,7 +70674,7 @@ func (c *Client) sendTestResponseStringInt(ctx context.Context, request string) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIntOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70747,7 +70747,7 @@ func (c *Client) sendTestResponseStringInt16(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70820,7 +70820,7 @@ func (c *Client) sendTestResponseStringInt16Array(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70893,7 +70893,7 @@ func (c *Client) sendTestResponseStringInt16ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70966,7 +70966,7 @@ func (c *Client) sendTestResponseStringInt16Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71039,7 +71039,7 @@ func (c *Client) sendTestResponseStringInt16NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71112,7 +71112,7 @@ func (c *Client) sendTestResponseStringInt16NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71185,7 +71185,7 @@ func (c *Client) sendTestResponseStringInt32(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71258,7 +71258,7 @@ func (c *Client) sendTestResponseStringInt32Array(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71331,7 +71331,7 @@ func (c *Client) sendTestResponseStringInt32ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71404,7 +71404,7 @@ func (c *Client) sendTestResponseStringInt32Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71477,7 +71477,7 @@ func (c *Client) sendTestResponseStringInt32NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71550,7 +71550,7 @@ func (c *Client) sendTestResponseStringInt32NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71623,7 +71623,7 @@ func (c *Client) sendTestResponseStringInt64(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71696,7 +71696,7 @@ func (c *Client) sendTestResponseStringInt64Array(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71769,7 +71769,7 @@ func (c *Client) sendTestResponseStringInt64ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71842,7 +71842,7 @@ func (c *Client) sendTestResponseStringInt64Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71915,7 +71915,7 @@ func (c *Client) sendTestResponseStringInt64NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71988,7 +71988,7 @@ func (c *Client) sendTestResponseStringInt64NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72061,7 +72061,7 @@ func (c *Client) sendTestResponseStringInt8(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72134,7 +72134,7 @@ func (c *Client) sendTestResponseStringInt8Array(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72207,7 +72207,7 @@ func (c *Client) sendTestResponseStringInt8ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72280,7 +72280,7 @@ func (c *Client) sendTestResponseStringInt8Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72353,7 +72353,7 @@ func (c *Client) sendTestResponseStringInt8NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72426,7 +72426,7 @@ func (c *Client) sendTestResponseStringInt8NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringInt8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72499,7 +72499,7 @@ func (c *Client) sendTestResponseStringIntArray(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIntArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIntArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72572,7 +72572,7 @@ func (c *Client) sendTestResponseStringIntArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIntArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIntArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72645,7 +72645,7 @@ func (c *Client) sendTestResponseStringIntNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIntNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIntNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72718,7 +72718,7 @@ func (c *Client) sendTestResponseStringIntNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIntNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIntNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72791,7 +72791,7 @@ func (c *Client) sendTestResponseStringIntNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIntNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIntNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72864,7 +72864,7 @@ func (c *Client) sendTestResponseStringIpv4(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv4Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72937,7 +72937,7 @@ func (c *Client) sendTestResponseStringIpv4Array(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv4ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73010,7 +73010,7 @@ func (c *Client) sendTestResponseStringIpv4ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv4ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73083,7 +73083,7 @@ func (c *Client) sendTestResponseStringIpv4Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv4NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73156,7 +73156,7 @@ func (c *Client) sendTestResponseStringIpv4NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv4NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73229,7 +73229,7 @@ func (c *Client) sendTestResponseStringIpv4NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv4NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73302,7 +73302,7 @@ func (c *Client) sendTestResponseStringIpv6(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv6Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73375,7 +73375,7 @@ func (c *Client) sendTestResponseStringIpv6Array(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv6ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73448,7 +73448,7 @@ func (c *Client) sendTestResponseStringIpv6ArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv6ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73521,7 +73521,7 @@ func (c *Client) sendTestResponseStringIpv6Nullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv6NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73594,7 +73594,7 @@ func (c *Client) sendTestResponseStringIpv6NullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv6NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73667,7 +73667,7 @@ func (c *Client) sendTestResponseStringIpv6NullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringIpv6NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73740,7 +73740,7 @@ func (c *Client) sendTestResponseStringMAC(ctx context.Context, request string) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMAC",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringMACOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73813,7 +73813,7 @@ func (c *Client) sendTestResponseStringMACArray(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringMACArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73886,7 +73886,7 @@ func (c *Client) sendTestResponseStringMACArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringMACArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73959,7 +73959,7 @@ func (c *Client) sendTestResponseStringMACNullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringMACNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74032,7 +74032,7 @@ func (c *Client) sendTestResponseStringMACNullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringMACNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74105,7 +74105,7 @@ func (c *Client) sendTestResponseStringMACNullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringMACNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringMACNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74178,7 +74178,7 @@ func (c *Client) sendTestResponseStringNullable(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74251,7 +74251,7 @@ func (c *Client) sendTestResponseStringNullableArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74324,7 +74324,7 @@ func (c *Client) sendTestResponseStringNullableArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74397,7 +74397,7 @@ func (c *Client) sendTestResponseStringPassword(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPassword",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringPasswordOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74470,7 +74470,7 @@ func (c *Client) sendTestResponseStringPasswordArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringPasswordArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74543,7 +74543,7 @@ func (c *Client) sendTestResponseStringPasswordArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringPasswordArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74616,7 +74616,7 @@ func (c *Client) sendTestResponseStringPasswordNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringPasswordNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74689,7 +74689,7 @@ func (c *Client) sendTestResponseStringPasswordNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringPasswordNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74762,7 +74762,7 @@ func (c *Client) sendTestResponseStringPasswordNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringPasswordNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74835,7 +74835,7 @@ func (c *Client) sendTestResponseStringTime(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTime",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringTimeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74908,7 +74908,7 @@ func (c *Client) sendTestResponseStringTimeArray(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringTimeArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74981,7 +74981,7 @@ func (c *Client) sendTestResponseStringTimeArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringTimeArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75054,7 +75054,7 @@ func (c *Client) sendTestResponseStringTimeNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringTimeNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75127,7 +75127,7 @@ func (c *Client) sendTestResponseStringTimeNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringTimeNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75200,7 +75200,7 @@ func (c *Client) sendTestResponseStringTimeNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringTimeNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75273,7 +75273,7 @@ func (c *Client) sendTestResponseStringURI(ctx context.Context, request string) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURI",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringURIOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75346,7 +75346,7 @@ func (c *Client) sendTestResponseStringURIArray(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringURIArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75419,7 +75419,7 @@ func (c *Client) sendTestResponseStringURIArrayArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringURIArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75492,7 +75492,7 @@ func (c *Client) sendTestResponseStringURINullable(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringURINullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75565,7 +75565,7 @@ func (c *Client) sendTestResponseStringURINullableArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringURINullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75638,7 +75638,7 @@ func (c *Client) sendTestResponseStringURINullableArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringURINullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75711,7 +75711,7 @@ func (c *Client) sendTestResponseStringUUID(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUID",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUUIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75784,7 +75784,7 @@ func (c *Client) sendTestResponseStringUUIDArray(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUUIDArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75857,7 +75857,7 @@ func (c *Client) sendTestResponseStringUUIDArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUUIDArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75930,7 +75930,7 @@ func (c *Client) sendTestResponseStringUUIDNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUUIDNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76003,7 +76003,7 @@ func (c *Client) sendTestResponseStringUUIDNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUUIDNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76076,7 +76076,7 @@ func (c *Client) sendTestResponseStringUUIDNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUUIDNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76149,7 +76149,7 @@ func (c *Client) sendTestResponseStringUint(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUintOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76222,7 +76222,7 @@ func (c *Client) sendTestResponseStringUint16(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint16",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint16Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76295,7 +76295,7 @@ func (c *Client) sendTestResponseStringUint16Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint16Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint16ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76368,7 +76368,7 @@ func (c *Client) sendTestResponseStringUint16ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint16ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint16ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76441,7 +76441,7 @@ func (c *Client) sendTestResponseStringUint16Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint16Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint16NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76514,7 +76514,7 @@ func (c *Client) sendTestResponseStringUint16NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint16NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint16NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76587,7 +76587,7 @@ func (c *Client) sendTestResponseStringUint16NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint16NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint16NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76660,7 +76660,7 @@ func (c *Client) sendTestResponseStringUint32(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint32",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint32Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76733,7 +76733,7 @@ func (c *Client) sendTestResponseStringUint32Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint32Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint32ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76806,7 +76806,7 @@ func (c *Client) sendTestResponseStringUint32ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint32ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint32ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76879,7 +76879,7 @@ func (c *Client) sendTestResponseStringUint32Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint32Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint32NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76952,7 +76952,7 @@ func (c *Client) sendTestResponseStringUint32NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint32NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint32NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77025,7 +77025,7 @@ func (c *Client) sendTestResponseStringUint32NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint32NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint32NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77098,7 +77098,7 @@ func (c *Client) sendTestResponseStringUint64(ctx context.Context, request strin
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint64",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint64Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77171,7 +77171,7 @@ func (c *Client) sendTestResponseStringUint64Array(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint64Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint64ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77244,7 +77244,7 @@ func (c *Client) sendTestResponseStringUint64ArrayArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint64ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint64ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77317,7 +77317,7 @@ func (c *Client) sendTestResponseStringUint64Nullable(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint64Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint64NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77390,7 +77390,7 @@ func (c *Client) sendTestResponseStringUint64NullableArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint64NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint64NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77463,7 +77463,7 @@ func (c *Client) sendTestResponseStringUint64NullableArrayArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint64NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint64NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77536,7 +77536,7 @@ func (c *Client) sendTestResponseStringUint8(ctx context.Context, request string
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint8",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint8Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77609,7 +77609,7 @@ func (c *Client) sendTestResponseStringUint8Array(ctx context.Context, request s
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint8Array",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint8ArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77682,7 +77682,7 @@ func (c *Client) sendTestResponseStringUint8ArrayArray(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint8ArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint8ArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77755,7 +77755,7 @@ func (c *Client) sendTestResponseStringUint8Nullable(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint8Nullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint8NullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77828,7 +77828,7 @@ func (c *Client) sendTestResponseStringUint8NullableArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint8NullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint8NullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77901,7 +77901,7 @@ func (c *Client) sendTestResponseStringUint8NullableArrayArray(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUint8NullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUint8NullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77974,7 +77974,7 @@ func (c *Client) sendTestResponseStringUintArray(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUintArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUintArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78047,7 +78047,7 @@ func (c *Client) sendTestResponseStringUintArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUintArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUintArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78120,7 +78120,7 @@ func (c *Client) sendTestResponseStringUintNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUintNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUintNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78193,7 +78193,7 @@ func (c *Client) sendTestResponseStringUintNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUintNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUintNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78266,7 +78266,7 @@ func (c *Client) sendTestResponseStringUintNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUintNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUintNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78339,7 +78339,7 @@ func (c *Client) sendTestResponseStringUnix(ctx context.Context, request string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnix",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78412,7 +78412,7 @@ func (c *Client) sendTestResponseStringUnixArray(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78485,7 +78485,7 @@ func (c *Client) sendTestResponseStringUnixArrayArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78558,7 +78558,7 @@ func (c *Client) sendTestResponseStringUnixMicro(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicro",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMicroOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78631,7 +78631,7 @@ func (c *Client) sendTestResponseStringUnixMicroArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMicroArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78704,7 +78704,7 @@ func (c *Client) sendTestResponseStringUnixMicroArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMicroArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78777,7 +78777,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullable(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMicroNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78850,7 +78850,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMicroNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78923,7 +78923,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMicroNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78996,7 +78996,7 @@ func (c *Client) sendTestResponseStringUnixMilli(ctx context.Context, request st
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilli",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMilliOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79069,7 +79069,7 @@ func (c *Client) sendTestResponseStringUnixMilliArray(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMilliArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79142,7 +79142,7 @@ func (c *Client) sendTestResponseStringUnixMilliArrayArray(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMilliArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79215,7 +79215,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullable(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMilliNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79288,7 +79288,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMilliNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79361,7 +79361,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArrayArray(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixMilliNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79434,7 +79434,7 @@ func (c *Client) sendTestResponseStringUnixNano(ctx context.Context, request str
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNano",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNanoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79507,7 +79507,7 @@ func (c *Client) sendTestResponseStringUnixNanoArray(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNanoArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79580,7 +79580,7 @@ func (c *Client) sendTestResponseStringUnixNanoArrayArray(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNanoArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79653,7 +79653,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullable(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNanoNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79726,7 +79726,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNanoNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79799,7 +79799,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArrayArray(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNanoNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79872,7 +79872,7 @@ func (c *Client) sendTestResponseStringUnixNullable(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79945,7 +79945,7 @@ func (c *Client) sendTestResponseStringUnixNullableArray(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80018,7 +80018,7 @@ func (c *Client) sendTestResponseStringUnixNullableArrayArray(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80091,7 +80091,7 @@ func (c *Client) sendTestResponseStringUnixSeconds(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSeconds",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixSecondsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80164,7 +80164,7 @@ func (c *Client) sendTestResponseStringUnixSecondsArray(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixSecondsArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80237,7 +80237,7 @@ func (c *Client) sendTestResponseStringUnixSecondsArrayArray(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixSecondsArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80310,7 +80310,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullable(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullable",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixSecondsNullableOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80383,7 +80383,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArray(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixSecondsNullableArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80456,7 +80456,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArrayArray(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArrayArray",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestResponseStringUnixSecondsNullableArrayArrayOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

@@ -13205,7 +13205,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "GetServiceAccountIssuerOpenIDConfiguration"
+						r.name = GetServiceAccountIssuerOpenIDConfigurationOperation
 						r.summary = ""
 						r.operationID = "getServiceAccountIssuerOpenIDConfiguration"
 						r.pathPattern = "/.well-known/openid-configuration/"
@@ -13241,7 +13241,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							r.name = "GetCoreAPIVersions"
+							r.name = GetCoreAPIVersionsOperation
 							r.summary = ""
 							r.operationID = "getCoreAPIVersions"
 							r.pathPattern = "/api/"
@@ -13264,7 +13264,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetCoreV1APIResources"
+								r.name = GetCoreV1APIResourcesOperation
 								r.summary = ""
 								r.operationID = "getCoreV1APIResources"
 								r.pathPattern = "/api/v1/"
@@ -13299,7 +13299,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1ComponentStatus"
+										r.name = ListCoreV1ComponentStatusOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ComponentStatus"
 										r.pathPattern = "/api/v1/componentstatuses"
@@ -13328,7 +13328,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ReadCoreV1ComponentStatus"
+											r.name = ReadCoreV1ComponentStatusOperation
 											r.summary = ""
 											r.operationID = "readCoreV1ComponentStatus"
 											r.pathPattern = "/api/v1/componentstatuses/{name}"
@@ -13356,7 +13356,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1ConfigMapForAllNamespaces"
+										r.name = ListCoreV1ConfigMapForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ConfigMapForAllNamespaces"
 										r.pathPattern = "/api/v1/configmaps"
@@ -13396,7 +13396,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1EndpointsForAllNamespaces"
+										r.name = ListCoreV1EndpointsForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1EndpointsForAllNamespaces"
 										r.pathPattern = "/api/v1/endpoints"
@@ -13421,7 +13421,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1EventForAllNamespaces"
+										r.name = ListCoreV1EventForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1EventForAllNamespaces"
 										r.pathPattern = "/api/v1/events"
@@ -13449,7 +13449,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "ListCoreV1LimitRangeForAllNamespaces"
+									r.name = ListCoreV1LimitRangeForAllNamespacesOperation
 									r.summary = ""
 									r.operationID = "listCoreV1LimitRangeForAllNamespaces"
 									r.pathPattern = "/api/v1/limitranges"
@@ -13485,7 +13485,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1Namespace"
+										r.name = ListCoreV1NamespaceOperation
 										r.summary = ""
 										r.operationID = "listCoreV1Namespace"
 										r.pathPattern = "/api/v1/namespaces"
@@ -13517,7 +13517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ReadCoreV1Namespace"
+											r.name = ReadCoreV1NamespaceOperation
 											r.summary = ""
 											r.operationID = "readCoreV1Namespace"
 											r.pathPattern = "/api/v1/namespaces/{name}"
@@ -13552,7 +13552,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListCoreV1NamespacedConfigMap"
+													r.name = ListCoreV1NamespacedConfigMapOperation
 													r.summary = ""
 													r.operationID = "listCoreV1NamespacedConfigMap"
 													r.pathPattern = "/api/v1/namespaces/{namespace}/configmaps"
@@ -13581,7 +13581,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadCoreV1NamespacedConfigMap"
+														r.name = ReadCoreV1NamespacedConfigMapOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespacedConfigMap"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/configmaps/{name}"
@@ -13620,7 +13620,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListCoreV1NamespacedEndpoints"
+														r.name = ListCoreV1NamespacedEndpointsOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedEndpoints"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/endpoints"
@@ -13649,7 +13649,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadCoreV1NamespacedEndpoints"
+															r.name = ReadCoreV1NamespacedEndpointsOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedEndpoints"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/endpoints/{name}"
@@ -13676,7 +13676,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListCoreV1NamespacedEvent"
+														r.name = ListCoreV1NamespacedEventOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedEvent"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/events"
@@ -13705,7 +13705,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadCoreV1NamespacedEvent"
+															r.name = ReadCoreV1NamespacedEventOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedEvent"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/events/{name}"
@@ -13735,7 +13735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListCoreV1NamespacedLimitRange"
+													r.name = ListCoreV1NamespacedLimitRangeOperation
 													r.summary = ""
 													r.operationID = "listCoreV1NamespacedLimitRange"
 													r.pathPattern = "/api/v1/namespaces/{namespace}/limitranges"
@@ -13764,7 +13764,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadCoreV1NamespacedLimitRange"
+														r.name = ReadCoreV1NamespacedLimitRangeOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespacedLimitRange"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/limitranges/{name}"
@@ -13803,7 +13803,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListCoreV1NamespacedPersistentVolumeClaim"
+														r.name = ListCoreV1NamespacedPersistentVolumeClaimOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedPersistentVolumeClaim"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims"
@@ -13835,7 +13835,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ReadCoreV1NamespacedPersistentVolumeClaim"
+															r.name = ReadCoreV1NamespacedPersistentVolumeClaimOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedPersistentVolumeClaim"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"
@@ -13859,7 +13859,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "ReadCoreV1NamespacedPersistentVolumeClaimStatus"
+																r.name = ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPersistentVolumeClaimStatus"
 																r.pathPattern = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"
@@ -13901,7 +13901,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ListCoreV1NamespacedPod"
+															r.name = ListCoreV1NamespacedPodOperation
 															r.summary = ""
 															r.operationID = "listCoreV1NamespacedPod"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/pods"
@@ -13933,7 +13933,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "ReadCoreV1NamespacedPod"
+																r.name = ReadCoreV1NamespacedPodOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPod"
 																r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}"
@@ -13969,7 +13969,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		r.name = "ConnectCoreV1GetNamespacedPodAttach"
+																		r.name = ConnectCoreV1GetNamespacedPodAttachOperation
 																		r.summary = ""
 																		r.operationID = "connectCoreV1GetNamespacedPodAttach"
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/attach"
@@ -13977,7 +13977,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		r.count = 2
 																		return r, true
 																	case "POST":
-																		r.name = "ConnectCoreV1PostNamespacedPodAttach"
+																		r.name = ConnectCoreV1PostNamespacedPodAttachOperation
 																		r.summary = ""
 																		r.operationID = "connectCoreV1PostNamespacedPodAttach"
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/attach"
@@ -14014,7 +14014,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf node.
 																		switch method {
 																		case "GET":
-																			r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
+																			r.name = ReadCoreV1NamespacedPodEphemeralcontainersOperation
 																			r.summary = ""
 																			r.operationID = "readCoreV1NamespacedPodEphemeralcontainers"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"
@@ -14039,7 +14039,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf node.
 																		switch method {
 																		case "GET":
-																			r.name = "ConnectCoreV1GetNamespacedPodExec"
+																			r.name = ConnectCoreV1GetNamespacedPodExecOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedPodExec"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/exec"
@@ -14047,7 +14047,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "POST":
-																			r.name = "ConnectCoreV1PostNamespacedPodExec"
+																			r.name = ConnectCoreV1PostNamespacedPodExecOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedPodExec"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/exec"
@@ -14075,7 +14075,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		r.name = "ReadCoreV1NamespacedPodLog"
+																		r.name = ReadCoreV1NamespacedPodLogOperation
 																		r.summary = ""
 																		r.operationID = "readCoreV1NamespacedPodLog"
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/log"
@@ -14112,7 +14112,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf node.
 																		switch method {
 																		case "GET":
-																			r.name = "ConnectCoreV1GetNamespacedPodPortforward"
+																			r.name = ConnectCoreV1GetNamespacedPodPortforwardOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedPodPortforward"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/portforward"
@@ -14120,7 +14120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "POST":
-																			r.name = "ConnectCoreV1PostNamespacedPodPortforward"
+																			r.name = ConnectCoreV1PostNamespacedPodPortforwardOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedPodPortforward"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/portforward"
@@ -14144,7 +14144,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	if len(elem) == 0 {
 																		switch method {
 																		case "DELETE":
-																			r.name = "ConnectCoreV1DeleteNamespacedPodProxy"
+																			r.name = ConnectCoreV1DeleteNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1DeleteNamespacedPodProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
@@ -14152,7 +14152,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "GET":
-																			r.name = "ConnectCoreV1GetNamespacedPodProxy"
+																			r.name = ConnectCoreV1GetNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedPodProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
@@ -14160,7 +14160,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "HEAD":
-																			r.name = "ConnectCoreV1HeadNamespacedPodProxy"
+																			r.name = ConnectCoreV1HeadNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1HeadNamespacedPodProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
@@ -14168,7 +14168,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "OPTIONS":
-																			r.name = "ConnectCoreV1OptionsNamespacedPodProxy"
+																			r.name = ConnectCoreV1OptionsNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1OptionsNamespacedPodProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
@@ -14176,7 +14176,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "PATCH":
-																			r.name = "ConnectCoreV1PatchNamespacedPodProxy"
+																			r.name = ConnectCoreV1PatchNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PatchNamespacedPodProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
@@ -14184,7 +14184,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "POST":
-																			r.name = "ConnectCoreV1PostNamespacedPodProxy"
+																			r.name = ConnectCoreV1PostNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedPodProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
@@ -14192,7 +14192,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "PUT":
-																			r.name = "ConnectCoreV1PutNamespacedPodProxy"
+																			r.name = ConnectCoreV1PutNamespacedPodProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PutNamespacedPodProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy"
@@ -14221,7 +14221,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			// Leaf node.
 																			switch method {
 																			case "DELETE":
-																				r.name = "ConnectCoreV1DeleteNamespacedPodProxyWithPath"
+																				r.name = ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1DeleteNamespacedPodProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
@@ -14229,7 +14229,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "GET":
-																				r.name = "ConnectCoreV1GetNamespacedPodProxyWithPath"
+																				r.name = ConnectCoreV1GetNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1GetNamespacedPodProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
@@ -14237,7 +14237,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "HEAD":
-																				r.name = "ConnectCoreV1HeadNamespacedPodProxyWithPath"
+																				r.name = ConnectCoreV1HeadNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1HeadNamespacedPodProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
@@ -14245,7 +14245,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "OPTIONS":
-																				r.name = "ConnectCoreV1OptionsNamespacedPodProxyWithPath"
+																				r.name = ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1OptionsNamespacedPodProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
@@ -14253,7 +14253,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "PATCH":
-																				r.name = "ConnectCoreV1PatchNamespacedPodProxyWithPath"
+																				r.name = ConnectCoreV1PatchNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PatchNamespacedPodProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
@@ -14261,7 +14261,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "POST":
-																				r.name = "ConnectCoreV1PostNamespacedPodProxyWithPath"
+																				r.name = ConnectCoreV1PostNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PostNamespacedPodProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
@@ -14269,7 +14269,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "PUT":
-																				r.name = "ConnectCoreV1PutNamespacedPodProxyWithPath"
+																				r.name = ConnectCoreV1PutNamespacedPodProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PutNamespacedPodProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"
@@ -14300,7 +14300,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		r.name = "ReadCoreV1NamespacedPodStatus"
+																		r.name = ReadCoreV1NamespacedPodStatusOperation
 																		r.summary = ""
 																		r.operationID = "readCoreV1NamespacedPodStatus"
 																		r.pathPattern = "/api/v1/namespaces/{namespace}/pods/{name}/status"
@@ -14333,7 +14333,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ListCoreV1NamespacedPodTemplate"
+															r.name = ListCoreV1NamespacedPodTemplateOperation
 															r.summary = ""
 															r.operationID = "listCoreV1NamespacedPodTemplate"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/podtemplates"
@@ -14362,7 +14362,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "ReadCoreV1NamespacedPodTemplate"
+																r.name = ReadCoreV1NamespacedPodTemplateOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedPodTemplate"
 																r.pathPattern = "/api/v1/namespaces/{namespace}/podtemplates/{name}"
@@ -14407,7 +14407,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListCoreV1NamespacedReplicationController"
+														r.name = ListCoreV1NamespacedReplicationControllerOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedReplicationController"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers"
@@ -14439,7 +14439,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ReadCoreV1NamespacedReplicationController"
+															r.name = ReadCoreV1NamespacedReplicationControllerOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedReplicationController"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"
@@ -14475,7 +14475,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadCoreV1NamespacedReplicationControllerScale"
+																	r.name = ReadCoreV1NamespacedReplicationControllerScaleOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedReplicationControllerScale"
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"
@@ -14500,7 +14500,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
+																	r.name = ReadCoreV1NamespacedReplicationControllerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedReplicationControllerStatus"
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"
@@ -14533,7 +14533,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListCoreV1NamespacedResourceQuota"
+														r.name = ListCoreV1NamespacedResourceQuotaOperation
 														r.summary = ""
 														r.operationID = "listCoreV1NamespacedResourceQuota"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas"
@@ -14565,7 +14565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ReadCoreV1NamespacedResourceQuota"
+															r.name = ReadCoreV1NamespacedResourceQuotaOperation
 															r.summary = ""
 															r.operationID = "readCoreV1NamespacedResourceQuota"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas/{name}"
@@ -14589,7 +14589,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "ReadCoreV1NamespacedResourceQuotaStatus"
+																r.name = ReadCoreV1NamespacedResourceQuotaStatusOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedResourceQuotaStatus"
 																r.pathPattern = "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"
@@ -14646,7 +14646,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ListCoreV1NamespacedSecret"
+															r.name = ListCoreV1NamespacedSecretOperation
 															r.summary = ""
 															r.operationID = "listCoreV1NamespacedSecret"
 															r.pathPattern = "/api/v1/namespaces/{namespace}/secrets"
@@ -14675,7 +14675,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "ReadCoreV1NamespacedSecret"
+																r.name = ReadCoreV1NamespacedSecretOperation
 																r.summary = ""
 																r.operationID = "readCoreV1NamespacedSecret"
 																r.pathPattern = "/api/v1/namespaces/{namespace}/secrets/{name}"
@@ -14714,7 +14714,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "ListCoreV1NamespacedServiceAccount"
+																r.name = ListCoreV1NamespacedServiceAccountOperation
 																r.summary = ""
 																r.operationID = "listCoreV1NamespacedServiceAccount"
 																r.pathPattern = "/api/v1/namespaces/{namespace}/serviceaccounts"
@@ -14743,7 +14743,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadCoreV1NamespacedServiceAccount"
+																	r.name = ReadCoreV1NamespacedServiceAccountOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedServiceAccount"
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}"
@@ -14770,7 +14770,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "ListCoreV1NamespacedService"
+																r.name = ListCoreV1NamespacedServiceOperation
 																r.summary = ""
 																r.operationID = "listCoreV1NamespacedService"
 																r.pathPattern = "/api/v1/namespaces/{namespace}/services"
@@ -14802,7 +14802,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															if len(elem) == 0 {
 																switch method {
 																case "GET":
-																	r.name = "ReadCoreV1NamespacedService"
+																	r.name = ReadCoreV1NamespacedServiceOperation
 																	r.summary = ""
 																	r.operationID = "readCoreV1NamespacedService"
 																	r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}"
@@ -14837,7 +14837,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	if len(elem) == 0 {
 																		switch method {
 																		case "DELETE":
-																			r.name = "ConnectCoreV1DeleteNamespacedServiceProxy"
+																			r.name = ConnectCoreV1DeleteNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1DeleteNamespacedServiceProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
@@ -14845,7 +14845,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "GET":
-																			r.name = "ConnectCoreV1GetNamespacedServiceProxy"
+																			r.name = ConnectCoreV1GetNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1GetNamespacedServiceProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
@@ -14853,7 +14853,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "HEAD":
-																			r.name = "ConnectCoreV1HeadNamespacedServiceProxy"
+																			r.name = ConnectCoreV1HeadNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1HeadNamespacedServiceProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
@@ -14861,7 +14861,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "OPTIONS":
-																			r.name = "ConnectCoreV1OptionsNamespacedServiceProxy"
+																			r.name = ConnectCoreV1OptionsNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1OptionsNamespacedServiceProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
@@ -14869,7 +14869,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "PATCH":
-																			r.name = "ConnectCoreV1PatchNamespacedServiceProxy"
+																			r.name = ConnectCoreV1PatchNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PatchNamespacedServiceProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
@@ -14877,7 +14877,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "POST":
-																			r.name = "ConnectCoreV1PostNamespacedServiceProxy"
+																			r.name = ConnectCoreV1PostNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PostNamespacedServiceProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
@@ -14885,7 +14885,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			r.count = 2
 																			return r, true
 																		case "PUT":
-																			r.name = "ConnectCoreV1PutNamespacedServiceProxy"
+																			r.name = ConnectCoreV1PutNamespacedServiceProxyOperation
 																			r.summary = ""
 																			r.operationID = "connectCoreV1PutNamespacedServiceProxy"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy"
@@ -14914,7 +14914,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																			// Leaf node.
 																			switch method {
 																			case "DELETE":
-																				r.name = "ConnectCoreV1DeleteNamespacedServiceProxyWithPath"
+																				r.name = ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1DeleteNamespacedServiceProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
@@ -14922,7 +14922,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "GET":
-																				r.name = "ConnectCoreV1GetNamespacedServiceProxyWithPath"
+																				r.name = ConnectCoreV1GetNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1GetNamespacedServiceProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
@@ -14930,7 +14930,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "HEAD":
-																				r.name = "ConnectCoreV1HeadNamespacedServiceProxyWithPath"
+																				r.name = ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1HeadNamespacedServiceProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
@@ -14938,7 +14938,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "OPTIONS":
-																				r.name = "ConnectCoreV1OptionsNamespacedServiceProxyWithPath"
+																				r.name = ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1OptionsNamespacedServiceProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
@@ -14946,7 +14946,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "PATCH":
-																				r.name = "ConnectCoreV1PatchNamespacedServiceProxyWithPath"
+																				r.name = ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PatchNamespacedServiceProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
@@ -14954,7 +14954,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "POST":
-																				r.name = "ConnectCoreV1PostNamespacedServiceProxyWithPath"
+																				r.name = ConnectCoreV1PostNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PostNamespacedServiceProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
@@ -14962,7 +14962,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																				r.count = 3
 																				return r, true
 																			case "PUT":
-																				r.name = "ConnectCoreV1PutNamespacedServiceProxyWithPath"
+																				r.name = ConnectCoreV1PutNamespacedServiceProxyWithPathOperation
 																				r.summary = ""
 																				r.operationID = "connectCoreV1PutNamespacedServiceProxyWithPath"
 																				r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"
@@ -14990,7 +14990,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		// Leaf node.
 																		switch method {
 																		case "GET":
-																			r.name = "ReadCoreV1NamespacedServiceStatus"
+																			r.name = ReadCoreV1NamespacedServiceStatusOperation
 																			r.summary = ""
 																			r.operationID = "readCoreV1NamespacedServiceStatus"
 																			r.pathPattern = "/api/v1/namespaces/{namespace}/services/{name}/status"
@@ -15030,7 +15030,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadCoreV1NamespaceStatus"
+														r.name = ReadCoreV1NamespaceStatusOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespaceStatus"
 														r.pathPattern = "/api/v1/namespaces/{name}/status"
@@ -15066,7 +15066,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1Node"
+										r.name = ListCoreV1NodeOperation
 										r.summary = ""
 										r.operationID = "listCoreV1Node"
 										r.pathPattern = "/api/v1/nodes"
@@ -15098,7 +15098,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ReadCoreV1Node"
+											r.name = ReadCoreV1NodeOperation
 											r.summary = ""
 											r.operationID = "readCoreV1Node"
 											r.pathPattern = "/api/v1/nodes/{name}"
@@ -15133,7 +15133,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "DELETE":
-													r.name = "ConnectCoreV1DeleteNodeProxy"
+													r.name = ConnectCoreV1DeleteNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1DeleteNodeProxy"
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
@@ -15141,7 +15141,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 1
 													return r, true
 												case "GET":
-													r.name = "ConnectCoreV1GetNodeProxy"
+													r.name = ConnectCoreV1GetNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1GetNodeProxy"
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
@@ -15149,7 +15149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 1
 													return r, true
 												case "HEAD":
-													r.name = "ConnectCoreV1HeadNodeProxy"
+													r.name = ConnectCoreV1HeadNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1HeadNodeProxy"
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
@@ -15157,7 +15157,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 1
 													return r, true
 												case "OPTIONS":
-													r.name = "ConnectCoreV1OptionsNodeProxy"
+													r.name = ConnectCoreV1OptionsNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1OptionsNodeProxy"
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
@@ -15165,7 +15165,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 1
 													return r, true
 												case "PATCH":
-													r.name = "ConnectCoreV1PatchNodeProxy"
+													r.name = ConnectCoreV1PatchNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1PatchNodeProxy"
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
@@ -15173,7 +15173,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 1
 													return r, true
 												case "POST":
-													r.name = "ConnectCoreV1PostNodeProxy"
+													r.name = ConnectCoreV1PostNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1PostNodeProxy"
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
@@ -15181,7 +15181,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													r.count = 1
 													return r, true
 												case "PUT":
-													r.name = "ConnectCoreV1PutNodeProxy"
+													r.name = ConnectCoreV1PutNodeProxyOperation
 													r.summary = ""
 													r.operationID = "connectCoreV1PutNodeProxy"
 													r.pathPattern = "/api/v1/nodes/{name}/proxy"
@@ -15210,7 +15210,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "DELETE":
-														r.name = "ConnectCoreV1DeleteNodeProxyWithPath"
+														r.name = ConnectCoreV1DeleteNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1DeleteNodeProxyWithPath"
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
@@ -15218,7 +15218,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "GET":
-														r.name = "ConnectCoreV1GetNodeProxyWithPath"
+														r.name = ConnectCoreV1GetNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1GetNodeProxyWithPath"
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
@@ -15226,7 +15226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "HEAD":
-														r.name = "ConnectCoreV1HeadNodeProxyWithPath"
+														r.name = ConnectCoreV1HeadNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1HeadNodeProxyWithPath"
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
@@ -15234,7 +15234,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "OPTIONS":
-														r.name = "ConnectCoreV1OptionsNodeProxyWithPath"
+														r.name = ConnectCoreV1OptionsNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1OptionsNodeProxyWithPath"
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
@@ -15242,7 +15242,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "PATCH":
-														r.name = "ConnectCoreV1PatchNodeProxyWithPath"
+														r.name = ConnectCoreV1PatchNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1PatchNodeProxyWithPath"
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
@@ -15250,7 +15250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "POST":
-														r.name = "ConnectCoreV1PostNodeProxyWithPath"
+														r.name = ConnectCoreV1PostNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1PostNodeProxyWithPath"
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
@@ -15258,7 +15258,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.count = 2
 														return r, true
 													case "PUT":
-														r.name = "ConnectCoreV1PutNodeProxyWithPath"
+														r.name = ConnectCoreV1PutNodeProxyWithPathOperation
 														r.summary = ""
 														r.operationID = "connectCoreV1PutNodeProxyWithPath"
 														r.pathPattern = "/api/v1/nodes/{name}/proxy/{path}"
@@ -15286,7 +15286,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadCoreV1NodeStatus"
+													r.name = ReadCoreV1NodeStatusOperation
 													r.summary = ""
 													r.operationID = "readCoreV1NodeStatus"
 													r.pathPattern = "/api/v1/nodes/{name}/status"
@@ -15347,7 +15347,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListCoreV1PersistentVolumeClaimForAllNamespaces"
+											r.name = ListCoreV1PersistentVolumeClaimForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PersistentVolumeClaimForAllNamespaces"
 											r.pathPattern = "/api/v1/persistentvolumeclaims"
@@ -15371,7 +15371,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListCoreV1PersistentVolume"
+											r.name = ListCoreV1PersistentVolumeOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PersistentVolume"
 											r.pathPattern = "/api/v1/persistentvolumes"
@@ -15403,7 +15403,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ReadCoreV1PersistentVolume"
+												r.name = ReadCoreV1PersistentVolumeOperation
 												r.summary = ""
 												r.operationID = "readCoreV1PersistentVolume"
 												r.pathPattern = "/api/v1/persistentvolumes/{name}"
@@ -15427,7 +15427,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadCoreV1PersistentVolumeStatus"
+													r.name = ReadCoreV1PersistentVolumeStatusOperation
 													r.summary = ""
 													r.operationID = "readCoreV1PersistentVolumeStatus"
 													r.pathPattern = "/api/v1/persistentvolumes/{name}/status"
@@ -15473,7 +15473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListCoreV1PodForAllNamespaces"
+											r.name = ListCoreV1PodForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PodForAllNamespaces"
 											r.pathPattern = "/api/v1/pods"
@@ -15498,7 +15498,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListCoreV1PodTemplateForAllNamespaces"
+											r.name = ListCoreV1PodTemplateForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1PodTemplateForAllNamespaces"
 											r.pathPattern = "/api/v1/podtemplates"
@@ -15541,7 +15541,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1ReplicationControllerForAllNamespaces"
+										r.name = ListCoreV1ReplicationControllerForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ReplicationControllerForAllNamespaces"
 										r.pathPattern = "/api/v1/replicationcontrollers"
@@ -15566,7 +15566,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1ResourceQuotaForAllNamespaces"
+										r.name = ListCoreV1ResourceQuotaForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1ResourceQuotaForAllNamespaces"
 										r.pathPattern = "/api/v1/resourcequotas"
@@ -15606,7 +15606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "ListCoreV1SecretForAllNamespaces"
+										r.name = ListCoreV1SecretForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "listCoreV1SecretForAllNamespaces"
 										r.pathPattern = "/api/v1/secrets"
@@ -15643,7 +15643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListCoreV1ServiceAccountForAllNamespaces"
+											r.name = ListCoreV1ServiceAccountForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1ServiceAccountForAllNamespaces"
 											r.pathPattern = "/api/v1/serviceaccounts"
@@ -15668,7 +15668,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListCoreV1ServiceForAllNamespaces"
+											r.name = ListCoreV1ServiceForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoreV1ServiceForAllNamespaces"
 											r.pathPattern = "/api/v1/services"
@@ -15711,7 +15711,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "WatchCoreV1ConfigMapListForAllNamespaces"
+										r.name = WatchCoreV1ConfigMapListForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "watchCoreV1ConfigMapListForAllNamespaces"
 										r.pathPattern = "/api/v1/watch/configmaps"
@@ -15748,7 +15748,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "WatchCoreV1EndpointsListForAllNamespaces"
+											r.name = WatchCoreV1EndpointsListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1EndpointsListForAllNamespaces"
 											r.pathPattern = "/api/v1/watch/endpoints"
@@ -15773,7 +15773,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "WatchCoreV1EventListForAllNamespaces"
+											r.name = WatchCoreV1EventListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1EventListForAllNamespaces"
 											r.pathPattern = "/api/v1/watch/events"
@@ -15801,7 +15801,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "WatchCoreV1LimitRangeListForAllNamespaces"
+										r.name = WatchCoreV1LimitRangeListForAllNamespacesOperation
 										r.summary = ""
 										r.operationID = "watchCoreV1LimitRangeListForAllNamespaces"
 										r.pathPattern = "/api/v1/watch/limitranges"
@@ -15837,7 +15837,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "WatchCoreV1NamespaceList"
+											r.name = WatchCoreV1NamespaceListOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1NamespaceList"
 											r.pathPattern = "/api/v1/watch/namespaces"
@@ -15869,7 +15869,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1Namespace"
+												r.name = WatchCoreV1NamespaceOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1Namespace"
 												r.pathPattern = "/api/v1/watch/namespaces/{name}"
@@ -15904,7 +15904,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchCoreV1NamespacedConfigMapList"
+														r.name = WatchCoreV1NamespacedConfigMapListOperation
 														r.summary = ""
 														r.operationID = "watchCoreV1NamespacedConfigMapList"
 														r.pathPattern = "/api/v1/watch/namespaces/{namespace}/configmaps"
@@ -15933,7 +15933,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedConfigMap"
+															r.name = WatchCoreV1NamespacedConfigMapOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedConfigMap"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/configmaps/{name}"
@@ -15972,7 +15972,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedEndpointsList"
+															r.name = WatchCoreV1NamespacedEndpointsListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedEndpointsList"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/endpoints"
@@ -16001,7 +16001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedEndpoints"
+																r.name = WatchCoreV1NamespacedEndpointsOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedEndpoints"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/endpoints/{name}"
@@ -16028,7 +16028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedEventList"
+															r.name = WatchCoreV1NamespacedEventListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedEventList"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/events"
@@ -16057,7 +16057,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedEvent"
+																r.name = WatchCoreV1NamespacedEventOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedEvent"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/events/{name}"
@@ -16087,7 +16087,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchCoreV1NamespacedLimitRangeList"
+														r.name = WatchCoreV1NamespacedLimitRangeListOperation
 														r.summary = ""
 														r.operationID = "watchCoreV1NamespacedLimitRangeList"
 														r.pathPattern = "/api/v1/watch/namespaces/{namespace}/limitranges"
@@ -16116,7 +16116,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedLimitRange"
+															r.name = WatchCoreV1NamespacedLimitRangeOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedLimitRange"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/limitranges/{name}"
@@ -16155,7 +16155,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedPersistentVolumeClaimList"
+															r.name = WatchCoreV1NamespacedPersistentVolumeClaimListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedPersistentVolumeClaimList"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"
@@ -16184,7 +16184,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedPersistentVolumeClaim"
+																r.name = WatchCoreV1NamespacedPersistentVolumeClaimOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedPersistentVolumeClaim"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"
@@ -16223,7 +16223,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedPodList"
+																r.name = WatchCoreV1NamespacedPodListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedPodList"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/pods"
@@ -16252,7 +16252,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchCoreV1NamespacedPod"
+																	r.name = WatchCoreV1NamespacedPodOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedPod"
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/pods/{name}"
@@ -16279,7 +16279,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedPodTemplateList"
+																r.name = WatchCoreV1NamespacedPodTemplateListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedPodTemplateList"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/podtemplates"
@@ -16308,7 +16308,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchCoreV1NamespacedPodTemplate"
+																	r.name = WatchCoreV1NamespacedPodTemplateOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedPodTemplate"
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"
@@ -16353,7 +16353,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedReplicationControllerList"
+															r.name = WatchCoreV1NamespacedReplicationControllerListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedReplicationControllerList"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/replicationcontrollers"
@@ -16382,7 +16382,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedReplicationController"
+																r.name = WatchCoreV1NamespacedReplicationControllerOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedReplicationController"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"
@@ -16409,7 +16409,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedResourceQuotaList"
+															r.name = WatchCoreV1NamespacedResourceQuotaListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedResourceQuotaList"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/resourcequotas"
@@ -16438,7 +16438,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedResourceQuota"
+																r.name = WatchCoreV1NamespacedResourceQuotaOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedResourceQuota"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"
@@ -16480,7 +16480,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchCoreV1NamespacedSecretList"
+															r.name = WatchCoreV1NamespacedSecretListOperation
 															r.summary = ""
 															r.operationID = "watchCoreV1NamespacedSecretList"
 															r.pathPattern = "/api/v1/watch/namespaces/{namespace}/secrets"
@@ -16509,7 +16509,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedSecret"
+																r.name = WatchCoreV1NamespacedSecretOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedSecret"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/secrets/{name}"
@@ -16548,7 +16548,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedServiceAccountList"
+																r.name = WatchCoreV1NamespacedServiceAccountListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedServiceAccountList"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/serviceaccounts"
@@ -16577,7 +16577,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchCoreV1NamespacedServiceAccount"
+																	r.name = WatchCoreV1NamespacedServiceAccountOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedServiceAccount"
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"
@@ -16604,7 +16604,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchCoreV1NamespacedServiceList"
+																r.name = WatchCoreV1NamespacedServiceListOperation
 																r.summary = ""
 																r.operationID = "watchCoreV1NamespacedServiceList"
 																r.pathPattern = "/api/v1/watch/namespaces/{namespace}/services"
@@ -16633,7 +16633,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchCoreV1NamespacedService"
+																	r.name = WatchCoreV1NamespacedServiceOperation
 																	r.summary = ""
 																	r.operationID = "watchCoreV1NamespacedService"
 																	r.pathPattern = "/api/v1/watch/namespaces/{namespace}/services/{name}"
@@ -16675,7 +16675,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "WatchCoreV1NodeList"
+											r.name = WatchCoreV1NodeListOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1NodeList"
 											r.pathPattern = "/api/v1/watch/nodes"
@@ -16704,7 +16704,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1Node"
+												r.name = WatchCoreV1NodeOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1Node"
 												r.pathPattern = "/api/v1/watch/nodes/{name}"
@@ -16759,7 +16759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1PersistentVolumeClaimListForAllNamespaces"
+												r.name = WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PersistentVolumeClaimListForAllNamespaces"
 												r.pathPattern = "/api/v1/watch/persistentvolumeclaims"
@@ -16783,7 +16783,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1PersistentVolumeList"
+												r.name = WatchCoreV1PersistentVolumeListOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PersistentVolumeList"
 												r.pathPattern = "/api/v1/watch/persistentvolumes"
@@ -16812,7 +16812,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchCoreV1PersistentVolume"
+													r.name = WatchCoreV1PersistentVolumeOperation
 													r.summary = ""
 													r.operationID = "watchCoreV1PersistentVolume"
 													r.pathPattern = "/api/v1/watch/persistentvolumes/{name}"
@@ -16855,7 +16855,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1PodListForAllNamespaces"
+												r.name = WatchCoreV1PodListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PodListForAllNamespaces"
 												r.pathPattern = "/api/v1/watch/pods"
@@ -16880,7 +16880,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1PodTemplateListForAllNamespaces"
+												r.name = WatchCoreV1PodTemplateListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1PodTemplateListForAllNamespaces"
 												r.pathPattern = "/api/v1/watch/podtemplates"
@@ -16923,7 +16923,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "WatchCoreV1ReplicationControllerListForAllNamespaces"
+											r.name = WatchCoreV1ReplicationControllerListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1ReplicationControllerListForAllNamespaces"
 											r.pathPattern = "/api/v1/watch/replicationcontrollers"
@@ -16948,7 +16948,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "WatchCoreV1ResourceQuotaListForAllNamespaces"
+											r.name = WatchCoreV1ResourceQuotaListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1ResourceQuotaListForAllNamespaces"
 											r.pathPattern = "/api/v1/watch/resourcequotas"
@@ -16988,7 +16988,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "WatchCoreV1SecretListForAllNamespaces"
+											r.name = WatchCoreV1SecretListForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "watchCoreV1SecretListForAllNamespaces"
 											r.pathPattern = "/api/v1/watch/secrets"
@@ -17025,7 +17025,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1ServiceAccountListForAllNamespaces"
+												r.name = WatchCoreV1ServiceAccountListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1ServiceAccountListForAllNamespaces"
 												r.pathPattern = "/api/v1/watch/serviceaccounts"
@@ -17050,7 +17050,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCoreV1ServiceListForAllNamespaces"
+												r.name = WatchCoreV1ServiceListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoreV1ServiceListForAllNamespaces"
 												r.pathPattern = "/api/v1/watch/services"
@@ -17089,7 +17089,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							r.name = "GetAPIVersions"
+							r.name = GetAPIVersionsOperation
 							r.summary = ""
 							r.operationID = "getAPIVersions"
 							r.pathPattern = "/apis/"
@@ -17124,7 +17124,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetAdmissionregistrationAPIGroup"
+									r.name = GetAdmissionregistrationAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getAdmissionregistrationAPIGroup"
 									r.pathPattern = "/apis/admissionregistration.k8s.io/"
@@ -17147,7 +17147,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetAdmissionregistrationV1APIResources"
+										r.name = GetAdmissionregistrationV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getAdmissionregistrationV1APIResources"
 										r.pathPattern = "/apis/admissionregistration.k8s.io/v1/"
@@ -17170,7 +17170,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListAdmissionregistrationV1MutatingWebhookConfiguration"
+											r.name = ListAdmissionregistrationV1MutatingWebhookConfigurationOperation
 											r.summary = ""
 											r.operationID = "listAdmissionregistrationV1MutatingWebhookConfiguration"
 											r.pathPattern = "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
@@ -17199,7 +17199,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ReadAdmissionregistrationV1MutatingWebhookConfiguration"
+												r.name = ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation
 												r.summary = ""
 												r.operationID = "readAdmissionregistrationV1MutatingWebhookConfiguration"
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"
@@ -17226,7 +17226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListAdmissionregistrationV1ValidatingWebhookConfiguration"
+											r.name = ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation
 											r.summary = ""
 											r.operationID = "listAdmissionregistrationV1ValidatingWebhookConfiguration"
 											r.pathPattern = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
@@ -17255,7 +17255,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ReadAdmissionregistrationV1ValidatingWebhookConfiguration"
+												r.name = ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation
 												r.summary = ""
 												r.operationID = "readAdmissionregistrationV1ValidatingWebhookConfiguration"
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"
@@ -17294,7 +17294,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchAdmissionregistrationV1MutatingWebhookConfigurationList"
+												r.name = WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchAdmissionregistrationV1MutatingWebhookConfigurationList"
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
@@ -17323,7 +17323,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchAdmissionregistrationV1MutatingWebhookConfiguration"
+													r.name = WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchAdmissionregistrationV1MutatingWebhookConfiguration"
 													r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"
@@ -17350,7 +17350,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList"
+												r.name = WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchAdmissionregistrationV1ValidatingWebhookConfigurationList"
 												r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
@@ -17379,7 +17379,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfiguration"
+													r.name = WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchAdmissionregistrationV1ValidatingWebhookConfiguration"
 													r.pathPattern = "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"
@@ -17439,7 +17439,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetApiextensionsAPIGroup"
+											r.name = GetApiextensionsAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getApiextensionsAPIGroup"
 											r.pathPattern = "/apis/apiextensions.k8s.io/"
@@ -17462,7 +17462,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "GetApiextensionsV1APIResources"
+												r.name = GetApiextensionsV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getApiextensionsV1APIResources"
 												r.pathPattern = "/apis/apiextensions.k8s.io/v1/"
@@ -17485,7 +17485,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListApiextensionsV1CustomResourceDefinition"
+													r.name = ListApiextensionsV1CustomResourceDefinitionOperation
 													r.summary = ""
 													r.operationID = "listApiextensionsV1CustomResourceDefinition"
 													r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
@@ -17517,7 +17517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ReadApiextensionsV1CustomResourceDefinition"
+														r.name = ReadApiextensionsV1CustomResourceDefinitionOperation
 														r.summary = ""
 														r.operationID = "readApiextensionsV1CustomResourceDefinition"
 														r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"
@@ -17541,7 +17541,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadApiextensionsV1CustomResourceDefinitionStatus"
+															r.name = ReadApiextensionsV1CustomResourceDefinitionStatusOperation
 															r.summary = ""
 															r.operationID = "readApiextensionsV1CustomResourceDefinitionStatus"
 															r.pathPattern = "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"
@@ -17571,7 +17571,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchApiextensionsV1CustomResourceDefinitionList"
+													r.name = WatchApiextensionsV1CustomResourceDefinitionListOperation
 													r.summary = ""
 													r.operationID = "watchApiextensionsV1CustomResourceDefinitionList"
 													r.pathPattern = "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
@@ -17600,7 +17600,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchApiextensionsV1CustomResourceDefinition"
+														r.name = WatchApiextensionsV1CustomResourceDefinitionOperation
 														r.summary = ""
 														r.operationID = "watchApiextensionsV1CustomResourceDefinition"
 														r.pathPattern = "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"
@@ -17633,7 +17633,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetApiregistrationAPIGroup"
+											r.name = GetApiregistrationAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getApiregistrationAPIGroup"
 											r.pathPattern = "/apis/apiregistration.k8s.io/"
@@ -17656,7 +17656,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "GetApiregistrationV1APIResources"
+												r.name = GetApiregistrationV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getApiregistrationV1APIResources"
 												r.pathPattern = "/apis/apiregistration.k8s.io/v1/"
@@ -17679,7 +17679,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListApiregistrationV1APIService"
+													r.name = ListApiregistrationV1APIServiceOperation
 													r.summary = ""
 													r.operationID = "listApiregistrationV1APIService"
 													r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices"
@@ -17711,7 +17711,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ReadApiregistrationV1APIService"
+														r.name = ReadApiregistrationV1APIServiceOperation
 														r.summary = ""
 														r.operationID = "readApiregistrationV1APIService"
 														r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices/{name}"
@@ -17735,7 +17735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadApiregistrationV1APIServiceStatus"
+															r.name = ReadApiregistrationV1APIServiceStatusOperation
 															r.summary = ""
 															r.operationID = "readApiregistrationV1APIServiceStatus"
 															r.pathPattern = "/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"
@@ -17765,7 +17765,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchApiregistrationV1APIServiceList"
+													r.name = WatchApiregistrationV1APIServiceListOperation
 													r.summary = ""
 													r.operationID = "watchApiregistrationV1APIServiceList"
 													r.pathPattern = "/apis/apiregistration.k8s.io/v1/watch/apiservices"
@@ -17794,7 +17794,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchApiregistrationV1APIService"
+														r.name = WatchApiregistrationV1APIServiceOperation
 														r.summary = ""
 														r.operationID = "watchApiregistrationV1APIService"
 														r.pathPattern = "/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"
@@ -17830,7 +17830,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetAppsAPIGroup"
+										r.name = GetAppsAPIGroupOperation
 										r.summary = ""
 										r.operationID = "getAppsAPIGroup"
 										r.pathPattern = "/apis/apps/"
@@ -17853,7 +17853,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetAppsV1APIResources"
+											r.name = GetAppsV1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getAppsV1APIResources"
 											r.pathPattern = "/apis/apps/v1/"
@@ -17877,7 +17877,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListAppsV1ControllerRevisionForAllNamespaces"
+												r.name = ListAppsV1ControllerRevisionForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listAppsV1ControllerRevisionForAllNamespaces"
 												r.pathPattern = "/apis/apps/v1/controllerrevisions"
@@ -17914,7 +17914,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ListAppsV1DaemonSetForAllNamespaces"
+													r.name = ListAppsV1DaemonSetForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "listAppsV1DaemonSetForAllNamespaces"
 													r.pathPattern = "/apis/apps/v1/daemonsets"
@@ -17939,7 +17939,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ListAppsV1DeploymentForAllNamespaces"
+													r.name = ListAppsV1DeploymentForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "listAppsV1DeploymentForAllNamespaces"
 													r.pathPattern = "/apis/apps/v1/deployments"
@@ -17999,7 +17999,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListAppsV1NamespacedControllerRevision"
+														r.name = ListAppsV1NamespacedControllerRevisionOperation
 														r.summary = ""
 														r.operationID = "listAppsV1NamespacedControllerRevision"
 														r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/controllerrevisions"
@@ -18028,7 +18028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadAppsV1NamespacedControllerRevision"
+															r.name = ReadAppsV1NamespacedControllerRevisionOperation
 															r.summary = ""
 															r.operationID = "readAppsV1NamespacedControllerRevision"
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"
@@ -18067,7 +18067,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ListAppsV1NamespacedDaemonSet"
+															r.name = ListAppsV1NamespacedDaemonSetOperation
 															r.summary = ""
 															r.operationID = "listAppsV1NamespacedDaemonSet"
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets"
@@ -18099,7 +18099,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "ReadAppsV1NamespacedDaemonSet"
+																r.name = ReadAppsV1NamespacedDaemonSetOperation
 																r.summary = ""
 																r.operationID = "readAppsV1NamespacedDaemonSet"
 																r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"
@@ -18123,7 +18123,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadAppsV1NamespacedDaemonSetStatus"
+																	r.name = ReadAppsV1NamespacedDaemonSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedDaemonSetStatus"
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"
@@ -18153,7 +18153,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ListAppsV1NamespacedDeployment"
+															r.name = ListAppsV1NamespacedDeploymentOperation
 															r.summary = ""
 															r.operationID = "listAppsV1NamespacedDeployment"
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments"
@@ -18185,7 +18185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "ReadAppsV1NamespacedDeployment"
+																r.name = ReadAppsV1NamespacedDeploymentOperation
 																r.summary = ""
 																r.operationID = "readAppsV1NamespacedDeployment"
 																r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}"
@@ -18221,7 +18221,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		r.name = "ReadAppsV1NamespacedDeploymentScale"
+																		r.name = ReadAppsV1NamespacedDeploymentScaleOperation
 																		r.summary = ""
 																		r.operationID = "readAppsV1NamespacedDeploymentScale"
 																		r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"
@@ -18246,7 +18246,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																	// Leaf node.
 																	switch method {
 																	case "GET":
-																		r.name = "ReadAppsV1NamespacedDeploymentStatus"
+																		r.name = ReadAppsV1NamespacedDeploymentStatusOperation
 																		r.summary = ""
 																		r.operationID = "readAppsV1NamespacedDeploymentStatus"
 																		r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"
@@ -18282,7 +18282,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListAppsV1NamespacedReplicaSet"
+														r.name = ListAppsV1NamespacedReplicaSetOperation
 														r.summary = ""
 														r.operationID = "listAppsV1NamespacedReplicaSet"
 														r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets"
@@ -18314,7 +18314,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ReadAppsV1NamespacedReplicaSet"
+															r.name = ReadAppsV1NamespacedReplicaSetOperation
 															r.summary = ""
 															r.operationID = "readAppsV1NamespacedReplicaSet"
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"
@@ -18350,7 +18350,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadAppsV1NamespacedReplicaSetScale"
+																	r.name = ReadAppsV1NamespacedReplicaSetScaleOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedReplicaSetScale"
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"
@@ -18375,7 +18375,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadAppsV1NamespacedReplicaSetStatus"
+																	r.name = ReadAppsV1NamespacedReplicaSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedReplicaSetStatus"
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"
@@ -18408,7 +18408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListAppsV1NamespacedStatefulSet"
+														r.name = ListAppsV1NamespacedStatefulSetOperation
 														r.summary = ""
 														r.operationID = "listAppsV1NamespacedStatefulSet"
 														r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets"
@@ -18440,7 +18440,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ReadAppsV1NamespacedStatefulSet"
+															r.name = ReadAppsV1NamespacedStatefulSetOperation
 															r.summary = ""
 															r.operationID = "readAppsV1NamespacedStatefulSet"
 															r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"
@@ -18476,7 +18476,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadAppsV1NamespacedStatefulSetScale"
+																	r.name = ReadAppsV1NamespacedStatefulSetScaleOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedStatefulSetScale"
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"
@@ -18501,7 +18501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadAppsV1NamespacedStatefulSetStatus"
+																	r.name = ReadAppsV1NamespacedStatefulSetStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAppsV1NamespacedStatefulSetStatus"
 																	r.pathPattern = "/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"
@@ -18541,7 +18541,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListAppsV1ReplicaSetForAllNamespaces"
+												r.name = ListAppsV1ReplicaSetForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listAppsV1ReplicaSetForAllNamespaces"
 												r.pathPattern = "/apis/apps/v1/replicasets"
@@ -18566,7 +18566,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListAppsV1StatefulSetForAllNamespaces"
+												r.name = ListAppsV1StatefulSetForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listAppsV1StatefulSetForAllNamespaces"
 												r.pathPattern = "/apis/apps/v1/statefulsets"
@@ -18603,7 +18603,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchAppsV1ControllerRevisionListForAllNamespaces"
+													r.name = WatchAppsV1ControllerRevisionListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchAppsV1ControllerRevisionListForAllNamespaces"
 													r.pathPattern = "/apis/apps/v1/watch/controllerrevisions"
@@ -18640,7 +18640,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchAppsV1DaemonSetListForAllNamespaces"
+														r.name = WatchAppsV1DaemonSetListForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "watchAppsV1DaemonSetListForAllNamespaces"
 														r.pathPattern = "/apis/apps/v1/watch/daemonsets"
@@ -18665,7 +18665,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchAppsV1DeploymentListForAllNamespaces"
+														r.name = WatchAppsV1DeploymentListForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "watchAppsV1DeploymentListForAllNamespaces"
 														r.pathPattern = "/apis/apps/v1/watch/deployments"
@@ -18725,7 +18725,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchAppsV1NamespacedControllerRevisionList"
+															r.name = WatchAppsV1NamespacedControllerRevisionListOperation
 															r.summary = ""
 															r.operationID = "watchAppsV1NamespacedControllerRevisionList"
 															r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"
@@ -18754,7 +18754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchAppsV1NamespacedControllerRevision"
+																r.name = WatchAppsV1NamespacedControllerRevisionOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedControllerRevision"
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"
@@ -18793,7 +18793,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchAppsV1NamespacedDaemonSetList"
+																r.name = WatchAppsV1NamespacedDaemonSetListOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedDaemonSetList"
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"
@@ -18822,7 +18822,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchAppsV1NamespacedDaemonSet"
+																	r.name = WatchAppsV1NamespacedDaemonSetOperation
 																	r.summary = ""
 																	r.operationID = "watchAppsV1NamespacedDaemonSet"
 																	r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"
@@ -18849,7 +18849,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchAppsV1NamespacedDeploymentList"
+																r.name = WatchAppsV1NamespacedDeploymentListOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedDeploymentList"
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/deployments"
@@ -18878,7 +18878,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchAppsV1NamespacedDeployment"
+																	r.name = WatchAppsV1NamespacedDeploymentOperation
 																	r.summary = ""
 																	r.operationID = "watchAppsV1NamespacedDeployment"
 																	r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"
@@ -18908,7 +18908,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchAppsV1NamespacedReplicaSetList"
+															r.name = WatchAppsV1NamespacedReplicaSetListOperation
 															r.summary = ""
 															r.operationID = "watchAppsV1NamespacedReplicaSetList"
 															r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/replicasets"
@@ -18937,7 +18937,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchAppsV1NamespacedReplicaSet"
+																r.name = WatchAppsV1NamespacedReplicaSetOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedReplicaSet"
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"
@@ -18964,7 +18964,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchAppsV1NamespacedStatefulSetList"
+															r.name = WatchAppsV1NamespacedStatefulSetListOperation
 															r.summary = ""
 															r.operationID = "watchAppsV1NamespacedStatefulSetList"
 															r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"
@@ -18993,7 +18993,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchAppsV1NamespacedStatefulSet"
+																r.name = WatchAppsV1NamespacedStatefulSetOperation
 																r.summary = ""
 																r.operationID = "watchAppsV1NamespacedStatefulSet"
 																r.pathPattern = "/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"
@@ -19027,7 +19027,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchAppsV1ReplicaSetListForAllNamespaces"
+													r.name = WatchAppsV1ReplicaSetListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchAppsV1ReplicaSetListForAllNamespaces"
 													r.pathPattern = "/apis/apps/v1/watch/replicasets"
@@ -19052,7 +19052,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchAppsV1StatefulSetListForAllNamespaces"
+													r.name = WatchAppsV1StatefulSetListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchAppsV1StatefulSetListForAllNamespaces"
 													r.pathPattern = "/apis/apps/v1/watch/statefulsets"
@@ -19112,7 +19112,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetAuthenticationAPIGroup"
+											r.name = GetAuthenticationAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getAuthenticationAPIGroup"
 											r.pathPattern = "/apis/authentication.k8s.io/"
@@ -19136,7 +19136,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "GetAuthenticationV1APIResources"
+												r.name = GetAuthenticationV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getAuthenticationV1APIResources"
 												r.pathPattern = "/apis/authentication.k8s.io/v1/"
@@ -19163,7 +19163,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetAuthorizationAPIGroup"
+											r.name = GetAuthorizationAPIGroupOperation
 											r.summary = ""
 											r.operationID = "getAuthorizationAPIGroup"
 											r.pathPattern = "/apis/authorization.k8s.io/"
@@ -19187,7 +19187,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "GetAuthorizationV1APIResources"
+												r.name = GetAuthorizationV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getAuthorizationV1APIResources"
 												r.pathPattern = "/apis/authorization.k8s.io/v1/"
@@ -19217,7 +19217,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetAutoscalingAPIGroup"
+										r.name = GetAutoscalingAPIGroupOperation
 										r.summary = ""
 										r.operationID = "getAutoscalingAPIGroup"
 										r.pathPattern = "/apis/autoscaling/"
@@ -19252,7 +19252,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "GetAutoscalingV1APIResources"
+												r.name = GetAutoscalingV1APIResourcesOperation
 												r.summary = ""
 												r.operationID = "getAutoscalingV1APIResources"
 												r.pathPattern = "/apis/autoscaling/v1/"
@@ -19276,7 +19276,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"
+													r.name = ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"
 													r.pathPattern = "/apis/autoscaling/v1/horizontalpodautoscalers"
@@ -19321,7 +19321,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListAutoscalingV1NamespacedHorizontalPodAutoscaler"
+														r.name = ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation
 														r.summary = ""
 														r.operationID = "listAutoscalingV1NamespacedHorizontalPodAutoscaler"
 														r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"
@@ -19353,7 +19353,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler"
+															r.name = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation
 															r.summary = ""
 															r.operationID = "readAutoscalingV1NamespacedHorizontalPodAutoscaler"
 															r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"
@@ -19377,7 +19377,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
+																r.name = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation
 																r.summary = ""
 																r.operationID = "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
 																r.pathPattern = "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
@@ -19423,7 +19423,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"
+														r.name = WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"
 														r.pathPattern = "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
@@ -19468,7 +19468,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
+															r.name = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation
 															r.summary = ""
 															r.operationID = "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
 															r.pathPattern = "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"
@@ -19497,7 +19497,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler"
+																r.name = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation
 																r.summary = ""
 																r.operationID = "watchAutoscalingV1NamespacedHorizontalPodAutoscaler"
 																r.pathPattern = "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"
@@ -19545,7 +19545,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "GetAutoscalingV2beta1APIResources"
+													r.name = GetAutoscalingV2beta1APIResourcesOperation
 													r.summary = ""
 													r.operationID = "getAutoscalingV2beta1APIResources"
 													r.pathPattern = "/apis/autoscaling/v2beta1/"
@@ -19569,7 +19569,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"
+														r.name = ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"
 														r.pathPattern = "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
@@ -19614,7 +19614,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+															r.name = ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation
 															r.summary = ""
 															r.operationID = "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 															r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"
@@ -19646,7 +19646,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																r.name = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation
 																r.summary = ""
 																r.operationID = "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 																r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"
@@ -19670,7 +19670,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
+																	r.name = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
 																	r.pathPattern = "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
@@ -19716,7 +19716,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"
+															r.name = WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation
 															r.summary = ""
 															r.operationID = "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"
 															r.pathPattern = "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
@@ -19761,7 +19761,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
+																r.name = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation
 																r.summary = ""
 																r.operationID = "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
 																r.pathPattern = "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"
@@ -19790,7 +19790,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																	r.name = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation
 																	r.summary = ""
 																	r.operationID = "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 																	r.pathPattern = "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"
@@ -19826,7 +19826,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "GetAutoscalingV2beta2APIResources"
+													r.name = GetAutoscalingV2beta2APIResourcesOperation
 													r.summary = ""
 													r.operationID = "getAutoscalingV2beta2APIResources"
 													r.pathPattern = "/apis/autoscaling/v2beta2/"
@@ -19850,7 +19850,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"
+														r.name = ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation
 														r.summary = ""
 														r.operationID = "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"
 														r.pathPattern = "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
@@ -19895,7 +19895,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+															r.name = ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation
 															r.summary = ""
 															r.operationID = "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 															r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"
@@ -19927,7 +19927,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																r.name = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation
 																r.summary = ""
 																r.operationID = "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 																r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"
@@ -19951,7 +19951,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
+																	r.name = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation
 																	r.summary = ""
 																	r.operationID = "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
 																	r.pathPattern = "/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"
@@ -19997,7 +19997,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"
+															r.name = WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation
 															r.summary = ""
 															r.operationID = "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"
 															r.pathPattern = "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
@@ -20042,7 +20042,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "GET":
-																r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
+																r.name = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation
 																r.summary = ""
 																r.operationID = "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
 																r.pathPattern = "/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"
@@ -20071,7 +20071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																// Leaf node.
 																switch method {
 																case "GET":
-																	r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																	r.name = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation
 																	r.summary = ""
 																	r.operationID = "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 																	r.pathPattern = "/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"
@@ -20122,7 +20122,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetBatchAPIGroup"
+								r.name = GetBatchAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getBatchAPIGroup"
 								r.pathPattern = "/apis/batch/"
@@ -20157,7 +20157,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetBatchV1APIResources"
+										r.name = GetBatchV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getBatchV1APIResources"
 										r.pathPattern = "/apis/batch/v1/"
@@ -20181,7 +20181,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListBatchV1CronJobForAllNamespaces"
+											r.name = ListBatchV1CronJobForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listBatchV1CronJobForAllNamespaces"
 											r.pathPattern = "/apis/batch/v1/cronjobs"
@@ -20206,7 +20206,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListBatchV1JobForAllNamespaces"
+											r.name = ListBatchV1JobForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listBatchV1JobForAllNamespaces"
 											r.pathPattern = "/apis/batch/v1/jobs"
@@ -20263,7 +20263,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListBatchV1NamespacedCronJob"
+													r.name = ListBatchV1NamespacedCronJobOperation
 													r.summary = ""
 													r.operationID = "listBatchV1NamespacedCronJob"
 													r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs"
@@ -20295,7 +20295,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ReadBatchV1NamespacedCronJob"
+														r.name = ReadBatchV1NamespacedCronJobOperation
 														r.summary = ""
 														r.operationID = "readBatchV1NamespacedCronJob"
 														r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"
@@ -20319,7 +20319,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadBatchV1NamespacedCronJobStatus"
+															r.name = ReadBatchV1NamespacedCronJobStatusOperation
 															r.summary = ""
 															r.operationID = "readBatchV1NamespacedCronJobStatus"
 															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"
@@ -20349,7 +20349,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListBatchV1NamespacedJob"
+													r.name = ListBatchV1NamespacedJobOperation
 													r.summary = ""
 													r.operationID = "listBatchV1NamespacedJob"
 													r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs"
@@ -20381,7 +20381,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ReadBatchV1NamespacedJob"
+														r.name = ReadBatchV1NamespacedJobOperation
 														r.summary = ""
 														r.operationID = "readBatchV1NamespacedJob"
 														r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs/{name}"
@@ -20405,7 +20405,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadBatchV1NamespacedJobStatus"
+															r.name = ReadBatchV1NamespacedJobStatusOperation
 															r.summary = ""
 															r.operationID = "readBatchV1NamespacedJobStatus"
 															r.pathPattern = "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"
@@ -20454,7 +20454,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchBatchV1CronJobListForAllNamespaces"
+												r.name = WatchBatchV1CronJobListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchBatchV1CronJobListForAllNamespaces"
 												r.pathPattern = "/apis/batch/v1/watch/cronjobs"
@@ -20479,7 +20479,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchBatchV1JobListForAllNamespaces"
+												r.name = WatchBatchV1JobListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchBatchV1JobListForAllNamespaces"
 												r.pathPattern = "/apis/batch/v1/watch/jobs"
@@ -20536,7 +20536,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchBatchV1NamespacedCronJobList"
+														r.name = WatchBatchV1NamespacedCronJobListOperation
 														r.summary = ""
 														r.operationID = "watchBatchV1NamespacedCronJobList"
 														r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"
@@ -20565,7 +20565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchBatchV1NamespacedCronJob"
+															r.name = WatchBatchV1NamespacedCronJobOperation
 															r.summary = ""
 															r.operationID = "watchBatchV1NamespacedCronJob"
 															r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"
@@ -20592,7 +20592,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchBatchV1NamespacedJobList"
+														r.name = WatchBatchV1NamespacedJobListOperation
 														r.summary = ""
 														r.operationID = "watchBatchV1NamespacedJobList"
 														r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/jobs"
@@ -20621,7 +20621,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchBatchV1NamespacedJob"
+															r.name = WatchBatchV1NamespacedJobOperation
 															r.summary = ""
 															r.operationID = "watchBatchV1NamespacedJob"
 															r.pathPattern = "/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"
@@ -20660,7 +20660,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetBatchV1beta1APIResources"
+										r.name = GetBatchV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getBatchV1beta1APIResources"
 										r.pathPattern = "/apis/batch/v1beta1/"
@@ -20684,7 +20684,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListBatchV1beta1CronJobForAllNamespaces"
+											r.name = ListBatchV1beta1CronJobForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listBatchV1beta1CronJobForAllNamespaces"
 											r.pathPattern = "/apis/batch/v1beta1/cronjobs"
@@ -20729,7 +20729,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListBatchV1beta1NamespacedCronJob"
+												r.name = ListBatchV1beta1NamespacedCronJobOperation
 												r.summary = ""
 												r.operationID = "listBatchV1beta1NamespacedCronJob"
 												r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"
@@ -20761,7 +20761,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ReadBatchV1beta1NamespacedCronJob"
+													r.name = ReadBatchV1beta1NamespacedCronJobOperation
 													r.summary = ""
 													r.operationID = "readBatchV1beta1NamespacedCronJob"
 													r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"
@@ -20785,7 +20785,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadBatchV1beta1NamespacedCronJobStatus"
+														r.name = ReadBatchV1beta1NamespacedCronJobStatusOperation
 														r.summary = ""
 														r.operationID = "readBatchV1beta1NamespacedCronJobStatus"
 														r.pathPattern = "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"
@@ -20831,7 +20831,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchBatchV1beta1CronJobListForAllNamespaces"
+												r.name = WatchBatchV1beta1CronJobListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchBatchV1beta1CronJobListForAllNamespaces"
 												r.pathPattern = "/apis/batch/v1beta1/watch/cronjobs"
@@ -20876,7 +20876,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchBatchV1beta1NamespacedCronJobList"
+													r.name = WatchBatchV1beta1NamespacedCronJobListOperation
 													r.summary = ""
 													r.operationID = "watchBatchV1beta1NamespacedCronJobList"
 													r.pathPattern = "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"
@@ -20905,7 +20905,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchBatchV1beta1NamespacedCronJob"
+														r.name = WatchBatchV1beta1NamespacedCronJobOperation
 														r.summary = ""
 														r.operationID = "watchBatchV1beta1NamespacedCronJob"
 														r.pathPattern = "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"
@@ -20959,7 +20959,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetCertificatesAPIGroup"
+									r.name = GetCertificatesAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getCertificatesAPIGroup"
 									r.pathPattern = "/apis/certificates.k8s.io/"
@@ -20982,7 +20982,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetCertificatesV1APIResources"
+										r.name = GetCertificatesV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getCertificatesV1APIResources"
 										r.pathPattern = "/apis/certificates.k8s.io/v1/"
@@ -21005,7 +21005,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListCertificatesV1CertificateSigningRequest"
+											r.name = ListCertificatesV1CertificateSigningRequestOperation
 											r.summary = ""
 											r.operationID = "listCertificatesV1CertificateSigningRequest"
 											r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests"
@@ -21037,7 +21037,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ReadCertificatesV1CertificateSigningRequest"
+												r.name = ReadCertificatesV1CertificateSigningRequestOperation
 												r.summary = ""
 												r.operationID = "readCertificatesV1CertificateSigningRequest"
 												r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"
@@ -21073,7 +21073,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadCertificatesV1CertificateSigningRequestApproval"
+														r.name = ReadCertificatesV1CertificateSigningRequestApprovalOperation
 														r.summary = ""
 														r.operationID = "readCertificatesV1CertificateSigningRequestApproval"
 														r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"
@@ -21098,7 +21098,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
+														r.name = ReadCertificatesV1CertificateSigningRequestStatusOperation
 														r.summary = ""
 														r.operationID = "readCertificatesV1CertificateSigningRequestStatus"
 														r.pathPattern = "/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"
@@ -21131,7 +21131,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "WatchCertificatesV1CertificateSigningRequestList"
+											r.name = WatchCertificatesV1CertificateSigningRequestListOperation
 											r.summary = ""
 											r.operationID = "watchCertificatesV1CertificateSigningRequestList"
 											r.pathPattern = "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
@@ -21160,7 +21160,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCertificatesV1CertificateSigningRequest"
+												r.name = WatchCertificatesV1CertificateSigningRequestOperation
 												r.summary = ""
 												r.operationID = "watchCertificatesV1CertificateSigningRequest"
 												r.pathPattern = "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"
@@ -21193,7 +21193,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetCoordinationAPIGroup"
+									r.name = GetCoordinationAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getCoordinationAPIGroup"
 									r.pathPattern = "/apis/coordination.k8s.io/"
@@ -21216,7 +21216,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetCoordinationV1APIResources"
+										r.name = GetCoordinationV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getCoordinationV1APIResources"
 										r.pathPattern = "/apis/coordination.k8s.io/v1/"
@@ -21240,7 +21240,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListCoordinationV1LeaseForAllNamespaces"
+											r.name = ListCoordinationV1LeaseForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listCoordinationV1LeaseForAllNamespaces"
 											r.pathPattern = "/apis/coordination.k8s.io/v1/leases"
@@ -21285,7 +21285,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListCoordinationV1NamespacedLease"
+												r.name = ListCoordinationV1NamespacedLeaseOperation
 												r.summary = ""
 												r.operationID = "listCoordinationV1NamespacedLease"
 												r.pathPattern = "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"
@@ -21314,7 +21314,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadCoordinationV1NamespacedLease"
+													r.name = ReadCoordinationV1NamespacedLeaseOperation
 													r.summary = ""
 													r.operationID = "readCoordinationV1NamespacedLease"
 													r.pathPattern = "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"
@@ -21357,7 +21357,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchCoordinationV1LeaseListForAllNamespaces"
+												r.name = WatchCoordinationV1LeaseListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchCoordinationV1LeaseListForAllNamespaces"
 												r.pathPattern = "/apis/coordination.k8s.io/v1/watch/leases"
@@ -21402,7 +21402,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchCoordinationV1NamespacedLeaseList"
+													r.name = WatchCoordinationV1NamespacedLeaseListOperation
 													r.summary = ""
 													r.operationID = "watchCoordinationV1NamespacedLeaseList"
 													r.pathPattern = "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"
@@ -21431,7 +21431,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchCoordinationV1NamespacedLease"
+														r.name = WatchCoordinationV1NamespacedLeaseOperation
 														r.summary = ""
 														r.operationID = "watchCoordinationV1NamespacedLease"
 														r.pathPattern = "/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"
@@ -21473,7 +21473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetDiscoveryAPIGroup"
+								r.name = GetDiscoveryAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getDiscoveryAPIGroup"
 								r.pathPattern = "/apis/discovery.k8s.io/"
@@ -21508,7 +21508,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetDiscoveryV1APIResources"
+										r.name = GetDiscoveryV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getDiscoveryV1APIResources"
 										r.pathPattern = "/apis/discovery.k8s.io/v1/"
@@ -21532,7 +21532,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListDiscoveryV1EndpointSliceForAllNamespaces"
+											r.name = ListDiscoveryV1EndpointSliceForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listDiscoveryV1EndpointSliceForAllNamespaces"
 											r.pathPattern = "/apis/discovery.k8s.io/v1/endpointslices"
@@ -21577,7 +21577,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListDiscoveryV1NamespacedEndpointSlice"
+												r.name = ListDiscoveryV1NamespacedEndpointSliceOperation
 												r.summary = ""
 												r.operationID = "listDiscoveryV1NamespacedEndpointSlice"
 												r.pathPattern = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"
@@ -21606,7 +21606,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadDiscoveryV1NamespacedEndpointSlice"
+													r.name = ReadDiscoveryV1NamespacedEndpointSliceOperation
 													r.summary = ""
 													r.operationID = "readDiscoveryV1NamespacedEndpointSlice"
 													r.pathPattern = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"
@@ -21649,7 +21649,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchDiscoveryV1EndpointSliceListForAllNamespaces"
+												r.name = WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchDiscoveryV1EndpointSliceListForAllNamespaces"
 												r.pathPattern = "/apis/discovery.k8s.io/v1/watch/endpointslices"
@@ -21694,7 +21694,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchDiscoveryV1NamespacedEndpointSliceList"
+													r.name = WatchDiscoveryV1NamespacedEndpointSliceListOperation
 													r.summary = ""
 													r.operationID = "watchDiscoveryV1NamespacedEndpointSliceList"
 													r.pathPattern = "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"
@@ -21723,7 +21723,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchDiscoveryV1NamespacedEndpointSlice"
+														r.name = WatchDiscoveryV1NamespacedEndpointSliceOperation
 														r.summary = ""
 														r.operationID = "watchDiscoveryV1NamespacedEndpointSlice"
 														r.pathPattern = "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"
@@ -21759,7 +21759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetDiscoveryV1beta1APIResources"
+										r.name = GetDiscoveryV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getDiscoveryV1beta1APIResources"
 										r.pathPattern = "/apis/discovery.k8s.io/v1beta1/"
@@ -21783,7 +21783,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListDiscoveryV1beta1EndpointSliceForAllNamespaces"
+											r.name = ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listDiscoveryV1beta1EndpointSliceForAllNamespaces"
 											r.pathPattern = "/apis/discovery.k8s.io/v1beta1/endpointslices"
@@ -21828,7 +21828,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListDiscoveryV1beta1NamespacedEndpointSlice"
+												r.name = ListDiscoveryV1beta1NamespacedEndpointSliceOperation
 												r.summary = ""
 												r.operationID = "listDiscoveryV1beta1NamespacedEndpointSlice"
 												r.pathPattern = "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"
@@ -21857,7 +21857,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadDiscoveryV1beta1NamespacedEndpointSlice"
+													r.name = ReadDiscoveryV1beta1NamespacedEndpointSliceOperation
 													r.summary = ""
 													r.operationID = "readDiscoveryV1beta1NamespacedEndpointSlice"
 													r.pathPattern = "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"
@@ -21900,7 +21900,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces"
+												r.name = WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"
 												r.pathPattern = "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
@@ -21945,7 +21945,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchDiscoveryV1beta1NamespacedEndpointSliceList"
+													r.name = WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation
 													r.summary = ""
 													r.operationID = "watchDiscoveryV1beta1NamespacedEndpointSliceList"
 													r.pathPattern = "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"
@@ -21974,7 +21974,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchDiscoveryV1beta1NamespacedEndpointSlice"
+														r.name = WatchDiscoveryV1beta1NamespacedEndpointSliceOperation
 														r.summary = ""
 														r.operationID = "watchDiscoveryV1beta1NamespacedEndpointSlice"
 														r.pathPattern = "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"
@@ -22016,7 +22016,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetEventsAPIGroup"
+								r.name = GetEventsAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getEventsAPIGroup"
 								r.pathPattern = "/apis/events.k8s.io/"
@@ -22051,7 +22051,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetEventsV1APIResources"
+										r.name = GetEventsV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getEventsV1APIResources"
 										r.pathPattern = "/apis/events.k8s.io/v1/"
@@ -22075,7 +22075,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListEventsV1EventForAllNamespaces"
+											r.name = ListEventsV1EventForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listEventsV1EventForAllNamespaces"
 											r.pathPattern = "/apis/events.k8s.io/v1/events"
@@ -22120,7 +22120,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListEventsV1NamespacedEvent"
+												r.name = ListEventsV1NamespacedEventOperation
 												r.summary = ""
 												r.operationID = "listEventsV1NamespacedEvent"
 												r.pathPattern = "/apis/events.k8s.io/v1/namespaces/{namespace}/events"
@@ -22149,7 +22149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadEventsV1NamespacedEvent"
+													r.name = ReadEventsV1NamespacedEventOperation
 													r.summary = ""
 													r.operationID = "readEventsV1NamespacedEvent"
 													r.pathPattern = "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"
@@ -22192,7 +22192,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchEventsV1EventListForAllNamespaces"
+												r.name = WatchEventsV1EventListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchEventsV1EventListForAllNamespaces"
 												r.pathPattern = "/apis/events.k8s.io/v1/watch/events"
@@ -22237,7 +22237,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchEventsV1NamespacedEventList"
+													r.name = WatchEventsV1NamespacedEventListOperation
 													r.summary = ""
 													r.operationID = "watchEventsV1NamespacedEventList"
 													r.pathPattern = "/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"
@@ -22266,7 +22266,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchEventsV1NamespacedEvent"
+														r.name = WatchEventsV1NamespacedEventOperation
 														r.summary = ""
 														r.operationID = "watchEventsV1NamespacedEvent"
 														r.pathPattern = "/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"
@@ -22302,7 +22302,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetEventsV1beta1APIResources"
+										r.name = GetEventsV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getEventsV1beta1APIResources"
 										r.pathPattern = "/apis/events.k8s.io/v1beta1/"
@@ -22326,7 +22326,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListEventsV1beta1EventForAllNamespaces"
+											r.name = ListEventsV1beta1EventForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listEventsV1beta1EventForAllNamespaces"
 											r.pathPattern = "/apis/events.k8s.io/v1beta1/events"
@@ -22371,7 +22371,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListEventsV1beta1NamespacedEvent"
+												r.name = ListEventsV1beta1NamespacedEventOperation
 												r.summary = ""
 												r.operationID = "listEventsV1beta1NamespacedEvent"
 												r.pathPattern = "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"
@@ -22400,7 +22400,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadEventsV1beta1NamespacedEvent"
+													r.name = ReadEventsV1beta1NamespacedEventOperation
 													r.summary = ""
 													r.operationID = "readEventsV1beta1NamespacedEvent"
 													r.pathPattern = "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"
@@ -22443,7 +22443,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchEventsV1beta1EventListForAllNamespaces"
+												r.name = WatchEventsV1beta1EventListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchEventsV1beta1EventListForAllNamespaces"
 												r.pathPattern = "/apis/events.k8s.io/v1beta1/watch/events"
@@ -22488,7 +22488,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchEventsV1beta1NamespacedEventList"
+													r.name = WatchEventsV1beta1NamespacedEventListOperation
 													r.summary = ""
 													r.operationID = "watchEventsV1beta1NamespacedEventList"
 													r.pathPattern = "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"
@@ -22517,7 +22517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchEventsV1beta1NamespacedEvent"
+														r.name = WatchEventsV1beta1NamespacedEventOperation
 														r.summary = ""
 														r.operationID = "watchEventsV1beta1NamespacedEvent"
 														r.pathPattern = "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"
@@ -22559,7 +22559,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetFlowcontrolApiserverAPIGroup"
+								r.name = GetFlowcontrolApiserverAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getFlowcontrolApiserverAPIGroup"
 								r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/"
@@ -22594,7 +22594,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetFlowcontrolApiserverV1beta1APIResources"
+										r.name = GetFlowcontrolApiserverV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getFlowcontrolApiserverV1beta1APIResources"
 										r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
@@ -22617,7 +22617,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListFlowcontrolApiserverV1beta1FlowSchema"
+											r.name = ListFlowcontrolApiserverV1beta1FlowSchemaOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta1FlowSchema"
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
@@ -22649,7 +22649,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ReadFlowcontrolApiserverV1beta1FlowSchema"
+												r.name = ReadFlowcontrolApiserverV1beta1FlowSchemaOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta1FlowSchema"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"
@@ -22673,7 +22673,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus"
+													r.name = ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta1FlowSchemaStatus"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"
@@ -22703,7 +22703,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+											r.name = ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
@@ -22735,7 +22735,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+												r.name = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"
@@ -22759,7 +22759,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
+													r.name = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"
@@ -22801,7 +22801,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchFlowcontrolApiserverV1beta1FlowSchemaList"
+												r.name = WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta1FlowSchemaList"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
@@ -22830,7 +22830,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchFlowcontrolApiserverV1beta1FlowSchema"
+													r.name = WatchFlowcontrolApiserverV1beta1FlowSchemaOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta1FlowSchema"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"
@@ -22857,7 +22857,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"
+												r.name = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
@@ -22886,7 +22886,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+													r.name = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"
@@ -22919,7 +22919,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetFlowcontrolApiserverV1beta2APIResources"
+										r.name = GetFlowcontrolApiserverV1beta2APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getFlowcontrolApiserverV1beta2APIResources"
 										r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
@@ -22942,7 +22942,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListFlowcontrolApiserverV1beta2FlowSchema"
+											r.name = ListFlowcontrolApiserverV1beta2FlowSchemaOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta2FlowSchema"
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
@@ -22974,7 +22974,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ReadFlowcontrolApiserverV1beta2FlowSchema"
+												r.name = ReadFlowcontrolApiserverV1beta2FlowSchemaOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta2FlowSchema"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"
@@ -22998,7 +22998,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus"
+													r.name = ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta2FlowSchemaStatus"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"
@@ -23028,7 +23028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+											r.name = ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation
 											r.summary = ""
 											r.operationID = "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
 											r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
@@ -23060,7 +23060,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+												r.name = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation
 												r.summary = ""
 												r.operationID = "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"
@@ -23084,7 +23084,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
+													r.name = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation
 													r.summary = ""
 													r.operationID = "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"
@@ -23126,7 +23126,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchFlowcontrolApiserverV1beta2FlowSchemaList"
+												r.name = WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta2FlowSchemaList"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
@@ -23155,7 +23155,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchFlowcontrolApiserverV1beta2FlowSchema"
+													r.name = WatchFlowcontrolApiserverV1beta2FlowSchemaOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta2FlowSchema"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"
@@ -23182,7 +23182,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"
+												r.name = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation
 												r.summary = ""
 												r.operationID = "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"
 												r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
@@ -23211,7 +23211,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+													r.name = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation
 													r.summary = ""
 													r.operationID = "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
 													r.pathPattern = "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"
@@ -23250,7 +23250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetInternalApiserverAPIGroup"
+								r.name = GetInternalApiserverAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getInternalApiserverAPIGroup"
 								r.pathPattern = "/apis/internal.apiserver.k8s.io/"
@@ -23273,7 +23273,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetInternalApiserverV1alpha1APIResources"
+									r.name = GetInternalApiserverV1alpha1APIResourcesOperation
 									r.summary = ""
 									r.operationID = "getInternalApiserverV1alpha1APIResources"
 									r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/"
@@ -23296,7 +23296,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "ListInternalApiserverV1alpha1StorageVersion"
+										r.name = ListInternalApiserverV1alpha1StorageVersionOperation
 										r.summary = ""
 										r.operationID = "listInternalApiserverV1alpha1StorageVersion"
 										r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
@@ -23328,7 +23328,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ReadInternalApiserverV1alpha1StorageVersion"
+											r.name = ReadInternalApiserverV1alpha1StorageVersionOperation
 											r.summary = ""
 											r.operationID = "readInternalApiserverV1alpha1StorageVersion"
 											r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"
@@ -23352,7 +23352,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ReadInternalApiserverV1alpha1StorageVersionStatus"
+												r.name = ReadInternalApiserverV1alpha1StorageVersionStatusOperation
 												r.summary = ""
 												r.operationID = "readInternalApiserverV1alpha1StorageVersionStatus"
 												r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"
@@ -23382,7 +23382,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "WatchInternalApiserverV1alpha1StorageVersionList"
+										r.name = WatchInternalApiserverV1alpha1StorageVersionListOperation
 										r.summary = ""
 										r.operationID = "watchInternalApiserverV1alpha1StorageVersionList"
 										r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
@@ -23411,7 +23411,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "WatchInternalApiserverV1alpha1StorageVersion"
+											r.name = WatchInternalApiserverV1alpha1StorageVersionOperation
 											r.summary = ""
 											r.operationID = "watchInternalApiserverV1alpha1StorageVersion"
 											r.pathPattern = "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"
@@ -23456,7 +23456,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetNetworkingAPIGroup"
+									r.name = GetNetworkingAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getNetworkingAPIGroup"
 									r.pathPattern = "/apis/networking.k8s.io/"
@@ -23479,7 +23479,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetNetworkingV1APIResources"
+										r.name = GetNetworkingV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getNetworkingV1APIResources"
 										r.pathPattern = "/apis/networking.k8s.io/v1/"
@@ -23514,7 +23514,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListNetworkingV1IngressClass"
+												r.name = ListNetworkingV1IngressClassOperation
 												r.summary = ""
 												r.operationID = "listNetworkingV1IngressClass"
 												r.pathPattern = "/apis/networking.k8s.io/v1/ingressclasses"
@@ -23543,7 +23543,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadNetworkingV1IngressClass"
+													r.name = ReadNetworkingV1IngressClassOperation
 													r.summary = ""
 													r.operationID = "readNetworkingV1IngressClass"
 													r.pathPattern = "/apis/networking.k8s.io/v1/ingressclasses/{name}"
@@ -23571,7 +23571,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListNetworkingV1IngressForAllNamespaces"
+												r.name = ListNetworkingV1IngressForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listNetworkingV1IngressForAllNamespaces"
 												r.pathPattern = "/apis/networking.k8s.io/v1/ingresses"
@@ -23643,7 +23643,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListNetworkingV1NamespacedIngress"
+														r.name = ListNetworkingV1NamespacedIngressOperation
 														r.summary = ""
 														r.operationID = "listNetworkingV1NamespacedIngress"
 														r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"
@@ -23675,7 +23675,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "ReadNetworkingV1NamespacedIngress"
+															r.name = ReadNetworkingV1NamespacedIngressOperation
 															r.summary = ""
 															r.operationID = "readNetworkingV1NamespacedIngress"
 															r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"
@@ -23699,7 +23699,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "ReadNetworkingV1NamespacedIngressStatus"
+																r.name = ReadNetworkingV1NamespacedIngressStatusOperation
 																r.summary = ""
 																r.operationID = "readNetworkingV1NamespacedIngressStatus"
 																r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"
@@ -23729,7 +23729,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "ListNetworkingV1NamespacedNetworkPolicy"
+														r.name = ListNetworkingV1NamespacedNetworkPolicyOperation
 														r.summary = ""
 														r.operationID = "listNetworkingV1NamespacedNetworkPolicy"
 														r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"
@@ -23758,7 +23758,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "ReadNetworkingV1NamespacedNetworkPolicy"
+															r.name = ReadNetworkingV1NamespacedNetworkPolicyOperation
 															r.summary = ""
 															r.operationID = "readNetworkingV1NamespacedNetworkPolicy"
 															r.pathPattern = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"
@@ -23792,7 +23792,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListNetworkingV1NetworkPolicyForAllNamespaces"
+												r.name = ListNetworkingV1NetworkPolicyForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listNetworkingV1NetworkPolicyForAllNamespaces"
 												r.pathPattern = "/apis/networking.k8s.io/v1/networkpolicies"
@@ -23843,7 +23843,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchNetworkingV1IngressClassList"
+													r.name = WatchNetworkingV1IngressClassListOperation
 													r.summary = ""
 													r.operationID = "watchNetworkingV1IngressClassList"
 													r.pathPattern = "/apis/networking.k8s.io/v1/watch/ingressclasses"
@@ -23872,7 +23872,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchNetworkingV1IngressClass"
+														r.name = WatchNetworkingV1IngressClassOperation
 														r.summary = ""
 														r.operationID = "watchNetworkingV1IngressClass"
 														r.pathPattern = "/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"
@@ -23900,7 +23900,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchNetworkingV1IngressListForAllNamespaces"
+													r.name = WatchNetworkingV1IngressListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchNetworkingV1IngressListForAllNamespaces"
 													r.pathPattern = "/apis/networking.k8s.io/v1/watch/ingresses"
@@ -23972,7 +23972,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchNetworkingV1NamespacedIngressList"
+															r.name = WatchNetworkingV1NamespacedIngressListOperation
 															r.summary = ""
 															r.operationID = "watchNetworkingV1NamespacedIngressList"
 															r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"
@@ -24001,7 +24001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchNetworkingV1NamespacedIngress"
+																r.name = WatchNetworkingV1NamespacedIngressOperation
 																r.summary = ""
 																r.operationID = "watchNetworkingV1NamespacedIngress"
 																r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"
@@ -24028,7 +24028,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "GET":
-															r.name = "WatchNetworkingV1NamespacedNetworkPolicyList"
+															r.name = WatchNetworkingV1NamespacedNetworkPolicyListOperation
 															r.summary = ""
 															r.operationID = "watchNetworkingV1NamespacedNetworkPolicyList"
 															r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"
@@ -24057,7 +24057,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "GET":
-																r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
+																r.name = WatchNetworkingV1NamespacedNetworkPolicyOperation
 																r.summary = ""
 																r.operationID = "watchNetworkingV1NamespacedNetworkPolicy"
 																r.pathPattern = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"
@@ -24091,7 +24091,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchNetworkingV1NetworkPolicyListForAllNamespaces"
+													r.name = WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchNetworkingV1NetworkPolicyListForAllNamespaces"
 													r.pathPattern = "/apis/networking.k8s.io/v1/watch/networkpolicies"
@@ -24127,7 +24127,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetNodeAPIGroup"
+									r.name = GetNodeAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getNodeAPIGroup"
 									r.pathPattern = "/apis/node.k8s.io/"
@@ -24162,7 +24162,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetNodeV1APIResources"
+											r.name = GetNodeV1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getNodeV1APIResources"
 											r.pathPattern = "/apis/node.k8s.io/v1/"
@@ -24185,7 +24185,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListNodeV1RuntimeClass"
+												r.name = ListNodeV1RuntimeClassOperation
 												r.summary = ""
 												r.operationID = "listNodeV1RuntimeClass"
 												r.pathPattern = "/apis/node.k8s.io/v1/runtimeclasses"
@@ -24214,7 +24214,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadNodeV1RuntimeClass"
+													r.name = ReadNodeV1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "readNodeV1RuntimeClass"
 													r.pathPattern = "/apis/node.k8s.io/v1/runtimeclasses/{name}"
@@ -24241,7 +24241,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchNodeV1RuntimeClassList"
+												r.name = WatchNodeV1RuntimeClassListOperation
 												r.summary = ""
 												r.operationID = "watchNodeV1RuntimeClassList"
 												r.pathPattern = "/apis/node.k8s.io/v1/watch/runtimeclasses"
@@ -24270,7 +24270,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchNodeV1RuntimeClass"
+													r.name = WatchNodeV1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "watchNodeV1RuntimeClass"
 													r.pathPattern = "/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"
@@ -24300,7 +24300,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetNodeV1alpha1APIResources"
+											r.name = GetNodeV1alpha1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getNodeV1alpha1APIResources"
 											r.pathPattern = "/apis/node.k8s.io/v1alpha1/"
@@ -24323,7 +24323,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListNodeV1alpha1RuntimeClass"
+												r.name = ListNodeV1alpha1RuntimeClassOperation
 												r.summary = ""
 												r.operationID = "listNodeV1alpha1RuntimeClass"
 												r.pathPattern = "/apis/node.k8s.io/v1alpha1/runtimeclasses"
@@ -24352,7 +24352,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadNodeV1alpha1RuntimeClass"
+													r.name = ReadNodeV1alpha1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "readNodeV1alpha1RuntimeClass"
 													r.pathPattern = "/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"
@@ -24379,7 +24379,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchNodeV1alpha1RuntimeClassList"
+												r.name = WatchNodeV1alpha1RuntimeClassListOperation
 												r.summary = ""
 												r.operationID = "watchNodeV1alpha1RuntimeClassList"
 												r.pathPattern = "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
@@ -24408,7 +24408,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchNodeV1alpha1RuntimeClass"
+													r.name = WatchNodeV1alpha1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "watchNodeV1alpha1RuntimeClass"
 													r.pathPattern = "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"
@@ -24438,7 +24438,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetNodeV1beta1APIResources"
+											r.name = GetNodeV1beta1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getNodeV1beta1APIResources"
 											r.pathPattern = "/apis/node.k8s.io/v1beta1/"
@@ -24461,7 +24461,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListNodeV1beta1RuntimeClass"
+												r.name = ListNodeV1beta1RuntimeClassOperation
 												r.summary = ""
 												r.operationID = "listNodeV1beta1RuntimeClass"
 												r.pathPattern = "/apis/node.k8s.io/v1beta1/runtimeclasses"
@@ -24490,7 +24490,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadNodeV1beta1RuntimeClass"
+													r.name = ReadNodeV1beta1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "readNodeV1beta1RuntimeClass"
 													r.pathPattern = "/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"
@@ -24517,7 +24517,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchNodeV1beta1RuntimeClassList"
+												r.name = WatchNodeV1beta1RuntimeClassListOperation
 												r.summary = ""
 												r.operationID = "watchNodeV1beta1RuntimeClassList"
 												r.pathPattern = "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
@@ -24546,7 +24546,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchNodeV1beta1RuntimeClass"
+													r.name = WatchNodeV1beta1RuntimeClassOperation
 													r.summary = ""
 													r.operationID = "watchNodeV1beta1RuntimeClass"
 													r.pathPattern = "/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"
@@ -24585,7 +24585,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetPolicyAPIGroup"
+								r.name = GetPolicyAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getPolicyAPIGroup"
 								r.pathPattern = "/apis/policy/"
@@ -24620,7 +24620,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetPolicyV1APIResources"
+										r.name = GetPolicyV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getPolicyV1APIResources"
 										r.pathPattern = "/apis/policy/v1/"
@@ -24664,7 +24664,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListPolicyV1NamespacedPodDisruptionBudget"
+												r.name = ListPolicyV1NamespacedPodDisruptionBudgetOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1NamespacedPodDisruptionBudget"
 												r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"
@@ -24696,7 +24696,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ReadPolicyV1NamespacedPodDisruptionBudget"
+													r.name = ReadPolicyV1NamespacedPodDisruptionBudgetOperation
 													r.summary = ""
 													r.operationID = "readPolicyV1NamespacedPodDisruptionBudget"
 													r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"
@@ -24720,7 +24720,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadPolicyV1NamespacedPodDisruptionBudgetStatus"
+														r.name = ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation
 														r.summary = ""
 														r.operationID = "readPolicyV1NamespacedPodDisruptionBudgetStatus"
 														r.pathPattern = "/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
@@ -24754,7 +24754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListPolicyV1PodDisruptionBudgetForAllNamespaces"
+											r.name = ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listPolicyV1PodDisruptionBudgetForAllNamespaces"
 											r.pathPattern = "/apis/policy/v1/poddisruptionbudgets"
@@ -24811,7 +24811,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchPolicyV1NamespacedPodDisruptionBudgetList"
+													r.name = WatchPolicyV1NamespacedPodDisruptionBudgetListOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1NamespacedPodDisruptionBudgetList"
 													r.pathPattern = "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"
@@ -24840,7 +24840,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchPolicyV1NamespacedPodDisruptionBudget"
+														r.name = WatchPolicyV1NamespacedPodDisruptionBudgetOperation
 														r.summary = ""
 														r.operationID = "watchPolicyV1NamespacedPodDisruptionBudget"
 														r.pathPattern = "/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"
@@ -24871,7 +24871,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces"
+												r.name = WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchPolicyV1PodDisruptionBudgetListForAllNamespaces"
 												r.pathPattern = "/apis/policy/v1/watch/poddisruptionbudgets"
@@ -24901,7 +24901,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetPolicyV1beta1APIResources"
+										r.name = GetPolicyV1beta1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getPolicyV1beta1APIResources"
 										r.pathPattern = "/apis/policy/v1beta1/"
@@ -24945,7 +24945,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListPolicyV1beta1NamespacedPodDisruptionBudget"
+												r.name = ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1beta1NamespacedPodDisruptionBudget"
 												r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"
@@ -24977,7 +24977,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudget"
+													r.name = ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation
 													r.summary = ""
 													r.operationID = "readPolicyV1beta1NamespacedPodDisruptionBudget"
 													r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"
@@ -25001,7 +25001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
+														r.name = ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation
 														r.summary = ""
 														r.operationID = "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
 														r.pathPattern = "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"
@@ -25047,7 +25047,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces"
+												r.name = ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"
 												r.pathPattern = "/apis/policy/v1beta1/poddisruptionbudgets"
@@ -25071,7 +25071,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListPolicyV1beta1PodSecurityPolicy"
+												r.name = ListPolicyV1beta1PodSecurityPolicyOperation
 												r.summary = ""
 												r.operationID = "listPolicyV1beta1PodSecurityPolicy"
 												r.pathPattern = "/apis/policy/v1beta1/podsecuritypolicies"
@@ -25100,7 +25100,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadPolicyV1beta1PodSecurityPolicy"
+													r.name = ReadPolicyV1beta1PodSecurityPolicyOperation
 													r.summary = ""
 													r.operationID = "readPolicyV1beta1PodSecurityPolicy"
 													r.pathPattern = "/apis/policy/v1beta1/podsecuritypolicies/{name}"
@@ -25163,7 +25163,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList"
+													r.name = WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1beta1NamespacedPodDisruptionBudgetList"
 													r.pathPattern = "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"
@@ -25192,7 +25192,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudget"
+														r.name = WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation
 														r.summary = ""
 														r.operationID = "watchPolicyV1beta1NamespacedPodDisruptionBudget"
 														r.pathPattern = "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"
@@ -25235,7 +25235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
+													r.name = WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
 													r.pathPattern = "/apis/policy/v1beta1/watch/poddisruptionbudgets"
@@ -25259,7 +25259,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchPolicyV1beta1PodSecurityPolicyList"
+													r.name = WatchPolicyV1beta1PodSecurityPolicyListOperation
 													r.summary = ""
 													r.operationID = "watchPolicyV1beta1PodSecurityPolicyList"
 													r.pathPattern = "/apis/policy/v1beta1/watch/podsecuritypolicies"
@@ -25288,7 +25288,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchPolicyV1beta1PodSecurityPolicy"
+														r.name = WatchPolicyV1beta1PodSecurityPolicyOperation
 														r.summary = ""
 														r.operationID = "watchPolicyV1beta1PodSecurityPolicy"
 														r.pathPattern = "/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"
@@ -25330,7 +25330,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "GetRbacAuthorizationAPIGroup"
+								r.name = GetRbacAuthorizationAPIGroupOperation
 								r.summary = ""
 								r.operationID = "getRbacAuthorizationAPIGroup"
 								r.pathPattern = "/apis/rbac.authorization.k8s.io/"
@@ -25353,7 +25353,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetRbacAuthorizationV1APIResources"
+									r.name = GetRbacAuthorizationV1APIResourcesOperation
 									r.summary = ""
 									r.operationID = "getRbacAuthorizationV1APIResources"
 									r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/"
@@ -25388,7 +25388,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListRbacAuthorizationV1ClusterRoleBinding"
+											r.name = ListRbacAuthorizationV1ClusterRoleBindingOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1ClusterRoleBinding"
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
@@ -25417,7 +25417,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ReadRbacAuthorizationV1ClusterRoleBinding"
+												r.name = ReadRbacAuthorizationV1ClusterRoleBindingOperation
 												r.summary = ""
 												r.operationID = "readRbacAuthorizationV1ClusterRoleBinding"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"
@@ -25444,7 +25444,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListRbacAuthorizationV1ClusterRole"
+											r.name = ListRbacAuthorizationV1ClusterRoleOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1ClusterRole"
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterroles"
@@ -25473,7 +25473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ReadRbacAuthorizationV1ClusterRole"
+												r.name = ReadRbacAuthorizationV1ClusterRoleOperation
 												r.summary = ""
 												r.operationID = "readRbacAuthorizationV1ClusterRole"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"
@@ -25536,7 +25536,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListRbacAuthorizationV1NamespacedRoleBinding"
+												r.name = ListRbacAuthorizationV1NamespacedRoleBindingOperation
 												r.summary = ""
 												r.operationID = "listRbacAuthorizationV1NamespacedRoleBinding"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"
@@ -25565,7 +25565,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadRbacAuthorizationV1NamespacedRoleBinding"
+													r.name = ReadRbacAuthorizationV1NamespacedRoleBindingOperation
 													r.summary = ""
 													r.operationID = "readRbacAuthorizationV1NamespacedRoleBinding"
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"
@@ -25592,7 +25592,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListRbacAuthorizationV1NamespacedRole"
+												r.name = ListRbacAuthorizationV1NamespacedRoleOperation
 												r.summary = ""
 												r.operationID = "listRbacAuthorizationV1NamespacedRole"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"
@@ -25621,7 +25621,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadRbacAuthorizationV1NamespacedRole"
+													r.name = ReadRbacAuthorizationV1NamespacedRoleOperation
 													r.summary = ""
 													r.operationID = "readRbacAuthorizationV1NamespacedRole"
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"
@@ -25667,7 +25667,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListRbacAuthorizationV1RoleBindingForAllNamespaces"
+											r.name = ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1RoleBindingForAllNamespaces"
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/rolebindings"
@@ -25692,7 +25692,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										// Leaf node.
 										switch method {
 										case "GET":
-											r.name = "ListRbacAuthorizationV1RoleForAllNamespaces"
+											r.name = ListRbacAuthorizationV1RoleForAllNamespacesOperation
 											r.summary = ""
 											r.operationID = "listRbacAuthorizationV1RoleForAllNamespaces"
 											r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/roles"
@@ -25743,7 +25743,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchRbacAuthorizationV1ClusterRoleBindingList"
+												r.name = WatchRbacAuthorizationV1ClusterRoleBindingListOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1ClusterRoleBindingList"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
@@ -25772,7 +25772,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchRbacAuthorizationV1ClusterRoleBinding"
+													r.name = WatchRbacAuthorizationV1ClusterRoleBindingOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1ClusterRoleBinding"
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"
@@ -25799,7 +25799,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "WatchRbacAuthorizationV1ClusterRoleList"
+												r.name = WatchRbacAuthorizationV1ClusterRoleListOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1ClusterRoleList"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
@@ -25828,7 +25828,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchRbacAuthorizationV1ClusterRole"
+													r.name = WatchRbacAuthorizationV1ClusterRoleOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1ClusterRole"
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"
@@ -25891,7 +25891,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchRbacAuthorizationV1NamespacedRoleBindingList"
+													r.name = WatchRbacAuthorizationV1NamespacedRoleBindingListOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1NamespacedRoleBindingList"
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"
@@ -25920,7 +25920,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
+														r.name = WatchRbacAuthorizationV1NamespacedRoleBindingOperation
 														r.summary = ""
 														r.operationID = "watchRbacAuthorizationV1NamespacedRoleBinding"
 														r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"
@@ -25947,7 +25947,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchRbacAuthorizationV1NamespacedRoleList"
+													r.name = WatchRbacAuthorizationV1NamespacedRoleListOperation
 													r.summary = ""
 													r.operationID = "watchRbacAuthorizationV1NamespacedRoleList"
 													r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"
@@ -25976,7 +25976,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchRbacAuthorizationV1NamespacedRole"
+														r.name = WatchRbacAuthorizationV1NamespacedRoleOperation
 														r.summary = ""
 														r.operationID = "watchRbacAuthorizationV1NamespacedRole"
 														r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"
@@ -26022,7 +26022,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces"
+												r.name = WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1RoleBindingListForAllNamespaces"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
@@ -26047,7 +26047,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchRbacAuthorizationV1RoleListForAllNamespaces"
+												r.name = WatchRbacAuthorizationV1RoleListForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "watchRbacAuthorizationV1RoleListForAllNamespaces"
 												r.pathPattern = "/apis/rbac.authorization.k8s.io/v1/watch/roles"
@@ -26095,7 +26095,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetSchedulingAPIGroup"
+									r.name = GetSchedulingAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getSchedulingAPIGroup"
 									r.pathPattern = "/apis/scheduling.k8s.io/"
@@ -26118,7 +26118,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								if len(elem) == 0 {
 									switch method {
 									case "GET":
-										r.name = "GetSchedulingV1APIResources"
+										r.name = GetSchedulingV1APIResourcesOperation
 										r.summary = ""
 										r.operationID = "getSchedulingV1APIResources"
 										r.pathPattern = "/apis/scheduling.k8s.io/v1/"
@@ -26141,7 +26141,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "ListSchedulingV1PriorityClass"
+											r.name = ListSchedulingV1PriorityClassOperation
 											r.summary = ""
 											r.operationID = "listSchedulingV1PriorityClass"
 											r.pathPattern = "/apis/scheduling.k8s.io/v1/priorityclasses"
@@ -26170,7 +26170,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ReadSchedulingV1PriorityClass"
+												r.name = ReadSchedulingV1PriorityClassOperation
 												r.summary = ""
 												r.operationID = "readSchedulingV1PriorityClass"
 												r.pathPattern = "/apis/scheduling.k8s.io/v1/priorityclasses/{name}"
@@ -26197,7 +26197,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "WatchSchedulingV1PriorityClassList"
+											r.name = WatchSchedulingV1PriorityClassListOperation
 											r.summary = ""
 											r.operationID = "watchSchedulingV1PriorityClassList"
 											r.pathPattern = "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
@@ -26226,7 +26226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "WatchSchedulingV1PriorityClass"
+												r.name = WatchSchedulingV1PriorityClassOperation
 												r.summary = ""
 												r.operationID = "watchSchedulingV1PriorityClass"
 												r.pathPattern = "/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"
@@ -26259,7 +26259,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							if len(elem) == 0 {
 								switch method {
 								case "GET":
-									r.name = "GetStorageAPIGroup"
+									r.name = GetStorageAPIGroupOperation
 									r.summary = ""
 									r.operationID = "getStorageAPIGroup"
 									r.pathPattern = "/apis/storage.k8s.io/"
@@ -26294,7 +26294,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetStorageV1APIResources"
+											r.name = GetStorageV1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getStorageV1APIResources"
 											r.pathPattern = "/apis/storage.k8s.io/v1/"
@@ -26329,7 +26329,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListStorageV1CSIDriver"
+													r.name = ListStorageV1CSIDriverOperation
 													r.summary = ""
 													r.operationID = "listStorageV1CSIDriver"
 													r.pathPattern = "/apis/storage.k8s.io/v1/csidrivers"
@@ -26358,7 +26358,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadStorageV1CSIDriver"
+														r.name = ReadStorageV1CSIDriverOperation
 														r.summary = ""
 														r.operationID = "readStorageV1CSIDriver"
 														r.pathPattern = "/apis/storage.k8s.io/v1/csidrivers/{name}"
@@ -26385,7 +26385,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListStorageV1CSINode"
+													r.name = ListStorageV1CSINodeOperation
 													r.summary = ""
 													r.operationID = "listStorageV1CSINode"
 													r.pathPattern = "/apis/storage.k8s.io/v1/csinodes"
@@ -26414,7 +26414,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadStorageV1CSINode"
+														r.name = ReadStorageV1CSINodeOperation
 														r.summary = ""
 														r.operationID = "readStorageV1CSINode"
 														r.pathPattern = "/apis/storage.k8s.io/v1/csinodes/{name}"
@@ -26444,7 +26444,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListStorageV1StorageClass"
+												r.name = ListStorageV1StorageClassOperation
 												r.summary = ""
 												r.operationID = "listStorageV1StorageClass"
 												r.pathPattern = "/apis/storage.k8s.io/v1/storageclasses"
@@ -26473,7 +26473,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "ReadStorageV1StorageClass"
+													r.name = ReadStorageV1StorageClassOperation
 													r.summary = ""
 													r.operationID = "readStorageV1StorageClass"
 													r.pathPattern = "/apis/storage.k8s.io/v1/storageclasses/{name}"
@@ -26500,7 +26500,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "GET":
-												r.name = "ListStorageV1VolumeAttachment"
+												r.name = ListStorageV1VolumeAttachmentOperation
 												r.summary = ""
 												r.operationID = "listStorageV1VolumeAttachment"
 												r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments"
@@ -26532,7 +26532,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ReadStorageV1VolumeAttachment"
+													r.name = ReadStorageV1VolumeAttachmentOperation
 													r.summary = ""
 													r.operationID = "readStorageV1VolumeAttachment"
 													r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments/{name}"
@@ -26556,7 +26556,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadStorageV1VolumeAttachmentStatus"
+														r.name = ReadStorageV1VolumeAttachmentStatusOperation
 														r.summary = ""
 														r.operationID = "readStorageV1VolumeAttachmentStatus"
 														r.pathPattern = "/apis/storage.k8s.io/v1/volumeattachments/{name}/status"
@@ -26610,7 +26610,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchStorageV1CSIDriverList"
+														r.name = WatchStorageV1CSIDriverListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1CSIDriverList"
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/csidrivers"
@@ -26639,7 +26639,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchStorageV1CSIDriver"
+															r.name = WatchStorageV1CSIDriverOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1CSIDriver"
 															r.pathPattern = "/apis/storage.k8s.io/v1/watch/csidrivers/{name}"
@@ -26666,7 +26666,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchStorageV1CSINodeList"
+														r.name = WatchStorageV1CSINodeListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1CSINodeList"
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/csinodes"
@@ -26695,7 +26695,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchStorageV1CSINode"
+															r.name = WatchStorageV1CSINodeOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1CSINode"
 															r.pathPattern = "/apis/storage.k8s.io/v1/watch/csinodes/{name}"
@@ -26725,7 +26725,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchStorageV1StorageClassList"
+													r.name = WatchStorageV1StorageClassListOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1StorageClassList"
 													r.pathPattern = "/apis/storage.k8s.io/v1/watch/storageclasses"
@@ -26754,7 +26754,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchStorageV1StorageClass"
+														r.name = WatchStorageV1StorageClassOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1StorageClass"
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/storageclasses/{name}"
@@ -26781,7 +26781,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "WatchStorageV1VolumeAttachmentList"
+													r.name = WatchStorageV1VolumeAttachmentListOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1VolumeAttachmentList"
 													r.pathPattern = "/apis/storage.k8s.io/v1/watch/volumeattachments"
@@ -26810,7 +26810,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "WatchStorageV1VolumeAttachment"
+														r.name = WatchStorageV1VolumeAttachmentOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1VolumeAttachment"
 														r.pathPattern = "/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"
@@ -26843,7 +26843,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetStorageV1alpha1APIResources"
+											r.name = GetStorageV1alpha1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getStorageV1alpha1APIResources"
 											r.pathPattern = "/apis/storage.k8s.io/v1alpha1/"
@@ -26867,7 +26867,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces"
+												r.name = ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listStorageV1alpha1CSIStorageCapacityForAllNamespaces"
 												r.pathPattern = "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
@@ -26912,7 +26912,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListStorageV1alpha1NamespacedCSIStorageCapacity"
+													r.name = ListStorageV1alpha1NamespacedCSIStorageCapacityOperation
 													r.summary = ""
 													r.operationID = "listStorageV1alpha1NamespacedCSIStorageCapacity"
 													r.pathPattern = "/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"
@@ -26941,7 +26941,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadStorageV1alpha1NamespacedCSIStorageCapacity"
+														r.name = ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation
 														r.summary = ""
 														r.operationID = "readStorageV1alpha1NamespacedCSIStorageCapacity"
 														r.pathPattern = "/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"
@@ -26984,7 +26984,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"
+													r.name = WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"
 													r.pathPattern = "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
@@ -27029,7 +27029,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacityList"
+														r.name = WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1alpha1NamespacedCSIStorageCapacityList"
 														r.pathPattern = "/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"
@@ -27058,7 +27058,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacity"
+															r.name = WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1alpha1NamespacedCSIStorageCapacity"
 															r.pathPattern = "/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"
@@ -27094,7 +27094,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									if len(elem) == 0 {
 										switch method {
 										case "GET":
-											r.name = "GetStorageV1beta1APIResources"
+											r.name = GetStorageV1beta1APIResourcesOperation
 											r.summary = ""
 											r.operationID = "getStorageV1beta1APIResources"
 											r.pathPattern = "/apis/storage.k8s.io/v1beta1/"
@@ -27118,7 +27118,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											// Leaf node.
 											switch method {
 											case "GET":
-												r.name = "ListStorageV1beta1CSIStorageCapacityForAllNamespaces"
+												r.name = ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation
 												r.summary = ""
 												r.operationID = "listStorageV1beta1CSIStorageCapacityForAllNamespaces"
 												r.pathPattern = "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
@@ -27163,7 +27163,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "GET":
-													r.name = "ListStorageV1beta1NamespacedCSIStorageCapacity"
+													r.name = ListStorageV1beta1NamespacedCSIStorageCapacityOperation
 													r.summary = ""
 													r.operationID = "listStorageV1beta1NamespacedCSIStorageCapacity"
 													r.pathPattern = "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"
@@ -27192,7 +27192,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													// Leaf node.
 													switch method {
 													case "GET":
-														r.name = "ReadStorageV1beta1NamespacedCSIStorageCapacity"
+														r.name = ReadStorageV1beta1NamespacedCSIStorageCapacityOperation
 														r.summary = ""
 														r.operationID = "readStorageV1beta1NamespacedCSIStorageCapacity"
 														r.pathPattern = "/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"
@@ -27235,7 +27235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												// Leaf node.
 												switch method {
 												case "GET":
-													r.name = "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces"
+													r.name = WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation
 													r.summary = ""
 													r.operationID = "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"
 													r.pathPattern = "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
@@ -27280,7 +27280,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "GET":
-														r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacityList"
+														r.name = WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation
 														r.summary = ""
 														r.operationID = "watchStorageV1beta1NamespacedCSIStorageCapacityList"
 														r.pathPattern = "/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"
@@ -27309,7 +27309,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "GET":
-															r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacity"
+															r.name = WatchStorageV1beta1NamespacedCSIStorageCapacityOperation
 															r.summary = ""
 															r.operationID = "watchStorageV1beta1NamespacedCSIStorageCapacity"
 															r.pathPattern = "/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"
@@ -27360,7 +27360,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				if len(elem) == 0 {
 					switch method {
 					case "GET":
-						r.name = "LogFileListHandler"
+						r.name = LogFileListHandlerOperation
 						r.summary = ""
 						r.operationID = "logFileListHandler"
 						r.pathPattern = "/logs/"
@@ -27380,7 +27380,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "LogFileHandler"
+						r.name = LogFileHandlerOperation
 						r.summary = ""
 						r.operationID = "logFileHandler"
 						r.pathPattern = "/logs/{logpath}"
@@ -27405,7 +27405,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "GetServiceAccountIssuerOpenIDKeyset"
+						r.name = GetServiceAccountIssuerOpenIDKeysetOperation
 						r.summary = ""
 						r.operationID = "getServiceAccountIssuerOpenIDKeyset"
 						r.pathPattern = "/openid/v1/jwks/"
@@ -27430,7 +27430,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "GetCodeVersion"
+						r.name = GetCodeVersionOperation
 						r.summary = ""
 						r.operationID = "getCodeVersion"
 						r.pathPattern = "/version/"

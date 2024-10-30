@@ -16,7 +16,7 @@ import (
 type SecurityHandler interface {
 	// HandleBearerToken handles BearerToken security.
 	// Bearer Token authentication.
-	HandleBearerToken(ctx context.Context, operationName string, t BearerToken) (context.Context, error)
+	HandleBearerToken(ctx context.Context, operationName OperationName, t BearerToken) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -34,7 +34,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
-func (s *Server) securityBearerToken(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t BearerToken
 	const parameterName = "authorization"
 	value := req.Header.Get(parameterName)
@@ -55,10 +55,10 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 type SecuritySource interface {
 	// BearerToken provides BearerToken security value.
 	// Bearer Token authentication.
-	BearerToken(ctx context.Context, operationName string) (BearerToken, error)
+	BearerToken(ctx context.Context, operationName OperationName) (BearerToken, error)
 }
 
-func (s *Client) securityBearerToken(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.BearerToken(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"BearerToken\"")

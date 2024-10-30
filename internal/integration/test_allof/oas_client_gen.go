@@ -172,7 +172,7 @@ func (c *Client) sendNullableStrings(ctx context.Context, request NilString) (re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "NullableStrings",
+	ctx, span := c.cfg.Tracer.Start(ctx, NullableStringsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -256,7 +256,7 @@ func (c *Client) sendObjectsWithConflictingArrayProperty(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ObjectsWithConflictingArrayProperty",
+	ctx, span := c.cfg.Tracer.Start(ctx, ObjectsWithConflictingArrayPropertyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -340,7 +340,7 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ObjectsWithConflictingProperties",
+	ctx, span := c.cfg.Tracer.Start(ctx, ObjectsWithConflictingPropertiesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -438,7 +438,7 @@ func (c *Client) sendReferencedAllof(ctx context.Context, request ReferencedAllo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReferencedAllof",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReferencedAllofOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -538,7 +538,7 @@ func (c *Client) sendReferencedAllofOptional(ctx context.Context, request Refere
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReferencedAllofOptional",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReferencedAllofOptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -631,7 +631,7 @@ func (c *Client) sendSimpleInteger(ctx context.Context, request int) (res *Simpl
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SimpleInteger",
+	ctx, span := c.cfg.Tracer.Start(ctx, SimpleIntegerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -706,7 +706,7 @@ func (c *Client) sendSimpleObjects(ctx context.Context, request *SimpleObjectsRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SimpleObjects",
+	ctx, span := c.cfg.Tracer.Start(ctx, SimpleObjectsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -803,7 +803,7 @@ func (c *Client) sendStringsNotype(ctx context.Context, request NilString) (res 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "StringsNotype",
+	ctx, span := c.cfg.Tracer.Start(ctx, StringsNotypeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

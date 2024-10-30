@@ -29,7 +29,7 @@ func (s *Server) handleFooBarBazGetRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "FooBarBazGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), FooBarBazGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65,7 +65,7 @@ func (s *Server) handleFooBarBazGetRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FooBarBazGet",
+			OperationName:    FooBarBazGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -119,7 +119,7 @@ func (s *Server) handleFooBarQuxGetRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "FooBarQuxGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), FooBarQuxGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -155,7 +155,7 @@ func (s *Server) handleFooBarQuxGetRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FooBarQuxGet",
+			OperationName:    FooBarQuxGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -209,7 +209,7 @@ func (s *Server) handleFooParamXyzGetRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "FooParamXyzGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), FooParamXyzGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -240,7 +240,7 @@ func (s *Server) handleFooParamXyzGetRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FooParamXyzGet",
+			Name: FooParamXyzGetOperation,
 			ID:   "",
 		}
 	)
@@ -259,7 +259,7 @@ func (s *Server) handleFooParamXyzGetRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FooParamXyzGet",
+			OperationName:    FooParamXyzGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,

@@ -110,7 +110,7 @@ func (c *Client) sendFooBarBazGet(ctx context.Context) (res string, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FooBarBazGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, FooBarBazGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -179,7 +179,7 @@ func (c *Client) sendFooBarQuxGet(ctx context.Context) (res string, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FooBarQuxGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, FooBarQuxGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -248,7 +248,7 @@ func (c *Client) sendFooParamXyzGet(ctx context.Context, params FooParamXyzGetPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FooParamXyzGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, FooParamXyzGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

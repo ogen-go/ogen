@@ -429,7 +429,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "OnlyForm"
+							r.name = OnlyFormOperation
 							r.summary = ""
 							r.operationID = "onlyForm"
 							r.pathPattern = "/onlyForm"
@@ -466,7 +466,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "OnlyMultipartFile"
+								r.name = OnlyMultipartFileOperation
 								r.summary = ""
 								r.operationID = "onlyMultipartFile"
 								r.pathPattern = "/onlyMultipartFile"
@@ -491,7 +491,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "OnlyMultipartForm"
+								r.name = OnlyMultipartFormOperation
 								r.summary = ""
 								r.operationID = "onlyMultipartForm"
 								r.pathPattern = "/onlyMultipartForm"
@@ -534,7 +534,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "TestFormURLEncoded"
+							r.name = TestFormURLEncodedOperation
 							r.summary = ""
 							r.operationID = "testFormURLEncoded"
 							r.pathPattern = "/testFormURLEncoded"
@@ -558,7 +558,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "POST":
-							r.name = "TestMultipart"
+							r.name = TestMultipartOperation
 							r.summary = ""
 							r.operationID = "testMultipart"
 							r.pathPattern = "/testMultipart"
@@ -582,7 +582,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "TestMultipartUpload"
+								r.name = TestMultipartUploadOperation
 								r.summary = ""
 								r.operationID = "testMultipartUpload"
 								r.pathPattern = "/testMultipartUpload"
@@ -622,7 +622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "TestReuseFormOptionalSchema"
+								r.name = TestReuseFormOptionalSchemaOperation
 								r.summary = ""
 								r.operationID = "testReuseFormOptionalSchema"
 								r.pathPattern = "/testReuseFormOptionalSchema"
@@ -647,7 +647,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "TestReuseFormSchema"
+								r.name = TestReuseFormSchemaOperation
 								r.summary = ""
 								r.operationID = "testReuseFormSchema"
 								r.pathPattern = "/testReuseFormSchema"
@@ -675,7 +675,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "TestShareFormSchema"
+							r.name = TestShareFormSchemaOperation
 							r.summary = ""
 							r.operationID = "testShareFormSchema"
 							r.pathPattern = "/testShareFormSchema"

@@ -165,7 +165,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchema(ctx context.Context) (res 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AnyContentTypeBinaryStringSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, AnyContentTypeBinaryStringSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -235,7 +235,7 @@ func (c *Client) sendAnyContentTypeBinaryStringSchemaDefault(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AnyContentTypeBinaryStringSchemaDefault",
+	ctx, span := c.cfg.Tracer.Start(ctx, AnyContentTypeBinaryStringSchemaDefaultOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -305,7 +305,7 @@ func (c *Client) sendCombined(ctx context.Context, params CombinedParams) (res C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Combined",
+	ctx, span := c.cfg.Tracer.Start(ctx, CombinedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -393,7 +393,7 @@ func (c *Client) sendHeaders200(ctx context.Context) (res *Headers200OK, err err
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Headers200",
+	ctx, span := c.cfg.Tracer.Start(ctx, Headers200Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -463,7 +463,7 @@ func (c *Client) sendHeadersCombined(ctx context.Context, params HeadersCombined
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersCombined",
+	ctx, span := c.cfg.Tracer.Start(ctx, HeadersCombinedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -551,7 +551,7 @@ func (c *Client) sendHeadersDefault(ctx context.Context) (res *HeadersDefaultDef
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersDefault",
+	ctx, span := c.cfg.Tracer.Start(ctx, HeadersDefaultOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -621,7 +621,7 @@ func (c *Client) sendHeadersJSON(ctx context.Context) (res *HeadersJSONOK, err e
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersJSON",
+	ctx, span := c.cfg.Tracer.Start(ctx, HeadersJSONOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -691,7 +691,7 @@ func (c *Client) sendHeadersPattern(ctx context.Context) (res *HeadersPattern4XX
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersPattern",
+	ctx, span := c.cfg.Tracer.Start(ctx, HeadersPatternOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -764,7 +764,7 @@ func (c *Client) sendIntersectPatternCode(ctx context.Context, params IntersectP
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IntersectPatternCode",
+	ctx, span := c.cfg.Tracer.Start(ctx, IntersectPatternCodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -852,7 +852,7 @@ func (c *Client) sendMultipleGenericResponses(ctx context.Context) (res Multiple
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MultipleGenericResponses",
+	ctx, span := c.cfg.Tracer.Start(ctx, MultipleGenericResponsesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -922,7 +922,7 @@ func (c *Client) sendOctetStreamBinaryStringSchema(ctx context.Context) (res Oct
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamBinaryStringSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, OctetStreamBinaryStringSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -992,7 +992,7 @@ func (c *Client) sendOctetStreamEmptySchema(ctx context.Context) (res OctetStrea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamEmptySchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, OctetStreamEmptySchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1064,7 +1064,7 @@ func (c *Client) sendOptionalHeaders(ctx context.Context) (res *OptionalHeadersO
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OptionalHeaders",
+	ctx, span := c.cfg.Tracer.Start(ctx, OptionalHeadersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1134,7 +1134,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, params StreamJSONParams) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "StreamJSON",
+	ctx, span := c.cfg.Tracer.Start(ctx, StreamJSONOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1222,7 +1222,7 @@ func (c *Client) sendTextPlainBinaryStringSchema(ctx context.Context) (res TextP
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TextPlainBinaryStringSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, TextPlainBinaryStringSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

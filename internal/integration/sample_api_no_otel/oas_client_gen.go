@@ -1360,7 +1360,7 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 		var satisfied bitset
 		{
 
-			switch err := c.securityAPIKey(ctx, "SecurityTest", r); {
+			switch err := c.securityAPIKey(ctx, SecurityTestOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):

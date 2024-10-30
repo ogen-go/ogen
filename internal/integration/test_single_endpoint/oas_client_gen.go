@@ -111,7 +111,7 @@ func (c *Client) sendProbeLiveness(ctx context.Context) (res string, err error) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProbeLiveness",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProbeLivenessOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

@@ -135,7 +135,7 @@ func (c *Client) sendOnlyForm(ctx context.Context, request *OnlyFormReq) (res *O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OnlyForm",
+	ctx, span := c.cfg.Tracer.Start(ctx, OnlyFormOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -208,7 +208,7 @@ func (c *Client) sendOnlyMultipartFile(ctx context.Context, request *OnlyMultipa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OnlyMultipartFile",
+	ctx, span := c.cfg.Tracer.Start(ctx, OnlyMultipartFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -281,7 +281,7 @@ func (c *Client) sendOnlyMultipartForm(ctx context.Context, request *OnlyMultipa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OnlyMultipartForm",
+	ctx, span := c.cfg.Tracer.Start(ctx, OnlyMultipartFormOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -354,7 +354,7 @@ func (c *Client) sendTestFormURLEncoded(ctx context.Context, request *TestForm) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestFormURLEncoded",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestFormURLEncodedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -427,7 +427,7 @@ func (c *Client) sendTestMultipart(ctx context.Context, request *TestFormMultipa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestMultipart",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestMultipartOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -500,7 +500,7 @@ func (c *Client) sendTestMultipartUpload(ctx context.Context, request *TestMulti
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestMultipartUpload",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestMultipartUploadOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -573,7 +573,7 @@ func (c *Client) sendTestReuseFormOptionalSchema(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestReuseFormOptionalSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestReuseFormOptionalSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -646,7 +646,7 @@ func (c *Client) sendTestReuseFormSchema(ctx context.Context, request *SharedReq
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestReuseFormSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestReuseFormSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -719,7 +719,7 @@ func (c *Client) sendTestShareFormSchema(ctx context.Context, request TestShareF
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestShareFormSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestShareFormSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

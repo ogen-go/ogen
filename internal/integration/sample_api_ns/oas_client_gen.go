@@ -249,7 +249,7 @@ func (c *Client) sendDataGetFormat(ctx context.Context, params DataGetFormatPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DataGetFormat",
+	ctx, span := c.cfg.Tracer.Start(ctx, DataGetFormatOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -413,7 +413,7 @@ func (c *Client) sendDefaultTest(ctx context.Context, request *DefaultTest, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DefaultTest",
+	ctx, span := c.cfg.Tracer.Start(ctx, DefaultTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -509,7 +509,7 @@ func (c *Client) sendErrorGet(ctx context.Context) (res *ErrorStatusCode, err er
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ErrorGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ErrorGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -581,7 +581,7 @@ func (c *Client) sendFoobarGet(ctx context.Context, params FoobarGetParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, FoobarGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -685,7 +685,7 @@ func (c *Client) sendFoobarPost(ctx context.Context, request OptPet) (res Foobar
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, FoobarPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -757,7 +757,7 @@ func (c *Client) sendFoobarPut(ctx context.Context) (res *FoobarPutDef, err erro
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPut",
+	ctx, span := c.cfg.Tracer.Start(ctx, FoobarPutOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -827,7 +827,7 @@ func (c *Client) sendNoAdditionalPropertiesTest(ctx context.Context) (res *NoAdd
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "NoAdditionalPropertiesTest",
+	ctx, span := c.cfg.Tracer.Start(ctx, NoAdditionalPropertiesTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -897,7 +897,7 @@ func (c *Client) sendNullableDefaultResponse(ctx context.Context) (res *NilIntSt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "NullableDefaultResponse",
+	ctx, span := c.cfg.Tracer.Start(ctx, NullableDefaultResponseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -967,7 +967,7 @@ func (c *Client) sendOneofBug(ctx context.Context, request *OneOfBugs) (res *One
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OneofBug",
+	ctx, span := c.cfg.Tracer.Start(ctx, OneofBugOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1039,7 +1039,7 @@ func (c *Client) sendPatternRecursiveMapGet(ctx context.Context) (res PatternRec
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PatternRecursiveMapGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, PatternRecursiveMapGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1111,7 +1111,7 @@ func (c *Client) sendPetCreate(ctx context.Context, request OptPet) (res *Pet, e
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetCreate",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1186,7 +1186,7 @@ func (c *Client) sendPetFriendsNamesByID(ctx context.Context, params PetFriendsN
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetFriendsNamesByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetFriendsNamesByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1276,7 +1276,7 @@ func (c *Client) sendPetGet(ctx context.Context, params PetGetParams) (res PetGe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1423,7 +1423,7 @@ func (c *Client) sendPetGetAvatarByID(ctx context.Context, params PetGetAvatarBy
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetAvatarByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetGetAvatarByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1513,7 +1513,7 @@ func (c *Client) sendPetGetAvatarByName(ctx context.Context, params PetGetAvatar
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetAvatarByName",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetGetAvatarByNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1604,7 +1604,7 @@ func (c *Client) sendPetGetByName(ctx context.Context, params PetGetByNameParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetByName",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetGetByNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1694,7 +1694,7 @@ func (c *Client) sendPetNameByID(ctx context.Context, params PetNameByIDParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetNameByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetNameByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1781,7 +1781,7 @@ func (c *Client) sendPetUpdateNameAliasPost(ctx context.Context, request OptPetN
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNameAliasPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetUpdateNameAliasPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1853,7 +1853,7 @@ func (c *Client) sendPetUpdateNamePost(ctx context.Context, request OptString) (
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNamePost",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetUpdateNamePostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1928,7 +1928,7 @@ func (c *Client) sendPetUploadAvatarByID(ctx context.Context, request PetUploadA
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PetUploadAvatarByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PetUploadAvatarByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2018,7 +2018,7 @@ func (c *Client) sendRecursiveArrayGet(ctx context.Context) (res RecursiveArray,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveArrayGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, RecursiveArrayGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2087,7 +2087,7 @@ func (c *Client) sendRecursiveMapGet(ctx context.Context) (res *RecursiveMap, er
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveMapGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, RecursiveMapGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2157,7 +2157,7 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SecurityTest",
+	ctx, span := c.cfg.Tracer.Start(ctx, SecurityTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2189,7 +2189,7 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 		var satisfied bitset
 		{
 			stage = "Security:APIKey"
-			switch err := c.securityAPIKey(ctx, "SecurityTest", r); {
+			switch err := c.securityAPIKey(ctx, SecurityTestOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2259,7 +2259,7 @@ func (c *Client) sendStringIntMapGet(ctx context.Context) (res *StringIntMap, er
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "StringIntMapGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, StringIntMapGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2329,7 +2329,7 @@ func (c *Client) sendTestFloatValidation(ctx context.Context, request *TestFloat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestFloatValidation",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestFloatValidationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2402,7 +2402,7 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestInlineOneof",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestInlineOneofOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2472,7 +2472,7 @@ func (c *Client) sendTestIssue1310(ctx context.Context) (res *Issue1310, err err
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestIssue1310",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestIssue1310Operation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2542,7 +2542,7 @@ func (c *Client) sendTestNullableOneofs(ctx context.Context) (res TestNullableOn
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestNullableOneofs",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestNullableOneofsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2612,7 +2612,7 @@ func (c *Client) sendTestTuple(ctx context.Context) (res *TupleTest, err error) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestTuple",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestTupleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2682,7 +2682,7 @@ func (c *Client) sendTestTupleNamed(ctx context.Context) (res *TupleNamedTest, e
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestTupleNamed",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestTupleNamedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2752,7 +2752,7 @@ func (c *Client) sendTestUniqueItems(ctx context.Context) (res *UniqueItemsTest,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TestUniqueItems",
+	ctx, span := c.cfg.Tracer.Start(ctx, TestUniqueItemsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

@@ -788,7 +788,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APICaptcha2chcaptchaIDGet"
+									r.name = APICaptcha2chcaptchaIDGetOperation
 									r.summary = "Получение ид для использования 2chcaptcha."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/2chcaptcha/id"
@@ -813,7 +813,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APICaptcha2chcaptchaShowGet"
+									r.name = APICaptcha2chcaptchaShowGetOperation
 									r.summary = "Отображение 2chcaptcha по id."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/2chcaptcha/show"
@@ -846,7 +846,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "APICaptchaAppIDPublicKeyGet"
+								r.name = APICaptchaAppIDPublicKeyGetOperation
 								r.summary = "Получение app_response_id для отправки поста."
 								r.operationID = ""
 								r.pathPattern = "/api/captcha/app/id/{public_key}"
@@ -883,7 +883,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APICaptchaInvisibleRecaptchaIDGet"
+									r.name = APICaptchaInvisibleRecaptchaIDGetOperation
 									r.summary = "Получение публичного ключа invisible recaptcha."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/invisible_recaptcha/id"
@@ -908,7 +908,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APICaptchaInvisibleRecaptchaMobileGet"
+									r.name = APICaptchaInvisibleRecaptchaMobileGetOperation
 									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/invisible_recaptcha/mobile"
@@ -948,7 +948,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APICaptchaRecaptchaIDGet"
+									r.name = APICaptchaRecaptchaIDGetOperation
 									r.summary = "Получение публичного ключа recaptcha v2."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/recaptcha/id"
@@ -973,7 +973,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APICaptchaRecaptchaMobileGet"
+									r.name = APICaptchaRecaptchaMobileGetOperation
 									r.summary = "Получение html страницы для решения капчи, CORS отключён."
 									r.operationID = ""
 									r.pathPattern = "/api/captcha/recaptcha/mobile"
@@ -1004,7 +1004,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "APIDislikeGet"
+							r.name = APIDislikeGetOperation
 							r.summary = "Добавление дизлайка на пост."
 							r.operationID = ""
 							r.pathPattern = "/api/dislike"
@@ -1029,7 +1029,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "APILikeGet"
+							r.name = APILikeGetOperation
 							r.summary = "Добавление лайка на пост."
 							r.operationID = ""
 							r.pathPattern = "/api/like"
@@ -1113,7 +1113,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "APIMobileV2AfterBoardThreadNumGet"
+										r.name = APIMobileV2AfterBoardThreadNumGetOperation
 										r.summary = "Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов."
 										r.operationID = ""
 										r.pathPattern = "/api/mobile/v2/after/{board}/{thread}/{num}"
@@ -1144,7 +1144,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "APIMobileV2BoardsGet"
+								r.name = APIMobileV2BoardsGetOperation
 								r.summary = "Получение списка досок и их настроек."
 								r.operationID = ""
 								r.pathPattern = "/api/mobile/v2/boards"
@@ -1195,7 +1195,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APIMobileV2InfoBoardThreadGet"
+									r.name = APIMobileV2InfoBoardThreadGetOperation
 									r.summary = "Получение информации о треде."
 									r.operationID = ""
 									r.pathPattern = "/api/mobile/v2/info/{board}/{thread}"
@@ -1249,7 +1249,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "APIMobileV2PostBoardNumGet"
+									r.name = APIMobileV2PostBoardNumGetOperation
 									r.summary = "Получение информации о посте."
 									r.operationID = ""
 									r.pathPattern = "/api/mobile/v2/post/{board}/{num}"
@@ -1307,7 +1307,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "UserPassloginPost"
+								r.name = UserPassloginPostOperation
 								r.summary = "Авторизация пасскода."
 								r.operationID = ""
 								r.pathPattern = "/user/passlogin"
@@ -1332,7 +1332,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "UserPostingPost"
+								r.name = UserPostingPostOperation
 								r.summary = "Создание нового поста или треда."
 								r.operationID = ""
 								r.pathPattern = "/user/posting"
@@ -1360,7 +1360,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "UserReportPost"
+							r.name = UserReportPostOperation
 							r.summary = "Отправка жалобы."
 							r.operationID = ""
 							r.pathPattern = "/user/report"

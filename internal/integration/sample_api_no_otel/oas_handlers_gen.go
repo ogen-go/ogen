@@ -26,7 +26,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataGetFormat",
+			Name: DataGetFormatOperation,
 			ID:   "dataGetFormat",
 		}
 	)
@@ -45,7 +45,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DataGetFormat",
+			OperationName:    DataGetFormatOperation,
 			OperationSummary: "",
 			OperationID:      "dataGetFormat",
 			Body:             nil,
@@ -119,7 +119,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DefaultTest",
+			Name: DefaultTestOperation,
 			ID:   "defaultTest",
 		}
 	)
@@ -153,7 +153,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DefaultTest",
+			OperationName:    DefaultTestOperation,
 			OperationSummary: "",
 			OperationID:      "defaultTest",
 			Body:             request,
@@ -218,7 +218,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ErrorGet",
+			OperationName:    ErrorGetOperation,
 			OperationSummary: "",
 			OperationID:      "errorGet",
 			Body:             nil,
@@ -273,7 +273,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FoobarGet",
+			Name: FoobarGetOperation,
 			ID:   "foobarGet",
 		}
 	)
@@ -292,7 +292,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FoobarGet",
+			OperationName:    FoobarGetOperation,
 			OperationSummary: "",
 			OperationID:      "foobarGet",
 			Body:             nil,
@@ -356,7 +356,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FoobarPost",
+			Name: FoobarPostOperation,
 			ID:   "foobarPost",
 		}
 	)
@@ -380,7 +380,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FoobarPost",
+			OperationName:    FoobarPostOperation,
 			OperationSummary: "",
 			OperationID:      "foobarPost",
 			Body:             request,
@@ -438,7 +438,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FoobarPut",
+			OperationName:    FoobarPutOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -496,7 +496,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "NoAdditionalPropertiesTest",
+			OperationName:    NoAdditionalPropertiesTestOperation,
 			OperationSummary: "",
 			OperationID:      "noAdditionalPropertiesTest",
 			Body:             nil,
@@ -554,7 +554,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "NullableDefaultResponse",
+			OperationName:    NullableDefaultResponseOperation,
 			OperationSummary: "",
 			OperationID:      "nullableDefaultResponse",
 			Body:             nil,
@@ -607,7 +607,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OneofBug",
+			Name: OneofBugOperation,
 			ID:   "oneofBug",
 		}
 	)
@@ -631,7 +631,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OneofBug",
+			OperationName:    OneofBugOperation,
 			OperationSummary: "",
 			OperationID:      "oneofBug",
 			Body:             request,
@@ -689,7 +689,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PatternRecursiveMapGet",
+			OperationName:    PatternRecursiveMapGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -744,7 +744,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetCreate",
+			Name: PetCreateOperation,
 			ID:   "petCreate",
 		}
 	)
@@ -768,7 +768,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetCreate",
+			OperationName:    PetCreateOperation,
 			OperationSummary: "",
 			OperationID:      "petCreate",
 			Body:             request,
@@ -823,7 +823,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetFriendsNamesByID",
+			Name: PetFriendsNamesByIDOperation,
 			ID:   "petFriendsNamesByID",
 		}
 	)
@@ -842,7 +842,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetFriendsNamesByID",
+			OperationName:    PetFriendsNamesByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petFriendsNamesByID",
 			Body:             nil,
@@ -902,7 +902,7 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGet",
+			Name: PetGetOperation,
 			ID:   "petGet",
 		}
 	)
@@ -921,7 +921,7 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGet",
+			OperationName:    PetGetOperation,
 			OperationSummary: "",
 			OperationID:      "petGet",
 			Body:             nil,
@@ -993,7 +993,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetAvatarByID",
+			Name: PetGetAvatarByIDOperation,
 			ID:   "petGetAvatarByID",
 		}
 	)
@@ -1012,7 +1012,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGetAvatarByID",
+			OperationName:    PetGetAvatarByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petGetAvatarByID",
 			Body:             nil,
@@ -1072,7 +1072,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetAvatarByName",
+			Name: PetGetAvatarByNameOperation,
 			ID:   "petGetAvatarByName",
 		}
 	)
@@ -1091,7 +1091,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGetAvatarByName",
+			OperationName:    PetGetAvatarByNameOperation,
 			OperationSummary: "",
 			OperationID:      "petGetAvatarByName",
 			Body:             nil,
@@ -1151,7 +1151,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetByName",
+			Name: PetGetByNameOperation,
 			ID:   "petGetByName",
 		}
 	)
@@ -1170,7 +1170,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGetByName",
+			OperationName:    PetGetByNameOperation,
 			OperationSummary: "",
 			OperationID:      "petGetByName",
 			Body:             nil,
@@ -1230,7 +1230,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetNameByID",
+			Name: PetNameByIDOperation,
 			ID:   "petNameByID",
 		}
 	)
@@ -1249,7 +1249,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetNameByID",
+			OperationName:    PetNameByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petNameByID",
 			Body:             nil,
@@ -1307,7 +1307,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUpdateNameAliasPost",
+			Name: PetUpdateNameAliasPostOperation,
 			ID:   "",
 		}
 	)
@@ -1331,7 +1331,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetUpdateNameAliasPost",
+			OperationName:    PetUpdateNameAliasPostOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             request,
@@ -1384,7 +1384,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUpdateNamePost",
+			Name: PetUpdateNamePostOperation,
 			ID:   "",
 		}
 	)
@@ -1408,7 +1408,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetUpdateNamePost",
+			OperationName:    PetUpdateNamePostOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             request,
@@ -1463,7 +1463,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUploadAvatarByID",
+			Name: PetUploadAvatarByIDOperation,
 			ID:   "petUploadAvatarByID",
 		}
 	)
@@ -1497,7 +1497,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetUploadAvatarByID",
+			OperationName:    PetUploadAvatarByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petUploadAvatarByID",
 			Body:             request,
@@ -1560,7 +1560,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RecursiveArrayGet",
+			OperationName:    RecursiveArrayGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -1618,7 +1618,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RecursiveMapGet",
+			OperationName:    RecursiveMapGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -1671,7 +1671,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecurityTest",
+			Name: SecurityTestOperation,
 			ID:   "securityTest",
 		}
 	)
@@ -1679,7 +1679,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityAPIKey(ctx, "SecurityTest", r)
+			sctx, ok, err := s.securityAPIKey(ctx, SecurityTestOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -1724,7 +1724,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SecurityTest",
+			OperationName:    SecurityTestOperation,
 			OperationSummary: "",
 			OperationID:      "securityTest",
 			Body:             nil,
@@ -1782,7 +1782,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "StringIntMapGet",
+			OperationName:    StringIntMapGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -1835,7 +1835,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 	var (
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestFloatValidation",
+			Name: TestFloatValidationOperation,
 			ID:   "testFloatValidation",
 		}
 	)
@@ -1859,7 +1859,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestFloatValidation",
+			OperationName:    TestFloatValidationOperation,
 			OperationSummary: "",
 			OperationID:      "testFloatValidation",
 			Body:             request,
@@ -1917,7 +1917,7 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestInlineOneof",
+			OperationName:    TestInlineOneofOperation,
 			OperationSummary: "",
 			OperationID:      "testInlineOneof",
 			Body:             nil,
@@ -1975,7 +1975,7 @@ func (s *Server) handleTestIssue1310Request(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestIssue1310",
+			OperationName:    TestIssue1310Operation,
 			OperationSummary: "",
 			OperationID:      "testIssue1310",
 			Body:             nil,
@@ -2033,7 +2033,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestNullableOneofs",
+			OperationName:    TestNullableOneofsOperation,
 			OperationSummary: "",
 			OperationID:      "testNullableOneofs",
 			Body:             nil,
@@ -2091,7 +2091,7 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestTuple",
+			OperationName:    TestTupleOperation,
 			OperationSummary: "",
 			OperationID:      "testTuple",
 			Body:             nil,
@@ -2149,7 +2149,7 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestTupleNamed",
+			OperationName:    TestTupleNamedOperation,
 			OperationSummary: "",
 			OperationID:      "testTupleNamed",
 			Body:             nil,
@@ -2207,7 +2207,7 @@ func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestUniqueItems",
+			OperationName:    TestUniqueItemsOperation,
 			OperationSummary: "",
 			OperationID:      "testUniqueItems",
 			Body:             nil,

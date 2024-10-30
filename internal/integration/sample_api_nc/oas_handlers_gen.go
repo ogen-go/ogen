@@ -33,7 +33,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetFormat",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DataGetFormatOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataGetFormat",
+			Name: DataGetFormatOperation,
 			ID:   "dataGetFormat",
 		}
 	)
@@ -83,7 +83,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DataGetFormat",
+			OperationName:    DataGetFormatOperation,
 			OperationSummary: "",
 			OperationID:      "dataGetFormat",
 			Body:             nil,
@@ -159,7 +159,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DefaultTest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DefaultTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -190,7 +190,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DefaultTest",
+			Name: DefaultTestOperation,
 			ID:   "defaultTest",
 		}
 	)
@@ -224,7 +224,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DefaultTest",
+			OperationName:    DefaultTestOperation,
 			OperationSummary: "",
 			OperationID:      "defaultTest",
 			Body:             request,
@@ -286,7 +286,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ErrorGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ErrorGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -322,7 +322,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ErrorGet",
+			OperationName:    ErrorGetOperation,
 			OperationSummary: "",
 			OperationID:      "errorGet",
 			Body:             nil,
@@ -379,7 +379,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "FoobarGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), FoobarGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -410,7 +410,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FoobarGet",
+			Name: FoobarGetOperation,
 			ID:   "foobarGet",
 		}
 	)
@@ -429,7 +429,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FoobarGet",
+			OperationName:    FoobarGetOperation,
 			OperationSummary: "",
 			OperationID:      "foobarGet",
 			Body:             nil,
@@ -495,7 +495,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "FoobarPost",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), FoobarPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -526,7 +526,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "FoobarPost",
+			Name: FoobarPostOperation,
 			ID:   "foobarPost",
 		}
 	)
@@ -550,7 +550,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FoobarPost",
+			OperationName:    FoobarPostOperation,
 			OperationSummary: "",
 			OperationID:      "foobarPost",
 			Body:             request,
@@ -604,7 +604,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "FoobarPut",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), FoobarPutOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -640,7 +640,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FoobarPut",
+			OperationName:    FoobarPutOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -695,7 +695,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "NoAdditionalPropertiesTest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), NoAdditionalPropertiesTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -731,7 +731,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "NoAdditionalPropertiesTest",
+			OperationName:    NoAdditionalPropertiesTestOperation,
 			OperationSummary: "",
 			OperationID:      "noAdditionalPropertiesTest",
 			Body:             nil,
@@ -786,7 +786,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "NullableDefaultResponse",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), NullableDefaultResponseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -822,7 +822,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "NullableDefaultResponse",
+			OperationName:    NullableDefaultResponseOperation,
 			OperationSummary: "",
 			OperationID:      "nullableDefaultResponse",
 			Body:             nil,
@@ -877,7 +877,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OneofBug",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OneofBugOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -908,7 +908,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OneofBug",
+			Name: OneofBugOperation,
 			ID:   "oneofBug",
 		}
 	)
@@ -932,7 +932,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OneofBug",
+			OperationName:    OneofBugOperation,
 			OperationSummary: "",
 			OperationID:      "oneofBug",
 			Body:             request,
@@ -986,7 +986,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatternRecursiveMapGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PatternRecursiveMapGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1022,7 +1022,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PatternRecursiveMapGet",
+			OperationName:    PatternRecursiveMapGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -1079,7 +1079,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetCreate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1110,7 +1110,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetCreate",
+			Name: PetCreateOperation,
 			ID:   "petCreate",
 		}
 	)
@@ -1134,7 +1134,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetCreate",
+			OperationName:    PetCreateOperation,
 			OperationSummary: "",
 			OperationID:      "petCreate",
 			Body:             request,
@@ -1191,7 +1191,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetFriendsNamesByID",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetFriendsNamesByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1222,7 +1222,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetFriendsNamesByID",
+			Name: PetFriendsNamesByIDOperation,
 			ID:   "petFriendsNamesByID",
 		}
 	)
@@ -1241,7 +1241,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetFriendsNamesByID",
+			OperationName:    PetFriendsNamesByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petFriendsNamesByID",
 			Body:             nil,
@@ -1303,7 +1303,7 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1334,7 +1334,7 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGet",
+			Name: PetGetOperation,
 			ID:   "petGet",
 		}
 	)
@@ -1353,7 +1353,7 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGet",
+			OperationName:    PetGetOperation,
 			OperationSummary: "",
 			OperationID:      "petGet",
 			Body:             nil,
@@ -1427,7 +1427,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGetAvatarByID",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetGetAvatarByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1458,7 +1458,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetAvatarByID",
+			Name: PetGetAvatarByIDOperation,
 			ID:   "petGetAvatarByID",
 		}
 	)
@@ -1477,7 +1477,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGetAvatarByID",
+			OperationName:    PetGetAvatarByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petGetAvatarByID",
 			Body:             nil,
@@ -1539,7 +1539,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGetAvatarByName",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetGetAvatarByNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1570,7 +1570,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetAvatarByName",
+			Name: PetGetAvatarByNameOperation,
 			ID:   "petGetAvatarByName",
 		}
 	)
@@ -1589,7 +1589,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGetAvatarByName",
+			OperationName:    PetGetAvatarByNameOperation,
 			OperationSummary: "",
 			OperationID:      "petGetAvatarByName",
 			Body:             nil,
@@ -1651,7 +1651,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGetByName",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetGetByNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1682,7 +1682,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetGetByName",
+			Name: PetGetByNameOperation,
 			ID:   "petGetByName",
 		}
 	)
@@ -1701,7 +1701,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetGetByName",
+			OperationName:    PetGetByNameOperation,
 			OperationSummary: "",
 			OperationID:      "petGetByName",
 			Body:             nil,
@@ -1763,7 +1763,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetNameByID",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetNameByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1794,7 +1794,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetNameByID",
+			Name: PetNameByIDOperation,
 			ID:   "petNameByID",
 		}
 	)
@@ -1813,7 +1813,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetNameByID",
+			OperationName:    PetNameByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petNameByID",
 			Body:             nil,
@@ -1872,7 +1872,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetUpdateNameAliasPost",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetUpdateNameAliasPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1903,7 +1903,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUpdateNameAliasPost",
+			Name: PetUpdateNameAliasPostOperation,
 			ID:   "",
 		}
 	)
@@ -1927,7 +1927,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetUpdateNameAliasPost",
+			OperationName:    PetUpdateNameAliasPostOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             request,
@@ -1981,7 +1981,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetUpdateNamePost",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetUpdateNamePostOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2012,7 +2012,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUpdateNamePost",
+			Name: PetUpdateNamePostOperation,
 			ID:   "",
 		}
 	)
@@ -2036,7 +2036,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetUpdateNamePost",
+			OperationName:    PetUpdateNamePostOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             request,
@@ -2093,7 +2093,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetUploadAvatarByID",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PetUploadAvatarByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2124,7 +2124,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PetUploadAvatarByID",
+			Name: PetUploadAvatarByIDOperation,
 			ID:   "petUploadAvatarByID",
 		}
 	)
@@ -2158,7 +2158,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PetUploadAvatarByID",
+			OperationName:    PetUploadAvatarByIDOperation,
 			OperationSummary: "",
 			OperationID:      "petUploadAvatarByID",
 			Body:             request,
@@ -2217,7 +2217,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "RecursiveArrayGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RecursiveArrayGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2253,7 +2253,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RecursiveArrayGet",
+			OperationName:    RecursiveArrayGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -2307,7 +2307,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "RecursiveMapGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RecursiveMapGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2343,7 +2343,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RecursiveMapGet",
+			OperationName:    RecursiveMapGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -2398,7 +2398,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SecurityTest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SecurityTestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2429,7 +2429,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecurityTest",
+			Name: SecurityTestOperation,
 			ID:   "securityTest",
 		}
 	)
@@ -2437,7 +2437,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityAPIKey(ctx, "SecurityTest", r)
+			sctx, ok, err := s.securityAPIKey(ctx, SecurityTestOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -2482,7 +2482,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SecurityTest",
+			OperationName:    SecurityTestOperation,
 			OperationSummary: "",
 			OperationID:      "securityTest",
 			Body:             nil,
@@ -2536,7 +2536,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "StringIntMapGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), StringIntMapGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2572,7 +2572,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "StringIntMapGet",
+			OperationName:    StringIntMapGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -2627,7 +2627,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestFloatValidation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestFloatValidationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2658,7 +2658,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestFloatValidation",
+			Name: TestFloatValidationOperation,
 			ID:   "testFloatValidation",
 		}
 	)
@@ -2682,7 +2682,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestFloatValidation",
+			OperationName:    TestFloatValidationOperation,
 			OperationSummary: "",
 			OperationID:      "testFloatValidation",
 			Body:             request,
@@ -2737,7 +2737,7 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestInlineOneof",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestInlineOneofOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2773,7 +2773,7 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestInlineOneof",
+			OperationName:    TestInlineOneofOperation,
 			OperationSummary: "",
 			OperationID:      "testInlineOneof",
 			Body:             nil,
@@ -2828,7 +2828,7 @@ func (s *Server) handleTestIssue1310Request(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestIssue1310",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestIssue1310Operation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2864,7 +2864,7 @@ func (s *Server) handleTestIssue1310Request(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestIssue1310",
+			OperationName:    TestIssue1310Operation,
 			OperationSummary: "",
 			OperationID:      "testIssue1310",
 			Body:             nil,
@@ -2919,7 +2919,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestNullableOneofs",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestNullableOneofsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2955,7 +2955,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestNullableOneofs",
+			OperationName:    TestNullableOneofsOperation,
 			OperationSummary: "",
 			OperationID:      "testNullableOneofs",
 			Body:             nil,
@@ -3010,7 +3010,7 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestTuple",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestTupleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3046,7 +3046,7 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestTuple",
+			OperationName:    TestTupleOperation,
 			OperationSummary: "",
 			OperationID:      "testTuple",
 			Body:             nil,
@@ -3101,7 +3101,7 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestTupleNamed",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestTupleNamedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3137,7 +3137,7 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestTupleNamed",
+			OperationName:    TestTupleNamedOperation,
 			OperationSummary: "",
 			OperationID:      "testTupleNamed",
 			Body:             nil,
@@ -3192,7 +3192,7 @@ func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestUniqueItems",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestUniqueItemsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3228,7 +3228,7 @@ func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestUniqueItems",
+			OperationName:    TestUniqueItemsOperation,
 			OperationSummary: "",
 			OperationID:      "testUniqueItems",
 			Body:             nil,

@@ -276,7 +276,7 @@ func (c *Client) sendCreateSnapshot(ctx context.Context, request *SnapshotCreate
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CreateSnapshot",
+	ctx, span := c.cfg.Tracer.Start(ctx, CreateSnapshotOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -351,7 +351,7 @@ func (c *Client) sendCreateSyncAction(ctx context.Context, request *InstanceActi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CreateSyncAction",
+	ctx, span := c.cfg.Tracer.Start(ctx, CreateSyncActionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -426,7 +426,7 @@ func (c *Client) sendDescribeBalloonConfig(ctx context.Context) (res DescribeBal
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeBalloonConfig",
+	ctx, span := c.cfg.Tracer.Start(ctx, DescribeBalloonConfigOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -498,7 +498,7 @@ func (c *Client) sendDescribeBalloonStats(ctx context.Context) (res DescribeBall
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeBalloonStats",
+	ctx, span := c.cfg.Tracer.Start(ctx, DescribeBalloonStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -570,7 +570,7 @@ func (c *Client) sendDescribeInstance(ctx context.Context) (res *InstanceInfo, e
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeInstance",
+	ctx, span := c.cfg.Tracer.Start(ctx, DescribeInstanceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -642,7 +642,7 @@ func (c *Client) sendGetExportVmConfig(ctx context.Context) (res *FullVmConfigur
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetExportVmConfig",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetExportVmConfigOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -716,7 +716,7 @@ func (c *Client) sendGetMachineConfiguration(ctx context.Context) (res *MachineC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetMachineConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetMachineConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -789,7 +789,7 @@ func (c *Client) sendLoadSnapshot(ctx context.Context, request *SnapshotLoadPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "LoadSnapshot",
+	ctx, span := c.cfg.Tracer.Start(ctx, LoadSnapshotOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -863,7 +863,7 @@ func (c *Client) sendMmdsConfigPut(ctx context.Context, request *MmdsConfig) (re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsConfigPut",
+	ctx, span := c.cfg.Tracer.Start(ctx, MmdsConfigPutOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -937,7 +937,7 @@ func (c *Client) sendMmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MmdsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1008,7 +1008,7 @@ func (c *Client) sendMmdsPatch(ctx context.Context, request *MmdsPatchReq) (res 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsPatch",
+	ctx, span := c.cfg.Tracer.Start(ctx, MmdsPatchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1082,7 +1082,7 @@ func (c *Client) sendMmdsPut(ctx context.Context, request *MmdsPutReq) (res Mmds
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsPut",
+	ctx, span := c.cfg.Tracer.Start(ctx, MmdsPutOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1158,7 +1158,7 @@ func (c *Client) sendPatchBalloon(ctx context.Context, request *BalloonUpdate) (
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PatchBalloon",
+	ctx, span := c.cfg.Tracer.Start(ctx, PatchBalloonOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1234,7 +1234,7 @@ func (c *Client) sendPatchBalloonStatsInterval(ctx context.Context, request *Bal
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PatchBalloonStatsInterval",
+	ctx, span := c.cfg.Tracer.Start(ctx, PatchBalloonStatsIntervalOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1310,7 +1310,7 @@ func (c *Client) sendPatchGuestDriveByID(ctx context.Context, request *PartialDr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PatchGuestDriveByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PatchGuestDriveByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1403,7 +1403,7 @@ func (c *Client) sendPatchGuestNetworkInterfaceByID(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PatchGuestNetworkInterfaceByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PatchGuestNetworkInterfaceByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1497,7 +1497,7 @@ func (c *Client) sendPatchMachineConfiguration(ctx context.Context, request OptM
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PatchMachineConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, PatchMachineConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1572,7 +1572,7 @@ func (c *Client) sendPatchVm(ctx context.Context, request *VM) (res PatchVmRes, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PatchVm",
+	ctx, span := c.cfg.Tracer.Start(ctx, PatchVmOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1648,7 +1648,7 @@ func (c *Client) sendPutBalloon(ctx context.Context, request *Balloon) (res PutB
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutBalloon",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutBalloonOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1724,7 +1724,7 @@ func (c *Client) sendPutGuestBootSource(ctx context.Context, request *BootSource
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestBootSource",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutGuestBootSourceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1800,7 +1800,7 @@ func (c *Client) sendPutGuestDriveByID(ctx context.Context, request *Drive, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestDriveByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutGuestDriveByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1893,7 +1893,7 @@ func (c *Client) sendPutGuestNetworkInterfaceByID(ctx context.Context, request *
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestNetworkInterfaceByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutGuestNetworkInterfaceByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1987,7 +1987,7 @@ func (c *Client) sendPutGuestVsock(ctx context.Context, request *Vsock) (res Put
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestVsock",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutGuestVsockOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2062,7 +2062,7 @@ func (c *Client) sendPutLogger(ctx context.Context, request *Logger) (res PutLog
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutLogger",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutLoggerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2140,7 +2140,7 @@ func (c *Client) sendPutMachineConfiguration(ctx context.Context, request OptMac
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutMachineConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutMachineConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2215,7 +2215,7 @@ func (c *Client) sendPutMetrics(ctx context.Context, request *Metrics) (res PutM
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PutMetrics",
+	ctx, span := c.cfg.Tracer.Start(ctx, PutMetricsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

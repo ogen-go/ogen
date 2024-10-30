@@ -31,7 +31,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AllRequestBodies",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AllRequestBodiesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62,7 +62,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AllRequestBodies",
+			Name: AllRequestBodiesOperation,
 			ID:   "allRequestBodies",
 		}
 	)
@@ -86,7 +86,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AllRequestBodies",
+			OperationName:    AllRequestBodiesOperation,
 			OperationSummary: "",
 			OperationID:      "allRequestBodies",
 			Body:             request,
@@ -141,7 +141,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AllRequestBodiesOptional",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AllRequestBodiesOptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -172,7 +172,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AllRequestBodiesOptional",
+			Name: AllRequestBodiesOptionalOperation,
 			ID:   "allRequestBodiesOptional",
 		}
 	)
@@ -196,7 +196,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AllRequestBodiesOptional",
+			OperationName:    AllRequestBodiesOptionalOperation,
 			OperationSummary: "",
 			OperationID:      "allRequestBodiesOptional",
 			Body:             request,
@@ -251,7 +251,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "Base64Request",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), Base64RequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -282,7 +282,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Base64Request",
+			Name: Base64RequestOperation,
 			ID:   "base64Request",
 		}
 	)
@@ -306,7 +306,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "Base64Request",
+			OperationName:    Base64RequestOperation,
 			OperationSummary: "",
 			OperationID:      "base64Request",
 			Body:             request,
@@ -361,7 +361,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MaskContentType",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MaskContentTypeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -392,7 +392,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MaskContentType",
+			Name: MaskContentTypeOperation,
 			ID:   "maskContentType",
 		}
 	)
@@ -416,7 +416,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MaskContentType",
+			OperationName:    MaskContentTypeOperation,
 			OperationSummary: "",
 			OperationID:      "maskContentType",
 			Body:             request,
@@ -471,7 +471,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MaskContentTypeOptional",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MaskContentTypeOptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -502,7 +502,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MaskContentTypeOptional",
+			Name: MaskContentTypeOptionalOperation,
 			ID:   "maskContentTypeOptional",
 		}
 	)
@@ -526,7 +526,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MaskContentTypeOptional",
+			OperationName:    MaskContentTypeOptionalOperation,
 			OperationSummary: "",
 			OperationID:      "maskContentTypeOptional",
 			Body:             request,
@@ -581,7 +581,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "StreamJSON",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), StreamJSONOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -612,7 +612,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "StreamJSON",
+			Name: StreamJSONOperation,
 			ID:   "streamJSON",
 		}
 	)
@@ -636,7 +636,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "StreamJSON",
+			OperationName:    StreamJSONOperation,
 			OperationSummary: "",
 			OperationID:      "streamJSON",
 			Body:             request,

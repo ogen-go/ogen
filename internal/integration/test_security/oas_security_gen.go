@@ -15,17 +15,17 @@ import (
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleBasicAuth handles basicAuth security.
-	HandleBasicAuth(ctx context.Context, operationName string, t BasicAuth) (context.Context, error)
+	HandleBasicAuth(ctx context.Context, operationName OperationName, t BasicAuth) (context.Context, error)
 	// HandleBearerToken handles bearerToken security.
-	HandleBearerToken(ctx context.Context, operationName string, t BearerToken) (context.Context, error)
+	HandleBearerToken(ctx context.Context, operationName OperationName, t BearerToken) (context.Context, error)
 	// HandleCookieKey handles cookieKey security.
-	HandleCookieKey(ctx context.Context, operationName string, t CookieKey) (context.Context, error)
+	HandleCookieKey(ctx context.Context, operationName OperationName, t CookieKey) (context.Context, error)
 	// HandleCustom handles custom security.
-	HandleCustom(ctx context.Context, operationName string, req *http.Request) (context.Context, error)
+	HandleCustom(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, error)
 	// HandleHeaderKey handles headerKey security.
-	HandleHeaderKey(ctx context.Context, operationName string, t HeaderKey) (context.Context, error)
+	HandleHeaderKey(ctx context.Context, operationName OperationName, t HeaderKey) (context.Context, error)
 	// HandleQueryKey handles queryKey security.
-	HandleQueryKey(ctx context.Context, operationName string, t QueryKey) (context.Context, error)
+	HandleQueryKey(ctx context.Context, operationName OperationName, t QueryKey) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -43,7 +43,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
-func (s *Server) securityBasicAuth(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityBasicAuth(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t BasicAuth
 	if _, ok := findAuthorization(req.Header, "Basic"); !ok {
 		return ctx, false, nil
@@ -62,7 +62,7 @@ func (s *Server) securityBasicAuth(ctx context.Context, operationName string, re
 	}
 	return rctx, true, err
 }
-func (s *Server) securityBearerToken(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t BearerToken
 	token, ok := findAuthorization(req.Header, "Bearer")
 	if !ok {
@@ -77,7 +77,7 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName string, 
 	}
 	return rctx, true, err
 }
-func (s *Server) securityCookieKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityCookieKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t CookieKey
 	const parameterName = "api_key"
 	var value string
@@ -98,7 +98,7 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName string, re
 	}
 	return rctx, true, err
 }
-func (s *Server) securityCustom(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityCustom(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	t := req
 	rctx, err := s.sec.HandleCustom(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
@@ -108,7 +108,7 @@ func (s *Server) securityCustom(ctx context.Context, operationName string, req *
 	}
 	return rctx, true, err
 }
-func (s *Server) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t HeaderKey
 	const parameterName = "X-Api-Key"
 	value := req.Header.Get(parameterName)
@@ -124,7 +124,7 @@ func (s *Server) securityHeaderKey(ctx context.Context, operationName string, re
 	}
 	return rctx, true, err
 }
-func (s *Server) securityQueryKey(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityQueryKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t QueryKey
 	const parameterName = "api_key"
 	q := req.URL.Query()
@@ -145,20 +145,20 @@ func (s *Server) securityQueryKey(ctx context.Context, operationName string, req
 // SecuritySource is provider of security values (tokens, passwords, etc.).
 type SecuritySource interface {
 	// BasicAuth provides basicAuth security value.
-	BasicAuth(ctx context.Context, operationName string) (BasicAuth, error)
+	BasicAuth(ctx context.Context, operationName OperationName) (BasicAuth, error)
 	// BearerToken provides bearerToken security value.
-	BearerToken(ctx context.Context, operationName string) (BearerToken, error)
+	BearerToken(ctx context.Context, operationName OperationName) (BearerToken, error)
 	// CookieKey provides cookieKey security value.
-	CookieKey(ctx context.Context, operationName string) (CookieKey, error)
+	CookieKey(ctx context.Context, operationName OperationName) (CookieKey, error)
 	// Custom provides custom security value.
-	Custom(ctx context.Context, operationName string, req *http.Request) error
+	Custom(ctx context.Context, operationName OperationName, req *http.Request) error
 	// HeaderKey provides headerKey security value.
-	HeaderKey(ctx context.Context, operationName string) (HeaderKey, error)
+	HeaderKey(ctx context.Context, operationName OperationName) (HeaderKey, error)
 	// QueryKey provides queryKey security value.
-	QueryKey(ctx context.Context, operationName string) (QueryKey, error)
+	QueryKey(ctx context.Context, operationName OperationName) (QueryKey, error)
 }
 
-func (s *Client) securityBasicAuth(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityBasicAuth(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.BasicAuth(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"BasicAuth\"")
@@ -166,7 +166,7 @@ func (s *Client) securityBasicAuth(ctx context.Context, operationName string, re
 	req.SetBasicAuth(t.Username, t.Password)
 	return nil
 }
-func (s *Client) securityBearerToken(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.BearerToken(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"BearerToken\"")
@@ -174,7 +174,7 @@ func (s *Client) securityBearerToken(ctx context.Context, operationName string, 
 	req.Header.Set("Authorization", "Bearer "+t.Token)
 	return nil
 }
-func (s *Client) securityCookieKey(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityCookieKey(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.CookieKey(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"CookieKey\"")
@@ -185,13 +185,13 @@ func (s *Client) securityCookieKey(ctx context.Context, operationName string, re
 	})
 	return nil
 }
-func (s *Client) securityCustom(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityCustom(ctx context.Context, operationName OperationName, req *http.Request) error {
 	if err := s.sec.Custom(ctx, operationName, req); err != nil {
 		return errors.Wrap(err, "security source \"Custom\"")
 	}
 	return nil
 }
-func (s *Client) securityHeaderKey(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityHeaderKey(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.HeaderKey(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"HeaderKey\"")
@@ -199,7 +199,7 @@ func (s *Client) securityHeaderKey(ctx context.Context, operationName string, re
 	req.Header.Set("X-Api-Key", t.APIKey)
 	return nil
 }
-func (s *Client) securityQueryKey(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityQueryKey(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.QueryKey(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"QueryKey\"")

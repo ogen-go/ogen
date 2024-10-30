@@ -107,7 +107,7 @@ func (c *Client) sendDefault(ctx context.Context, params DefaultParams) (res *De
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Default",
+	ctx, span := c.cfg.Tracer.Start(ctx, DefaultOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -232,7 +232,7 @@ func (c *Client) sendRequired(ctx context.Context, params RequiredParams) (res *
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Required",
+	ctx, span := c.cfg.Tracer.Start(ctx, RequiredOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

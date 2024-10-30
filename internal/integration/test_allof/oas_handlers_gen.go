@@ -33,7 +33,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "NullableStrings",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), NullableStringsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "NullableStrings",
+			Name: NullableStringsOperation,
 			ID:   "nullableStrings",
 		}
 	)
@@ -88,7 +88,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "NullableStrings",
+			OperationName:    NullableStringsOperation,
 			OperationSummary: "",
 			OperationID:      "nullableStrings",
 			Body:             request,
@@ -145,7 +145,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ObjectsWithConflictingArrayProperty",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ObjectsWithConflictingArrayPropertyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -176,7 +176,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ObjectsWithConflictingArrayProperty",
+			Name: ObjectsWithConflictingArrayPropertyOperation,
 			ID:   "objectsWithConflictingArrayProperty",
 		}
 	)
@@ -200,7 +200,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ObjectsWithConflictingArrayProperty",
+			OperationName:    ObjectsWithConflictingArrayPropertyOperation,
 			OperationSummary: "",
 			OperationID:      "objectsWithConflictingArrayProperty",
 			Body:             request,
@@ -257,7 +257,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ObjectsWithConflictingProperties",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ObjectsWithConflictingPropertiesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -288,7 +288,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ObjectsWithConflictingProperties",
+			Name: ObjectsWithConflictingPropertiesOperation,
 			ID:   "objectsWithConflictingProperties",
 		}
 	)
@@ -312,7 +312,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ObjectsWithConflictingProperties",
+			OperationName:    ObjectsWithConflictingPropertiesOperation,
 			OperationSummary: "",
 			OperationID:      "objectsWithConflictingProperties",
 			Body:             request,
@@ -369,7 +369,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReferencedAllof",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReferencedAllofOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -400,7 +400,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReferencedAllof",
+			Name: ReferencedAllofOperation,
 			ID:   "referencedAllof",
 		}
 	)
@@ -424,7 +424,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReferencedAllof",
+			OperationName:    ReferencedAllofOperation,
 			OperationSummary: "",
 			OperationID:      "referencedAllof",
 			Body:             request,
@@ -481,7 +481,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReferencedAllofOptional",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReferencedAllofOptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -512,7 +512,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReferencedAllofOptional",
+			Name: ReferencedAllofOptionalOperation,
 			ID:   "referencedAllofOptional",
 		}
 	)
@@ -536,7 +536,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReferencedAllofOptional",
+			OperationName:    ReferencedAllofOptionalOperation,
 			OperationSummary: "",
 			OperationID:      "referencedAllofOptional",
 			Body:             request,
@@ -593,7 +593,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SimpleInteger",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SimpleIntegerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -624,7 +624,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SimpleInteger",
+			Name: SimpleIntegerOperation,
 			ID:   "simpleInteger",
 		}
 	)
@@ -648,7 +648,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SimpleInteger",
+			OperationName:    SimpleIntegerOperation,
 			OperationSummary: "",
 			OperationID:      "simpleInteger",
 			Body:             request,
@@ -705,7 +705,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SimpleObjects",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SimpleObjectsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -736,7 +736,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SimpleObjects",
+			Name: SimpleObjectsOperation,
 			ID:   "simpleObjects",
 		}
 	)
@@ -760,7 +760,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SimpleObjects",
+			OperationName:    SimpleObjectsOperation,
 			OperationSummary: "",
 			OperationID:      "simpleObjects",
 			Body:             request,
@@ -815,7 +815,7 @@ func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "StringsNotype",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), StringsNotypeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -846,7 +846,7 @@ func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "StringsNotype",
+			Name: StringsNotypeOperation,
 			ID:   "stringsNotype",
 		}
 	)
@@ -870,7 +870,7 @@ func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "StringsNotype",
+			OperationName:    StringsNotypeOperation,
 			OperationSummary: "",
 			OperationID:      "stringsNotype",
 			Body:             request,

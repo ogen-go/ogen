@@ -31,7 +31,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APICaptcha2chcaptchaIDGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APICaptcha2chcaptchaIDGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62,7 +62,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptcha2chcaptchaIDGet",
+			Name: APICaptcha2chcaptchaIDGetOperation,
 			ID:   "",
 		}
 	)
@@ -81,7 +81,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APICaptcha2chcaptchaIDGet",
+			OperationName:    APICaptcha2chcaptchaIDGetOperation,
 			OperationSummary: "Получение ид для использования 2chcaptcha.",
 			OperationID:      "",
 			Body:             nil,
@@ -146,7 +146,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APICaptcha2chcaptchaShowGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APICaptcha2chcaptchaShowGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -177,7 +177,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptcha2chcaptchaShowGet",
+			Name: APICaptcha2chcaptchaShowGetOperation,
 			ID:   "",
 		}
 	)
@@ -196,7 +196,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APICaptcha2chcaptchaShowGet",
+			OperationName:    APICaptcha2chcaptchaShowGetOperation,
 			OperationSummary: "Отображение 2chcaptcha по id.",
 			OperationID:      "",
 			Body:             nil,
@@ -261,7 +261,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APICaptchaAppIDPublicKeyGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APICaptchaAppIDPublicKeyGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -292,7 +292,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptchaAppIDPublicKeyGet",
+			Name: APICaptchaAppIDPublicKeyGetOperation,
 			ID:   "",
 		}
 	)
@@ -311,7 +311,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APICaptchaAppIDPublicKeyGet",
+			OperationName:    APICaptchaAppIDPublicKeyGetOperation,
 			OperationSummary: "Получение app_response_id для отправки поста.",
 			OperationID:      "",
 			Body:             nil,
@@ -380,7 +380,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APICaptchaInvisibleRecaptchaIDGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APICaptchaInvisibleRecaptchaIDGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -411,7 +411,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptchaInvisibleRecaptchaIDGet",
+			Name: APICaptchaInvisibleRecaptchaIDGetOperation,
 			ID:   "",
 		}
 	)
@@ -430,7 +430,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APICaptchaInvisibleRecaptchaIDGet",
+			OperationName:    APICaptchaInvisibleRecaptchaIDGetOperation,
 			OperationSummary: "Получение публичного ключа invisible recaptcha.",
 			OperationID:      "",
 			Body:             nil,
@@ -495,7 +495,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APICaptchaInvisibleRecaptchaMobileGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APICaptchaInvisibleRecaptchaMobileGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -531,7 +531,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APICaptchaInvisibleRecaptchaMobileGet",
+			OperationName:    APICaptchaInvisibleRecaptchaMobileGetOperation,
 			OperationSummary: "Получение html страницы для решения капчи, CORS отключён.",
 			OperationID:      "",
 			Body:             nil,
@@ -587,7 +587,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APICaptchaRecaptchaIDGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APICaptchaRecaptchaIDGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -618,7 +618,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APICaptchaRecaptchaIDGet",
+			Name: APICaptchaRecaptchaIDGetOperation,
 			ID:   "",
 		}
 	)
@@ -637,7 +637,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APICaptchaRecaptchaIDGet",
+			OperationName:    APICaptchaRecaptchaIDGetOperation,
 			OperationSummary: "Получение публичного ключа recaptcha v2.",
 			OperationID:      "",
 			Body:             nil,
@@ -702,7 +702,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APICaptchaRecaptchaMobileGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APICaptchaRecaptchaMobileGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -738,7 +738,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APICaptchaRecaptchaMobileGet",
+			OperationName:    APICaptchaRecaptchaMobileGetOperation,
 			OperationSummary: "Получение html страницы для решения капчи, CORS отключён.",
 			OperationID:      "",
 			Body:             nil,
@@ -794,7 +794,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APIDislikeGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APIDislikeGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -825,7 +825,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIDislikeGet",
+			Name: APIDislikeGetOperation,
 			ID:   "",
 		}
 	)
@@ -844,7 +844,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APIDislikeGet",
+			OperationName:    APIDislikeGetOperation,
 			OperationSummary: "Добавление дизлайка на пост.",
 			OperationID:      "",
 			Body:             nil,
@@ -909,7 +909,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APILikeGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APILikeGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -940,7 +940,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APILikeGet",
+			Name: APILikeGetOperation,
 			ID:   "",
 		}
 	)
@@ -959,7 +959,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APILikeGet",
+			OperationName:    APILikeGetOperation,
 			OperationSummary: "Добавление лайка на пост.",
 			OperationID:      "",
 			Body:             nil,
@@ -1026,7 +1026,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APIMobileV2AfterBoardThreadNumGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APIMobileV2AfterBoardThreadNumGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1057,7 +1057,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIMobileV2AfterBoardThreadNumGet",
+			Name: APIMobileV2AfterBoardThreadNumGetOperation,
 			ID:   "",
 		}
 	)
@@ -1076,7 +1076,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APIMobileV2AfterBoardThreadNumGet",
+			OperationName:    APIMobileV2AfterBoardThreadNumGetOperation,
 			OperationSummary: "Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов.",
 			OperationID:      "",
 			Body:             nil,
@@ -1145,7 +1145,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APIMobileV2BoardsGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APIMobileV2BoardsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1181,7 +1181,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APIMobileV2BoardsGet",
+			OperationName:    APIMobileV2BoardsGetOperation,
 			OperationSummary: "Получение списка досок и их настроек.",
 			OperationID:      "",
 			Body:             nil,
@@ -1237,7 +1237,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APIMobileV2InfoBoardThreadGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APIMobileV2InfoBoardThreadGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1268,7 +1268,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIMobileV2InfoBoardThreadGet",
+			Name: APIMobileV2InfoBoardThreadGetOperation,
 			ID:   "",
 		}
 	)
@@ -1287,7 +1287,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APIMobileV2InfoBoardThreadGet",
+			OperationName:    APIMobileV2InfoBoardThreadGetOperation,
 			OperationSummary: "Получение информации о треде.",
 			OperationID:      "",
 			Body:             nil,
@@ -1352,7 +1352,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "APIMobileV2PostBoardNumGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), APIMobileV2PostBoardNumGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1383,7 +1383,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "APIMobileV2PostBoardNumGet",
+			Name: APIMobileV2PostBoardNumGetOperation,
 			ID:   "",
 		}
 	)
@@ -1402,7 +1402,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "APIMobileV2PostBoardNumGet",
+			OperationName:    APIMobileV2PostBoardNumGetOperation,
 			OperationSummary: "Получение информации о посте.",
 			OperationID:      "",
 			Body:             nil,
@@ -1467,7 +1467,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UserPassloginPost",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UserPassloginPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1498,7 +1498,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UserPassloginPost",
+			Name: UserPassloginPostOperation,
 			ID:   "",
 		}
 	)
@@ -1532,7 +1532,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UserPassloginPost",
+			OperationName:    UserPassloginPostOperation,
 			OperationSummary: "Авторизация пасскода.",
 			OperationID:      "",
 			Body:             request,
@@ -1593,7 +1593,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UserPostingPost",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UserPostingPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1624,7 +1624,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UserPostingPost",
+			Name: UserPostingPostOperation,
 			ID:   "",
 		}
 	)
@@ -1648,7 +1648,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UserPostingPost",
+			OperationName:    UserPostingPostOperation,
 			OperationSummary: "Создание нового поста или треда.",
 			OperationID:      "",
 			Body:             request,
@@ -1704,7 +1704,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UserReportPost",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UserReportPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1735,7 +1735,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UserReportPost",
+			Name: UserReportPostOperation,
 			ID:   "",
 		}
 	)
@@ -1759,7 +1759,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UserReportPost",
+			OperationName:    UserReportPostOperation,
 			OperationSummary: "Отправка жалобы.",
 			OperationID:      "",
 			Body:             request,

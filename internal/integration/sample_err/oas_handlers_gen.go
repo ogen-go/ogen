@@ -33,7 +33,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataCreate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DataCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataCreate",
+			Name: DataCreateOperation,
 			ID:   "dataCreate",
 		}
 	)
@@ -88,7 +88,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DataCreate",
+			OperationName:    DataCreateOperation,
 			OperationSummary: "",
 			OperationID:      "dataCreate",
 			Body:             request,
@@ -156,7 +156,7 @@ func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DataGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -192,7 +192,7 @@ func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DataGet",
+			OperationName:    DataGetOperation,
 			OperationSummary: "",
 			OperationID:      "dataGet",
 			Body:             nil,

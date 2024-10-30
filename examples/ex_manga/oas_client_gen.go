@@ -138,7 +138,7 @@ func (c *Client) sendGetBook(ctx context.Context, params GetBookParams) (res Get
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetBook",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetBookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -228,7 +228,7 @@ func (c *Client) sendGetPageCoverImage(ctx context.Context, params GetPageCoverI
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageCoverImage",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetPageCoverImageOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -337,7 +337,7 @@ func (c *Client) sendGetPageImage(ctx context.Context, params GetPageImageParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageImage",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetPageImageOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -465,7 +465,7 @@ func (c *Client) sendGetPageThumbnailImage(ctx context.Context, params GetPageTh
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageThumbnailImage",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetPageThumbnailImageOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -593,7 +593,7 @@ func (c *Client) sendSearch(ctx context.Context, params SearchParams) (res Searc
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Search",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -700,7 +700,7 @@ func (c *Client) sendSearchByTagID(ctx context.Context, params SearchByTagIDPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchByTagID",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchByTagIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

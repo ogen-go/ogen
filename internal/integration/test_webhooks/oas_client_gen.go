@@ -108,7 +108,7 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PublishEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, PublishEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -194,7 +194,7 @@ func (c *WebhookClient) sendStatusWebhook(ctx context.Context, targetURL string)
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "StatusWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, StatusWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -261,7 +261,7 @@ func (c *WebhookClient) sendUpdateDelete(ctx context.Context, targetURL string) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UpdateDelete",
+	ctx, span := c.cfg.Tracer.Start(ctx, UpdateDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -329,7 +329,7 @@ func (c *WebhookClient) sendUpdateWebhook(ctx context.Context, targetURL string,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UpdateWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, UpdateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

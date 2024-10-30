@@ -150,7 +150,7 @@ func (c *Client) sendComplicatedParameterNameGet(ctx context.Context, params Com
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ComplicatedParameterNameGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ComplicatedParameterNameGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -294,7 +294,7 @@ func (c *Client) sendContentParameters(ctx context.Context, params ContentParame
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ContentParameters",
+	ctx, span := c.cfg.Tracer.Start(ctx, ContentParametersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -448,7 +448,7 @@ func (c *Client) sendCookieParameter(ctx context.Context, params CookieParameter
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CookieParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, CookieParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -536,7 +536,7 @@ func (c *Client) sendHeaderParameter(ctx context.Context, params HeaderParameter
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "HeaderParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, HeaderParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -620,7 +620,7 @@ func (c *Client) sendObjectCookieParameter(ctx context.Context, params ObjectCoo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ObjectCookieParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, ObjectCookieParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -706,7 +706,7 @@ func (c *Client) sendObjectQueryParameter(ctx context.Context, params ObjectQuer
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ObjectQueryParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, ObjectQueryParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -814,7 +814,7 @@ func (c *Client) sendOptionalArrayParameter(ctx context.Context, params Optional
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OptionalArrayParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, OptionalArrayParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -942,7 +942,7 @@ func (c *Client) sendPathParameter(ctx context.Context, params PathParameterPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PathParameter",
+	ctx, span := c.cfg.Tracer.Start(ctx, PathParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1032,7 +1032,7 @@ func (c *Client) sendSameName(ctx context.Context, params SameNameParams) (res *
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SameName",
+	ctx, span := c.cfg.Tracer.Start(ctx, SameNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1140,7 +1140,7 @@ func (c *Client) sendSimilarNames(ctx context.Context, params SimilarNamesParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SimilarNames",
+	ctx, span := c.cfg.Tracer.Start(ctx, SimilarNamesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
