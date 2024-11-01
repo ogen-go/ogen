@@ -31,7 +31,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CustomSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CustomSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62,7 +62,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CustomSecurity",
+			Name: CustomSecurityOperation,
 			ID:   "customSecurity",
 		}
 	)
@@ -70,7 +70,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityCustom(ctx, "CustomSecurity", r)
+			sctx, ok, err := s.securityCustom(ctx, CustomSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -115,7 +115,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CustomSecurity",
+			OperationName:    CustomSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "customSecurity",
 			Body:             nil,
@@ -170,7 +170,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DisjointSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DisjointSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -201,7 +201,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DisjointSecurity",
+			Name: DisjointSecurityOperation,
 			ID:   "disjointSecurity",
 		}
 	)
@@ -209,7 +209,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBasicAuth(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityBasicAuth(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -226,7 +226,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityQueryKey(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityQueryKey(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -243,7 +243,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityCookieKey(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityCookieKey(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -260,7 +260,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityHeaderKey(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityHeaderKey(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -306,7 +306,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DisjointSecurity",
+			OperationName:    DisjointSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "disjointSecurity",
 			Body:             nil,
@@ -361,7 +361,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IntersectSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IntersectSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -392,7 +392,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IntersectSecurity",
+			Name: IntersectSecurityOperation,
 			ID:   "intersectSecurity",
 		}
 	)
@@ -400,7 +400,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBasicAuth(ctx, "IntersectSecurity", r)
+			sctx, ok, err := s.securityBasicAuth(ctx, IntersectSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -417,7 +417,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			}
 		}
 		{
-			sctx, ok, err := s.securityHeaderKey(ctx, "IntersectSecurity", r)
+			sctx, ok, err := s.securityHeaderKey(ctx, IntersectSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -434,7 +434,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			}
 		}
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "IntersectSecurity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, IntersectSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -480,7 +480,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IntersectSecurity",
+			OperationName:    IntersectSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "intersectSecurity",
 			Body:             nil,
@@ -535,7 +535,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OptionalSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OptionalSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -566,7 +566,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OptionalSecurity",
+			Name: OptionalSecurityOperation,
 			ID:   "optionalSecurity",
 		}
 	)
@@ -574,7 +574,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityQueryKey(ctx, "OptionalSecurity", r)
+			sctx, ok, err := s.securityQueryKey(ctx, OptionalSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -620,7 +620,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OptionalSecurity",
+			OperationName:    OptionalSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "optionalSecurity",
 			Body:             nil,

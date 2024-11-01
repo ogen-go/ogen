@@ -12,10 +12,10 @@ import (
 // SecuritySource is provider of security values (tokens, passwords, etc.).
 type SecuritySource interface {
 	// APIKey provides api_key security value.
-	APIKey(ctx context.Context, operationName string) (APIKey, error)
+	APIKey(ctx context.Context, operationName OperationName) (APIKey, error)
 }
 
-func (s *Client) securityAPIKey(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityAPIKey(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.APIKey(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"APIKey\"")

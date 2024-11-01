@@ -111,7 +111,7 @@ func (c *Client) sendIntegerNumber(ctx context.Context) (res *IntegerNumber, err
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IntegerNumber",
+	ctx, span := c.cfg.Tracer.Start(ctx, IntegerNumberOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -181,7 +181,7 @@ func (c *Client) sendJaegerAnyOf(ctx context.Context) (res *JaegerAnyOf, err err
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "JaegerAnyOf",
+	ctx, span := c.cfg.Tracer.Start(ctx, JaegerAnyOfOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -251,7 +251,7 @@ func (c *Client) sendOneUUID(ctx context.Context) (res *OneUUID, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OneUUID",
+	ctx, span := c.cfg.Tracer.Start(ctx, OneUUIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

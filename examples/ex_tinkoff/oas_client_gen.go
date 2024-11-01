@@ -229,7 +229,7 @@ func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketBondsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketBondsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -261,7 +261,7 @@ func (c *Client) sendMarketBondsGet(ctx context.Context) (res MarketBondsGetRes,
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketBondsGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketBondsGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -333,7 +333,7 @@ func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCandlesGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketCandlesGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -425,7 +425,7 @@ func (c *Client) sendMarketCandlesGet(ctx context.Context, params MarketCandlesG
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketCandlesGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketCandlesGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -497,7 +497,7 @@ func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenc
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCurrenciesGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketCurrenciesGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -529,7 +529,7 @@ func (c *Client) sendMarketCurrenciesGet(ctx context.Context) (res MarketCurrenc
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketCurrenciesGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketCurrenciesGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -601,7 +601,7 @@ func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, e
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketEtfsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketEtfsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -633,7 +633,7 @@ func (c *Client) sendMarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, e
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketEtfsGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketEtfsGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -705,7 +705,7 @@ func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderb
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketOrderbookGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketOrderbookGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -769,7 +769,7 @@ func (c *Client) sendMarketOrderbookGet(ctx context.Context, params MarketOrderb
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketOrderbookGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketOrderbookGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -841,7 +841,7 @@ func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByFigiGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketSearchByFigiGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -891,7 +891,7 @@ func (c *Client) sendMarketSearchByFigiGet(ctx context.Context, params MarketSea
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketSearchByFigiGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -963,7 +963,7 @@ func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketS
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByTickerGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketSearchByTickerGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1013,7 +1013,7 @@ func (c *Client) sendMarketSearchByTickerGet(ctx context.Context, params MarketS
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketSearchByTickerGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1085,7 +1085,7 @@ func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarketStocksGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarketStocksGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1117,7 +1117,7 @@ func (c *Client) sendMarketStocksGet(ctx context.Context) (res MarketStocksGetRe
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "MarketStocksGet", r); {
+			switch err := c.securitySSOAuth(ctx, MarketStocksGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1189,7 +1189,7 @@ func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OperationsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, OperationsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1287,7 +1287,7 @@ func (c *Client) sendOperationsGet(ctx context.Context, params OperationsGetPara
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OperationsGet", r); {
+			switch err := c.securitySSOAuth(ctx, OperationsGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1359,7 +1359,7 @@ func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersCancelPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrdersCancelPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1426,7 +1426,7 @@ func (c *Client) sendOrdersCancelPost(ctx context.Context, params OrdersCancelPo
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersCancelPost", r); {
+			switch err := c.securitySSOAuth(ctx, OrdersCancelPostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1498,7 +1498,7 @@ func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrdersGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1551,7 +1551,7 @@ func (c *Client) sendOrdersGet(ctx context.Context, params OrdersGetParams) (res
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersGet", r); {
+			switch err := c.securitySSOAuth(ctx, OrdersGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1623,7 +1623,7 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersLimitOrderPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrdersLimitOrderPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1693,7 +1693,7 @@ func (c *Client) sendOrdersLimitOrderPost(ctx context.Context, request *LimitOrd
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); {
+			switch err := c.securitySSOAuth(ctx, OrdersLimitOrderPostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1765,7 +1765,7 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersMarketOrderPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrdersMarketOrderPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1835,7 +1835,7 @@ func (c *Client) sendOrdersMarketOrderPost(ctx context.Context, request *MarketO
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); {
+			switch err := c.securitySSOAuth(ctx, OrdersMarketOrderPostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1907,7 +1907,7 @@ func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params Portfoli
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioCurrenciesGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, PortfolioCurrenciesGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1960,7 +1960,7 @@ func (c *Client) sendPortfolioCurrenciesGet(ctx context.Context, params Portfoli
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); {
+			switch err := c.securitySSOAuth(ctx, PortfolioCurrenciesGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2032,7 +2032,7 @@ func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, PortfolioGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2085,7 +2085,7 @@ func (c *Client) sendPortfolioGet(ctx context.Context, params PortfolioGetParams
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "PortfolioGet", r); {
+			switch err := c.securitySSOAuth(ctx, PortfolioGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2157,7 +2157,7 @@ func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxClearPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, SandboxClearPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2210,7 +2210,7 @@ func (c *Client) sendSandboxClearPost(ctx context.Context, params SandboxClearPo
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxClearPost", r); {
+			switch err := c.securitySSOAuth(ctx, SandboxClearPostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2282,7 +2282,7 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxCurrenciesBalancePost",
+	ctx, span := c.cfg.Tracer.Start(ctx, SandboxCurrenciesBalancePostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2338,7 +2338,7 @@ func (c *Client) sendSandboxCurrenciesBalancePost(ctx context.Context, request *
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); {
+			switch err := c.securitySSOAuth(ctx, SandboxCurrenciesBalancePostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2410,7 +2410,7 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxPositionsBalancePost",
+	ctx, span := c.cfg.Tracer.Start(ctx, SandboxPositionsBalancePostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2466,7 +2466,7 @@ func (c *Client) sendSandboxPositionsBalancePost(ctx context.Context, request *S
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); {
+			switch err := c.securitySSOAuth(ctx, SandboxPositionsBalancePostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2538,7 +2538,7 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRegisterPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, SandboxRegisterPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2573,7 +2573,7 @@ func (c *Client) sendSandboxRegisterPost(ctx context.Context, request OptSandbox
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxRegisterPost", r); {
+			switch err := c.securitySSOAuth(ctx, SandboxRegisterPostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2645,7 +2645,7 @@ func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemove
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRemovePost",
+	ctx, span := c.cfg.Tracer.Start(ctx, SandboxRemovePostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2698,7 +2698,7 @@ func (c *Client) sendSandboxRemovePost(ctx context.Context, params SandboxRemove
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "SandboxRemovePost", r); {
+			switch err := c.securitySSOAuth(ctx, SandboxRemovePostOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -2770,7 +2770,7 @@ func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UserAccountsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, UserAccountsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -2802,7 +2802,7 @@ func (c *Client) sendUserAccountsGet(ctx context.Context) (res UserAccountsGetRe
 		var satisfied bitset
 		{
 			stage = "Security:SSOAuth"
-			switch err := c.securitySSOAuth(ctx, "UserAccountsGet", r); {
+			switch err := c.securitySSOAuth(ctx, UserAccountsGetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):

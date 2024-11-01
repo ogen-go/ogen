@@ -146,7 +146,7 @@ func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res *Pet, err
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AddPet",
+	ctx, span := c.cfg.Tracer.Start(ctx, AddPetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -221,7 +221,7 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePet",
+	ctx, span := c.cfg.Tracer.Start(ctx, DeletePetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -311,7 +311,7 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FindPetByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, FindPetByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -419,7 +419,7 @@ func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FindPets",
+	ctx, span := c.cfg.Tracer.Start(ctx, FindPetsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

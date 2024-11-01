@@ -294,7 +294,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				if len(elem) == 0 {
 					switch method {
 					case "POST":
-						r.name = "AllRequestBodies"
+						r.name = AllRequestBodiesOperation
 						r.summary = ""
 						r.operationID = "allRequestBodies"
 						r.pathPattern = "/allRequestBodies"
@@ -318,7 +318,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "AllRequestBodiesOptional"
+							r.name = AllRequestBodiesOptionalOperation
 							r.summary = ""
 							r.operationID = "allRequestBodiesOptional"
 							r.pathPattern = "/allRequestBodiesOptional"
@@ -346,7 +346,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "POST":
-						r.name = "Base64Request"
+						r.name = Base64RequestOperation
 						r.summary = ""
 						r.operationID = "base64Request"
 						r.pathPattern = "/base64Request"
@@ -370,7 +370,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				if len(elem) == 0 {
 					switch method {
 					case "POST":
-						r.name = "MaskContentType"
+						r.name = MaskContentTypeOperation
 						r.summary = ""
 						r.operationID = "maskContentType"
 						r.pathPattern = "/maskContentType"
@@ -394,7 +394,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "MaskContentTypeOptional"
+							r.name = MaskContentTypeOptionalOperation
 							r.summary = ""
 							r.operationID = "maskContentTypeOptional"
 							r.pathPattern = "/maskContentTypeOptional"
@@ -422,7 +422,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "POST":
-						r.name = "StreamJSON"
+						r.name = StreamJSONOperation
 						r.summary = ""
 						r.operationID = "streamJSON"
 						r.pathPattern = "/streamJSON"

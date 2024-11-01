@@ -150,7 +150,7 @@ func (c *Client) sendCaching(ctx context.Context, params CachingParams) (res Wor
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Caching",
+	ctx, span := c.cfg.Tracer.Start(ctx, CachingOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -241,7 +241,7 @@ func (c *Client) sendDB(ctx context.Context) (res *WorldObject, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DB",
+	ctx, span := c.cfg.Tracer.Start(ctx, DBOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -315,7 +315,7 @@ func (c *Client) sendJSON(ctx context.Context) (res *HelloWorld, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "JSON",
+	ctx, span := c.cfg.Tracer.Start(ctx, JSONOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -390,7 +390,7 @@ func (c *Client) sendQueries(ctx context.Context, params QueriesParams) (res Wor
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Queries",
+	ctx, span := c.cfg.Tracer.Start(ctx, QueriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -482,7 +482,7 @@ func (c *Client) sendUpdates(ctx context.Context, params UpdatesParams) (res Wor
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Updates",
+	ctx, span := c.cfg.Tracer.Start(ctx, UpdatesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

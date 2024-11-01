@@ -471,7 +471,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "ComplicatedParameterNameGet"
+							r.name = ComplicatedParameterNameGetOperation
 							r.summary = ""
 							r.operationID = ""
 							r.pathPattern = "/complicatedParameterName"
@@ -501,7 +501,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "ContentParameters"
+							r.name = ContentParametersOperation
 							r.summary = ""
 							r.operationID = "contentParameters"
 							r.pathPattern = "/contentParameters/{path}"
@@ -526,7 +526,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "CookieParameter"
+							r.name = CookieParameterOperation
 							r.summary = ""
 							r.operationID = "cookieParameter"
 							r.pathPattern = "/cookieParameter"
@@ -554,7 +554,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "HeaderParameter"
+						r.name = HeaderParameterOperation
 						r.summary = ""
 						r.operationID = "headerParameter"
 						r.pathPattern = "/headerParameter"
@@ -603,7 +603,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "ObjectCookieParameter"
+								r.name = ObjectCookieParameterOperation
 								r.summary = ""
 								r.operationID = "objectCookieParameter"
 								r.pathPattern = "/objectCookieParameter"
@@ -628,7 +628,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "ObjectQueryParameter"
+								r.name = ObjectQueryParameterOperation
 								r.summary = ""
 								r.operationID = "objectQueryParameter"
 								r.pathPattern = "/objectQueryParameter"
@@ -656,7 +656,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "OptionalArrayParameter"
+							r.name = OptionalArrayParameterOperation
 							r.summary = ""
 							r.operationID = "optionalArrayParameter"
 							r.pathPattern = "/optionalArrayParameter"
@@ -689,7 +689,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "PathParameter"
+						r.name = PathParameterOperation
 						r.summary = ""
 						r.operationID = "pathParameter"
 						r.pathPattern = "/pathParameter/{value}"
@@ -731,7 +731,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "SameName"
+							r.name = SameNameOperation
 							r.summary = "parameters with different location, but with the same name"
 							r.operationID = "sameName"
 							r.pathPattern = "/same_name/{param}"
@@ -756,7 +756,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "SimilarNames"
+							r.name = SimilarNamesOperation
 							r.summary = "parameters with different location, but with similar names"
 							r.operationID = "similarNames"
 							r.pathPattern = "/similarNames"

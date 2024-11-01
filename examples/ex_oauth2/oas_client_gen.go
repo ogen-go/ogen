@@ -149,7 +149,7 @@ func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res *Pet, err
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AddPet",
+	ctx, span := c.cfg.Tracer.Start(ctx, AddPetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -184,7 +184,7 @@ func (c *Client) sendAddPet(ctx context.Context, request *NewPet) (res *Pet, err
 		var satisfied bitset
 		{
 			stage = "Security:OAuth2"
-			switch err := c.securityOAuth2(ctx, "AddPet", r); {
+			switch err := c.securityOAuth2(ctx, AddPetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -257,7 +257,7 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePet",
+	ctx, span := c.cfg.Tracer.Start(ctx, DeletePetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -307,7 +307,7 @@ func (c *Client) sendDeletePet(ctx context.Context, params DeletePetParams) (res
 		var satisfied bitset
 		{
 			stage = "Security:OAuth2"
-			switch err := c.securityOAuth2(ctx, "DeletePet", r); {
+			switch err := c.securityOAuth2(ctx, DeletePetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -380,7 +380,7 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FindPetByID",
+	ctx, span := c.cfg.Tracer.Start(ctx, FindPetByIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -430,7 +430,7 @@ func (c *Client) sendFindPetByID(ctx context.Context, params FindPetByIDParams) 
 		var satisfied bitset
 		{
 			stage = "Security:OAuth2"
-			switch err := c.securityOAuth2(ctx, "FindPetByID", r); {
+			switch err := c.securityOAuth2(ctx, FindPetByIDOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -521,7 +521,7 @@ func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res [
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FindPets",
+	ctx, span := c.cfg.Tracer.Start(ctx, FindPetsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -600,7 +600,7 @@ func (c *Client) sendFindPets(ctx context.Context, params FindPetsParams) (res [
 		var satisfied bitset
 		{
 			stage = "Security:OAuth2"
-			switch err := c.securityOAuth2(ctx, "FindPets", r); {
+			switch err := c.securityOAuth2(ctx, FindPetsOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):

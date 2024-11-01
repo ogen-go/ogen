@@ -196,7 +196,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			if len(elem) == 0 {
 				switch method {
 				case "GET":
-					r.name = "FindPets"
+					r.name = FindPetsOperation
 					r.summary = ""
 					r.operationID = "findPets"
 					r.pathPattern = "/pets"
@@ -204,7 +204,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					r.count = 0
 					return r, true
 				case "POST":
-					r.name = "AddPet"
+					r.name = AddPetOperation
 					r.summary = ""
 					r.operationID = "addPet"
 					r.pathPattern = "/pets"
@@ -233,7 +233,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "DELETE":
-						r.name = "DeletePet"
+						r.name = DeletePetOperation
 						r.summary = ""
 						r.operationID = "deletePet"
 						r.pathPattern = "/pets/{id}"
@@ -241,7 +241,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						r.count = 1
 						return r, true
 					case "GET":
-						r.name = "FindPetByID"
+						r.name = FindPetByIDOperation
 						r.summary = ""
 						r.operationID = "find pet by id"
 						r.pathPattern = "/pets/{id}"

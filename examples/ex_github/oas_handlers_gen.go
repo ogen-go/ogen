@@ -41,7 +41,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72,7 +72,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+			Name: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			ID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
@@ -91,7 +91,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationName:    ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "Add repository access to a self-hosted runner group in an organization",
 			OperationID:      "actions/add-repo-access-to-self-hosted-runner-group-in-org",
 			Body:             nil,
@@ -165,7 +165,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsAddSelectedRepoToOrgSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsAddSelectedRepoToOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -196,7 +196,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsAddSelectedRepoToOrgSecret",
+			Name: ActionsAddSelectedRepoToOrgSecretOperation,
 			ID:   "actions/add-selected-repo-to-org-secret",
 		}
 	)
@@ -215,7 +215,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsAddSelectedRepoToOrgSecret",
+			OperationName:    ActionsAddSelectedRepoToOrgSecretOperation,
 			OperationSummary: "Add selected repository to an organization secret",
 			OperationID:      "actions/add-selected-repo-to-org-secret",
 			Body:             nil,
@@ -290,7 +290,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsAddSelfHostedRunnerToGroupForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsAddSelfHostedRunnerToGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -321,7 +321,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsAddSelfHostedRunnerToGroupForOrg",
+			Name: ActionsAddSelfHostedRunnerToGroupForOrgOperation,
 			ID:   "actions/add-self-hosted-runner-to-group-for-org",
 		}
 	)
@@ -340,7 +340,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsAddSelfHostedRunnerToGroupForOrg",
+			OperationName:    ActionsAddSelfHostedRunnerToGroupForOrgOperation,
 			OperationSummary: "Add a self-hosted runner to a group for an organization",
 			OperationID:      "actions/add-self-hosted-runner-to-group-for-org",
 			Body:             nil,
@@ -414,7 +414,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsApproveWorkflowRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsApproveWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -445,7 +445,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsApproveWorkflowRun",
+			Name: ActionsApproveWorkflowRunOperation,
 			ID:   "actions/approve-workflow-run",
 		}
 	)
@@ -464,7 +464,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsApproveWorkflowRun",
+			OperationName:    ActionsApproveWorkflowRunOperation,
 			OperationSummary: "Approve a workflow run for a fork pull request",
 			OperationID:      "actions/approve-workflow-run",
 			Body:             nil,
@@ -536,7 +536,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCancelWorkflowRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCancelWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -567,7 +567,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCancelWorkflowRun",
+			Name: ActionsCancelWorkflowRunOperation,
 			ID:   "actions/cancel-workflow-run",
 		}
 	)
@@ -586,7 +586,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCancelWorkflowRun",
+			OperationName:    ActionsCancelWorkflowRunOperation,
 			OperationSummary: "Cancel a workflow run",
 			OperationID:      "actions/cancel-workflow-run",
 			Body:             nil,
@@ -709,7 +709,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateOrUpdateEnvironmentSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateOrUpdateEnvironmentSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -740,7 +740,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateOrUpdateEnvironmentSecret",
+			Name: ActionsCreateOrUpdateEnvironmentSecretOperation,
 			ID:   "actions/create-or-update-environment-secret",
 		}
 	)
@@ -774,7 +774,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateOrUpdateEnvironmentSecret",
+			OperationName:    ActionsCreateOrUpdateEnvironmentSecretOperation,
 			OperationSummary: "Create or update an environment secret",
 			OperationID:      "actions/create-or-update-environment-secret",
 			Body:             request,
@@ -897,7 +897,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateOrUpdateOrgSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateOrUpdateOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -928,7 +928,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateOrUpdateOrgSecret",
+			Name: ActionsCreateOrUpdateOrgSecretOperation,
 			ID:   "actions/create-or-update-org-secret",
 		}
 	)
@@ -962,7 +962,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateOrUpdateOrgSecret",
+			OperationName:    ActionsCreateOrUpdateOrgSecretOperation,
 			OperationSummary: "Create or update an organization secret",
 			OperationID:      "actions/create-or-update-org-secret",
 			Body:             request,
@@ -1081,7 +1081,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateOrUpdateRepoSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateOrUpdateRepoSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1112,7 +1112,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateOrUpdateRepoSecret",
+			Name: ActionsCreateOrUpdateRepoSecretOperation,
 			ID:   "actions/create-or-update-repo-secret",
 		}
 	)
@@ -1146,7 +1146,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateOrUpdateRepoSecret",
+			OperationName:    ActionsCreateOrUpdateRepoSecretOperation,
 			OperationSummary: "Create or update a repository secret",
 			OperationID:      "actions/create-or-update-repo-secret",
 			Body:             request,
@@ -1223,7 +1223,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateRegistrationTokenForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRegistrationTokenForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1254,7 +1254,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRegistrationTokenForOrg",
+			Name: ActionsCreateRegistrationTokenForOrgOperation,
 			ID:   "actions/create-registration-token-for-org",
 		}
 	)
@@ -1273,7 +1273,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateRegistrationTokenForOrg",
+			OperationName:    ActionsCreateRegistrationTokenForOrgOperation,
 			OperationSummary: "Create a registration token for an organization",
 			OperationID:      "actions/create-registration-token-for-org",
 			Body:             nil,
@@ -1343,7 +1343,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateRegistrationTokenForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRegistrationTokenForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1374,7 +1374,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRegistrationTokenForRepo",
+			Name: ActionsCreateRegistrationTokenForRepoOperation,
 			ID:   "actions/create-registration-token-for-repo",
 		}
 	)
@@ -1393,7 +1393,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateRegistrationTokenForRepo",
+			OperationName:    ActionsCreateRegistrationTokenForRepoOperation,
 			OperationSummary: "Create a registration token for a repository",
 			OperationID:      "actions/create-registration-token-for-repo",
 			Body:             nil,
@@ -1468,7 +1468,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateRemoveTokenForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRemoveTokenForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1499,7 +1499,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRemoveTokenForOrg",
+			Name: ActionsCreateRemoveTokenForOrgOperation,
 			ID:   "actions/create-remove-token-for-org",
 		}
 	)
@@ -1518,7 +1518,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateRemoveTokenForOrg",
+			OperationName:    ActionsCreateRemoveTokenForOrgOperation,
 			OperationSummary: "Create a remove token for an organization",
 			OperationID:      "actions/create-remove-token-for-org",
 			Body:             nil,
@@ -1588,7 +1588,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateRemoveTokenForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateRemoveTokenForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1619,7 +1619,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateRemoveTokenForRepo",
+			Name: ActionsCreateRemoveTokenForRepoOperation,
 			ID:   "actions/create-remove-token-for-repo",
 		}
 	)
@@ -1638,7 +1638,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateRemoveTokenForRepo",
+			OperationName:    ActionsCreateRemoveTokenForRepoOperation,
 			OperationSummary: "Create a remove token for a repository",
 			OperationID:      "actions/create-remove-token-for-repo",
 			Body:             nil,
@@ -1708,7 +1708,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsCreateSelfHostedRunnerGroupForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsCreateSelfHostedRunnerGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1739,7 +1739,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsCreateSelfHostedRunnerGroupForOrg",
+			Name: ActionsCreateSelfHostedRunnerGroupForOrgOperation,
 			ID:   "actions/create-self-hosted-runner-group-for-org",
 		}
 	)
@@ -1773,7 +1773,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsCreateSelfHostedRunnerGroupForOrg",
+			OperationName:    ActionsCreateSelfHostedRunnerGroupForOrgOperation,
 			OperationSummary: "Create a self-hosted runner group for an organization",
 			OperationID:      "actions/create-self-hosted-runner-group-for-org",
 			Body:             request,
@@ -1837,7 +1837,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteArtifact",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteArtifactOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1868,7 +1868,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteArtifact",
+			Name: ActionsDeleteArtifactOperation,
 			ID:   "actions/delete-artifact",
 		}
 	)
@@ -1887,7 +1887,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteArtifact",
+			OperationName:    ActionsDeleteArtifactOperation,
 			OperationSummary: "Delete an artifact",
 			OperationID:      "actions/delete-artifact",
 			Body:             nil,
@@ -1959,7 +1959,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteEnvironmentSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteEnvironmentSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1990,7 +1990,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteEnvironmentSecret",
+			Name: ActionsDeleteEnvironmentSecretOperation,
 			ID:   "actions/delete-environment-secret",
 		}
 	)
@@ -2009,7 +2009,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteEnvironmentSecret",
+			OperationName:    ActionsDeleteEnvironmentSecretOperation,
 			OperationSummary: "Delete an environment secret",
 			OperationID:      "actions/delete-environment-secret",
 			Body:             nil,
@@ -2081,7 +2081,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteOrgSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2112,7 +2112,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteOrgSecret",
+			Name: ActionsDeleteOrgSecretOperation,
 			ID:   "actions/delete-org-secret",
 		}
 	)
@@ -2131,7 +2131,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteOrgSecret",
+			OperationName:    ActionsDeleteOrgSecretOperation,
 			OperationSummary: "Delete an organization secret",
 			OperationID:      "actions/delete-org-secret",
 			Body:             nil,
@@ -2199,7 +2199,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteRepoSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteRepoSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2230,7 +2230,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteRepoSecret",
+			Name: ActionsDeleteRepoSecretOperation,
 			ID:   "actions/delete-repo-secret",
 		}
 	)
@@ -2249,7 +2249,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteRepoSecret",
+			OperationName:    ActionsDeleteRepoSecretOperation,
 			OperationSummary: "Delete a repository secret",
 			OperationID:      "actions/delete-repo-secret",
 			Body:             nil,
@@ -2321,7 +2321,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteSelfHostedRunnerFromOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteSelfHostedRunnerFromOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2352,7 +2352,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteSelfHostedRunnerFromOrg",
+			Name: ActionsDeleteSelfHostedRunnerFromOrgOperation,
 			ID:   "actions/delete-self-hosted-runner-from-org",
 		}
 	)
@@ -2371,7 +2371,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteSelfHostedRunnerFromOrg",
+			OperationName:    ActionsDeleteSelfHostedRunnerFromOrgOperation,
 			OperationSummary: "Delete a self-hosted runner from an organization",
 			OperationID:      "actions/delete-self-hosted-runner-from-org",
 			Body:             nil,
@@ -2440,7 +2440,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteSelfHostedRunnerFromRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteSelfHostedRunnerFromRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2471,7 +2471,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteSelfHostedRunnerFromRepo",
+			Name: ActionsDeleteSelfHostedRunnerFromRepoOperation,
 			ID:   "actions/delete-self-hosted-runner-from-repo",
 		}
 	)
@@ -2490,7 +2490,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteSelfHostedRunnerFromRepo",
+			OperationName:    ActionsDeleteSelfHostedRunnerFromRepoOperation,
 			OperationSummary: "Delete a self-hosted runner from a repository",
 			OperationID:      "actions/delete-self-hosted-runner-from-repo",
 			Body:             nil,
@@ -2564,7 +2564,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteSelfHostedRunnerGroupFromOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2595,7 +2595,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+			Name: ActionsDeleteSelfHostedRunnerGroupFromOrgOperation,
 			ID:   "actions/delete-self-hosted-runner-group-from-org",
 		}
 	)
@@ -2614,7 +2614,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+			OperationName:    ActionsDeleteSelfHostedRunnerGroupFromOrgOperation,
 			OperationSummary: "Delete a self-hosted runner group from an organization",
 			OperationID:      "actions/delete-self-hosted-runner-group-from-org",
 			Body:             nil,
@@ -2684,7 +2684,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteWorkflowRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2715,7 +2715,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteWorkflowRun",
+			Name: ActionsDeleteWorkflowRunOperation,
 			ID:   "actions/delete-workflow-run",
 		}
 	)
@@ -2734,7 +2734,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteWorkflowRun",
+			OperationName:    ActionsDeleteWorkflowRunOperation,
 			OperationSummary: "Delete a workflow run",
 			OperationID:      "actions/delete-workflow-run",
 			Body:             nil,
@@ -2806,7 +2806,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDeleteWorkflowRunLogs",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDeleteWorkflowRunLogsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2837,7 +2837,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDeleteWorkflowRunLogs",
+			Name: ActionsDeleteWorkflowRunLogsOperation,
 			ID:   "actions/delete-workflow-run-logs",
 		}
 	)
@@ -2856,7 +2856,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDeleteWorkflowRunLogs",
+			OperationName:    ActionsDeleteWorkflowRunLogsOperation,
 			OperationSummary: "Delete workflow run logs",
 			OperationID:      "actions/delete-workflow-run-logs",
 			Body:             nil,
@@ -2931,7 +2931,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDisableSelectedRepositoryGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2962,7 +2962,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+			Name: ActionsDisableSelectedRepositoryGithubActionsOrganizationOperation,
 			ID:   "actions/disable-selected-repository-github-actions-organization",
 		}
 	)
@@ -2981,7 +2981,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+			OperationName:    ActionsDisableSelectedRepositoryGithubActionsOrganizationOperation,
 			OperationSummary: "Disable a selected repository for GitHub Actions in an organization",
 			OperationID:      "actions/disable-selected-repository-github-actions-organization",
 			Body:             nil,
@@ -3053,7 +3053,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDownloadArtifact",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDownloadArtifactOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3084,7 +3084,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDownloadArtifact",
+			Name: ActionsDownloadArtifactOperation,
 			ID:   "actions/download-artifact",
 		}
 	)
@@ -3103,7 +3103,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDownloadArtifact",
+			OperationName:    ActionsDownloadArtifactOperation,
 			OperationSummary: "Download an artifact",
 			OperationID:      "actions/download-artifact",
 			Body:             nil,
@@ -3185,7 +3185,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDownloadJobLogsForWorkflowRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDownloadJobLogsForWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3216,7 +3216,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDownloadJobLogsForWorkflowRun",
+			Name: ActionsDownloadJobLogsForWorkflowRunOperation,
 			ID:   "actions/download-job-logs-for-workflow-run",
 		}
 	)
@@ -3235,7 +3235,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDownloadJobLogsForWorkflowRun",
+			OperationName:    ActionsDownloadJobLogsForWorkflowRunOperation,
 			OperationSummary: "Download job logs for a workflow run",
 			OperationID:      "actions/download-job-logs-for-workflow-run",
 			Body:             nil,
@@ -3311,7 +3311,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsDownloadWorkflowRunLogs",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsDownloadWorkflowRunLogsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3342,7 +3342,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsDownloadWorkflowRunLogs",
+			Name: ActionsDownloadWorkflowRunLogsOperation,
 			ID:   "actions/download-workflow-run-logs",
 		}
 	)
@@ -3361,7 +3361,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsDownloadWorkflowRunLogs",
+			OperationName:    ActionsDownloadWorkflowRunLogsOperation,
 			OperationSummary: "Download workflow run logs",
 			OperationID:      "actions/download-workflow-run-logs",
 			Body:             nil,
@@ -3436,7 +3436,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsEnableSelectedRepositoryGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3467,7 +3467,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+			Name: ActionsEnableSelectedRepositoryGithubActionsOrganizationOperation,
 			ID:   "actions/enable-selected-repository-github-actions-organization",
 		}
 	)
@@ -3486,7 +3486,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+			OperationName:    ActionsEnableSelectedRepositoryGithubActionsOrganizationOperation,
 			OperationSummary: "Enable a selected repository for GitHub Actions in an organization",
 			OperationID:      "actions/enable-selected-repository-github-actions-organization",
 			Body:             nil,
@@ -3557,7 +3557,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetAllowedActionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetAllowedActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3588,7 +3588,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetAllowedActionsOrganization",
+			Name: ActionsGetAllowedActionsOrganizationOperation,
 			ID:   "actions/get-allowed-actions-organization",
 		}
 	)
@@ -3607,7 +3607,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetAllowedActionsOrganization",
+			OperationName:    ActionsGetAllowedActionsOrganizationOperation,
 			OperationSummary: "Get allowed actions for an organization",
 			OperationID:      "actions/get-allowed-actions-organization",
 			Body:             nil,
@@ -3674,7 +3674,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetAllowedActionsRepository",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetAllowedActionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3705,7 +3705,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetAllowedActionsRepository",
+			Name: ActionsGetAllowedActionsRepositoryOperation,
 			ID:   "actions/get-allowed-actions-repository",
 		}
 	)
@@ -3724,7 +3724,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetAllowedActionsRepository",
+			OperationName:    ActionsGetAllowedActionsRepositoryOperation,
 			OperationSummary: "Get allowed actions for a repository",
 			OperationID:      "actions/get-allowed-actions-repository",
 			Body:             nil,
@@ -3792,7 +3792,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetArtifact",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetArtifactOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3823,7 +3823,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetArtifact",
+			Name: ActionsGetArtifactOperation,
 			ID:   "actions/get-artifact",
 		}
 	)
@@ -3842,7 +3842,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetArtifact",
+			OperationName:    ActionsGetArtifactOperation,
 			OperationSummary: "Get an artifact",
 			OperationID:      "actions/get-artifact",
 			Body:             nil,
@@ -3915,7 +3915,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetEnvironmentPublicKey",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetEnvironmentPublicKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3946,7 +3946,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetEnvironmentPublicKey",
+			Name: ActionsGetEnvironmentPublicKeyOperation,
 			ID:   "actions/get-environment-public-key",
 		}
 	)
@@ -3965,7 +3965,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetEnvironmentPublicKey",
+			OperationName:    ActionsGetEnvironmentPublicKeyOperation,
 			OperationSummary: "Get an environment public key",
 			OperationID:      "actions/get-environment-public-key",
 			Body:             nil,
@@ -4033,7 +4033,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetEnvironmentSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetEnvironmentSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4064,7 +4064,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetEnvironmentSecret",
+			Name: ActionsGetEnvironmentSecretOperation,
 			ID:   "actions/get-environment-secret",
 		}
 	)
@@ -4083,7 +4083,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetEnvironmentSecret",
+			OperationName:    ActionsGetEnvironmentSecretOperation,
 			OperationSummary: "Get an environment secret",
 			OperationID:      "actions/get-environment-secret",
 			Body:             nil,
@@ -4155,7 +4155,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetGithubActionsPermissionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetGithubActionsPermissionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4186,7 +4186,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetGithubActionsPermissionsOrganization",
+			Name: ActionsGetGithubActionsPermissionsOrganizationOperation,
 			ID:   "actions/get-github-actions-permissions-organization",
 		}
 	)
@@ -4205,7 +4205,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetGithubActionsPermissionsOrganization",
+			OperationName:    ActionsGetGithubActionsPermissionsOrganizationOperation,
 			OperationSummary: "Get GitHub Actions permissions for an organization",
 			OperationID:      "actions/get-github-actions-permissions-organization",
 			Body:             nil,
@@ -4270,7 +4270,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetGithubActionsPermissionsRepository",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetGithubActionsPermissionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4301,7 +4301,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetGithubActionsPermissionsRepository",
+			Name: ActionsGetGithubActionsPermissionsRepositoryOperation,
 			ID:   "actions/get-github-actions-permissions-repository",
 		}
 	)
@@ -4320,7 +4320,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetGithubActionsPermissionsRepository",
+			OperationName:    ActionsGetGithubActionsPermissionsRepositoryOperation,
 			OperationSummary: "Get GitHub Actions permissions for a repository",
 			OperationID:      "actions/get-github-actions-permissions-repository",
 			Body:             nil,
@@ -4388,7 +4388,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetJobForWorkflowRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetJobForWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4419,7 +4419,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetJobForWorkflowRun",
+			Name: ActionsGetJobForWorkflowRunOperation,
 			ID:   "actions/get-job-for-workflow-run",
 		}
 	)
@@ -4438,7 +4438,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetJobForWorkflowRun",
+			OperationName:    ActionsGetJobForWorkflowRunOperation,
 			OperationSummary: "Get a job for a workflow run",
 			OperationID:      "actions/get-job-for-workflow-run",
 			Body:             nil,
@@ -4511,7 +4511,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetOrgPublicKey",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetOrgPublicKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4542,7 +4542,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetOrgPublicKey",
+			Name: ActionsGetOrgPublicKeyOperation,
 			ID:   "actions/get-org-public-key",
 		}
 	)
@@ -4561,7 +4561,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetOrgPublicKey",
+			OperationName:    ActionsGetOrgPublicKeyOperation,
 			OperationSummary: "Get an organization public key",
 			OperationID:      "actions/get-org-public-key",
 			Body:             nil,
@@ -4625,7 +4625,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetOrgSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4656,7 +4656,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetOrgSecret",
+			Name: ActionsGetOrgSecretOperation,
 			ID:   "actions/get-org-secret",
 		}
 	)
@@ -4675,7 +4675,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetOrgSecret",
+			OperationName:    ActionsGetOrgSecretOperation,
 			OperationSummary: "Get an organization secret",
 			OperationID:      "actions/get-org-secret",
 			Body:             nil,
@@ -4744,7 +4744,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetRepoPublicKey",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetRepoPublicKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4775,7 +4775,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetRepoPublicKey",
+			Name: ActionsGetRepoPublicKeyOperation,
 			ID:   "actions/get-repo-public-key",
 		}
 	)
@@ -4794,7 +4794,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetRepoPublicKey",
+			OperationName:    ActionsGetRepoPublicKeyOperation,
 			OperationSummary: "Get a repository public key",
 			OperationID:      "actions/get-repo-public-key",
 			Body:             nil,
@@ -4862,7 +4862,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetRepoSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetRepoSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4893,7 +4893,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetRepoSecret",
+			Name: ActionsGetRepoSecretOperation,
 			ID:   "actions/get-repo-secret",
 		}
 	)
@@ -4912,7 +4912,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetRepoSecret",
+			OperationName:    ActionsGetRepoSecretOperation,
 			OperationSummary: "Get a repository secret",
 			OperationID:      "actions/get-repo-secret",
 			Body:             nil,
@@ -4984,7 +4984,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetReviewsForRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetReviewsForRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5015,7 +5015,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetReviewsForRun",
+			Name: ActionsGetReviewsForRunOperation,
 			ID:   "actions/get-reviews-for-run",
 		}
 	)
@@ -5034,7 +5034,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetReviewsForRun",
+			OperationName:    ActionsGetReviewsForRunOperation,
 			OperationSummary: "Get the review history for a workflow run",
 			OperationID:      "actions/get-reviews-for-run",
 			Body:             nil,
@@ -5105,7 +5105,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetSelfHostedRunnerForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetSelfHostedRunnerForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5136,7 +5136,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetSelfHostedRunnerForOrg",
+			Name: ActionsGetSelfHostedRunnerForOrgOperation,
 			ID:   "actions/get-self-hosted-runner-for-org",
 		}
 	)
@@ -5155,7 +5155,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetSelfHostedRunnerForOrg",
+			OperationName:    ActionsGetSelfHostedRunnerForOrgOperation,
 			OperationSummary: "Get a self-hosted runner for an organization",
 			OperationID:      "actions/get-self-hosted-runner-for-org",
 			Body:             nil,
@@ -5223,7 +5223,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetSelfHostedRunnerForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetSelfHostedRunnerForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5254,7 +5254,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetSelfHostedRunnerForRepo",
+			Name: ActionsGetSelfHostedRunnerForRepoOperation,
 			ID:   "actions/get-self-hosted-runner-for-repo",
 		}
 	)
@@ -5273,7 +5273,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetSelfHostedRunnerForRepo",
+			OperationName:    ActionsGetSelfHostedRunnerForRepoOperation,
 			OperationSummary: "Get a self-hosted runner for a repository",
 			OperationID:      "actions/get-self-hosted-runner-for-repo",
 			Body:             nil,
@@ -5347,7 +5347,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetSelfHostedRunnerGroupForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetSelfHostedRunnerGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5378,7 +5378,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetSelfHostedRunnerGroupForOrg",
+			Name: ActionsGetSelfHostedRunnerGroupForOrgOperation,
 			ID:   "actions/get-self-hosted-runner-group-for-org",
 		}
 	)
@@ -5397,7 +5397,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetSelfHostedRunnerGroupForOrg",
+			OperationName:    ActionsGetSelfHostedRunnerGroupForOrgOperation,
 			OperationSummary: "Get a self-hosted runner group for an organization",
 			OperationID:      "actions/get-self-hosted-runner-group-for-org",
 			Body:             nil,
@@ -5465,7 +5465,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetWorkflowRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5496,7 +5496,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetWorkflowRun",
+			Name: ActionsGetWorkflowRunOperation,
 			ID:   "actions/get-workflow-run",
 		}
 	)
@@ -5515,7 +5515,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetWorkflowRun",
+			OperationName:    ActionsGetWorkflowRunOperation,
 			OperationSummary: "Get a workflow run",
 			OperationID:      "actions/get-workflow-run",
 			Body:             nil,
@@ -5594,7 +5594,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsGetWorkflowRunUsage",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsGetWorkflowRunUsageOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5625,7 +5625,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsGetWorkflowRunUsage",
+			Name: ActionsGetWorkflowRunUsageOperation,
 			ID:   "actions/get-workflow-run-usage",
 		}
 	)
@@ -5644,7 +5644,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsGetWorkflowRunUsage",
+			OperationName:    ActionsGetWorkflowRunUsageOperation,
 			OperationSummary: "Get workflow run usage",
 			OperationID:      "actions/get-workflow-run-usage",
 			Body:             nil,
@@ -5716,7 +5716,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListArtifactsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListArtifactsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5747,7 +5747,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListArtifactsForRepo",
+			Name: ActionsListArtifactsForRepoOperation,
 			ID:   "actions/list-artifacts-for-repo",
 		}
 	)
@@ -5766,7 +5766,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListArtifactsForRepo",
+			OperationName:    ActionsListArtifactsForRepoOperation,
 			OperationSummary: "List artifacts for a repository",
 			OperationID:      "actions/list-artifacts-for-repo",
 			Body:             nil,
@@ -5842,7 +5842,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListEnvironmentSecrets",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListEnvironmentSecretsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5873,7 +5873,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListEnvironmentSecrets",
+			Name: ActionsListEnvironmentSecretsOperation,
 			ID:   "actions/list-environment-secrets",
 		}
 	)
@@ -5892,7 +5892,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListEnvironmentSecrets",
+			OperationName:    ActionsListEnvironmentSecretsOperation,
 			OperationSummary: "List environment secrets",
 			OperationID:      "actions/list-environment-secrets",
 			Body:             nil,
@@ -5970,7 +5970,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListJobsForWorkflowRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListJobsForWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6001,7 +6001,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListJobsForWorkflowRun",
+			Name: ActionsListJobsForWorkflowRunOperation,
 			ID:   "actions/list-jobs-for-workflow-run",
 		}
 	)
@@ -6020,7 +6020,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListJobsForWorkflowRun",
+			OperationName:    ActionsListJobsForWorkflowRunOperation,
 			OperationSummary: "List jobs for a workflow run",
 			OperationID:      "actions/list-jobs-for-workflow-run",
 			Body:             nil,
@@ -6104,7 +6104,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListOrgSecrets",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListOrgSecretsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6135,7 +6135,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListOrgSecrets",
+			Name: ActionsListOrgSecretsOperation,
 			ID:   "actions/list-org-secrets",
 		}
 	)
@@ -6154,7 +6154,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListOrgSecrets",
+			OperationName:    ActionsListOrgSecretsOperation,
 			OperationSummary: "List organization secrets",
 			OperationID:      "actions/list-org-secrets",
 			Body:             nil,
@@ -6228,7 +6228,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6259,7 +6259,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+			Name: ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			ID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
@@ -6278,7 +6278,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationName:    ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "List repository access to a self-hosted runner group in an organization",
 			OperationID:      "actions/list-repo-access-to-self-hosted-runner-group-in-org",
 			Body:             nil,
@@ -6354,7 +6354,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListRepoSecrets",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRepoSecretsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6385,7 +6385,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRepoSecrets",
+			Name: ActionsListRepoSecretsOperation,
 			ID:   "actions/list-repo-secrets",
 		}
 	)
@@ -6404,7 +6404,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListRepoSecrets",
+			OperationName:    ActionsListRepoSecretsOperation,
 			OperationSummary: "List repository secrets",
 			OperationID:      "actions/list-repo-secrets",
 			Body:             nil,
@@ -6480,7 +6480,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListRepoWorkflows",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRepoWorkflowsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6511,7 +6511,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRepoWorkflows",
+			Name: ActionsListRepoWorkflowsOperation,
 			ID:   "actions/list-repo-workflows",
 		}
 	)
@@ -6530,7 +6530,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListRepoWorkflows",
+			OperationName:    ActionsListRepoWorkflowsOperation,
 			OperationSummary: "List repository workflows",
 			OperationID:      "actions/list-repo-workflows",
 			Body:             nil,
@@ -6605,7 +6605,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListRunnerApplicationsForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRunnerApplicationsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6636,7 +6636,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRunnerApplicationsForOrg",
+			Name: ActionsListRunnerApplicationsForOrgOperation,
 			ID:   "actions/list-runner-applications-for-org",
 		}
 	)
@@ -6655,7 +6655,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListRunnerApplicationsForOrg",
+			OperationName:    ActionsListRunnerApplicationsForOrgOperation,
 			OperationSummary: "List runner applications for an organization",
 			OperationID:      "actions/list-runner-applications-for-org",
 			Body:             nil,
@@ -6718,7 +6718,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListRunnerApplicationsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListRunnerApplicationsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6749,7 +6749,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListRunnerApplicationsForRepo",
+			Name: ActionsListRunnerApplicationsForRepoOperation,
 			ID:   "actions/list-runner-applications-for-repo",
 		}
 	)
@@ -6768,7 +6768,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListRunnerApplicationsForRepo",
+			OperationName:    ActionsListRunnerApplicationsForRepoOperation,
 			OperationSummary: "List runner applications for a repository",
 			OperationID:      "actions/list-runner-applications-for-repo",
 			Body:             nil,
@@ -6837,7 +6837,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListSelectedReposForOrgSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelectedReposForOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6868,7 +6868,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelectedReposForOrgSecret",
+			Name: ActionsListSelectedReposForOrgSecretOperation,
 			ID:   "actions/list-selected-repos-for-org-secret",
 		}
 	)
@@ -6887,7 +6887,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListSelectedReposForOrgSecret",
+			OperationName:    ActionsListSelectedReposForOrgSecretOperation,
 			OperationSummary: "List selected repositories for an organization secret",
 			OperationID:      "actions/list-selected-repos-for-org-secret",
 			Body:             nil,
@@ -6966,7 +6966,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6997,7 +6997,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+			Name: ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 			ID:   "actions/list-selected-repositories-enabled-github-actions-organization",
 		}
 	)
@@ -7016,7 +7016,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+			OperationName:    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 			OperationSummary: "List selected repositories enabled for GitHub Actions in an organization",
 			OperationID:      "actions/list-selected-repositories-enabled-github-actions-organization",
 			Body:             nil,
@@ -7090,7 +7090,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListSelfHostedRunnerGroupsForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnerGroupsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7121,7 +7121,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnerGroupsForOrg",
+			Name: ActionsListSelfHostedRunnerGroupsForOrgOperation,
 			ID:   "actions/list-self-hosted-runner-groups-for-org",
 		}
 	)
@@ -7140,7 +7140,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListSelfHostedRunnerGroupsForOrg",
+			OperationName:    ActionsListSelfHostedRunnerGroupsForOrgOperation,
 			OperationSummary: "List self-hosted runner groups for an organization",
 			OperationID:      "actions/list-self-hosted-runner-groups-for-org",
 			Body:             nil,
@@ -7211,7 +7211,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListSelfHostedRunnersForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnersForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7242,7 +7242,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnersForOrg",
+			Name: ActionsListSelfHostedRunnersForOrgOperation,
 			ID:   "actions/list-self-hosted-runners-for-org",
 		}
 	)
@@ -7261,7 +7261,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListSelfHostedRunnersForOrg",
+			OperationName:    ActionsListSelfHostedRunnersForOrgOperation,
 			OperationSummary: "List self-hosted runners for an organization",
 			OperationID:      "actions/list-self-hosted-runners-for-org",
 			Body:             nil,
@@ -7332,7 +7332,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListSelfHostedRunnersForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnersForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7363,7 +7363,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnersForRepo",
+			Name: ActionsListSelfHostedRunnersForRepoOperation,
 			ID:   "actions/list-self-hosted-runners-for-repo",
 		}
 	)
@@ -7382,7 +7382,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListSelfHostedRunnersForRepo",
+			OperationName:    ActionsListSelfHostedRunnersForRepoOperation,
 			OperationSummary: "List self-hosted runners for a repository",
 			OperationID:      "actions/list-self-hosted-runners-for-repo",
 			Body:             nil,
@@ -7460,7 +7460,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListSelfHostedRunnersInGroupForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListSelfHostedRunnersInGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7491,7 +7491,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListSelfHostedRunnersInGroupForOrg",
+			Name: ActionsListSelfHostedRunnersInGroupForOrgOperation,
 			ID:   "actions/list-self-hosted-runners-in-group-for-org",
 		}
 	)
@@ -7510,7 +7510,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListSelfHostedRunnersInGroupForOrg",
+			OperationName:    ActionsListSelfHostedRunnersInGroupForOrgOperation,
 			OperationSummary: "List self-hosted runners in a group for an organization",
 			OperationID:      "actions/list-self-hosted-runners-in-group-for-org",
 			Body:             nil,
@@ -7586,7 +7586,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListWorkflowRunArtifacts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListWorkflowRunArtifactsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7617,7 +7617,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListWorkflowRunArtifacts",
+			Name: ActionsListWorkflowRunArtifactsOperation,
 			ID:   "actions/list-workflow-run-artifacts",
 		}
 	)
@@ -7636,7 +7636,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListWorkflowRunArtifacts",
+			OperationName:    ActionsListWorkflowRunArtifactsOperation,
 			OperationSummary: "List workflow run artifacts",
 			OperationID:      "actions/list-workflow-run-artifacts",
 			Body:             nil,
@@ -7719,7 +7719,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsListWorkflowRunsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsListWorkflowRunsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7750,7 +7750,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsListWorkflowRunsForRepo",
+			Name: ActionsListWorkflowRunsForRepoOperation,
 			ID:   "actions/list-workflow-runs-for-repo",
 		}
 	)
@@ -7769,7 +7769,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsListWorkflowRunsForRepo",
+			OperationName:    ActionsListWorkflowRunsForRepoOperation,
 			OperationSummary: "List workflow runs for a repository",
 			OperationID:      "actions/list-workflow-runs-for-repo",
 			Body:             nil,
@@ -7870,7 +7870,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsReRunWorkflow",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsReRunWorkflowOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7901,7 +7901,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsReRunWorkflow",
+			Name: ActionsReRunWorkflowOperation,
 			ID:   "actions/re-run-workflow",
 		}
 	)
@@ -7920,7 +7920,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsReRunWorkflow",
+			OperationName:    ActionsReRunWorkflowOperation,
 			OperationSummary: "Re-run a workflow",
 			OperationID:      "actions/re-run-workflow",
 			Body:             nil,
@@ -7997,7 +7997,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8028,7 +8028,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+			Name: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			ID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
@@ -8047,7 +8047,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationName:    ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "Remove repository access to a self-hosted runner group in an organization",
 			OperationID:      "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
 			Body:             nil,
@@ -8121,7 +8121,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsRemoveSelectedRepoFromOrgSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRemoveSelectedRepoFromOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8152,7 +8152,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRemoveSelectedRepoFromOrgSecret",
+			Name: ActionsRemoveSelectedRepoFromOrgSecretOperation,
 			ID:   "actions/remove-selected-repo-from-org-secret",
 		}
 	)
@@ -8171,7 +8171,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsRemoveSelectedRepoFromOrgSecret",
+			OperationName:    ActionsRemoveSelectedRepoFromOrgSecretOperation,
 			OperationSummary: "Remove selected repository from an organization secret",
 			OperationID:      "actions/remove-selected-repo-from-org-secret",
 			Body:             nil,
@@ -8246,7 +8246,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRemoveSelfHostedRunnerFromGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8277,7 +8277,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+			Name: ActionsRemoveSelfHostedRunnerFromGroupForOrgOperation,
 			ID:   "actions/remove-self-hosted-runner-from-group-for-org",
 		}
 	)
@@ -8296,7 +8296,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+			OperationName:    ActionsRemoveSelfHostedRunnerFromGroupForOrgOperation,
 			OperationSummary: "Remove a self-hosted runner from a group for an organization",
 			OperationID:      "actions/remove-self-hosted-runner-from-group-for-org",
 			Body:             nil,
@@ -8368,7 +8368,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsRetryWorkflow",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsRetryWorkflowOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8399,7 +8399,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsRetryWorkflow",
+			Name: ActionsRetryWorkflowOperation,
 			ID:   "actions/retry-workflow",
 		}
 	)
@@ -8418,7 +8418,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsRetryWorkflow",
+			OperationName:    ActionsRetryWorkflowOperation,
 			OperationSummary: "Retry a workflow",
 			OperationID:      "actions/retry-workflow",
 			Body:             nil,
@@ -8489,7 +8489,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsReviewPendingDeploymentsForRun",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsReviewPendingDeploymentsForRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8520,7 +8520,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsReviewPendingDeploymentsForRun",
+			Name: ActionsReviewPendingDeploymentsForRunOperation,
 			ID:   "actions/review-pending-deployments-for-run",
 		}
 	)
@@ -8554,7 +8554,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsReviewPendingDeploymentsForRun",
+			OperationName:    ActionsReviewPendingDeploymentsForRunOperation,
 			OperationSummary: "Review pending deployments for a workflow run",
 			OperationID:      "actions/review-pending-deployments-for-run",
 			Body:             request,
@@ -8634,7 +8634,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetAllowedActionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetAllowedActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8665,7 +8665,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetAllowedActionsOrganization",
+			Name: ActionsSetAllowedActionsOrganizationOperation,
 			ID:   "actions/set-allowed-actions-organization",
 		}
 	)
@@ -8699,7 +8699,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetAllowedActionsOrganization",
+			OperationName:    ActionsSetAllowedActionsOrganizationOperation,
 			OperationSummary: "Set allowed actions for an organization",
 			OperationID:      "actions/set-allowed-actions-organization",
 			Body:             request,
@@ -8770,7 +8770,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetAllowedActionsRepository",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetAllowedActionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8801,7 +8801,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetAllowedActionsRepository",
+			Name: ActionsSetAllowedActionsRepositoryOperation,
 			ID:   "actions/set-allowed-actions-repository",
 		}
 	)
@@ -8835,7 +8835,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetAllowedActionsRepository",
+			OperationName:    ActionsSetAllowedActionsRepositoryOperation,
 			OperationSummary: "Set allowed actions for a repository",
 			OperationID:      "actions/set-allowed-actions-repository",
 			Body:             request,
@@ -8906,7 +8906,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetGithubActionsPermissionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetGithubActionsPermissionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8937,7 +8937,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetGithubActionsPermissionsOrganization",
+			Name: ActionsSetGithubActionsPermissionsOrganizationOperation,
 			ID:   "actions/set-github-actions-permissions-organization",
 		}
 	)
@@ -8971,7 +8971,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetGithubActionsPermissionsOrganization",
+			OperationName:    ActionsSetGithubActionsPermissionsOrganizationOperation,
 			OperationSummary: "Set GitHub Actions permissions for an organization",
 			OperationID:      "actions/set-github-actions-permissions-organization",
 			Body:             request,
@@ -9039,7 +9039,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetGithubActionsPermissionsRepository",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetGithubActionsPermissionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9070,7 +9070,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetGithubActionsPermissionsRepository",
+			Name: ActionsSetGithubActionsPermissionsRepositoryOperation,
 			ID:   "actions/set-github-actions-permissions-repository",
 		}
 	)
@@ -9104,7 +9104,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetGithubActionsPermissionsRepository",
+			OperationName:    ActionsSetGithubActionsPermissionsRepositoryOperation,
 			OperationSummary: "Set GitHub Actions permissions for a repository",
 			OperationID:      "actions/set-github-actions-permissions-repository",
 			Body:             request,
@@ -9175,7 +9175,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9206,7 +9206,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			Name: ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			ID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
 		}
 	)
@@ -9240,7 +9240,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationName:    ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 			OperationSummary: "Set repository access for a self-hosted runner group in an organization",
 			OperationID:      "actions/set-repo-access-to-self-hosted-runner-group-in-org",
 			Body:             request,
@@ -9310,7 +9310,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetSelectedReposForOrgSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetSelectedReposForOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9341,7 +9341,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetSelectedReposForOrgSecret",
+			Name: ActionsSetSelectedReposForOrgSecretOperation,
 			ID:   "actions/set-selected-repos-for-org-secret",
 		}
 	)
@@ -9375,7 +9375,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetSelectedReposForOrgSecret",
+			OperationName:    ActionsSetSelectedReposForOrgSecretOperation,
 			OperationSummary: "Set selected repositories for an organization secret",
 			OperationID:      "actions/set-selected-repos-for-org-secret",
 			Body:             request,
@@ -9446,7 +9446,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9477,7 +9477,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			Name: ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 			ID:   "actions/set-selected-repositories-enabled-github-actions-organization",
 		}
 	)
@@ -9511,7 +9511,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			OperationName:    ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 			OperationSummary: "Set selected repositories enabled for GitHub Actions in an organization",
 			OperationID:      "actions/set-selected-repositories-enabled-github-actions-organization",
 			Body:             request,
@@ -9577,7 +9577,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsSetSelfHostedRunnersInGroupForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsSetSelfHostedRunnersInGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9608,7 +9608,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsSetSelfHostedRunnersInGroupForOrg",
+			Name: ActionsSetSelfHostedRunnersInGroupForOrgOperation,
 			ID:   "actions/set-self-hosted-runners-in-group-for-org",
 		}
 	)
@@ -9642,7 +9642,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsSetSelfHostedRunnersInGroupForOrg",
+			OperationName:    ActionsSetSelfHostedRunnersInGroupForOrgOperation,
 			OperationSummary: "Set self-hosted runners in a group for an organization",
 			OperationID:      "actions/set-self-hosted-runners-in-group-for-org",
 			Body:             request,
@@ -9712,7 +9712,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActionsUpdateSelfHostedRunnerGroupForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActionsUpdateSelfHostedRunnerGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9743,7 +9743,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActionsUpdateSelfHostedRunnerGroupForOrg",
+			Name: ActionsUpdateSelfHostedRunnerGroupForOrgOperation,
 			ID:   "actions/update-self-hosted-runner-group-for-org",
 		}
 	)
@@ -9777,7 +9777,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActionsUpdateSelfHostedRunnerGroupForOrg",
+			OperationName:    ActionsUpdateSelfHostedRunnerGroupForOrgOperation,
 			OperationSummary: "Update a self-hosted runner group for an organization",
 			OperationID:      "actions/update-self-hosted-runner-group-for-org",
 			Body:             request,
@@ -9843,7 +9843,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityCheckRepoIsStarredByAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityCheckRepoIsStarredByAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9874,7 +9874,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityCheckRepoIsStarredByAuthenticatedUser",
+			Name: ActivityCheckRepoIsStarredByAuthenticatedUserOperation,
 			ID:   "activity/check-repo-is-starred-by-authenticated-user",
 		}
 	)
@@ -9893,7 +9893,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityCheckRepoIsStarredByAuthenticatedUser",
+			OperationName:    ActivityCheckRepoIsStarredByAuthenticatedUserOperation,
 			OperationSummary: "Check if a repository is starred by the authenticated user",
 			OperationID:      "activity/check-repo-is-starred-by-authenticated-user",
 			Body:             nil,
@@ -9961,7 +9961,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityDeleteRepoSubscription",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityDeleteRepoSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9992,7 +9992,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityDeleteRepoSubscription",
+			Name: ActivityDeleteRepoSubscriptionOperation,
 			ID:   "activity/delete-repo-subscription",
 		}
 	)
@@ -10011,7 +10011,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityDeleteRepoSubscription",
+			OperationName:    ActivityDeleteRepoSubscriptionOperation,
 			OperationSummary: "Delete a repository subscription",
 			OperationID:      "activity/delete-repo-subscription",
 			Body:             nil,
@@ -10081,7 +10081,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityDeleteThreadSubscription",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityDeleteThreadSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10112,7 +10112,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityDeleteThreadSubscription",
+			Name: ActivityDeleteThreadSubscriptionOperation,
 			ID:   "activity/delete-thread-subscription",
 		}
 	)
@@ -10131,7 +10131,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityDeleteThreadSubscription",
+			OperationName:    ActivityDeleteThreadSubscriptionOperation,
 			OperationSummary: "Delete a thread subscription",
 			OperationID:      "activity/delete-thread-subscription",
 			Body:             nil,
@@ -10207,7 +10207,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityGetFeeds",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetFeedsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10243,7 +10243,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityGetFeeds",
+			OperationName:    ActivityGetFeedsOperation,
 			OperationSummary: "Get feeds",
 			OperationID:      "activity/get-feeds",
 			Body:             nil,
@@ -10300,7 +10300,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityGetRepoSubscription",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetRepoSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10331,7 +10331,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityGetRepoSubscription",
+			Name: ActivityGetRepoSubscriptionOperation,
 			ID:   "activity/get-repo-subscription",
 		}
 	)
@@ -10350,7 +10350,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityGetRepoSubscription",
+			OperationName:    ActivityGetRepoSubscriptionOperation,
 			OperationSummary: "Get a repository subscription",
 			OperationID:      "activity/get-repo-subscription",
 			Body:             nil,
@@ -10416,7 +10416,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityGetThread",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetThreadOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10447,7 +10447,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityGetThread",
+			Name: ActivityGetThreadOperation,
 			ID:   "activity/get-thread",
 		}
 	)
@@ -10466,7 +10466,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityGetThread",
+			OperationName:    ActivityGetThreadOperation,
 			OperationSummary: "Get a thread",
 			OperationID:      "activity/get-thread",
 			Body:             nil,
@@ -10531,7 +10531,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityGetThreadSubscriptionForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityGetThreadSubscriptionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10562,7 +10562,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityGetThreadSubscriptionForAuthenticatedUser",
+			Name: ActivityGetThreadSubscriptionForAuthenticatedUserOperation,
 			ID:   "activity/get-thread-subscription-for-authenticated-user",
 		}
 	)
@@ -10581,7 +10581,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityGetThreadSubscriptionForAuthenticatedUser",
+			OperationName:    ActivityGetThreadSubscriptionForAuthenticatedUserOperation,
 			OperationSummary: "Get a thread subscription for the authenticated user",
 			OperationID:      "activity/get-thread-subscription-for-authenticated-user",
 			Body:             nil,
@@ -10644,7 +10644,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListEventsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListEventsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10675,7 +10675,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListEventsForAuthenticatedUser",
+			Name: ActivityListEventsForAuthenticatedUserOperation,
 			ID:   "activity/list-events-for-authenticated-user",
 		}
 	)
@@ -10694,7 +10694,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListEventsForAuthenticatedUser",
+			OperationName:    ActivityListEventsForAuthenticatedUserOperation,
 			OperationSummary: "List events for the authenticated user",
 			OperationID:      "activity/list-events-for-authenticated-user",
 			Body:             nil,
@@ -10764,7 +10764,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListNotificationsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListNotificationsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10795,7 +10795,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListNotificationsForAuthenticatedUser",
+			Name: ActivityListNotificationsForAuthenticatedUserOperation,
 			ID:   "activity/list-notifications-for-authenticated-user",
 		}
 	)
@@ -10814,7 +10814,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListNotificationsForAuthenticatedUser",
+			OperationName:    ActivityListNotificationsForAuthenticatedUserOperation,
 			OperationSummary: "List notifications for the authenticated user",
 			OperationID:      "activity/list-notifications-for-authenticated-user",
 			Body:             nil,
@@ -10896,7 +10896,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListOrgEventsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListOrgEventsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10927,7 +10927,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListOrgEventsForAuthenticatedUser",
+			Name: ActivityListOrgEventsForAuthenticatedUserOperation,
 			ID:   "activity/list-org-events-for-authenticated-user",
 		}
 	)
@@ -10946,7 +10946,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListOrgEventsForAuthenticatedUser",
+			OperationName:    ActivityListOrgEventsForAuthenticatedUserOperation,
 			OperationSummary: "List organization events for the authenticated user",
 			OperationID:      "activity/list-org-events-for-authenticated-user",
 			Body:             nil,
@@ -11021,7 +11021,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListPublicEvents",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicEventsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11052,7 +11052,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicEvents",
+			Name: ActivityListPublicEventsOperation,
 			ID:   "activity/list-public-events",
 		}
 	)
@@ -11071,7 +11071,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListPublicEvents",
+			OperationName:    ActivityListPublicEventsOperation,
 			OperationSummary: "List public events",
 			OperationID:      "activity/list-public-events",
 			Body:             nil,
@@ -11137,7 +11137,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListPublicEventsForRepoNetwork",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicEventsForRepoNetworkOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11168,7 +11168,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicEventsForRepoNetwork",
+			Name: ActivityListPublicEventsForRepoNetworkOperation,
 			ID:   "activity/list-public-events-for-repo-network",
 		}
 	)
@@ -11187,7 +11187,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListPublicEventsForRepoNetwork",
+			OperationName:    ActivityListPublicEventsForRepoNetworkOperation,
 			OperationSummary: "List public events for a network of repositories",
 			OperationID:      "activity/list-public-events-for-repo-network",
 			Body:             nil,
@@ -11261,7 +11261,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListPublicEventsForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicEventsForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11292,7 +11292,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicEventsForUser",
+			Name: ActivityListPublicEventsForUserOperation,
 			ID:   "activity/list-public-events-for-user",
 		}
 	)
@@ -11311,7 +11311,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListPublicEventsForUser",
+			OperationName:    ActivityListPublicEventsForUserOperation,
 			OperationSummary: "List public events for a user",
 			OperationID:      "activity/list-public-events-for-user",
 			Body:             nil,
@@ -11381,7 +11381,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListPublicOrgEvents",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListPublicOrgEventsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11412,7 +11412,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListPublicOrgEvents",
+			Name: ActivityListPublicOrgEventsOperation,
 			ID:   "activity/list-public-org-events",
 		}
 	)
@@ -11431,7 +11431,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListPublicOrgEvents",
+			OperationName:    ActivityListPublicOrgEventsOperation,
 			OperationSummary: "List public organization events",
 			OperationID:      "activity/list-public-org-events",
 			Body:             nil,
@@ -11503,7 +11503,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListReceivedEventsForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReceivedEventsForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11534,7 +11534,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReceivedEventsForUser",
+			Name: ActivityListReceivedEventsForUserOperation,
 			ID:   "activity/list-received-events-for-user",
 		}
 	)
@@ -11553,7 +11553,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListReceivedEventsForUser",
+			OperationName:    ActivityListReceivedEventsForUserOperation,
 			OperationSummary: "List events received by the authenticated user",
 			OperationID:      "activity/list-received-events-for-user",
 			Body:             nil,
@@ -11623,7 +11623,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListReceivedPublicEventsForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReceivedPublicEventsForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11654,7 +11654,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReceivedPublicEventsForUser",
+			Name: ActivityListReceivedPublicEventsForUserOperation,
 			ID:   "activity/list-received-public-events-for-user",
 		}
 	)
@@ -11673,7 +11673,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListReceivedPublicEventsForUser",
+			OperationName:    ActivityListReceivedPublicEventsForUserOperation,
 			OperationSummary: "List public events received by a user",
 			OperationID:      "activity/list-received-public-events-for-user",
 			Body:             nil,
@@ -11743,7 +11743,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListRepoEvents",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListRepoEventsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11774,7 +11774,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListRepoEvents",
+			Name: ActivityListRepoEventsOperation,
 			ID:   "activity/list-repo-events",
 		}
 	)
@@ -11793,7 +11793,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListRepoEvents",
+			OperationName:    ActivityListRepoEventsOperation,
 			OperationSummary: "List repository events",
 			OperationID:      "activity/list-repo-events",
 			Body:             nil,
@@ -11867,7 +11867,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListRepoNotificationsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListRepoNotificationsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11898,7 +11898,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListRepoNotificationsForAuthenticatedUser",
+			Name: ActivityListRepoNotificationsForAuthenticatedUserOperation,
 			ID:   "activity/list-repo-notifications-for-authenticated-user",
 		}
 	)
@@ -11917,7 +11917,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListRepoNotificationsForAuthenticatedUser",
+			OperationName:    ActivityListRepoNotificationsForAuthenticatedUserOperation,
 			OperationSummary: "List repository notifications for the authenticated user",
 			OperationID:      "activity/list-repo-notifications-for-authenticated-user",
 			Body:             nil,
@@ -12009,7 +12009,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListReposStarredByAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReposStarredByAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12040,7 +12040,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReposStarredByAuthenticatedUser",
+			Name: ActivityListReposStarredByAuthenticatedUserOperation,
 			ID:   "activity/list-repos-starred-by-authenticated-user",
 		}
 	)
@@ -12059,7 +12059,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListReposStarredByAuthenticatedUser",
+			OperationName:    ActivityListReposStarredByAuthenticatedUserOperation,
 			OperationSummary: "List repositories starred by the authenticated user",
 			OperationID:      "activity/list-repos-starred-by-authenticated-user",
 			Body:             nil,
@@ -12133,7 +12133,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListReposWatchedByUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListReposWatchedByUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12164,7 +12164,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListReposWatchedByUser",
+			Name: ActivityListReposWatchedByUserOperation,
 			ID:   "activity/list-repos-watched-by-user",
 		}
 	)
@@ -12183,7 +12183,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListReposWatchedByUser",
+			OperationName:    ActivityListReposWatchedByUserOperation,
 			OperationSummary: "List repositories watched by a user",
 			OperationID:      "activity/list-repos-watched-by-user",
 			Body:             nil,
@@ -12253,7 +12253,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListWatchedReposForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListWatchedReposForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12284,7 +12284,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListWatchedReposForAuthenticatedUser",
+			Name: ActivityListWatchedReposForAuthenticatedUserOperation,
 			ID:   "activity/list-watched-repos-for-authenticated-user",
 		}
 	)
@@ -12303,7 +12303,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListWatchedReposForAuthenticatedUser",
+			OperationName:    ActivityListWatchedReposForAuthenticatedUserOperation,
 			OperationSummary: "List repositories watched by the authenticated user",
 			OperationID:      "activity/list-watched-repos-for-authenticated-user",
 			Body:             nil,
@@ -12369,7 +12369,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityListWatchersForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityListWatchersForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12400,7 +12400,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityListWatchersForRepo",
+			Name: ActivityListWatchersForRepoOperation,
 			ID:   "activity/list-watchers-for-repo",
 		}
 	)
@@ -12419,7 +12419,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityListWatchersForRepo",
+			OperationName:    ActivityListWatchersForRepoOperation,
 			OperationSummary: "List watchers",
 			OperationID:      "activity/list-watchers-for-repo",
 			Body:             nil,
@@ -12499,7 +12499,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityMarkNotificationsAsRead",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityMarkNotificationsAsReadOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12530,7 +12530,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityMarkNotificationsAsRead",
+			Name: ActivityMarkNotificationsAsReadOperation,
 			ID:   "activity/mark-notifications-as-read",
 		}
 	)
@@ -12554,7 +12554,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityMarkNotificationsAsRead",
+			OperationName:    ActivityMarkNotificationsAsReadOperation,
 			OperationSummary: "Mark notifications as read",
 			OperationID:      "activity/mark-notifications-as-read",
 			Body:             request,
@@ -12617,7 +12617,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityMarkRepoNotificationsAsRead",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityMarkRepoNotificationsAsReadOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12648,7 +12648,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityMarkRepoNotificationsAsRead",
+			Name: ActivityMarkRepoNotificationsAsReadOperation,
 			ID:   "activity/mark-repo-notifications-as-read",
 		}
 	)
@@ -12682,7 +12682,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityMarkRepoNotificationsAsRead",
+			OperationName:    ActivityMarkRepoNotificationsAsReadOperation,
 			OperationSummary: "Mark repository notifications as read",
 			OperationID:      "activity/mark-repo-notifications-as-read",
 			Body:             request,
@@ -12748,7 +12748,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityMarkThreadAsRead",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityMarkThreadAsReadOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12779,7 +12779,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityMarkThreadAsRead",
+			Name: ActivityMarkThreadAsReadOperation,
 			ID:   "activity/mark-thread-as-read",
 		}
 	)
@@ -12798,7 +12798,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityMarkThreadAsRead",
+			OperationName:    ActivityMarkThreadAsReadOperation,
 			OperationSummary: "Mark a thread as read",
 			OperationID:      "activity/mark-thread-as-read",
 			Body:             nil,
@@ -12863,7 +12863,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivitySetRepoSubscription",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivitySetRepoSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12894,7 +12894,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivitySetRepoSubscription",
+			Name: ActivitySetRepoSubscriptionOperation,
 			ID:   "activity/set-repo-subscription",
 		}
 	)
@@ -12928,7 +12928,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivitySetRepoSubscription",
+			OperationName:    ActivitySetRepoSubscriptionOperation,
 			OperationSummary: "Set a repository subscription",
 			OperationID:      "activity/set-repo-subscription",
 			Body:             request,
@@ -13001,7 +13001,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivitySetThreadSubscription",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivitySetThreadSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13032,7 +13032,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivitySetThreadSubscription",
+			Name: ActivitySetThreadSubscriptionOperation,
 			ID:   "activity/set-thread-subscription",
 		}
 	)
@@ -13066,7 +13066,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivitySetThreadSubscription",
+			OperationName:    ActivitySetThreadSubscriptionOperation,
 			OperationSummary: "Set a thread subscription",
 			OperationID:      "activity/set-thread-subscription",
 			Body:             request,
@@ -13130,7 +13130,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityStarRepoForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityStarRepoForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13161,7 +13161,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityStarRepoForAuthenticatedUser",
+			Name: ActivityStarRepoForAuthenticatedUserOperation,
 			ID:   "activity/star-repo-for-authenticated-user",
 		}
 	)
@@ -13180,7 +13180,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityStarRepoForAuthenticatedUser",
+			OperationName:    ActivityStarRepoForAuthenticatedUserOperation,
 			OperationSummary: "Star a repository for the authenticated user",
 			OperationID:      "activity/star-repo-for-authenticated-user",
 			Body:             nil,
@@ -13246,7 +13246,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ActivityUnstarRepoForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ActivityUnstarRepoForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13277,7 +13277,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ActivityUnstarRepoForAuthenticatedUser",
+			Name: ActivityUnstarRepoForAuthenticatedUserOperation,
 			ID:   "activity/unstar-repo-for-authenticated-user",
 		}
 	)
@@ -13296,7 +13296,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ActivityUnstarRepoForAuthenticatedUser",
+			OperationName:    ActivityUnstarRepoForAuthenticatedUserOperation,
 			OperationSummary: "Unstar a repository for the authenticated user",
 			OperationID:      "activity/unstar-repo-for-authenticated-user",
 			Body:             nil,
@@ -13367,7 +13367,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsAddRepoToInstallation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsAddRepoToInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13398,7 +13398,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsAddRepoToInstallation",
+			Name: AppsAddRepoToInstallationOperation,
 			ID:   "apps/add-repo-to-installation",
 		}
 	)
@@ -13417,7 +13417,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsAddRepoToInstallation",
+			OperationName:    AppsAddRepoToInstallationOperation,
 			OperationSummary: "Add a repository to an app installation",
 			OperationID:      "apps/add-repo-to-installation",
 			Body:             nil,
@@ -13488,7 +13488,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsCheckToken",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCheckTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13519,7 +13519,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCheckToken",
+			Name: AppsCheckTokenOperation,
 			ID:   "apps/check-token",
 		}
 	)
@@ -13553,7 +13553,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsCheckToken",
+			OperationName:    AppsCheckTokenOperation,
 			OperationSummary: "Check a token",
 			OperationID:      "apps/check-token",
 			Body:             request,
@@ -13624,7 +13624,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsCreateContentAttachment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCreateContentAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13655,7 +13655,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCreateContentAttachment",
+			Name: AppsCreateContentAttachmentOperation,
 			ID:   "apps/create-content-attachment",
 		}
 	)
@@ -13689,7 +13689,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsCreateContentAttachment",
+			OperationName:    AppsCreateContentAttachmentOperation,
 			OperationSummary: "Create a content attachment",
 			OperationID:      "apps/create-content-attachment",
 			Body:             request,
@@ -13762,7 +13762,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsCreateFromManifest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCreateFromManifestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13793,7 +13793,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCreateFromManifest",
+			Name: AppsCreateFromManifestOperation,
 			ID:   "apps/create-from-manifest",
 		}
 	)
@@ -13827,7 +13827,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsCreateFromManifest",
+			OperationName:    AppsCreateFromManifestOperation,
 			OperationSummary: "Create a GitHub App from a manifest",
 			OperationID:      "apps/create-from-manifest",
 			Body:             request,
@@ -13898,7 +13898,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsCreateInstallationAccessToken",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsCreateInstallationAccessTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13929,7 +13929,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsCreateInstallationAccessToken",
+			Name: AppsCreateInstallationAccessTokenOperation,
 			ID:   "apps/create-installation-access-token",
 		}
 	)
@@ -13963,7 +13963,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsCreateInstallationAccessToken",
+			OperationName:    AppsCreateInstallationAccessTokenOperation,
 			OperationSummary: "Create an installation access token for an app",
 			OperationID:      "apps/create-installation-access-token",
 			Body:             request,
@@ -14034,7 +14034,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsDeleteAuthorization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsDeleteAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14065,7 +14065,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsDeleteAuthorization",
+			Name: AppsDeleteAuthorizationOperation,
 			ID:   "apps/delete-authorization",
 		}
 	)
@@ -14099,7 +14099,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsDeleteAuthorization",
+			OperationName:    AppsDeleteAuthorizationOperation,
 			OperationSummary: "Delete an app authorization",
 			OperationID:      "apps/delete-authorization",
 			Body:             request,
@@ -14166,7 +14166,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsDeleteInstallation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsDeleteInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14197,7 +14197,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsDeleteInstallation",
+			Name: AppsDeleteInstallationOperation,
 			ID:   "apps/delete-installation",
 		}
 	)
@@ -14216,7 +14216,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsDeleteInstallation",
+			OperationName:    AppsDeleteInstallationOperation,
 			OperationSummary: "Delete an installation for the authenticated app",
 			OperationID:      "apps/delete-installation",
 			Body:             nil,
@@ -14281,7 +14281,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsDeleteToken",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsDeleteTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14312,7 +14312,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsDeleteToken",
+			Name: AppsDeleteTokenOperation,
 			ID:   "apps/delete-token",
 		}
 	)
@@ -14346,7 +14346,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsDeleteToken",
+			OperationName:    AppsDeleteTokenOperation,
 			OperationSummary: "Delete an app token",
 			OperationID:      "apps/delete-token",
 			Body:             request,
@@ -14415,7 +14415,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsGetAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14451,7 +14451,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsGetAuthenticated",
+			OperationName:    AppsGetAuthenticatedOperation,
 			OperationSummary: "Get the authenticated app",
 			OperationID:      "apps/get-authenticated",
 			Body:             nil,
@@ -14515,7 +14515,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsGetBySlug",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetBySlugOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14546,7 +14546,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetBySlug",
+			Name: AppsGetBySlugOperation,
 			ID:   "apps/get-by-slug",
 		}
 	)
@@ -14565,7 +14565,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsGetBySlug",
+			OperationName:    AppsGetBySlugOperation,
 			OperationSummary: "Get an app",
 			OperationID:      "apps/get-by-slug",
 			Body:             nil,
@@ -14634,7 +14634,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsGetSubscriptionPlanForAccount",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetSubscriptionPlanForAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14665,7 +14665,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetSubscriptionPlanForAccount",
+			Name: AppsGetSubscriptionPlanForAccountOperation,
 			ID:   "apps/get-subscription-plan-for-account",
 		}
 	)
@@ -14684,7 +14684,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsGetSubscriptionPlanForAccount",
+			OperationName:    AppsGetSubscriptionPlanForAccountOperation,
 			OperationSummary: "Get a subscription plan for an account",
 			OperationID:      "apps/get-subscription-plan-for-account",
 			Body:             nil,
@@ -14753,7 +14753,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsGetSubscriptionPlanForAccountStubbed",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetSubscriptionPlanForAccountStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14784,7 +14784,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetSubscriptionPlanForAccountStubbed",
+			Name: AppsGetSubscriptionPlanForAccountStubbedOperation,
 			ID:   "apps/get-subscription-plan-for-account-stubbed",
 		}
 	)
@@ -14803,7 +14803,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsGetSubscriptionPlanForAccountStubbed",
+			OperationName:    AppsGetSubscriptionPlanForAccountStubbedOperation,
 			OperationSummary: "Get a subscription plan for an account (stubbed)",
 			OperationID:      "apps/get-subscription-plan-for-account-stubbed",
 			Body:             nil,
@@ -14869,7 +14869,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsGetWebhookConfigForApp",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetWebhookConfigForAppOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14905,7 +14905,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsGetWebhookConfigForApp",
+			OperationName:    AppsGetWebhookConfigForAppOperation,
 			OperationSummary: "Get a webhook configuration for an app",
 			OperationID:      "apps/get-webhook-config-for-app",
 			Body:             nil,
@@ -14965,7 +14965,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsGetWebhookDelivery",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsGetWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14996,7 +14996,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsGetWebhookDelivery",
+			Name: AppsGetWebhookDeliveryOperation,
 			ID:   "apps/get-webhook-delivery",
 		}
 	)
@@ -15015,7 +15015,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsGetWebhookDelivery",
+			OperationName:    AppsGetWebhookDeliveryOperation,
 			OperationSummary: "Get a delivery for an app webhook",
 			OperationID:      "apps/get-webhook-delivery",
 			Body:             nil,
@@ -15085,7 +15085,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListAccountsForPlan",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListAccountsForPlanOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15116,7 +15116,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListAccountsForPlan",
+			Name: AppsListAccountsForPlanOperation,
 			ID:   "apps/list-accounts-for-plan",
 		}
 	)
@@ -15135,7 +15135,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListAccountsForPlan",
+			OperationName:    AppsListAccountsForPlanOperation,
 			OperationSummary: "List accounts for a plan",
 			OperationID:      "apps/list-accounts-for-plan",
 			Body:             nil,
@@ -15221,7 +15221,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListAccountsForPlanStubbed",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListAccountsForPlanStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15252,7 +15252,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListAccountsForPlanStubbed",
+			Name: AppsListAccountsForPlanStubbedOperation,
 			ID:   "apps/list-accounts-for-plan-stubbed",
 		}
 	)
@@ -15271,7 +15271,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListAccountsForPlanStubbed",
+			OperationName:    AppsListAccountsForPlanStubbedOperation,
 			OperationSummary: "List accounts for a plan (stubbed)",
 			OperationID:      "apps/list-accounts-for-plan-stubbed",
 			Body:             nil,
@@ -15355,7 +15355,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListInstallationReposForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListInstallationReposForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15386,7 +15386,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListInstallationReposForAuthenticatedUser",
+			Name: AppsListInstallationReposForAuthenticatedUserOperation,
 			ID:   "apps/list-installation-repos-for-authenticated-user",
 		}
 	)
@@ -15405,7 +15405,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListInstallationReposForAuthenticatedUser",
+			OperationName:    AppsListInstallationReposForAuthenticatedUserOperation,
 			OperationSummary: "List repositories accessible to the user access token",
 			OperationID:      "apps/list-installation-repos-for-authenticated-user",
 			Body:             nil,
@@ -15480,7 +15480,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListPlans",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListPlansOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15511,7 +15511,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListPlans",
+			Name: AppsListPlansOperation,
 			ID:   "apps/list-plans",
 		}
 	)
@@ -15530,7 +15530,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListPlans",
+			OperationName:    AppsListPlansOperation,
 			OperationSummary: "List plans",
 			OperationID:      "apps/list-plans",
 			Body:             nil,
@@ -15601,7 +15601,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListPlansStubbed",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListPlansStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15632,7 +15632,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListPlansStubbed",
+			Name: AppsListPlansStubbedOperation,
 			ID:   "apps/list-plans-stubbed",
 		}
 	)
@@ -15651,7 +15651,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListPlansStubbed",
+			OperationName:    AppsListPlansStubbedOperation,
 			OperationSummary: "List plans (stubbed)",
 			OperationID:      "apps/list-plans-stubbed",
 			Body:             nil,
@@ -15720,7 +15720,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListReposAccessibleToInstallation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListReposAccessibleToInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15751,7 +15751,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListReposAccessibleToInstallation",
+			Name: AppsListReposAccessibleToInstallationOperation,
 			ID:   "apps/list-repos-accessible-to-installation",
 		}
 	)
@@ -15770,7 +15770,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListReposAccessibleToInstallation",
+			OperationName:    AppsListReposAccessibleToInstallationOperation,
 			OperationSummary: "List repositories accessible to the app installation",
 			OperationID:      "apps/list-repos-accessible-to-installation",
 			Body:             nil,
@@ -15838,7 +15838,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListSubscriptionsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListSubscriptionsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15869,7 +15869,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListSubscriptionsForAuthenticatedUser",
+			Name: AppsListSubscriptionsForAuthenticatedUserOperation,
 			ID:   "apps/list-subscriptions-for-authenticated-user",
 		}
 	)
@@ -15888,7 +15888,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListSubscriptionsForAuthenticatedUser",
+			OperationName:    AppsListSubscriptionsForAuthenticatedUserOperation,
 			OperationSummary: "List subscriptions for the authenticated user",
 			OperationID:      "apps/list-subscriptions-for-authenticated-user",
 			Body:             nil,
@@ -15956,7 +15956,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListSubscriptionsForAuthenticatedUserStubbed",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListSubscriptionsForAuthenticatedUserStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15987,7 +15987,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListSubscriptionsForAuthenticatedUserStubbed",
+			Name: AppsListSubscriptionsForAuthenticatedUserStubbedOperation,
 			ID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
 		}
 	)
@@ -16006,7 +16006,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListSubscriptionsForAuthenticatedUserStubbed",
+			OperationName:    AppsListSubscriptionsForAuthenticatedUserStubbedOperation,
 			OperationSummary: "List subscriptions for the authenticated user (stubbed)",
 			OperationID:      "apps/list-subscriptions-for-authenticated-user-stubbed",
 			Body:             nil,
@@ -16075,7 +16075,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsListWebhookDeliveries",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsListWebhookDeliveriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16106,7 +16106,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsListWebhookDeliveries",
+			Name: AppsListWebhookDeliveriesOperation,
 			ID:   "apps/list-webhook-deliveries",
 		}
 	)
@@ -16125,7 +16125,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsListWebhookDeliveries",
+			OperationName:    AppsListWebhookDeliveriesOperation,
 			OperationSummary: "List deliveries for an app webhook",
 			OperationID:      "apps/list-webhook-deliveries",
 			Body:             nil,
@@ -16194,7 +16194,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsRedeliverWebhookDelivery",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsRedeliverWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16225,7 +16225,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsRedeliverWebhookDelivery",
+			Name: AppsRedeliverWebhookDeliveryOperation,
 			ID:   "apps/redeliver-webhook-delivery",
 		}
 	)
@@ -16244,7 +16244,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsRedeliverWebhookDelivery",
+			OperationName:    AppsRedeliverWebhookDeliveryOperation,
 			OperationSummary: "Redeliver a delivery for an app webhook",
 			OperationID:      "apps/redeliver-webhook-delivery",
 			Body:             nil,
@@ -16311,7 +16311,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsRemoveRepoFromInstallation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsRemoveRepoFromInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16342,7 +16342,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsRemoveRepoFromInstallation",
+			Name: AppsRemoveRepoFromInstallationOperation,
 			ID:   "apps/remove-repo-from-installation",
 		}
 	)
@@ -16361,7 +16361,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsRemoveRepoFromInstallation",
+			OperationName:    AppsRemoveRepoFromInstallationOperation,
 			OperationSummary: "Remove a repository from an app installation",
 			OperationID:      "apps/remove-repo-from-installation",
 			Body:             nil,
@@ -16432,7 +16432,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsResetToken",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsResetTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16463,7 +16463,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsResetToken",
+			Name: AppsResetTokenOperation,
 			ID:   "apps/reset-token",
 		}
 	)
@@ -16497,7 +16497,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsResetToken",
+			OperationName:    AppsResetTokenOperation,
 			OperationSummary: "Reset a token",
 			OperationID:      "apps/reset-token",
 			Body:             request,
@@ -16568,7 +16568,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsRevokeInstallationAccessToken",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsRevokeInstallationAccessTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16604,7 +16604,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsRevokeInstallationAccessToken",
+			OperationName:    AppsRevokeInstallationAccessTokenOperation,
 			OperationSummary: "Revoke an installation access token",
 			OperationID:      "apps/revoke-installation-access-token",
 			Body:             nil,
@@ -16666,7 +16666,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsScopeToken",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsScopeTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16697,7 +16697,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsScopeToken",
+			Name: AppsScopeTokenOperation,
 			ID:   "apps/scope-token",
 		}
 	)
@@ -16731,7 +16731,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsScopeToken",
+			OperationName:    AppsScopeTokenOperation,
 			OperationSummary: "Create a scoped access token",
 			OperationID:      "apps/scope-token",
 			Body:             request,
@@ -16798,7 +16798,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsSuspendInstallation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsSuspendInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16829,7 +16829,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsSuspendInstallation",
+			Name: AppsSuspendInstallationOperation,
 			ID:   "apps/suspend-installation",
 		}
 	)
@@ -16848,7 +16848,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsSuspendInstallation",
+			OperationName:    AppsSuspendInstallationOperation,
 			OperationSummary: "Suspend an app installation",
 			OperationID:      "apps/suspend-installation",
 			Body:             nil,
@@ -16913,7 +16913,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsUnsuspendInstallation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsUnsuspendInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16944,7 +16944,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsUnsuspendInstallation",
+			Name: AppsUnsuspendInstallationOperation,
 			ID:   "apps/unsuspend-installation",
 		}
 	)
@@ -16963,7 +16963,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsUnsuspendInstallation",
+			OperationName:    AppsUnsuspendInstallationOperation,
 			OperationSummary: "Unsuspend an app installation",
 			OperationID:      "apps/unsuspend-installation",
 			Body:             nil,
@@ -17029,7 +17029,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "AppsUpdateWebhookConfigForApp",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), AppsUpdateWebhookConfigForAppOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17060,7 +17060,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "AppsUpdateWebhookConfigForApp",
+			Name: AppsUpdateWebhookConfigForAppOperation,
 			ID:   "apps/update-webhook-config-for-app",
 		}
 	)
@@ -17084,7 +17084,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "AppsUpdateWebhookConfigForApp",
+			OperationName:    AppsUpdateWebhookConfigForAppOperation,
 			OperationSummary: "Update a webhook configuration for an app",
 			OperationID:      "apps/update-webhook-config-for-app",
 			Body:             request,
@@ -17148,7 +17148,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetGithubActionsBillingGhe",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubActionsBillingGheOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17179,7 +17179,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubActionsBillingGhe",
+			Name: BillingGetGithubActionsBillingGheOperation,
 			ID:   "billing/get-github-actions-billing-ghe",
 		}
 	)
@@ -17198,7 +17198,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetGithubActionsBillingGhe",
+			OperationName:    BillingGetGithubActionsBillingGheOperation,
 			OperationSummary: "Get GitHub Actions billing for an enterprise",
 			OperationID:      "billing/get-github-actions-billing-ghe",
 			Body:             nil,
@@ -17267,7 +17267,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetGithubActionsBillingOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubActionsBillingOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17298,7 +17298,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubActionsBillingOrg",
+			Name: BillingGetGithubActionsBillingOrgOperation,
 			ID:   "billing/get-github-actions-billing-org",
 		}
 	)
@@ -17317,7 +17317,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetGithubActionsBillingOrg",
+			OperationName:    BillingGetGithubActionsBillingOrgOperation,
 			OperationSummary: "Get GitHub Actions billing for an organization",
 			OperationID:      "billing/get-github-actions-billing-org",
 			Body:             nil,
@@ -17386,7 +17386,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetGithubActionsBillingUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubActionsBillingUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17417,7 +17417,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubActionsBillingUser",
+			Name: BillingGetGithubActionsBillingUserOperation,
 			ID:   "billing/get-github-actions-billing-user",
 		}
 	)
@@ -17436,7 +17436,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetGithubActionsBillingUser",
+			OperationName:    BillingGetGithubActionsBillingUserOperation,
 			OperationSummary: "Get GitHub Actions billing for a user",
 			OperationID:      "billing/get-github-actions-billing-user",
 			Body:             nil,
@@ -17502,7 +17502,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetGithubPackagesBillingGhe",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubPackagesBillingGheOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17533,7 +17533,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubPackagesBillingGhe",
+			Name: BillingGetGithubPackagesBillingGheOperation,
 			ID:   "billing/get-github-packages-billing-ghe",
 		}
 	)
@@ -17552,7 +17552,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetGithubPackagesBillingGhe",
+			OperationName:    BillingGetGithubPackagesBillingGheOperation,
 			OperationSummary: "Get GitHub Packages billing for an enterprise",
 			OperationID:      "billing/get-github-packages-billing-ghe",
 			Body:             nil,
@@ -17618,7 +17618,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetGithubPackagesBillingOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubPackagesBillingOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17649,7 +17649,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubPackagesBillingOrg",
+			Name: BillingGetGithubPackagesBillingOrgOperation,
 			ID:   "billing/get-github-packages-billing-org",
 		}
 	)
@@ -17668,7 +17668,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetGithubPackagesBillingOrg",
+			OperationName:    BillingGetGithubPackagesBillingOrgOperation,
 			OperationSummary: "Get GitHub Packages billing for an organization",
 			OperationID:      "billing/get-github-packages-billing-org",
 			Body:             nil,
@@ -17734,7 +17734,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetGithubPackagesBillingUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetGithubPackagesBillingUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17765,7 +17765,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetGithubPackagesBillingUser",
+			Name: BillingGetGithubPackagesBillingUserOperation,
 			ID:   "billing/get-github-packages-billing-user",
 		}
 	)
@@ -17784,7 +17784,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetGithubPackagesBillingUser",
+			OperationName:    BillingGetGithubPackagesBillingUserOperation,
 			OperationSummary: "Get GitHub Packages billing for a user",
 			OperationID:      "billing/get-github-packages-billing-user",
 			Body:             nil,
@@ -17850,7 +17850,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetSharedStorageBillingGhe",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetSharedStorageBillingGheOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17881,7 +17881,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetSharedStorageBillingGhe",
+			Name: BillingGetSharedStorageBillingGheOperation,
 			ID:   "billing/get-shared-storage-billing-ghe",
 		}
 	)
@@ -17900,7 +17900,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetSharedStorageBillingGhe",
+			OperationName:    BillingGetSharedStorageBillingGheOperation,
 			OperationSummary: "Get shared storage billing for an enterprise",
 			OperationID:      "billing/get-shared-storage-billing-ghe",
 			Body:             nil,
@@ -17966,7 +17966,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetSharedStorageBillingOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetSharedStorageBillingOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17997,7 +17997,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetSharedStorageBillingOrg",
+			Name: BillingGetSharedStorageBillingOrgOperation,
 			ID:   "billing/get-shared-storage-billing-org",
 		}
 	)
@@ -18016,7 +18016,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetSharedStorageBillingOrg",
+			OperationName:    BillingGetSharedStorageBillingOrgOperation,
 			OperationSummary: "Get shared storage billing for an organization",
 			OperationID:      "billing/get-shared-storage-billing-org",
 			Body:             nil,
@@ -18082,7 +18082,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "BillingGetSharedStorageBillingUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), BillingGetSharedStorageBillingUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18113,7 +18113,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "BillingGetSharedStorageBillingUser",
+			Name: BillingGetSharedStorageBillingUserOperation,
 			ID:   "billing/get-shared-storage-billing-user",
 		}
 	)
@@ -18132,7 +18132,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "BillingGetSharedStorageBillingUser",
+			OperationName:    BillingGetSharedStorageBillingUserOperation,
 			OperationSummary: "Get shared storage billing for a user",
 			OperationID:      "billing/get-shared-storage-billing-user",
 			Body:             nil,
@@ -18202,7 +18202,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksCreateSuite",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksCreateSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18233,7 +18233,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksCreateSuite",
+			Name: ChecksCreateSuiteOperation,
 			ID:   "checks/create-suite",
 		}
 	)
@@ -18267,7 +18267,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksCreateSuite",
+			OperationName:    ChecksCreateSuiteOperation,
 			OperationSummary: "Create a check suite",
 			OperationID:      "checks/create-suite",
 			Body:             request,
@@ -18338,7 +18338,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18369,7 +18369,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksGet",
+			Name: ChecksGetOperation,
 			ID:   "checks/get",
 		}
 	)
@@ -18388,7 +18388,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksGet",
+			OperationName:    ChecksGetOperation,
 			OperationSummary: "Get a check run",
 			OperationID:      "checks/get",
 			Body:             nil,
@@ -18463,7 +18463,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksGetSuite",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksGetSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18494,7 +18494,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksGetSuite",
+			Name: ChecksGetSuiteOperation,
 			ID:   "checks/get-suite",
 		}
 	)
@@ -18513,7 +18513,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksGetSuite",
+			OperationName:    ChecksGetSuiteOperation,
 			OperationSummary: "Get a check suite",
 			OperationID:      "checks/get-suite",
 			Body:             nil,
@@ -18586,7 +18586,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksListAnnotations",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListAnnotationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18617,7 +18617,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListAnnotations",
+			Name: ChecksListAnnotationsOperation,
 			ID:   "checks/list-annotations",
 		}
 	)
@@ -18636,7 +18636,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksListAnnotations",
+			OperationName:    ChecksListAnnotationsOperation,
 			OperationSummary: "List check run annotations",
 			OperationID:      "checks/list-annotations",
 			Body:             nil,
@@ -18720,7 +18720,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksListForRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18751,7 +18751,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListForRef",
+			Name: ChecksListForRefOperation,
 			ID:   "checks/list-for-ref",
 		}
 	)
@@ -18770,7 +18770,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksListForRef",
+			OperationName:    ChecksListForRefOperation,
 			OperationSummary: "List check runs for a Git reference",
 			OperationID:      "checks/list-for-ref",
 			Body:             nil,
@@ -18869,7 +18869,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksListForSuite",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListForSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18900,7 +18900,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListForSuite",
+			Name: ChecksListForSuiteOperation,
 			ID:   "checks/list-for-suite",
 		}
 	)
@@ -18919,7 +18919,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksListForSuite",
+			OperationName:    ChecksListForSuiteOperation,
 			OperationSummary: "List check runs in a check suite",
 			OperationID:      "checks/list-for-suite",
 			Body:             nil,
@@ -19015,7 +19015,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksListSuitesForRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksListSuitesForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19046,7 +19046,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksListSuitesForRef",
+			Name: ChecksListSuitesForRefOperation,
 			ID:   "checks/list-suites-for-ref",
 		}
 	)
@@ -19065,7 +19065,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksListSuitesForRef",
+			OperationName:    ChecksListSuitesForRefOperation,
 			OperationSummary: "List check suites for a Git reference",
 			OperationID:      "checks/list-suites-for-ref",
 			Body:             nil,
@@ -19156,7 +19156,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksRerequestSuite",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksRerequestSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19187,7 +19187,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksRerequestSuite",
+			Name: ChecksRerequestSuiteOperation,
 			ID:   "checks/rerequest-suite",
 		}
 	)
@@ -19206,7 +19206,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksRerequestSuite",
+			OperationName:    ChecksRerequestSuiteOperation,
 			OperationSummary: "Rerequest a check suite",
 			OperationID:      "checks/rerequest-suite",
 			Body:             nil,
@@ -19280,7 +19280,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ChecksSetSuitesPreferences",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ChecksSetSuitesPreferencesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19311,7 +19311,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ChecksSetSuitesPreferences",
+			Name: ChecksSetSuitesPreferencesOperation,
 			ID:   "checks/set-suites-preferences",
 		}
 	)
@@ -19345,7 +19345,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ChecksSetSuitesPreferences",
+			OperationName:    ChecksSetSuitesPreferencesOperation,
 			OperationSummary: "Update repository preferences for check suites",
 			OperationID:      "checks/set-suites-preferences",
 			Body:             request,
@@ -19469,7 +19469,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningDeleteAnalysis",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningDeleteAnalysisOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19500,7 +19500,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningDeleteAnalysis",
+			Name: CodeScanningDeleteAnalysisOperation,
 			ID:   "code-scanning/delete-analysis",
 		}
 	)
@@ -19519,7 +19519,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningDeleteAnalysis",
+			OperationName:    CodeScanningDeleteAnalysisOperation,
 			OperationSummary: "Delete a code scanning analysis from a repository",
 			OperationID:      "code-scanning/delete-analysis",
 			Body:             nil,
@@ -19599,7 +19599,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningGetAlert",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningGetAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19630,7 +19630,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningGetAlert",
+			Name: CodeScanningGetAlertOperation,
 			ID:   "code-scanning/get-alert",
 		}
 	)
@@ -19649,7 +19649,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningGetAlert",
+			OperationName:    CodeScanningGetAlertOperation,
 			OperationSummary: "Get a code scanning alert",
 			OperationID:      "code-scanning/get-alert",
 			Body:             nil,
@@ -19737,7 +19737,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningGetAnalysis",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningGetAnalysisOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19768,7 +19768,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningGetAnalysis",
+			Name: CodeScanningGetAnalysisOperation,
 			ID:   "code-scanning/get-analysis",
 		}
 	)
@@ -19787,7 +19787,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningGetAnalysis",
+			OperationName:    CodeScanningGetAnalysisOperation,
 			OperationSummary: "Get a code scanning analysis for a repository",
 			OperationID:      "code-scanning/get-analysis",
 			Body:             nil,
@@ -19862,7 +19862,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningGetSarif",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningGetSarifOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19893,7 +19893,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningGetSarif",
+			Name: CodeScanningGetSarifOperation,
 			ID:   "code-scanning/get-sarif",
 		}
 	)
@@ -19912,7 +19912,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningGetSarif",
+			OperationName:    CodeScanningGetSarifOperation,
 			OperationSummary: "Get information about a SARIF upload",
 			OperationID:      "code-scanning/get-sarif",
 			Body:             nil,
@@ -19984,7 +19984,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningListAlertInstances",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningListAlertInstancesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20015,7 +20015,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningListAlertInstances",
+			Name: CodeScanningListAlertInstancesOperation,
 			ID:   "code-scanning/list-alert-instances",
 		}
 	)
@@ -20034,7 +20034,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningListAlertInstances",
+			OperationName:    CodeScanningListAlertInstancesOperation,
 			OperationSummary: "List instances of a code scanning alert",
 			OperationID:      "code-scanning/list-alert-instances",
 			Body:             nil,
@@ -20123,7 +20123,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningListAlertsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningListAlertsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20154,7 +20154,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningListAlertsForRepo",
+			Name: CodeScanningListAlertsForRepoOperation,
 			ID:   "code-scanning/list-alerts-for-repo",
 		}
 	)
@@ -20173,7 +20173,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningListAlertsForRepo",
+			OperationName:    CodeScanningListAlertsForRepoOperation,
 			OperationSummary: "List code scanning alerts for a repository",
 			OperationID:      "code-scanning/list-alerts-for-repo",
 			Body:             nil,
@@ -20277,7 +20277,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningListRecentAnalyses",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningListRecentAnalysesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20308,7 +20308,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningListRecentAnalyses",
+			Name: CodeScanningListRecentAnalysesOperation,
 			ID:   "code-scanning/list-recent-analyses",
 		}
 	)
@@ -20327,7 +20327,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningListRecentAnalyses",
+			OperationName:    CodeScanningListRecentAnalysesOperation,
 			OperationSummary: "List code scanning analyses for a repository",
 			OperationID:      "code-scanning/list-recent-analyses",
 			Body:             nil,
@@ -20419,7 +20419,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningUpdateAlert",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningUpdateAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20450,7 +20450,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningUpdateAlert",
+			Name: CodeScanningUpdateAlertOperation,
 			ID:   "code-scanning/update-alert",
 		}
 	)
@@ -20484,7 +20484,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningUpdateAlert",
+			OperationName:    CodeScanningUpdateAlertOperation,
 			OperationSummary: "Update a code scanning alert",
 			OperationID:      "code-scanning/update-alert",
 			Body:             request,
@@ -20580,7 +20580,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodeScanningUploadSarif",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodeScanningUploadSarifOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20611,7 +20611,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodeScanningUploadSarif",
+			Name: CodeScanningUploadSarifOperation,
 			ID:   "code-scanning/upload-sarif",
 		}
 	)
@@ -20645,7 +20645,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodeScanningUploadSarif",
+			OperationName:    CodeScanningUploadSarifOperation,
 			OperationSummary: "Upload an analysis as SARIF data",
 			OperationID:      "code-scanning/upload-sarif",
 			Body:             request,
@@ -20711,7 +20711,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodesOfConductGetAllCodesOfConduct",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodesOfConductGetAllCodesOfConductOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20747,7 +20747,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodesOfConductGetAllCodesOfConduct",
+			OperationName:    CodesOfConductGetAllCodesOfConductOperation,
 			OperationSummary: "Get all codes of conduct",
 			OperationID:      "codes-of-conduct/get-all-codes-of-conduct",
 			Body:             nil,
@@ -20804,7 +20804,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CodesOfConductGetConductCode",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CodesOfConductGetConductCodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20835,7 +20835,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CodesOfConductGetConductCode",
+			Name: CodesOfConductGetConductCodeOperation,
 			ID:   "codes-of-conduct/get-conduct-code",
 		}
 	)
@@ -20854,7 +20854,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CodesOfConductGetConductCode",
+			OperationName:    CodesOfConductGetConductCodeOperation,
 			OperationSummary: "Get a code of conduct",
 			OperationID:      "codes-of-conduct/get-conduct-code",
 			Body:             nil,
@@ -20916,7 +20916,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EmojisGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EmojisGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20952,7 +20952,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EmojisGet",
+			OperationName:    EmojisGetOperation,
 			OperationSummary: "Get emojis",
 			OperationID:      "emojis/get",
 			Body:             nil,
@@ -21013,7 +21013,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21044,7 +21044,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Name: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			ID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
@@ -21063,7 +21063,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationName:    EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "Add organization access to a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:             nil,
@@ -21135,7 +21135,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21166,7 +21166,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+			Name: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseOperation,
 			ID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
 		}
 	)
@@ -21185,7 +21185,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+			OperationName:    EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseOperation,
 			OperationSummary: "Add a self-hosted runner to a group for an enterprise",
 			OperationID:      "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
 			Body:             nil,
@@ -21262,7 +21262,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminCreateRegistrationTokenForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21293,7 +21293,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+			Name: EnterpriseAdminCreateRegistrationTokenForEnterpriseOperation,
 			ID:   "enterprise-admin/create-registration-token-for-enterprise",
 		}
 	)
@@ -21312,7 +21312,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+			OperationName:    EnterpriseAdminCreateRegistrationTokenForEnterpriseOperation,
 			OperationSummary: "Create a registration token for an enterprise",
 			OperationID:      "enterprise-admin/create-registration-token-for-enterprise",
 			Body:             nil,
@@ -21383,7 +21383,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminCreateRemoveTokenForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminCreateRemoveTokenForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21414,7 +21414,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminCreateRemoveTokenForEnterprise",
+			Name: EnterpriseAdminCreateRemoveTokenForEnterpriseOperation,
 			ID:   "enterprise-admin/create-remove-token-for-enterprise",
 		}
 	)
@@ -21433,7 +21433,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminCreateRemoveTokenForEnterprise",
+			OperationName:    EnterpriseAdminCreateRemoveTokenForEnterpriseOperation,
 			OperationSummary: "Create a remove token for an enterprise",
 			OperationID:      "enterprise-admin/create-remove-token-for-enterprise",
 			Body:             nil,
@@ -21496,7 +21496,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21527,7 +21527,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			Name: EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseOperation,
 			ID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
 		}
 	)
@@ -21561,7 +21561,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			OperationName:    EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseOperation,
 			OperationSummary: "Create a self-hosted runner group for an enterprise",
 			OperationID:      "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
 			Body:             request,
@@ -21624,7 +21624,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminDeleteScimGroupFromEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteScimGroupFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21655,7 +21655,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteScimGroupFromEnterprise",
+			Name: EnterpriseAdminDeleteScimGroupFromEnterpriseOperation,
 			ID:   "enterprise-admin/delete-scim-group-from-enterprise",
 		}
 	)
@@ -21674,7 +21674,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminDeleteScimGroupFromEnterprise",
+			OperationName:    EnterpriseAdminDeleteScimGroupFromEnterpriseOperation,
 			OperationSummary: "Delete a SCIM group from an enterprise",
 			OperationID:      "enterprise-admin/delete-scim-group-from-enterprise",
 			Body:             nil,
@@ -21742,7 +21742,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21773,7 +21773,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+			Name: EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseOperation,
 			ID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
 		}
 	)
@@ -21792,7 +21792,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+			OperationName:    EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseOperation,
 			OperationSummary: "Delete a self-hosted runner from an enterprise",
 			OperationID:      "enterprise-admin/delete-self-hosted-runner-from-enterprise",
 			Body:             nil,
@@ -21859,7 +21859,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21890,7 +21890,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+			Name: EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseOperation,
 			ID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
 		}
 	)
@@ -21909,7 +21909,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+			OperationName:    EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseOperation,
 			OperationSummary: "Delete a self-hosted runner group from an enterprise",
 			OperationID:      "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
 			Body:             nil,
@@ -21976,7 +21976,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminDeleteUserFromEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDeleteUserFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22007,7 +22007,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDeleteUserFromEnterprise",
+			Name: EnterpriseAdminDeleteUserFromEnterpriseOperation,
 			ID:   "enterprise-admin/delete-user-from-enterprise",
 		}
 	)
@@ -22026,7 +22026,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminDeleteUserFromEnterprise",
+			OperationName:    EnterpriseAdminDeleteUserFromEnterpriseOperation,
 			OperationSummary: "Delete a SCIM user from an enterprise",
 			OperationID:      "enterprise-admin/delete-user-from-enterprise",
 			Body:             nil,
@@ -22096,7 +22096,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22127,7 +22127,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+			Name: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseOperation,
 			ID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
 		}
 	)
@@ -22146,7 +22146,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+			OperationName:    EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseOperation,
 			OperationSummary: "Disable a selected organization for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/disable-selected-organization-github-actions-enterprise",
 			Body:             nil,
@@ -22216,7 +22216,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22247,7 +22247,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+			Name: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseOperation,
 			ID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
 		}
 	)
@@ -22266,7 +22266,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+			OperationName:    EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseOperation,
 			OperationSummary: "Enable a selected organization for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/enable-selected-organization-github-actions-enterprise",
 			Body:             nil,
@@ -22336,7 +22336,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminGetAllowedActionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetAllowedActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22367,7 +22367,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetAllowedActionsEnterprise",
+			Name: EnterpriseAdminGetAllowedActionsEnterpriseOperation,
 			ID:   "enterprise-admin/get-allowed-actions-enterprise",
 		}
 	)
@@ -22386,7 +22386,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminGetAllowedActionsEnterprise",
+			OperationName:    EnterpriseAdminGetAllowedActionsEnterpriseOperation,
 			OperationSummary: "Get allowed actions for an enterprise",
 			OperationID:      "enterprise-admin/get-allowed-actions-enterprise",
 			Body:             nil,
@@ -22449,7 +22449,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminGetAuditLog",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetAuditLogOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22480,7 +22480,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetAuditLog",
+			Name: EnterpriseAdminGetAuditLogOperation,
 			ID:   "enterprise-admin/get-audit-log",
 		}
 	)
@@ -22499,7 +22499,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminGetAuditLog",
+			OperationName:    EnterpriseAdminGetAuditLogOperation,
 			OperationSummary: "Get the audit log for an enterprise",
 			OperationID:      "enterprise-admin/get-audit-log",
 			Body:             nil,
@@ -22590,7 +22590,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetGithubActionsPermissionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22621,7 +22621,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+			Name: EnterpriseAdminGetGithubActionsPermissionsEnterpriseOperation,
 			ID:   "enterprise-admin/get-github-actions-permissions-enterprise",
 		}
 	)
@@ -22640,7 +22640,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+			OperationName:    EnterpriseAdminGetGithubActionsPermissionsEnterpriseOperation,
 			OperationSummary: "Get GitHub Actions permissions for an enterprise",
 			OperationID:      "enterprise-admin/get-github-actions-permissions-enterprise",
 			Body:             nil,
@@ -22703,7 +22703,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetProvisioningInformationForEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22734,7 +22734,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+			Name: EnterpriseAdminGetProvisioningInformationForEnterpriseGroupOperation,
 			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
 		}
 	)
@@ -22753,7 +22753,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+			OperationName:    EnterpriseAdminGetProvisioningInformationForEnterpriseGroupOperation,
 			OperationSummary: "Get SCIM provisioning information for an enterprise group",
 			OperationID:      "enterprise-admin/get-provisioning-information-for-enterprise-group",
 			Body:             nil,
@@ -22824,7 +22824,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetProvisioningInformationForEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22855,7 +22855,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+			Name: EnterpriseAdminGetProvisioningInformationForEnterpriseUserOperation,
 			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
 		}
 	)
@@ -22874,7 +22874,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+			OperationName:    EnterpriseAdminGetProvisioningInformationForEnterpriseUserOperation,
 			OperationSummary: "Get SCIM provisioning information for an enterprise user",
 			OperationID:      "enterprise-admin/get-provisioning-information-for-enterprise-user",
 			Body:             nil,
@@ -22941,7 +22941,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetSelfHostedRunnerForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22972,7 +22972,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+			Name: EnterpriseAdminGetSelfHostedRunnerForEnterpriseOperation,
 			ID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
 		}
 	)
@@ -22991,7 +22991,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+			OperationName:    EnterpriseAdminGetSelfHostedRunnerForEnterpriseOperation,
 			OperationSummary: "Get a self-hosted runner for an enterprise",
 			OperationID:      "enterprise-admin/get-self-hosted-runner-for-enterprise",
 			Body:             nil,
@@ -23058,7 +23058,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23089,7 +23089,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+			Name: EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseOperation,
 			ID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
 		}
 	)
@@ -23108,7 +23108,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+			OperationName:    EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseOperation,
 			OperationSummary: "Get a self-hosted runner group for an enterprise",
 			OperationID:      "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
 			Body:             nil,
@@ -23175,7 +23175,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23206,7 +23206,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Name: EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			ID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
@@ -23225,7 +23225,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationName:    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "List organization access to a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:             nil,
@@ -23300,7 +23300,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListProvisionedGroupsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListProvisionedGroupsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23331,7 +23331,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListProvisionedGroupsEnterprise",
+			Name: EnterpriseAdminListProvisionedGroupsEnterpriseOperation,
 			ID:   "enterprise-admin/list-provisioned-groups-enterprise",
 		}
 	)
@@ -23350,7 +23350,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListProvisionedGroupsEnterprise",
+			OperationName:    EnterpriseAdminListProvisionedGroupsEnterpriseOperation,
 			OperationSummary: "List provisioned SCIM groups for an enterprise",
 			OperationID:      "enterprise-admin/list-provisioned-groups-enterprise",
 			Body:             nil,
@@ -23454,7 +23454,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListProvisionedIdentitiesEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23485,7 +23485,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+			Name: EnterpriseAdminListProvisionedIdentitiesEnterpriseOperation,
 			ID:   "enterprise-admin/list-provisioned-identities-enterprise",
 		}
 	)
@@ -23504,7 +23504,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+			OperationName:    EnterpriseAdminListProvisionedIdentitiesEnterpriseOperation,
 			OperationSummary: "List SCIM provisioned identities for an enterprise",
 			OperationID:      "enterprise-admin/list-provisioned-identities-enterprise",
 			Body:             nil,
@@ -23579,7 +23579,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListRunnerApplicationsForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListRunnerApplicationsForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23610,7 +23610,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListRunnerApplicationsForEnterprise",
+			Name: EnterpriseAdminListRunnerApplicationsForEnterpriseOperation,
 			ID:   "enterprise-admin/list-runner-applications-for-enterprise",
 		}
 	)
@@ -23629,7 +23629,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListRunnerApplicationsForEnterprise",
+			OperationName:    EnterpriseAdminListRunnerApplicationsForEnterpriseOperation,
 			OperationSummary: "List runner applications for an enterprise",
 			OperationID:      "enterprise-admin/list-runner-applications-for-enterprise",
 			Body:             nil,
@@ -23695,7 +23695,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23726,7 +23726,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+			Name: EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 			ID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
 		}
 	)
@@ -23745,7 +23745,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+			OperationName:    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 			OperationSummary: "List selected organizations enabled for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
 			Body:             nil,
@@ -23816,7 +23816,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23847,7 +23847,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+			Name: EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOperation,
 			ID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
 		}
 	)
@@ -23866,7 +23866,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+			OperationName:    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOperation,
 			OperationSummary: "List self-hosted runner groups for an enterprise",
 			OperationID:      "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
 			Body:             nil,
@@ -23937,7 +23937,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelfHostedRunnersForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23968,7 +23968,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+			Name: EnterpriseAdminListSelfHostedRunnersForEnterpriseOperation,
 			ID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
 		}
 	)
@@ -23987,7 +23987,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+			OperationName:    EnterpriseAdminListSelfHostedRunnersForEnterpriseOperation,
 			OperationSummary: "List self-hosted runners for an enterprise",
 			OperationID:      "enterprise-admin/list-self-hosted-runners-for-enterprise",
 			Body:             nil,
@@ -24058,7 +24058,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24089,7 +24089,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+			Name: EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOperation,
 			ID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
 		}
 	)
@@ -24108,7 +24108,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+			OperationName:    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOperation,
 			OperationSummary: "List self-hosted runners in a group for an enterprise",
 			OperationID:      "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
 			Body:             nil,
@@ -24186,7 +24186,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminProvisionAndInviteEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24217,7 +24217,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			Name: EnterpriseAdminProvisionAndInviteEnterpriseGroupOperation,
 			ID:   "enterprise-admin/provision-and-invite-enterprise-group",
 		}
 	)
@@ -24251,7 +24251,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			OperationName:    EnterpriseAdminProvisionAndInviteEnterpriseGroupOperation,
 			OperationSummary: "Provision a SCIM enterprise group and invite users",
 			OperationID:      "enterprise-admin/provision-and-invite-enterprise-group",
 			Body:             request,
@@ -24319,7 +24319,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminProvisionAndInviteEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24350,7 +24350,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			Name: EnterpriseAdminProvisionAndInviteEnterpriseUserOperation,
 			ID:   "enterprise-admin/provision-and-invite-enterprise-user",
 		}
 	)
@@ -24384,7 +24384,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			OperationName:    EnterpriseAdminProvisionAndInviteEnterpriseUserOperation,
 			OperationSummary: "Provision and invite a SCIM enterprise user",
 			OperationID:      "enterprise-admin/provision-and-invite-enterprise-user",
 			Body:             request,
@@ -24450,7 +24450,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24481,7 +24481,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Name: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			ID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
@@ -24500,7 +24500,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationName:    EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "Remove organization access to a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:             nil,
@@ -24572,7 +24572,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24603,7 +24603,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+			Name: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseOperation,
 			ID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
 		}
 	)
@@ -24622,7 +24622,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+			OperationName:    EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseOperation,
 			OperationSummary: "Remove a self-hosted runner from a group for an enterprise",
 			OperationID:      "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
 			Body:             nil,
@@ -24696,7 +24696,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminSetAllowedActionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetAllowedActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24727,7 +24727,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetAllowedActionsEnterprise",
+			Name: EnterpriseAdminSetAllowedActionsEnterpriseOperation,
 			ID:   "enterprise-admin/set-allowed-actions-enterprise",
 		}
 	)
@@ -24761,7 +24761,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminSetAllowedActionsEnterprise",
+			OperationName:    EnterpriseAdminSetAllowedActionsEnterpriseOperation,
 			OperationSummary: "Set allowed actions for an enterprise",
 			OperationID:      "enterprise-admin/set-allowed-actions-enterprise",
 			Body:             request,
@@ -24824,7 +24824,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetGithubActionsPermissionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24855,7 +24855,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			Name: EnterpriseAdminSetGithubActionsPermissionsEnterpriseOperation,
 			ID:   "enterprise-admin/set-github-actions-permissions-enterprise",
 		}
 	)
@@ -24889,7 +24889,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			OperationName:    EnterpriseAdminSetGithubActionsPermissionsEnterpriseOperation,
 			OperationSummary: "Set GitHub Actions permissions for an enterprise",
 			OperationID:      "enterprise-admin/set-github-actions-permissions-enterprise",
 			Body:             request,
@@ -24957,7 +24957,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetInformationForProvisionedEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24988,7 +24988,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			Name: EnterpriseAdminSetInformationForProvisionedEnterpriseGroupOperation,
 			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
 		}
 	)
@@ -25022,7 +25022,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			OperationName:    EnterpriseAdminSetInformationForProvisionedEnterpriseGroupOperation,
 			OperationSummary: "Set SCIM information for a provisioned enterprise group",
 			OperationID:      "enterprise-admin/set-information-for-provisioned-enterprise-group",
 			Body:             request,
@@ -25097,7 +25097,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetInformationForProvisionedEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25128,7 +25128,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			Name: EnterpriseAdminSetInformationForProvisionedEnterpriseUserOperation,
 			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
 		}
 	)
@@ -25162,7 +25162,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			OperationName:    EnterpriseAdminSetInformationForProvisionedEnterpriseUserOperation,
 			OperationSummary: "Set SCIM information for a provisioned enterprise user",
 			OperationID:      "enterprise-admin/set-information-for-provisioned-enterprise-user",
 			Body:             request,
@@ -25230,7 +25230,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25261,7 +25261,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Name: EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			ID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
 		}
 	)
@@ -25295,7 +25295,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationName:    EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 			OperationSummary: "Set organization access for a self-hosted runner group in an enterprise",
 			OperationID:      "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
 			Body:             request,
@@ -25365,7 +25365,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25396,7 +25396,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			Name: EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 			ID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
 		}
 	)
@@ -25430,7 +25430,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			OperationName:    EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 			OperationSummary: "Set selected organizations enabled for GitHub Actions in an enterprise",
 			OperationID:      "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
 			Body:             request,
@@ -25493,7 +25493,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25524,7 +25524,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			Name: EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseOperation,
 			ID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
 		}
 	)
@@ -25558,7 +25558,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			OperationName:    EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseOperation,
 			OperationSummary: "Set self-hosted runners in a group for an enterprise",
 			OperationID:      "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
 			Body:             request,
@@ -25629,7 +25629,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminUpdateAttributeForEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25660,7 +25660,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			Name: EnterpriseAdminUpdateAttributeForEnterpriseGroupOperation,
 			ID:   "enterprise-admin/update-attribute-for-enterprise-group",
 		}
 	)
@@ -25694,7 +25694,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			OperationName:    EnterpriseAdminUpdateAttributeForEnterpriseGroupOperation,
 			OperationSummary: "Update an attribute for a SCIM enterprise group",
 			OperationID:      "enterprise-admin/update-attribute-for-enterprise-group",
 			Body:             request,
@@ -25782,7 +25782,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminUpdateAttributeForEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25813,7 +25813,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			Name: EnterpriseAdminUpdateAttributeForEnterpriseUserOperation,
 			ID:   "enterprise-admin/update-attribute-for-enterprise-user",
 		}
 	)
@@ -25847,7 +25847,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			OperationName:    EnterpriseAdminUpdateAttributeForEnterpriseUserOperation,
 			OperationSummary: "Update an attribute for a SCIM enterprise user",
 			OperationID:      "enterprise-admin/update-attribute-for-enterprise-user",
 			Body:             request,
@@ -25914,7 +25914,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25945,7 +25945,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			Name: EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseOperation,
 			ID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
 		}
 	)
@@ -25979,7 +25979,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			OperationName:    EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseOperation,
 			OperationSummary: "Update a self-hosted runner group for an enterprise",
 			OperationID:      "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
 			Body:             request,
@@ -26045,7 +26045,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsCheckIsStarred",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsCheckIsStarredOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26076,7 +26076,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsCheckIsStarred",
+			Name: GistsCheckIsStarredOperation,
 			ID:   "gists/check-is-starred",
 		}
 	)
@@ -26095,7 +26095,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsCheckIsStarred",
+			OperationName:    GistsCheckIsStarredOperation,
 			OperationSummary: "Check if a gist is starred",
 			OperationID:      "gists/check-is-starred",
 			Body:             nil,
@@ -26159,7 +26159,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsCreate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26190,7 +26190,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsCreate",
+			Name: GistsCreateOperation,
 			ID:   "gists/create",
 		}
 	)
@@ -26214,7 +26214,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsCreate",
+			OperationName:    GistsCreateOperation,
 			OperationSummary: "Create a gist",
 			OperationID:      "gists/create",
 			Body:             request,
@@ -26271,7 +26271,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsCreateComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsCreateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26302,7 +26302,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsCreateComment",
+			Name: GistsCreateCommentOperation,
 			ID:   "gists/create-comment",
 		}
 	)
@@ -26336,7 +26336,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsCreateComment",
+			OperationName:    GistsCreateCommentOperation,
 			OperationSummary: "Create a gist comment",
 			OperationID:      "gists/create-comment",
 			Body:             request,
@@ -26398,7 +26398,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsDelete",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26429,7 +26429,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsDelete",
+			Name: GistsDeleteOperation,
 			ID:   "gists/delete",
 		}
 	)
@@ -26448,7 +26448,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsDelete",
+			OperationName:    GistsDeleteOperation,
 			OperationSummary: "Delete a gist",
 			OperationID:      "gists/delete",
 			Body:             nil,
@@ -26510,7 +26510,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsDeleteComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsDeleteCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26541,7 +26541,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsDeleteComment",
+			Name: GistsDeleteCommentOperation,
 			ID:   "gists/delete-comment",
 		}
 	)
@@ -26560,7 +26560,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsDeleteComment",
+			OperationName:    GistsDeleteCommentOperation,
 			OperationSummary: "Delete a gist comment",
 			OperationID:      "gists/delete-comment",
 			Body:             nil,
@@ -26626,7 +26626,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsFork",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsForkOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26657,7 +26657,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsFork",
+			Name: GistsForkOperation,
 			ID:   "gists/fork",
 		}
 	)
@@ -26676,7 +26676,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsFork",
+			OperationName:    GistsForkOperation,
 			OperationSummary: "Fork a gist",
 			OperationID:      "gists/fork",
 			Body:             nil,
@@ -26738,7 +26738,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26769,7 +26769,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsGet",
+			Name: GistsGetOperation,
 			ID:   "gists/get",
 		}
 	)
@@ -26788,7 +26788,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsGet",
+			OperationName:    GistsGetOperation,
 			OperationSummary: "Get a gist",
 			OperationID:      "gists/get",
 			Body:             nil,
@@ -26850,7 +26850,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsGetComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsGetCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26881,7 +26881,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsGetComment",
+			Name: GistsGetCommentOperation,
 			ID:   "gists/get-comment",
 		}
 	)
@@ -26900,7 +26900,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsGetComment",
+			OperationName:    GistsGetCommentOperation,
 			OperationSummary: "Get a gist comment",
 			OperationID:      "gists/get-comment",
 			Body:             nil,
@@ -26966,7 +26966,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsGetRevision",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsGetRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26997,7 +26997,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsGetRevision",
+			Name: GistsGetRevisionOperation,
 			ID:   "gists/get-revision",
 		}
 	)
@@ -27016,7 +27016,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsGetRevision",
+			OperationName:    GistsGetRevisionOperation,
 			OperationSummary: "Get a gist revision",
 			OperationID:      "gists/get-revision",
 			Body:             nil,
@@ -27083,7 +27083,7 @@ func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27114,7 +27114,7 @@ func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsList",
+			Name: GistsListOperation,
 			ID:   "gists/list",
 		}
 	)
@@ -27133,7 +27133,7 @@ func (s *Server) handleGistsListRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsList",
+			OperationName:    GistsListOperation,
 			OperationSummary: "List gists for the authenticated user",
 			OperationID:      "gists/list",
 			Body:             nil,
@@ -27203,7 +27203,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsListComments",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListCommentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27234,7 +27234,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListComments",
+			Name: GistsListCommentsOperation,
 			ID:   "gists/list-comments",
 		}
 	)
@@ -27253,7 +27253,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsListComments",
+			OperationName:    GistsListCommentsOperation,
 			OperationSummary: "List gist comments",
 			OperationID:      "gists/list-comments",
 			Body:             nil,
@@ -27323,7 +27323,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsListCommits",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27354,7 +27354,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListCommits",
+			Name: GistsListCommitsOperation,
 			ID:   "gists/list-commits",
 		}
 	)
@@ -27373,7 +27373,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsListCommits",
+			OperationName:    GistsListCommitsOperation,
 			OperationSummary: "List gist commits",
 			OperationID:      "gists/list-commits",
 			Body:             nil,
@@ -27443,7 +27443,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsListForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27474,7 +27474,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListForUser",
+			Name: GistsListForUserOperation,
 			ID:   "gists/list-for-user",
 		}
 	)
@@ -27493,7 +27493,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsListForUser",
+			OperationName:    GistsListForUserOperation,
 			OperationSummary: "List gists for a user",
 			OperationID:      "gists/list-for-user",
 			Body:             nil,
@@ -27567,7 +27567,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsListForks",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListForksOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27598,7 +27598,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListForks",
+			Name: GistsListForksOperation,
 			ID:   "gists/list-forks",
 		}
 	)
@@ -27617,7 +27617,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsListForks",
+			OperationName:    GistsListForksOperation,
 			OperationSummary: "List gist forks",
 			OperationID:      "gists/list-forks",
 			Body:             nil,
@@ -27690,7 +27690,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsListPublic",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListPublicOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27721,7 +27721,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListPublic",
+			Name: GistsListPublicOperation,
 			ID:   "gists/list-public",
 		}
 	)
@@ -27740,7 +27740,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsListPublic",
+			OperationName:    GistsListPublicOperation,
 			OperationSummary: "List public gists",
 			OperationID:      "gists/list-public",
 			Body:             nil,
@@ -27810,7 +27810,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsListStarred",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsListStarredOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27841,7 +27841,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsListStarred",
+			Name: GistsListStarredOperation,
 			ID:   "gists/list-starred",
 		}
 	)
@@ -27860,7 +27860,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsListStarred",
+			OperationName:    GistsListStarredOperation,
 			OperationSummary: "List starred gists",
 			OperationID:      "gists/list-starred",
 			Body:             nil,
@@ -27932,7 +27932,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsStar",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsStarOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27963,7 +27963,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsStar",
+			Name: GistsStarOperation,
 			ID:   "gists/star",
 		}
 	)
@@ -27982,7 +27982,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsStar",
+			OperationName:    GistsStarOperation,
 			OperationSummary: "Star a gist",
 			OperationID:      "gists/star",
 			Body:             nil,
@@ -28044,7 +28044,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsUnstar",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsUnstarOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28075,7 +28075,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsUnstar",
+			Name: GistsUnstarOperation,
 			ID:   "gists/unstar",
 		}
 	)
@@ -28094,7 +28094,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsUnstar",
+			OperationName:    GistsUnstarOperation,
 			OperationSummary: "Unstar a gist",
 			OperationID:      "gists/unstar",
 			Body:             nil,
@@ -28156,7 +28156,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GistsUpdateComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GistsUpdateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28187,7 +28187,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GistsUpdateComment",
+			Name: GistsUpdateCommentOperation,
 			ID:   "gists/update-comment",
 		}
 	)
@@ -28221,7 +28221,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GistsUpdateComment",
+			OperationName:    GistsUpdateCommentOperation,
 			OperationSummary: "Update a gist comment",
 			OperationID:      "gists/update-comment",
 			Body:             request,
@@ -28287,7 +28287,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitCreateBlob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateBlobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28318,7 +28318,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateBlob",
+			Name: GitCreateBlobOperation,
 			ID:   "git/create-blob",
 		}
 	)
@@ -28352,7 +28352,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitCreateBlob",
+			OperationName:    GitCreateBlobOperation,
 			OperationSummary: "Create a blob",
 			OperationID:      "git/create-blob",
 			Body:             request,
@@ -28451,7 +28451,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitCreateCommit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28482,7 +28482,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateCommit",
+			Name: GitCreateCommitOperation,
 			ID:   "git/create-commit",
 		}
 	)
@@ -28516,7 +28516,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitCreateCommit",
+			OperationName:    GitCreateCommitOperation,
 			OperationSummary: "Create a commit",
 			OperationID:      "git/create-commit",
 			Body:             request,
@@ -28584,7 +28584,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitCreateRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28615,7 +28615,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateRef",
+			Name: GitCreateRefOperation,
 			ID:   "git/create-ref",
 		}
 	)
@@ -28649,7 +28649,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitCreateRef",
+			OperationName:    GitCreateRefOperation,
 			OperationSummary: "Create a reference",
 			OperationID:      "git/create-ref",
 			Body:             request,
@@ -28751,7 +28751,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitCreateTag",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateTagOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28782,7 +28782,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateTag",
+			Name: GitCreateTagOperation,
 			ID:   "git/create-tag",
 		}
 	)
@@ -28816,7 +28816,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitCreateTag",
+			OperationName:    GitCreateTagOperation,
 			OperationSummary: "Create a tag object",
 			OperationID:      "git/create-tag",
 			Body:             request,
@@ -28888,7 +28888,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitCreateTree",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitCreateTreeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28919,7 +28919,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitCreateTree",
+			Name: GitCreateTreeOperation,
 			ID:   "git/create-tree",
 		}
 	)
@@ -28953,7 +28953,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitCreateTree",
+			OperationName:    GitCreateTreeOperation,
 			OperationSummary: "Create a tree",
 			OperationID:      "git/create-tree",
 			Body:             request,
@@ -29019,7 +29019,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitDeleteRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitDeleteRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29050,7 +29050,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitDeleteRef",
+			Name: GitDeleteRefOperation,
 			ID:   "git/delete-ref",
 		}
 	)
@@ -29069,7 +29069,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitDeleteRef",
+			OperationName:    GitDeleteRefOperation,
 			OperationSummary: "Delete a reference",
 			OperationID:      "git/delete-ref",
 			Body:             nil,
@@ -29140,7 +29140,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitGetBlob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetBlobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29171,7 +29171,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetBlob",
+			Name: GitGetBlobOperation,
 			ID:   "git/get-blob",
 		}
 	)
@@ -29190,7 +29190,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitGetBlob",
+			OperationName:    GitGetBlobOperation,
 			OperationSummary: "Get a blob",
 			OperationID:      "git/get-blob",
 			Body:             nil,
@@ -29293,7 +29293,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitGetCommit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29324,7 +29324,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetCommit",
+			Name: GitGetCommitOperation,
 			ID:   "git/get-commit",
 		}
 	)
@@ -29343,7 +29343,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitGetCommit",
+			OperationName:    GitGetCommitOperation,
 			OperationSummary: "Get a commit",
 			OperationID:      "git/get-commit",
 			Body:             nil,
@@ -29420,7 +29420,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitGetRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29451,7 +29451,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetRef",
+			Name: GitGetRefOperation,
 			ID:   "git/get-ref",
 		}
 	)
@@ -29470,7 +29470,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitGetRef",
+			OperationName:    GitGetRefOperation,
 			OperationSummary: "Get a reference",
 			OperationID:      "git/get-ref",
 			Body:             nil,
@@ -29571,7 +29571,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitGetTag",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetTagOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29602,7 +29602,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetTag",
+			Name: GitGetTagOperation,
 			ID:   "git/get-tag",
 		}
 	)
@@ -29621,7 +29621,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitGetTag",
+			OperationName:    GitGetTagOperation,
 			OperationSummary: "Get a tag",
 			OperationID:      "git/get-tag",
 			Body:             nil,
@@ -29694,7 +29694,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitGetTree",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitGetTreeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29725,7 +29725,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitGetTree",
+			Name: GitGetTreeOperation,
 			ID:   "git/get-tree",
 		}
 	)
@@ -29744,7 +29744,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitGetTree",
+			OperationName:    GitGetTreeOperation,
 			OperationSummary: "Get a tree",
 			OperationID:      "git/get-tree",
 			Body:             nil,
@@ -29832,7 +29832,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitListMatchingRefs",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitListMatchingRefsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29863,7 +29863,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitListMatchingRefs",
+			Name: GitListMatchingRefsOperation,
 			ID:   "git/list-matching-refs",
 		}
 	)
@@ -29882,7 +29882,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitListMatchingRefs",
+			OperationName:    GitListMatchingRefsOperation,
 			OperationSummary: "List matching references",
 			OperationID:      "git/list-matching-refs",
 			Body:             nil,
@@ -29960,7 +29960,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitUpdateRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitUpdateRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29991,7 +29991,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitUpdateRef",
+			Name: GitUpdateRefOperation,
 			ID:   "git/update-ref",
 		}
 	)
@@ -30025,7 +30025,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitUpdateRef",
+			OperationName:    GitUpdateRefOperation,
 			OperationSummary: "Update a reference",
 			OperationID:      "git/update-ref",
 			Body:             request,
@@ -30096,7 +30096,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitignoreGetAllTemplates",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitignoreGetAllTemplatesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30132,7 +30132,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitignoreGetAllTemplates",
+			OperationName:    GitignoreGetAllTemplatesOperation,
 			OperationSummary: "Get all gitignore templates",
 			OperationID:      "gitignore/get-all-templates",
 			Body:             nil,
@@ -30191,7 +30191,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GitignoreGetTemplate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GitignoreGetTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30222,7 +30222,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GitignoreGetTemplate",
+			Name: GitignoreGetTemplateOperation,
 			ID:   "gitignore/get-template",
 		}
 	)
@@ -30241,7 +30241,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GitignoreGetTemplate",
+			OperationName:    GitignoreGetTemplateOperation,
 			OperationSummary: "Get a gitignore template",
 			OperationID:      "gitignore/get-template",
 			Body:             nil,
@@ -30303,7 +30303,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "InteractionsRemoveRestrictionsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsRemoveRestrictionsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30339,7 +30339,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "InteractionsRemoveRestrictionsForAuthenticatedUser",
+			OperationName:    InteractionsRemoveRestrictionsForAuthenticatedUserOperation,
 			OperationSummary: "Remove interaction restrictions from your public repositories",
 			OperationID:      "interactions/remove-restrictions-for-authenticated-user",
 			Body:             nil,
@@ -30397,7 +30397,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "InteractionsRemoveRestrictionsForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsRemoveRestrictionsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30428,7 +30428,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsRemoveRestrictionsForOrg",
+			Name: InteractionsRemoveRestrictionsForOrgOperation,
 			ID:   "interactions/remove-restrictions-for-org",
 		}
 	)
@@ -30447,7 +30447,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "InteractionsRemoveRestrictionsForOrg",
+			OperationName:    InteractionsRemoveRestrictionsForOrgOperation,
 			OperationSummary: "Remove interaction restrictions for an organization",
 			OperationID:      "interactions/remove-restrictions-for-org",
 			Body:             nil,
@@ -30512,7 +30512,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "InteractionsRemoveRestrictionsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsRemoveRestrictionsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30543,7 +30543,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsRemoveRestrictionsForRepo",
+			Name: InteractionsRemoveRestrictionsForRepoOperation,
 			ID:   "interactions/remove-restrictions-for-repo",
 		}
 	)
@@ -30562,7 +30562,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "InteractionsRemoveRestrictionsForRepo",
+			OperationName:    InteractionsRemoveRestrictionsForRepoOperation,
 			OperationSummary: "Remove interaction restrictions for a repository",
 			OperationID:      "interactions/remove-restrictions-for-repo",
 			Body:             nil,
@@ -30630,7 +30630,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "InteractionsSetRestrictionsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsSetRestrictionsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30661,7 +30661,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsSetRestrictionsForAuthenticatedUser",
+			Name: InteractionsSetRestrictionsForAuthenticatedUserOperation,
 			ID:   "interactions/set-restrictions-for-authenticated-user",
 		}
 	)
@@ -30685,7 +30685,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "InteractionsSetRestrictionsForAuthenticatedUser",
+			OperationName:    InteractionsSetRestrictionsForAuthenticatedUserOperation,
 			OperationSummary: "Set interaction restrictions for your public repositories",
 			OperationID:      "interactions/set-restrictions-for-authenticated-user",
 			Body:             request,
@@ -30745,7 +30745,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "InteractionsSetRestrictionsForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsSetRestrictionsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30776,7 +30776,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsSetRestrictionsForOrg",
+			Name: InteractionsSetRestrictionsForOrgOperation,
 			ID:   "interactions/set-restrictions-for-org",
 		}
 	)
@@ -30810,7 +30810,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "InteractionsSetRestrictionsForOrg",
+			OperationName:    InteractionsSetRestrictionsForOrgOperation,
 			OperationSummary: "Set interaction restrictions for an organization",
 			OperationID:      "interactions/set-restrictions-for-org",
 			Body:             request,
@@ -30875,7 +30875,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "InteractionsSetRestrictionsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), InteractionsSetRestrictionsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30906,7 +30906,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "InteractionsSetRestrictionsForRepo",
+			Name: InteractionsSetRestrictionsForRepoOperation,
 			ID:   "interactions/set-restrictions-for-repo",
 		}
 	)
@@ -30940,7 +30940,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "InteractionsSetRestrictionsForRepo",
+			OperationName:    InteractionsSetRestrictionsForRepoOperation,
 			OperationSummary: "Set interaction restrictions for a repository",
 			OperationID:      "interactions/set-restrictions-for-repo",
 			Body:             request,
@@ -31006,7 +31006,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesAddAssignees",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesAddAssigneesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31037,7 +31037,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesAddAssignees",
+			Name: IssuesAddAssigneesOperation,
 			ID:   "issues/add-assignees",
 		}
 	)
@@ -31071,7 +31071,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesAddAssignees",
+			OperationName:    IssuesAddAssigneesOperation,
 			OperationSummary: "Add assignees to an issue",
 			OperationID:      "issues/add-assignees",
 			Body:             request,
@@ -31144,7 +31144,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesCheckUserCanBeAssigned",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCheckUserCanBeAssignedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31175,7 +31175,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCheckUserCanBeAssigned",
+			Name: IssuesCheckUserCanBeAssignedOperation,
 			ID:   "issues/check-user-can-be-assigned",
 		}
 	)
@@ -31194,7 +31194,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesCheckUserCanBeAssigned",
+			OperationName:    IssuesCheckUserCanBeAssignedOperation,
 			OperationSummary: "Check if a user can be assigned",
 			OperationID:      "issues/check-user-can-be-assigned",
 			Body:             nil,
@@ -31273,7 +31273,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesCreate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31304,7 +31304,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreate",
+			Name: IssuesCreateOperation,
 			ID:   "issues/create",
 		}
 	)
@@ -31338,7 +31338,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesCreate",
+			OperationName:    IssuesCreateOperation,
 			OperationSummary: "Create an issue",
 			OperationID:      "issues/create",
 			Body:             request,
@@ -31410,7 +31410,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesCreateComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31441,7 +31441,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreateComment",
+			Name: IssuesCreateCommentOperation,
 			ID:   "issues/create-comment",
 		}
 	)
@@ -31475,7 +31475,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesCreateComment",
+			OperationName:    IssuesCreateCommentOperation,
 			OperationSummary: "Create an issue comment",
 			OperationID:      "issues/create-comment",
 			Body:             request,
@@ -31545,7 +31545,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesCreateLabel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31576,7 +31576,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreateLabel",
+			Name: IssuesCreateLabelOperation,
 			ID:   "issues/create-label",
 		}
 	)
@@ -31610,7 +31610,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesCreateLabel",
+			OperationName:    IssuesCreateLabelOperation,
 			OperationSummary: "Create a label",
 			OperationID:      "issues/create-label",
 			Body:             request,
@@ -31676,7 +31676,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesCreateMilestone",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesCreateMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31707,7 +31707,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesCreateMilestone",
+			Name: IssuesCreateMilestoneOperation,
 			ID:   "issues/create-milestone",
 		}
 	)
@@ -31741,7 +31741,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesCreateMilestone",
+			OperationName:    IssuesCreateMilestoneOperation,
 			OperationSummary: "Create a milestone",
 			OperationID:      "issues/create-milestone",
 			Body:             request,
@@ -31807,7 +31807,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesDeleteComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesDeleteCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31838,7 +31838,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesDeleteComment",
+			Name: IssuesDeleteCommentOperation,
 			ID:   "issues/delete-comment",
 		}
 	)
@@ -31857,7 +31857,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesDeleteComment",
+			OperationName:    IssuesDeleteCommentOperation,
 			OperationSummary: "Delete an issue comment",
 			OperationID:      "issues/delete-comment",
 			Body:             nil,
@@ -31927,7 +31927,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesDeleteLabel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesDeleteLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31958,7 +31958,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesDeleteLabel",
+			Name: IssuesDeleteLabelOperation,
 			ID:   "issues/delete-label",
 		}
 	)
@@ -31977,7 +31977,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesDeleteLabel",
+			OperationName:    IssuesDeleteLabelOperation,
 			OperationSummary: "Delete a label",
 			OperationID:      "issues/delete-label",
 			Body:             nil,
@@ -32047,7 +32047,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesDeleteMilestone",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesDeleteMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32078,7 +32078,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesDeleteMilestone",
+			Name: IssuesDeleteMilestoneOperation,
 			ID:   "issues/delete-milestone",
 		}
 	)
@@ -32097,7 +32097,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesDeleteMilestone",
+			OperationName:    IssuesDeleteMilestoneOperation,
 			OperationSummary: "Delete a milestone",
 			OperationID:      "issues/delete-milestone",
 			Body:             nil,
@@ -32185,7 +32185,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32216,7 +32216,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGet",
+			Name: IssuesGetOperation,
 			ID:   "issues/get",
 		}
 	)
@@ -32235,7 +32235,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesGet",
+			OperationName:    IssuesGetOperation,
 			OperationSummary: "Get an issue",
 			OperationID:      "issues/get",
 			Body:             nil,
@@ -32305,7 +32305,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesGetComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32336,7 +32336,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetComment",
+			Name: IssuesGetCommentOperation,
 			ID:   "issues/get-comment",
 		}
 	)
@@ -32355,7 +32355,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesGetComment",
+			OperationName:    IssuesGetCommentOperation,
 			OperationSummary: "Get an issue comment",
 			OperationID:      "issues/get-comment",
 			Body:             nil,
@@ -32425,7 +32425,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesGetEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32456,7 +32456,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetEvent",
+			Name: IssuesGetEventOperation,
 			ID:   "issues/get-event",
 		}
 	)
@@ -32475,7 +32475,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesGetEvent",
+			OperationName:    IssuesGetEventOperation,
 			OperationSummary: "Get an issue event",
 			OperationID:      "issues/get-event",
 			Body:             nil,
@@ -32545,7 +32545,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesGetLabel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32576,7 +32576,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetLabel",
+			Name: IssuesGetLabelOperation,
 			ID:   "issues/get-label",
 		}
 	)
@@ -32595,7 +32595,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesGetLabel",
+			OperationName:    IssuesGetLabelOperation,
 			OperationSummary: "Get a label",
 			OperationID:      "issues/get-label",
 			Body:             nil,
@@ -32665,7 +32665,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesGetMilestone",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesGetMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32696,7 +32696,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesGetMilestone",
+			Name: IssuesGetMilestoneOperation,
 			ID:   "issues/get-milestone",
 		}
 	)
@@ -32715,7 +32715,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesGetMilestone",
+			OperationName:    IssuesGetMilestoneOperation,
 			OperationSummary: "Get a milestone",
 			OperationID:      "issues/get-milestone",
 			Body:             nil,
@@ -32797,7 +32797,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32828,7 +32828,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesList",
+			Name: IssuesListOperation,
 			ID:   "issues/list",
 		}
 	)
@@ -32847,7 +32847,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesList",
+			OperationName:    IssuesListOperation,
 			OperationSummary: "List issues assigned to the authenticated user",
 			OperationID:      "issues/list",
 			Body:             nil,
@@ -32954,7 +32954,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListAssignees",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListAssigneesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32985,7 +32985,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListAssignees",
+			Name: IssuesListAssigneesOperation,
 			ID:   "issues/list-assignees",
 		}
 	)
@@ -33004,7 +33004,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListAssignees",
+			OperationName:    IssuesListAssigneesOperation,
 			OperationSummary: "List assignees",
 			OperationID:      "issues/list-assignees",
 			Body:             nil,
@@ -33078,7 +33078,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListComments",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListCommentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33109,7 +33109,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListComments",
+			Name: IssuesListCommentsOperation,
 			ID:   "issues/list-comments",
 		}
 	)
@@ -33128,7 +33128,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListComments",
+			OperationName:    IssuesListCommentsOperation,
 			OperationSummary: "List issue comments",
 			OperationID:      "issues/list-comments",
 			Body:             nil,
@@ -33210,7 +33210,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListCommentsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListCommentsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33241,7 +33241,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListCommentsForRepo",
+			Name: IssuesListCommentsForRepoOperation,
 			ID:   "issues/list-comments-for-repo",
 		}
 	)
@@ -33260,7 +33260,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListCommentsForRepo",
+			OperationName:    IssuesListCommentsForRepoOperation,
 			OperationSummary: "List issue comments for a repository",
 			OperationID:      "issues/list-comments-for-repo",
 			Body:             nil,
@@ -33346,7 +33346,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListEventsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListEventsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33377,7 +33377,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListEventsForRepo",
+			Name: IssuesListEventsForRepoOperation,
 			ID:   "issues/list-events-for-repo",
 		}
 	)
@@ -33396,7 +33396,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListEventsForRepo",
+			OperationName:    IssuesListEventsForRepoOperation,
 			OperationSummary: "List issue events for a repository",
 			OperationID:      "issues/list-events-for-repo",
 			Body:             nil,
@@ -33478,7 +33478,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33509,7 +33509,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListForAuthenticatedUser",
+			Name: IssuesListForAuthenticatedUserOperation,
 			ID:   "issues/list-for-authenticated-user",
 		}
 	)
@@ -33528,7 +33528,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListForAuthenticatedUser",
+			OperationName:    IssuesListForAuthenticatedUserOperation,
 			OperationSummary: "List user account issues assigned to the authenticated user",
 			OperationID:      "issues/list-for-authenticated-user",
 			Body:             nil,
@@ -33626,7 +33626,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33657,7 +33657,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListForOrg",
+			Name: IssuesListForOrgOperation,
 			ID:   "issues/list-for-org",
 		}
 	)
@@ -33676,7 +33676,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListForOrg",
+			OperationName:    IssuesListForOrgOperation,
 			OperationSummary: "List organization issues assigned to the authenticated user",
 			OperationID:      "issues/list-for-org",
 			Body:             nil,
@@ -33778,7 +33778,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33809,7 +33809,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListForRepo",
+			Name: IssuesListForRepoOperation,
 			ID:   "issues/list-for-repo",
 		}
 	)
@@ -33828,7 +33828,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListForRepo",
+			OperationName:    IssuesListForRepoOperation,
 			OperationSummary: "List repository issues",
 			OperationID:      "issues/list-for-repo",
 			Body:             nil,
@@ -33938,7 +33938,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListLabelsForMilestone",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListLabelsForMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33969,7 +33969,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListLabelsForMilestone",
+			Name: IssuesListLabelsForMilestoneOperation,
 			ID:   "issues/list-labels-for-milestone",
 		}
 	)
@@ -33988,7 +33988,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListLabelsForMilestone",
+			OperationName:    IssuesListLabelsForMilestoneOperation,
 			OperationSummary: "List labels for issues in a milestone",
 			OperationID:      "issues/list-labels-for-milestone",
 			Body:             nil,
@@ -34066,7 +34066,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListLabelsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListLabelsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34097,7 +34097,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListLabelsForRepo",
+			Name: IssuesListLabelsForRepoOperation,
 			ID:   "issues/list-labels-for-repo",
 		}
 	)
@@ -34116,7 +34116,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListLabelsForRepo",
+			OperationName:    IssuesListLabelsForRepoOperation,
 			OperationSummary: "List labels for a repository",
 			OperationID:      "issues/list-labels-for-repo",
 			Body:             nil,
@@ -34190,7 +34190,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListLabelsOnIssue",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListLabelsOnIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34221,7 +34221,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListLabelsOnIssue",
+			Name: IssuesListLabelsOnIssueOperation,
 			ID:   "issues/list-labels-on-issue",
 		}
 	)
@@ -34240,7 +34240,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListLabelsOnIssue",
+			OperationName:    IssuesListLabelsOnIssueOperation,
 			OperationSummary: "List labels for an issue",
 			OperationID:      "issues/list-labels-on-issue",
 			Body:             nil,
@@ -34318,7 +34318,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesListMilestones",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesListMilestonesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34349,7 +34349,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesListMilestones",
+			Name: IssuesListMilestonesOperation,
 			ID:   "issues/list-milestones",
 		}
 	)
@@ -34368,7 +34368,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesListMilestones",
+			OperationName:    IssuesListMilestonesOperation,
 			OperationSummary: "List milestones",
 			OperationID:      "issues/list-milestones",
 			Body:             nil,
@@ -34457,7 +34457,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesLock",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesLockOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34488,7 +34488,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesLock",
+			Name: IssuesLockOperation,
 			ID:   "issues/lock",
 		}
 	)
@@ -34522,7 +34522,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesLock",
+			OperationName:    IssuesLockOperation,
 			OperationSummary: "Lock an issue",
 			OperationID:      "issues/lock",
 			Body:             request,
@@ -34592,7 +34592,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesRemoveAllLabels",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesRemoveAllLabelsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34623,7 +34623,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesRemoveAllLabels",
+			Name: IssuesRemoveAllLabelsOperation,
 			ID:   "issues/remove-all-labels",
 		}
 	)
@@ -34642,7 +34642,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesRemoveAllLabels",
+			OperationName:    IssuesRemoveAllLabelsOperation,
 			OperationSummary: "Remove all labels from an issue",
 			OperationID:      "issues/remove-all-labels",
 			Body:             nil,
@@ -34712,7 +34712,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesRemoveAssignees",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesRemoveAssigneesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34743,7 +34743,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesRemoveAssignees",
+			Name: IssuesRemoveAssigneesOperation,
 			ID:   "issues/remove-assignees",
 		}
 	)
@@ -34777,7 +34777,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesRemoveAssignees",
+			OperationName:    IssuesRemoveAssigneesOperation,
 			OperationSummary: "Remove assignees from an issue",
 			OperationID:      "issues/remove-assignees",
 			Body:             request,
@@ -34848,7 +34848,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesRemoveLabel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesRemoveLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34879,7 +34879,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesRemoveLabel",
+			Name: IssuesRemoveLabelOperation,
 			ID:   "issues/remove-label",
 		}
 	)
@@ -34898,7 +34898,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesRemoveLabel",
+			OperationName:    IssuesRemoveLabelOperation,
 			OperationSummary: "Remove a label from an issue",
 			OperationID:      "issues/remove-label",
 			Body:             nil,
@@ -34972,7 +34972,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesUnlock",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUnlockOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35003,7 +35003,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUnlock",
+			Name: IssuesUnlockOperation,
 			ID:   "issues/unlock",
 		}
 	)
@@ -35022,7 +35022,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesUnlock",
+			OperationName:    IssuesUnlockOperation,
 			OperationSummary: "Unlock an issue",
 			OperationID:      "issues/unlock",
 			Body:             nil,
@@ -35092,7 +35092,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesUpdate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35123,7 +35123,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdate",
+			Name: IssuesUpdateOperation,
 			ID:   "issues/update",
 		}
 	)
@@ -35157,7 +35157,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesUpdate",
+			OperationName:    IssuesUpdateOperation,
 			OperationSummary: "Update an issue",
 			OperationID:      "issues/update",
 			Body:             request,
@@ -35227,7 +35227,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesUpdateComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35258,7 +35258,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdateComment",
+			Name: IssuesUpdateCommentOperation,
 			ID:   "issues/update-comment",
 		}
 	)
@@ -35292,7 +35292,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesUpdateComment",
+			OperationName:    IssuesUpdateCommentOperation,
 			OperationSummary: "Update an issue comment",
 			OperationID:      "issues/update-comment",
 			Body:             request,
@@ -35362,7 +35362,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesUpdateLabel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35393,7 +35393,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdateLabel",
+			Name: IssuesUpdateLabelOperation,
 			ID:   "issues/update-label",
 		}
 	)
@@ -35427,7 +35427,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesUpdateLabel",
+			OperationName:    IssuesUpdateLabelOperation,
 			OperationSummary: "Update a label",
 			OperationID:      "issues/update-label",
 			Body:             request,
@@ -35497,7 +35497,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IssuesUpdateMilestone",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IssuesUpdateMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35528,7 +35528,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IssuesUpdateMilestone",
+			Name: IssuesUpdateMilestoneOperation,
 			ID:   "issues/update-milestone",
 		}
 	)
@@ -35562,7 +35562,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IssuesUpdateMilestone",
+			OperationName:    IssuesUpdateMilestoneOperation,
 			OperationSummary: "Update a milestone",
 			OperationID:      "issues/update-milestone",
 			Body:             request,
@@ -35632,7 +35632,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "LicensesGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), LicensesGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35663,7 +35663,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LicensesGet",
+			Name: LicensesGetOperation,
 			ID:   "licenses/get",
 		}
 	)
@@ -35682,7 +35682,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "LicensesGet",
+			OperationName:    LicensesGetOperation,
 			OperationSummary: "Get a license",
 			OperationID:      "licenses/get",
 			Body:             nil,
@@ -35744,7 +35744,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "LicensesGetAllCommonlyUsed",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), LicensesGetAllCommonlyUsedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35775,7 +35775,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LicensesGetAllCommonlyUsed",
+			Name: LicensesGetAllCommonlyUsedOperation,
 			ID:   "licenses/get-all-commonly-used",
 		}
 	)
@@ -35794,7 +35794,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "LicensesGetAllCommonlyUsed",
+			OperationName:    LicensesGetAllCommonlyUsedOperation,
 			OperationSummary: "Get all commonly used licenses",
 			OperationID:      "licenses/get-all-commonly-used",
 			Body:             nil,
@@ -35868,7 +35868,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "LicensesGetForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), LicensesGetForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35899,7 +35899,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LicensesGetForRepo",
+			Name: LicensesGetForRepoOperation,
 			ID:   "licenses/get-for-repo",
 		}
 	)
@@ -35918,7 +35918,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "LicensesGetForRepo",
+			OperationName:    LicensesGetForRepoOperation,
 			OperationSummary: "Get the license for a repository",
 			OperationID:      "licenses/get-for-repo",
 			Body:             nil,
@@ -35984,7 +35984,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarkdownRender",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MarkdownRenderOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36015,7 +36015,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarkdownRender",
+			Name: MarkdownRenderOperation,
 			ID:   "markdown/render",
 		}
 	)
@@ -36039,7 +36039,7 @@ func (s *Server) handleMarkdownRenderRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MarkdownRender",
+			OperationName:    MarkdownRenderOperation,
 			OperationSummary: "Render a Markdown document",
 			OperationID:      "markdown/render",
 			Body:             request,
@@ -36099,7 +36099,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarkdownRenderRaw",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MarkdownRenderRawOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36130,7 +36130,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MarkdownRenderRaw",
+			Name: MarkdownRenderRawOperation,
 			ID:   "markdown/render-raw",
 		}
 	)
@@ -36154,7 +36154,7 @@ func (s *Server) handleMarkdownRenderRawRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MarkdownRenderRaw",
+			OperationName:    MarkdownRenderRawOperation,
 			OperationSummary: "Render a Markdown document in raw mode",
 			OperationID:      "markdown/render-raw",
 			Body:             request,
@@ -36215,7 +36215,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MetaGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36251,7 +36251,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MetaGet",
+			OperationName:    MetaGetOperation,
 			OperationSummary: "Get GitHub meta information",
 			OperationID:      "meta/get",
 			Body:             nil,
@@ -36308,7 +36308,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MetaGetOctocat",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaGetOctocatOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36339,7 +36339,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MetaGetOctocat",
+			Name: MetaGetOctocatOperation,
 			ID:   "meta/get-octocat",
 		}
 	)
@@ -36358,7 +36358,7 @@ func (s *Server) handleMetaGetOctocatRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MetaGetOctocat",
+			OperationName:    MetaGetOctocatOperation,
 			OperationSummary: "Get Octocat",
 			OperationID:      "meta/get-octocat",
 			Body:             nil,
@@ -36420,7 +36420,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MetaGetZen",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaGetZenOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36456,7 +36456,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MetaGetZen",
+			OperationName:    MetaGetZenOperation,
 			OperationSummary: "Get the Zen of GitHub",
 			OperationID:      "meta/get-zen",
 			Body:             nil,
@@ -36513,7 +36513,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MetaRoot",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MetaRootOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36549,7 +36549,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MetaRoot",
+			OperationName:    MetaRootOperation,
 			OperationSummary: "GitHub API Root",
 			OperationID:      "meta/root",
 			Body:             nil,
@@ -36606,7 +36606,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsCancelImport",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsCancelImportOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36637,7 +36637,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsCancelImport",
+			Name: MigrationsCancelImportOperation,
 			ID:   "migrations/cancel-import",
 		}
 	)
@@ -36656,7 +36656,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsCancelImport",
+			OperationName:    MigrationsCancelImportOperation,
 			OperationSummary: "Cancel an import",
 			OperationID:      "migrations/cancel-import",
 			Body:             nil,
@@ -36726,7 +36726,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsDeleteArchiveForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsDeleteArchiveForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36757,7 +36757,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsDeleteArchiveForAuthenticatedUser",
+			Name: MigrationsDeleteArchiveForAuthenticatedUserOperation,
 			ID:   "migrations/delete-archive-for-authenticated-user",
 		}
 	)
@@ -36776,7 +36776,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsDeleteArchiveForAuthenticatedUser",
+			OperationName:    MigrationsDeleteArchiveForAuthenticatedUserOperation,
 			OperationSummary: "Delete a user migration archive",
 			OperationID:      "migrations/delete-archive-for-authenticated-user",
 			Body:             nil,
@@ -36839,7 +36839,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsDeleteArchiveForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsDeleteArchiveForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36870,7 +36870,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsDeleteArchiveForOrg",
+			Name: MigrationsDeleteArchiveForOrgOperation,
 			ID:   "migrations/delete-archive-for-org",
 		}
 	)
@@ -36889,7 +36889,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsDeleteArchiveForOrg",
+			OperationName:    MigrationsDeleteArchiveForOrgOperation,
 			OperationSummary: "Delete an organization migration archive",
 			OperationID:      "migrations/delete-archive-for-org",
 			Body:             nil,
@@ -36955,7 +36955,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsDownloadArchiveForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsDownloadArchiveForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36986,7 +36986,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsDownloadArchiveForOrg",
+			Name: MigrationsDownloadArchiveForOrgOperation,
 			ID:   "migrations/download-archive-for-org",
 		}
 	)
@@ -37005,7 +37005,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsDownloadArchiveForOrg",
+			OperationName:    MigrationsDownloadArchiveForOrgOperation,
 			OperationSummary: "Download an organization migration archive",
 			OperationID:      "migrations/download-archive-for-org",
 			Body:             nil,
@@ -37091,7 +37091,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsGetArchiveForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetArchiveForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37122,7 +37122,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetArchiveForAuthenticatedUser",
+			Name: MigrationsGetArchiveForAuthenticatedUserOperation,
 			ID:   "migrations/get-archive-for-authenticated-user",
 		}
 	)
@@ -37141,7 +37141,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsGetArchiveForAuthenticatedUser",
+			OperationName:    MigrationsGetArchiveForAuthenticatedUserOperation,
 			OperationSummary: "Download a user migration archive",
 			OperationID:      "migrations/get-archive-for-authenticated-user",
 			Body:             nil,
@@ -37210,7 +37210,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsGetCommitAuthors",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetCommitAuthorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37241,7 +37241,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetCommitAuthors",
+			Name: MigrationsGetCommitAuthorsOperation,
 			ID:   "migrations/get-commit-authors",
 		}
 	)
@@ -37260,7 +37260,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsGetCommitAuthors",
+			OperationName:    MigrationsGetCommitAuthorsOperation,
 			OperationSummary: "Get commit authors",
 			OperationID:      "migrations/get-commit-authors",
 			Body:             nil,
@@ -37382,7 +37382,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsGetImportStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetImportStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37413,7 +37413,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetImportStatus",
+			Name: MigrationsGetImportStatusOperation,
 			ID:   "migrations/get-import-status",
 		}
 	)
@@ -37432,7 +37432,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsGetImportStatus",
+			OperationName:    MigrationsGetImportStatusOperation,
 			OperationSummary: "Get an import status",
 			OperationID:      "migrations/get-import-status",
 			Body:             nil,
@@ -37498,7 +37498,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsGetLargeFiles",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetLargeFilesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37529,7 +37529,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetLargeFiles",
+			Name: MigrationsGetLargeFilesOperation,
 			ID:   "migrations/get-large-files",
 		}
 	)
@@ -37548,7 +37548,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsGetLargeFiles",
+			OperationName:    MigrationsGetLargeFilesOperation,
 			OperationSummary: "Get large files",
 			OperationID:      "migrations/get-large-files",
 			Body:             nil,
@@ -37621,7 +37621,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsGetStatusForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetStatusForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37652,7 +37652,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetStatusForAuthenticatedUser",
+			Name: MigrationsGetStatusForAuthenticatedUserOperation,
 			ID:   "migrations/get-status-for-authenticated-user",
 		}
 	)
@@ -37671,7 +37671,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsGetStatusForAuthenticatedUser",
+			OperationName:    MigrationsGetStatusForAuthenticatedUserOperation,
 			OperationSummary: "Get a user migration status",
 			OperationID:      "migrations/get-status-for-authenticated-user",
 			Body:             nil,
@@ -37742,7 +37742,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsGetStatusForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsGetStatusForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37773,7 +37773,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsGetStatusForOrg",
+			Name: MigrationsGetStatusForOrgOperation,
 			ID:   "migrations/get-status-for-org",
 		}
 	)
@@ -37792,7 +37792,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsGetStatusForOrg",
+			OperationName:    MigrationsGetStatusForOrgOperation,
 			OperationSummary: "Get an organization migration status",
 			OperationID:      "migrations/get-status-for-org",
 			Body:             nil,
@@ -37862,7 +37862,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsListForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37893,7 +37893,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListForAuthenticatedUser",
+			Name: MigrationsListForAuthenticatedUserOperation,
 			ID:   "migrations/list-for-authenticated-user",
 		}
 	)
@@ -37912,7 +37912,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsListForAuthenticatedUser",
+			OperationName:    MigrationsListForAuthenticatedUserOperation,
 			OperationSummary: "List user migrations",
 			OperationID:      "migrations/list-for-authenticated-user",
 			Body:             nil,
@@ -37978,7 +37978,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsListForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38009,7 +38009,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListForOrg",
+			Name: MigrationsListForOrgOperation,
 			ID:   "migrations/list-for-org",
 		}
 	)
@@ -38028,7 +38028,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsListForOrg",
+			OperationName:    MigrationsListForOrgOperation,
 			OperationSummary: "List organization migrations",
 			OperationID:      "migrations/list-for-org",
 			Body:             nil,
@@ -38102,7 +38102,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsListReposForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListReposForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38133,7 +38133,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListReposForOrg",
+			Name: MigrationsListReposForOrgOperation,
 			ID:   "migrations/list-repos-for-org",
 		}
 	)
@@ -38152,7 +38152,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsListReposForOrg",
+			OperationName:    MigrationsListReposForOrgOperation,
 			OperationSummary: "List repositories in an organization migration",
 			OperationID:      "migrations/list-repos-for-org",
 			Body:             nil,
@@ -38226,7 +38226,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsListReposForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsListReposForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38257,7 +38257,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsListReposForUser",
+			Name: MigrationsListReposForUserOperation,
 			ID:   "migrations/list-repos-for-user",
 		}
 	)
@@ -38276,7 +38276,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsListReposForUser",
+			OperationName:    MigrationsListReposForUserOperation,
 			OperationSummary: "List repositories for a user migration",
 			OperationID:      "migrations/list-repos-for-user",
 			Body:             nil,
@@ -38347,7 +38347,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsMapCommitAuthor",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsMapCommitAuthorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38378,7 +38378,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsMapCommitAuthor",
+			Name: MigrationsMapCommitAuthorOperation,
 			ID:   "migrations/map-commit-author",
 		}
 	)
@@ -38412,7 +38412,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsMapCommitAuthor",
+			OperationName:    MigrationsMapCommitAuthorOperation,
 			OperationSummary: "Map a commit author",
 			OperationID:      "migrations/map-commit-author",
 			Body:             request,
@@ -38485,7 +38485,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsSetLfsPreference",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsSetLfsPreferenceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38516,7 +38516,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsSetLfsPreference",
+			Name: MigrationsSetLfsPreferenceOperation,
 			ID:   "migrations/set-lfs-preference",
 		}
 	)
@@ -38550,7 +38550,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsSetLfsPreference",
+			OperationName:    MigrationsSetLfsPreferenceOperation,
 			OperationSummary: "Update Git LFS preference",
 			OperationID:      "migrations/set-lfs-preference",
 			Body:             request,
@@ -38616,7 +38616,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsStartForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsStartForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38647,7 +38647,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsStartForAuthenticatedUser",
+			Name: MigrationsStartForAuthenticatedUserOperation,
 			ID:   "migrations/start-for-authenticated-user",
 		}
 	)
@@ -38671,7 +38671,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsStartForAuthenticatedUser",
+			OperationName:    MigrationsStartForAuthenticatedUserOperation,
 			OperationSummary: "Start a user migration",
 			OperationID:      "migrations/start-for-authenticated-user",
 			Body:             request,
@@ -38728,7 +38728,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsStartForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsStartForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38759,7 +38759,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsStartForOrg",
+			Name: MigrationsStartForOrgOperation,
 			ID:   "migrations/start-for-org",
 		}
 	)
@@ -38793,7 +38793,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsStartForOrg",
+			OperationName:    MigrationsStartForOrgOperation,
 			OperationSummary: "Start an organization migration",
 			OperationID:      "migrations/start-for-org",
 			Body:             request,
@@ -38855,7 +38855,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsStartImport",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsStartImportOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38886,7 +38886,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsStartImport",
+			Name: MigrationsStartImportOperation,
 			ID:   "migrations/start-import",
 		}
 	)
@@ -38920,7 +38920,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsStartImport",
+			OperationName:    MigrationsStartImportOperation,
 			OperationSummary: "Start an import",
 			OperationID:      "migrations/start-import",
 			Body:             request,
@@ -38990,7 +38990,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsUnlockRepoForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsUnlockRepoForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39021,7 +39021,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsUnlockRepoForAuthenticatedUser",
+			Name: MigrationsUnlockRepoForAuthenticatedUserOperation,
 			ID:   "migrations/unlock-repo-for-authenticated-user",
 		}
 	)
@@ -39040,7 +39040,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsUnlockRepoForAuthenticatedUser",
+			OperationName:    MigrationsUnlockRepoForAuthenticatedUserOperation,
 			OperationSummary: "Unlock a user repository",
 			OperationID:      "migrations/unlock-repo-for-authenticated-user",
 			Body:             nil,
@@ -39108,7 +39108,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsUnlockRepoForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsUnlockRepoForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39139,7 +39139,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsUnlockRepoForOrg",
+			Name: MigrationsUnlockRepoForOrgOperation,
 			ID:   "migrations/unlock-repo-for-org",
 		}
 	)
@@ -39158,7 +39158,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsUnlockRepoForOrg",
+			OperationName:    MigrationsUnlockRepoForOrgOperation,
 			OperationSummary: "Unlock an organization repository",
 			OperationID:      "migrations/unlock-repo-for-org",
 			Body:             nil,
@@ -39230,7 +39230,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MigrationsUpdateImport",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), MigrationsUpdateImportOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39261,7 +39261,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "MigrationsUpdateImport",
+			Name: MigrationsUpdateImportOperation,
 			ID:   "migrations/update-import",
 		}
 	)
@@ -39295,7 +39295,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "MigrationsUpdateImport",
+			OperationName:    MigrationsUpdateImportOperation,
 			OperationSummary: "Update an import",
 			OperationID:      "migrations/update-import",
 			Body:             request,
@@ -39390,7 +39390,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsCreateAuthorization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsCreateAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39421,7 +39421,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsCreateAuthorization",
+			Name: OAuthAuthorizationsCreateAuthorizationOperation,
 			ID:   "oauth-authorizations/create-authorization",
 		}
 	)
@@ -39445,7 +39445,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsCreateAuthorization",
+			OperationName:    OAuthAuthorizationsCreateAuthorizationOperation,
 			OperationSummary: "Create a new authorization",
 			OperationID:      "oauth-authorizations/create-authorization",
 			Body:             request,
@@ -39511,7 +39511,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsDeleteAuthorization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsDeleteAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39542,7 +39542,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsDeleteAuthorization",
+			Name: OAuthAuthorizationsDeleteAuthorizationOperation,
 			ID:   "oauth-authorizations/delete-authorization",
 		}
 	)
@@ -39561,7 +39561,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsDeleteAuthorization",
+			OperationName:    OAuthAuthorizationsDeleteAuthorizationOperation,
 			OperationSummary: "Delete an authorization",
 			OperationID:      "oauth-authorizations/delete-authorization",
 			Body:             nil,
@@ -39635,7 +39635,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsDeleteGrant",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsDeleteGrantOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39666,7 +39666,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsDeleteGrant",
+			Name: OAuthAuthorizationsDeleteGrantOperation,
 			ID:   "oauth-authorizations/delete-grant",
 		}
 	)
@@ -39685,7 +39685,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsDeleteGrant",
+			OperationName:    OAuthAuthorizationsDeleteGrantOperation,
 			OperationSummary: "Delete a grant",
 			OperationID:      "oauth-authorizations/delete-grant",
 			Body:             nil,
@@ -39756,7 +39756,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsGetAuthorization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39787,7 +39787,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetAuthorization",
+			Name: OAuthAuthorizationsGetAuthorizationOperation,
 			ID:   "oauth-authorizations/get-authorization",
 		}
 	)
@@ -39806,7 +39806,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsGetAuthorization",
+			OperationName:    OAuthAuthorizationsGetAuthorizationOperation,
 			OperationSummary: "Get a single authorization",
 			OperationID:      "oauth-authorizations/get-authorization",
 			Body:             nil,
@@ -39877,7 +39877,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsGetGrant",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetGrantOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39908,7 +39908,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetGrant",
+			Name: OAuthAuthorizationsGetGrantOperation,
 			ID:   "oauth-authorizations/get-grant",
 		}
 	)
@@ -39927,7 +39927,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsGetGrant",
+			OperationName:    OAuthAuthorizationsGetGrantOperation,
 			OperationSummary: "Get a single grant",
 			OperationID:      "oauth-authorizations/get-grant",
 			Body:             nil,
@@ -40017,7 +40017,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetOrCreateAuthorizationForAppOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40048,7 +40048,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			Name: OAuthAuthorizationsGetOrCreateAuthorizationForAppOperation,
 			ID:   "oauth-authorizations/get-or-create-authorization-for-app",
 		}
 	)
@@ -40082,7 +40082,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			OperationName:    OAuthAuthorizationsGetOrCreateAuthorizationForAppOperation,
 			OperationSummary: "Get-or-create an authorization for a specific app",
 			OperationID:      "oauth-authorizations/get-or-create-authorization-for-app",
 			Body:             request,
@@ -40167,7 +40167,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40198,7 +40198,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			Name: OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOperation,
 			ID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
 		}
 	)
@@ -40232,7 +40232,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			OperationName:    OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOperation,
 			OperationSummary: "Get-or-create an authorization for a specific app and fingerprint",
 			OperationID:      "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
 			Body:             request,
@@ -40307,7 +40307,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsListAuthorizations",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsListAuthorizationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40338,7 +40338,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsListAuthorizations",
+			Name: OAuthAuthorizationsListAuthorizationsOperation,
 			ID:   "oauth-authorizations/list-authorizations",
 		}
 	)
@@ -40357,7 +40357,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsListAuthorizations",
+			OperationName:    OAuthAuthorizationsListAuthorizationsOperation,
 			OperationSummary: "List your authorizations",
 			OperationID:      "oauth-authorizations/list-authorizations",
 			Body:             nil,
@@ -40447,7 +40447,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsListGrants",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsListGrantsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40478,7 +40478,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsListGrants",
+			Name: OAuthAuthorizationsListGrantsOperation,
 			ID:   "oauth-authorizations/list-grants",
 		}
 	)
@@ -40497,7 +40497,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsListGrants",
+			OperationName:    OAuthAuthorizationsListGrantsOperation,
 			OperationSummary: "List your grants",
 			OperationID:      "oauth-authorizations/list-grants",
 			Body:             nil,
@@ -40580,7 +40580,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OAuthAuthorizationsUpdateAuthorization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OAuthAuthorizationsUpdateAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40611,7 +40611,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OAuthAuthorizationsUpdateAuthorization",
+			Name: OAuthAuthorizationsUpdateAuthorizationOperation,
 			ID:   "oauth-authorizations/update-authorization",
 		}
 	)
@@ -40645,7 +40645,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OAuthAuthorizationsUpdateAuthorization",
+			OperationName:    OAuthAuthorizationsUpdateAuthorizationOperation,
 			OperationSummary: "Update an existing authorization",
 			OperationID:      "oauth-authorizations/update-authorization",
 			Body:             request,
@@ -40707,7 +40707,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsBlockUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsBlockUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40738,7 +40738,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsBlockUser",
+			Name: OrgsBlockUserOperation,
 			ID:   "orgs/block-user",
 		}
 	)
@@ -40757,7 +40757,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsBlockUser",
+			OperationName:    OrgsBlockUserOperation,
 			OperationSummary: "Block a user from an organization",
 			OperationID:      "orgs/block-user",
 			Body:             nil,
@@ -40826,7 +40826,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsCancelInvitation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCancelInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40857,7 +40857,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCancelInvitation",
+			Name: OrgsCancelInvitationOperation,
 			ID:   "orgs/cancel-invitation",
 		}
 	)
@@ -40876,7 +40876,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsCancelInvitation",
+			OperationName:    OrgsCancelInvitationOperation,
 			OperationSummary: "Cancel an organization invitation",
 			OperationID:      "orgs/cancel-invitation",
 			Body:             nil,
@@ -40942,7 +40942,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsCheckBlockedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCheckBlockedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40973,7 +40973,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCheckBlockedUser",
+			Name: OrgsCheckBlockedUserOperation,
 			ID:   "orgs/check-blocked-user",
 		}
 	)
@@ -40992,7 +40992,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsCheckBlockedUser",
+			OperationName:    OrgsCheckBlockedUserOperation,
 			OperationSummary: "Check if a user is blocked by an organization",
 			OperationID:      "orgs/check-blocked-user",
 			Body:             nil,
@@ -41058,7 +41058,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsCheckMembershipForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCheckMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41089,7 +41089,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCheckMembershipForUser",
+			Name: OrgsCheckMembershipForUserOperation,
 			ID:   "orgs/check-membership-for-user",
 		}
 	)
@@ -41108,7 +41108,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsCheckMembershipForUser",
+			OperationName:    OrgsCheckMembershipForUserOperation,
 			OperationSummary: "Check organization membership for a user",
 			OperationID:      "orgs/check-membership-for-user",
 			Body:             nil,
@@ -41174,7 +41174,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsCheckPublicMembershipForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCheckPublicMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41205,7 +41205,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCheckPublicMembershipForUser",
+			Name: OrgsCheckPublicMembershipForUserOperation,
 			ID:   "orgs/check-public-membership-for-user",
 		}
 	)
@@ -41224,7 +41224,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsCheckPublicMembershipForUser",
+			OperationName:    OrgsCheckPublicMembershipForUserOperation,
 			OperationSummary: "Check public organization membership for a user",
 			OperationID:      "orgs/check-public-membership-for-user",
 			Body:             nil,
@@ -41294,7 +41294,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsConvertMemberToOutsideCollaborator",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsConvertMemberToOutsideCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41325,7 +41325,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsConvertMemberToOutsideCollaborator",
+			Name: OrgsConvertMemberToOutsideCollaboratorOperation,
 			ID:   "orgs/convert-member-to-outside-collaborator",
 		}
 	)
@@ -41344,7 +41344,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsConvertMemberToOutsideCollaborator",
+			OperationName:    OrgsConvertMemberToOutsideCollaboratorOperation,
 			OperationSummary: "Convert an organization member to outside collaborator",
 			OperationID:      "orgs/convert-member-to-outside-collaborator",
 			Body:             nil,
@@ -41418,7 +41418,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsCreateInvitation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCreateInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41449,7 +41449,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCreateInvitation",
+			Name: OrgsCreateInvitationOperation,
 			ID:   "orgs/create-invitation",
 		}
 	)
@@ -41483,7 +41483,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsCreateInvitation",
+			OperationName:    OrgsCreateInvitationOperation,
 			OperationSummary: "Create an organization invitation",
 			OperationID:      "orgs/create-invitation",
 			Body:             request,
@@ -41545,7 +41545,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsCreateWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsCreateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41576,7 +41576,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsCreateWebhook",
+			Name: OrgsCreateWebhookOperation,
 			ID:   "orgs/create-webhook",
 		}
 	)
@@ -41610,7 +41610,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsCreateWebhook",
+			OperationName:    OrgsCreateWebhookOperation,
 			OperationSummary: "Create an organization webhook",
 			OperationID:      "orgs/create-webhook",
 			Body:             request,
@@ -41672,7 +41672,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsDeleteWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsDeleteWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41703,7 +41703,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsDeleteWebhook",
+			Name: OrgsDeleteWebhookOperation,
 			ID:   "orgs/delete-webhook",
 		}
 	)
@@ -41722,7 +41722,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsDeleteWebhook",
+			OperationName:    OrgsDeleteWebhookOperation,
 			OperationSummary: "Delete an organization webhook",
 			OperationID:      "orgs/delete-webhook",
 			Body:             nil,
@@ -41796,7 +41796,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41827,7 +41827,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGet",
+			Name: OrgsGetOperation,
 			ID:   "orgs/get",
 		}
 	)
@@ -41846,7 +41846,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsGet",
+			OperationName:    OrgsGetOperation,
 			OperationSummary: "Get an organization",
 			OperationID:      "orgs/get",
 			Body:             nil,
@@ -41913,7 +41913,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsGetAuditLog",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetAuditLogOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41944,7 +41944,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetAuditLog",
+			Name: OrgsGetAuditLogOperation,
 			ID:   "orgs/get-audit-log",
 		}
 	)
@@ -41963,7 +41963,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsGetAuditLog",
+			OperationName:    OrgsGetAuditLogOperation,
 			OperationSummary: "Get the audit log for an organization",
 			OperationID:      "orgs/get-audit-log",
 			Body:             nil,
@@ -42053,7 +42053,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsGetMembershipForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42084,7 +42084,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetMembershipForAuthenticatedUser",
+			Name: OrgsGetMembershipForAuthenticatedUserOperation,
 			ID:   "orgs/get-membership-for-authenticated-user",
 		}
 	)
@@ -42103,7 +42103,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsGetMembershipForAuthenticatedUser",
+			OperationName:    OrgsGetMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Get an organization membership for the authenticated user",
 			OperationID:      "orgs/get-membership-for-authenticated-user",
 			Body:             nil,
@@ -42167,7 +42167,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsGetMembershipForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42198,7 +42198,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetMembershipForUser",
+			Name: OrgsGetMembershipForUserOperation,
 			ID:   "orgs/get-membership-for-user",
 		}
 	)
@@ -42217,7 +42217,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsGetMembershipForUser",
+			OperationName:    OrgsGetMembershipForUserOperation,
 			OperationSummary: "Get organization membership for a user",
 			OperationID:      "orgs/get-membership-for-user",
 			Body:             nil,
@@ -42285,7 +42285,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsGetWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42316,7 +42316,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetWebhook",
+			Name: OrgsGetWebhookOperation,
 			ID:   "orgs/get-webhook",
 		}
 	)
@@ -42335,7 +42335,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsGetWebhook",
+			OperationName:    OrgsGetWebhookOperation,
 			OperationSummary: "Get an organization webhook",
 			OperationID:      "orgs/get-webhook",
 			Body:             nil,
@@ -42405,7 +42405,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsGetWebhookConfigForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetWebhookConfigForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42436,7 +42436,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetWebhookConfigForOrg",
+			Name: OrgsGetWebhookConfigForOrgOperation,
 			ID:   "orgs/get-webhook-config-for-org",
 		}
 	)
@@ -42455,7 +42455,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsGetWebhookConfigForOrg",
+			OperationName:    OrgsGetWebhookConfigForOrgOperation,
 			OperationSummary: "Get a webhook configuration for an organization",
 			OperationID:      "orgs/get-webhook-config-for-org",
 			Body:             nil,
@@ -42521,7 +42521,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsGetWebhookDelivery",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsGetWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42552,7 +42552,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsGetWebhookDelivery",
+			Name: OrgsGetWebhookDeliveryOperation,
 			ID:   "orgs/get-webhook-delivery",
 		}
 	)
@@ -42571,7 +42571,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsGetWebhookDelivery",
+			OperationName:    OrgsGetWebhookDeliveryOperation,
 			OperationSummary: "Get a webhook delivery for an organization webhook",
 			OperationID:      "orgs/get-webhook-delivery",
 			Body:             nil,
@@ -42644,7 +42644,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42675,7 +42675,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsList",
+			Name: OrgsListOperation,
 			ID:   "orgs/list",
 		}
 	)
@@ -42694,7 +42694,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsList",
+			OperationName:    OrgsListOperation,
 			OperationSummary: "List organizations",
 			OperationID:      "orgs/list",
 			Body:             nil,
@@ -42760,7 +42760,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListBlockedUsers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListBlockedUsersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42791,7 +42791,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListBlockedUsers",
+			Name: OrgsListBlockedUsersOperation,
 			ID:   "orgs/list-blocked-users",
 		}
 	)
@@ -42810,7 +42810,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListBlockedUsers",
+			OperationName:    OrgsListBlockedUsersOperation,
 			OperationSummary: "List users blocked by an organization",
 			OperationID:      "orgs/list-blocked-users",
 			Body:             nil,
@@ -42873,7 +42873,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListFailedInvitations",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListFailedInvitationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42904,7 +42904,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListFailedInvitations",
+			Name: OrgsListFailedInvitationsOperation,
 			ID:   "orgs/list-failed-invitations",
 		}
 	)
@@ -42923,7 +42923,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListFailedInvitations",
+			OperationName:    OrgsListFailedInvitationsOperation,
 			OperationSummary: "List failed organization invitations",
 			OperationID:      "orgs/list-failed-invitations",
 			Body:             nil,
@@ -42998,7 +42998,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43029,7 +43029,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListForAuthenticatedUser",
+			Name: OrgsListForAuthenticatedUserOperation,
 			ID:   "orgs/list-for-authenticated-user",
 		}
 	)
@@ -43048,7 +43048,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListForAuthenticatedUser",
+			OperationName:    OrgsListForAuthenticatedUserOperation,
 			OperationSummary: "List organizations for the authenticated user",
 			OperationID:      "orgs/list-for-authenticated-user",
 			Body:             nil,
@@ -43119,7 +43119,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43150,7 +43150,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListForUser",
+			Name: OrgsListForUserOperation,
 			ID:   "orgs/list-for-user",
 		}
 	)
@@ -43169,7 +43169,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListForUser",
+			OperationName:    OrgsListForUserOperation,
 			OperationSummary: "List organizations for a user",
 			OperationID:      "orgs/list-for-user",
 			Body:             nil,
@@ -43240,7 +43240,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListInvitationTeams",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListInvitationTeamsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43271,7 +43271,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListInvitationTeams",
+			Name: OrgsListInvitationTeamsOperation,
 			ID:   "orgs/list-invitation-teams",
 		}
 	)
@@ -43290,7 +43290,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListInvitationTeams",
+			OperationName:    OrgsListInvitationTeamsOperation,
 			OperationSummary: "List organization invitation teams",
 			OperationID:      "orgs/list-invitation-teams",
 			Body:             nil,
@@ -43365,7 +43365,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListMembers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListMembersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43396,7 +43396,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListMembers",
+			Name: OrgsListMembersOperation,
 			ID:   "orgs/list-members",
 		}
 	)
@@ -43415,7 +43415,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListMembers",
+			OperationName:    OrgsListMembersOperation,
 			OperationSummary: "List organization members",
 			OperationID:      "orgs/list-members",
 			Body:             nil,
@@ -43493,7 +43493,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListMembershipsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListMembershipsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43524,7 +43524,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListMembershipsForAuthenticatedUser",
+			Name: OrgsListMembershipsForAuthenticatedUserOperation,
 			ID:   "orgs/list-memberships-for-authenticated-user",
 		}
 	)
@@ -43543,7 +43543,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListMembershipsForAuthenticatedUser",
+			OperationName:    OrgsListMembershipsForAuthenticatedUserOperation,
 			OperationSummary: "List organization memberships for the authenticated user",
 			OperationID:      "orgs/list-memberships-for-authenticated-user",
 			Body:             nil,
@@ -43613,7 +43613,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListOutsideCollaborators",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListOutsideCollaboratorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43644,7 +43644,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListOutsideCollaborators",
+			Name: OrgsListOutsideCollaboratorsOperation,
 			ID:   "orgs/list-outside-collaborators",
 		}
 	)
@@ -43663,7 +43663,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListOutsideCollaborators",
+			OperationName:    OrgsListOutsideCollaboratorsOperation,
 			OperationSummary: "List outside collaborators for an organization",
 			OperationID:      "orgs/list-outside-collaborators",
 			Body:             nil,
@@ -43740,7 +43740,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListPendingInvitations",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListPendingInvitationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43771,7 +43771,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListPendingInvitations",
+			Name: OrgsListPendingInvitationsOperation,
 			ID:   "orgs/list-pending-invitations",
 		}
 	)
@@ -43790,7 +43790,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListPendingInvitations",
+			OperationName:    OrgsListPendingInvitationsOperation,
 			OperationSummary: "List pending organization invitations",
 			OperationID:      "orgs/list-pending-invitations",
 			Body:             nil,
@@ -43860,7 +43860,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListPublicMembers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListPublicMembersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43891,7 +43891,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListPublicMembers",
+			Name: OrgsListPublicMembersOperation,
 			ID:   "orgs/list-public-members",
 		}
 	)
@@ -43910,7 +43910,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListPublicMembers",
+			OperationName:    OrgsListPublicMembersOperation,
 			OperationSummary: "List public organization members",
 			OperationID:      "orgs/list-public-members",
 			Body:             nil,
@@ -43987,7 +43987,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListSamlSSOAuthorizations",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListSamlSSOAuthorizationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44018,7 +44018,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListSamlSSOAuthorizations",
+			Name: OrgsListSamlSSOAuthorizationsOperation,
 			ID:   "orgs/list-saml-sso-authorizations",
 		}
 	)
@@ -44037,7 +44037,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListSamlSSOAuthorizations",
+			OperationName:    OrgsListSamlSSOAuthorizationsOperation,
 			OperationSummary: "List SAML SSO authorizations for an organization",
 			OperationID:      "orgs/list-saml-sso-authorizations",
 			Body:             nil,
@@ -44099,7 +44099,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListWebhookDeliveries",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListWebhookDeliveriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44130,7 +44130,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListWebhookDeliveries",
+			Name: OrgsListWebhookDeliveriesOperation,
 			ID:   "orgs/list-webhook-deliveries",
 		}
 	)
@@ -44149,7 +44149,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListWebhookDeliveries",
+			OperationName:    OrgsListWebhookDeliveriesOperation,
 			OperationSummary: "List deliveries for an organization webhook",
 			OperationID:      "orgs/list-webhook-deliveries",
 			Body:             nil,
@@ -44223,7 +44223,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsListWebhooks",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsListWebhooksOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44254,7 +44254,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsListWebhooks",
+			Name: OrgsListWebhooksOperation,
 			ID:   "orgs/list-webhooks",
 		}
 	)
@@ -44273,7 +44273,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsListWebhooks",
+			OperationName:    OrgsListWebhooksOperation,
 			OperationSummary: "List organization webhooks",
 			OperationID:      "orgs/list-webhooks",
 			Body:             nil,
@@ -44344,7 +44344,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsPingWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsPingWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44375,7 +44375,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsPingWebhook",
+			Name: OrgsPingWebhookOperation,
 			ID:   "orgs/ping-webhook",
 		}
 	)
@@ -44394,7 +44394,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsPingWebhook",
+			OperationName:    OrgsPingWebhookOperation,
 			OperationSummary: "Ping an organization webhook",
 			OperationID:      "orgs/ping-webhook",
 			Body:             nil,
@@ -44460,7 +44460,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsRedeliverWebhookDelivery",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRedeliverWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44491,7 +44491,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRedeliverWebhookDelivery",
+			Name: OrgsRedeliverWebhookDeliveryOperation,
 			ID:   "orgs/redeliver-webhook-delivery",
 		}
 	)
@@ -44510,7 +44510,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsRedeliverWebhookDelivery",
+			OperationName:    OrgsRedeliverWebhookDeliveryOperation,
 			OperationSummary: "Redeliver a delivery for an organization webhook",
 			OperationID:      "orgs/redeliver-webhook-delivery",
 			Body:             nil,
@@ -44581,7 +44581,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsRemoveMember",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveMemberOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44612,7 +44612,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveMember",
+			Name: OrgsRemoveMemberOperation,
 			ID:   "orgs/remove-member",
 		}
 	)
@@ -44631,7 +44631,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsRemoveMember",
+			OperationName:    OrgsRemoveMemberOperation,
 			OperationSummary: "Remove an organization member",
 			OperationID:      "orgs/remove-member",
 			Body:             nil,
@@ -44701,7 +44701,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsRemoveMembershipForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44732,7 +44732,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveMembershipForUser",
+			Name: OrgsRemoveMembershipForUserOperation,
 			ID:   "orgs/remove-membership-for-user",
 		}
 	)
@@ -44751,7 +44751,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsRemoveMembershipForUser",
+			OperationName:    OrgsRemoveMembershipForUserOperation,
 			OperationSummary: "Remove organization membership for a user",
 			OperationID:      "orgs/remove-membership-for-user",
 			Body:             nil,
@@ -44817,7 +44817,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsRemoveOutsideCollaborator",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveOutsideCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44848,7 +44848,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveOutsideCollaborator",
+			Name: OrgsRemoveOutsideCollaboratorOperation,
 			ID:   "orgs/remove-outside-collaborator",
 		}
 	)
@@ -44867,7 +44867,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsRemoveOutsideCollaborator",
+			OperationName:    OrgsRemoveOutsideCollaboratorOperation,
 			OperationSummary: "Remove outside collaborator from an organization",
 			OperationID:      "orgs/remove-outside-collaborator",
 			Body:             nil,
@@ -44933,7 +44933,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsRemovePublicMembershipForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemovePublicMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44964,7 +44964,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemovePublicMembershipForAuthenticatedUser",
+			Name: OrgsRemovePublicMembershipForAuthenticatedUserOperation,
 			ID:   "orgs/remove-public-membership-for-authenticated-user",
 		}
 	)
@@ -44983,7 +44983,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsRemovePublicMembershipForAuthenticatedUser",
+			OperationName:    OrgsRemovePublicMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Remove public organization membership for the authenticated user",
 			OperationID:      "orgs/remove-public-membership-for-authenticated-user",
 			Body:             nil,
@@ -45055,7 +45055,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsRemoveSamlSSOAuthorization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsRemoveSamlSSOAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45086,7 +45086,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsRemoveSamlSSOAuthorization",
+			Name: OrgsRemoveSamlSSOAuthorizationOperation,
 			ID:   "orgs/remove-saml-sso-authorization",
 		}
 	)
@@ -45105,7 +45105,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsRemoveSamlSSOAuthorization",
+			OperationName:    OrgsRemoveSamlSSOAuthorizationOperation,
 			OperationSummary: "Remove a SAML SSO authorization for an organization",
 			OperationID:      "orgs/remove-saml-sso-authorization",
 			Body:             nil,
@@ -45184,7 +45184,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsSetMembershipForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsSetMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45215,7 +45215,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsSetMembershipForUser",
+			Name: OrgsSetMembershipForUserOperation,
 			ID:   "orgs/set-membership-for-user",
 		}
 	)
@@ -45249,7 +45249,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsSetMembershipForUser",
+			OperationName:    OrgsSetMembershipForUserOperation,
 			OperationSummary: "Set organization membership for a user",
 			OperationID:      "orgs/set-membership-for-user",
 			Body:             request,
@@ -45319,7 +45319,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsSetPublicMembershipForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsSetPublicMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45350,7 +45350,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsSetPublicMembershipForAuthenticatedUser",
+			Name: OrgsSetPublicMembershipForAuthenticatedUserOperation,
 			ID:   "orgs/set-public-membership-for-authenticated-user",
 		}
 	)
@@ -45369,7 +45369,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsSetPublicMembershipForAuthenticatedUser",
+			OperationName:    OrgsSetPublicMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Set public organization membership for the authenticated user",
 			OperationID:      "orgs/set-public-membership-for-authenticated-user",
 			Body:             nil,
@@ -45435,7 +45435,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsUnblockUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUnblockUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45466,7 +45466,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUnblockUser",
+			Name: OrgsUnblockUserOperation,
 			ID:   "orgs/unblock-user",
 		}
 	)
@@ -45485,7 +45485,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsUnblockUser",
+			OperationName:    OrgsUnblockUserOperation,
 			OperationSummary: "Unblock a user from an organization",
 			OperationID:      "orgs/unblock-user",
 			Body:             nil,
@@ -45551,7 +45551,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsUpdateMembershipForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUpdateMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45582,7 +45582,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUpdateMembershipForAuthenticatedUser",
+			Name: OrgsUpdateMembershipForAuthenticatedUserOperation,
 			ID:   "orgs/update-membership-for-authenticated-user",
 		}
 	)
@@ -45616,7 +45616,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsUpdateMembershipForAuthenticatedUser",
+			OperationName:    OrgsUpdateMembershipForAuthenticatedUserOperation,
 			OperationSummary: "Update an organization membership for the authenticated user",
 			OperationID:      "orgs/update-membership-for-authenticated-user",
 			Body:             request,
@@ -45682,7 +45682,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsUpdateWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUpdateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45713,7 +45713,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUpdateWebhook",
+			Name: OrgsUpdateWebhookOperation,
 			ID:   "orgs/update-webhook",
 		}
 	)
@@ -45747,7 +45747,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsUpdateWebhook",
+			OperationName:    OrgsUpdateWebhookOperation,
 			OperationSummary: "Update an organization webhook",
 			OperationID:      "orgs/update-webhook",
 			Body:             request,
@@ -45817,7 +45817,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrgsUpdateWebhookConfigForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OrgsUpdateWebhookConfigForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45848,7 +45848,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OrgsUpdateWebhookConfigForOrg",
+			Name: OrgsUpdateWebhookConfigForOrgOperation,
 			ID:   "orgs/update-webhook-config-for-org",
 		}
 	)
@@ -45882,7 +45882,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OrgsUpdateWebhookConfigForOrg",
+			OperationName:    OrgsUpdateWebhookConfigForOrgOperation,
 			OperationSummary: "Update a webhook configuration for an organization",
 			OperationID:      "orgs/update-webhook-config-for-org",
 			Body:             request,
@@ -45953,7 +45953,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesDeletePackageForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45984,7 +45984,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageForAuthenticatedUser",
+			Name: PackagesDeletePackageForAuthenticatedUserOperation,
 			ID:   "packages/delete-package-for-authenticated-user",
 		}
 	)
@@ -46003,7 +46003,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesDeletePackageForAuthenticatedUser",
+			OperationName:    PackagesDeletePackageForAuthenticatedUserOperation,
 			OperationSummary: "Delete a package for the authenticated user",
 			OperationID:      "packages/delete-package-for-authenticated-user",
 			Body:             nil,
@@ -46076,7 +46076,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesDeletePackageForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46107,7 +46107,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageForOrg",
+			Name: PackagesDeletePackageForOrgOperation,
 			ID:   "packages/delete-package-for-org",
 		}
 	)
@@ -46126,7 +46126,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesDeletePackageForOrg",
+			OperationName:    PackagesDeletePackageForOrgOperation,
 			OperationSummary: "Delete a package for an organization",
 			OperationID:      "packages/delete-package-for-org",
 			Body:             nil,
@@ -46203,7 +46203,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesDeletePackageForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46234,7 +46234,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageForUser",
+			Name: PackagesDeletePackageForUserOperation,
 			ID:   "packages/delete-package-for-user",
 		}
 	)
@@ -46253,7 +46253,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesDeletePackageForUser",
+			OperationName:    PackagesDeletePackageForUserOperation,
 			OperationSummary: "Delete a package for a user",
 			OperationID:      "packages/delete-package-for-user",
 			Body:             nil,
@@ -46328,7 +46328,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesDeletePackageVersionForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageVersionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46359,7 +46359,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageVersionForAuthenticatedUser",
+			Name: PackagesDeletePackageVersionForAuthenticatedUserOperation,
 			ID:   "packages/delete-package-version-for-authenticated-user",
 		}
 	)
@@ -46378,7 +46378,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesDeletePackageVersionForAuthenticatedUser",
+			OperationName:    PackagesDeletePackageVersionForAuthenticatedUserOperation,
 			OperationSummary: "Delete a package version for the authenticated user",
 			OperationID:      "packages/delete-package-version-for-authenticated-user",
 			Body:             nil,
@@ -46455,7 +46455,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesDeletePackageVersionForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageVersionForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46486,7 +46486,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageVersionForOrg",
+			Name: PackagesDeletePackageVersionForOrgOperation,
 			ID:   "packages/delete-package-version-for-org",
 		}
 	)
@@ -46505,7 +46505,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesDeletePackageVersionForOrg",
+			OperationName:    PackagesDeletePackageVersionForOrgOperation,
 			OperationSummary: "Delete package version for an organization",
 			OperationID:      "packages/delete-package-version-for-org",
 			Body:             nil,
@@ -46586,7 +46586,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesDeletePackageVersionForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesDeletePackageVersionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46617,7 +46617,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesDeletePackageVersionForUser",
+			Name: PackagesDeletePackageVersionForUserOperation,
 			ID:   "packages/delete-package-version-for-user",
 		}
 	)
@@ -46636,7 +46636,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesDeletePackageVersionForUser",
+			OperationName:    PackagesDeletePackageVersionForUserOperation,
 			OperationSummary: "Delete package version for a user",
 			OperationID:      "packages/delete-package-version-for-user",
 			Body:             nil,
@@ -46712,7 +46712,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46743,7 +46743,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+			Name: PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOperation,
 			ID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
 		}
 	)
@@ -46762,7 +46762,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+			OperationName:    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOperation,
 			OperationSummary: "Get all package versions for a package owned by the authenticated user",
 			OperationID:      "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
 			Body:             nil,
@@ -46842,7 +46842,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetAllPackageVersionsForPackageOwnedByOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46873,7 +46873,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+			Name: PackagesGetAllPackageVersionsForPackageOwnedByOrgOperation,
 			ID:   "packages/get-all-package-versions-for-package-owned-by-org",
 		}
 	)
@@ -46892,7 +46892,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+			OperationName:    PackagesGetAllPackageVersionsForPackageOwnedByOrgOperation,
 			OperationSummary: "Get all package versions for a package owned by an organization",
 			OperationID:      "packages/get-all-package-versions-for-package-owned-by-org",
 			Body:             nil,
@@ -46976,7 +46976,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetAllPackageVersionsForPackageOwnedByUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47007,7 +47007,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+			Name: PackagesGetAllPackageVersionsForPackageOwnedByUserOperation,
 			ID:   "packages/get-all-package-versions-for-package-owned-by-user",
 		}
 	)
@@ -47026,7 +47026,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+			OperationName:    PackagesGetAllPackageVersionsForPackageOwnedByUserOperation,
 			OperationSummary: "Get all package versions for a package owned by a user",
 			OperationID:      "packages/get-all-package-versions-for-package-owned-by-user",
 			Body:             nil,
@@ -47098,7 +47098,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetPackageForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47129,7 +47129,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageForAuthenticatedUser",
+			Name: PackagesGetPackageForAuthenticatedUserOperation,
 			ID:   "packages/get-package-for-authenticated-user",
 		}
 	)
@@ -47148,7 +47148,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetPackageForAuthenticatedUser",
+			OperationName:    PackagesGetPackageForAuthenticatedUserOperation,
 			OperationSummary: "Get a package for the authenticated user",
 			OperationID:      "packages/get-package-for-authenticated-user",
 			Body:             nil,
@@ -47216,7 +47216,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetPackageForOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageForOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47247,7 +47247,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageForOrganization",
+			Name: PackagesGetPackageForOrganizationOperation,
 			ID:   "packages/get-package-for-organization",
 		}
 	)
@@ -47266,7 +47266,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetPackageForOrganization",
+			OperationName:    PackagesGetPackageForOrganizationOperation,
 			OperationSummary: "Get a package for an organization",
 			OperationID:      "packages/get-package-for-organization",
 			Body:             nil,
@@ -47338,7 +47338,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetPackageForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47369,7 +47369,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageForUser",
+			Name: PackagesGetPackageForUserOperation,
 			ID:   "packages/get-package-for-user",
 		}
 	)
@@ -47388,7 +47388,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetPackageForUser",
+			OperationName:    PackagesGetPackageForUserOperation,
 			OperationSummary: "Get a package for a user",
 			OperationID:      "packages/get-package-for-user",
 			Body:             nil,
@@ -47460,7 +47460,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetPackageVersionForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageVersionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47491,7 +47491,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageVersionForAuthenticatedUser",
+			Name: PackagesGetPackageVersionForAuthenticatedUserOperation,
 			ID:   "packages/get-package-version-for-authenticated-user",
 		}
 	)
@@ -47510,7 +47510,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetPackageVersionForAuthenticatedUser",
+			OperationName:    PackagesGetPackageVersionForAuthenticatedUserOperation,
 			OperationSummary: "Get a package version for the authenticated user",
 			OperationID:      "packages/get-package-version-for-authenticated-user",
 			Body:             nil,
@@ -47582,7 +47582,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetPackageVersionForOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageVersionForOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47613,7 +47613,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageVersionForOrganization",
+			Name: PackagesGetPackageVersionForOrganizationOperation,
 			ID:   "packages/get-package-version-for-organization",
 		}
 	)
@@ -47632,7 +47632,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetPackageVersionForOrganization",
+			OperationName:    PackagesGetPackageVersionForOrganizationOperation,
 			OperationSummary: "Get a package version for an organization",
 			OperationID:      "packages/get-package-version-for-organization",
 			Body:             nil,
@@ -47709,7 +47709,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesGetPackageVersionForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesGetPackageVersionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47740,7 +47740,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesGetPackageVersionForUser",
+			Name: PackagesGetPackageVersionForUserOperation,
 			ID:   "packages/get-package-version-for-user",
 		}
 	)
@@ -47759,7 +47759,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesGetPackageVersionForUser",
+			OperationName:    PackagesGetPackageVersionForUserOperation,
 			OperationSummary: "Get a package version for a user",
 			OperationID:      "packages/get-package-version-for-user",
 			Body:             nil,
@@ -47835,7 +47835,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesListPackagesForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesListPackagesForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47866,7 +47866,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesListPackagesForAuthenticatedUser",
+			Name: PackagesListPackagesForAuthenticatedUserOperation,
 			ID:   "packages/list-packages-for-authenticated-user",
 		}
 	)
@@ -47885,7 +47885,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesListPackagesForAuthenticatedUser",
+			OperationName:    PackagesListPackagesForAuthenticatedUserOperation,
 			OperationSummary: "List packages for the authenticated user's namespace",
 			OperationID:      "packages/list-packages-for-authenticated-user",
 			Body:             nil,
@@ -47953,7 +47953,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesListPackagesForOrganization",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesListPackagesForOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47984,7 +47984,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesListPackagesForOrganization",
+			Name: PackagesListPackagesForOrganizationOperation,
 			ID:   "packages/list-packages-for-organization",
 		}
 	)
@@ -48003,7 +48003,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesListPackagesForOrganization",
+			OperationName:    PackagesListPackagesForOrganizationOperation,
 			OperationSummary: "List packages for an organization",
 			OperationID:      "packages/list-packages-for-organization",
 			Body:             nil,
@@ -48075,7 +48075,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesListPackagesForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesListPackagesForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48106,7 +48106,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesListPackagesForUser",
+			Name: PackagesListPackagesForUserOperation,
 			ID:   "packages/list-packages-for-user",
 		}
 	)
@@ -48125,7 +48125,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesListPackagesForUser",
+			OperationName:    PackagesListPackagesForUserOperation,
 			OperationSummary: "List packages for a user",
 			OperationID:      "packages/list-packages-for-user",
 			Body:             nil,
@@ -48204,7 +48204,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesRestorePackageForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48235,7 +48235,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageForAuthenticatedUser",
+			Name: PackagesRestorePackageForAuthenticatedUserOperation,
 			ID:   "packages/restore-package-for-authenticated-user",
 		}
 	)
@@ -48254,7 +48254,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesRestorePackageForAuthenticatedUser",
+			OperationName:    PackagesRestorePackageForAuthenticatedUserOperation,
 			OperationSummary: "Restore a package for the authenticated user",
 			OperationID:      "packages/restore-package-for-authenticated-user",
 			Body:             nil,
@@ -48335,7 +48335,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesRestorePackageForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48366,7 +48366,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageForOrg",
+			Name: PackagesRestorePackageForOrgOperation,
 			ID:   "packages/restore-package-for-org",
 		}
 	)
@@ -48385,7 +48385,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesRestorePackageForOrg",
+			OperationName:    PackagesRestorePackageForOrgOperation,
 			OperationSummary: "Restore a package for an organization",
 			OperationID:      "packages/restore-package-for-org",
 			Body:             nil,
@@ -48470,7 +48470,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesRestorePackageForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48501,7 +48501,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageForUser",
+			Name: PackagesRestorePackageForUserOperation,
 			ID:   "packages/restore-package-for-user",
 		}
 	)
@@ -48520,7 +48520,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesRestorePackageForUser",
+			OperationName:    PackagesRestorePackageForUserOperation,
 			OperationSummary: "Restore a package for a user",
 			OperationID:      "packages/restore-package-for-user",
 			Body:             nil,
@@ -48603,7 +48603,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesRestorePackageVersionForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageVersionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48634,7 +48634,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageVersionForAuthenticatedUser",
+			Name: PackagesRestorePackageVersionForAuthenticatedUserOperation,
 			ID:   "packages/restore-package-version-for-authenticated-user",
 		}
 	)
@@ -48653,7 +48653,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesRestorePackageVersionForAuthenticatedUser",
+			OperationName:    PackagesRestorePackageVersionForAuthenticatedUserOperation,
 			OperationSummary: "Restore a package version for the authenticated user",
 			OperationID:      "packages/restore-package-version-for-authenticated-user",
 			Body:             nil,
@@ -48734,7 +48734,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesRestorePackageVersionForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageVersionForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48765,7 +48765,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageVersionForOrg",
+			Name: PackagesRestorePackageVersionForOrgOperation,
 			ID:   "packages/restore-package-version-for-org",
 		}
 	)
@@ -48784,7 +48784,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesRestorePackageVersionForOrg",
+			OperationName:    PackagesRestorePackageVersionForOrgOperation,
 			OperationSummary: "Restore package version for an organization",
 			OperationID:      "packages/restore-package-version-for-org",
 			Body:             nil,
@@ -48869,7 +48869,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PackagesRestorePackageVersionForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PackagesRestorePackageVersionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48900,7 +48900,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PackagesRestorePackageVersionForUser",
+			Name: PackagesRestorePackageVersionForUserOperation,
 			ID:   "packages/restore-package-version-for-user",
 		}
 	)
@@ -48919,7 +48919,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PackagesRestorePackageVersionForUser",
+			OperationName:    PackagesRestorePackageVersionForUserOperation,
 			OperationSummary: "Restore package version for a user",
 			OperationID:      "packages/restore-package-version-for-user",
 			Body:             nil,
@@ -48994,7 +48994,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsAddCollaborator",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsAddCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49025,7 +49025,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsAddCollaborator",
+			Name: ProjectsAddCollaboratorOperation,
 			ID:   "projects/add-collaborator",
 		}
 	)
@@ -49059,7 +49059,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsAddCollaborator",
+			OperationName:    ProjectsAddCollaboratorOperation,
 			OperationSummary: "Add project collaborator",
 			OperationID:      "projects/add-collaborator",
 			Body:             request,
@@ -49125,7 +49125,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsCreateColumn",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49156,7 +49156,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateColumn",
+			Name: ProjectsCreateColumnOperation,
 			ID:   "projects/create-column",
 		}
 	)
@@ -49190,7 +49190,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsCreateColumn",
+			OperationName:    ProjectsCreateColumnOperation,
 			OperationSummary: "Create a project column",
 			OperationID:      "projects/create-column",
 			Body:             request,
@@ -49252,7 +49252,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsCreateForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49283,7 +49283,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateForAuthenticatedUser",
+			Name: ProjectsCreateForAuthenticatedUserOperation,
 			ID:   "projects/create-for-authenticated-user",
 		}
 	)
@@ -49307,7 +49307,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsCreateForAuthenticatedUser",
+			OperationName:    ProjectsCreateForAuthenticatedUserOperation,
 			OperationSummary: "Create a user project",
 			OperationID:      "projects/create-for-authenticated-user",
 			Body:             request,
@@ -49366,7 +49366,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsCreateForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49397,7 +49397,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateForOrg",
+			Name: ProjectsCreateForOrgOperation,
 			ID:   "projects/create-for-org",
 		}
 	)
@@ -49431,7 +49431,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsCreateForOrg",
+			OperationName:    ProjectsCreateForOrgOperation,
 			OperationSummary: "Create an organization project",
 			OperationID:      "projects/create-for-org",
 			Body:             request,
@@ -49495,7 +49495,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsCreateForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsCreateForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49526,7 +49526,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsCreateForRepo",
+			Name: ProjectsCreateForRepoOperation,
 			ID:   "projects/create-for-repo",
 		}
 	)
@@ -49560,7 +49560,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsCreateForRepo",
+			OperationName:    ProjectsCreateForRepoOperation,
 			OperationSummary: "Create a repository project",
 			OperationID:      "projects/create-for-repo",
 			Body:             request,
@@ -49626,7 +49626,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsDelete",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49657,7 +49657,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsDelete",
+			Name: ProjectsDeleteOperation,
 			ID:   "projects/delete",
 		}
 	)
@@ -49676,7 +49676,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsDelete",
+			OperationName:    ProjectsDeleteOperation,
 			OperationSummary: "Delete a project",
 			OperationID:      "projects/delete",
 			Body:             nil,
@@ -49738,7 +49738,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsDeleteCard",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsDeleteCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49769,7 +49769,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsDeleteCard",
+			Name: ProjectsDeleteCardOperation,
 			ID:   "projects/delete-card",
 		}
 	)
@@ -49788,7 +49788,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsDeleteCard",
+			OperationName:    ProjectsDeleteCardOperation,
 			OperationSummary: "Delete a project card",
 			OperationID:      "projects/delete-card",
 			Body:             nil,
@@ -49850,7 +49850,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsDeleteColumn",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsDeleteColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49881,7 +49881,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsDeleteColumn",
+			Name: ProjectsDeleteColumnOperation,
 			ID:   "projects/delete-column",
 		}
 	)
@@ -49900,7 +49900,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsDeleteColumn",
+			OperationName:    ProjectsDeleteColumnOperation,
 			OperationSummary: "Delete a project column",
 			OperationID:      "projects/delete-column",
 			Body:             nil,
@@ -49964,7 +49964,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49995,7 +49995,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGet",
+			Name: ProjectsGetOperation,
 			ID:   "projects/get",
 		}
 	)
@@ -50014,7 +50014,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsGet",
+			OperationName:    ProjectsGetOperation,
 			OperationSummary: "Get a project",
 			OperationID:      "projects/get",
 			Body:             nil,
@@ -50076,7 +50076,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsGetCard",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50107,7 +50107,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGetCard",
+			Name: ProjectsGetCardOperation,
 			ID:   "projects/get-card",
 		}
 	)
@@ -50126,7 +50126,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsGetCard",
+			OperationName:    ProjectsGetCardOperation,
 			OperationSummary: "Get a project card",
 			OperationID:      "projects/get-card",
 			Body:             nil,
@@ -50188,7 +50188,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsGetColumn",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50219,7 +50219,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGetColumn",
+			Name: ProjectsGetColumnOperation,
 			ID:   "projects/get-column",
 		}
 	)
@@ -50238,7 +50238,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsGetColumn",
+			OperationName:    ProjectsGetColumnOperation,
 			OperationSummary: "Get a project column",
 			OperationID:      "projects/get-column",
 			Body:             nil,
@@ -50302,7 +50302,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsGetPermissionForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsGetPermissionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50333,7 +50333,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsGetPermissionForUser",
+			Name: ProjectsGetPermissionForUserOperation,
 			ID:   "projects/get-permission-for-user",
 		}
 	)
@@ -50352,7 +50352,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsGetPermissionForUser",
+			OperationName:    ProjectsGetPermissionForUserOperation,
 			OperationSummary: "Get project permission for a user",
 			OperationID:      "projects/get-permission-for-user",
 			Body:             nil,
@@ -50418,7 +50418,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsListCards",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListCardsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50449,7 +50449,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListCards",
+			Name: ProjectsListCardsOperation,
 			ID:   "projects/list-cards",
 		}
 	)
@@ -50468,7 +50468,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsListCards",
+			OperationName:    ProjectsListCardsOperation,
 			OperationSummary: "List project cards",
 			OperationID:      "projects/list-cards",
 			Body:             nil,
@@ -50546,7 +50546,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsListCollaborators",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListCollaboratorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50577,7 +50577,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListCollaborators",
+			Name: ProjectsListCollaboratorsOperation,
 			ID:   "projects/list-collaborators",
 		}
 	)
@@ -50596,7 +50596,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsListCollaborators",
+			OperationName:    ProjectsListCollaboratorsOperation,
 			OperationSummary: "List project collaborators",
 			OperationID:      "projects/list-collaborators",
 			Body:             nil,
@@ -50670,7 +50670,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsListColumns",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListColumnsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50701,7 +50701,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListColumns",
+			Name: ProjectsListColumnsOperation,
 			ID:   "projects/list-columns",
 		}
 	)
@@ -50720,7 +50720,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsListColumns",
+			OperationName:    ProjectsListColumnsOperation,
 			OperationSummary: "List project columns",
 			OperationID:      "projects/list-columns",
 			Body:             nil,
@@ -50792,7 +50792,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsListForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50823,7 +50823,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListForOrg",
+			Name: ProjectsListForOrgOperation,
 			ID:   "projects/list-for-org",
 		}
 	)
@@ -50842,7 +50842,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsListForOrg",
+			OperationName:    ProjectsListForOrgOperation,
 			OperationSummary: "List organization projects",
 			OperationID:      "projects/list-for-org",
 			Body:             nil,
@@ -50918,7 +50918,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsListForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50949,7 +50949,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListForRepo",
+			Name: ProjectsListForRepoOperation,
 			ID:   "projects/list-for-repo",
 		}
 	)
@@ -50968,7 +50968,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsListForRepo",
+			OperationName:    ProjectsListForRepoOperation,
 			OperationSummary: "List repository projects",
 			OperationID:      "projects/list-for-repo",
 			Body:             nil,
@@ -51046,7 +51046,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsListForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51077,7 +51077,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsListForUser",
+			Name: ProjectsListForUserOperation,
 			ID:   "projects/list-for-user",
 		}
 	)
@@ -51096,7 +51096,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsListForUser",
+			OperationName:    ProjectsListForUserOperation,
 			OperationSummary: "List user projects",
 			OperationID:      "projects/list-for-user",
 			Body:             nil,
@@ -51170,7 +51170,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsMoveCard",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsMoveCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51201,7 +51201,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsMoveCard",
+			Name: ProjectsMoveCardOperation,
 			ID:   "projects/move-card",
 		}
 	)
@@ -51235,7 +51235,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsMoveCard",
+			OperationName:    ProjectsMoveCardOperation,
 			OperationSummary: "Move a project card",
 			OperationID:      "projects/move-card",
 			Body:             request,
@@ -51297,7 +51297,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsMoveColumn",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsMoveColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51328,7 +51328,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsMoveColumn",
+			Name: ProjectsMoveColumnOperation,
 			ID:   "projects/move-column",
 		}
 	)
@@ -51362,7 +51362,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsMoveColumn",
+			OperationName:    ProjectsMoveColumnOperation,
 			OperationSummary: "Move a project column",
 			OperationID:      "projects/move-column",
 			Body:             request,
@@ -51425,7 +51425,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsRemoveCollaborator",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsRemoveCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51456,7 +51456,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsRemoveCollaborator",
+			Name: ProjectsRemoveCollaboratorOperation,
 			ID:   "projects/remove-collaborator",
 		}
 	)
@@ -51475,7 +51475,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsRemoveCollaborator",
+			OperationName:    ProjectsRemoveCollaboratorOperation,
 			OperationSummary: "Remove user as a collaborator",
 			OperationID:      "projects/remove-collaborator",
 			Body:             nil,
@@ -51543,7 +51543,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsUpdate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51574,7 +51574,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsUpdate",
+			Name: ProjectsUpdateOperation,
 			ID:   "projects/update",
 		}
 	)
@@ -51608,7 +51608,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsUpdate",
+			OperationName:    ProjectsUpdateOperation,
 			OperationSummary: "Update a project",
 			OperationID:      "projects/update",
 			Body:             request,
@@ -51670,7 +51670,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsUpdateCard",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsUpdateCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51701,7 +51701,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsUpdateCard",
+			Name: ProjectsUpdateCardOperation,
 			ID:   "projects/update-card",
 		}
 	)
@@ -51735,7 +51735,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsUpdateCard",
+			OperationName:    ProjectsUpdateCardOperation,
 			OperationSummary: "Update an existing project card",
 			OperationID:      "projects/update-card",
 			Body:             request,
@@ -51797,7 +51797,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProjectsUpdateColumn",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProjectsUpdateColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51828,7 +51828,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ProjectsUpdateColumn",
+			Name: ProjectsUpdateColumnOperation,
 			ID:   "projects/update-column",
 		}
 	)
@@ -51862,7 +51862,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProjectsUpdateColumn",
+			OperationName:    ProjectsUpdateColumnOperation,
 			OperationSummary: "Update an existing project column",
 			OperationID:      "projects/update-column",
 			Body:             request,
@@ -51924,7 +51924,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsCheckIfMerged",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCheckIfMergedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51955,7 +51955,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCheckIfMerged",
+			Name: PullsCheckIfMergedOperation,
 			ID:   "pulls/check-if-merged",
 		}
 	)
@@ -51974,7 +51974,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsCheckIfMerged",
+			OperationName:    PullsCheckIfMergedOperation,
 			OperationSummary: "Check if a pull request has been merged",
 			OperationID:      "pulls/check-if-merged",
 			Body:             nil,
@@ -52059,7 +52059,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsCreate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52090,7 +52090,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreate",
+			Name: PullsCreateOperation,
 			ID:   "pulls/create",
 		}
 	)
@@ -52124,7 +52124,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsCreate",
+			OperationName:    PullsCreateOperation,
 			OperationSummary: "Create a pull request",
 			OperationID:      "pulls/create",
 			Body:             request,
@@ -52199,7 +52199,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsCreateReplyForReviewComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateReplyForReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52230,7 +52230,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreateReplyForReviewComment",
+			Name: PullsCreateReplyForReviewCommentOperation,
 			ID:   "pulls/create-reply-for-review-comment",
 		}
 	)
@@ -52264,7 +52264,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsCreateReplyForReviewComment",
+			OperationName:    PullsCreateReplyForReviewCommentOperation,
 			OperationSummary: "Create a reply for a review comment",
 			OperationID:      "pulls/create-reply-for-review-comment",
 			Body:             request,
@@ -52356,7 +52356,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsCreateReview",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52387,7 +52387,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreateReview",
+			Name: PullsCreateReviewOperation,
 			ID:   "pulls/create-review",
 		}
 	)
@@ -52421,7 +52421,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsCreateReview",
+			OperationName:    PullsCreateReviewOperation,
 			OperationSummary: "Create a review for a pull request",
 			OperationID:      "pulls/create-review",
 			Body:             request,
@@ -52510,7 +52510,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsCreateReviewComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsCreateReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52541,7 +52541,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsCreateReviewComment",
+			Name: PullsCreateReviewCommentOperation,
 			ID:   "pulls/create-review-comment",
 		}
 	)
@@ -52575,7 +52575,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsCreateReviewComment",
+			OperationName:    PullsCreateReviewCommentOperation,
 			OperationSummary: "Create a review comment for a pull request",
 			OperationID:      "pulls/create-review-comment",
 			Body:             request,
@@ -52645,7 +52645,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsDeletePendingReview",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsDeletePendingReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52676,7 +52676,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsDeletePendingReview",
+			Name: PullsDeletePendingReviewOperation,
 			ID:   "pulls/delete-pending-review",
 		}
 	)
@@ -52695,7 +52695,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsDeletePendingReview",
+			OperationName:    PullsDeletePendingReviewOperation,
 			OperationSummary: "Delete a pending review for a pull request",
 			OperationID:      "pulls/delete-pending-review",
 			Body:             nil,
@@ -52769,7 +52769,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsDeleteReviewComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsDeleteReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52800,7 +52800,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsDeleteReviewComment",
+			Name: PullsDeleteReviewCommentOperation,
 			ID:   "pulls/delete-review-comment",
 		}
 	)
@@ -52819,7 +52819,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsDeleteReviewComment",
+			OperationName:    PullsDeleteReviewCommentOperation,
 			OperationSummary: "Delete a review comment for a pull request",
 			OperationID:      "pulls/delete-review-comment",
 			Body:             nil,
@@ -52891,7 +52891,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsDismissReview",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsDismissReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52922,7 +52922,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsDismissReview",
+			Name: PullsDismissReviewOperation,
 			ID:   "pulls/dismiss-review",
 		}
 	)
@@ -52956,7 +52956,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsDismissReview",
+			OperationName:    PullsDismissReviewOperation,
 			OperationSummary: "Dismiss a review for a pull request",
 			OperationID:      "pulls/dismiss-review",
 			Body:             request,
@@ -53063,7 +53063,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53094,7 +53094,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsGet",
+			Name: PullsGetOperation,
 			ID:   "pulls/get",
 		}
 	)
@@ -53113,7 +53113,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsGet",
+			OperationName:    PullsGetOperation,
 			OperationSummary: "Get a pull request",
 			OperationID:      "pulls/get",
 			Body:             nil,
@@ -53183,7 +53183,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsGetReview",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsGetReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53214,7 +53214,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsGetReview",
+			Name: PullsGetReviewOperation,
 			ID:   "pulls/get-review",
 		}
 	)
@@ -53233,7 +53233,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsGetReview",
+			OperationName:    PullsGetReviewOperation,
 			OperationSummary: "Get a review for a pull request",
 			OperationID:      "pulls/get-review",
 			Body:             nil,
@@ -53307,7 +53307,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsGetReviewComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsGetReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53338,7 +53338,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsGetReviewComment",
+			Name: PullsGetReviewCommentOperation,
 			ID:   "pulls/get-review-comment",
 		}
 	)
@@ -53357,7 +53357,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsGetReviewComment",
+			OperationName:    PullsGetReviewCommentOperation,
 			OperationSummary: "Get a review comment for a pull request",
 			OperationID:      "pulls/get-review-comment",
 			Body:             nil,
@@ -53431,7 +53431,7 @@ func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53462,7 +53462,7 @@ func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsList",
+			Name: PullsListOperation,
 			ID:   "pulls/list",
 		}
 	)
@@ -53481,7 +53481,7 @@ func (s *Server) handlePullsListRequest(args [2]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsList",
+			OperationName:    PullsListOperation,
 			OperationSummary: "List pull requests",
 			OperationID:      "pulls/list",
 			Body:             nil,
@@ -53575,7 +53575,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsListCommentsForReview",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListCommentsForReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53606,7 +53606,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListCommentsForReview",
+			Name: PullsListCommentsForReviewOperation,
 			ID:   "pulls/list-comments-for-review",
 		}
 	)
@@ -53625,7 +53625,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsListCommentsForReview",
+			OperationName:    PullsListCommentsForReviewOperation,
 			OperationSummary: "List comments for a pull request review",
 			OperationID:      "pulls/list-comments-for-review",
 			Body:             nil,
@@ -53709,7 +53709,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsListCommits",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53740,7 +53740,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListCommits",
+			Name: PullsListCommitsOperation,
 			ID:   "pulls/list-commits",
 		}
 	)
@@ -53759,7 +53759,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsListCommits",
+			OperationName:    PullsListCommitsOperation,
 			OperationSummary: "List commits on a pull request",
 			OperationID:      "pulls/list-commits",
 			Body:             nil,
@@ -53838,7 +53838,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsListFiles",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListFilesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53869,7 +53869,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListFiles",
+			Name: PullsListFilesOperation,
 			ID:   "pulls/list-files",
 		}
 	)
@@ -53888,7 +53888,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsListFiles",
+			OperationName:    PullsListFilesOperation,
 			OperationSummary: "List pull requests files",
 			OperationID:      "pulls/list-files",
 			Body:             nil,
@@ -53966,7 +53966,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsListRequestedReviewers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListRequestedReviewersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53997,7 +53997,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListRequestedReviewers",
+			Name: PullsListRequestedReviewersOperation,
 			ID:   "pulls/list-requested-reviewers",
 		}
 	)
@@ -54016,7 +54016,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsListRequestedReviewers",
+			OperationName:    PullsListRequestedReviewersOperation,
 			OperationSummary: "List requested reviewers for a pull request",
 			OperationID:      "pulls/list-requested-reviewers",
 			Body:             nil,
@@ -54095,7 +54095,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsListReviewComments",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListReviewCommentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54126,7 +54126,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListReviewComments",
+			Name: PullsListReviewCommentsOperation,
 			ID:   "pulls/list-review-comments",
 		}
 	)
@@ -54145,7 +54145,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsListReviewComments",
+			OperationName:    PullsListReviewCommentsOperation,
 			OperationSummary: "List review comments on a pull request",
 			OperationID:      "pulls/list-review-comments",
 			Body:             nil,
@@ -54236,7 +54236,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsListReviewCommentsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListReviewCommentsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54267,7 +54267,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListReviewCommentsForRepo",
+			Name: PullsListReviewCommentsForRepoOperation,
 			ID:   "pulls/list-review-comments-for-repo",
 		}
 	)
@@ -54286,7 +54286,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsListReviewCommentsForRepo",
+			OperationName:    PullsListReviewCommentsForRepoOperation,
 			OperationSummary: "List review comments in a repository",
 			OperationID:      "pulls/list-review-comments-for-repo",
 			Body:             nil,
@@ -54372,7 +54372,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsListReviews",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsListReviewsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54403,7 +54403,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsListReviews",
+			Name: PullsListReviewsOperation,
 			ID:   "pulls/list-reviews",
 		}
 	)
@@ -54422,7 +54422,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsListReviews",
+			OperationName:    PullsListReviewsOperation,
 			OperationSummary: "List reviews for a pull request",
 			OperationID:      "pulls/list-reviews",
 			Body:             nil,
@@ -54506,7 +54506,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsMerge",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsMergeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54537,7 +54537,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsMerge",
+			Name: PullsMergeOperation,
 			ID:   "pulls/merge",
 		}
 	)
@@ -54571,7 +54571,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsMerge",
+			OperationName:    PullsMergeOperation,
 			OperationSummary: "Merge a pull request",
 			OperationID:      "pulls/merge",
 			Body:             request,
@@ -54641,7 +54641,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsRemoveRequestedReviewers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsRemoveRequestedReviewersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54672,7 +54672,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsRemoveRequestedReviewers",
+			Name: PullsRemoveRequestedReviewersOperation,
 			ID:   "pulls/remove-requested-reviewers",
 		}
 	)
@@ -54706,7 +54706,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsRemoveRequestedReviewers",
+			OperationName:    PullsRemoveRequestedReviewersOperation,
 			OperationSummary: "Remove requested reviewers from a pull request",
 			OperationID:      "pulls/remove-requested-reviewers",
 			Body:             request,
@@ -54776,7 +54776,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsSubmitReview",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsSubmitReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54807,7 +54807,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsSubmitReview",
+			Name: PullsSubmitReviewOperation,
 			ID:   "pulls/submit-review",
 		}
 	)
@@ -54841,7 +54841,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsSubmitReview",
+			OperationName:    PullsSubmitReviewOperation,
 			OperationSummary: "Submit a review for a pull request",
 			OperationID:      "pulls/submit-review",
 			Body:             request,
@@ -54922,7 +54922,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsUpdate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54953,7 +54953,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdate",
+			Name: PullsUpdateOperation,
 			ID:   "pulls/update",
 		}
 	)
@@ -54987,7 +54987,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsUpdate",
+			OperationName:    PullsUpdateOperation,
 			OperationSummary: "Update a pull request",
 			OperationID:      "pulls/update",
 			Body:             request,
@@ -55058,7 +55058,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsUpdateBranch",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55089,7 +55089,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdateBranch",
+			Name: PullsUpdateBranchOperation,
 			ID:   "pulls/update-branch",
 		}
 	)
@@ -55123,7 +55123,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsUpdateBranch",
+			OperationName:    PullsUpdateBranchOperation,
 			OperationSummary: "Update a pull request branch",
 			OperationID:      "pulls/update-branch",
 			Body:             request,
@@ -55193,7 +55193,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsUpdateReview",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55224,7 +55224,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdateReview",
+			Name: PullsUpdateReviewOperation,
 			ID:   "pulls/update-review",
 		}
 	)
@@ -55258,7 +55258,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsUpdateReview",
+			OperationName:    PullsUpdateReviewOperation,
 			OperationSummary: "Update a review for a pull request",
 			OperationID:      "pulls/update-review",
 			Body:             request,
@@ -55332,7 +55332,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PullsUpdateReviewComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PullsUpdateReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55363,7 +55363,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PullsUpdateReviewComment",
+			Name: PullsUpdateReviewCommentOperation,
 			ID:   "pulls/update-review-comment",
 		}
 	)
@@ -55397,7 +55397,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PullsUpdateReviewComment",
+			OperationName:    PullsUpdateReviewCommentOperation,
 			OperationSummary: "Update a review comment for a pull request",
 			OperationID:      "pulls/update-review-comment",
 			Body:             request,
@@ -55470,7 +55470,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "RateLimitGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RateLimitGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55506,7 +55506,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RateLimitGet",
+			OperationName:    RateLimitGetOperation,
 			OperationSummary: "Get rate limit status for the authenticated user",
 			OperationID:      "rate-limit/get",
 			Body:             nil,
@@ -55565,7 +55565,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForCommitComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55596,7 +55596,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForCommitComment",
+			Name: ReactionsCreateForCommitCommentOperation,
 			ID:   "reactions/create-for-commit-comment",
 		}
 	)
@@ -55630,7 +55630,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForCommitComment",
+			OperationName:    ReactionsCreateForCommitCommentOperation,
 			OperationSummary: "Create reaction for a commit comment",
 			OperationID:      "reactions/create-for-commit-comment",
 			Body:             request,
@@ -55701,7 +55701,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForIssue",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55732,7 +55732,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForIssue",
+			Name: ReactionsCreateForIssueOperation,
 			ID:   "reactions/create-for-issue",
 		}
 	)
@@ -55766,7 +55766,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForIssue",
+			OperationName:    ReactionsCreateForIssueOperation,
 			OperationSummary: "Create reaction for an issue",
 			OperationID:      "reactions/create-for-issue",
 			Body:             request,
@@ -55838,7 +55838,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForIssueComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForIssueCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55869,7 +55869,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForIssueComment",
+			Name: ReactionsCreateForIssueCommentOperation,
 			ID:   "reactions/create-for-issue-comment",
 		}
 	)
@@ -55903,7 +55903,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForIssueComment",
+			OperationName:    ReactionsCreateForIssueCommentOperation,
 			OperationSummary: "Create reaction for an issue comment",
 			OperationID:      "reactions/create-for-issue-comment",
 			Body:             request,
@@ -55975,7 +55975,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForPullRequestReviewComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForPullRequestReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56006,7 +56006,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForPullRequestReviewComment",
+			Name: ReactionsCreateForPullRequestReviewCommentOperation,
 			ID:   "reactions/create-for-pull-request-review-comment",
 		}
 	)
@@ -56040,7 +56040,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForPullRequestReviewComment",
+			OperationName:    ReactionsCreateForPullRequestReviewCommentOperation,
 			OperationSummary: "Create reaction for a pull request review comment",
 			OperationID:      "reactions/create-for-pull-request-review-comment",
 			Body:             request,
@@ -56111,7 +56111,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForRelease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56142,7 +56142,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForRelease",
+			Name: ReactionsCreateForReleaseOperation,
 			ID:   "reactions/create-for-release",
 		}
 	)
@@ -56176,7 +56176,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForRelease",
+			OperationName:    ReactionsCreateForReleaseOperation,
 			OperationSummary: "Create reaction for a release",
 			OperationID:      "reactions/create-for-release",
 			Body:             request,
@@ -56252,7 +56252,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForTeamDiscussionCommentInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56283,7 +56283,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionCommentInOrg",
+			Name: ReactionsCreateForTeamDiscussionCommentInOrgOperation,
 			ID:   "reactions/create-for-team-discussion-comment-in-org",
 		}
 	)
@@ -56317,7 +56317,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForTeamDiscussionCommentInOrg",
+			OperationName:    ReactionsCreateForTeamDiscussionCommentInOrgOperation,
 			OperationSummary: "Create reaction for a team discussion comment",
 			OperationID:      "reactions/create-for-team-discussion-comment-in-org",
 			Body:             request,
@@ -56401,7 +56401,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForTeamDiscussionCommentLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56432,7 +56432,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionCommentLegacy",
+			Name: ReactionsCreateForTeamDiscussionCommentLegacyOperation,
 			ID:   "reactions/create-for-team-discussion-comment-legacy",
 		}
 	)
@@ -56466,7 +56466,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForTeamDiscussionCommentLegacy",
+			OperationName:    ReactionsCreateForTeamDiscussionCommentLegacyOperation,
 			OperationSummary: "Create reaction for a team discussion comment (Legacy)",
 			OperationID:      "reactions/create-for-team-discussion-comment-legacy",
 			Body:             request,
@@ -56543,7 +56543,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForTeamDiscussionInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56574,7 +56574,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionInOrg",
+			Name: ReactionsCreateForTeamDiscussionInOrgOperation,
 			ID:   "reactions/create-for-team-discussion-in-org",
 		}
 	)
@@ -56608,7 +56608,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForTeamDiscussionInOrg",
+			OperationName:    ReactionsCreateForTeamDiscussionInOrgOperation,
 			OperationSummary: "Create reaction for a team discussion",
 			OperationID:      "reactions/create-for-team-discussion-in-org",
 			Body:             request,
@@ -56689,7 +56689,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsCreateForTeamDiscussionLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsCreateForTeamDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56720,7 +56720,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsCreateForTeamDiscussionLegacy",
+			Name: ReactionsCreateForTeamDiscussionLegacyOperation,
 			ID:   "reactions/create-for-team-discussion-legacy",
 		}
 	)
@@ -56754,7 +56754,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsCreateForTeamDiscussionLegacy",
+			OperationName:    ReactionsCreateForTeamDiscussionLegacyOperation,
 			OperationSummary: "Create reaction for a team discussion (Legacy)",
 			OperationID:      "reactions/create-for-team-discussion-legacy",
 			Body:             request,
@@ -56822,7 +56822,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsDeleteForCommitComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56853,7 +56853,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForCommitComment",
+			Name: ReactionsDeleteForCommitCommentOperation,
 			ID:   "reactions/delete-for-commit-comment",
 		}
 	)
@@ -56872,7 +56872,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsDeleteForCommitComment",
+			OperationName:    ReactionsDeleteForCommitCommentOperation,
 			OperationSummary: "Delete a commit comment reaction",
 			OperationID:      "reactions/delete-for-commit-comment",
 			Body:             nil,
@@ -56948,7 +56948,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsDeleteForIssue",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56979,7 +56979,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForIssue",
+			Name: ReactionsDeleteForIssueOperation,
 			ID:   "reactions/delete-for-issue",
 		}
 	)
@@ -56998,7 +56998,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsDeleteForIssue",
+			OperationName:    ReactionsDeleteForIssueOperation,
 			OperationSummary: "Delete an issue reaction",
 			OperationID:      "reactions/delete-for-issue",
 			Body:             nil,
@@ -57074,7 +57074,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsDeleteForIssueComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForIssueCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57105,7 +57105,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForIssueComment",
+			Name: ReactionsDeleteForIssueCommentOperation,
 			ID:   "reactions/delete-for-issue-comment",
 		}
 	)
@@ -57124,7 +57124,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsDeleteForIssueComment",
+			OperationName:    ReactionsDeleteForIssueCommentOperation,
 			OperationSummary: "Delete an issue comment reaction",
 			OperationID:      "reactions/delete-for-issue-comment",
 			Body:             nil,
@@ -57201,7 +57201,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsDeleteForPullRequestComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForPullRequestCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57232,7 +57232,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForPullRequestComment",
+			Name: ReactionsDeleteForPullRequestCommentOperation,
 			ID:   "reactions/delete-for-pull-request-comment",
 		}
 	)
@@ -57251,7 +57251,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsDeleteForPullRequestComment",
+			OperationName:    ReactionsDeleteForPullRequestCommentOperation,
 			OperationSummary: "Delete a pull request comment reaction",
 			OperationID:      "reactions/delete-for-pull-request-comment",
 			Body:             nil,
@@ -57332,7 +57332,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsDeleteForTeamDiscussion",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForTeamDiscussionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57363,7 +57363,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForTeamDiscussion",
+			Name: ReactionsDeleteForTeamDiscussionOperation,
 			ID:   "reactions/delete-for-team-discussion",
 		}
 	)
@@ -57382,7 +57382,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsDeleteForTeamDiscussion",
+			OperationName:    ReactionsDeleteForTeamDiscussionOperation,
 			OperationSummary: "Delete team discussion reaction",
 			OperationID:      "reactions/delete-for-team-discussion",
 			Body:             nil,
@@ -57461,7 +57461,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsDeleteForTeamDiscussionComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteForTeamDiscussionCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57492,7 +57492,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteForTeamDiscussionComment",
+			Name: ReactionsDeleteForTeamDiscussionCommentOperation,
 			ID:   "reactions/delete-for-team-discussion-comment",
 		}
 	)
@@ -57511,7 +57511,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsDeleteForTeamDiscussionComment",
+			OperationName:    ReactionsDeleteForTeamDiscussionCommentOperation,
 			OperationSummary: "Delete team discussion comment reaction",
 			OperationID:      "reactions/delete-for-team-discussion-comment",
 			Body:             nil,
@@ -57598,7 +57598,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsDeleteLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsDeleteLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57629,7 +57629,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsDeleteLegacy",
+			Name: ReactionsDeleteLegacyOperation,
 			ID:   "reactions/delete-legacy",
 		}
 	)
@@ -57648,7 +57648,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsDeleteLegacy",
+			OperationName:    ReactionsDeleteLegacyOperation,
 			OperationSummary: "Delete a reaction (Legacy)",
 			OperationID:      "reactions/delete-legacy",
 			Body:             nil,
@@ -57710,7 +57710,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForCommitComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57741,7 +57741,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForCommitComment",
+			Name: ReactionsListForCommitCommentOperation,
 			ID:   "reactions/list-for-commit-comment",
 		}
 	)
@@ -57760,7 +57760,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForCommitComment",
+			OperationName:    ReactionsListForCommitCommentOperation,
 			OperationSummary: "List reactions for a commit comment",
 			OperationID:      "reactions/list-for-commit-comment",
 			Body:             nil,
@@ -57842,7 +57842,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForIssue",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57873,7 +57873,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForIssue",
+			Name: ReactionsListForIssueOperation,
 			ID:   "reactions/list-for-issue",
 		}
 	)
@@ -57892,7 +57892,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForIssue",
+			OperationName:    ReactionsListForIssueOperation,
 			OperationSummary: "List reactions for an issue",
 			OperationID:      "reactions/list-for-issue",
 			Body:             nil,
@@ -57974,7 +57974,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForIssueComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForIssueCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58005,7 +58005,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForIssueComment",
+			Name: ReactionsListForIssueCommentOperation,
 			ID:   "reactions/list-for-issue-comment",
 		}
 	)
@@ -58024,7 +58024,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForIssueComment",
+			OperationName:    ReactionsListForIssueCommentOperation,
 			OperationSummary: "List reactions for an issue comment",
 			OperationID:      "reactions/list-for-issue-comment",
 			Body:             nil,
@@ -58107,7 +58107,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForPullRequestReviewComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForPullRequestReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58138,7 +58138,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForPullRequestReviewComment",
+			Name: ReactionsListForPullRequestReviewCommentOperation,
 			ID:   "reactions/list-for-pull-request-review-comment",
 		}
 	)
@@ -58157,7 +58157,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForPullRequestReviewComment",
+			OperationName:    ReactionsListForPullRequestReviewCommentOperation,
 			OperationSummary: "List reactions for a pull request review comment",
 			OperationID:      "reactions/list-for-pull-request-review-comment",
 			Body:             nil,
@@ -58243,7 +58243,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForTeamDiscussionCommentInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58274,7 +58274,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionCommentInOrg",
+			Name: ReactionsListForTeamDiscussionCommentInOrgOperation,
 			ID:   "reactions/list-for-team-discussion-comment-in-org",
 		}
 	)
@@ -58293,7 +58293,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForTeamDiscussionCommentInOrg",
+			OperationName:    ReactionsListForTeamDiscussionCommentInOrgOperation,
 			OperationSummary: "List reactions for a team discussion comment",
 			OperationID:      "reactions/list-for-team-discussion-comment-in-org",
 			Body:             nil,
@@ -58387,7 +58387,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForTeamDiscussionCommentLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58418,7 +58418,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionCommentLegacy",
+			Name: ReactionsListForTeamDiscussionCommentLegacyOperation,
 			ID:   "reactions/list-for-team-discussion-comment-legacy",
 		}
 	)
@@ -58437,7 +58437,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForTeamDiscussionCommentLegacy",
+			OperationName:    ReactionsListForTeamDiscussionCommentLegacyOperation,
 			OperationSummary: "List reactions for a team discussion comment (Legacy)",
 			OperationID:      "reactions/list-for-team-discussion-comment-legacy",
 			Body:             nil,
@@ -58523,7 +58523,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForTeamDiscussionInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58554,7 +58554,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionInOrg",
+			Name: ReactionsListForTeamDiscussionInOrgOperation,
 			ID:   "reactions/list-for-team-discussion-in-org",
 		}
 	)
@@ -58573,7 +58573,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForTeamDiscussionInOrg",
+			OperationName:    ReactionsListForTeamDiscussionInOrgOperation,
 			OperationSummary: "List reactions for a team discussion",
 			OperationID:      "reactions/list-for-team-discussion-in-org",
 			Body:             nil,
@@ -58663,7 +58663,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReactionsListForTeamDiscussionLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReactionsListForTeamDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58694,7 +58694,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReactionsListForTeamDiscussionLegacy",
+			Name: ReactionsListForTeamDiscussionLegacyOperation,
 			ID:   "reactions/list-for-team-discussion-legacy",
 		}
 	)
@@ -58713,7 +58713,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReactionsListForTeamDiscussionLegacy",
+			OperationName:    ReactionsListForTeamDiscussionLegacyOperation,
 			OperationSummary: "List reactions for a team discussion (Legacy)",
 			OperationID:      "reactions/list-for-team-discussion-legacy",
 			Body:             nil,
@@ -58791,7 +58791,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposAcceptInvitation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAcceptInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58822,7 +58822,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAcceptInvitation",
+			Name: ReposAcceptInvitationOperation,
 			ID:   "repos/accept-invitation",
 		}
 	)
@@ -58841,7 +58841,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposAcceptInvitation",
+			OperationName:    ReposAcceptInvitationOperation,
 			OperationSummary: "Accept a repository invitation",
 			OperationID:      "repos/accept-invitation",
 			Body:             nil,
@@ -58917,7 +58917,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposAddAppAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddAppAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58948,7 +58948,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddAppAccessRestrictions",
+			Name: ReposAddAppAccessRestrictionsOperation,
 			ID:   "repos/add-app-access-restrictions",
 		}
 	)
@@ -58982,7 +58982,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposAddAppAccessRestrictions",
+			OperationName:    ReposAddAppAccessRestrictionsOperation,
 			OperationSummary: "Add app access restrictions",
 			OperationID:      "repos/add-app-access-restrictions",
 			Body:             request,
@@ -59071,7 +59071,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposAddCollaborator",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59102,7 +59102,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddCollaborator",
+			Name: ReposAddCollaboratorOperation,
 			ID:   "repos/add-collaborator",
 		}
 	)
@@ -59136,7 +59136,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposAddCollaborator",
+			OperationName:    ReposAddCollaboratorOperation,
 			OperationSummary: "Add a repository collaborator",
 			OperationID:      "repos/add-collaborator",
 			Body:             request,
@@ -59210,7 +59210,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposAddStatusCheckContexts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59241,7 +59241,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddStatusCheckContexts",
+			Name: ReposAddStatusCheckContextsOperation,
 			ID:   "repos/add-status-check-contexts",
 		}
 	)
@@ -59275,7 +59275,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposAddStatusCheckContexts",
+			OperationName:    ReposAddStatusCheckContextsOperation,
 			OperationSummary: "Add status check contexts",
 			OperationID:      "repos/add-status-check-contexts",
 			Body:             request,
@@ -59359,7 +59359,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposAddTeamAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddTeamAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59390,7 +59390,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddTeamAccessRestrictions",
+			Name: ReposAddTeamAccessRestrictionsOperation,
 			ID:   "repos/add-team-access-restrictions",
 		}
 	)
@@ -59424,7 +59424,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposAddTeamAccessRestrictions",
+			OperationName:    ReposAddTeamAccessRestrictionsOperation,
 			OperationSummary: "Add team access restrictions",
 			OperationID:      "repos/add-team-access-restrictions",
 			Body:             request,
@@ -59507,7 +59507,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposAddUserAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposAddUserAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59538,7 +59538,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposAddUserAccessRestrictions",
+			Name: ReposAddUserAccessRestrictionsOperation,
 			ID:   "repos/add-user-access-restrictions",
 		}
 	)
@@ -59572,7 +59572,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposAddUserAccessRestrictions",
+			OperationName:    ReposAddUserAccessRestrictionsOperation,
 			OperationSummary: "Add user access restrictions",
 			OperationID:      "repos/add-user-access-restrictions",
 			Body:             request,
@@ -59646,7 +59646,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCheckCollaborator",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCheckCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59677,7 +59677,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCheckCollaborator",
+			Name: ReposCheckCollaboratorOperation,
 			ID:   "repos/check-collaborator",
 		}
 	)
@@ -59696,7 +59696,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCheckCollaborator",
+			OperationName:    ReposCheckCollaboratorOperation,
 			OperationSummary: "Check if a user is a repository collaborator",
 			OperationID:      "repos/check-collaborator",
 			Body:             nil,
@@ -59769,7 +59769,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCheckVulnerabilityAlerts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCheckVulnerabilityAlertsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59800,7 +59800,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCheckVulnerabilityAlerts",
+			Name: ReposCheckVulnerabilityAlertsOperation,
 			ID:   "repos/check-vulnerability-alerts",
 		}
 	)
@@ -59819,7 +59819,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCheckVulnerabilityAlerts",
+			OperationName:    ReposCheckVulnerabilityAlertsOperation,
 			OperationSummary: "Check if vulnerability alerts are enabled for a repository",
 			OperationID:      "repos/check-vulnerability-alerts",
 			Body:             nil,
@@ -59939,7 +59939,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCompareCommits",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCompareCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59970,7 +59970,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCompareCommits",
+			Name: ReposCompareCommitsOperation,
 			ID:   "repos/compare-commits",
 		}
 	)
@@ -59989,7 +59989,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCompareCommits",
+			OperationName:    ReposCompareCommitsOperation,
 			OperationSummary: "Compare two commits",
 			OperationID:      "repos/compare-commits",
 			Body:             nil,
@@ -60067,7 +60067,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateAutolink",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateAutolinkOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60098,7 +60098,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateAutolink",
+			Name: ReposCreateAutolinkOperation,
 			ID:   "repos/create-autolink",
 		}
 	)
@@ -60132,7 +60132,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateAutolink",
+			OperationName:    ReposCreateAutolinkOperation,
 			OperationSummary: "Create an autolink reference for a repository",
 			OperationID:      "repos/create-autolink",
 			Body:             request,
@@ -60205,7 +60205,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateCommitComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60236,7 +60236,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateCommitComment",
+			Name: ReposCreateCommitCommentOperation,
 			ID:   "repos/create-commit-comment",
 		}
 	)
@@ -60270,7 +60270,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateCommitComment",
+			OperationName:    ReposCreateCommitCommentOperation,
 			OperationSummary: "Create a commit comment",
 			OperationID:      "repos/create-commit-comment",
 			Body:             request,
@@ -60346,7 +60346,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateCommitSignatureProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateCommitSignatureProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60377,7 +60377,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateCommitSignatureProtection",
+			Name: ReposCreateCommitSignatureProtectionOperation,
 			ID:   "repos/create-commit-signature-protection",
 		}
 	)
@@ -60396,7 +60396,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateCommitSignatureProtection",
+			OperationName:    ReposCreateCommitSignatureProtectionOperation,
 			OperationSummary: "Create commit signature protection",
 			OperationID:      "repos/create-commit-signature-protection",
 			Body:             nil,
@@ -60468,7 +60468,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateCommitStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateCommitStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60499,7 +60499,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateCommitStatus",
+			Name: ReposCreateCommitStatusOperation,
 			ID:   "repos/create-commit-status",
 		}
 	)
@@ -60533,7 +60533,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateCommitStatus",
+			OperationName:    ReposCreateCommitStatusOperation,
 			OperationSummary: "Create a commit status",
 			OperationID:      "repos/create-commit-status",
 			Body:             request,
@@ -60603,7 +60603,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateDeployKey",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDeployKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60634,7 +60634,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDeployKey",
+			Name: ReposCreateDeployKeyOperation,
 			ID:   "repos/create-deploy-key",
 		}
 	)
@@ -60668,7 +60668,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateDeployKey",
+			OperationName:    ReposCreateDeployKeyOperation,
 			OperationSummary: "Create a deploy key",
 			OperationID:      "repos/create-deploy-key",
 			Body:             request,
@@ -60789,7 +60789,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateDeployment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60820,7 +60820,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDeployment",
+			Name: ReposCreateDeploymentOperation,
 			ID:   "repos/create-deployment",
 		}
 	)
@@ -60854,7 +60854,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateDeployment",
+			OperationName:    ReposCreateDeploymentOperation,
 			OperationSummary: "Create a deployment",
 			OperationID:      "repos/create-deployment",
 			Body:             request,
@@ -60922,7 +60922,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateDeploymentStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDeploymentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60953,7 +60953,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDeploymentStatus",
+			Name: ReposCreateDeploymentStatusOperation,
 			ID:   "repos/create-deployment-status",
 		}
 	)
@@ -60987,7 +60987,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateDeploymentStatus",
+			OperationName:    ReposCreateDeploymentStatusOperation,
 			OperationSummary: "Create a deployment status",
 			OperationID:      "repos/create-deployment-status",
 			Body:             request,
@@ -61076,7 +61076,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateDispatchEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateDispatchEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61107,7 +61107,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateDispatchEvent",
+			Name: ReposCreateDispatchEventOperation,
 			ID:   "repos/create-dispatch-event",
 		}
 	)
@@ -61141,7 +61141,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateDispatchEvent",
+			OperationName:    ReposCreateDispatchEventOperation,
 			OperationSummary: "Create a repository dispatch event",
 			OperationID:      "repos/create-dispatch-event",
 			Body:             request,
@@ -61213,7 +61213,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61244,7 +61244,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateForAuthenticatedUser",
+			Name: ReposCreateForAuthenticatedUserOperation,
 			ID:   "repos/create-for-authenticated-user",
 		}
 	)
@@ -61268,7 +61268,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateForAuthenticatedUser",
+			OperationName:    ReposCreateForAuthenticatedUserOperation,
 			OperationSummary: "Create a repository for the authenticated user",
 			OperationID:      "repos/create-for-authenticated-user",
 			Body:             request,
@@ -61328,7 +61328,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateFork",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateForkOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61359,7 +61359,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateFork",
+			Name: ReposCreateForkOperation,
 			ID:   "repos/create-fork",
 		}
 	)
@@ -61393,7 +61393,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateFork",
+			OperationName:    ReposCreateForkOperation,
 			OperationSummary: "Create a fork",
 			OperationID:      "repos/create-fork",
 			Body:             request,
@@ -61466,7 +61466,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61497,7 +61497,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateInOrg",
+			Name: ReposCreateInOrgOperation,
 			ID:   "repos/create-in-org",
 		}
 	)
@@ -61531,7 +61531,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateInOrg",
+			OperationName:    ReposCreateInOrgOperation,
 			OperationSummary: "Create an organization repository",
 			OperationID:      "repos/create-in-org",
 			Body:             request,
@@ -61593,7 +61593,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateOrUpdateFileContents",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateOrUpdateFileContentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61624,7 +61624,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateOrUpdateFileContents",
+			Name: ReposCreateOrUpdateFileContentsOperation,
 			ID:   "repos/create-or-update-file-contents",
 		}
 	)
@@ -61658,7 +61658,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateOrUpdateFileContents",
+			OperationName:    ReposCreateOrUpdateFileContentsOperation,
 			OperationSummary: "Create or update file contents",
 			OperationID:      "repos/create-or-update-file-contents",
 			Body:             request,
@@ -61729,7 +61729,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreatePagesSite",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreatePagesSiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61760,7 +61760,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreatePagesSite",
+			Name: ReposCreatePagesSiteOperation,
 			ID:   "repos/create-pages-site",
 		}
 	)
@@ -61794,7 +61794,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreatePagesSite",
+			OperationName:    ReposCreatePagesSiteOperation,
 			OperationSummary: "Create a GitHub Pages site",
 			OperationID:      "repos/create-pages-site",
 			Body:             request,
@@ -61867,7 +61867,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateRelease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61898,7 +61898,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateRelease",
+			Name: ReposCreateReleaseOperation,
 			ID:   "repos/create-release",
 		}
 	)
@@ -61932,7 +61932,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateRelease",
+			OperationName:    ReposCreateReleaseOperation,
 			OperationSummary: "Create a release",
 			OperationID:      "repos/create-release",
 			Body:             request,
@@ -62009,7 +62009,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateUsingTemplate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateUsingTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62040,7 +62040,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateUsingTemplate",
+			Name: ReposCreateUsingTemplateOperation,
 			ID:   "repos/create-using-template",
 		}
 	)
@@ -62074,7 +62074,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateUsingTemplate",
+			OperationName:    ReposCreateUsingTemplateOperation,
 			OperationSummary: "Create a repository using a template",
 			OperationID:      "repos/create-using-template",
 			Body:             request,
@@ -62142,7 +62142,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposCreateWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposCreateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62173,7 +62173,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposCreateWebhook",
+			Name: ReposCreateWebhookOperation,
 			ID:   "repos/create-webhook",
 		}
 	)
@@ -62207,7 +62207,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposCreateWebhook",
+			OperationName:    ReposCreateWebhookOperation,
 			OperationSummary: "Create a repository webhook",
 			OperationID:      "repos/create-webhook",
 			Body:             request,
@@ -62273,7 +62273,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeclineInvitation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeclineInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62304,7 +62304,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeclineInvitation",
+			Name: ReposDeclineInvitationOperation,
 			ID:   "repos/decline-invitation",
 		}
 	)
@@ -62323,7 +62323,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeclineInvitation",
+			OperationName:    ReposDeclineInvitationOperation,
 			OperationSummary: "Decline a repository invitation",
 			OperationID:      "repos/decline-invitation",
 			Body:             nil,
@@ -62388,7 +62388,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDelete",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62419,7 +62419,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDelete",
+			Name: ReposDeleteOperation,
 			ID:   "repos/delete",
 		}
 	)
@@ -62438,7 +62438,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDelete",
+			OperationName:    ReposDeleteOperation,
 			OperationSummary: "Delete a repository",
 			OperationID:      "repos/delete",
 			Body:             nil,
@@ -62509,7 +62509,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62540,7 +62540,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAccessRestrictions",
+			Name: ReposDeleteAccessRestrictionsOperation,
 			ID:   "repos/delete-access-restrictions",
 		}
 	)
@@ -62559,7 +62559,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteAccessRestrictions",
+			OperationName:    ReposDeleteAccessRestrictionsOperation,
 			OperationSummary: "Delete access restrictions",
 			OperationID:      "repos/delete-access-restrictions",
 			Body:             nil,
@@ -62635,7 +62635,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteAdminBranchProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAdminBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62666,7 +62666,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAdminBranchProtection",
+			Name: ReposDeleteAdminBranchProtectionOperation,
 			ID:   "repos/delete-admin-branch-protection",
 		}
 	)
@@ -62685,7 +62685,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteAdminBranchProtection",
+			OperationName:    ReposDeleteAdminBranchProtectionOperation,
 			OperationSummary: "Delete admin branch protection",
 			OperationID:      "repos/delete-admin-branch-protection",
 			Body:             nil,
@@ -62755,7 +62755,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteAnEnvironment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAnEnvironmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62786,7 +62786,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAnEnvironment",
+			Name: ReposDeleteAnEnvironmentOperation,
 			ID:   "repos/delete-an-environment",
 		}
 	)
@@ -62805,7 +62805,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteAnEnvironment",
+			OperationName:    ReposDeleteAnEnvironmentOperation,
 			OperationSummary: "Delete an environment",
 			OperationID:      "repos/delete-an-environment",
 			Body:             nil,
@@ -62876,7 +62876,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteAutolink",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteAutolinkOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62907,7 +62907,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteAutolink",
+			Name: ReposDeleteAutolinkOperation,
 			ID:   "repos/delete-autolink",
 		}
 	)
@@ -62926,7 +62926,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteAutolink",
+			OperationName:    ReposDeleteAutolinkOperation,
 			OperationSummary: "Delete an autolink reference from a repository",
 			OperationID:      "repos/delete-autolink",
 			Body:             nil,
@@ -63000,7 +63000,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteBranchProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63031,7 +63031,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteBranchProtection",
+			Name: ReposDeleteBranchProtectionOperation,
 			ID:   "repos/delete-branch-protection",
 		}
 	)
@@ -63050,7 +63050,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteBranchProtection",
+			OperationName:    ReposDeleteBranchProtectionOperation,
 			OperationSummary: "Delete branch protection",
 			OperationID:      "repos/delete-branch-protection",
 			Body:             nil,
@@ -63120,7 +63120,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteCommitComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63151,7 +63151,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteCommitComment",
+			Name: ReposDeleteCommitCommentOperation,
 			ID:   "repos/delete-commit-comment",
 		}
 	)
@@ -63170,7 +63170,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteCommitComment",
+			OperationName:    ReposDeleteCommitCommentOperation,
 			OperationSummary: "Delete a commit comment",
 			OperationID:      "repos/delete-commit-comment",
 			Body:             nil,
@@ -63247,7 +63247,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteCommitSignatureProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteCommitSignatureProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63278,7 +63278,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteCommitSignatureProtection",
+			Name: ReposDeleteCommitSignatureProtectionOperation,
 			ID:   "repos/delete-commit-signature-protection",
 		}
 	)
@@ -63297,7 +63297,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteCommitSignatureProtection",
+			OperationName:    ReposDeleteCommitSignatureProtectionOperation,
 			OperationSummary: "Delete commit signature protection",
 			OperationID:      "repos/delete-commit-signature-protection",
 			Body:             nil,
@@ -63368,7 +63368,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteDeployKey",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteDeployKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63399,7 +63399,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteDeployKey",
+			Name: ReposDeleteDeployKeyOperation,
 			ID:   "repos/delete-deploy-key",
 		}
 	)
@@ -63418,7 +63418,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteDeployKey",
+			OperationName:    ReposDeleteDeployKeyOperation,
 			OperationSummary: "Delete a deploy key",
 			OperationID:      "repos/delete-deploy-key",
 			Body:             nil,
@@ -63496,7 +63496,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteDeployment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63527,7 +63527,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteDeployment",
+			Name: ReposDeleteDeploymentOperation,
 			ID:   "repos/delete-deployment",
 		}
 	)
@@ -63546,7 +63546,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteDeployment",
+			OperationName:    ReposDeleteDeploymentOperation,
 			OperationSummary: "Delete a deployment",
 			OperationID:      "repos/delete-deployment",
 			Body:             nil,
@@ -63623,7 +63623,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteFile",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63654,7 +63654,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteFile",
+			Name: ReposDeleteFileOperation,
 			ID:   "repos/delete-file",
 		}
 	)
@@ -63688,7 +63688,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteFile",
+			OperationName:    ReposDeleteFileOperation,
 			OperationSummary: "Delete a file",
 			OperationID:      "repos/delete-file",
 			Body:             request,
@@ -63758,7 +63758,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteInvitation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63789,7 +63789,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteInvitation",
+			Name: ReposDeleteInvitationOperation,
 			ID:   "repos/delete-invitation",
 		}
 	)
@@ -63808,7 +63808,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteInvitation",
+			OperationName:    ReposDeleteInvitationOperation,
 			OperationSummary: "Delete a repository invitation",
 			OperationID:      "repos/delete-invitation",
 			Body:             nil,
@@ -63878,7 +63878,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeletePagesSite",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeletePagesSiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63909,7 +63909,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeletePagesSite",
+			Name: ReposDeletePagesSiteOperation,
 			ID:   "repos/delete-pages-site",
 		}
 	)
@@ -63928,7 +63928,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeletePagesSite",
+			OperationName:    ReposDeletePagesSiteOperation,
 			OperationSummary: "Delete a GitHub Pages site",
 			OperationID:      "repos/delete-pages-site",
 			Body:             nil,
@@ -63998,7 +63998,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeletePullRequestReviewProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeletePullRequestReviewProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64029,7 +64029,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeletePullRequestReviewProtection",
+			Name: ReposDeletePullRequestReviewProtectionOperation,
 			ID:   "repos/delete-pull-request-review-protection",
 		}
 	)
@@ -64048,7 +64048,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeletePullRequestReviewProtection",
+			OperationName:    ReposDeletePullRequestReviewProtectionOperation,
 			OperationSummary: "Delete pull request review protection",
 			OperationID:      "repos/delete-pull-request-review-protection",
 			Body:             nil,
@@ -64118,7 +64118,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteRelease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64149,7 +64149,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteRelease",
+			Name: ReposDeleteReleaseOperation,
 			ID:   "repos/delete-release",
 		}
 	)
@@ -64168,7 +64168,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteRelease",
+			OperationName:    ReposDeleteReleaseOperation,
 			OperationSummary: "Delete a release",
 			OperationID:      "repos/delete-release",
 			Body:             nil,
@@ -64238,7 +64238,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteReleaseAsset",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64269,7 +64269,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteReleaseAsset",
+			Name: ReposDeleteReleaseAssetOperation,
 			ID:   "repos/delete-release-asset",
 		}
 	)
@@ -64288,7 +64288,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteReleaseAsset",
+			OperationName:    ReposDeleteReleaseAssetOperation,
 			OperationSummary: "Delete a release asset",
 			OperationID:      "repos/delete-release-asset",
 			Body:             nil,
@@ -64358,7 +64358,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDeleteWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDeleteWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64389,7 +64389,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDeleteWebhook",
+			Name: ReposDeleteWebhookOperation,
 			ID:   "repos/delete-webhook",
 		}
 	)
@@ -64408,7 +64408,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDeleteWebhook",
+			OperationName:    ReposDeleteWebhookOperation,
 			OperationSummary: "Delete a repository webhook",
 			OperationID:      "repos/delete-webhook",
 			Body:             nil,
@@ -64480,7 +64480,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDisableAutomatedSecurityFixes",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDisableAutomatedSecurityFixesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64511,7 +64511,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDisableAutomatedSecurityFixes",
+			Name: ReposDisableAutomatedSecurityFixesOperation,
 			ID:   "repos/disable-automated-security-fixes",
 		}
 	)
@@ -64530,7 +64530,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDisableAutomatedSecurityFixes",
+			OperationName:    ReposDisableAutomatedSecurityFixesOperation,
 			OperationSummary: "Disable automated security fixes",
 			OperationID:      "repos/disable-automated-security-fixes",
 			Body:             nil,
@@ -64596,7 +64596,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDisableLfsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDisableLfsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64627,7 +64627,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDisableLfsForRepo",
+			Name: ReposDisableLfsForRepoOperation,
 			ID:   "repos/disable-lfs-for-repo",
 		}
 	)
@@ -64646,7 +64646,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDisableLfsForRepo",
+			OperationName:    ReposDisableLfsForRepoOperation,
 			OperationSummary: "Disable Git LFS for a repository",
 			OperationID:      "repos/disable-lfs-for-repo",
 			Body:             nil,
@@ -64715,7 +64715,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDisableVulnerabilityAlerts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDisableVulnerabilityAlertsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64746,7 +64746,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDisableVulnerabilityAlerts",
+			Name: ReposDisableVulnerabilityAlertsOperation,
 			ID:   "repos/disable-vulnerability-alerts",
 		}
 	)
@@ -64765,7 +64765,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDisableVulnerabilityAlerts",
+			OperationName:    ReposDisableVulnerabilityAlertsOperation,
 			OperationSummary: "Disable vulnerability alerts",
 			OperationID:      "repos/disable-vulnerability-alerts",
 			Body:             nil,
@@ -64836,7 +64836,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDownloadTarballArchive",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDownloadTarballArchiveOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64867,7 +64867,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDownloadTarballArchive",
+			Name: ReposDownloadTarballArchiveOperation,
 			ID:   "repos/download-tarball-archive",
 		}
 	)
@@ -64886,7 +64886,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDownloadTarballArchive",
+			OperationName:    ReposDownloadTarballArchiveOperation,
 			OperationSummary: "Download a repository archive (tar)",
 			OperationID:      "repos/download-tarball-archive",
 			Body:             nil,
@@ -64961,7 +64961,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposDownloadZipballArchive",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposDownloadZipballArchiveOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64992,7 +64992,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposDownloadZipballArchive",
+			Name: ReposDownloadZipballArchiveOperation,
 			ID:   "repos/download-zipball-archive",
 		}
 	)
@@ -65011,7 +65011,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposDownloadZipballArchive",
+			OperationName:    ReposDownloadZipballArchiveOperation,
 			OperationSummary: "Download a repository archive (zip)",
 			OperationID:      "repos/download-zipball-archive",
 			Body:             nil,
@@ -65083,7 +65083,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposEnableAutomatedSecurityFixes",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposEnableAutomatedSecurityFixesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65114,7 +65114,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposEnableAutomatedSecurityFixes",
+			Name: ReposEnableAutomatedSecurityFixesOperation,
 			ID:   "repos/enable-automated-security-fixes",
 		}
 	)
@@ -65133,7 +65133,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposEnableAutomatedSecurityFixes",
+			OperationName:    ReposEnableAutomatedSecurityFixesOperation,
 			OperationSummary: "Enable automated security fixes",
 			OperationID:      "repos/enable-automated-security-fixes",
 			Body:             nil,
@@ -65199,7 +65199,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposEnableLfsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposEnableLfsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65230,7 +65230,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposEnableLfsForRepo",
+			Name: ReposEnableLfsForRepoOperation,
 			ID:   "repos/enable-lfs-for-repo",
 		}
 	)
@@ -65249,7 +65249,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposEnableLfsForRepo",
+			OperationName:    ReposEnableLfsForRepoOperation,
 			OperationSummary: "Enable Git LFS for a repository",
 			OperationID:      "repos/enable-lfs-for-repo",
 			Body:             nil,
@@ -65318,7 +65318,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposEnableVulnerabilityAlerts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposEnableVulnerabilityAlertsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65349,7 +65349,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposEnableVulnerabilityAlerts",
+			Name: ReposEnableVulnerabilityAlertsOperation,
 			ID:   "repos/enable-vulnerability-alerts",
 		}
 	)
@@ -65368,7 +65368,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposEnableVulnerabilityAlerts",
+			OperationName:    ReposEnableVulnerabilityAlertsOperation,
 			OperationSummary: "Enable vulnerability alerts",
 			OperationID:      "repos/enable-vulnerability-alerts",
 			Body:             nil,
@@ -65435,7 +65435,7 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65466,7 +65466,7 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGet",
+			Name: ReposGetOperation,
 			ID:   "repos/get",
 		}
 	)
@@ -65485,7 +65485,7 @@ func (s *Server) handleReposGetRequest(args [2]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGet",
+			OperationName:    ReposGetOperation,
 			OperationSummary: "Get a repository",
 			OperationID:      "repos/get",
 			Body:             nil,
@@ -65558,7 +65558,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65589,7 +65589,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAccessRestrictions",
+			Name: ReposGetAccessRestrictionsOperation,
 			ID:   "repos/get-access-restrictions",
 		}
 	)
@@ -65608,7 +65608,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetAccessRestrictions",
+			OperationName:    ReposGetAccessRestrictionsOperation,
 			OperationSummary: "Get access restrictions",
 			OperationID:      "repos/get-access-restrictions",
 			Body:             nil,
@@ -65682,7 +65682,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetAdminBranchProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAdminBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65713,7 +65713,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAdminBranchProtection",
+			Name: ReposGetAdminBranchProtectionOperation,
 			ID:   "repos/get-admin-branch-protection",
 		}
 	)
@@ -65732,7 +65732,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetAdminBranchProtection",
+			OperationName:    ReposGetAdminBranchProtectionOperation,
 			OperationSummary: "Get admin branch protection",
 			OperationID:      "repos/get-admin-branch-protection",
 			Body:             nil,
@@ -65806,7 +65806,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetAllStatusCheckContexts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAllStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65837,7 +65837,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAllStatusCheckContexts",
+			Name: ReposGetAllStatusCheckContextsOperation,
 			ID:   "repos/get-all-status-check-contexts",
 		}
 	)
@@ -65856,7 +65856,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetAllStatusCheckContexts",
+			OperationName:    ReposGetAllStatusCheckContextsOperation,
 			OperationSummary: "Get all status check contexts",
 			OperationID:      "repos/get-all-status-check-contexts",
 			Body:             nil,
@@ -65926,7 +65926,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetAllTopics",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAllTopicsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65957,7 +65957,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAllTopics",
+			Name: ReposGetAllTopicsOperation,
 			ID:   "repos/get-all-topics",
 		}
 	)
@@ -65976,7 +65976,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetAllTopics",
+			OperationName:    ReposGetAllTopicsOperation,
 			OperationSummary: "Get all repository topics",
 			OperationID:      "repos/get-all-topics",
 			Body:             nil,
@@ -66057,7 +66057,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetAppsWithAccessToProtectedBranch",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAppsWithAccessToProtectedBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66088,7 +66088,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAppsWithAccessToProtectedBranch",
+			Name: ReposGetAppsWithAccessToProtectedBranchOperation,
 			ID:   "repos/get-apps-with-access-to-protected-branch",
 		}
 	)
@@ -66107,7 +66107,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetAppsWithAccessToProtectedBranch",
+			OperationName:    ReposGetAppsWithAccessToProtectedBranchOperation,
 			OperationSummary: "Get apps with access to the protected branch",
 			OperationID:      "repos/get-apps-with-access-to-protected-branch",
 			Body:             nil,
@@ -66178,7 +66178,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetAutolink",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetAutolinkOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66209,7 +66209,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetAutolink",
+			Name: ReposGetAutolinkOperation,
 			ID:   "repos/get-autolink",
 		}
 	)
@@ -66228,7 +66228,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetAutolink",
+			OperationName:    ReposGetAutolinkOperation,
 			OperationSummary: "Get an autolink reference of a repository",
 			OperationID:      "repos/get-autolink",
 			Body:             nil,
@@ -66298,7 +66298,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetBranch",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66329,7 +66329,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetBranch",
+			Name: ReposGetBranchOperation,
 			ID:   "repos/get-branch",
 		}
 	)
@@ -66348,7 +66348,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetBranch",
+			OperationName:    ReposGetBranchOperation,
 			OperationSummary: "Get a branch",
 			OperationID:      "repos/get-branch",
 			Body:             nil,
@@ -66422,7 +66422,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetBranchProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66453,7 +66453,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetBranchProtection",
+			Name: ReposGetBranchProtectionOperation,
 			ID:   "repos/get-branch-protection",
 		}
 	)
@@ -66472,7 +66472,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetBranchProtection",
+			OperationName:    ReposGetBranchProtectionOperation,
 			OperationSummary: "Get branch protection",
 			OperationID:      "repos/get-branch-protection",
 			Body:             nil,
@@ -66543,7 +66543,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetClones",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetClonesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66574,7 +66574,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetClones",
+			Name: ReposGetClonesOperation,
 			ID:   "repos/get-clones",
 		}
 	)
@@ -66593,7 +66593,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetClones",
+			OperationName:    ReposGetClonesOperation,
 			OperationSummary: "Get repository clones",
 			OperationID:      "repos/get-clones",
 			Body:             nil,
@@ -66663,7 +66663,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCodeFrequencyStats",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCodeFrequencyStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66694,7 +66694,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCodeFrequencyStats",
+			Name: ReposGetCodeFrequencyStatsOperation,
 			ID:   "repos/get-code-frequency-stats",
 		}
 	)
@@ -66713,7 +66713,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCodeFrequencyStats",
+			OperationName:    ReposGetCodeFrequencyStatsOperation,
 			OperationSummary: "Get the weekly commit activity",
 			OperationID:      "repos/get-code-frequency-stats",
 			Body:             nil,
@@ -66780,7 +66780,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCollaboratorPermissionLevel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCollaboratorPermissionLevelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66811,7 +66811,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCollaboratorPermissionLevel",
+			Name: ReposGetCollaboratorPermissionLevelOperation,
 			ID:   "repos/get-collaborator-permission-level",
 		}
 	)
@@ -66830,7 +66830,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCollaboratorPermissionLevel",
+			OperationName:    ReposGetCollaboratorPermissionLevelOperation,
 			OperationSummary: "Get repository permissions for a user",
 			OperationID:      "repos/get-collaborator-permission-level",
 			Body:             nil,
@@ -66908,7 +66908,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCombinedStatusForRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCombinedStatusForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66939,7 +66939,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCombinedStatusForRef",
+			Name: ReposGetCombinedStatusForRefOperation,
 			ID:   "repos/get-combined-status-for-ref",
 		}
 	)
@@ -66958,7 +66958,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCombinedStatusForRef",
+			OperationName:    ReposGetCombinedStatusForRefOperation,
 			OperationSummary: "Get the combined status for a specific reference",
 			OperationID:      "repos/get-combined-status-for-ref",
 			Body:             nil,
@@ -67082,7 +67082,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCommit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67113,7 +67113,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommit",
+			Name: ReposGetCommitOperation,
 			ID:   "repos/get-commit",
 		}
 	)
@@ -67132,7 +67132,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCommit",
+			OperationName:    ReposGetCommitOperation,
 			OperationSummary: "Get a commit",
 			OperationID:      "repos/get-commit",
 			Body:             nil,
@@ -67211,7 +67211,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCommitActivityStats",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitActivityStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67242,7 +67242,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommitActivityStats",
+			Name: ReposGetCommitActivityStatsOperation,
 			ID:   "repos/get-commit-activity-stats",
 		}
 	)
@@ -67261,7 +67261,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCommitActivityStats",
+			OperationName:    ReposGetCommitActivityStatsOperation,
 			OperationSummary: "Get the last year of commit activity",
 			OperationID:      "repos/get-commit-activity-stats",
 			Body:             nil,
@@ -67327,7 +67327,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCommitComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67358,7 +67358,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommitComment",
+			Name: ReposGetCommitCommentOperation,
 			ID:   "repos/get-commit-comment",
 		}
 	)
@@ -67377,7 +67377,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCommitComment",
+			OperationName:    ReposGetCommitCommentOperation,
 			OperationSummary: "Get a commit comment",
 			OperationID:      "repos/get-commit-comment",
 			Body:             nil,
@@ -67456,7 +67456,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCommitSignatureProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommitSignatureProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67487,7 +67487,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommitSignatureProtection",
+			Name: ReposGetCommitSignatureProtectionOperation,
 			ID:   "repos/get-commit-signature-protection",
 		}
 	)
@@ -67506,7 +67506,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCommitSignatureProtection",
+			OperationName:    ReposGetCommitSignatureProtectionOperation,
 			OperationSummary: "Get commit signature protection",
 			OperationID:      "repos/get-commit-signature-protection",
 			Body:             nil,
@@ -67585,7 +67585,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetCommunityProfileMetrics",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetCommunityProfileMetricsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67616,7 +67616,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetCommunityProfileMetrics",
+			Name: ReposGetCommunityProfileMetricsOperation,
 			ID:   "repos/get-community-profile-metrics",
 		}
 	)
@@ -67635,7 +67635,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetCommunityProfileMetrics",
+			OperationName:    ReposGetCommunityProfileMetricsOperation,
 			OperationSummary: "Get community profile metrics",
 			OperationID:      "repos/get-community-profile-metrics",
 			Body:             nil,
@@ -67706,7 +67706,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetContributorsStats",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetContributorsStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67737,7 +67737,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetContributorsStats",
+			Name: ReposGetContributorsStatsOperation,
 			ID:   "repos/get-contributors-stats",
 		}
 	)
@@ -67756,7 +67756,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetContributorsStats",
+			OperationName:    ReposGetContributorsStatsOperation,
 			OperationSummary: "Get all contributor commit activity",
 			OperationID:      "repos/get-contributors-stats",
 			Body:             nil,
@@ -67822,7 +67822,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetDeployKey",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetDeployKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67853,7 +67853,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetDeployKey",
+			Name: ReposGetDeployKeyOperation,
 			ID:   "repos/get-deploy-key",
 		}
 	)
@@ -67872,7 +67872,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetDeployKey",
+			OperationName:    ReposGetDeployKeyOperation,
 			OperationSummary: "Get a deploy key",
 			OperationID:      "repos/get-deploy-key",
 			Body:             nil,
@@ -67942,7 +67942,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetDeployment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67973,7 +67973,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetDeployment",
+			Name: ReposGetDeploymentOperation,
 			ID:   "repos/get-deployment",
 		}
 	)
@@ -67992,7 +67992,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetDeployment",
+			OperationName:    ReposGetDeploymentOperation,
 			OperationSummary: "Get a deployment",
 			OperationID:      "repos/get-deployment",
 			Body:             nil,
@@ -68062,7 +68062,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetDeploymentStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetDeploymentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68093,7 +68093,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetDeploymentStatus",
+			Name: ReposGetDeploymentStatusOperation,
 			ID:   "repos/get-deployment-status",
 		}
 	)
@@ -68112,7 +68112,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetDeploymentStatus",
+			OperationName:    ReposGetDeploymentStatusOperation,
 			OperationSummary: "Get a deployment status",
 			OperationID:      "repos/get-deployment-status",
 			Body:             nil,
@@ -68186,7 +68186,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetLatestPagesBuild",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetLatestPagesBuildOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68217,7 +68217,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetLatestPagesBuild",
+			Name: ReposGetLatestPagesBuildOperation,
 			ID:   "repos/get-latest-pages-build",
 		}
 	)
@@ -68236,7 +68236,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetLatestPagesBuild",
+			OperationName:    ReposGetLatestPagesBuildOperation,
 			OperationSummary: "Get latest Pages build",
 			OperationID:      "repos/get-latest-pages-build",
 			Body:             nil,
@@ -68305,7 +68305,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetLatestRelease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetLatestReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68336,7 +68336,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetLatestRelease",
+			Name: ReposGetLatestReleaseOperation,
 			ID:   "repos/get-latest-release",
 		}
 	)
@@ -68355,7 +68355,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetLatestRelease",
+			OperationName:    ReposGetLatestReleaseOperation,
 			OperationSummary: "Get the latest release",
 			OperationID:      "repos/get-latest-release",
 			Body:             nil,
@@ -68421,7 +68421,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetPages",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPagesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68452,7 +68452,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPages",
+			Name: ReposGetPagesOperation,
 			ID:   "repos/get-pages",
 		}
 	)
@@ -68471,7 +68471,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetPages",
+			OperationName:    ReposGetPagesOperation,
 			OperationSummary: "Get a GitHub Pages site",
 			OperationID:      "repos/get-pages",
 			Body:             nil,
@@ -68537,7 +68537,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetPagesBuild",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPagesBuildOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68568,7 +68568,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPagesBuild",
+			Name: ReposGetPagesBuildOperation,
 			ID:   "repos/get-pages-build",
 		}
 	)
@@ -68587,7 +68587,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetPagesBuild",
+			OperationName:    ReposGetPagesBuildOperation,
 			OperationSummary: "Get GitHub Pages build",
 			OperationID:      "repos/get-pages-build",
 			Body:             nil,
@@ -68663,7 +68663,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetPagesHealthCheck",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPagesHealthCheckOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68694,7 +68694,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPagesHealthCheck",
+			Name: ReposGetPagesHealthCheckOperation,
 			ID:   "repos/get-pages-health-check",
 		}
 	)
@@ -68713,7 +68713,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetPagesHealthCheck",
+			OperationName:    ReposGetPagesHealthCheckOperation,
 			OperationSummary: "Get a DNS health check for GitHub Pages",
 			OperationID:      "repos/get-pages-health-check",
 			Body:             nil,
@@ -68782,7 +68782,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetParticipationStats",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetParticipationStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68813,7 +68813,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetParticipationStats",
+			Name: ReposGetParticipationStatsOperation,
 			ID:   "repos/get-participation-stats",
 		}
 	)
@@ -68832,7 +68832,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetParticipationStats",
+			OperationName:    ReposGetParticipationStatsOperation,
 			OperationSummary: "Get the weekly commit count",
 			OperationID:      "repos/get-participation-stats",
 			Body:             nil,
@@ -68902,7 +68902,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetPullRequestReviewProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPullRequestReviewProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68933,7 +68933,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPullRequestReviewProtection",
+			Name: ReposGetPullRequestReviewProtectionOperation,
 			ID:   "repos/get-pull-request-review-protection",
 		}
 	)
@@ -68952,7 +68952,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetPullRequestReviewProtection",
+			OperationName:    ReposGetPullRequestReviewProtectionOperation,
 			OperationSummary: "Get pull request review protection",
 			OperationID:      "repos/get-pull-request-review-protection",
 			Body:             nil,
@@ -69027,7 +69027,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetPunchCardStats",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetPunchCardStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69058,7 +69058,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetPunchCardStats",
+			Name: ReposGetPunchCardStatsOperation,
 			ID:   "repos/get-punch-card-stats",
 		}
 	)
@@ -69077,7 +69077,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetPunchCardStats",
+			OperationName:    ReposGetPunchCardStatsOperation,
 			OperationSummary: "Get the hourly commit count for each day",
 			OperationID:      "repos/get-punch-card-stats",
 			Body:             nil,
@@ -69145,7 +69145,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetReadme",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReadmeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69176,7 +69176,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReadme",
+			Name: ReposGetReadmeOperation,
 			ID:   "repos/get-readme",
 		}
 	)
@@ -69195,7 +69195,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetReadme",
+			OperationName:    ReposGetReadmeOperation,
 			OperationSummary: "Get a repository README",
 			OperationID:      "repos/get-readme",
 			Body:             nil,
@@ -69267,7 +69267,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetReadmeInDirectory",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReadmeInDirectoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69298,7 +69298,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReadmeInDirectory",
+			Name: ReposGetReadmeInDirectoryOperation,
 			ID:   "repos/get-readme-in-directory",
 		}
 	)
@@ -69317,7 +69317,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetReadmeInDirectory",
+			OperationName:    ReposGetReadmeInDirectoryOperation,
 			OperationSummary: "Get a repository README for a directory",
 			OperationID:      "repos/get-readme-in-directory",
 			Body:             nil,
@@ -69393,7 +69393,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetRelease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69424,7 +69424,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetRelease",
+			Name: ReposGetReleaseOperation,
 			ID:   "repos/get-release",
 		}
 	)
@@ -69443,7 +69443,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetRelease",
+			OperationName:    ReposGetReleaseOperation,
 			OperationSummary: "Get a release",
 			OperationID:      "repos/get-release",
 			Body:             nil,
@@ -69516,7 +69516,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetReleaseAsset",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69547,7 +69547,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReleaseAsset",
+			Name: ReposGetReleaseAssetOperation,
 			ID:   "repos/get-release-asset",
 		}
 	)
@@ -69566,7 +69566,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetReleaseAsset",
+			OperationName:    ReposGetReleaseAssetOperation,
 			OperationSummary: "Get a release asset",
 			OperationID:      "repos/get-release-asset",
 			Body:             nil,
@@ -69636,7 +69636,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetReleaseByTag",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetReleaseByTagOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69667,7 +69667,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetReleaseByTag",
+			Name: ReposGetReleaseByTagOperation,
 			ID:   "repos/get-release-by-tag",
 		}
 	)
@@ -69686,7 +69686,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetReleaseByTag",
+			OperationName:    ReposGetReleaseByTagOperation,
 			OperationSummary: "Get a release by tag name",
 			OperationID:      "repos/get-release-by-tag",
 			Body:             nil,
@@ -69760,7 +69760,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetStatusChecksProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetStatusChecksProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69791,7 +69791,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetStatusChecksProtection",
+			Name: ReposGetStatusChecksProtectionOperation,
 			ID:   "repos/get-status-checks-protection",
 		}
 	)
@@ -69810,7 +69810,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetStatusChecksProtection",
+			OperationName:    ReposGetStatusChecksProtectionOperation,
 			OperationSummary: "Get status checks protection",
 			OperationID:      "repos/get-status-checks-protection",
 			Body:             nil,
@@ -69885,7 +69885,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetTeamsWithAccessToProtectedBranch",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetTeamsWithAccessToProtectedBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69916,7 +69916,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetTeamsWithAccessToProtectedBranch",
+			Name: ReposGetTeamsWithAccessToProtectedBranchOperation,
 			ID:   "repos/get-teams-with-access-to-protected-branch",
 		}
 	)
@@ -69935,7 +69935,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetTeamsWithAccessToProtectedBranch",
+			OperationName:    ReposGetTeamsWithAccessToProtectedBranchOperation,
 			OperationSummary: "Get teams with access to the protected branch",
 			OperationID:      "repos/get-teams-with-access-to-protected-branch",
 			Body:             nil,
@@ -70005,7 +70005,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetTopPaths",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetTopPathsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70036,7 +70036,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetTopPaths",
+			Name: ReposGetTopPathsOperation,
 			ID:   "repos/get-top-paths",
 		}
 	)
@@ -70055,7 +70055,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetTopPaths",
+			OperationName:    ReposGetTopPathsOperation,
 			OperationSummary: "Get top referral paths",
 			OperationID:      "repos/get-top-paths",
 			Body:             nil,
@@ -70121,7 +70121,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetTopReferrers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetTopReferrersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70152,7 +70152,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetTopReferrers",
+			Name: ReposGetTopReferrersOperation,
 			ID:   "repos/get-top-referrers",
 		}
 	)
@@ -70171,7 +70171,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetTopReferrers",
+			OperationName:    ReposGetTopReferrersOperation,
 			OperationSummary: "Get top referral sources",
 			OperationID:      "repos/get-top-referrers",
 			Body:             nil,
@@ -70242,7 +70242,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetUsersWithAccessToProtectedBranch",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetUsersWithAccessToProtectedBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70273,7 +70273,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetUsersWithAccessToProtectedBranch",
+			Name: ReposGetUsersWithAccessToProtectedBranchOperation,
 			ID:   "repos/get-users-with-access-to-protected-branch",
 		}
 	)
@@ -70292,7 +70292,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetUsersWithAccessToProtectedBranch",
+			OperationName:    ReposGetUsersWithAccessToProtectedBranchOperation,
 			OperationSummary: "Get users with access to the protected branch",
 			OperationID:      "repos/get-users-with-access-to-protected-branch",
 			Body:             nil,
@@ -70363,7 +70363,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetViews",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetViewsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70394,7 +70394,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetViews",
+			Name: ReposGetViewsOperation,
 			ID:   "repos/get-views",
 		}
 	)
@@ -70413,7 +70413,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetViews",
+			OperationName:    ReposGetViewsOperation,
 			OperationSummary: "Get page views",
 			OperationID:      "repos/get-views",
 			Body:             nil,
@@ -70485,7 +70485,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70516,7 +70516,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetWebhook",
+			Name: ReposGetWebhookOperation,
 			ID:   "repos/get-webhook",
 		}
 	)
@@ -70535,7 +70535,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetWebhook",
+			OperationName:    ReposGetWebhookOperation,
 			OperationSummary: "Get a repository webhook",
 			OperationID:      "repos/get-webhook",
 			Body:             nil,
@@ -70609,7 +70609,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetWebhookConfigForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetWebhookConfigForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70640,7 +70640,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetWebhookConfigForRepo",
+			Name: ReposGetWebhookConfigForRepoOperation,
 			ID:   "repos/get-webhook-config-for-repo",
 		}
 	)
@@ -70659,7 +70659,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetWebhookConfigForRepo",
+			OperationName:    ReposGetWebhookConfigForRepoOperation,
 			OperationSummary: "Get a webhook configuration for a repository",
 			OperationID:      "repos/get-webhook-config-for-repo",
 			Body:             nil,
@@ -70729,7 +70729,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposGetWebhookDelivery",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposGetWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70760,7 +70760,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposGetWebhookDelivery",
+			Name: ReposGetWebhookDeliveryOperation,
 			ID:   "repos/get-webhook-delivery",
 		}
 	)
@@ -70779,7 +70779,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposGetWebhookDelivery",
+			OperationName:    ReposGetWebhookDeliveryOperation,
 			OperationSummary: "Get a delivery for a repository webhook",
 			OperationID:      "repos/get-webhook-delivery",
 			Body:             nil,
@@ -70854,7 +70854,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListAutolinks",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListAutolinksOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70885,7 +70885,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListAutolinks",
+			Name: ReposListAutolinksOperation,
 			ID:   "repos/list-autolinks",
 		}
 	)
@@ -70904,7 +70904,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListAutolinks",
+			OperationName:    ReposListAutolinksOperation,
 			OperationSummary: "List all autolinks of a repository",
 			OperationID:      "repos/list-autolinks",
 			Body:             nil,
@@ -70974,7 +70974,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListBranches",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListBranchesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71005,7 +71005,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListBranches",
+			Name: ReposListBranchesOperation,
 			ID:   "repos/list-branches",
 		}
 	)
@@ -71024,7 +71024,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListBranches",
+			OperationName:    ReposListBranchesOperation,
 			OperationSummary: "List branches",
 			OperationID:      "repos/list-branches",
 			Body:             nil,
@@ -71107,7 +71107,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListBranchesForHeadCommit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListBranchesForHeadCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71138,7 +71138,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListBranchesForHeadCommit",
+			Name: ReposListBranchesForHeadCommitOperation,
 			ID:   "repos/list-branches-for-head-commit",
 		}
 	)
@@ -71157,7 +71157,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListBranchesForHeadCommit",
+			OperationName:    ReposListBranchesForHeadCommitOperation,
 			OperationSummary: "List branches for HEAD commit",
 			OperationID:      "repos/list-branches-for-head-commit",
 			Body:             nil,
@@ -71231,7 +71231,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListCollaborators",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCollaboratorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71262,7 +71262,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCollaborators",
+			Name: ReposListCollaboratorsOperation,
 			ID:   "repos/list-collaborators",
 		}
 	)
@@ -71281,7 +71281,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListCollaborators",
+			OperationName:    ReposListCollaboratorsOperation,
 			OperationSummary: "List repository collaborators",
 			OperationID:      "repos/list-collaborators",
 			Body:             nil,
@@ -71359,7 +71359,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListCommentsForCommit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommentsForCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71390,7 +71390,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommentsForCommit",
+			Name: ReposListCommentsForCommitOperation,
 			ID:   "repos/list-comments-for-commit",
 		}
 	)
@@ -71409,7 +71409,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListCommentsForCommit",
+			OperationName:    ReposListCommentsForCommitOperation,
 			OperationSummary: "List commit comments",
 			OperationID:      "repos/list-comments-for-commit",
 			Body:             nil,
@@ -71490,7 +71490,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListCommitCommentsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommitCommentsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71521,7 +71521,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommitCommentsForRepo",
+			Name: ReposListCommitCommentsForRepoOperation,
 			ID:   "repos/list-commit-comments-for-repo",
 		}
 	)
@@ -71540,7 +71540,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListCommitCommentsForRepo",
+			OperationName:    ReposListCommitCommentsForRepoOperation,
 			OperationSummary: "List commit comments for a repository",
 			OperationID:      "repos/list-commit-comments-for-repo",
 			Body:             nil,
@@ -71617,7 +71617,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListCommitStatusesForRef",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommitStatusesForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71648,7 +71648,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommitStatusesForRef",
+			Name: ReposListCommitStatusesForRefOperation,
 			ID:   "repos/list-commit-statuses-for-ref",
 		}
 	)
@@ -71667,7 +71667,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListCommitStatusesForRef",
+			OperationName:    ReposListCommitStatusesForRefOperation,
 			OperationSummary: "List commit statuses for a reference",
 			OperationID:      "repos/list-commit-statuses-for-ref",
 			Body:             nil,
@@ -71776,7 +71776,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListCommits",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71807,7 +71807,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListCommits",
+			Name: ReposListCommitsOperation,
 			ID:   "repos/list-commits",
 		}
 	)
@@ -71826,7 +71826,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListCommits",
+			OperationName:    ReposListCommitsOperation,
 			OperationSummary: "List commits",
 			OperationID:      "repos/list-commits",
 			Body:             nil,
@@ -71926,7 +71926,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListContributors",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListContributorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71957,7 +71957,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListContributors",
+			Name: ReposListContributorsOperation,
 			ID:   "repos/list-contributors",
 		}
 	)
@@ -71976,7 +71976,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListContributors",
+			OperationName:    ReposListContributorsOperation,
 			OperationSummary: "List repository contributors",
 			OperationID:      "repos/list-contributors",
 			Body:             nil,
@@ -72054,7 +72054,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListDeployKeys",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListDeployKeysOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72085,7 +72085,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListDeployKeys",
+			Name: ReposListDeployKeysOperation,
 			ID:   "repos/list-deploy-keys",
 		}
 	)
@@ -72104,7 +72104,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListDeployKeys",
+			OperationName:    ReposListDeployKeysOperation,
 			OperationSummary: "List deploy keys",
 			OperationID:      "repos/list-deploy-keys",
 			Body:             nil,
@@ -72178,7 +72178,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListDeploymentStatuses",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListDeploymentStatusesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72209,7 +72209,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListDeploymentStatuses",
+			Name: ReposListDeploymentStatusesOperation,
 			ID:   "repos/list-deployment-statuses",
 		}
 	)
@@ -72228,7 +72228,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListDeploymentStatuses",
+			OperationName:    ReposListDeploymentStatusesOperation,
 			OperationSummary: "List deployment statuses",
 			OperationID:      "repos/list-deployment-statuses",
 			Body:             nil,
@@ -72306,7 +72306,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListDeployments",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListDeploymentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72337,7 +72337,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListDeployments",
+			Name: ReposListDeploymentsOperation,
 			ID:   "repos/list-deployments",
 		}
 	)
@@ -72356,7 +72356,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListDeployments",
+			OperationName:    ReposListDeploymentsOperation,
 			OperationSummary: "List deployments",
 			OperationID:      "repos/list-deployments",
 			Body:             nil,
@@ -72449,7 +72449,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72480,7 +72480,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForAuthenticatedUser",
+			Name: ReposListForAuthenticatedUserOperation,
 			ID:   "repos/list-for-authenticated-user",
 		}
 	)
@@ -72499,7 +72499,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListForAuthenticatedUser",
+			OperationName:    ReposListForAuthenticatedUserOperation,
 			OperationSummary: "List repositories for the authenticated user",
 			OperationID:      "repos/list-for-authenticated-user",
 			Body:             nil,
@@ -72593,7 +72593,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72624,7 +72624,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForOrg",
+			Name: ReposListForOrgOperation,
 			ID:   "repos/list-for-org",
 		}
 	)
@@ -72643,7 +72643,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListForOrg",
+			OperationName:    ReposListForOrgOperation,
 			OperationSummary: "List organization repositories",
 			OperationID:      "repos/list-for-org",
 			Body:             nil,
@@ -72726,7 +72726,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72757,7 +72757,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForUser",
+			Name: ReposListForUserOperation,
 			ID:   "repos/list-for-user",
 		}
 	)
@@ -72776,7 +72776,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListForUser",
+			OperationName:    ReposListForUserOperation,
 			OperationSummary: "List repositories for a user",
 			OperationID:      "repos/list-for-user",
 			Body:             nil,
@@ -72858,7 +72858,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListForks",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListForksOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72889,7 +72889,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListForks",
+			Name: ReposListForksOperation,
 			ID:   "repos/list-forks",
 		}
 	)
@@ -72908,7 +72908,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListForks",
+			OperationName:    ReposListForksOperation,
 			OperationSummary: "List forks",
 			OperationID:      "repos/list-forks",
 			Body:             nil,
@@ -72987,7 +72987,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListInvitations",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListInvitationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73018,7 +73018,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListInvitations",
+			Name: ReposListInvitationsOperation,
 			ID:   "repos/list-invitations",
 		}
 	)
@@ -73037,7 +73037,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListInvitations",
+			OperationName:    ReposListInvitationsOperation,
 			OperationSummary: "List repository invitations",
 			OperationID:      "repos/list-invitations",
 			Body:             nil,
@@ -73112,7 +73112,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListInvitationsForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListInvitationsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73143,7 +73143,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListInvitationsForAuthenticatedUser",
+			Name: ReposListInvitationsForAuthenticatedUserOperation,
 			ID:   "repos/list-invitations-for-authenticated-user",
 		}
 	)
@@ -73162,7 +73162,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListInvitationsForAuthenticatedUser",
+			OperationName:    ReposListInvitationsForAuthenticatedUserOperation,
 			OperationSummary: "List repository invitations for the authenticated user",
 			OperationID:      "repos/list-invitations-for-authenticated-user",
 			Body:             nil,
@@ -73229,7 +73229,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListLanguages",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListLanguagesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73260,7 +73260,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListLanguages",
+			Name: ReposListLanguagesOperation,
 			ID:   "repos/list-languages",
 		}
 	)
@@ -73279,7 +73279,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListLanguages",
+			OperationName:    ReposListLanguagesOperation,
 			OperationSummary: "List repository languages",
 			OperationID:      "repos/list-languages",
 			Body:             nil,
@@ -73345,7 +73345,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListPagesBuilds",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListPagesBuildsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73376,7 +73376,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListPagesBuilds",
+			Name: ReposListPagesBuildsOperation,
 			ID:   "repos/list-pages-builds",
 		}
 	)
@@ -73395,7 +73395,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListPagesBuilds",
+			OperationName:    ReposListPagesBuildsOperation,
 			OperationSummary: "List GitHub Pages builds",
 			OperationID:      "repos/list-pages-builds",
 			Body:             nil,
@@ -73475,7 +73475,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListPublic",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListPublicOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73506,7 +73506,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListPublic",
+			Name: ReposListPublicOperation,
 			ID:   "repos/list-public",
 		}
 	)
@@ -73525,7 +73525,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListPublic",
+			OperationName:    ReposListPublicOperation,
 			OperationSummary: "List public repositories",
 			OperationID:      "repos/list-public",
 			Body:             nil,
@@ -73592,7 +73592,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListPullRequestsAssociatedWithCommit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListPullRequestsAssociatedWithCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73623,7 +73623,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListPullRequestsAssociatedWithCommit",
+			Name: ReposListPullRequestsAssociatedWithCommitOperation,
 			ID:   "repos/list-pull-requests-associated-with-commit",
 		}
 	)
@@ -73642,7 +73642,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListPullRequestsAssociatedWithCommit",
+			OperationName:    ReposListPullRequestsAssociatedWithCommitOperation,
 			OperationSummary: "List pull requests associated with a commit",
 			OperationID:      "repos/list-pull-requests-associated-with-commit",
 			Body:             nil,
@@ -73720,7 +73720,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListReleaseAssets",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListReleaseAssetsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73751,7 +73751,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListReleaseAssets",
+			Name: ReposListReleaseAssetsOperation,
 			ID:   "repos/list-release-assets",
 		}
 	)
@@ -73770,7 +73770,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListReleaseAssets",
+			OperationName:    ReposListReleaseAssetsOperation,
 			OperationSummary: "List release assets",
 			OperationID:      "repos/list-release-assets",
 			Body:             nil,
@@ -73852,7 +73852,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListReleases",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListReleasesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73883,7 +73883,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListReleases",
+			Name: ReposListReleasesOperation,
 			ID:   "repos/list-releases",
 		}
 	)
@@ -73902,7 +73902,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListReleases",
+			OperationName:    ReposListReleasesOperation,
 			OperationSummary: "List releases",
 			OperationID:      "repos/list-releases",
 			Body:             nil,
@@ -73976,7 +73976,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListTags",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListTagsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74007,7 +74007,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListTags",
+			Name: ReposListTagsOperation,
 			ID:   "repos/list-tags",
 		}
 	)
@@ -74026,7 +74026,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListTags",
+			OperationName:    ReposListTagsOperation,
 			OperationSummary: "List repository tags",
 			OperationID:      "repos/list-tags",
 			Body:             nil,
@@ -74100,7 +74100,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListTeams",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListTeamsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74131,7 +74131,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListTeams",
+			Name: ReposListTeamsOperation,
 			ID:   "repos/list-teams",
 		}
 	)
@@ -74150,7 +74150,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListTeams",
+			OperationName:    ReposListTeamsOperation,
 			OperationSummary: "List repository teams",
 			OperationID:      "repos/list-teams",
 			Body:             nil,
@@ -74224,7 +74224,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListWebhookDeliveries",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListWebhookDeliveriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74255,7 +74255,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListWebhookDeliveries",
+			Name: ReposListWebhookDeliveriesOperation,
 			ID:   "repos/list-webhook-deliveries",
 		}
 	)
@@ -74274,7 +74274,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListWebhookDeliveries",
+			OperationName:    ReposListWebhookDeliveriesOperation,
 			OperationSummary: "List deliveries for a repository webhook",
 			OperationID:      "repos/list-webhook-deliveries",
 			Body:             nil,
@@ -74352,7 +74352,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposListWebhooks",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposListWebhooksOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74383,7 +74383,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposListWebhooks",
+			Name: ReposListWebhooksOperation,
 			ID:   "repos/list-webhooks",
 		}
 	)
@@ -74402,7 +74402,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposListWebhooks",
+			OperationName:    ReposListWebhooksOperation,
 			OperationSummary: "List repository webhooks",
 			OperationID:      "repos/list-webhooks",
 			Body:             nil,
@@ -74476,7 +74476,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposMerge",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposMergeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74507,7 +74507,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposMerge",
+			Name: ReposMergeOperation,
 			ID:   "repos/merge",
 		}
 	)
@@ -74541,7 +74541,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposMerge",
+			OperationName:    ReposMergeOperation,
 			OperationSummary: "Merge a branch",
 			OperationID:      "repos/merge",
 			Body:             request,
@@ -74608,7 +74608,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposMergeUpstream",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposMergeUpstreamOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74639,7 +74639,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposMergeUpstream",
+			Name: ReposMergeUpstreamOperation,
 			ID:   "repos/merge-upstream",
 		}
 	)
@@ -74673,7 +74673,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposMergeUpstream",
+			OperationName:    ReposMergeUpstreamOperation,
 			OperationSummary: "Sync a fork branch with the upstream repository",
 			OperationID:      "repos/merge-upstream",
 			Body:             request,
@@ -74740,7 +74740,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposPingWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposPingWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74771,7 +74771,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposPingWebhook",
+			Name: ReposPingWebhookOperation,
 			ID:   "repos/ping-webhook",
 		}
 	)
@@ -74790,7 +74790,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposPingWebhook",
+			OperationName:    ReposPingWebhookOperation,
 			OperationSummary: "Ping a repository webhook",
 			OperationID:      "repos/ping-webhook",
 			Body:             nil,
@@ -74860,7 +74860,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRedeliverWebhookDelivery",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRedeliverWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74891,7 +74891,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRedeliverWebhookDelivery",
+			Name: ReposRedeliverWebhookDeliveryOperation,
 			ID:   "repos/redeliver-webhook-delivery",
 		}
 	)
@@ -74910,7 +74910,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRedeliverWebhookDelivery",
+			OperationName:    ReposRedeliverWebhookDeliveryOperation,
 			OperationSummary: "Redeliver a delivery for a repository webhook",
 			OperationID:      "repos/redeliver-webhook-delivery",
 			Body:             nil,
@@ -74998,7 +74998,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRemoveAppAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveAppAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75029,7 +75029,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveAppAccessRestrictions",
+			Name: ReposRemoveAppAccessRestrictionsOperation,
 			ID:   "repos/remove-app-access-restrictions",
 		}
 	)
@@ -75063,7 +75063,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRemoveAppAccessRestrictions",
+			OperationName:    ReposRemoveAppAccessRestrictionsOperation,
 			OperationSummary: "Remove app access restrictions",
 			OperationID:      "repos/remove-app-access-restrictions",
 			Body:             request,
@@ -75133,7 +75133,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRemoveCollaborator",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75164,7 +75164,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveCollaborator",
+			Name: ReposRemoveCollaboratorOperation,
 			ID:   "repos/remove-collaborator",
 		}
 	)
@@ -75183,7 +75183,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRemoveCollaborator",
+			OperationName:    ReposRemoveCollaboratorOperation,
 			OperationSummary: "Remove a repository collaborator",
 			OperationID:      "repos/remove-collaborator",
 			Body:             nil,
@@ -75257,7 +75257,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRemoveStatusCheckContexts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75288,7 +75288,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveStatusCheckContexts",
+			Name: ReposRemoveStatusCheckContextsOperation,
 			ID:   "repos/remove-status-check-contexts",
 		}
 	)
@@ -75322,7 +75322,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRemoveStatusCheckContexts",
+			OperationName:    ReposRemoveStatusCheckContextsOperation,
 			OperationSummary: "Remove status check contexts",
 			OperationID:      "repos/remove-status-check-contexts",
 			Body:             request,
@@ -75396,7 +75396,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRemoveStatusCheckProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveStatusCheckProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75427,7 +75427,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveStatusCheckProtection",
+			Name: ReposRemoveStatusCheckProtectionOperation,
 			ID:   "repos/remove-status-check-protection",
 		}
 	)
@@ -75446,7 +75446,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRemoveStatusCheckProtection",
+			OperationName:    ReposRemoveStatusCheckProtectionOperation,
 			OperationSummary: "Remove status check protection",
 			OperationID:      "repos/remove-status-check-protection",
 			Body:             nil,
@@ -75530,7 +75530,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRemoveTeamAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveTeamAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75561,7 +75561,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveTeamAccessRestrictions",
+			Name: ReposRemoveTeamAccessRestrictionsOperation,
 			ID:   "repos/remove-team-access-restrictions",
 		}
 	)
@@ -75595,7 +75595,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRemoveTeamAccessRestrictions",
+			OperationName:    ReposRemoveTeamAccessRestrictionsOperation,
 			OperationSummary: "Remove team access restrictions",
 			OperationID:      "repos/remove-team-access-restrictions",
 			Body:             request,
@@ -75678,7 +75678,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRemoveUserAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRemoveUserAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75709,7 +75709,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRemoveUserAccessRestrictions",
+			Name: ReposRemoveUserAccessRestrictionsOperation,
 			ID:   "repos/remove-user-access-restrictions",
 		}
 	)
@@ -75743,7 +75743,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRemoveUserAccessRestrictions",
+			OperationName:    ReposRemoveUserAccessRestrictionsOperation,
 			OperationSummary: "Remove user access restrictions",
 			OperationID:      "repos/remove-user-access-restrictions",
 			Body:             request,
@@ -75825,7 +75825,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRenameBranch",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRenameBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75856,7 +75856,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRenameBranch",
+			Name: ReposRenameBranchOperation,
 			ID:   "repos/rename-branch",
 		}
 	)
@@ -75890,7 +75890,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRenameBranch",
+			OperationName:    ReposRenameBranchOperation,
 			OperationSummary: "Rename a branch",
 			OperationID:      "repos/rename-branch",
 			Body:             request,
@@ -75960,7 +75960,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposReplaceAllTopics",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposReplaceAllTopicsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75991,7 +75991,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposReplaceAllTopics",
+			Name: ReposReplaceAllTopicsOperation,
 			ID:   "repos/replace-all-topics",
 		}
 	)
@@ -76025,7 +76025,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposReplaceAllTopics",
+			OperationName:    ReposReplaceAllTopicsOperation,
 			OperationSummary: "Replace all repository topics",
 			OperationID:      "repos/replace-all-topics",
 			Body:             request,
@@ -76096,7 +76096,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposRequestPagesBuild",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposRequestPagesBuildOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76127,7 +76127,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposRequestPagesBuild",
+			Name: ReposRequestPagesBuildOperation,
 			ID:   "repos/request-pages-build",
 		}
 	)
@@ -76146,7 +76146,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposRequestPagesBuild",
+			OperationName:    ReposRequestPagesBuildOperation,
 			OperationSummary: "Request a GitHub Pages build",
 			OperationID:      "repos/request-pages-build",
 			Body:             nil,
@@ -76218,7 +76218,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposSetAdminBranchProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetAdminBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76249,7 +76249,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetAdminBranchProtection",
+			Name: ReposSetAdminBranchProtectionOperation,
 			ID:   "repos/set-admin-branch-protection",
 		}
 	)
@@ -76268,7 +76268,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposSetAdminBranchProtection",
+			OperationName:    ReposSetAdminBranchProtectionOperation,
 			OperationSummary: "Set admin branch protection",
 			OperationID:      "repos/set-admin-branch-protection",
 			Body:             nil,
@@ -76354,7 +76354,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposSetAppAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetAppAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76385,7 +76385,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetAppAccessRestrictions",
+			Name: ReposSetAppAccessRestrictionsOperation,
 			ID:   "repos/set-app-access-restrictions",
 		}
 	)
@@ -76419,7 +76419,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposSetAppAccessRestrictions",
+			OperationName:    ReposSetAppAccessRestrictionsOperation,
 			OperationSummary: "Set app access restrictions",
 			OperationID:      "repos/set-app-access-restrictions",
 			Body:             request,
@@ -76493,7 +76493,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposSetStatusCheckContexts",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76524,7 +76524,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetStatusCheckContexts",
+			Name: ReposSetStatusCheckContextsOperation,
 			ID:   "repos/set-status-check-contexts",
 		}
 	)
@@ -76558,7 +76558,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposSetStatusCheckContexts",
+			OperationName:    ReposSetStatusCheckContextsOperation,
 			OperationSummary: "Set status check contexts",
 			OperationID:      "repos/set-status-check-contexts",
 			Body:             request,
@@ -76643,7 +76643,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposSetTeamAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetTeamAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76674,7 +76674,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetTeamAccessRestrictions",
+			Name: ReposSetTeamAccessRestrictionsOperation,
 			ID:   "repos/set-team-access-restrictions",
 		}
 	)
@@ -76708,7 +76708,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposSetTeamAccessRestrictions",
+			OperationName:    ReposSetTeamAccessRestrictionsOperation,
 			OperationSummary: "Set team access restrictions",
 			OperationID:      "repos/set-team-access-restrictions",
 			Body:             request,
@@ -76792,7 +76792,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposSetUserAccessRestrictions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposSetUserAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76823,7 +76823,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposSetUserAccessRestrictions",
+			Name: ReposSetUserAccessRestrictionsOperation,
 			ID:   "repos/set-user-access-restrictions",
 		}
 	)
@@ -76857,7 +76857,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposSetUserAccessRestrictions",
+			OperationName:    ReposSetUserAccessRestrictionsOperation,
 			OperationSummary: "Set user access restrictions",
 			OperationID:      "repos/set-user-access-restrictions",
 			Body:             request,
@@ -76930,7 +76930,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposTestPushWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposTestPushWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76961,7 +76961,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposTestPushWebhook",
+			Name: ReposTestPushWebhookOperation,
 			ID:   "repos/test-push-webhook",
 		}
 	)
@@ -76980,7 +76980,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposTestPushWebhook",
+			OperationName:    ReposTestPushWebhookOperation,
 			OperationSummary: "Test the push repository webhook",
 			OperationID:      "repos/test-push-webhook",
 			Body:             nil,
@@ -77054,7 +77054,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposTransfer",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposTransferOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77085,7 +77085,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposTransfer",
+			Name: ReposTransferOperation,
 			ID:   "repos/transfer",
 		}
 	)
@@ -77119,7 +77119,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposTransfer",
+			OperationName:    ReposTransferOperation,
 			OperationSummary: "Transfer a repository",
 			OperationID:      "repos/transfer",
 			Body:             request,
@@ -77186,7 +77186,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77217,7 +77217,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdate",
+			Name: ReposUpdateOperation,
 			ID:   "repos/update",
 		}
 	)
@@ -77251,7 +77251,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdate",
+			OperationName:    ReposUpdateOperation,
 			OperationSummary: "Update a repository",
 			OperationID:      "repos/update",
 			Body:             request,
@@ -77324,7 +77324,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateBranchProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77355,7 +77355,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateBranchProtection",
+			Name: ReposUpdateBranchProtectionOperation,
 			ID:   "repos/update-branch-protection",
 		}
 	)
@@ -77389,7 +77389,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateBranchProtection",
+			OperationName:    ReposUpdateBranchProtectionOperation,
 			OperationSummary: "Update branch protection",
 			OperationID:      "repos/update-branch-protection",
 			Body:             request,
@@ -77459,7 +77459,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateCommitComment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77490,7 +77490,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateCommitComment",
+			Name: ReposUpdateCommitCommentOperation,
 			ID:   "repos/update-commit-comment",
 		}
 	)
@@ -77524,7 +77524,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateCommitComment",
+			OperationName:    ReposUpdateCommitCommentOperation,
 			OperationSummary: "Update a commit comment",
 			OperationID:      "repos/update-commit-comment",
 			Body:             request,
@@ -77594,7 +77594,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateInvitation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77625,7 +77625,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateInvitation",
+			Name: ReposUpdateInvitationOperation,
 			ID:   "repos/update-invitation",
 		}
 	)
@@ -77659,7 +77659,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateInvitation",
+			OperationName:    ReposUpdateInvitationOperation,
 			OperationSummary: "Update a repository invitation",
 			OperationID:      "repos/update-invitation",
 			Body:             request,
@@ -77736,7 +77736,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdatePullRequestReviewProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdatePullRequestReviewProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77767,7 +77767,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdatePullRequestReviewProtection",
+			Name: ReposUpdatePullRequestReviewProtectionOperation,
 			ID:   "repos/update-pull-request-review-protection",
 		}
 	)
@@ -77801,7 +77801,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdatePullRequestReviewProtection",
+			OperationName:    ReposUpdatePullRequestReviewProtectionOperation,
 			OperationSummary: "Update pull request review protection",
 			OperationID:      "repos/update-pull-request-review-protection",
 			Body:             request,
@@ -77871,7 +77871,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateRelease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77902,7 +77902,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateRelease",
+			Name: ReposUpdateReleaseOperation,
 			ID:   "repos/update-release",
 		}
 	)
@@ -77936,7 +77936,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateRelease",
+			OperationName:    ReposUpdateReleaseOperation,
 			OperationSummary: "Update a release",
 			OperationID:      "repos/update-release",
 			Body:             request,
@@ -78006,7 +78006,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateReleaseAsset",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78037,7 +78037,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateReleaseAsset",
+			Name: ReposUpdateReleaseAssetOperation,
 			ID:   "repos/update-release-asset",
 		}
 	)
@@ -78071,7 +78071,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateReleaseAsset",
+			OperationName:    ReposUpdateReleaseAssetOperation,
 			OperationSummary: "Update a release asset",
 			OperationID:      "repos/update-release-asset",
 			Body:             request,
@@ -78147,7 +78147,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateStatusCheckProtection",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateStatusCheckProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78178,7 +78178,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateStatusCheckProtection",
+			Name: ReposUpdateStatusCheckProtectionOperation,
 			ID:   "repos/update-status-check-protection",
 		}
 	)
@@ -78212,7 +78212,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateStatusCheckProtection",
+			OperationName:    ReposUpdateStatusCheckProtectionOperation,
 			OperationSummary: "Update status check protection",
 			OperationID:      "repos/update-status-check-protection",
 			Body:             request,
@@ -78285,7 +78285,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78316,7 +78316,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateWebhook",
+			Name: ReposUpdateWebhookOperation,
 			ID:   "repos/update-webhook",
 		}
 	)
@@ -78350,7 +78350,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateWebhook",
+			OperationName:    ReposUpdateWebhookOperation,
 			OperationSummary: "Update a repository webhook",
 			OperationID:      "repos/update-webhook",
 			Body:             request,
@@ -78424,7 +78424,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUpdateWebhookConfigForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUpdateWebhookConfigForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78455,7 +78455,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUpdateWebhookConfigForRepo",
+			Name: ReposUpdateWebhookConfigForRepoOperation,
 			ID:   "repos/update-webhook-config-for-repo",
 		}
 	)
@@ -78489,7 +78489,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUpdateWebhookConfigForRepo",
+			OperationName:    ReposUpdateWebhookConfigForRepoOperation,
 			OperationSummary: "Update a webhook configuration for a repository",
 			OperationID:      "repos/update-webhook-config-for-repo",
 			Body:             request,
@@ -78584,7 +78584,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReposUploadReleaseAsset",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReposUploadReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78615,7 +78615,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReposUploadReleaseAsset",
+			Name: ReposUploadReleaseAssetOperation,
 			ID:   "repos/upload-release-asset",
 		}
 	)
@@ -78649,7 +78649,7 @@ func (s *Server) handleReposUploadReleaseAssetRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReposUploadReleaseAsset",
+			OperationName:    ReposUploadReleaseAssetOperation,
 			OperationSummary: "Upload a release asset",
 			OperationID:      "repos/upload-release-asset",
 			Body:             request,
@@ -78727,7 +78727,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ScimDeleteUserFromOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ScimDeleteUserFromOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78758,7 +78758,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ScimDeleteUserFromOrg",
+			Name: ScimDeleteUserFromOrgOperation,
 			ID:   "scim/delete-user-from-org",
 		}
 	)
@@ -78777,7 +78777,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ScimDeleteUserFromOrg",
+			OperationName:    ScimDeleteUserFromOrgOperation,
 			OperationSummary: "Delete a SCIM user from an organization",
 			OperationID:      "scim/delete-user-from-org",
 			Body:             nil,
@@ -78862,7 +78862,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchCode",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchCodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78893,7 +78893,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchCode",
+			Name: SearchCodeOperation,
 			ID:   "search/code",
 		}
 	)
@@ -78912,7 +78912,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SearchCode",
+			OperationName:    SearchCodeOperation,
 			OperationSummary: "Search code",
 			OperationID:      "search/code",
 			Body:             nil,
@@ -79000,7 +79000,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchCommits",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79031,7 +79031,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchCommits",
+			Name: SearchCommitsOperation,
 			ID:   "search/commits",
 		}
 	)
@@ -79050,7 +79050,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SearchCommits",
+			OperationName:    SearchCommitsOperation,
 			OperationSummary: "Search commits",
 			OperationID:      "search/commits",
 			Body:             nil,
@@ -79150,7 +79150,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchIssuesAndPullRequests",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchIssuesAndPullRequestsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79181,7 +79181,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchIssuesAndPullRequests",
+			Name: SearchIssuesAndPullRequestsOperation,
 			ID:   "search/issues-and-pull-requests",
 		}
 	)
@@ -79200,7 +79200,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SearchIssuesAndPullRequests",
+			OperationName:    SearchIssuesAndPullRequestsOperation,
 			OperationSummary: "Search issues and pull requests",
 			OperationID:      "search/issues-and-pull-requests",
 			Body:             nil,
@@ -79287,7 +79287,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchLabels",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchLabelsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79318,7 +79318,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchLabels",
+			Name: SearchLabelsOperation,
 			ID:   "search/labels",
 		}
 	)
@@ -79337,7 +79337,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SearchLabels",
+			OperationName:    SearchLabelsOperation,
 			OperationSummary: "Search labels",
 			OperationID:      "search/labels",
 			Body:             nil,
@@ -79434,7 +79434,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchRepos",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchReposOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79465,7 +79465,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchRepos",
+			Name: SearchReposOperation,
 			ID:   "search/repos",
 		}
 	)
@@ -79484,7 +79484,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SearchRepos",
+			OperationName:    SearchReposOperation,
 			OperationSummary: "Search repositories",
 			OperationID:      "search/repos",
 			Body:             nil,
@@ -79575,7 +79575,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchTopics",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchTopicsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79606,7 +79606,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchTopics",
+			Name: SearchTopicsOperation,
 			ID:   "search/topics",
 		}
 	)
@@ -79625,7 +79625,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SearchTopics",
+			OperationName:    SearchTopicsOperation,
 			OperationSummary: "Search topics",
 			OperationID:      "search/topics",
 			Body:             nil,
@@ -79706,7 +79706,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchUsers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SearchUsersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79737,7 +79737,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SearchUsers",
+			Name: SearchUsersOperation,
 			ID:   "search/users",
 		}
 	)
@@ -79756,7 +79756,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SearchUsers",
+			OperationName:    SearchUsersOperation,
 			OperationSummary: "Search users",
 			OperationID:      "search/users",
 			Body:             nil,
@@ -79837,7 +79837,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SecretScanningGetAlert",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningGetAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79868,7 +79868,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningGetAlert",
+			Name: SecretScanningGetAlertOperation,
 			ID:   "secret-scanning/get-alert",
 		}
 	)
@@ -79887,7 +79887,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SecretScanningGetAlert",
+			OperationName:    SecretScanningGetAlertOperation,
 			OperationSummary: "Get a secret scanning alert",
 			OperationID:      "secret-scanning/get-alert",
 			Body:             nil,
@@ -79961,7 +79961,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SecretScanningListAlertsForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningListAlertsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79992,7 +79992,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningListAlertsForOrg",
+			Name: SecretScanningListAlertsForOrgOperation,
 			ID:   "secret-scanning/list-alerts-for-org",
 		}
 	)
@@ -80011,7 +80011,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SecretScanningListAlertsForOrg",
+			OperationName:    SecretScanningListAlertsForOrgOperation,
 			OperationSummary: "List secret scanning alerts by organization",
 			OperationID:      "secret-scanning/list-alerts-for-org",
 			Body:             nil,
@@ -80092,7 +80092,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SecretScanningListAlertsForRepo",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningListAlertsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80123,7 +80123,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningListAlertsForRepo",
+			Name: SecretScanningListAlertsForRepoOperation,
 			ID:   "secret-scanning/list-alerts-for-repo",
 		}
 	)
@@ -80142,7 +80142,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SecretScanningListAlertsForRepo",
+			OperationName:    SecretScanningListAlertsForRepoOperation,
 			OperationSummary: "List secret scanning alerts for a repository",
 			OperationID:      "secret-scanning/list-alerts-for-repo",
 			Body:             nil,
@@ -80227,7 +80227,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SecretScanningUpdateAlert",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SecretScanningUpdateAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80258,7 +80258,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SecretScanningUpdateAlert",
+			Name: SecretScanningUpdateAlertOperation,
 			ID:   "secret-scanning/update-alert",
 		}
 	)
@@ -80292,7 +80292,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SecretScanningUpdateAlert",
+			OperationName:    SecretScanningUpdateAlertOperation,
 			OperationSummary: "Update a secret scanning alert",
 			OperationID:      "secret-scanning/update-alert",
 			Body:             request,
@@ -80383,7 +80383,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsAddMemberLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddMemberLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80414,7 +80414,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddMemberLegacy",
+			Name: TeamsAddMemberLegacyOperation,
 			ID:   "teams/add-member-legacy",
 		}
 	)
@@ -80433,7 +80433,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsAddMemberLegacy",
+			OperationName:    TeamsAddMemberLegacyOperation,
 			OperationSummary: "Add team member (Legacy)",
 			OperationID:      "teams/add-member-legacy",
 			Body:             nil,
@@ -80520,7 +80520,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsAddOrUpdateMembershipForUserInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateMembershipForUserInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80551,7 +80551,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateMembershipForUserInOrg",
+			Name: TeamsAddOrUpdateMembershipForUserInOrgOperation,
 			ID:   "teams/add-or-update-membership-for-user-in-org",
 		}
 	)
@@ -80585,7 +80585,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsAddOrUpdateMembershipForUserInOrg",
+			OperationName:    TeamsAddOrUpdateMembershipForUserInOrgOperation,
 			OperationSummary: "Add or update team membership for a user",
 			OperationID:      "teams/add-or-update-membership-for-user-in-org",
 			Body:             request,
@@ -80681,7 +80681,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsAddOrUpdateMembershipForUserLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateMembershipForUserLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80712,7 +80712,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateMembershipForUserLegacy",
+			Name: TeamsAddOrUpdateMembershipForUserLegacyOperation,
 			ID:   "teams/add-or-update-membership-for-user-legacy",
 		}
 	)
@@ -80746,7 +80746,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsAddOrUpdateMembershipForUserLegacy",
+			OperationName:    TeamsAddOrUpdateMembershipForUserLegacyOperation,
 			OperationSummary: "Add or update team membership for a user (Legacy)",
 			OperationID:      "teams/add-or-update-membership-for-user-legacy",
 			Body:             request,
@@ -80816,7 +80816,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsAddOrUpdateProjectPermissionsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateProjectPermissionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80847,7 +80847,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateProjectPermissionsInOrg",
+			Name: TeamsAddOrUpdateProjectPermissionsInOrgOperation,
 			ID:   "teams/add-or-update-project-permissions-in-org",
 		}
 	)
@@ -80881,7 +80881,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsAddOrUpdateProjectPermissionsInOrg",
+			OperationName:    TeamsAddOrUpdateProjectPermissionsInOrgOperation,
 			OperationSummary: "Add or update team project permissions",
 			OperationID:      "teams/add-or-update-project-permissions-in-org",
 			Body:             request,
@@ -80959,7 +80959,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsAddOrUpdateProjectPermissionsLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateProjectPermissionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80990,7 +80990,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateProjectPermissionsLegacy",
+			Name: TeamsAddOrUpdateProjectPermissionsLegacyOperation,
 			ID:   "teams/add-or-update-project-permissions-legacy",
 		}
 	)
@@ -81024,7 +81024,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsAddOrUpdateProjectPermissionsLegacy",
+			OperationName:    TeamsAddOrUpdateProjectPermissionsLegacyOperation,
 			OperationSummary: "Add or update team project permissions (Legacy)",
 			OperationID:      "teams/add-or-update-project-permissions-legacy",
 			Body:             request,
@@ -81101,7 +81101,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsAddOrUpdateRepoPermissionsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateRepoPermissionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81132,7 +81132,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateRepoPermissionsInOrg",
+			Name: TeamsAddOrUpdateRepoPermissionsInOrgOperation,
 			ID:   "teams/add-or-update-repo-permissions-in-org",
 		}
 	)
@@ -81166,7 +81166,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsAddOrUpdateRepoPermissionsInOrg",
+			OperationName:    TeamsAddOrUpdateRepoPermissionsInOrgOperation,
 			OperationSummary: "Add or update team repository permissions",
 			OperationID:      "teams/add-or-update-repo-permissions-in-org",
 			Body:             request,
@@ -81253,7 +81253,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsAddOrUpdateRepoPermissionsLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsAddOrUpdateRepoPermissionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81284,7 +81284,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsAddOrUpdateRepoPermissionsLegacy",
+			Name: TeamsAddOrUpdateRepoPermissionsLegacyOperation,
 			ID:   "teams/add-or-update-repo-permissions-legacy",
 		}
 	)
@@ -81318,7 +81318,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsAddOrUpdateRepoPermissionsLegacy",
+			OperationName:    TeamsAddOrUpdateRepoPermissionsLegacyOperation,
 			OperationSummary: "Add or update team repository permissions (Legacy)",
 			OperationID:      "teams/add-or-update-repo-permissions-legacy",
 			Body:             request,
@@ -81391,7 +81391,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCheckPermissionsForProjectInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForProjectInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81422,7 +81422,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForProjectInOrg",
+			Name: TeamsCheckPermissionsForProjectInOrgOperation,
 			ID:   "teams/check-permissions-for-project-in-org",
 		}
 	)
@@ -81441,7 +81441,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCheckPermissionsForProjectInOrg",
+			OperationName:    TeamsCheckPermissionsForProjectInOrgOperation,
 			OperationSummary: "Check team permissions for a project",
 			OperationID:      "teams/check-permissions-for-project-in-org",
 			Body:             nil,
@@ -81518,7 +81518,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCheckPermissionsForProjectLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForProjectLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81549,7 +81549,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForProjectLegacy",
+			Name: TeamsCheckPermissionsForProjectLegacyOperation,
 			ID:   "teams/check-permissions-for-project-legacy",
 		}
 	)
@@ -81568,7 +81568,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCheckPermissionsForProjectLegacy",
+			OperationName:    TeamsCheckPermissionsForProjectLegacyOperation,
 			OperationSummary: "Check team permissions for a project (Legacy)",
 			OperationID:      "teams/check-permissions-for-project-legacy",
 			Body:             nil,
@@ -81642,7 +81642,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCheckPermissionsForRepoInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForRepoInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81673,7 +81673,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForRepoInOrg",
+			Name: TeamsCheckPermissionsForRepoInOrgOperation,
 			ID:   "teams/check-permissions-for-repo-in-org",
 		}
 	)
@@ -81692,7 +81692,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCheckPermissionsForRepoInOrg",
+			OperationName:    TeamsCheckPermissionsForRepoInOrgOperation,
 			OperationSummary: "Check team permissions for a repository",
 			OperationID:      "teams/check-permissions-for-repo-in-org",
 			Body:             nil,
@@ -81775,7 +81775,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCheckPermissionsForRepoLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCheckPermissionsForRepoLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81806,7 +81806,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCheckPermissionsForRepoLegacy",
+			Name: TeamsCheckPermissionsForRepoLegacyOperation,
 			ID:   "teams/check-permissions-for-repo-legacy",
 		}
 	)
@@ -81825,7 +81825,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCheckPermissionsForRepoLegacy",
+			OperationName:    TeamsCheckPermissionsForRepoLegacyOperation,
 			OperationSummary: "Check team permissions for a repository (Legacy)",
 			OperationID:      "teams/check-permissions-for-repo-legacy",
 			Body:             nil,
@@ -81902,7 +81902,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCreate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81933,7 +81933,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreate",
+			Name: TeamsCreateOperation,
 			ID:   "teams/create",
 		}
 	)
@@ -81967,7 +81967,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCreate",
+			OperationName:    TeamsCreateOperation,
 			OperationSummary: "Create a team",
 			OperationID:      "teams/create",
 			Body:             request,
@@ -82039,7 +82039,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCreateDiscussionCommentInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82070,7 +82070,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionCommentInOrg",
+			Name: TeamsCreateDiscussionCommentInOrgOperation,
 			ID:   "teams/create-discussion-comment-in-org",
 		}
 	)
@@ -82104,7 +82104,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCreateDiscussionCommentInOrg",
+			OperationName:    TeamsCreateDiscussionCommentInOrgOperation,
 			OperationSummary: "Create a discussion comment",
 			OperationID:      "teams/create-discussion-comment-in-org",
 			Body:             request,
@@ -82187,7 +82187,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCreateDiscussionCommentLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82218,7 +82218,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionCommentLegacy",
+			Name: TeamsCreateDiscussionCommentLegacyOperation,
 			ID:   "teams/create-discussion-comment-legacy",
 		}
 	)
@@ -82252,7 +82252,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCreateDiscussionCommentLegacy",
+			OperationName:    TeamsCreateDiscussionCommentLegacyOperation,
 			OperationSummary: "Create a discussion comment (Legacy)",
 			OperationID:      "teams/create-discussion-comment-legacy",
 			Body:             request,
@@ -82328,7 +82328,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCreateDiscussionInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82359,7 +82359,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionInOrg",
+			Name: TeamsCreateDiscussionInOrgOperation,
 			ID:   "teams/create-discussion-in-org",
 		}
 	)
@@ -82393,7 +82393,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCreateDiscussionInOrg",
+			OperationName:    TeamsCreateDiscussionInOrgOperation,
 			OperationSummary: "Create a discussion",
 			OperationID:      "teams/create-discussion-in-org",
 			Body:             request,
@@ -82472,7 +82472,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCreateDiscussionLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82503,7 +82503,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateDiscussionLegacy",
+			Name: TeamsCreateDiscussionLegacyOperation,
 			ID:   "teams/create-discussion-legacy",
 		}
 	)
@@ -82537,7 +82537,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCreateDiscussionLegacy",
+			OperationName:    TeamsCreateDiscussionLegacyOperation,
 			OperationSummary: "Create a discussion (Legacy)",
 			OperationID:      "teams/create-discussion-legacy",
 			Body:             request,
@@ -82606,7 +82606,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateOrUpdateIdpGroupConnectionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82637,7 +82637,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			Name: TeamsCreateOrUpdateIdpGroupConnectionsInOrgOperation,
 			ID:   "teams/create-or-update-idp-group-connections-in-org",
 		}
 	)
@@ -82671,7 +82671,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			OperationName:    TeamsCreateOrUpdateIdpGroupConnectionsInOrgOperation,
 			OperationSummary: "Create or update IdP group connections",
 			OperationID:      "teams/create-or-update-idp-group-connections-in-org",
 			Body:             request,
@@ -82748,7 +82748,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsCreateOrUpdateIdpGroupConnectionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82779,7 +82779,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			Name: TeamsCreateOrUpdateIdpGroupConnectionsLegacyOperation,
 			ID:   "teams/create-or-update-idp-group-connections-legacy",
 		}
 	)
@@ -82813,7 +82813,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			OperationName:    TeamsCreateOrUpdateIdpGroupConnectionsLegacyOperation,
 			OperationSummary: "Create or update IdP group connections (Legacy)",
 			OperationID:      "teams/create-or-update-idp-group-connections-legacy",
 			Body:             request,
@@ -82878,7 +82878,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsDeleteDiscussionCommentInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82909,7 +82909,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionCommentInOrg",
+			Name: TeamsDeleteDiscussionCommentInOrgOperation,
 			ID:   "teams/delete-discussion-comment-in-org",
 		}
 	)
@@ -82928,7 +82928,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsDeleteDiscussionCommentInOrg",
+			OperationName:    TeamsDeleteDiscussionCommentInOrgOperation,
 			OperationSummary: "Delete a discussion comment",
 			OperationID:      "teams/delete-discussion-comment-in-org",
 			Body:             nil,
@@ -83008,7 +83008,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsDeleteDiscussionCommentLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83039,7 +83039,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionCommentLegacy",
+			Name: TeamsDeleteDiscussionCommentLegacyOperation,
 			ID:   "teams/delete-discussion-comment-legacy",
 		}
 	)
@@ -83058,7 +83058,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsDeleteDiscussionCommentLegacy",
+			OperationName:    TeamsDeleteDiscussionCommentLegacyOperation,
 			OperationSummary: "Delete a discussion comment (Legacy)",
 			OperationID:      "teams/delete-discussion-comment-legacy",
 			Body:             nil,
@@ -83131,7 +83131,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsDeleteDiscussionInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83162,7 +83162,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionInOrg",
+			Name: TeamsDeleteDiscussionInOrgOperation,
 			ID:   "teams/delete-discussion-in-org",
 		}
 	)
@@ -83181,7 +83181,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsDeleteDiscussionInOrg",
+			OperationName:    TeamsDeleteDiscussionInOrgOperation,
 			OperationSummary: "Delete a discussion",
 			OperationID:      "teams/delete-discussion-in-org",
 			Body:             nil,
@@ -83257,7 +83257,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsDeleteDiscussionLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83288,7 +83288,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteDiscussionLegacy",
+			Name: TeamsDeleteDiscussionLegacyOperation,
 			ID:   "teams/delete-discussion-legacy",
 		}
 	)
@@ -83307,7 +83307,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsDeleteDiscussionLegacy",
+			OperationName:    TeamsDeleteDiscussionLegacyOperation,
 			OperationSummary: "Delete a discussion (Legacy)",
 			OperationID:      "teams/delete-discussion-legacy",
 			Body:             nil,
@@ -83377,7 +83377,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsDeleteInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83408,7 +83408,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteInOrg",
+			Name: TeamsDeleteInOrgOperation,
 			ID:   "teams/delete-in-org",
 		}
 	)
@@ -83427,7 +83427,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsDeleteInOrg",
+			OperationName:    TeamsDeleteInOrgOperation,
 			OperationSummary: "Delete a team",
 			OperationID:      "teams/delete-in-org",
 			Body:             nil,
@@ -83500,7 +83500,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsDeleteLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsDeleteLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83531,7 +83531,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsDeleteLegacy",
+			Name: TeamsDeleteLegacyOperation,
 			ID:   "teams/delete-legacy",
 		}
 	)
@@ -83550,7 +83550,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsDeleteLegacy",
+			OperationName:    TeamsDeleteLegacyOperation,
 			OperationSummary: "Delete a team (Legacy)",
 			OperationID:      "teams/delete-legacy",
 			Body:             nil,
@@ -83614,7 +83614,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetByName",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetByNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83645,7 +83645,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetByName",
+			Name: TeamsGetByNameOperation,
 			ID:   "teams/get-by-name",
 		}
 	)
@@ -83664,7 +83664,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetByName",
+			OperationName:    TeamsGetByNameOperation,
 			OperationSummary: "Get a team by name",
 			OperationID:      "teams/get-by-name",
 			Body:             nil,
@@ -83733,7 +83733,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetDiscussionCommentInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83764,7 +83764,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionCommentInOrg",
+			Name: TeamsGetDiscussionCommentInOrgOperation,
 			ID:   "teams/get-discussion-comment-in-org",
 		}
 	)
@@ -83783,7 +83783,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetDiscussionCommentInOrg",
+			OperationName:    TeamsGetDiscussionCommentInOrgOperation,
 			OperationSummary: "Get a discussion comment",
 			OperationID:      "teams/get-discussion-comment-in-org",
 			Body:             nil,
@@ -83863,7 +83863,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetDiscussionCommentLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -83894,7 +83894,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionCommentLegacy",
+			Name: TeamsGetDiscussionCommentLegacyOperation,
 			ID:   "teams/get-discussion-comment-legacy",
 		}
 	)
@@ -83913,7 +83913,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetDiscussionCommentLegacy",
+			OperationName:    TeamsGetDiscussionCommentLegacyOperation,
 			OperationSummary: "Get a discussion comment (Legacy)",
 			OperationID:      "teams/get-discussion-comment-legacy",
 			Body:             nil,
@@ -83986,7 +83986,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetDiscussionInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84017,7 +84017,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionInOrg",
+			Name: TeamsGetDiscussionInOrgOperation,
 			ID:   "teams/get-discussion-in-org",
 		}
 	)
@@ -84036,7 +84036,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetDiscussionInOrg",
+			OperationName:    TeamsGetDiscussionInOrgOperation,
 			OperationSummary: "Get a discussion",
 			OperationID:      "teams/get-discussion-in-org",
 			Body:             nil,
@@ -84112,7 +84112,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetDiscussionLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84143,7 +84143,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetDiscussionLegacy",
+			Name: TeamsGetDiscussionLegacyOperation,
 			ID:   "teams/get-discussion-legacy",
 		}
 	)
@@ -84162,7 +84162,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetDiscussionLegacy",
+			OperationName:    TeamsGetDiscussionLegacyOperation,
 			OperationSummary: "Get a discussion (Legacy)",
 			OperationID:      "teams/get-discussion-legacy",
 			Body:             nil,
@@ -84232,7 +84232,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84263,7 +84263,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetLegacy",
+			Name: TeamsGetLegacyOperation,
 			ID:   "teams/get-legacy",
 		}
 	)
@@ -84282,7 +84282,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetLegacy",
+			OperationName:    TeamsGetLegacyOperation,
 			OperationSummary: "Get a team (Legacy)",
 			OperationID:      "teams/get-legacy",
 			Body:             nil,
@@ -84350,7 +84350,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetMemberLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetMemberLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84381,7 +84381,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetMemberLegacy",
+			Name: TeamsGetMemberLegacyOperation,
 			ID:   "teams/get-member-legacy",
 		}
 	)
@@ -84400,7 +84400,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetMemberLegacy",
+			OperationName:    TeamsGetMemberLegacyOperation,
 			OperationSummary: "Get team member (Legacy)",
 			OperationID:      "teams/get-member-legacy",
 			Body:             nil,
@@ -84473,7 +84473,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetMembershipForUserInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetMembershipForUserInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84504,7 +84504,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetMembershipForUserInOrg",
+			Name: TeamsGetMembershipForUserInOrgOperation,
 			ID:   "teams/get-membership-for-user-in-org",
 		}
 	)
@@ -84523,7 +84523,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetMembershipForUserInOrg",
+			OperationName:    TeamsGetMembershipForUserInOrgOperation,
 			OperationSummary: "Get team membership for a user",
 			OperationID:      "teams/get-membership-for-user-in-org",
 			Body:             nil,
@@ -84603,7 +84603,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsGetMembershipForUserLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsGetMembershipForUserLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84634,7 +84634,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsGetMembershipForUserLegacy",
+			Name: TeamsGetMembershipForUserLegacyOperation,
 			ID:   "teams/get-membership-for-user-legacy",
 		}
 	)
@@ -84653,7 +84653,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsGetMembershipForUserLegacy",
+			OperationName:    TeamsGetMembershipForUserLegacyOperation,
 			OperationSummary: "Get team membership for a user (Legacy)",
 			OperationID:      "teams/get-membership-for-user-legacy",
 			Body:             nil,
@@ -84719,7 +84719,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84750,7 +84750,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsList",
+			Name: TeamsListOperation,
 			ID:   "teams/list",
 		}
 	)
@@ -84769,7 +84769,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsList",
+			OperationName:    TeamsListOperation,
 			OperationSummary: "List teams",
 			OperationID:      "teams/list",
 			Body:             nil,
@@ -84841,7 +84841,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListChildInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListChildInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -84872,7 +84872,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListChildInOrg",
+			Name: TeamsListChildInOrgOperation,
 			ID:   "teams/list-child-in-org",
 		}
 	)
@@ -84891,7 +84891,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListChildInOrg",
+			OperationName:    TeamsListChildInOrgOperation,
 			OperationSummary: "List child teams",
 			OperationID:      "teams/list-child-in-org",
 			Body:             nil,
@@ -84969,7 +84969,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListChildLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListChildLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85000,7 +85000,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListChildLegacy",
+			Name: TeamsListChildLegacyOperation,
 			ID:   "teams/list-child-legacy",
 		}
 	)
@@ -85019,7 +85019,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListChildLegacy",
+			OperationName:    TeamsListChildLegacyOperation,
 			OperationSummary: "List child teams (Legacy)",
 			OperationID:      "teams/list-child-legacy",
 			Body:             nil,
@@ -85092,7 +85092,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListDiscussionCommentsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionCommentsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85123,7 +85123,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionCommentsInOrg",
+			Name: TeamsListDiscussionCommentsInOrgOperation,
 			ID:   "teams/list-discussion-comments-in-org",
 		}
 	)
@@ -85142,7 +85142,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListDiscussionCommentsInOrg",
+			OperationName:    TeamsListDiscussionCommentsInOrgOperation,
 			OperationSummary: "List discussion comments",
 			OperationID:      "teams/list-discussion-comments-in-org",
 			Body:             nil,
@@ -85230,7 +85230,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListDiscussionCommentsLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionCommentsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85261,7 +85261,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionCommentsLegacy",
+			Name: TeamsListDiscussionCommentsLegacyOperation,
 			ID:   "teams/list-discussion-comments-legacy",
 		}
 	)
@@ -85280,7 +85280,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListDiscussionCommentsLegacy",
+			OperationName:    TeamsListDiscussionCommentsLegacyOperation,
 			OperationSummary: "List discussion comments (Legacy)",
 			OperationID:      "teams/list-discussion-comments-legacy",
 			Body:             nil,
@@ -85361,7 +85361,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListDiscussionsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85392,7 +85392,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionsInOrg",
+			Name: TeamsListDiscussionsInOrgOperation,
 			ID:   "teams/list-discussions-in-org",
 		}
 	)
@@ -85411,7 +85411,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListDiscussionsInOrg",
+			OperationName:    TeamsListDiscussionsInOrgOperation,
 			OperationSummary: "List discussions",
 			OperationID:      "teams/list-discussions-in-org",
 			Body:             nil,
@@ -85499,7 +85499,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListDiscussionsLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListDiscussionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85530,7 +85530,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListDiscussionsLegacy",
+			Name: TeamsListDiscussionsLegacyOperation,
 			ID:   "teams/list-discussions-legacy",
 		}
 	)
@@ -85549,7 +85549,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListDiscussionsLegacy",
+			OperationName:    TeamsListDiscussionsLegacyOperation,
 			OperationSummary: "List discussions (Legacy)",
 			OperationID:      "teams/list-discussions-legacy",
 			Body:             nil,
@@ -85626,7 +85626,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85657,7 +85657,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListForAuthenticatedUser",
+			Name: TeamsListForAuthenticatedUserOperation,
 			ID:   "teams/list-for-authenticated-user",
 		}
 	)
@@ -85676,7 +85676,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListForAuthenticatedUser",
+			OperationName:    TeamsListForAuthenticatedUserOperation,
 			OperationSummary: "List teams for the authenticated user",
 			OperationID:      "teams/list-for-authenticated-user",
 			Body:             nil,
@@ -85750,7 +85750,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListIdpGroupsForLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListIdpGroupsForLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85781,7 +85781,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListIdpGroupsForLegacy",
+			Name: TeamsListIdpGroupsForLegacyOperation,
 			ID:   "teams/list-idp-groups-for-legacy",
 		}
 	)
@@ -85800,7 +85800,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListIdpGroupsForLegacy",
+			OperationName:    TeamsListIdpGroupsForLegacyOperation,
 			OperationSummary: "List IdP groups for a team (Legacy)",
 			OperationID:      "teams/list-idp-groups-for-legacy",
 			Body:             nil,
@@ -85868,7 +85868,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListIdpGroupsForOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListIdpGroupsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -85899,7 +85899,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListIdpGroupsForOrg",
+			Name: TeamsListIdpGroupsForOrgOperation,
 			ID:   "teams/list-idp-groups-for-org",
 		}
 	)
@@ -85918,7 +85918,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListIdpGroupsForOrg",
+			OperationName:    TeamsListIdpGroupsForOrgOperation,
 			OperationSummary: "List IdP groups for an organization",
 			OperationID:      "teams/list-idp-groups-for-org",
 			Body:             nil,
@@ -85993,7 +85993,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListIdpGroupsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListIdpGroupsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86024,7 +86024,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListIdpGroupsInOrg",
+			Name: TeamsListIdpGroupsInOrgOperation,
 			ID:   "teams/list-idp-groups-in-org",
 		}
 	)
@@ -86043,7 +86043,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListIdpGroupsInOrg",
+			OperationName:    TeamsListIdpGroupsInOrgOperation,
 			OperationSummary: "List IdP groups for a team",
 			OperationID:      "teams/list-idp-groups-in-org",
 			Body:             nil,
@@ -86110,7 +86110,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListMembersInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListMembersInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86141,7 +86141,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListMembersInOrg",
+			Name: TeamsListMembersInOrgOperation,
 			ID:   "teams/list-members-in-org",
 		}
 	)
@@ -86160,7 +86160,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListMembersInOrg",
+			OperationName:    TeamsListMembersInOrgOperation,
 			OperationSummary: "List team members",
 			OperationID:      "teams/list-members-in-org",
 			Body:             nil,
@@ -86243,7 +86243,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListMembersLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListMembersLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86274,7 +86274,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListMembersLegacy",
+			Name: TeamsListMembersLegacyOperation,
 			ID:   "teams/list-members-legacy",
 		}
 	)
@@ -86293,7 +86293,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListMembersLegacy",
+			OperationName:    TeamsListMembersLegacyOperation,
 			OperationSummary: "List team members (Legacy)",
 			OperationID:      "teams/list-members-legacy",
 			Body:             nil,
@@ -86372,7 +86372,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListPendingInvitationsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListPendingInvitationsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86403,7 +86403,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListPendingInvitationsInOrg",
+			Name: TeamsListPendingInvitationsInOrgOperation,
 			ID:   "teams/list-pending-invitations-in-org",
 		}
 	)
@@ -86422,7 +86422,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListPendingInvitationsInOrg",
+			OperationName:    TeamsListPendingInvitationsInOrgOperation,
 			OperationSummary: "List pending team invitations",
 			OperationID:      "teams/list-pending-invitations-in-org",
 			Body:             nil,
@@ -86504,7 +86504,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListPendingInvitationsLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListPendingInvitationsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86535,7 +86535,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListPendingInvitationsLegacy",
+			Name: TeamsListPendingInvitationsLegacyOperation,
 			ID:   "teams/list-pending-invitations-legacy",
 		}
 	)
@@ -86554,7 +86554,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListPendingInvitationsLegacy",
+			OperationName:    TeamsListPendingInvitationsLegacyOperation,
 			OperationSummary: "List pending team invitations (Legacy)",
 			OperationID:      "teams/list-pending-invitations-legacy",
 			Body:             nil,
@@ -86626,7 +86626,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListProjectsInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListProjectsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86657,7 +86657,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListProjectsInOrg",
+			Name: TeamsListProjectsInOrgOperation,
 			ID:   "teams/list-projects-in-org",
 		}
 	)
@@ -86676,7 +86676,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListProjectsInOrg",
+			OperationName:    TeamsListProjectsInOrgOperation,
 			OperationSummary: "List team projects",
 			OperationID:      "teams/list-projects-in-org",
 			Body:             nil,
@@ -86755,7 +86755,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListProjectsLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListProjectsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86786,7 +86786,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListProjectsLegacy",
+			Name: TeamsListProjectsLegacyOperation,
 			ID:   "teams/list-projects-legacy",
 		}
 	)
@@ -86805,7 +86805,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListProjectsLegacy",
+			OperationName:    TeamsListProjectsLegacyOperation,
 			OperationSummary: "List team projects (Legacy)",
 			OperationID:      "teams/list-projects-legacy",
 			Body:             nil,
@@ -86877,7 +86877,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListReposInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListReposInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -86908,7 +86908,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListReposInOrg",
+			Name: TeamsListReposInOrgOperation,
 			ID:   "teams/list-repos-in-org",
 		}
 	)
@@ -86927,7 +86927,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListReposInOrg",
+			OperationName:    TeamsListReposInOrgOperation,
 			OperationSummary: "List team repositories",
 			OperationID:      "teams/list-repos-in-org",
 			Body:             nil,
@@ -87005,7 +87005,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsListReposLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsListReposLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87036,7 +87036,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsListReposLegacy",
+			Name: TeamsListReposLegacyOperation,
 			ID:   "teams/list-repos-legacy",
 		}
 	)
@@ -87055,7 +87055,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsListReposLegacy",
+			OperationName:    TeamsListReposLegacyOperation,
 			OperationSummary: "List team repositories (Legacy)",
 			OperationID:      "teams/list-repos-legacy",
 			Body:             nil,
@@ -87145,7 +87145,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsRemoveMemberLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveMemberLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87176,7 +87176,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveMemberLegacy",
+			Name: TeamsRemoveMemberLegacyOperation,
 			ID:   "teams/remove-member-legacy",
 		}
 	)
@@ -87195,7 +87195,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsRemoveMemberLegacy",
+			OperationName:    TeamsRemoveMemberLegacyOperation,
 			OperationSummary: "Remove team member (Legacy)",
 			OperationID:      "teams/remove-member-legacy",
 			Body:             nil,
@@ -87275,7 +87275,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsRemoveMembershipForUserInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveMembershipForUserInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87306,7 +87306,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveMembershipForUserInOrg",
+			Name: TeamsRemoveMembershipForUserInOrgOperation,
 			ID:   "teams/remove-membership-for-user-in-org",
 		}
 	)
@@ -87325,7 +87325,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsRemoveMembershipForUserInOrg",
+			OperationName:    TeamsRemoveMembershipForUserInOrgOperation,
 			OperationSummary: "Remove team membership for a user",
 			OperationID:      "teams/remove-membership-for-user-in-org",
 			Body:             nil,
@@ -87412,7 +87412,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsRemoveMembershipForUserLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveMembershipForUserLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87443,7 +87443,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveMembershipForUserLegacy",
+			Name: TeamsRemoveMembershipForUserLegacyOperation,
 			ID:   "teams/remove-membership-for-user-legacy",
 		}
 	)
@@ -87462,7 +87462,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsRemoveMembershipForUserLegacy",
+			OperationName:    TeamsRemoveMembershipForUserLegacyOperation,
 			OperationSummary: "Remove team membership for a user (Legacy)",
 			OperationID:      "teams/remove-membership-for-user-legacy",
 			Body:             nil,
@@ -87533,7 +87533,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsRemoveProjectInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveProjectInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87564,7 +87564,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveProjectInOrg",
+			Name: TeamsRemoveProjectInOrgOperation,
 			ID:   "teams/remove-project-in-org",
 		}
 	)
@@ -87583,7 +87583,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsRemoveProjectInOrg",
+			OperationName:    TeamsRemoveProjectInOrgOperation,
 			OperationSummary: "Remove a project from a team",
 			OperationID:      "teams/remove-project-in-org",
 			Body:             nil,
@@ -87661,7 +87661,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsRemoveProjectLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveProjectLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87692,7 +87692,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveProjectLegacy",
+			Name: TeamsRemoveProjectLegacyOperation,
 			ID:   "teams/remove-project-legacy",
 		}
 	)
@@ -87711,7 +87711,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsRemoveProjectLegacy",
+			OperationName:    TeamsRemoveProjectLegacyOperation,
 			OperationSummary: "Remove a project from a team (Legacy)",
 			OperationID:      "teams/remove-project-legacy",
 			Body:             nil,
@@ -87782,7 +87782,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsRemoveRepoInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveRepoInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87813,7 +87813,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveRepoInOrg",
+			Name: TeamsRemoveRepoInOrgOperation,
 			ID:   "teams/remove-repo-in-org",
 		}
 	)
@@ -87832,7 +87832,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsRemoveRepoInOrg",
+			OperationName:    TeamsRemoveRepoInOrgOperation,
 			OperationSummary: "Remove a repository from a team",
 			OperationID:      "teams/remove-repo-in-org",
 			Body:             nil,
@@ -87914,7 +87914,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsRemoveRepoLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsRemoveRepoLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -87945,7 +87945,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsRemoveRepoLegacy",
+			Name: TeamsRemoveRepoLegacyOperation,
 			ID:   "teams/remove-repo-legacy",
 		}
 	)
@@ -87964,7 +87964,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsRemoveRepoLegacy",
+			OperationName:    TeamsRemoveRepoLegacyOperation,
 			OperationSummary: "Remove a repository from a team (Legacy)",
 			OperationID:      "teams/remove-repo-legacy",
 			Body:             nil,
@@ -88037,7 +88037,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsUpdateDiscussionCommentInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -88068,7 +88068,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionCommentInOrg",
+			Name: TeamsUpdateDiscussionCommentInOrgOperation,
 			ID:   "teams/update-discussion-comment-in-org",
 		}
 	)
@@ -88102,7 +88102,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsUpdateDiscussionCommentInOrg",
+			OperationName:    TeamsUpdateDiscussionCommentInOrgOperation,
 			OperationSummary: "Update a discussion comment",
 			OperationID:      "teams/update-discussion-comment-in-org",
 			Body:             request,
@@ -88182,7 +88182,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsUpdateDiscussionCommentLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -88213,7 +88213,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionCommentLegacy",
+			Name: TeamsUpdateDiscussionCommentLegacyOperation,
 			ID:   "teams/update-discussion-comment-legacy",
 		}
 	)
@@ -88247,7 +88247,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsUpdateDiscussionCommentLegacy",
+			OperationName:    TeamsUpdateDiscussionCommentLegacyOperation,
 			OperationSummary: "Update a discussion comment (Legacy)",
 			OperationID:      "teams/update-discussion-comment-legacy",
 			Body:             request,
@@ -88321,7 +88321,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsUpdateDiscussionInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -88352,7 +88352,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionInOrg",
+			Name: TeamsUpdateDiscussionInOrgOperation,
 			ID:   "teams/update-discussion-in-org",
 		}
 	)
@@ -88386,7 +88386,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsUpdateDiscussionInOrg",
+			OperationName:    TeamsUpdateDiscussionInOrgOperation,
 			OperationSummary: "Update a discussion",
 			OperationID:      "teams/update-discussion-in-org",
 			Body:             request,
@@ -88463,7 +88463,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsUpdateDiscussionLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -88494,7 +88494,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateDiscussionLegacy",
+			Name: TeamsUpdateDiscussionLegacyOperation,
 			ID:   "teams/update-discussion-legacy",
 		}
 	)
@@ -88528,7 +88528,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsUpdateDiscussionLegacy",
+			OperationName:    TeamsUpdateDiscussionLegacyOperation,
 			OperationSummary: "Update a discussion (Legacy)",
 			OperationID:      "teams/update-discussion-legacy",
 			Body:             request,
@@ -88596,7 +88596,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsUpdateInOrg",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -88627,7 +88627,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateInOrg",
+			Name: TeamsUpdateInOrgOperation,
 			ID:   "teams/update-in-org",
 		}
 	)
@@ -88661,7 +88661,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsUpdateInOrg",
+			OperationName:    TeamsUpdateInOrgOperation,
 			OperationSummary: "Update a team",
 			OperationID:      "teams/update-in-org",
 			Body:             request,
@@ -88733,7 +88733,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TeamsUpdateLegacy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TeamsUpdateLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -88764,7 +88764,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TeamsUpdateLegacy",
+			Name: TeamsUpdateLegacyOperation,
 			ID:   "teams/update-legacy",
 		}
 	)
@@ -88798,7 +88798,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TeamsUpdateLegacy",
+			OperationName:    TeamsUpdateLegacyOperation,
 			OperationSummary: "Update a team (Legacy)",
 			OperationID:      "teams/update-legacy",
 			Body:             request,
@@ -88860,7 +88860,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersAddEmailForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersAddEmailForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -88891,7 +88891,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersAddEmailForAuthenticated",
+			Name: UsersAddEmailForAuthenticatedOperation,
 			ID:   "users/add-email-for-authenticated",
 		}
 	)
@@ -88915,7 +88915,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersAddEmailForAuthenticated",
+			OperationName:    UsersAddEmailForAuthenticatedOperation,
 			OperationSummary: "Add an email address for the authenticated user",
 			OperationID:      "users/add-email-for-authenticated",
 			Body:             request,
@@ -88972,7 +88972,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersBlock",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersBlockOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89003,7 +89003,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersBlock",
+			Name: UsersBlockOperation,
 			ID:   "users/block",
 		}
 	)
@@ -89022,7 +89022,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersBlock",
+			OperationName:    UsersBlockOperation,
 			OperationSummary: "Block a user",
 			OperationID:      "users/block",
 			Body:             nil,
@@ -89084,7 +89084,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersCheckBlocked",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCheckBlockedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89115,7 +89115,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCheckBlocked",
+			Name: UsersCheckBlockedOperation,
 			ID:   "users/check-blocked",
 		}
 	)
@@ -89134,7 +89134,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersCheckBlocked",
+			OperationName:    UsersCheckBlockedOperation,
 			OperationSummary: "Check if a user is blocked by the authenticated user",
 			OperationID:      "users/check-blocked",
 			Body:             nil,
@@ -89196,7 +89196,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersCheckFollowingForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCheckFollowingForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89227,7 +89227,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCheckFollowingForUser",
+			Name: UsersCheckFollowingForUserOperation,
 			ID:   "users/check-following-for-user",
 		}
 	)
@@ -89246,7 +89246,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersCheckFollowingForUser",
+			OperationName:    UsersCheckFollowingForUserOperation,
 			OperationSummary: "Check if a user follows another user",
 			OperationID:      "users/check-following-for-user",
 			Body:             nil,
@@ -89312,7 +89312,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersCheckPersonIsFollowedByAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCheckPersonIsFollowedByAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89343,7 +89343,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCheckPersonIsFollowedByAuthenticated",
+			Name: UsersCheckPersonIsFollowedByAuthenticatedOperation,
 			ID:   "users/check-person-is-followed-by-authenticated",
 		}
 	)
@@ -89362,7 +89362,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersCheckPersonIsFollowedByAuthenticated",
+			OperationName:    UsersCheckPersonIsFollowedByAuthenticatedOperation,
 			OperationSummary: "Check if a person is followed by the authenticated user",
 			OperationID:      "users/check-person-is-followed-by-authenticated",
 			Body:             nil,
@@ -89426,7 +89426,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersCreateGpgKeyForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCreateGpgKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89457,7 +89457,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCreateGpgKeyForAuthenticated",
+			Name: UsersCreateGpgKeyForAuthenticatedOperation,
 			ID:   "users/create-gpg-key-for-authenticated",
 		}
 	)
@@ -89481,7 +89481,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersCreateGpgKeyForAuthenticated",
+			OperationName:    UsersCreateGpgKeyForAuthenticatedOperation,
 			OperationSummary: "Create a GPG key for the authenticated user",
 			OperationID:      "users/create-gpg-key-for-authenticated",
 			Body:             request,
@@ -89540,7 +89540,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersCreatePublicSSHKeyForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersCreatePublicSSHKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89571,7 +89571,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersCreatePublicSSHKeyForAuthenticated",
+			Name: UsersCreatePublicSSHKeyForAuthenticatedOperation,
 			ID:   "users/create-public-ssh-key-for-authenticated",
 		}
 	)
@@ -89595,7 +89595,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersCreatePublicSSHKeyForAuthenticated",
+			OperationName:    UsersCreatePublicSSHKeyForAuthenticatedOperation,
 			OperationSummary: "Create a public SSH key for the authenticated user",
 			OperationID:      "users/create-public-ssh-key-for-authenticated",
 			Body:             request,
@@ -89652,7 +89652,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersDeleteEmailForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersDeleteEmailForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89683,7 +89683,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersDeleteEmailForAuthenticated",
+			Name: UsersDeleteEmailForAuthenticatedOperation,
 			ID:   "users/delete-email-for-authenticated",
 		}
 	)
@@ -89707,7 +89707,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersDeleteEmailForAuthenticated",
+			OperationName:    UsersDeleteEmailForAuthenticatedOperation,
 			OperationSummary: "Delete an email address for the authenticated user",
 			OperationID:      "users/delete-email-for-authenticated",
 			Body:             request,
@@ -89766,7 +89766,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersDeleteGpgKeyForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersDeleteGpgKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89797,7 +89797,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersDeleteGpgKeyForAuthenticated",
+			Name: UsersDeleteGpgKeyForAuthenticatedOperation,
 			ID:   "users/delete-gpg-key-for-authenticated",
 		}
 	)
@@ -89816,7 +89816,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersDeleteGpgKeyForAuthenticated",
+			OperationName:    UsersDeleteGpgKeyForAuthenticatedOperation,
 			OperationSummary: "Delete a GPG key for the authenticated user",
 			OperationID:      "users/delete-gpg-key-for-authenticated",
 			Body:             nil,
@@ -89880,7 +89880,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersDeletePublicSSHKeyForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersDeletePublicSSHKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -89911,7 +89911,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersDeletePublicSSHKeyForAuthenticated",
+			Name: UsersDeletePublicSSHKeyForAuthenticatedOperation,
 			ID:   "users/delete-public-ssh-key-for-authenticated",
 		}
 	)
@@ -89930,7 +89930,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersDeletePublicSSHKeyForAuthenticated",
+			OperationName:    UsersDeletePublicSSHKeyForAuthenticatedOperation,
 			OperationSummary: "Delete a public SSH key for the authenticated user",
 			OperationID:      "users/delete-public-ssh-key-for-authenticated",
 			Body:             nil,
@@ -89996,7 +89996,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersFollow",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersFollowOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90027,7 +90027,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersFollow",
+			Name: UsersFollowOperation,
 			ID:   "users/follow",
 		}
 	)
@@ -90046,7 +90046,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersFollow",
+			OperationName:    UsersFollowOperation,
 			OperationSummary: "Follow a user",
 			OperationID:      "users/follow",
 			Body:             nil,
@@ -90111,7 +90111,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersGetAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90147,7 +90147,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersGetAuthenticated",
+			OperationName:    UsersGetAuthenticatedOperation,
 			OperationSummary: "Get the authenticated user",
 			OperationID:      "users/get-authenticated",
 			Body:             nil,
@@ -90218,7 +90218,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersGetByUsername",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetByUsernameOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90249,7 +90249,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetByUsername",
+			Name: UsersGetByUsernameOperation,
 			ID:   "users/get-by-username",
 		}
 	)
@@ -90268,7 +90268,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersGetByUsername",
+			OperationName:    UsersGetByUsernameOperation,
 			OperationSummary: "Get a user",
 			OperationID:      "users/get-by-username",
 			Body:             nil,
@@ -90339,7 +90339,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersGetContextForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetContextForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90370,7 +90370,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetContextForUser",
+			Name: UsersGetContextForUserOperation,
 			ID:   "users/get-context-for-user",
 		}
 	)
@@ -90389,7 +90389,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersGetContextForUser",
+			OperationName:    UsersGetContextForUserOperation,
 			OperationSummary: "Get contextual information for a user",
 			OperationID:      "users/get-context-for-user",
 			Body:             nil,
@@ -90461,7 +90461,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersGetGpgKeyForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetGpgKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90492,7 +90492,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetGpgKeyForAuthenticated",
+			Name: UsersGetGpgKeyForAuthenticatedOperation,
 			ID:   "users/get-gpg-key-for-authenticated",
 		}
 	)
@@ -90511,7 +90511,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersGetGpgKeyForAuthenticated",
+			OperationName:    UsersGetGpgKeyForAuthenticatedOperation,
 			OperationSummary: "Get a GPG key for the authenticated user",
 			OperationID:      "users/get-gpg-key-for-authenticated",
 			Body:             nil,
@@ -90575,7 +90575,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersGetPublicSSHKeyForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersGetPublicSSHKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90606,7 +90606,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersGetPublicSSHKeyForAuthenticated",
+			Name: UsersGetPublicSSHKeyForAuthenticatedOperation,
 			ID:   "users/get-public-ssh-key-for-authenticated",
 		}
 	)
@@ -90625,7 +90625,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersGetPublicSSHKeyForAuthenticated",
+			OperationName:    UsersGetPublicSSHKeyForAuthenticatedOperation,
 			OperationSummary: "Get a public SSH key for the authenticated user",
 			OperationID:      "users/get-public-ssh-key-for-authenticated",
 			Body:             nil,
@@ -90691,7 +90691,7 @@ func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90722,7 +90722,7 @@ func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersList",
+			Name: UsersListOperation,
 			ID:   "users/list",
 		}
 	)
@@ -90741,7 +90741,7 @@ func (s *Server) handleUsersListRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersList",
+			OperationName:    UsersListOperation,
 			OperationSummary: "List users",
 			OperationID:      "users/list",
 			Body:             nil,
@@ -90807,7 +90807,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListBlockedByAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListBlockedByAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90843,7 +90843,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListBlockedByAuthenticated",
+			OperationName:    UsersListBlockedByAuthenticatedOperation,
 			OperationSummary: "List users blocked by the authenticated user",
 			OperationID:      "users/list-blocked-by-authenticated",
 			Body:             nil,
@@ -90901,7 +90901,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListEmailsForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListEmailsForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -90932,7 +90932,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListEmailsForAuthenticated",
+			Name: UsersListEmailsForAuthenticatedOperation,
 			ID:   "users/list-emails-for-authenticated",
 		}
 	)
@@ -90951,7 +90951,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListEmailsForAuthenticated",
+			OperationName:    UsersListEmailsForAuthenticatedOperation,
 			OperationSummary: "List email addresses for the authenticated user",
 			OperationID:      "users/list-emails-for-authenticated",
 			Body:             nil,
@@ -91017,7 +91017,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListFollowedByAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowedByAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91048,7 +91048,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowedByAuthenticated",
+			Name: UsersListFollowedByAuthenticatedOperation,
 			ID:   "users/list-followed-by-authenticated",
 		}
 	)
@@ -91067,7 +91067,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListFollowedByAuthenticated",
+			OperationName:    UsersListFollowedByAuthenticatedOperation,
 			OperationSummary: "List the people the authenticated user follows",
 			OperationID:      "users/list-followed-by-authenticated",
 			Body:             nil,
@@ -91133,7 +91133,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListFollowersForAuthenticatedUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowersForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91164,7 +91164,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowersForAuthenticatedUser",
+			Name: UsersListFollowersForAuthenticatedUserOperation,
 			ID:   "users/list-followers-for-authenticated-user",
 		}
 	)
@@ -91183,7 +91183,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListFollowersForAuthenticatedUser",
+			OperationName:    UsersListFollowersForAuthenticatedUserOperation,
 			OperationSummary: "List followers of the authenticated user",
 			OperationID:      "users/list-followers-for-authenticated-user",
 			Body:             nil,
@@ -91249,7 +91249,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListFollowersForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowersForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91280,7 +91280,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowersForUser",
+			Name: UsersListFollowersForUserOperation,
 			ID:   "users/list-followers-for-user",
 		}
 	)
@@ -91299,7 +91299,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListFollowersForUser",
+			OperationName:    UsersListFollowersForUserOperation,
 			OperationSummary: "List followers of a user",
 			OperationID:      "users/list-followers-for-user",
 			Body:             nil,
@@ -91369,7 +91369,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListFollowingForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListFollowingForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91400,7 +91400,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListFollowingForUser",
+			Name: UsersListFollowingForUserOperation,
 			ID:   "users/list-following-for-user",
 		}
 	)
@@ -91419,7 +91419,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListFollowingForUser",
+			OperationName:    UsersListFollowingForUserOperation,
 			OperationSummary: "List the people a user follows",
 			OperationID:      "users/list-following-for-user",
 			Body:             nil,
@@ -91491,7 +91491,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListGpgKeysForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListGpgKeysForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91522,7 +91522,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListGpgKeysForAuthenticated",
+			Name: UsersListGpgKeysForAuthenticatedOperation,
 			ID:   "users/list-gpg-keys-for-authenticated",
 		}
 	)
@@ -91541,7 +91541,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListGpgKeysForAuthenticated",
+			OperationName:    UsersListGpgKeysForAuthenticatedOperation,
 			OperationSummary: "List GPG keys for the authenticated user",
 			OperationID:      "users/list-gpg-keys-for-authenticated",
 			Body:             nil,
@@ -91607,7 +91607,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListGpgKeysForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListGpgKeysForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91638,7 +91638,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListGpgKeysForUser",
+			Name: UsersListGpgKeysForUserOperation,
 			ID:   "users/list-gpg-keys-for-user",
 		}
 	)
@@ -91657,7 +91657,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListGpgKeysForUser",
+			OperationName:    UsersListGpgKeysForUserOperation,
 			OperationSummary: "List GPG keys for a user",
 			OperationID:      "users/list-gpg-keys-for-user",
 			Body:             nil,
@@ -91730,7 +91730,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListPublicEmailsForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListPublicEmailsForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91761,7 +91761,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListPublicEmailsForAuthenticated",
+			Name: UsersListPublicEmailsForAuthenticatedOperation,
 			ID:   "users/list-public-emails-for-authenticated",
 		}
 	)
@@ -91780,7 +91780,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListPublicEmailsForAuthenticated",
+			OperationName:    UsersListPublicEmailsForAuthenticatedOperation,
 			OperationSummary: "List public email addresses for the authenticated user",
 			OperationID:      "users/list-public-emails-for-authenticated",
 			Body:             nil,
@@ -91846,7 +91846,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListPublicKeysForUser",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListPublicKeysForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91877,7 +91877,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListPublicKeysForUser",
+			Name: UsersListPublicKeysForUserOperation,
 			ID:   "users/list-public-keys-for-user",
 		}
 	)
@@ -91896,7 +91896,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListPublicKeysForUser",
+			OperationName:    UsersListPublicKeysForUserOperation,
 			OperationSummary: "List public keys for a user",
 			OperationID:      "users/list-public-keys-for-user",
 			Body:             nil,
@@ -91968,7 +91968,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersListPublicSSHKeysForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersListPublicSSHKeysForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -91999,7 +91999,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersListPublicSSHKeysForAuthenticated",
+			Name: UsersListPublicSSHKeysForAuthenticatedOperation,
 			ID:   "users/list-public-ssh-keys-for-authenticated",
 		}
 	)
@@ -92018,7 +92018,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersListPublicSSHKeysForAuthenticated",
+			OperationName:    UsersListPublicSSHKeysForAuthenticatedOperation,
 			OperationSummary: "List public SSH keys for the authenticated user",
 			OperationID:      "users/list-public-ssh-keys-for-authenticated",
 			Body:             nil,
@@ -92084,7 +92084,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersSetPrimaryEmailVisibilityForAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersSetPrimaryEmailVisibilityForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -92115,7 +92115,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersSetPrimaryEmailVisibilityForAuthenticated",
+			Name: UsersSetPrimaryEmailVisibilityForAuthenticatedOperation,
 			ID:   "users/set-primary-email-visibility-for-authenticated",
 		}
 	)
@@ -92139,7 +92139,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersSetPrimaryEmailVisibilityForAuthenticated",
+			OperationName:    UsersSetPrimaryEmailVisibilityForAuthenticatedOperation,
 			OperationSummary: "Set primary email visibility for the authenticated user",
 			OperationID:      "users/set-primary-email-visibility-for-authenticated",
 			Body:             request,
@@ -92196,7 +92196,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersUnblock",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersUnblockOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -92227,7 +92227,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersUnblock",
+			Name: UsersUnblockOperation,
 			ID:   "users/unblock",
 		}
 	)
@@ -92246,7 +92246,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersUnblock",
+			OperationName:    UsersUnblockOperation,
 			OperationSummary: "Unblock a user",
 			OperationID:      "users/unblock",
 			Body:             nil,
@@ -92309,7 +92309,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersUnfollow",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersUnfollowOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -92340,7 +92340,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersUnfollow",
+			Name: UsersUnfollowOperation,
 			ID:   "users/unfollow",
 		}
 	)
@@ -92359,7 +92359,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersUnfollow",
+			OperationName:    UsersUnfollowOperation,
 			OperationSummary: "Unfollow a user",
 			OperationID:      "users/unfollow",
 			Body:             nil,
@@ -92423,7 +92423,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UsersUpdateAuthenticated",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UsersUpdateAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -92454,7 +92454,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UsersUpdateAuthenticated",
+			Name: UsersUpdateAuthenticatedOperation,
 			ID:   "users/update-authenticated",
 		}
 	)
@@ -92478,7 +92478,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UsersUpdateAuthenticated",
+			OperationName:    UsersUpdateAuthenticatedOperation,
 			OperationSummary: "Update the authenticated user",
 			OperationID:      "users/update-authenticated",
 			Body:             request,

@@ -31,7 +31,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PublishEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PublishEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62,7 +62,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PublishEvent",
+			Name: PublishEventOperation,
 			ID:   "publishEvent",
 		}
 	)
@@ -86,7 +86,7 @@ func (s *Server) handlePublishEventRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PublishEvent",
+			OperationName:    PublishEventOperation,
 			OperationSummary: "",
 			OperationID:      "publishEvent",
 			Body:             request,
@@ -149,7 +149,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "StatusWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), StatusWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -185,7 +185,7 @@ func (s *WebhookServer) handleStatusWebhookRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "StatusWebhook",
+			OperationName:    StatusWebhookOperation,
 			OperationSummary: "",
 			OperationID:      "statusWebhook",
 			Body:             nil,
@@ -236,7 +236,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UpdateDelete",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UpdateDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -272,7 +272,7 @@ func (s *WebhookServer) handleUpdateDeleteRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UpdateDelete",
+			OperationName:    UpdateDeleteOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -324,7 +324,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "UpdateWebhook",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UpdateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -355,7 +355,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "UpdateWebhook",
+			Name: UpdateWebhookOperation,
 			ID:   "updateWebhook",
 		}
 	)
@@ -389,7 +389,7 @@ func (s *WebhookServer) handleUpdateWebhookRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "UpdateWebhook",
+			OperationName:    UpdateWebhookOperation,
 			OperationSummary: "",
 			OperationID:      "updateWebhook",
 			Body:             request,

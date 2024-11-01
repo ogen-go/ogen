@@ -30,7 +30,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IntegerNumber",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IntegerNumberOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66,7 +66,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IntegerNumber",
+			OperationName:    IntegerNumberOperation,
 			OperationSummary: "",
 			OperationID:      "integerNumber",
 			Body:             nil,
@@ -121,7 +121,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "JaegerAnyOf",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), JaegerAnyOfOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -157,7 +157,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "JaegerAnyOf",
+			OperationName:    JaegerAnyOfOperation,
 			OperationSummary: "",
 			OperationID:      "jaegerAnyOf",
 			Body:             nil,
@@ -212,7 +212,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OneUUID",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OneUUIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -248,7 +248,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OneUUID",
+			OperationName:    OneUUIDOperation,
 			OperationSummary: "",
 			OperationID:      "oneUUID",
 			Body:             nil,

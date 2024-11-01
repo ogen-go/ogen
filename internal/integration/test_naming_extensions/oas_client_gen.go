@@ -101,7 +101,7 @@ func (c *Client) sendHealthzGet(ctx context.Context) (res *Person, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "HealthzGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, HealthzGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

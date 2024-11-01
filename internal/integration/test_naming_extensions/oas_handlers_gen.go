@@ -28,7 +28,7 @@ func (s *Server) handleHealthzGetRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "HealthzGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), HealthzGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleHealthzGetRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "HealthzGet",
+			OperationName:    HealthzGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,

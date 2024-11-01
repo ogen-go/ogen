@@ -33,7 +33,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreatePets",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreatePetsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69,7 +69,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreatePets",
+			OperationName:    CreatePetsOperation,
 			OperationSummary: "Create a pet",
 			OperationID:      "createPets",
 			Body:             nil,
@@ -137,7 +137,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPets",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListPetsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -168,7 +168,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPets",
+			Name: ListPetsOperation,
 			ID:   "listPets",
 		}
 	)
@@ -187,7 +187,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListPets",
+			OperationName:    ListPetsOperation,
 			OperationSummary: "List all pets",
 			OperationID:      "listPets",
 			Body:             nil,
@@ -260,7 +260,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ShowPetById",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ShowPetByIdOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -291,7 +291,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ShowPetById",
+			Name: ShowPetByIdOperation,
 			ID:   "showPetById",
 		}
 	)
@@ -310,7 +310,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ShowPetById",
+			OperationName:    ShowPetByIdOperation,
 			OperationSummary: "Info for a specific pet",
 			OperationID:      "showPetById",
 			Body:             nil,

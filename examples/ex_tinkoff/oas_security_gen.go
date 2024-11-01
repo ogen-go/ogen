@@ -15,7 +15,7 @@ import (
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleSSOAuth handles sso_auth security.
-	HandleSSOAuth(ctx context.Context, operationName string, t SSOAuth) (context.Context, error)
+	HandleSSOAuth(ctx context.Context, operationName OperationName, t SSOAuth) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -33,7 +33,7 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
-func (s *Server) securitySSOAuth(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securitySSOAuth(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t SSOAuth
 	token, ok := findAuthorization(req.Header, "Bearer")
 	if !ok {
@@ -52,10 +52,10 @@ func (s *Server) securitySSOAuth(ctx context.Context, operationName string, req 
 // SecuritySource is provider of security values (tokens, passwords, etc.).
 type SecuritySource interface {
 	// SSOAuth provides sso_auth security value.
-	SSOAuth(ctx context.Context, operationName string) (SSOAuth, error)
+	SSOAuth(ctx context.Context, operationName OperationName) (SSOAuth, error)
 }
 
-func (s *Client) securitySSOAuth(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securitySSOAuth(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.SSOAuth(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"SSOAuth\"")

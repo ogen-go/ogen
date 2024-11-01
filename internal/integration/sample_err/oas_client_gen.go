@@ -117,7 +117,7 @@ func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DataCreate",
+	ctx, span := c.cfg.Tracer.Start(ctx, DataCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -192,7 +192,7 @@ func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "DataGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, DataGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

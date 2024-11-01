@@ -38,7 +38,7 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "Caching",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CachingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69,7 +69,7 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Caching",
+			Name: CachingOperation,
 			ID:   "Caching",
 		}
 	)
@@ -88,7 +88,7 @@ func (s *Server) handleCachingRequest(args [0]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "Caching",
+			OperationName:    CachingOperation,
 			OperationSummary: "Test #7. The Caching test exercises the preferred in-memory or separate-process caching technology for the platform or framework. For implementation simplicity, the requirements are very similar to the multiple database-query test Test #3, but use a separate database table. The requirements are quite generous, affording each framework fairly broad freedom to meet the requirements in the manner that best represents the canonical non-distributed caching approach for the framework. (Note: a distributed caching test type could be added later.)",
 			OperationID:      "Caching",
 			Body:             nil,
@@ -151,7 +151,7 @@ func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.Respon
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DB",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DBOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -187,7 +187,7 @@ func (s *Server) handleDBRequest(args [0]string, argsEscaped bool, w http.Respon
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DB",
+			OperationName:    DBOperation,
 			OperationSummary: "Test #2. The Single Database Query test exercises the framework's object-relational mapper (ORM), random number generator, database driver, and database connection pool.",
 			OperationID:      "DB",
 			Body:             nil,
@@ -246,7 +246,7 @@ func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.Resp
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "JSON",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), JSONOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -282,7 +282,7 @@ func (s *Server) handleJSONRequest(args [0]string, argsEscaped bool, w http.Resp
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "JSON",
+			OperationName:    JSONOperation,
 			OperationSummary: "Test #1. The JSON Serialization test exercises the framework fundamentals including keep-alive support, request routing, request header parsing, object instantiation, JSON serialization, response header generation, and request count throughput.",
 			OperationID:      "json",
 			Body:             nil,
@@ -342,7 +342,7 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "Queries",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), QueriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -373,7 +373,7 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Queries",
+			Name: QueriesOperation,
 			ID:   "Queries",
 		}
 	)
@@ -392,7 +392,7 @@ func (s *Server) handleQueriesRequest(args [0]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "Queries",
+			OperationName:    QueriesOperation,
 			OperationSummary: "Test #3. The Multiple Database Queries test is a variation of Test #2 and also uses the World table. Multiple rows are fetched to more dramatically punish the database driver and connection pool. At the highest queries-per-request tested (20), this test demonstrates all frameworks' convergence toward zero requests-per-second as database activity increases.",
 			OperationID:      "Queries",
 			Body:             nil,
@@ -456,7 +456,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "Updates",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), UpdatesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -487,7 +487,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Updates",
+			Name: UpdatesOperation,
 			ID:   "Updates",
 		}
 	)
@@ -506,7 +506,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "Updates",
+			OperationName:    UpdatesOperation,
 			OperationSummary: "Test #5. The Database Updates test is a variation of Test #3 that exercises the ORM's persistence of objects and the database driver's performance at running UPDATE statements or similar. The spirit of this test is to exercise a variable number of read-then-write style database operations.",
 			OperationID:      "Updates",
 			Body:             nil,

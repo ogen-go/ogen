@@ -266,7 +266,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 	{{- range $route := $r.Routes }}
 	case {{ quote $route.Method }}:
 		{{- $op := $route.Operation }}
-		r.name = {{ quote $op.Name }}
+		r.name = {{ $op.Name }}Operation
 		r.summary = {{ quote $op.Summary }}
 		r.operationID = {{ quote $op.Spec.OperationID }}
 		r.pathPattern = {{ quote $route.Path }}

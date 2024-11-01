@@ -33,7 +33,7 @@ func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DataGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataGet",
+			Name: DataGetOperation,
 			ID:   "dataGet",
 		}
 	)
@@ -83,7 +83,7 @@ func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DataGet",
+			OperationName:    DataGetOperation,
 			OperationSummary: "",
 			OperationID:      "dataGet",
 			Body:             nil,
@@ -149,7 +149,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetAny",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DataGetAnyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -185,7 +185,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DataGetAny",
+			OperationName:    DataGetAnyOperation,
 			OperationSummary: "",
 			OperationID:      "dataGetAny",
 			Body:             nil,
@@ -242,7 +242,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetID",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DataGetIDOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -273,7 +273,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DataGetID",
+			Name: DataGetIDOperation,
 			ID:   "dataGetID",
 		}
 	)
@@ -292,7 +292,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DataGetID",
+			OperationName:    DataGetIDOperation,
 			OperationSummary: "",
 			OperationID:      "dataGetID",
 			Body:             nil,

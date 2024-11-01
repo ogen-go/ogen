@@ -31,7 +31,7 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "Default",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DefaultOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62,7 +62,7 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Default",
+			Name: DefaultOperation,
 			ID:   "default",
 		}
 	)
@@ -81,7 +81,7 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "Default",
+			OperationName:    DefaultOperation,
 			OperationSummary: "",
 			OperationID:      "default",
 			Body:             nil,
@@ -149,7 +149,7 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "Required",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RequiredOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -180,7 +180,7 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "Required",
+			Name: RequiredOperation,
 			ID:   "required",
 		}
 	)
@@ -199,7 +199,7 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "Required",
+			OperationName:    RequiredOperation,
 			OperationSummary: "",
 			OperationID:      "required",
 			Body:             nil,

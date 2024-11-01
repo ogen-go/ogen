@@ -33,7 +33,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedPodProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1DeleteNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedPodProxy",
+			Name: ConnectCoreV1DeleteNamespacedPodProxyOperation,
 			ID:   "connectCoreV1DeleteNamespacedPodProxy",
 		}
 	)
@@ -72,7 +72,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedPodProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -127,7 +127,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1DeleteNamespacedPodProxy",
+			OperationName:    ConnectCoreV1DeleteNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedPodProxy",
 			Body:             nil,
@@ -197,7 +197,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -228,7 +228,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
+			Name: ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation,
 			ID:   "connectCoreV1DeleteNamespacedPodProxyWithPath",
 		}
 	)
@@ -236,7 +236,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -291,7 +291,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
+			OperationName:    ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedPodProxyWithPath",
 			Body:             nil,
@@ -365,7 +365,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedServiceProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1DeleteNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -396,7 +396,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedServiceProxy",
+			Name: ConnectCoreV1DeleteNamespacedServiceProxyOperation,
 			ID:   "connectCoreV1DeleteNamespacedServiceProxy",
 		}
 	)
@@ -404,7 +404,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedServiceProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -459,7 +459,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1DeleteNamespacedServiceProxy",
+			OperationName:    ConnectCoreV1DeleteNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedServiceProxy",
 			Body:             nil,
@@ -529,7 +529,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -560,7 +560,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
+			Name: ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation,
 			ID:   "connectCoreV1DeleteNamespacedServiceProxyWithPath",
 		}
 	)
@@ -568,7 +568,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -623,7 +623,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
+			OperationName:    ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedServiceProxyWithPath",
 			Body:             nil,
@@ -697,7 +697,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNodeProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1DeleteNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -728,7 +728,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNodeProxy",
+			Name: ConnectCoreV1DeleteNodeProxyOperation,
 			ID:   "connectCoreV1DeleteNodeProxy",
 		}
 	)
@@ -736,7 +736,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1DeleteNodeProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -791,7 +791,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1DeleteNodeProxy",
+			OperationName:    ConnectCoreV1DeleteNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNodeProxy",
 			Body:             nil,
@@ -857,7 +857,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1DeleteNodeProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1DeleteNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -888,7 +888,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1DeleteNodeProxyWithPath",
+			Name: ConnectCoreV1DeleteNodeProxyWithPathOperation,
 			ID:   "connectCoreV1DeleteNodeProxyWithPath",
 		}
 	)
@@ -896,7 +896,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1DeleteNodeProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -951,7 +951,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1DeleteNodeProxyWithPath",
+			OperationName:    ConnectCoreV1DeleteNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNodeProxyWithPath",
 			Body:             nil,
@@ -1021,7 +1021,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodAttach",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNamespacedPodAttachOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1052,7 +1052,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodAttach",
+			Name: ConnectCoreV1GetNamespacedPodAttachOperation,
 			ID:   "connectCoreV1GetNamespacedPodAttach",
 		}
 	)
@@ -1060,7 +1060,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodAttach", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodAttachOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -1115,7 +1115,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNamespacedPodAttach",
+			OperationName:    ConnectCoreV1GetNamespacedPodAttachOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodAttach",
 			Body:             nil,
@@ -1201,7 +1201,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodExec",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNamespacedPodExecOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1232,7 +1232,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodExec",
+			Name: ConnectCoreV1GetNamespacedPodExecOperation,
 			ID:   "connectCoreV1GetNamespacedPodExec",
 		}
 	)
@@ -1240,7 +1240,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodExec", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodExecOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -1295,7 +1295,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNamespacedPodExec",
+			OperationName:    ConnectCoreV1GetNamespacedPodExecOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodExec",
 			Body:             nil,
@@ -1385,7 +1385,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodPortforward",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNamespacedPodPortforwardOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1416,7 +1416,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodPortforward",
+			Name: ConnectCoreV1GetNamespacedPodPortforwardOperation,
 			ID:   "connectCoreV1GetNamespacedPodPortforward",
 		}
 	)
@@ -1424,7 +1424,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodPortforward", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodPortforwardOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -1479,7 +1479,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNamespacedPodPortforward",
+			OperationName:    ConnectCoreV1GetNamespacedPodPortforwardOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodPortforward",
 			Body:             nil,
@@ -1549,7 +1549,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1580,7 +1580,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodProxy",
+			Name: ConnectCoreV1GetNamespacedPodProxyOperation,
 			ID:   "connectCoreV1GetNamespacedPodProxy",
 		}
 	)
@@ -1588,7 +1588,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -1643,7 +1643,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNamespacedPodProxy",
+			OperationName:    ConnectCoreV1GetNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodProxy",
 			Body:             nil,
@@ -1713,7 +1713,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedPodProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1744,7 +1744,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedPodProxyWithPath",
+			Name: ConnectCoreV1GetNamespacedPodProxyWithPathOperation,
 			ID:   "connectCoreV1GetNamespacedPodProxyWithPath",
 		}
 	)
@@ -1752,7 +1752,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -1807,7 +1807,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNamespacedPodProxyWithPath",
+			OperationName:    ConnectCoreV1GetNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodProxyWithPath",
 			Body:             nil,
@@ -1881,7 +1881,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedServiceProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1912,7 +1912,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedServiceProxy",
+			Name: ConnectCoreV1GetNamespacedServiceProxyOperation,
 			ID:   "connectCoreV1GetNamespacedServiceProxy",
 		}
 	)
@@ -1920,7 +1920,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNamespacedServiceProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -1975,7 +1975,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNamespacedServiceProxy",
+			OperationName:    ConnectCoreV1GetNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedServiceProxy",
 			Body:             nil,
@@ -2045,7 +2045,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNamespacedServiceProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2076,7 +2076,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNamespacedServiceProxyWithPath",
+			Name: ConnectCoreV1GetNamespacedServiceProxyWithPathOperation,
 			ID:   "connectCoreV1GetNamespacedServiceProxyWithPath",
 		}
 	)
@@ -2084,7 +2084,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNamespacedServiceProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -2139,7 +2139,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNamespacedServiceProxyWithPath",
+			OperationName:    ConnectCoreV1GetNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedServiceProxyWithPath",
 			Body:             nil,
@@ -2213,7 +2213,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNodeProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2244,7 +2244,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNodeProxy",
+			Name: ConnectCoreV1GetNodeProxyOperation,
 			ID:   "connectCoreV1GetNodeProxy",
 		}
 	)
@@ -2252,7 +2252,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNodeProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -2307,7 +2307,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNodeProxy",
+			OperationName:    ConnectCoreV1GetNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNodeProxy",
 			Body:             nil,
@@ -2373,7 +2373,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1GetNodeProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1GetNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2404,7 +2404,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1GetNodeProxyWithPath",
+			Name: ConnectCoreV1GetNodeProxyWithPathOperation,
 			ID:   "connectCoreV1GetNodeProxyWithPath",
 		}
 	)
@@ -2412,7 +2412,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1GetNodeProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -2467,7 +2467,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1GetNodeProxyWithPath",
+			OperationName:    ConnectCoreV1GetNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNodeProxyWithPath",
 			Body:             nil,
@@ -2537,7 +2537,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedPodProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1HeadNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2568,7 +2568,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedPodProxy",
+			Name: ConnectCoreV1HeadNamespacedPodProxyOperation,
 			ID:   "connectCoreV1HeadNamespacedPodProxy",
 		}
 	)
@@ -2576,7 +2576,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedPodProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -2631,7 +2631,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1HeadNamespacedPodProxy",
+			OperationName:    ConnectCoreV1HeadNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedPodProxy",
 			Body:             nil,
@@ -2701,7 +2701,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedPodProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1HeadNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2732,7 +2732,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedPodProxyWithPath",
+			Name: ConnectCoreV1HeadNamespacedPodProxyWithPathOperation,
 			ID:   "connectCoreV1HeadNamespacedPodProxyWithPath",
 		}
 	)
@@ -2740,7 +2740,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedPodProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -2795,7 +2795,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1HeadNamespacedPodProxyWithPath",
+			OperationName:    ConnectCoreV1HeadNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedPodProxyWithPath",
 			Body:             nil,
@@ -2869,7 +2869,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedServiceProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1HeadNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2900,7 +2900,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedServiceProxy",
+			Name: ConnectCoreV1HeadNamespacedServiceProxyOperation,
 			ID:   "connectCoreV1HeadNamespacedServiceProxy",
 		}
 	)
@@ -2908,7 +2908,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedServiceProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -2963,7 +2963,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1HeadNamespacedServiceProxy",
+			OperationName:    ConnectCoreV1HeadNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedServiceProxy",
 			Body:             nil,
@@ -3033,7 +3033,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3064,7 +3064,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
+			Name: ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation,
 			ID:   "connectCoreV1HeadNamespacedServiceProxyWithPath",
 		}
 	)
@@ -3072,7 +3072,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -3127,7 +3127,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
+			OperationName:    ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedServiceProxyWithPath",
 			Body:             nil,
@@ -3201,7 +3201,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNodeProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1HeadNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3232,7 +3232,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNodeProxy",
+			Name: ConnectCoreV1HeadNodeProxyOperation,
 			ID:   "connectCoreV1HeadNodeProxy",
 		}
 	)
@@ -3240,7 +3240,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1HeadNodeProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -3295,7 +3295,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1HeadNodeProxy",
+			OperationName:    ConnectCoreV1HeadNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNodeProxy",
 			Body:             nil,
@@ -3361,7 +3361,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1HeadNodeProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1HeadNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3392,7 +3392,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1HeadNodeProxyWithPath",
+			Name: ConnectCoreV1HeadNodeProxyWithPathOperation,
 			ID:   "connectCoreV1HeadNodeProxyWithPath",
 		}
 	)
@@ -3400,7 +3400,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1HeadNodeProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -3455,7 +3455,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1HeadNodeProxyWithPath",
+			OperationName:    ConnectCoreV1HeadNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNodeProxyWithPath",
 			Body:             nil,
@@ -3525,7 +3525,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedPodProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1OptionsNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3556,7 +3556,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedPodProxy",
+			Name: ConnectCoreV1OptionsNamespacedPodProxyOperation,
 			ID:   "connectCoreV1OptionsNamespacedPodProxy",
 		}
 	)
@@ -3564,7 +3564,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedPodProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -3619,7 +3619,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1OptionsNamespacedPodProxy",
+			OperationName:    ConnectCoreV1OptionsNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedPodProxy",
 			Body:             nil,
@@ -3689,7 +3689,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3720,7 +3720,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
+			Name: ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation,
 			ID:   "connectCoreV1OptionsNamespacedPodProxyWithPath",
 		}
 	)
@@ -3728,7 +3728,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -3783,7 +3783,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
+			OperationName:    ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedPodProxyWithPath",
 			Body:             nil,
@@ -3857,7 +3857,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedServiceProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1OptionsNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3888,7 +3888,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedServiceProxy",
+			Name: ConnectCoreV1OptionsNamespacedServiceProxyOperation,
 			ID:   "connectCoreV1OptionsNamespacedServiceProxy",
 		}
 	)
@@ -3896,7 +3896,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedServiceProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -3951,7 +3951,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1OptionsNamespacedServiceProxy",
+			OperationName:    ConnectCoreV1OptionsNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedServiceProxy",
 			Body:             nil,
@@ -4021,7 +4021,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4052,7 +4052,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
+			Name: ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation,
 			ID:   "connectCoreV1OptionsNamespacedServiceProxyWithPath",
 		}
 	)
@@ -4060,7 +4060,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -4115,7 +4115,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
+			OperationName:    ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedServiceProxyWithPath",
 			Body:             nil,
@@ -4189,7 +4189,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNodeProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1OptionsNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4220,7 +4220,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNodeProxy",
+			Name: ConnectCoreV1OptionsNodeProxyOperation,
 			ID:   "connectCoreV1OptionsNodeProxy",
 		}
 	)
@@ -4228,7 +4228,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1OptionsNodeProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -4283,7 +4283,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1OptionsNodeProxy",
+			OperationName:    ConnectCoreV1OptionsNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNodeProxy",
 			Body:             nil,
@@ -4349,7 +4349,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1OptionsNodeProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1OptionsNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4380,7 +4380,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1OptionsNodeProxyWithPath",
+			Name: ConnectCoreV1OptionsNodeProxyWithPathOperation,
 			ID:   "connectCoreV1OptionsNodeProxyWithPath",
 		}
 	)
@@ -4388,7 +4388,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1OptionsNodeProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -4443,7 +4443,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1OptionsNodeProxyWithPath",
+			OperationName:    ConnectCoreV1OptionsNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNodeProxyWithPath",
 			Body:             nil,
@@ -4513,7 +4513,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedPodProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PatchNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4544,7 +4544,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedPodProxy",
+			Name: ConnectCoreV1PatchNamespacedPodProxyOperation,
 			ID:   "connectCoreV1PatchNamespacedPodProxy",
 		}
 	)
@@ -4552,7 +4552,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedPodProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -4607,7 +4607,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PatchNamespacedPodProxy",
+			OperationName:    ConnectCoreV1PatchNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedPodProxy",
 			Body:             nil,
@@ -4677,7 +4677,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedPodProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PatchNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4708,7 +4708,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedPodProxyWithPath",
+			Name: ConnectCoreV1PatchNamespacedPodProxyWithPathOperation,
 			ID:   "connectCoreV1PatchNamespacedPodProxyWithPath",
 		}
 	)
@@ -4716,7 +4716,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedPodProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -4771,7 +4771,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PatchNamespacedPodProxyWithPath",
+			OperationName:    ConnectCoreV1PatchNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedPodProxyWithPath",
 			Body:             nil,
@@ -4845,7 +4845,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedServiceProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PatchNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -4876,7 +4876,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedServiceProxy",
+			Name: ConnectCoreV1PatchNamespacedServiceProxyOperation,
 			ID:   "connectCoreV1PatchNamespacedServiceProxy",
 		}
 	)
@@ -4884,7 +4884,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedServiceProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -4939,7 +4939,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PatchNamespacedServiceProxy",
+			OperationName:    ConnectCoreV1PatchNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedServiceProxy",
 			Body:             nil,
@@ -5009,7 +5009,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5040,7 +5040,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
+			Name: ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation,
 			ID:   "connectCoreV1PatchNamespacedServiceProxyWithPath",
 		}
 	)
@@ -5048,7 +5048,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -5103,7 +5103,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
+			OperationName:    ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedServiceProxyWithPath",
 			Body:             nil,
@@ -5177,7 +5177,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNodeProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PatchNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5208,7 +5208,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNodeProxy",
+			Name: ConnectCoreV1PatchNodeProxyOperation,
 			ID:   "connectCoreV1PatchNodeProxy",
 		}
 	)
@@ -5216,7 +5216,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PatchNodeProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -5271,7 +5271,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PatchNodeProxy",
+			OperationName:    ConnectCoreV1PatchNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNodeProxy",
 			Body:             nil,
@@ -5337,7 +5337,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PatchNodeProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PatchNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5368,7 +5368,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PatchNodeProxyWithPath",
+			Name: ConnectCoreV1PatchNodeProxyWithPathOperation,
 			ID:   "connectCoreV1PatchNodeProxyWithPath",
 		}
 	)
@@ -5376,7 +5376,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PatchNodeProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -5431,7 +5431,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PatchNodeProxyWithPath",
+			OperationName:    ConnectCoreV1PatchNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNodeProxyWithPath",
 			Body:             nil,
@@ -5501,7 +5501,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodAttach",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNamespacedPodAttachOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5532,7 +5532,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodAttach",
+			Name: ConnectCoreV1PostNamespacedPodAttachOperation,
 			ID:   "connectCoreV1PostNamespacedPodAttach",
 		}
 	)
@@ -5540,7 +5540,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodAttach", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodAttachOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -5595,7 +5595,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNamespacedPodAttach",
+			OperationName:    ConnectCoreV1PostNamespacedPodAttachOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodAttach",
 			Body:             nil,
@@ -5681,7 +5681,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodExec",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNamespacedPodExecOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5712,7 +5712,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodExec",
+			Name: ConnectCoreV1PostNamespacedPodExecOperation,
 			ID:   "connectCoreV1PostNamespacedPodExec",
 		}
 	)
@@ -5720,7 +5720,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodExec", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodExecOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -5775,7 +5775,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNamespacedPodExec",
+			OperationName:    ConnectCoreV1PostNamespacedPodExecOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodExec",
 			Body:             nil,
@@ -5865,7 +5865,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodPortforward",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNamespacedPodPortforwardOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -5896,7 +5896,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodPortforward",
+			Name: ConnectCoreV1PostNamespacedPodPortforwardOperation,
 			ID:   "connectCoreV1PostNamespacedPodPortforward",
 		}
 	)
@@ -5904,7 +5904,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodPortforward", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodPortforwardOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -5959,7 +5959,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNamespacedPodPortforward",
+			OperationName:    ConnectCoreV1PostNamespacedPodPortforwardOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodPortforward",
 			Body:             nil,
@@ -6029,7 +6029,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6060,7 +6060,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodProxy",
+			Name: ConnectCoreV1PostNamespacedPodProxyOperation,
 			ID:   "connectCoreV1PostNamespacedPodProxy",
 		}
 	)
@@ -6068,7 +6068,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -6123,7 +6123,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNamespacedPodProxy",
+			OperationName:    ConnectCoreV1PostNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodProxy",
 			Body:             nil,
@@ -6193,7 +6193,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedPodProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6224,7 +6224,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedPodProxyWithPath",
+			Name: ConnectCoreV1PostNamespacedPodProxyWithPathOperation,
 			ID:   "connectCoreV1PostNamespacedPodProxyWithPath",
 		}
 	)
@@ -6232,7 +6232,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -6287,7 +6287,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNamespacedPodProxyWithPath",
+			OperationName:    ConnectCoreV1PostNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodProxyWithPath",
 			Body:             nil,
@@ -6361,7 +6361,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedServiceProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6392,7 +6392,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedServiceProxy",
+			Name: ConnectCoreV1PostNamespacedServiceProxyOperation,
 			ID:   "connectCoreV1PostNamespacedServiceProxy",
 		}
 	)
@@ -6400,7 +6400,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNamespacedServiceProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -6455,7 +6455,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNamespacedServiceProxy",
+			OperationName:    ConnectCoreV1PostNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedServiceProxy",
 			Body:             nil,
@@ -6525,7 +6525,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNamespacedServiceProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6556,7 +6556,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNamespacedServiceProxyWithPath",
+			Name: ConnectCoreV1PostNamespacedServiceProxyWithPathOperation,
 			ID:   "connectCoreV1PostNamespacedServiceProxyWithPath",
 		}
 	)
@@ -6564,7 +6564,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNamespacedServiceProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -6619,7 +6619,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNamespacedServiceProxyWithPath",
+			OperationName:    ConnectCoreV1PostNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedServiceProxyWithPath",
 			Body:             nil,
@@ -6693,7 +6693,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNodeProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6724,7 +6724,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNodeProxy",
+			Name: ConnectCoreV1PostNodeProxyOperation,
 			ID:   "connectCoreV1PostNodeProxy",
 		}
 	)
@@ -6732,7 +6732,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNodeProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -6787,7 +6787,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNodeProxy",
+			OperationName:    ConnectCoreV1PostNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNodeProxy",
 			Body:             nil,
@@ -6853,7 +6853,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PostNodeProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PostNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -6884,7 +6884,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PostNodeProxyWithPath",
+			Name: ConnectCoreV1PostNodeProxyWithPathOperation,
 			ID:   "connectCoreV1PostNodeProxyWithPath",
 		}
 	)
@@ -6892,7 +6892,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PostNodeProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -6947,7 +6947,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PostNodeProxyWithPath",
+			OperationName:    ConnectCoreV1PostNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNodeProxyWithPath",
 			Body:             nil,
@@ -7017,7 +7017,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedPodProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PutNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7048,7 +7048,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedPodProxy",
+			Name: ConnectCoreV1PutNamespacedPodProxyOperation,
 			ID:   "connectCoreV1PutNamespacedPodProxy",
 		}
 	)
@@ -7056,7 +7056,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PutNamespacedPodProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -7111,7 +7111,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PutNamespacedPodProxy",
+			OperationName:    ConnectCoreV1PutNamespacedPodProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedPodProxy",
 			Body:             nil,
@@ -7181,7 +7181,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedPodProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PutNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7212,7 +7212,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedPodProxyWithPath",
+			Name: ConnectCoreV1PutNamespacedPodProxyWithPathOperation,
 			ID:   "connectCoreV1PutNamespacedPodProxyWithPath",
 		}
 	)
@@ -7220,7 +7220,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PutNamespacedPodProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -7275,7 +7275,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PutNamespacedPodProxyWithPath",
+			OperationName:    ConnectCoreV1PutNamespacedPodProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedPodProxyWithPath",
 			Body:             nil,
@@ -7349,7 +7349,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedServiceProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PutNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7380,7 +7380,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedServiceProxy",
+			Name: ConnectCoreV1PutNamespacedServiceProxyOperation,
 			ID:   "connectCoreV1PutNamespacedServiceProxy",
 		}
 	)
@@ -7388,7 +7388,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PutNamespacedServiceProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -7443,7 +7443,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PutNamespacedServiceProxy",
+			OperationName:    ConnectCoreV1PutNamespacedServiceProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedServiceProxy",
 			Body:             nil,
@@ -7513,7 +7513,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNamespacedServiceProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PutNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7544,7 +7544,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNamespacedServiceProxyWithPath",
+			Name: ConnectCoreV1PutNamespacedServiceProxyWithPathOperation,
 			ID:   "connectCoreV1PutNamespacedServiceProxyWithPath",
 		}
 	)
@@ -7552,7 +7552,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PutNamespacedServiceProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -7607,7 +7607,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PutNamespacedServiceProxyWithPath",
+			OperationName:    ConnectCoreV1PutNamespacedServiceProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedServiceProxyWithPath",
 			Body:             nil,
@@ -7681,7 +7681,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNodeProxy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PutNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7712,7 +7712,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNodeProxy",
+			Name: ConnectCoreV1PutNodeProxyOperation,
 			ID:   "connectCoreV1PutNodeProxy",
 		}
 	)
@@ -7720,7 +7720,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PutNodeProxyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -7775,7 +7775,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PutNodeProxy",
+			OperationName:    ConnectCoreV1PutNodeProxyOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNodeProxy",
 			Body:             nil,
@@ -7841,7 +7841,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ConnectCoreV1PutNodeProxyWithPath",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ConnectCoreV1PutNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -7872,7 +7872,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ConnectCoreV1PutNodeProxyWithPath",
+			Name: ConnectCoreV1PutNodeProxyWithPathOperation,
 			ID:   "connectCoreV1PutNodeProxyWithPath",
 		}
 	)
@@ -7880,7 +7880,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxyWithPath", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ConnectCoreV1PutNodeProxyWithPathOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -7935,7 +7935,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ConnectCoreV1PutNodeProxyWithPath",
+			OperationName:    ConnectCoreV1PutNodeProxyWithPathOperation,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNodeProxyWithPath",
 			Body:             nil,
@@ -8005,7 +8005,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAPIVersions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAPIVersionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8036,7 +8036,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAPIVersions",
+			Name: GetAPIVersionsOperation,
 			ID:   "getAPIVersions",
 		}
 	)
@@ -8044,7 +8044,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAPIVersions", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAPIVersionsOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -8089,7 +8089,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAPIVersions",
+			OperationName:    GetAPIVersionsOperation,
 			OperationSummary: "",
 			OperationID:      "getAPIVersions",
 			Body:             nil,
@@ -8146,7 +8146,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAdmissionregistrationAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAdmissionregistrationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8177,7 +8177,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAdmissionregistrationAPIGroup",
+			Name: GetAdmissionregistrationAPIGroupOperation,
 			ID:   "getAdmissionregistrationAPIGroup",
 		}
 	)
@@ -8185,7 +8185,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAdmissionregistrationAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -8230,7 +8230,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAdmissionregistrationAPIGroup",
+			OperationName:    GetAdmissionregistrationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAdmissionregistrationAPIGroup",
 			Body:             nil,
@@ -8287,7 +8287,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAdmissionregistrationV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAdmissionregistrationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8318,7 +8318,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAdmissionregistrationV1APIResources",
+			Name: GetAdmissionregistrationV1APIResourcesOperation,
 			ID:   "getAdmissionregistrationV1APIResources",
 		}
 	)
@@ -8326,7 +8326,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAdmissionregistrationV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -8371,7 +8371,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAdmissionregistrationV1APIResources",
+			OperationName:    GetAdmissionregistrationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAdmissionregistrationV1APIResources",
 			Body:             nil,
@@ -8428,7 +8428,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiextensionsAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetApiextensionsAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8459,7 +8459,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiextensionsAPIGroup",
+			Name: GetApiextensionsAPIGroupOperation,
 			ID:   "getApiextensionsAPIGroup",
 		}
 	)
@@ -8467,7 +8467,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetApiextensionsAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -8512,7 +8512,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetApiextensionsAPIGroup",
+			OperationName:    GetApiextensionsAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getApiextensionsAPIGroup",
 			Body:             nil,
@@ -8569,7 +8569,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiextensionsV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetApiextensionsV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8600,7 +8600,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiextensionsV1APIResources",
+			Name: GetApiextensionsV1APIResourcesOperation,
 			ID:   "getApiextensionsV1APIResources",
 		}
 	)
@@ -8608,7 +8608,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetApiextensionsV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -8653,7 +8653,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetApiextensionsV1APIResources",
+			OperationName:    GetApiextensionsV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getApiextensionsV1APIResources",
 			Body:             nil,
@@ -8710,7 +8710,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiregistrationAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetApiregistrationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8741,7 +8741,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiregistrationAPIGroup",
+			Name: GetApiregistrationAPIGroupOperation,
 			ID:   "getApiregistrationAPIGroup",
 		}
 	)
@@ -8749,7 +8749,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetApiregistrationAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -8794,7 +8794,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetApiregistrationAPIGroup",
+			OperationName:    GetApiregistrationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getApiregistrationAPIGroup",
 			Body:             nil,
@@ -8851,7 +8851,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiregistrationV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetApiregistrationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -8882,7 +8882,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetApiregistrationV1APIResources",
+			Name: GetApiregistrationV1APIResourcesOperation,
 			ID:   "getApiregistrationV1APIResources",
 		}
 	)
@@ -8890,7 +8890,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetApiregistrationV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -8935,7 +8935,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetApiregistrationV1APIResources",
+			OperationName:    GetApiregistrationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getApiregistrationV1APIResources",
 			Body:             nil,
@@ -8992,7 +8992,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAppsAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAppsAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9023,7 +9023,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAppsAPIGroup",
+			Name: GetAppsAPIGroupOperation,
 			ID:   "getAppsAPIGroup",
 		}
 	)
@@ -9031,7 +9031,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAppsAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAppsAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -9076,7 +9076,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAppsAPIGroup",
+			OperationName:    GetAppsAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAppsAPIGroup",
 			Body:             nil,
@@ -9133,7 +9133,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAppsV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAppsV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9164,7 +9164,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAppsV1APIResources",
+			Name: GetAppsV1APIResourcesOperation,
 			ID:   "getAppsV1APIResources",
 		}
 	)
@@ -9172,7 +9172,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAppsV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAppsV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -9217,7 +9217,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAppsV1APIResources",
+			OperationName:    GetAppsV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAppsV1APIResources",
 			Body:             nil,
@@ -9274,7 +9274,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthenticationAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAuthenticationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9305,7 +9305,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthenticationAPIGroup",
+			Name: GetAuthenticationAPIGroupOperation,
 			ID:   "getAuthenticationAPIGroup",
 		}
 	)
@@ -9313,7 +9313,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAuthenticationAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -9358,7 +9358,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAuthenticationAPIGroup",
+			OperationName:    GetAuthenticationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthenticationAPIGroup",
 			Body:             nil,
@@ -9415,7 +9415,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthenticationV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAuthenticationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9446,7 +9446,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthenticationV1APIResources",
+			Name: GetAuthenticationV1APIResourcesOperation,
 			ID:   "getAuthenticationV1APIResources",
 		}
 	)
@@ -9454,7 +9454,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAuthenticationV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -9499,7 +9499,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAuthenticationV1APIResources",
+			OperationName:    GetAuthenticationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthenticationV1APIResources",
 			Body:             nil,
@@ -9556,7 +9556,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthorizationAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAuthorizationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9587,7 +9587,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthorizationAPIGroup",
+			Name: GetAuthorizationAPIGroupOperation,
 			ID:   "getAuthorizationAPIGroup",
 		}
 	)
@@ -9595,7 +9595,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAuthorizationAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -9640,7 +9640,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAuthorizationAPIGroup",
+			OperationName:    GetAuthorizationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthorizationAPIGroup",
 			Body:             nil,
@@ -9697,7 +9697,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthorizationV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAuthorizationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9728,7 +9728,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAuthorizationV1APIResources",
+			Name: GetAuthorizationV1APIResourcesOperation,
 			ID:   "getAuthorizationV1APIResources",
 		}
 	)
@@ -9736,7 +9736,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAuthorizationV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -9781,7 +9781,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAuthorizationV1APIResources",
+			OperationName:    GetAuthorizationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAuthorizationV1APIResources",
 			Body:             nil,
@@ -9838,7 +9838,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAutoscalingAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -9869,7 +9869,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingAPIGroup",
+			Name: GetAutoscalingAPIGroupOperation,
 			ID:   "getAutoscalingAPIGroup",
 		}
 	)
@@ -9877,7 +9877,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAutoscalingAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -9922,7 +9922,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAutoscalingAPIGroup",
+			OperationName:    GetAutoscalingAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingAPIGroup",
 			Body:             nil,
@@ -9979,7 +9979,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAutoscalingV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10010,7 +10010,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingV1APIResources",
+			Name: GetAutoscalingV1APIResourcesOperation,
 			ID:   "getAutoscalingV1APIResources",
 		}
 	)
@@ -10018,7 +10018,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAutoscalingV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -10063,7 +10063,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAutoscalingV1APIResources",
+			OperationName:    GetAutoscalingV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV1APIResources",
 			Body:             nil,
@@ -10120,7 +10120,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingV2beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAutoscalingV2beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10151,7 +10151,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingV2beta1APIResources",
+			Name: GetAutoscalingV2beta1APIResourcesOperation,
 			ID:   "getAutoscalingV2beta1APIResources",
 		}
 	)
@@ -10159,7 +10159,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAutoscalingV2beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -10204,7 +10204,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAutoscalingV2beta1APIResources",
+			OperationName:    GetAutoscalingV2beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV2beta1APIResources",
 			Body:             nil,
@@ -10261,7 +10261,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingV2beta2APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetAutoscalingV2beta2APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10292,7 +10292,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetAutoscalingV2beta2APIResources",
+			Name: GetAutoscalingV2beta2APIResourcesOperation,
 			ID:   "getAutoscalingV2beta2APIResources",
 		}
 	)
@@ -10300,7 +10300,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetAutoscalingV2beta2APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -10345,7 +10345,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetAutoscalingV2beta2APIResources",
+			OperationName:    GetAutoscalingV2beta2APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV2beta2APIResources",
 			Body:             nil,
@@ -10402,7 +10402,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBatchAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetBatchAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10433,7 +10433,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetBatchAPIGroup",
+			Name: GetBatchAPIGroupOperation,
 			ID:   "getBatchAPIGroup",
 		}
 	)
@@ -10441,7 +10441,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetBatchAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetBatchAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -10486,7 +10486,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetBatchAPIGroup",
+			OperationName:    GetBatchAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getBatchAPIGroup",
 			Body:             nil,
@@ -10543,7 +10543,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBatchV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetBatchV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10574,7 +10574,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetBatchV1APIResources",
+			Name: GetBatchV1APIResourcesOperation,
 			ID:   "getBatchV1APIResources",
 		}
 	)
@@ -10582,7 +10582,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetBatchV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetBatchV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -10627,7 +10627,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetBatchV1APIResources",
+			OperationName:    GetBatchV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getBatchV1APIResources",
 			Body:             nil,
@@ -10684,7 +10684,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBatchV1beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetBatchV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10715,7 +10715,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetBatchV1beta1APIResources",
+			Name: GetBatchV1beta1APIResourcesOperation,
 			ID:   "getBatchV1beta1APIResources",
 		}
 	)
@@ -10723,7 +10723,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetBatchV1beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -10768,7 +10768,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetBatchV1beta1APIResources",
+			OperationName:    GetBatchV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getBatchV1beta1APIResources",
 			Body:             nil,
@@ -10825,7 +10825,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCertificatesAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetCertificatesAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10856,7 +10856,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCertificatesAPIGroup",
+			Name: GetCertificatesAPIGroupOperation,
 			ID:   "getCertificatesAPIGroup",
 		}
 	)
@@ -10864,7 +10864,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetCertificatesAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetCertificatesAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -10909,7 +10909,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetCertificatesAPIGroup",
+			OperationName:    GetCertificatesAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getCertificatesAPIGroup",
 			Body:             nil,
@@ -10966,7 +10966,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCertificatesV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetCertificatesV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -10997,7 +10997,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCertificatesV1APIResources",
+			Name: GetCertificatesV1APIResourcesOperation,
 			ID:   "getCertificatesV1APIResources",
 		}
 	)
@@ -11005,7 +11005,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetCertificatesV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetCertificatesV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -11050,7 +11050,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetCertificatesV1APIResources",
+			OperationName:    GetCertificatesV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getCertificatesV1APIResources",
 			Body:             nil,
@@ -11107,7 +11107,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCodeVersion",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetCodeVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11138,7 +11138,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCodeVersion",
+			Name: GetCodeVersionOperation,
 			ID:   "getCodeVersion",
 		}
 	)
@@ -11146,7 +11146,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetCodeVersion", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetCodeVersionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -11191,7 +11191,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetCodeVersion",
+			OperationName:    GetCodeVersionOperation,
 			OperationSummary: "",
 			OperationID:      "getCodeVersion",
 			Body:             nil,
@@ -11248,7 +11248,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoordinationAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetCoordinationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11279,7 +11279,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoordinationAPIGroup",
+			Name: GetCoordinationAPIGroupOperation,
 			ID:   "getCoordinationAPIGroup",
 		}
 	)
@@ -11287,7 +11287,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetCoordinationAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetCoordinationAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -11332,7 +11332,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetCoordinationAPIGroup",
+			OperationName:    GetCoordinationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getCoordinationAPIGroup",
 			Body:             nil,
@@ -11389,7 +11389,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoordinationV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetCoordinationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11420,7 +11420,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoordinationV1APIResources",
+			Name: GetCoordinationV1APIResourcesOperation,
 			ID:   "getCoordinationV1APIResources",
 		}
 	)
@@ -11428,7 +11428,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetCoordinationV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetCoordinationV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -11473,7 +11473,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetCoordinationV1APIResources",
+			OperationName:    GetCoordinationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getCoordinationV1APIResources",
 			Body:             nil,
@@ -11530,7 +11530,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoreAPIVersions",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetCoreAPIVersionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11561,7 +11561,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoreAPIVersions",
+			Name: GetCoreAPIVersionsOperation,
 			ID:   "getCoreAPIVersions",
 		}
 	)
@@ -11569,7 +11569,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetCoreAPIVersions", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetCoreAPIVersionsOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -11614,7 +11614,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetCoreAPIVersions",
+			OperationName:    GetCoreAPIVersionsOperation,
 			OperationSummary: "",
 			OperationID:      "getCoreAPIVersions",
 			Body:             nil,
@@ -11671,7 +11671,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoreV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetCoreV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11702,7 +11702,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetCoreV1APIResources",
+			Name: GetCoreV1APIResourcesOperation,
 			ID:   "getCoreV1APIResources",
 		}
 	)
@@ -11710,7 +11710,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetCoreV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetCoreV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -11755,7 +11755,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetCoreV1APIResources",
+			OperationName:    GetCoreV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getCoreV1APIResources",
 			Body:             nil,
@@ -11812,7 +11812,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetDiscoveryAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetDiscoveryAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11843,7 +11843,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetDiscoveryAPIGroup",
+			Name: GetDiscoveryAPIGroupOperation,
 			ID:   "getDiscoveryAPIGroup",
 		}
 	)
@@ -11851,7 +11851,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetDiscoveryAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -11896,7 +11896,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetDiscoveryAPIGroup",
+			OperationName:    GetDiscoveryAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getDiscoveryAPIGroup",
 			Body:             nil,
@@ -11953,7 +11953,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetDiscoveryV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetDiscoveryV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -11984,7 +11984,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetDiscoveryV1APIResources",
+			Name: GetDiscoveryV1APIResourcesOperation,
 			ID:   "getDiscoveryV1APIResources",
 		}
 	)
@@ -11992,7 +11992,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetDiscoveryV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -12037,7 +12037,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetDiscoveryV1APIResources",
+			OperationName:    GetDiscoveryV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getDiscoveryV1APIResources",
 			Body:             nil,
@@ -12094,7 +12094,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetDiscoveryV1beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetDiscoveryV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12125,7 +12125,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetDiscoveryV1beta1APIResources",
+			Name: GetDiscoveryV1beta1APIResourcesOperation,
 			ID:   "getDiscoveryV1beta1APIResources",
 		}
 	)
@@ -12133,7 +12133,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetDiscoveryV1beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -12178,7 +12178,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetDiscoveryV1beta1APIResources",
+			OperationName:    GetDiscoveryV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getDiscoveryV1beta1APIResources",
 			Body:             nil,
@@ -12235,7 +12235,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetEventsAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetEventsAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12266,7 +12266,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetEventsAPIGroup",
+			Name: GetEventsAPIGroupOperation,
 			ID:   "getEventsAPIGroup",
 		}
 	)
@@ -12274,7 +12274,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetEventsAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetEventsAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -12319,7 +12319,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetEventsAPIGroup",
+			OperationName:    GetEventsAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getEventsAPIGroup",
 			Body:             nil,
@@ -12376,7 +12376,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetEventsV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetEventsV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12407,7 +12407,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetEventsV1APIResources",
+			Name: GetEventsV1APIResourcesOperation,
 			ID:   "getEventsV1APIResources",
 		}
 	)
@@ -12415,7 +12415,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetEventsV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetEventsV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -12460,7 +12460,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetEventsV1APIResources",
+			OperationName:    GetEventsV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getEventsV1APIResources",
 			Body:             nil,
@@ -12517,7 +12517,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetEventsV1beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetEventsV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12548,7 +12548,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetEventsV1beta1APIResources",
+			Name: GetEventsV1beta1APIResourcesOperation,
 			ID:   "getEventsV1beta1APIResources",
 		}
 	)
@@ -12556,7 +12556,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetEventsV1beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -12601,7 +12601,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetEventsV1beta1APIResources",
+			OperationName:    GetEventsV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getEventsV1beta1APIResources",
 			Body:             nil,
@@ -12658,7 +12658,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFlowcontrolApiserverAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetFlowcontrolApiserverAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12689,7 +12689,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetFlowcontrolApiserverAPIGroup",
+			Name: GetFlowcontrolApiserverAPIGroupOperation,
 			ID:   "getFlowcontrolApiserverAPIGroup",
 		}
 	)
@@ -12697,7 +12697,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetFlowcontrolApiserverAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -12742,7 +12742,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetFlowcontrolApiserverAPIGroup",
+			OperationName:    GetFlowcontrolApiserverAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverAPIGroup",
 			Body:             nil,
@@ -12799,7 +12799,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFlowcontrolApiserverV1beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetFlowcontrolApiserverV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12830,7 +12830,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetFlowcontrolApiserverV1beta1APIResources",
+			Name: GetFlowcontrolApiserverV1beta1APIResourcesOperation,
 			ID:   "getFlowcontrolApiserverV1beta1APIResources",
 		}
 	)
@@ -12838,7 +12838,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetFlowcontrolApiserverV1beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -12883,7 +12883,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetFlowcontrolApiserverV1beta1APIResources",
+			OperationName:    GetFlowcontrolApiserverV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverV1beta1APIResources",
 			Body:             nil,
@@ -12940,7 +12940,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFlowcontrolApiserverV1beta2APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetFlowcontrolApiserverV1beta2APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -12971,7 +12971,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetFlowcontrolApiserverV1beta2APIResources",
+			Name: GetFlowcontrolApiserverV1beta2APIResourcesOperation,
 			ID:   "getFlowcontrolApiserverV1beta2APIResources",
 		}
 	)
@@ -12979,7 +12979,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetFlowcontrolApiserverV1beta2APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -13024,7 +13024,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetFlowcontrolApiserverV1beta2APIResources",
+			OperationName:    GetFlowcontrolApiserverV1beta2APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverV1beta2APIResources",
 			Body:             nil,
@@ -13081,7 +13081,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetInternalApiserverAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetInternalApiserverAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13112,7 +13112,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetInternalApiserverAPIGroup",
+			Name: GetInternalApiserverAPIGroupOperation,
 			ID:   "getInternalApiserverAPIGroup",
 		}
 	)
@@ -13120,7 +13120,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetInternalApiserverAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -13165,7 +13165,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetInternalApiserverAPIGroup",
+			OperationName:    GetInternalApiserverAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getInternalApiserverAPIGroup",
 			Body:             nil,
@@ -13222,7 +13222,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetInternalApiserverV1alpha1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetInternalApiserverV1alpha1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13253,7 +13253,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetInternalApiserverV1alpha1APIResources",
+			Name: GetInternalApiserverV1alpha1APIResourcesOperation,
 			ID:   "getInternalApiserverV1alpha1APIResources",
 		}
 	)
@@ -13261,7 +13261,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetInternalApiserverV1alpha1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -13306,7 +13306,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetInternalApiserverV1alpha1APIResources",
+			OperationName:    GetInternalApiserverV1alpha1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getInternalApiserverV1alpha1APIResources",
 			Body:             nil,
@@ -13363,7 +13363,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNetworkingAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetNetworkingAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13394,7 +13394,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNetworkingAPIGroup",
+			Name: GetNetworkingAPIGroupOperation,
 			ID:   "getNetworkingAPIGroup",
 		}
 	)
@@ -13402,7 +13402,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetNetworkingAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetNetworkingAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -13447,7 +13447,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetNetworkingAPIGroup",
+			OperationName:    GetNetworkingAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getNetworkingAPIGroup",
 			Body:             nil,
@@ -13504,7 +13504,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNetworkingV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetNetworkingV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13535,7 +13535,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNetworkingV1APIResources",
+			Name: GetNetworkingV1APIResourcesOperation,
 			ID:   "getNetworkingV1APIResources",
 		}
 	)
@@ -13543,7 +13543,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetNetworkingV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetNetworkingV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -13588,7 +13588,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetNetworkingV1APIResources",
+			OperationName:    GetNetworkingV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNetworkingV1APIResources",
 			Body:             nil,
@@ -13645,7 +13645,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetNodeAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13676,7 +13676,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeAPIGroup",
+			Name: GetNodeAPIGroupOperation,
 			ID:   "getNodeAPIGroup",
 		}
 	)
@@ -13684,7 +13684,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetNodeAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetNodeAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -13729,7 +13729,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetNodeAPIGroup",
+			OperationName:    GetNodeAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeAPIGroup",
 			Body:             nil,
@@ -13786,7 +13786,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetNodeV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13817,7 +13817,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeV1APIResources",
+			Name: GetNodeV1APIResourcesOperation,
 			ID:   "getNodeV1APIResources",
 		}
 	)
@@ -13825,7 +13825,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetNodeV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetNodeV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -13870,7 +13870,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetNodeV1APIResources",
+			OperationName:    GetNodeV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeV1APIResources",
 			Body:             nil,
@@ -13927,7 +13927,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeV1alpha1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetNodeV1alpha1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -13958,7 +13958,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeV1alpha1APIResources",
+			Name: GetNodeV1alpha1APIResourcesOperation,
 			ID:   "getNodeV1alpha1APIResources",
 		}
 	)
@@ -13966,7 +13966,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetNodeV1alpha1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14011,7 +14011,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetNodeV1alpha1APIResources",
+			OperationName:    GetNodeV1alpha1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeV1alpha1APIResources",
 			Body:             nil,
@@ -14068,7 +14068,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeV1beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetNodeV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14099,7 +14099,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetNodeV1beta1APIResources",
+			Name: GetNodeV1beta1APIResourcesOperation,
 			ID:   "getNodeV1beta1APIResources",
 		}
 	)
@@ -14107,7 +14107,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetNodeV1beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14152,7 +14152,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetNodeV1beta1APIResources",
+			OperationName:    GetNodeV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getNodeV1beta1APIResources",
 			Body:             nil,
@@ -14209,7 +14209,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPolicyAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetPolicyAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14240,7 +14240,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPolicyAPIGroup",
+			Name: GetPolicyAPIGroupOperation,
 			ID:   "getPolicyAPIGroup",
 		}
 	)
@@ -14248,7 +14248,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetPolicyAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetPolicyAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14293,7 +14293,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetPolicyAPIGroup",
+			OperationName:    GetPolicyAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getPolicyAPIGroup",
 			Body:             nil,
@@ -14350,7 +14350,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPolicyV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetPolicyV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14381,7 +14381,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPolicyV1APIResources",
+			Name: GetPolicyV1APIResourcesOperation,
 			ID:   "getPolicyV1APIResources",
 		}
 	)
@@ -14389,7 +14389,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetPolicyV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetPolicyV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14434,7 +14434,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetPolicyV1APIResources",
+			OperationName:    GetPolicyV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getPolicyV1APIResources",
 			Body:             nil,
@@ -14491,7 +14491,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPolicyV1beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetPolicyV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14522,7 +14522,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetPolicyV1beta1APIResources",
+			Name: GetPolicyV1beta1APIResourcesOperation,
 			ID:   "getPolicyV1beta1APIResources",
 		}
 	)
@@ -14530,7 +14530,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetPolicyV1beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14575,7 +14575,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetPolicyV1beta1APIResources",
+			OperationName:    GetPolicyV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getPolicyV1beta1APIResources",
 			Body:             nil,
@@ -14632,7 +14632,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetRbacAuthorizationAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetRbacAuthorizationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14663,7 +14663,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetRbacAuthorizationAPIGroup",
+			Name: GetRbacAuthorizationAPIGroupOperation,
 			ID:   "getRbacAuthorizationAPIGroup",
 		}
 	)
@@ -14671,7 +14671,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetRbacAuthorizationAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14716,7 +14716,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetRbacAuthorizationAPIGroup",
+			OperationName:    GetRbacAuthorizationAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getRbacAuthorizationAPIGroup",
 			Body:             nil,
@@ -14773,7 +14773,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetRbacAuthorizationV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetRbacAuthorizationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14804,7 +14804,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetRbacAuthorizationV1APIResources",
+			Name: GetRbacAuthorizationV1APIResourcesOperation,
 			ID:   "getRbacAuthorizationV1APIResources",
 		}
 	)
@@ -14812,7 +14812,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetRbacAuthorizationV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14857,7 +14857,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetRbacAuthorizationV1APIResources",
+			OperationName:    GetRbacAuthorizationV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getRbacAuthorizationV1APIResources",
 			Body:             nil,
@@ -14914,7 +14914,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetSchedulingAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetSchedulingAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -14945,7 +14945,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetSchedulingAPIGroup",
+			Name: GetSchedulingAPIGroupOperation,
 			ID:   "getSchedulingAPIGroup",
 		}
 	)
@@ -14953,7 +14953,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetSchedulingAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetSchedulingAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -14998,7 +14998,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetSchedulingAPIGroup",
+			OperationName:    GetSchedulingAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getSchedulingAPIGroup",
 			Body:             nil,
@@ -15055,7 +15055,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetSchedulingV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetSchedulingV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15086,7 +15086,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetSchedulingV1APIResources",
+			Name: GetSchedulingV1APIResourcesOperation,
 			ID:   "getSchedulingV1APIResources",
 		}
 	)
@@ -15094,7 +15094,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetSchedulingV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetSchedulingV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -15139,7 +15139,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetSchedulingV1APIResources",
+			OperationName:    GetSchedulingV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getSchedulingV1APIResources",
 			Body:             nil,
@@ -15196,7 +15196,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetServiceAccountIssuerOpenIDConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetServiceAccountIssuerOpenIDConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15227,7 +15227,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetServiceAccountIssuerOpenIDConfiguration",
+			Name: GetServiceAccountIssuerOpenIDConfigurationOperation,
 			ID:   "getServiceAccountIssuerOpenIDConfiguration",
 		}
 	)
@@ -15235,7 +15235,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetServiceAccountIssuerOpenIDConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -15280,7 +15280,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetServiceAccountIssuerOpenIDConfiguration",
+			OperationName:    GetServiceAccountIssuerOpenIDConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "getServiceAccountIssuerOpenIDConfiguration",
 			Body:             nil,
@@ -15337,7 +15337,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetServiceAccountIssuerOpenIDKeyset",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetServiceAccountIssuerOpenIDKeysetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15368,7 +15368,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetServiceAccountIssuerOpenIDKeyset",
+			Name: GetServiceAccountIssuerOpenIDKeysetOperation,
 			ID:   "getServiceAccountIssuerOpenIDKeyset",
 		}
 	)
@@ -15376,7 +15376,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDKeyset", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetServiceAccountIssuerOpenIDKeysetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -15421,7 +15421,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetServiceAccountIssuerOpenIDKeyset",
+			OperationName:    GetServiceAccountIssuerOpenIDKeysetOperation,
 			OperationSummary: "",
 			OperationID:      "getServiceAccountIssuerOpenIDKeyset",
 			Body:             nil,
@@ -15478,7 +15478,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageAPIGroup",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetStorageAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15509,7 +15509,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageAPIGroup",
+			Name: GetStorageAPIGroupOperation,
 			ID:   "getStorageAPIGroup",
 		}
 	)
@@ -15517,7 +15517,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetStorageAPIGroup", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetStorageAPIGroupOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -15562,7 +15562,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetStorageAPIGroup",
+			OperationName:    GetStorageAPIGroupOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageAPIGroup",
 			Body:             nil,
@@ -15619,7 +15619,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageV1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetStorageV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15650,7 +15650,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageV1APIResources",
+			Name: GetStorageV1APIResourcesOperation,
 			ID:   "getStorageV1APIResources",
 		}
 	)
@@ -15658,7 +15658,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetStorageV1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetStorageV1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -15703,7 +15703,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetStorageV1APIResources",
+			OperationName:    GetStorageV1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageV1APIResources",
 			Body:             nil,
@@ -15760,7 +15760,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageV1alpha1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetStorageV1alpha1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15791,7 +15791,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageV1alpha1APIResources",
+			Name: GetStorageV1alpha1APIResourcesOperation,
 			ID:   "getStorageV1alpha1APIResources",
 		}
 	)
@@ -15799,7 +15799,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetStorageV1alpha1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -15844,7 +15844,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetStorageV1alpha1APIResources",
+			OperationName:    GetStorageV1alpha1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageV1alpha1APIResources",
 			Body:             nil,
@@ -15901,7 +15901,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageV1beta1APIResources",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), GetStorageV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -15932,7 +15932,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "GetStorageV1beta1APIResources",
+			Name: GetStorageV1beta1APIResourcesOperation,
 			ID:   "getStorageV1beta1APIResources",
 		}
 	)
@@ -15940,7 +15940,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r)
+			sctx, ok, err := s.securityBearerToken(ctx, GetStorageV1beta1APIResourcesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -15985,7 +15985,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "GetStorageV1beta1APIResources",
+			OperationName:    GetStorageV1beta1APIResourcesOperation,
 			OperationSummary: "",
 			OperationID:      "getStorageV1beta1APIResources",
 			Body:             nil,
@@ -16042,7 +16042,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAdmissionregistrationV1MutatingWebhookConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16073,7 +16073,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
+			Name: ListAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			ID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
 		}
 	)
@@ -16081,7 +16081,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAdmissionregistrationV1MutatingWebhookConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -16136,7 +16136,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationName:    ListAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:             nil,
@@ -16234,7 +16234,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16265,7 +16265,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Name: ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			ID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
 		}
 	)
@@ -16273,7 +16273,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -16328,7 +16328,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationName:    ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:             nil,
@@ -16426,7 +16426,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListApiextensionsV1CustomResourceDefinition",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListApiextensionsV1CustomResourceDefinitionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16457,7 +16457,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListApiextensionsV1CustomResourceDefinition",
+			Name: ListApiextensionsV1CustomResourceDefinitionOperation,
 			ID:   "listApiextensionsV1CustomResourceDefinition",
 		}
 	)
@@ -16465,7 +16465,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListApiextensionsV1CustomResourceDefinitionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -16520,7 +16520,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListApiextensionsV1CustomResourceDefinition",
+			OperationName:    ListApiextensionsV1CustomResourceDefinitionOperation,
 			OperationSummary: "",
 			OperationID:      "listApiextensionsV1CustomResourceDefinition",
 			Body:             nil,
@@ -16618,7 +16618,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListApiregistrationV1APIService",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListApiregistrationV1APIServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16649,7 +16649,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListApiregistrationV1APIService",
+			Name: ListApiregistrationV1APIServiceOperation,
 			ID:   "listApiregistrationV1APIService",
 		}
 	)
@@ -16657,7 +16657,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListApiregistrationV1APIService", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListApiregistrationV1APIServiceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -16712,7 +16712,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListApiregistrationV1APIService",
+			OperationName:    ListApiregistrationV1APIServiceOperation,
 			OperationSummary: "",
 			OperationID:      "listApiregistrationV1APIService",
 			Body:             nil,
@@ -16810,7 +16810,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1ControllerRevisionForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1ControllerRevisionForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -16841,7 +16841,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1ControllerRevisionForAllNamespaces",
+			Name: ListAppsV1ControllerRevisionForAllNamespacesOperation,
 			ID:   "listAppsV1ControllerRevisionForAllNamespaces",
 		}
 	)
@@ -16849,7 +16849,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1ControllerRevisionForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -16904,7 +16904,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1ControllerRevisionForAllNamespaces",
+			OperationName:    ListAppsV1ControllerRevisionForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1ControllerRevisionForAllNamespaces",
 			Body:             nil,
@@ -17002,7 +17002,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1DaemonSetForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1DaemonSetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17033,7 +17033,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1DaemonSetForAllNamespaces",
+			Name: ListAppsV1DaemonSetForAllNamespacesOperation,
 			ID:   "listAppsV1DaemonSetForAllNamespaces",
 		}
 	)
@@ -17041,7 +17041,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1DaemonSetForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -17096,7 +17096,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1DaemonSetForAllNamespaces",
+			OperationName:    ListAppsV1DaemonSetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1DaemonSetForAllNamespaces",
 			Body:             nil,
@@ -17194,7 +17194,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1DeploymentForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1DeploymentForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17225,7 +17225,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1DeploymentForAllNamespaces",
+			Name: ListAppsV1DeploymentForAllNamespacesOperation,
 			ID:   "listAppsV1DeploymentForAllNamespaces",
 		}
 	)
@@ -17233,7 +17233,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1DeploymentForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -17288,7 +17288,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1DeploymentForAllNamespaces",
+			OperationName:    ListAppsV1DeploymentForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1DeploymentForAllNamespaces",
 			Body:             nil,
@@ -17386,7 +17386,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedControllerRevision",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1NamespacedControllerRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17417,7 +17417,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedControllerRevision",
+			Name: ListAppsV1NamespacedControllerRevisionOperation,
 			ID:   "listAppsV1NamespacedControllerRevision",
 		}
 	)
@@ -17425,7 +17425,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1NamespacedControllerRevisionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -17480,7 +17480,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1NamespacedControllerRevision",
+			OperationName:    ListAppsV1NamespacedControllerRevisionOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedControllerRevision",
 			Body:             nil,
@@ -17582,7 +17582,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedDaemonSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1NamespacedDaemonSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17613,7 +17613,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedDaemonSet",
+			Name: ListAppsV1NamespacedDaemonSetOperation,
 			ID:   "listAppsV1NamespacedDaemonSet",
 		}
 	)
@@ -17621,7 +17621,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1NamespacedDaemonSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -17676,7 +17676,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1NamespacedDaemonSet",
+			OperationName:    ListAppsV1NamespacedDaemonSetOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedDaemonSet",
 			Body:             nil,
@@ -17778,7 +17778,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedDeployment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1NamespacedDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -17809,7 +17809,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedDeployment",
+			Name: ListAppsV1NamespacedDeploymentOperation,
 			ID:   "listAppsV1NamespacedDeployment",
 		}
 	)
@@ -17817,7 +17817,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1NamespacedDeploymentOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -17872,7 +17872,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1NamespacedDeployment",
+			OperationName:    ListAppsV1NamespacedDeploymentOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedDeployment",
 			Body:             nil,
@@ -17974,7 +17974,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedReplicaSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1NamespacedReplicaSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18005,7 +18005,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedReplicaSet",
+			Name: ListAppsV1NamespacedReplicaSetOperation,
 			ID:   "listAppsV1NamespacedReplicaSet",
 		}
 	)
@@ -18013,7 +18013,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1NamespacedReplicaSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -18068,7 +18068,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1NamespacedReplicaSet",
+			OperationName:    ListAppsV1NamespacedReplicaSetOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedReplicaSet",
 			Body:             nil,
@@ -18170,7 +18170,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedStatefulSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1NamespacedStatefulSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18201,7 +18201,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1NamespacedStatefulSet",
+			Name: ListAppsV1NamespacedStatefulSetOperation,
 			ID:   "listAppsV1NamespacedStatefulSet",
 		}
 	)
@@ -18209,7 +18209,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1NamespacedStatefulSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -18264,7 +18264,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1NamespacedStatefulSet",
+			OperationName:    ListAppsV1NamespacedStatefulSetOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedStatefulSet",
 			Body:             nil,
@@ -18366,7 +18366,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1ReplicaSetForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1ReplicaSetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18397,7 +18397,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1ReplicaSetForAllNamespaces",
+			Name: ListAppsV1ReplicaSetForAllNamespacesOperation,
 			ID:   "listAppsV1ReplicaSetForAllNamespaces",
 		}
 	)
@@ -18405,7 +18405,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1ReplicaSetForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -18460,7 +18460,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1ReplicaSetForAllNamespaces",
+			OperationName:    ListAppsV1ReplicaSetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1ReplicaSetForAllNamespaces",
 			Body:             nil,
@@ -18558,7 +18558,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1StatefulSetForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAppsV1StatefulSetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18589,7 +18589,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAppsV1StatefulSetForAllNamespaces",
+			Name: ListAppsV1StatefulSetForAllNamespacesOperation,
 			ID:   "listAppsV1StatefulSetForAllNamespaces",
 		}
 	)
@@ -18597,7 +18597,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAppsV1StatefulSetForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -18652,7 +18652,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAppsV1StatefulSetForAllNamespaces",
+			OperationName:    ListAppsV1StatefulSetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAppsV1StatefulSetForAllNamespaces",
 			Body:             nil,
@@ -18750,7 +18750,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18781,7 +18781,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			Name: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation,
 			ID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 		}
 	)
@@ -18789,7 +18789,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -18844,7 +18844,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			OperationName:    ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 			Body:             nil,
@@ -18942,7 +18942,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -18973,7 +18973,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Name: ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -18981,7 +18981,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -19036,7 +19036,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationName:    ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -19138,7 +19138,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19169,7 +19169,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			Name: ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation,
 			ID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 		}
 	)
@@ -19177,7 +19177,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -19232,7 +19232,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			OperationName:    ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 			Body:             nil,
@@ -19330,7 +19330,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19361,7 +19361,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Name: ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -19369,7 +19369,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -19424,7 +19424,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationName:    ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -19526,7 +19526,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19557,7 +19557,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			Name: ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation,
 			ID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 		}
 	)
@@ -19565,7 +19565,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -19620,7 +19620,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			OperationName:    ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 			Body:             nil,
@@ -19718,7 +19718,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19749,7 +19749,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Name: ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -19757,7 +19757,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -19812,7 +19812,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationName:    ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -19914,7 +19914,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1CronJobForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListBatchV1CronJobForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -19945,7 +19945,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1CronJobForAllNamespaces",
+			Name: ListBatchV1CronJobForAllNamespacesOperation,
 			ID:   "listBatchV1CronJobForAllNamespaces",
 		}
 	)
@@ -19953,7 +19953,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListBatchV1CronJobForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -20008,7 +20008,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListBatchV1CronJobForAllNamespaces",
+			OperationName:    ListBatchV1CronJobForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1CronJobForAllNamespaces",
 			Body:             nil,
@@ -20106,7 +20106,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1JobForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListBatchV1JobForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20137,7 +20137,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1JobForAllNamespaces",
+			Name: ListBatchV1JobForAllNamespacesOperation,
 			ID:   "listBatchV1JobForAllNamespaces",
 		}
 	)
@@ -20145,7 +20145,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListBatchV1JobForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -20200,7 +20200,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListBatchV1JobForAllNamespaces",
+			OperationName:    ListBatchV1JobForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1JobForAllNamespaces",
 			Body:             nil,
@@ -20298,7 +20298,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1NamespacedCronJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListBatchV1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20329,7 +20329,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1NamespacedCronJob",
+			Name: ListBatchV1NamespacedCronJobOperation,
 			ID:   "listBatchV1NamespacedCronJob",
 		}
 	)
@@ -20337,7 +20337,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListBatchV1NamespacedCronJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -20392,7 +20392,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListBatchV1NamespacedCronJob",
+			OperationName:    ListBatchV1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1NamespacedCronJob",
 			Body:             nil,
@@ -20494,7 +20494,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1NamespacedJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListBatchV1NamespacedJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20525,7 +20525,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1NamespacedJob",
+			Name: ListBatchV1NamespacedJobOperation,
 			ID:   "listBatchV1NamespacedJob",
 		}
 	)
@@ -20533,7 +20533,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListBatchV1NamespacedJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -20588,7 +20588,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListBatchV1NamespacedJob",
+			OperationName:    ListBatchV1NamespacedJobOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1NamespacedJob",
 			Body:             nil,
@@ -20690,7 +20690,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1beta1CronJobForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListBatchV1beta1CronJobForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20721,7 +20721,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1beta1CronJobForAllNamespaces",
+			Name: ListBatchV1beta1CronJobForAllNamespacesOperation,
 			ID:   "listBatchV1beta1CronJobForAllNamespaces",
 		}
 	)
@@ -20729,7 +20729,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListBatchV1beta1CronJobForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -20784,7 +20784,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListBatchV1beta1CronJobForAllNamespaces",
+			OperationName:    ListBatchV1beta1CronJobForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1beta1CronJobForAllNamespaces",
 			Body:             nil,
@@ -20882,7 +20882,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1beta1NamespacedCronJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListBatchV1beta1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -20913,7 +20913,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListBatchV1beta1NamespacedCronJob",
+			Name: ListBatchV1beta1NamespacedCronJobOperation,
 			ID:   "listBatchV1beta1NamespacedCronJob",
 		}
 	)
@@ -20921,7 +20921,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListBatchV1beta1NamespacedCronJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -20976,7 +20976,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListBatchV1beta1NamespacedCronJob",
+			OperationName:    ListBatchV1beta1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "listBatchV1beta1NamespacedCronJob",
 			Body:             nil,
@@ -21078,7 +21078,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCertificatesV1CertificateSigningRequest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCertificatesV1CertificateSigningRequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21109,7 +21109,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCertificatesV1CertificateSigningRequest",
+			Name: ListCertificatesV1CertificateSigningRequestOperation,
 			ID:   "listCertificatesV1CertificateSigningRequest",
 		}
 	)
@@ -21117,7 +21117,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCertificatesV1CertificateSigningRequestOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -21172,7 +21172,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCertificatesV1CertificateSigningRequest",
+			OperationName:    ListCertificatesV1CertificateSigningRequestOperation,
 			OperationSummary: "",
 			OperationID:      "listCertificatesV1CertificateSigningRequest",
 			Body:             nil,
@@ -21270,7 +21270,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoordinationV1LeaseForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoordinationV1LeaseForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21301,7 +21301,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoordinationV1LeaseForAllNamespaces",
+			Name: ListCoordinationV1LeaseForAllNamespacesOperation,
 			ID:   "listCoordinationV1LeaseForAllNamespaces",
 		}
 	)
@@ -21309,7 +21309,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoordinationV1LeaseForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -21364,7 +21364,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoordinationV1LeaseForAllNamespaces",
+			OperationName:    ListCoordinationV1LeaseForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoordinationV1LeaseForAllNamespaces",
 			Body:             nil,
@@ -21462,7 +21462,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoordinationV1NamespacedLease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoordinationV1NamespacedLeaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21493,7 +21493,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoordinationV1NamespacedLease",
+			Name: ListCoordinationV1NamespacedLeaseOperation,
 			ID:   "listCoordinationV1NamespacedLease",
 		}
 	)
@@ -21501,7 +21501,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoordinationV1NamespacedLeaseOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -21556,7 +21556,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoordinationV1NamespacedLease",
+			OperationName:    ListCoordinationV1NamespacedLeaseOperation,
 			OperationSummary: "",
 			OperationID:      "listCoordinationV1NamespacedLease",
 			Body:             nil,
@@ -21658,7 +21658,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ComponentStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1ComponentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21689,7 +21689,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ComponentStatus",
+			Name: ListCoreV1ComponentStatusOperation,
 			ID:   "listCoreV1ComponentStatus",
 		}
 	)
@@ -21697,7 +21697,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1ComponentStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -21752,7 +21752,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1ComponentStatus",
+			OperationName:    ListCoreV1ComponentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ComponentStatus",
 			Body:             nil,
@@ -21850,7 +21850,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ConfigMapForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1ConfigMapForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -21881,7 +21881,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ConfigMapForAllNamespaces",
+			Name: ListCoreV1ConfigMapForAllNamespacesOperation,
 			ID:   "listCoreV1ConfigMapForAllNamespaces",
 		}
 	)
@@ -21889,7 +21889,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1ConfigMapForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -21944,7 +21944,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1ConfigMapForAllNamespaces",
+			OperationName:    ListCoreV1ConfigMapForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ConfigMapForAllNamespaces",
 			Body:             nil,
@@ -22042,7 +22042,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1EndpointsForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1EndpointsForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22073,7 +22073,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1EndpointsForAllNamespaces",
+			Name: ListCoreV1EndpointsForAllNamespacesOperation,
 			ID:   "listCoreV1EndpointsForAllNamespaces",
 		}
 	)
@@ -22081,7 +22081,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1EndpointsForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -22136,7 +22136,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1EndpointsForAllNamespaces",
+			OperationName:    ListCoreV1EndpointsForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1EndpointsForAllNamespaces",
 			Body:             nil,
@@ -22234,7 +22234,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1EventForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1EventForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22265,7 +22265,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1EventForAllNamespaces",
+			Name: ListCoreV1EventForAllNamespacesOperation,
 			ID:   "listCoreV1EventForAllNamespaces",
 		}
 	)
@@ -22273,7 +22273,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1EventForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -22328,7 +22328,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1EventForAllNamespaces",
+			OperationName:    ListCoreV1EventForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1EventForAllNamespaces",
 			Body:             nil,
@@ -22426,7 +22426,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1LimitRangeForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1LimitRangeForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22457,7 +22457,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1LimitRangeForAllNamespaces",
+			Name: ListCoreV1LimitRangeForAllNamespacesOperation,
 			ID:   "listCoreV1LimitRangeForAllNamespaces",
 		}
 	)
@@ -22465,7 +22465,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1LimitRangeForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -22520,7 +22520,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1LimitRangeForAllNamespaces",
+			OperationName:    ListCoreV1LimitRangeForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1LimitRangeForAllNamespaces",
 			Body:             nil,
@@ -22618,7 +22618,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1Namespace",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespaceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22649,7 +22649,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1Namespace",
+			Name: ListCoreV1NamespaceOperation,
 			ID:   "listCoreV1Namespace",
 		}
 	)
@@ -22657,7 +22657,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1Namespace", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespaceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -22712,7 +22712,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1Namespace",
+			OperationName:    ListCoreV1NamespaceOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1Namespace",
 			Body:             nil,
@@ -22810,7 +22810,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedConfigMap",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedConfigMapOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -22841,7 +22841,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedConfigMap",
+			Name: ListCoreV1NamespacedConfigMapOperation,
 			ID:   "listCoreV1NamespacedConfigMap",
 		}
 	)
@@ -22849,7 +22849,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedConfigMapOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -22904,7 +22904,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedConfigMap",
+			OperationName:    ListCoreV1NamespacedConfigMapOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedConfigMap",
 			Body:             nil,
@@ -23006,7 +23006,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedEndpoints",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedEndpointsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23037,7 +23037,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedEndpoints",
+			Name: ListCoreV1NamespacedEndpointsOperation,
 			ID:   "listCoreV1NamespacedEndpoints",
 		}
 	)
@@ -23045,7 +23045,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedEndpointsOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -23100,7 +23100,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedEndpoints",
+			OperationName:    ListCoreV1NamespacedEndpointsOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedEndpoints",
 			Body:             nil,
@@ -23202,7 +23202,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23233,7 +23233,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedEvent",
+			Name: ListCoreV1NamespacedEventOperation,
 			ID:   "listCoreV1NamespacedEvent",
 		}
 	)
@@ -23241,7 +23241,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -23296,7 +23296,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedEvent",
+			OperationName:    ListCoreV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedEvent",
 			Body:             nil,
@@ -23398,7 +23398,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedLimitRange",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedLimitRangeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23429,7 +23429,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedLimitRange",
+			Name: ListCoreV1NamespacedLimitRangeOperation,
 			ID:   "listCoreV1NamespacedLimitRange",
 		}
 	)
@@ -23437,7 +23437,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedLimitRangeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -23492,7 +23492,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedLimitRange",
+			OperationName:    ListCoreV1NamespacedLimitRangeOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedLimitRange",
 			Body:             nil,
@@ -23594,7 +23594,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedPersistentVolumeClaim",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedPersistentVolumeClaimOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23625,7 +23625,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedPersistentVolumeClaim",
+			Name: ListCoreV1NamespacedPersistentVolumeClaimOperation,
 			ID:   "listCoreV1NamespacedPersistentVolumeClaim",
 		}
 	)
@@ -23633,7 +23633,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedPersistentVolumeClaimOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -23688,7 +23688,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedPersistentVolumeClaim",
+			OperationName:    ListCoreV1NamespacedPersistentVolumeClaimOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPersistentVolumeClaim",
 			Body:             nil,
@@ -23790,7 +23790,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedPod",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedPodOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -23821,7 +23821,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedPod",
+			Name: ListCoreV1NamespacedPodOperation,
 			ID:   "listCoreV1NamespacedPod",
 		}
 	)
@@ -23829,7 +23829,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedPodOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -23884,7 +23884,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedPod",
+			OperationName:    ListCoreV1NamespacedPodOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPod",
 			Body:             nil,
@@ -23986,7 +23986,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedPodTemplate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedPodTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24017,7 +24017,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedPodTemplate",
+			Name: ListCoreV1NamespacedPodTemplateOperation,
 			ID:   "listCoreV1NamespacedPodTemplate",
 		}
 	)
@@ -24025,7 +24025,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedPodTemplateOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -24080,7 +24080,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedPodTemplate",
+			OperationName:    ListCoreV1NamespacedPodTemplateOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPodTemplate",
 			Body:             nil,
@@ -24182,7 +24182,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedReplicationController",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedReplicationControllerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24213,7 +24213,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedReplicationController",
+			Name: ListCoreV1NamespacedReplicationControllerOperation,
 			ID:   "listCoreV1NamespacedReplicationController",
 		}
 	)
@@ -24221,7 +24221,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedReplicationControllerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -24276,7 +24276,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedReplicationController",
+			OperationName:    ListCoreV1NamespacedReplicationControllerOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedReplicationController",
 			Body:             nil,
@@ -24378,7 +24378,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedResourceQuota",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedResourceQuotaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24409,7 +24409,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedResourceQuota",
+			Name: ListCoreV1NamespacedResourceQuotaOperation,
 			ID:   "listCoreV1NamespacedResourceQuota",
 		}
 	)
@@ -24417,7 +24417,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedResourceQuotaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -24472,7 +24472,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedResourceQuota",
+			OperationName:    ListCoreV1NamespacedResourceQuotaOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedResourceQuota",
 			Body:             nil,
@@ -24574,7 +24574,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24605,7 +24605,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedSecret",
+			Name: ListCoreV1NamespacedSecretOperation,
 			ID:   "listCoreV1NamespacedSecret",
 		}
 	)
@@ -24613,7 +24613,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedSecretOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -24668,7 +24668,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedSecret",
+			OperationName:    ListCoreV1NamespacedSecretOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedSecret",
 			Body:             nil,
@@ -24770,7 +24770,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedService",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24801,7 +24801,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedService",
+			Name: ListCoreV1NamespacedServiceOperation,
 			ID:   "listCoreV1NamespacedService",
 		}
 	)
@@ -24809,7 +24809,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedService", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedServiceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -24864,7 +24864,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedService",
+			OperationName:    ListCoreV1NamespacedServiceOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedService",
 			Body:             nil,
@@ -24966,7 +24966,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedServiceAccount",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NamespacedServiceAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -24997,7 +24997,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1NamespacedServiceAccount",
+			Name: ListCoreV1NamespacedServiceAccountOperation,
 			ID:   "listCoreV1NamespacedServiceAccount",
 		}
 	)
@@ -25005,7 +25005,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NamespacedServiceAccountOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -25060,7 +25060,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1NamespacedServiceAccount",
+			OperationName:    ListCoreV1NamespacedServiceAccountOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedServiceAccount",
 			Body:             nil,
@@ -25162,7 +25162,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1Node",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1NodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25193,7 +25193,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1Node",
+			Name: ListCoreV1NodeOperation,
 			ID:   "listCoreV1Node",
 		}
 	)
@@ -25201,7 +25201,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1Node", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1NodeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -25256,7 +25256,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1Node",
+			OperationName:    ListCoreV1NodeOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1Node",
 			Body:             nil,
@@ -25354,7 +25354,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PersistentVolume",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1PersistentVolumeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25385,7 +25385,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PersistentVolume",
+			Name: ListCoreV1PersistentVolumeOperation,
 			ID:   "listCoreV1PersistentVolume",
 		}
 	)
@@ -25393,7 +25393,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1PersistentVolumeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -25448,7 +25448,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1PersistentVolume",
+			OperationName:    ListCoreV1PersistentVolumeOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PersistentVolume",
 			Body:             nil,
@@ -25546,7 +25546,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PersistentVolumeClaimForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1PersistentVolumeClaimForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25577,7 +25577,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
+			Name: ListCoreV1PersistentVolumeClaimForAllNamespacesOperation,
 			ID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
 		}
 	)
@@ -25585,7 +25585,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1PersistentVolumeClaimForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -25640,7 +25640,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1PersistentVolumeClaimForAllNamespaces",
+			OperationName:    ListCoreV1PersistentVolumeClaimForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PersistentVolumeClaimForAllNamespaces",
 			Body:             nil,
@@ -25738,7 +25738,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PodForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1PodForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25769,7 +25769,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PodForAllNamespaces",
+			Name: ListCoreV1PodForAllNamespacesOperation,
 			ID:   "listCoreV1PodForAllNamespaces",
 		}
 	)
@@ -25777,7 +25777,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1PodForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -25832,7 +25832,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1PodForAllNamespaces",
+			OperationName:    ListCoreV1PodForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PodForAllNamespaces",
 			Body:             nil,
@@ -25930,7 +25930,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PodTemplateForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1PodTemplateForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -25961,7 +25961,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1PodTemplateForAllNamespaces",
+			Name: ListCoreV1PodTemplateForAllNamespacesOperation,
 			ID:   "listCoreV1PodTemplateForAllNamespaces",
 		}
 	)
@@ -25969,7 +25969,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1PodTemplateForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -26024,7 +26024,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1PodTemplateForAllNamespaces",
+			OperationName:    ListCoreV1PodTemplateForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1PodTemplateForAllNamespaces",
 			Body:             nil,
@@ -26122,7 +26122,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ReplicationControllerForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1ReplicationControllerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26153,7 +26153,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ReplicationControllerForAllNamespaces",
+			Name: ListCoreV1ReplicationControllerForAllNamespacesOperation,
 			ID:   "listCoreV1ReplicationControllerForAllNamespaces",
 		}
 	)
@@ -26161,7 +26161,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1ReplicationControllerForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -26216,7 +26216,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1ReplicationControllerForAllNamespaces",
+			OperationName:    ListCoreV1ReplicationControllerForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ReplicationControllerForAllNamespaces",
 			Body:             nil,
@@ -26314,7 +26314,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ResourceQuotaForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1ResourceQuotaForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26345,7 +26345,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ResourceQuotaForAllNamespaces",
+			Name: ListCoreV1ResourceQuotaForAllNamespacesOperation,
 			ID:   "listCoreV1ResourceQuotaForAllNamespaces",
 		}
 	)
@@ -26353,7 +26353,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1ResourceQuotaForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -26408,7 +26408,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1ResourceQuotaForAllNamespaces",
+			OperationName:    ListCoreV1ResourceQuotaForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ResourceQuotaForAllNamespaces",
 			Body:             nil,
@@ -26506,7 +26506,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1SecretForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1SecretForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26537,7 +26537,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1SecretForAllNamespaces",
+			Name: ListCoreV1SecretForAllNamespacesOperation,
 			ID:   "listCoreV1SecretForAllNamespaces",
 		}
 	)
@@ -26545,7 +26545,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1SecretForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -26600,7 +26600,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1SecretForAllNamespaces",
+			OperationName:    ListCoreV1SecretForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1SecretForAllNamespaces",
 			Body:             nil,
@@ -26698,7 +26698,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ServiceAccountForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1ServiceAccountForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26729,7 +26729,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ServiceAccountForAllNamespaces",
+			Name: ListCoreV1ServiceAccountForAllNamespacesOperation,
 			ID:   "listCoreV1ServiceAccountForAllNamespaces",
 		}
 	)
@@ -26737,7 +26737,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1ServiceAccountForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -26792,7 +26792,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1ServiceAccountForAllNamespaces",
+			OperationName:    ListCoreV1ServiceAccountForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ServiceAccountForAllNamespaces",
 			Body:             nil,
@@ -26890,7 +26890,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ServiceForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListCoreV1ServiceForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -26921,7 +26921,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListCoreV1ServiceForAllNamespaces",
+			Name: ListCoreV1ServiceForAllNamespacesOperation,
 			ID:   "listCoreV1ServiceForAllNamespaces",
 		}
 	)
@@ -26929,7 +26929,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListCoreV1ServiceForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -26984,7 +26984,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListCoreV1ServiceForAllNamespaces",
+			OperationName:    ListCoreV1ServiceForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listCoreV1ServiceForAllNamespaces",
 			Body:             nil,
@@ -27082,7 +27082,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1EndpointSliceForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListDiscoveryV1EndpointSliceForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27113,7 +27113,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1EndpointSliceForAllNamespaces",
+			Name: ListDiscoveryV1EndpointSliceForAllNamespacesOperation,
 			ID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
 		}
 	)
@@ -27121,7 +27121,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListDiscoveryV1EndpointSliceForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -27176,7 +27176,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListDiscoveryV1EndpointSliceForAllNamespaces",
+			OperationName:    ListDiscoveryV1EndpointSliceForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1EndpointSliceForAllNamespaces",
 			Body:             nil,
@@ -27274,7 +27274,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1NamespacedEndpointSlice",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListDiscoveryV1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27305,7 +27305,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1NamespacedEndpointSlice",
+			Name: ListDiscoveryV1NamespacedEndpointSliceOperation,
 			ID:   "listDiscoveryV1NamespacedEndpointSlice",
 		}
 	)
@@ -27313,7 +27313,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListDiscoveryV1NamespacedEndpointSliceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -27368,7 +27368,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListDiscoveryV1NamespacedEndpointSlice",
+			OperationName:    ListDiscoveryV1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1NamespacedEndpointSlice",
 			Body:             nil,
@@ -27470,7 +27470,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27501,7 +27501,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			Name: ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation,
 			ID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
 		}
 	)
@@ -27509,7 +27509,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -27564,7 +27564,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			OperationName:    ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
 			Body:             nil,
@@ -27662,7 +27662,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1beta1NamespacedEndpointSlice",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListDiscoveryV1beta1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27693,7 +27693,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListDiscoveryV1beta1NamespacedEndpointSlice",
+			Name: ListDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			ID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
 		}
 	)
@@ -27701,7 +27701,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListDiscoveryV1beta1NamespacedEndpointSliceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -27756,7 +27756,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationName:    ListDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:             nil,
@@ -27858,7 +27858,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1EventForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListEventsV1EventForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -27889,7 +27889,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1EventForAllNamespaces",
+			Name: ListEventsV1EventForAllNamespacesOperation,
 			ID:   "listEventsV1EventForAllNamespaces",
 		}
 	)
@@ -27897,7 +27897,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListEventsV1EventForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -27952,7 +27952,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListEventsV1EventForAllNamespaces",
+			OperationName:    ListEventsV1EventForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1EventForAllNamespaces",
 			Body:             nil,
@@ -28050,7 +28050,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListEventsV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28081,7 +28081,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1NamespacedEvent",
+			Name: ListEventsV1NamespacedEventOperation,
 			ID:   "listEventsV1NamespacedEvent",
 		}
 	)
@@ -28089,7 +28089,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListEventsV1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -28144,7 +28144,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListEventsV1NamespacedEvent",
+			OperationName:    ListEventsV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1NamespacedEvent",
 			Body:             nil,
@@ -28246,7 +28246,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1beta1EventForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListEventsV1beta1EventForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28277,7 +28277,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1beta1EventForAllNamespaces",
+			Name: ListEventsV1beta1EventForAllNamespacesOperation,
 			ID:   "listEventsV1beta1EventForAllNamespaces",
 		}
 	)
@@ -28285,7 +28285,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListEventsV1beta1EventForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -28340,7 +28340,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListEventsV1beta1EventForAllNamespaces",
+			OperationName:    ListEventsV1beta1EventForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1beta1EventForAllNamespaces",
 			Body:             nil,
@@ -28438,7 +28438,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1beta1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListEventsV1beta1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28469,7 +28469,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListEventsV1beta1NamespacedEvent",
+			Name: ListEventsV1beta1NamespacedEventOperation,
 			ID:   "listEventsV1beta1NamespacedEvent",
 		}
 	)
@@ -28477,7 +28477,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListEventsV1beta1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -28532,7 +28532,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListEventsV1beta1NamespacedEvent",
+			OperationName:    ListEventsV1beta1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "listEventsV1beta1NamespacedEvent",
 			Body:             nil,
@@ -28634,7 +28634,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta1FlowSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListFlowcontrolApiserverV1beta1FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28665,7 +28665,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta1FlowSchema",
+			Name: ListFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			ID:   "listFlowcontrolApiserverV1beta1FlowSchema",
 		}
 	)
@@ -28673,7 +28673,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta1FlowSchemaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -28728,7 +28728,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListFlowcontrolApiserverV1beta1FlowSchema",
+			OperationName:    ListFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta1FlowSchema",
 			Body:             nil,
@@ -28826,7 +28826,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -28857,7 +28857,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Name: ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			ID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		}
 	)
@@ -28865,7 +28865,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -28920,7 +28920,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationName:    ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:             nil,
@@ -29018,7 +29018,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta2FlowSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListFlowcontrolApiserverV1beta2FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29049,7 +29049,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta2FlowSchema",
+			Name: ListFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			ID:   "listFlowcontrolApiserverV1beta2FlowSchema",
 		}
 	)
@@ -29057,7 +29057,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta2FlowSchemaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -29112,7 +29112,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListFlowcontrolApiserverV1beta2FlowSchema",
+			OperationName:    ListFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta2FlowSchema",
 			Body:             nil,
@@ -29210,7 +29210,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29241,7 +29241,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Name: ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			ID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		}
 	)
@@ -29249,7 +29249,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -29304,7 +29304,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationName:    ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:             nil,
@@ -29402,7 +29402,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListInternalApiserverV1alpha1StorageVersion",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListInternalApiserverV1alpha1StorageVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29433,7 +29433,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListInternalApiserverV1alpha1StorageVersion",
+			Name: ListInternalApiserverV1alpha1StorageVersionOperation,
 			ID:   "listInternalApiserverV1alpha1StorageVersion",
 		}
 	)
@@ -29441,7 +29441,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListInternalApiserverV1alpha1StorageVersionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -29496,7 +29496,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListInternalApiserverV1alpha1StorageVersion",
+			OperationName:    ListInternalApiserverV1alpha1StorageVersionOperation,
 			OperationSummary: "",
 			OperationID:      "listInternalApiserverV1alpha1StorageVersion",
 			Body:             nil,
@@ -29594,7 +29594,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1IngressClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNetworkingV1IngressClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29625,7 +29625,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1IngressClass",
+			Name: ListNetworkingV1IngressClassOperation,
 			ID:   "listNetworkingV1IngressClass",
 		}
 	)
@@ -29633,7 +29633,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNetworkingV1IngressClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -29688,7 +29688,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNetworkingV1IngressClass",
+			OperationName:    ListNetworkingV1IngressClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1IngressClass",
 			Body:             nil,
@@ -29786,7 +29786,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1IngressForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNetworkingV1IngressForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -29817,7 +29817,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1IngressForAllNamespaces",
+			Name: ListNetworkingV1IngressForAllNamespacesOperation,
 			ID:   "listNetworkingV1IngressForAllNamespaces",
 		}
 	)
@@ -29825,7 +29825,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNetworkingV1IngressForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -29880,7 +29880,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNetworkingV1IngressForAllNamespaces",
+			OperationName:    ListNetworkingV1IngressForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1IngressForAllNamespaces",
 			Body:             nil,
@@ -29978,7 +29978,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1NamespacedIngress",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNetworkingV1NamespacedIngressOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30009,7 +30009,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1NamespacedIngress",
+			Name: ListNetworkingV1NamespacedIngressOperation,
 			ID:   "listNetworkingV1NamespacedIngress",
 		}
 	)
@@ -30017,7 +30017,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNetworkingV1NamespacedIngressOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -30072,7 +30072,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNetworkingV1NamespacedIngress",
+			OperationName:    ListNetworkingV1NamespacedIngressOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NamespacedIngress",
 			Body:             nil,
@@ -30174,7 +30174,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1NamespacedNetworkPolicy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNetworkingV1NamespacedNetworkPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30205,7 +30205,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1NamespacedNetworkPolicy",
+			Name: ListNetworkingV1NamespacedNetworkPolicyOperation,
 			ID:   "listNetworkingV1NamespacedNetworkPolicy",
 		}
 	)
@@ -30213,7 +30213,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNetworkingV1NamespacedNetworkPolicyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -30268,7 +30268,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNetworkingV1NamespacedNetworkPolicy",
+			OperationName:    ListNetworkingV1NamespacedNetworkPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NamespacedNetworkPolicy",
 			Body:             nil,
@@ -30370,7 +30370,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1NetworkPolicyForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNetworkingV1NetworkPolicyForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30401,7 +30401,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNetworkingV1NetworkPolicyForAllNamespaces",
+			Name: ListNetworkingV1NetworkPolicyForAllNamespacesOperation,
 			ID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
 		}
 	)
@@ -30409,7 +30409,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNetworkingV1NetworkPolicyForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -30464,7 +30464,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNetworkingV1NetworkPolicyForAllNamespaces",
+			OperationName:    ListNetworkingV1NetworkPolicyForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NetworkPolicyForAllNamespaces",
 			Body:             nil,
@@ -30562,7 +30562,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNodeV1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNodeV1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30593,7 +30593,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNodeV1RuntimeClass",
+			Name: ListNodeV1RuntimeClassOperation,
 			ID:   "listNodeV1RuntimeClass",
 		}
 	)
@@ -30601,7 +30601,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNodeV1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -30656,7 +30656,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNodeV1RuntimeClass",
+			OperationName:    ListNodeV1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNodeV1RuntimeClass",
 			Body:             nil,
@@ -30754,7 +30754,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNodeV1alpha1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNodeV1alpha1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30785,7 +30785,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNodeV1alpha1RuntimeClass",
+			Name: ListNodeV1alpha1RuntimeClassOperation,
 			ID:   "listNodeV1alpha1RuntimeClass",
 		}
 	)
@@ -30793,7 +30793,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNodeV1alpha1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -30848,7 +30848,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNodeV1alpha1RuntimeClass",
+			OperationName:    ListNodeV1alpha1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNodeV1alpha1RuntimeClass",
 			Body:             nil,
@@ -30946,7 +30946,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNodeV1beta1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListNodeV1beta1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -30977,7 +30977,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListNodeV1beta1RuntimeClass",
+			Name: ListNodeV1beta1RuntimeClassOperation,
 			ID:   "listNodeV1beta1RuntimeClass",
 		}
 	)
@@ -30985,7 +30985,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListNodeV1beta1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -31040,7 +31040,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListNodeV1beta1RuntimeClass",
+			OperationName:    ListNodeV1beta1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "listNodeV1beta1RuntimeClass",
 			Body:             nil,
@@ -31138,7 +31138,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1NamespacedPodDisruptionBudget",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListPolicyV1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31169,7 +31169,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1NamespacedPodDisruptionBudget",
+			Name: ListPolicyV1NamespacedPodDisruptionBudgetOperation,
 			ID:   "listPolicyV1NamespacedPodDisruptionBudget",
 		}
 	)
@@ -31177,7 +31177,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListPolicyV1NamespacedPodDisruptionBudgetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -31232,7 +31232,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListPolicyV1NamespacedPodDisruptionBudget",
+			OperationName:    ListPolicyV1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1NamespacedPodDisruptionBudget",
 			Body:             nil,
@@ -31334,7 +31334,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31365,7 +31365,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
+			Name: ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation,
 			ID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
 		}
 	)
@@ -31373,7 +31373,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -31428,7 +31428,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
+			OperationName:    ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1PodDisruptionBudgetForAllNamespaces",
 			Body:             nil,
@@ -31526,7 +31526,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1beta1NamespacedPodDisruptionBudget",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31557,7 +31557,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
+			Name: ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			ID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
 		}
 	)
@@ -31565,7 +31565,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -31620,7 +31620,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationName:    ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:             nil,
@@ -31722,7 +31722,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31753,7 +31753,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			Name: ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation,
 			ID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 		}
 	)
@@ -31761,7 +31761,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -31816,7 +31816,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			OperationName:    ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 			Body:             nil,
@@ -31914,7 +31914,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1beta1PodSecurityPolicy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListPolicyV1beta1PodSecurityPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -31945,7 +31945,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListPolicyV1beta1PodSecurityPolicy",
+			Name: ListPolicyV1beta1PodSecurityPolicyOperation,
 			ID:   "listPolicyV1beta1PodSecurityPolicy",
 		}
 	)
@@ -31953,7 +31953,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListPolicyV1beta1PodSecurityPolicyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -32008,7 +32008,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListPolicyV1beta1PodSecurityPolicy",
+			OperationName:    ListPolicyV1beta1PodSecurityPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1PodSecurityPolicy",
 			Body:             nil,
@@ -32106,7 +32106,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1ClusterRole",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListRbacAuthorizationV1ClusterRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32137,7 +32137,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1ClusterRole",
+			Name: ListRbacAuthorizationV1ClusterRoleOperation,
 			ID:   "listRbacAuthorizationV1ClusterRole",
 		}
 	)
@@ -32145,7 +32145,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListRbacAuthorizationV1ClusterRoleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -32200,7 +32200,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListRbacAuthorizationV1ClusterRole",
+			OperationName:    ListRbacAuthorizationV1ClusterRoleOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1ClusterRole",
 			Body:             nil,
@@ -32298,7 +32298,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1ClusterRoleBinding",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListRbacAuthorizationV1ClusterRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32329,7 +32329,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1ClusterRoleBinding",
+			Name: ListRbacAuthorizationV1ClusterRoleBindingOperation,
 			ID:   "listRbacAuthorizationV1ClusterRoleBinding",
 		}
 	)
@@ -32337,7 +32337,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListRbacAuthorizationV1ClusterRoleBindingOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -32392,7 +32392,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListRbacAuthorizationV1ClusterRoleBinding",
+			OperationName:    ListRbacAuthorizationV1ClusterRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1ClusterRoleBinding",
 			Body:             nil,
@@ -32490,7 +32490,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1NamespacedRole",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListRbacAuthorizationV1NamespacedRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32521,7 +32521,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1NamespacedRole",
+			Name: ListRbacAuthorizationV1NamespacedRoleOperation,
 			ID:   "listRbacAuthorizationV1NamespacedRole",
 		}
 	)
@@ -32529,7 +32529,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListRbacAuthorizationV1NamespacedRoleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -32584,7 +32584,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListRbacAuthorizationV1NamespacedRole",
+			OperationName:    ListRbacAuthorizationV1NamespacedRoleOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1NamespacedRole",
 			Body:             nil,
@@ -32686,7 +32686,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1NamespacedRoleBinding",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListRbacAuthorizationV1NamespacedRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32717,7 +32717,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1NamespacedRoleBinding",
+			Name: ListRbacAuthorizationV1NamespacedRoleBindingOperation,
 			ID:   "listRbacAuthorizationV1NamespacedRoleBinding",
 		}
 	)
@@ -32725,7 +32725,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListRbacAuthorizationV1NamespacedRoleBindingOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -32780,7 +32780,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListRbacAuthorizationV1NamespacedRoleBinding",
+			OperationName:    ListRbacAuthorizationV1NamespacedRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1NamespacedRoleBinding",
 			Body:             nil,
@@ -32882,7 +32882,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -32913,7 +32913,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
+			Name: ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation,
 			ID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
 		}
 	)
@@ -32921,7 +32921,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -32976,7 +32976,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
+			OperationName:    ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1RoleBindingForAllNamespaces",
 			Body:             nil,
@@ -33074,7 +33074,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1RoleForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListRbacAuthorizationV1RoleForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33105,7 +33105,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListRbacAuthorizationV1RoleForAllNamespaces",
+			Name: ListRbacAuthorizationV1RoleForAllNamespacesOperation,
 			ID:   "listRbacAuthorizationV1RoleForAllNamespaces",
 		}
 	)
@@ -33113,7 +33113,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListRbacAuthorizationV1RoleForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -33168,7 +33168,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListRbacAuthorizationV1RoleForAllNamespaces",
+			OperationName:    ListRbacAuthorizationV1RoleForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1RoleForAllNamespaces",
 			Body:             nil,
@@ -33266,7 +33266,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListSchedulingV1PriorityClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListSchedulingV1PriorityClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33297,7 +33297,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListSchedulingV1PriorityClass",
+			Name: ListSchedulingV1PriorityClassOperation,
 			ID:   "listSchedulingV1PriorityClass",
 		}
 	)
@@ -33305,7 +33305,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListSchedulingV1PriorityClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -33360,7 +33360,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListSchedulingV1PriorityClass",
+			OperationName:    ListSchedulingV1PriorityClassOperation,
 			OperationSummary: "",
 			OperationID:      "listSchedulingV1PriorityClass",
 			Body:             nil,
@@ -33458,7 +33458,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1CSIDriver",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1CSIDriverOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33489,7 +33489,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1CSIDriver",
+			Name: ListStorageV1CSIDriverOperation,
 			ID:   "listStorageV1CSIDriver",
 		}
 	)
@@ -33497,7 +33497,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1CSIDriver", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1CSIDriverOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -33552,7 +33552,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1CSIDriver",
+			OperationName:    ListStorageV1CSIDriverOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1CSIDriver",
 			Body:             nil,
@@ -33650,7 +33650,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1CSINode",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1CSINodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33681,7 +33681,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1CSINode",
+			Name: ListStorageV1CSINodeOperation,
 			ID:   "listStorageV1CSINode",
 		}
 	)
@@ -33689,7 +33689,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1CSINode", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1CSINodeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -33744,7 +33744,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1CSINode",
+			OperationName:    ListStorageV1CSINodeOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1CSINode",
 			Body:             nil,
@@ -33842,7 +33842,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1StorageClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1StorageClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -33873,7 +33873,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1StorageClass",
+			Name: ListStorageV1StorageClassOperation,
 			ID:   "listStorageV1StorageClass",
 		}
 	)
@@ -33881,7 +33881,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1StorageClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1StorageClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -33936,7 +33936,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1StorageClass",
+			OperationName:    ListStorageV1StorageClassOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1StorageClass",
 			Body:             nil,
@@ -34034,7 +34034,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1VolumeAttachment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1VolumeAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34065,7 +34065,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1VolumeAttachment",
+			Name: ListStorageV1VolumeAttachmentOperation,
 			ID:   "listStorageV1VolumeAttachment",
 		}
 	)
@@ -34073,7 +34073,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1VolumeAttachmentOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -34128,7 +34128,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1VolumeAttachment",
+			OperationName:    ListStorageV1VolumeAttachmentOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1VolumeAttachment",
 			Body:             nil,
@@ -34226,7 +34226,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34257,7 +34257,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			Name: ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation,
 			ID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 		}
 	)
@@ -34265,7 +34265,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -34320,7 +34320,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			OperationName:    ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 			Body:             nil,
@@ -34418,7 +34418,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1alpha1NamespacedCSIStorageCapacity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34449,7 +34449,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
+			Name: ListStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			ID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
 		}
 	)
@@ -34457,7 +34457,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1alpha1NamespacedCSIStorageCapacityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -34512,7 +34512,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationName:    ListStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:             nil,
@@ -34614,7 +34614,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34645,7 +34645,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			Name: ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation,
 			ID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
 		}
 	)
@@ -34653,7 +34653,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -34708,7 +34708,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			OperationName:    ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
 			Body:             nil,
@@ -34806,7 +34806,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1beta1NamespacedCSIStorageCapacity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListStorageV1beta1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -34837,7 +34837,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListStorageV1beta1NamespacedCSIStorageCapacity",
+			Name: ListStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			ID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
 		}
 	)
@@ -34845,7 +34845,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ListStorageV1beta1NamespacedCSIStorageCapacityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -34900,7 +34900,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationName:    ListStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "listStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:             nil,
@@ -35000,7 +35000,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "LogFileHandler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), LogFileHandlerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35031,7 +35031,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LogFileHandler",
+			Name: LogFileHandlerOperation,
 			ID:   "logFileHandler",
 		}
 	)
@@ -35039,7 +35039,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "LogFileHandler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, LogFileHandlerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -35094,7 +35094,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "LogFileHandler",
+			OperationName:    LogFileHandlerOperation,
 			OperationSummary: "",
 			OperationID:      "logFileHandler",
 			Body:             nil,
@@ -35154,7 +35154,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "LogFileListHandler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), LogFileListHandlerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35185,7 +35185,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "LogFileListHandler",
+			Name: LogFileListHandlerOperation,
 			ID:   "logFileListHandler",
 		}
 	)
@@ -35193,7 +35193,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "LogFileListHandler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, LogFileListHandlerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -35238,7 +35238,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "LogFileListHandler",
+			OperationName:    LogFileListHandlerOperation,
 			OperationSummary: "",
 			OperationID:      "logFileListHandler",
 			Body:             nil,
@@ -35295,7 +35295,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35326,7 +35326,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
+			Name: ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			ID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
 		}
 	)
@@ -35334,7 +35334,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -35389,7 +35389,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationName:    ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:             nil,
@@ -35455,7 +35455,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35486,7 +35486,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Name: ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			ID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
 		}
 	)
@@ -35494,7 +35494,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -35549,7 +35549,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationName:    ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:             nil,
@@ -35615,7 +35615,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiextensionsV1CustomResourceDefinition",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadApiextensionsV1CustomResourceDefinitionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35646,7 +35646,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiextensionsV1CustomResourceDefinition",
+			Name: ReadApiextensionsV1CustomResourceDefinitionOperation,
 			ID:   "readApiextensionsV1CustomResourceDefinition",
 		}
 	)
@@ -35654,7 +35654,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadApiextensionsV1CustomResourceDefinitionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -35709,7 +35709,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadApiextensionsV1CustomResourceDefinition",
+			OperationName:    ReadApiextensionsV1CustomResourceDefinitionOperation,
 			OperationSummary: "",
 			OperationID:      "readApiextensionsV1CustomResourceDefinition",
 			Body:             nil,
@@ -35775,7 +35775,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiextensionsV1CustomResourceDefinitionStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadApiextensionsV1CustomResourceDefinitionStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35806,7 +35806,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiextensionsV1CustomResourceDefinitionStatus",
+			Name: ReadApiextensionsV1CustomResourceDefinitionStatusOperation,
 			ID:   "readApiextensionsV1CustomResourceDefinitionStatus",
 		}
 	)
@@ -35814,7 +35814,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadApiextensionsV1CustomResourceDefinitionStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -35869,7 +35869,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadApiextensionsV1CustomResourceDefinitionStatus",
+			OperationName:    ReadApiextensionsV1CustomResourceDefinitionStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readApiextensionsV1CustomResourceDefinitionStatus",
 			Body:             nil,
@@ -35935,7 +35935,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiregistrationV1APIService",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadApiregistrationV1APIServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -35966,7 +35966,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiregistrationV1APIService",
+			Name: ReadApiregistrationV1APIServiceOperation,
 			ID:   "readApiregistrationV1APIService",
 		}
 	)
@@ -35974,7 +35974,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadApiregistrationV1APIServiceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -36029,7 +36029,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadApiregistrationV1APIService",
+			OperationName:    ReadApiregistrationV1APIServiceOperation,
 			OperationSummary: "",
 			OperationID:      "readApiregistrationV1APIService",
 			Body:             nil,
@@ -36095,7 +36095,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiregistrationV1APIServiceStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadApiregistrationV1APIServiceStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36126,7 +36126,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadApiregistrationV1APIServiceStatus",
+			Name: ReadApiregistrationV1APIServiceStatusOperation,
 			ID:   "readApiregistrationV1APIServiceStatus",
 		}
 	)
@@ -36134,7 +36134,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadApiregistrationV1APIServiceStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -36189,7 +36189,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadApiregistrationV1APIServiceStatus",
+			OperationName:    ReadApiregistrationV1APIServiceStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readApiregistrationV1APIServiceStatus",
 			Body:             nil,
@@ -36255,7 +36255,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedControllerRevision",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedControllerRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36286,7 +36286,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedControllerRevision",
+			Name: ReadAppsV1NamespacedControllerRevisionOperation,
 			ID:   "readAppsV1NamespacedControllerRevision",
 		}
 	)
@@ -36294,7 +36294,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedControllerRevisionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -36349,7 +36349,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedControllerRevision",
+			OperationName:    ReadAppsV1NamespacedControllerRevisionOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedControllerRevision",
 			Body:             nil,
@@ -36419,7 +36419,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDaemonSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedDaemonSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36450,7 +36450,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDaemonSet",
+			Name: ReadAppsV1NamespacedDaemonSetOperation,
 			ID:   "readAppsV1NamespacedDaemonSet",
 		}
 	)
@@ -36458,7 +36458,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedDaemonSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -36513,7 +36513,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedDaemonSet",
+			OperationName:    ReadAppsV1NamespacedDaemonSetOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDaemonSet",
 			Body:             nil,
@@ -36583,7 +36583,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDaemonSetStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedDaemonSetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36614,7 +36614,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDaemonSetStatus",
+			Name: ReadAppsV1NamespacedDaemonSetStatusOperation,
 			ID:   "readAppsV1NamespacedDaemonSetStatus",
 		}
 	)
@@ -36622,7 +36622,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedDaemonSetStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -36677,7 +36677,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedDaemonSetStatus",
+			OperationName:    ReadAppsV1NamespacedDaemonSetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDaemonSetStatus",
 			Body:             nil,
@@ -36747,7 +36747,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDeployment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36778,7 +36778,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDeployment",
+			Name: ReadAppsV1NamespacedDeploymentOperation,
 			ID:   "readAppsV1NamespacedDeployment",
 		}
 	)
@@ -36786,7 +36786,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedDeploymentOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -36841,7 +36841,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedDeployment",
+			OperationName:    ReadAppsV1NamespacedDeploymentOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeployment",
 			Body:             nil,
@@ -36911,7 +36911,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDeploymentScale",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedDeploymentScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -36942,7 +36942,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDeploymentScale",
+			Name: ReadAppsV1NamespacedDeploymentScaleOperation,
 			ID:   "readAppsV1NamespacedDeploymentScale",
 		}
 	)
@@ -36950,7 +36950,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedDeploymentScaleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -37005,7 +37005,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedDeploymentScale",
+			OperationName:    ReadAppsV1NamespacedDeploymentScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeploymentScale",
 			Body:             nil,
@@ -37075,7 +37075,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDeploymentStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedDeploymentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37106,7 +37106,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedDeploymentStatus",
+			Name: ReadAppsV1NamespacedDeploymentStatusOperation,
 			ID:   "readAppsV1NamespacedDeploymentStatus",
 		}
 	)
@@ -37114,7 +37114,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedDeploymentStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -37169,7 +37169,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedDeploymentStatus",
+			OperationName:    ReadAppsV1NamespacedDeploymentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeploymentStatus",
 			Body:             nil,
@@ -37239,7 +37239,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedReplicaSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedReplicaSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37270,7 +37270,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedReplicaSet",
+			Name: ReadAppsV1NamespacedReplicaSetOperation,
 			ID:   "readAppsV1NamespacedReplicaSet",
 		}
 	)
@@ -37278,7 +37278,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedReplicaSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -37333,7 +37333,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedReplicaSet",
+			OperationName:    ReadAppsV1NamespacedReplicaSetOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSet",
 			Body:             nil,
@@ -37403,7 +37403,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedReplicaSetScale",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedReplicaSetScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37434,7 +37434,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedReplicaSetScale",
+			Name: ReadAppsV1NamespacedReplicaSetScaleOperation,
 			ID:   "readAppsV1NamespacedReplicaSetScale",
 		}
 	)
@@ -37442,7 +37442,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedReplicaSetScaleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -37497,7 +37497,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedReplicaSetScale",
+			OperationName:    ReadAppsV1NamespacedReplicaSetScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSetScale",
 			Body:             nil,
@@ -37567,7 +37567,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedReplicaSetStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedReplicaSetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37598,7 +37598,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedReplicaSetStatus",
+			Name: ReadAppsV1NamespacedReplicaSetStatusOperation,
 			ID:   "readAppsV1NamespacedReplicaSetStatus",
 		}
 	)
@@ -37606,7 +37606,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedReplicaSetStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -37661,7 +37661,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedReplicaSetStatus",
+			OperationName:    ReadAppsV1NamespacedReplicaSetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSetStatus",
 			Body:             nil,
@@ -37731,7 +37731,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedStatefulSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedStatefulSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37762,7 +37762,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedStatefulSet",
+			Name: ReadAppsV1NamespacedStatefulSetOperation,
 			ID:   "readAppsV1NamespacedStatefulSet",
 		}
 	)
@@ -37770,7 +37770,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedStatefulSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -37825,7 +37825,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedStatefulSet",
+			OperationName:    ReadAppsV1NamespacedStatefulSetOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSet",
 			Body:             nil,
@@ -37895,7 +37895,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedStatefulSetScale",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedStatefulSetScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -37926,7 +37926,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedStatefulSetScale",
+			Name: ReadAppsV1NamespacedStatefulSetScaleOperation,
 			ID:   "readAppsV1NamespacedStatefulSetScale",
 		}
 	)
@@ -37934,7 +37934,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedStatefulSetScaleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -37989,7 +37989,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedStatefulSetScale",
+			OperationName:    ReadAppsV1NamespacedStatefulSetScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSetScale",
 			Body:             nil,
@@ -38059,7 +38059,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedStatefulSetStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAppsV1NamespacedStatefulSetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38090,7 +38090,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAppsV1NamespacedStatefulSetStatus",
+			Name: ReadAppsV1NamespacedStatefulSetStatusOperation,
 			ID:   "readAppsV1NamespacedStatefulSetStatus",
 		}
 	)
@@ -38098,7 +38098,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAppsV1NamespacedStatefulSetStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -38153,7 +38153,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAppsV1NamespacedStatefulSetStatus",
+			OperationName:    ReadAppsV1NamespacedStatefulSetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSetStatus",
 			Body:             nil,
@@ -38223,7 +38223,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38254,7 +38254,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Name: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -38262,7 +38262,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -38317,7 +38317,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationName:    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -38387,7 +38387,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38418,7 +38418,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			Name: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation,
 			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 		}
 	)
@@ -38426,7 +38426,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -38481,7 +38481,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			OperationName:    ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 			Body:             nil,
@@ -38551,7 +38551,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38582,7 +38582,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Name: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -38590,7 +38590,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -38645,7 +38645,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationName:    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -38715,7 +38715,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38746,7 +38746,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			Name: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation,
 			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 		}
 	)
@@ -38754,7 +38754,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -38809,7 +38809,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			OperationName:    ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 			Body:             nil,
@@ -38879,7 +38879,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -38910,7 +38910,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Name: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -38918,7 +38918,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -38973,7 +38973,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationName:    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -39043,7 +39043,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39074,7 +39074,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			Name: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation,
 			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 		}
 	)
@@ -39082,7 +39082,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -39137,7 +39137,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			OperationName:    ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 			Body:             nil,
@@ -39207,7 +39207,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedCronJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadBatchV1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39238,7 +39238,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedCronJob",
+			Name: ReadBatchV1NamespacedCronJobOperation,
 			ID:   "readBatchV1NamespacedCronJob",
 		}
 	)
@@ -39246,7 +39246,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadBatchV1NamespacedCronJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -39301,7 +39301,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadBatchV1NamespacedCronJob",
+			OperationName:    ReadBatchV1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedCronJob",
 			Body:             nil,
@@ -39371,7 +39371,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedCronJobStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadBatchV1NamespacedCronJobStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39402,7 +39402,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedCronJobStatus",
+			Name: ReadBatchV1NamespacedCronJobStatusOperation,
 			ID:   "readBatchV1NamespacedCronJobStatus",
 		}
 	)
@@ -39410,7 +39410,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadBatchV1NamespacedCronJobStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -39465,7 +39465,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadBatchV1NamespacedCronJobStatus",
+			OperationName:    ReadBatchV1NamespacedCronJobStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedCronJobStatus",
 			Body:             nil,
@@ -39535,7 +39535,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadBatchV1NamespacedJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39566,7 +39566,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedJob",
+			Name: ReadBatchV1NamespacedJobOperation,
 			ID:   "readBatchV1NamespacedJob",
 		}
 	)
@@ -39574,7 +39574,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadBatchV1NamespacedJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -39629,7 +39629,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadBatchV1NamespacedJob",
+			OperationName:    ReadBatchV1NamespacedJobOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedJob",
 			Body:             nil,
@@ -39699,7 +39699,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedJobStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadBatchV1NamespacedJobStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39730,7 +39730,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1NamespacedJobStatus",
+			Name: ReadBatchV1NamespacedJobStatusOperation,
 			ID:   "readBatchV1NamespacedJobStatus",
 		}
 	)
@@ -39738,7 +39738,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadBatchV1NamespacedJobStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -39793,7 +39793,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadBatchV1NamespacedJobStatus",
+			OperationName:    ReadBatchV1NamespacedJobStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedJobStatus",
 			Body:             nil,
@@ -39863,7 +39863,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1beta1NamespacedCronJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadBatchV1beta1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -39894,7 +39894,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1beta1NamespacedCronJob",
+			Name: ReadBatchV1beta1NamespacedCronJobOperation,
 			ID:   "readBatchV1beta1NamespacedCronJob",
 		}
 	)
@@ -39902,7 +39902,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadBatchV1beta1NamespacedCronJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -39957,7 +39957,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadBatchV1beta1NamespacedCronJob",
+			OperationName:    ReadBatchV1beta1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1beta1NamespacedCronJob",
 			Body:             nil,
@@ -40027,7 +40027,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1beta1NamespacedCronJobStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadBatchV1beta1NamespacedCronJobStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40058,7 +40058,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadBatchV1beta1NamespacedCronJobStatus",
+			Name: ReadBatchV1beta1NamespacedCronJobStatusOperation,
 			ID:   "readBatchV1beta1NamespacedCronJobStatus",
 		}
 	)
@@ -40066,7 +40066,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadBatchV1beta1NamespacedCronJobStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -40121,7 +40121,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadBatchV1beta1NamespacedCronJobStatus",
+			OperationName:    ReadBatchV1beta1NamespacedCronJobStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readBatchV1beta1NamespacedCronJobStatus",
 			Body:             nil,
@@ -40191,7 +40191,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCertificatesV1CertificateSigningRequest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCertificatesV1CertificateSigningRequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40222,7 +40222,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCertificatesV1CertificateSigningRequest",
+			Name: ReadCertificatesV1CertificateSigningRequestOperation,
 			ID:   "readCertificatesV1CertificateSigningRequest",
 		}
 	)
@@ -40230,7 +40230,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCertificatesV1CertificateSigningRequestOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -40285,7 +40285,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCertificatesV1CertificateSigningRequest",
+			OperationName:    ReadCertificatesV1CertificateSigningRequestOperation,
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequest",
 			Body:             nil,
@@ -40351,7 +40351,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCertificatesV1CertificateSigningRequestApproval",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCertificatesV1CertificateSigningRequestApprovalOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40382,7 +40382,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCertificatesV1CertificateSigningRequestApproval",
+			Name: ReadCertificatesV1CertificateSigningRequestApprovalOperation,
 			ID:   "readCertificatesV1CertificateSigningRequestApproval",
 		}
 	)
@@ -40390,7 +40390,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCertificatesV1CertificateSigningRequestApprovalOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -40445,7 +40445,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCertificatesV1CertificateSigningRequestApproval",
+			OperationName:    ReadCertificatesV1CertificateSigningRequestApprovalOperation,
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequestApproval",
 			Body:             nil,
@@ -40511,7 +40511,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCertificatesV1CertificateSigningRequestStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCertificatesV1CertificateSigningRequestStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40542,7 +40542,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCertificatesV1CertificateSigningRequestStatus",
+			Name: ReadCertificatesV1CertificateSigningRequestStatusOperation,
 			ID:   "readCertificatesV1CertificateSigningRequestStatus",
 		}
 	)
@@ -40550,7 +40550,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCertificatesV1CertificateSigningRequestStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -40605,7 +40605,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCertificatesV1CertificateSigningRequestStatus",
+			OperationName:    ReadCertificatesV1CertificateSigningRequestStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequestStatus",
 			Body:             nil,
@@ -40671,7 +40671,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoordinationV1NamespacedLease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoordinationV1NamespacedLeaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40702,7 +40702,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoordinationV1NamespacedLease",
+			Name: ReadCoordinationV1NamespacedLeaseOperation,
 			ID:   "readCoordinationV1NamespacedLease",
 		}
 	)
@@ -40710,7 +40710,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoordinationV1NamespacedLeaseOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -40765,7 +40765,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoordinationV1NamespacedLease",
+			OperationName:    ReadCoordinationV1NamespacedLeaseOperation,
 			OperationSummary: "",
 			OperationID:      "readCoordinationV1NamespacedLease",
 			Body:             nil,
@@ -40835,7 +40835,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1ComponentStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1ComponentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -40866,7 +40866,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1ComponentStatus",
+			Name: ReadCoreV1ComponentStatusOperation,
 			ID:   "readCoreV1ComponentStatus",
 		}
 	)
@@ -40874,7 +40874,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1ComponentStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -40929,7 +40929,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1ComponentStatus",
+			OperationName:    ReadCoreV1ComponentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1ComponentStatus",
 			Body:             nil,
@@ -40995,7 +40995,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1Namespace",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespaceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41026,7 +41026,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1Namespace",
+			Name: ReadCoreV1NamespaceOperation,
 			ID:   "readCoreV1Namespace",
 		}
 	)
@@ -41034,7 +41034,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1Namespace", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespaceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -41089,7 +41089,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1Namespace",
+			OperationName:    ReadCoreV1NamespaceOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1Namespace",
 			Body:             nil,
@@ -41155,7 +41155,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespaceStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespaceStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41186,7 +41186,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespaceStatus",
+			Name: ReadCoreV1NamespaceStatusOperation,
 			ID:   "readCoreV1NamespaceStatus",
 		}
 	)
@@ -41194,7 +41194,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespaceStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -41249,7 +41249,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespaceStatus",
+			OperationName:    ReadCoreV1NamespaceStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespaceStatus",
 			Body:             nil,
@@ -41315,7 +41315,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedConfigMap",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedConfigMapOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41346,7 +41346,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedConfigMap",
+			Name: ReadCoreV1NamespacedConfigMapOperation,
 			ID:   "readCoreV1NamespacedConfigMap",
 		}
 	)
@@ -41354,7 +41354,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedConfigMapOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -41409,7 +41409,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedConfigMap",
+			OperationName:    ReadCoreV1NamespacedConfigMapOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedConfigMap",
 			Body:             nil,
@@ -41479,7 +41479,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedEndpoints",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedEndpointsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41510,7 +41510,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedEndpoints",
+			Name: ReadCoreV1NamespacedEndpointsOperation,
 			ID:   "readCoreV1NamespacedEndpoints",
 		}
 	)
@@ -41518,7 +41518,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedEndpointsOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -41573,7 +41573,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedEndpoints",
+			OperationName:    ReadCoreV1NamespacedEndpointsOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedEndpoints",
 			Body:             nil,
@@ -41643,7 +41643,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41674,7 +41674,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedEvent",
+			Name: ReadCoreV1NamespacedEventOperation,
 			ID:   "readCoreV1NamespacedEvent",
 		}
 	)
@@ -41682,7 +41682,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -41737,7 +41737,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedEvent",
+			OperationName:    ReadCoreV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedEvent",
 			Body:             nil,
@@ -41807,7 +41807,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedLimitRange",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedLimitRangeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -41838,7 +41838,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedLimitRange",
+			Name: ReadCoreV1NamespacedLimitRangeOperation,
 			ID:   "readCoreV1NamespacedLimitRange",
 		}
 	)
@@ -41846,7 +41846,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedLimitRangeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -41901,7 +41901,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedLimitRange",
+			OperationName:    ReadCoreV1NamespacedLimitRangeOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedLimitRange",
 			Body:             nil,
@@ -41971,7 +41971,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPersistentVolumeClaim",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedPersistentVolumeClaimOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42002,7 +42002,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPersistentVolumeClaim",
+			Name: ReadCoreV1NamespacedPersistentVolumeClaimOperation,
 			ID:   "readCoreV1NamespacedPersistentVolumeClaim",
 		}
 	)
@@ -42010,7 +42010,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedPersistentVolumeClaimOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -42065,7 +42065,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedPersistentVolumeClaim",
+			OperationName:    ReadCoreV1NamespacedPersistentVolumeClaimOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPersistentVolumeClaim",
 			Body:             nil,
@@ -42135,7 +42135,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42166,7 +42166,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
+			Name: ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation,
 			ID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
 		}
 	)
@@ -42174,7 +42174,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -42229,7 +42229,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
+			OperationName:    ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPersistentVolumeClaimStatus",
 			Body:             nil,
@@ -42299,7 +42299,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPod",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedPodOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42330,7 +42330,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPod",
+			Name: ReadCoreV1NamespacedPodOperation,
 			ID:   "readCoreV1NamespacedPod",
 		}
 	)
@@ -42338,7 +42338,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedPodOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -42393,7 +42393,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedPod",
+			OperationName:    ReadCoreV1NamespacedPodOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPod",
 			Body:             nil,
@@ -42463,7 +42463,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodEphemeralcontainers",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedPodEphemeralcontainersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42494,7 +42494,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodEphemeralcontainers",
+			Name: ReadCoreV1NamespacedPodEphemeralcontainersOperation,
 			ID:   "readCoreV1NamespacedPodEphemeralcontainers",
 		}
 	)
@@ -42502,7 +42502,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedPodEphemeralcontainersOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -42557,7 +42557,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedPodEphemeralcontainers",
+			OperationName:    ReadCoreV1NamespacedPodEphemeralcontainersOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodEphemeralcontainers",
 			Body:             nil,
@@ -42627,7 +42627,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodLog",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedPodLogOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42658,7 +42658,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodLog",
+			Name: ReadCoreV1NamespacedPodLogOperation,
 			ID:   "readCoreV1NamespacedPodLog",
 		}
 	)
@@ -42666,7 +42666,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedPodLogOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -42721,7 +42721,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedPodLog",
+			OperationName:    ReadCoreV1NamespacedPodLogOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodLog",
 			Body:             nil,
@@ -42823,7 +42823,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedPodStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -42854,7 +42854,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodStatus",
+			Name: ReadCoreV1NamespacedPodStatusOperation,
 			ID:   "readCoreV1NamespacedPodStatus",
 		}
 	)
@@ -42862,7 +42862,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedPodStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -42917,7 +42917,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedPodStatus",
+			OperationName:    ReadCoreV1NamespacedPodStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodStatus",
 			Body:             nil,
@@ -42987,7 +42987,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodTemplate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedPodTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43018,7 +43018,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedPodTemplate",
+			Name: ReadCoreV1NamespacedPodTemplateOperation,
 			ID:   "readCoreV1NamespacedPodTemplate",
 		}
 	)
@@ -43026,7 +43026,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedPodTemplateOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -43081,7 +43081,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedPodTemplate",
+			OperationName:    ReadCoreV1NamespacedPodTemplateOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodTemplate",
 			Body:             nil,
@@ -43151,7 +43151,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedReplicationController",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedReplicationControllerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43182,7 +43182,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedReplicationController",
+			Name: ReadCoreV1NamespacedReplicationControllerOperation,
 			ID:   "readCoreV1NamespacedReplicationController",
 		}
 	)
@@ -43190,7 +43190,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedReplicationControllerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -43245,7 +43245,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedReplicationController",
+			OperationName:    ReadCoreV1NamespacedReplicationControllerOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationController",
 			Body:             nil,
@@ -43315,7 +43315,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedReplicationControllerScale",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedReplicationControllerScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43346,7 +43346,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedReplicationControllerScale",
+			Name: ReadCoreV1NamespacedReplicationControllerScaleOperation,
 			ID:   "readCoreV1NamespacedReplicationControllerScale",
 		}
 	)
@@ -43354,7 +43354,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedReplicationControllerScaleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -43409,7 +43409,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedReplicationControllerScale",
+			OperationName:    ReadCoreV1NamespacedReplicationControllerScaleOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationControllerScale",
 			Body:             nil,
@@ -43479,7 +43479,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedReplicationControllerStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedReplicationControllerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43510,7 +43510,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedReplicationControllerStatus",
+			Name: ReadCoreV1NamespacedReplicationControllerStatusOperation,
 			ID:   "readCoreV1NamespacedReplicationControllerStatus",
 		}
 	)
@@ -43518,7 +43518,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedReplicationControllerStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -43573,7 +43573,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedReplicationControllerStatus",
+			OperationName:    ReadCoreV1NamespacedReplicationControllerStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationControllerStatus",
 			Body:             nil,
@@ -43643,7 +43643,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedResourceQuota",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedResourceQuotaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43674,7 +43674,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedResourceQuota",
+			Name: ReadCoreV1NamespacedResourceQuotaOperation,
 			ID:   "readCoreV1NamespacedResourceQuota",
 		}
 	)
@@ -43682,7 +43682,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedResourceQuotaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -43737,7 +43737,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedResourceQuota",
+			OperationName:    ReadCoreV1NamespacedResourceQuotaOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedResourceQuota",
 			Body:             nil,
@@ -43807,7 +43807,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedResourceQuotaStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedResourceQuotaStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -43838,7 +43838,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedResourceQuotaStatus",
+			Name: ReadCoreV1NamespacedResourceQuotaStatusOperation,
 			ID:   "readCoreV1NamespacedResourceQuotaStatus",
 		}
 	)
@@ -43846,7 +43846,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedResourceQuotaStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -43901,7 +43901,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedResourceQuotaStatus",
+			OperationName:    ReadCoreV1NamespacedResourceQuotaStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedResourceQuotaStatus",
 			Body:             nil,
@@ -43971,7 +43971,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44002,7 +44002,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedSecret",
+			Name: ReadCoreV1NamespacedSecretOperation,
 			ID:   "readCoreV1NamespacedSecret",
 		}
 	)
@@ -44010,7 +44010,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedSecretOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -44065,7 +44065,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedSecret",
+			OperationName:    ReadCoreV1NamespacedSecretOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedSecret",
 			Body:             nil,
@@ -44135,7 +44135,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedService",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44166,7 +44166,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedService",
+			Name: ReadCoreV1NamespacedServiceOperation,
 			ID:   "readCoreV1NamespacedService",
 		}
 	)
@@ -44174,7 +44174,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedServiceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -44229,7 +44229,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedService",
+			OperationName:    ReadCoreV1NamespacedServiceOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedService",
 			Body:             nil,
@@ -44299,7 +44299,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedServiceAccount",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedServiceAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44330,7 +44330,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedServiceAccount",
+			Name: ReadCoreV1NamespacedServiceAccountOperation,
 			ID:   "readCoreV1NamespacedServiceAccount",
 		}
 	)
@@ -44338,7 +44338,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedServiceAccountOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -44393,7 +44393,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedServiceAccount",
+			OperationName:    ReadCoreV1NamespacedServiceAccountOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedServiceAccount",
 			Body:             nil,
@@ -44463,7 +44463,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedServiceStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NamespacedServiceStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44494,7 +44494,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NamespacedServiceStatus",
+			Name: ReadCoreV1NamespacedServiceStatusOperation,
 			ID:   "readCoreV1NamespacedServiceStatus",
 		}
 	)
@@ -44502,7 +44502,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NamespacedServiceStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -44557,7 +44557,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NamespacedServiceStatus",
+			OperationName:    ReadCoreV1NamespacedServiceStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedServiceStatus",
 			Body:             nil,
@@ -44627,7 +44627,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1Node",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44658,7 +44658,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1Node",
+			Name: ReadCoreV1NodeOperation,
 			ID:   "readCoreV1Node",
 		}
 	)
@@ -44666,7 +44666,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1Node", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NodeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -44721,7 +44721,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1Node",
+			OperationName:    ReadCoreV1NodeOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1Node",
 			Body:             nil,
@@ -44787,7 +44787,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NodeStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1NodeStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44818,7 +44818,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1NodeStatus",
+			Name: ReadCoreV1NodeStatusOperation,
 			ID:   "readCoreV1NodeStatus",
 		}
 	)
@@ -44826,7 +44826,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1NodeStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -44881,7 +44881,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1NodeStatus",
+			OperationName:    ReadCoreV1NodeStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NodeStatus",
 			Body:             nil,
@@ -44947,7 +44947,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1PersistentVolume",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1PersistentVolumeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -44978,7 +44978,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1PersistentVolume",
+			Name: ReadCoreV1PersistentVolumeOperation,
 			ID:   "readCoreV1PersistentVolume",
 		}
 	)
@@ -44986,7 +44986,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1PersistentVolumeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -45041,7 +45041,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1PersistentVolume",
+			OperationName:    ReadCoreV1PersistentVolumeOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1PersistentVolume",
 			Body:             nil,
@@ -45107,7 +45107,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1PersistentVolumeStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadCoreV1PersistentVolumeStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45138,7 +45138,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadCoreV1PersistentVolumeStatus",
+			Name: ReadCoreV1PersistentVolumeStatusOperation,
 			ID:   "readCoreV1PersistentVolumeStatus",
 		}
 	)
@@ -45146,7 +45146,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadCoreV1PersistentVolumeStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -45201,7 +45201,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadCoreV1PersistentVolumeStatus",
+			OperationName:    ReadCoreV1PersistentVolumeStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readCoreV1PersistentVolumeStatus",
 			Body:             nil,
@@ -45267,7 +45267,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadDiscoveryV1NamespacedEndpointSlice",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadDiscoveryV1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45298,7 +45298,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadDiscoveryV1NamespacedEndpointSlice",
+			Name: ReadDiscoveryV1NamespacedEndpointSliceOperation,
 			ID:   "readDiscoveryV1NamespacedEndpointSlice",
 		}
 	)
@@ -45306,7 +45306,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadDiscoveryV1NamespacedEndpointSliceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -45361,7 +45361,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadDiscoveryV1NamespacedEndpointSlice",
+			OperationName:    ReadDiscoveryV1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "readDiscoveryV1NamespacedEndpointSlice",
 			Body:             nil,
@@ -45431,7 +45431,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadDiscoveryV1beta1NamespacedEndpointSlice",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadDiscoveryV1beta1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45462,7 +45462,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
+			Name: ReadDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			ID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
 		}
 	)
@@ -45470,7 +45470,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadDiscoveryV1beta1NamespacedEndpointSliceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -45525,7 +45525,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationName:    ReadDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "readDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:             nil,
@@ -45595,7 +45595,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadEventsV1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadEventsV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45626,7 +45626,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadEventsV1NamespacedEvent",
+			Name: ReadEventsV1NamespacedEventOperation,
 			ID:   "readEventsV1NamespacedEvent",
 		}
 	)
@@ -45634,7 +45634,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadEventsV1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -45689,7 +45689,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadEventsV1NamespacedEvent",
+			OperationName:    ReadEventsV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "readEventsV1NamespacedEvent",
 			Body:             nil,
@@ -45759,7 +45759,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadEventsV1beta1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadEventsV1beta1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45790,7 +45790,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadEventsV1beta1NamespacedEvent",
+			Name: ReadEventsV1beta1NamespacedEventOperation,
 			ID:   "readEventsV1beta1NamespacedEvent",
 		}
 	)
@@ -45798,7 +45798,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadEventsV1beta1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -45853,7 +45853,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadEventsV1beta1NamespacedEvent",
+			OperationName:    ReadEventsV1beta1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "readEventsV1beta1NamespacedEvent",
 			Body:             nil,
@@ -45923,7 +45923,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1FlowSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta1FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45954,7 +45954,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1FlowSchema",
+			Name: ReadFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			ID:   "readFlowcontrolApiserverV1beta1FlowSchema",
 		}
 	)
@@ -45962,7 +45962,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1FlowSchemaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -46017,7 +46017,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta1FlowSchema",
+			OperationName:    ReadFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1FlowSchema",
 			Body:             nil,
@@ -46083,7 +46083,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46114,7 +46114,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			Name: ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation,
 			ID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
 		}
 	)
@@ -46122,7 +46122,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -46177,7 +46177,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			OperationName:    ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
 			Body:             nil,
@@ -46243,7 +46243,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46274,7 +46274,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Name: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		}
 	)
@@ -46282,7 +46282,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -46337,7 +46337,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationName:    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:             nil,
@@ -46403,7 +46403,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46434,7 +46434,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			Name: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation,
 			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 		}
 	)
@@ -46442,7 +46442,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -46497,7 +46497,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			OperationName:    ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 			Body:             nil,
@@ -46563,7 +46563,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2FlowSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta2FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46594,7 +46594,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2FlowSchema",
+			Name: ReadFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			ID:   "readFlowcontrolApiserverV1beta2FlowSchema",
 		}
 	)
@@ -46602,7 +46602,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2FlowSchemaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -46657,7 +46657,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta2FlowSchema",
+			OperationName:    ReadFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2FlowSchema",
 			Body:             nil,
@@ -46723,7 +46723,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46754,7 +46754,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			Name: ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation,
 			ID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
 		}
 	)
@@ -46762,7 +46762,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -46817,7 +46817,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			OperationName:    ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
 			Body:             nil,
@@ -46883,7 +46883,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -46914,7 +46914,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Name: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		}
 	)
@@ -46922,7 +46922,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -46977,7 +46977,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationName:    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:             nil,
@@ -47043,7 +47043,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47074,7 +47074,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			Name: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation,
 			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 		}
 	)
@@ -47082,7 +47082,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -47137,7 +47137,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			OperationName:    ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 			Body:             nil,
@@ -47203,7 +47203,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadInternalApiserverV1alpha1StorageVersion",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadInternalApiserverV1alpha1StorageVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47234,7 +47234,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadInternalApiserverV1alpha1StorageVersion",
+			Name: ReadInternalApiserverV1alpha1StorageVersionOperation,
 			ID:   "readInternalApiserverV1alpha1StorageVersion",
 		}
 	)
@@ -47242,7 +47242,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadInternalApiserverV1alpha1StorageVersionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -47297,7 +47297,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadInternalApiserverV1alpha1StorageVersion",
+			OperationName:    ReadInternalApiserverV1alpha1StorageVersionOperation,
 			OperationSummary: "",
 			OperationID:      "readInternalApiserverV1alpha1StorageVersion",
 			Body:             nil,
@@ -47363,7 +47363,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadInternalApiserverV1alpha1StorageVersionStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadInternalApiserverV1alpha1StorageVersionStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47394,7 +47394,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadInternalApiserverV1alpha1StorageVersionStatus",
+			Name: ReadInternalApiserverV1alpha1StorageVersionStatusOperation,
 			ID:   "readInternalApiserverV1alpha1StorageVersionStatus",
 		}
 	)
@@ -47402,7 +47402,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadInternalApiserverV1alpha1StorageVersionStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -47457,7 +47457,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadInternalApiserverV1alpha1StorageVersionStatus",
+			OperationName:    ReadInternalApiserverV1alpha1StorageVersionStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readInternalApiserverV1alpha1StorageVersionStatus",
 			Body:             nil,
@@ -47523,7 +47523,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1IngressClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadNetworkingV1IngressClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47554,7 +47554,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1IngressClass",
+			Name: ReadNetworkingV1IngressClassOperation,
 			ID:   "readNetworkingV1IngressClass",
 		}
 	)
@@ -47562,7 +47562,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadNetworkingV1IngressClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -47617,7 +47617,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadNetworkingV1IngressClass",
+			OperationName:    ReadNetworkingV1IngressClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1IngressClass",
 			Body:             nil,
@@ -47683,7 +47683,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1NamespacedIngress",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadNetworkingV1NamespacedIngressOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47714,7 +47714,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1NamespacedIngress",
+			Name: ReadNetworkingV1NamespacedIngressOperation,
 			ID:   "readNetworkingV1NamespacedIngress",
 		}
 	)
@@ -47722,7 +47722,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadNetworkingV1NamespacedIngressOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -47777,7 +47777,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadNetworkingV1NamespacedIngress",
+			OperationName:    ReadNetworkingV1NamespacedIngressOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedIngress",
 			Body:             nil,
@@ -47847,7 +47847,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1NamespacedIngressStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadNetworkingV1NamespacedIngressStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -47878,7 +47878,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1NamespacedIngressStatus",
+			Name: ReadNetworkingV1NamespacedIngressStatusOperation,
 			ID:   "readNetworkingV1NamespacedIngressStatus",
 		}
 	)
@@ -47886,7 +47886,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadNetworkingV1NamespacedIngressStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -47941,7 +47941,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadNetworkingV1NamespacedIngressStatus",
+			OperationName:    ReadNetworkingV1NamespacedIngressStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedIngressStatus",
 			Body:             nil,
@@ -48011,7 +48011,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1NamespacedNetworkPolicy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadNetworkingV1NamespacedNetworkPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48042,7 +48042,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNetworkingV1NamespacedNetworkPolicy",
+			Name: ReadNetworkingV1NamespacedNetworkPolicyOperation,
 			ID:   "readNetworkingV1NamespacedNetworkPolicy",
 		}
 	)
@@ -48050,7 +48050,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadNetworkingV1NamespacedNetworkPolicyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -48105,7 +48105,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadNetworkingV1NamespacedNetworkPolicy",
+			OperationName:    ReadNetworkingV1NamespacedNetworkPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedNetworkPolicy",
 			Body:             nil,
@@ -48175,7 +48175,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNodeV1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadNodeV1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48206,7 +48206,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNodeV1RuntimeClass",
+			Name: ReadNodeV1RuntimeClassOperation,
 			ID:   "readNodeV1RuntimeClass",
 		}
 	)
@@ -48214,7 +48214,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadNodeV1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -48269,7 +48269,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadNodeV1RuntimeClass",
+			OperationName:    ReadNodeV1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNodeV1RuntimeClass",
 			Body:             nil,
@@ -48335,7 +48335,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNodeV1alpha1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadNodeV1alpha1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48366,7 +48366,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNodeV1alpha1RuntimeClass",
+			Name: ReadNodeV1alpha1RuntimeClassOperation,
 			ID:   "readNodeV1alpha1RuntimeClass",
 		}
 	)
@@ -48374,7 +48374,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadNodeV1alpha1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -48429,7 +48429,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadNodeV1alpha1RuntimeClass",
+			OperationName:    ReadNodeV1alpha1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNodeV1alpha1RuntimeClass",
 			Body:             nil,
@@ -48495,7 +48495,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNodeV1beta1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadNodeV1beta1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48526,7 +48526,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadNodeV1beta1RuntimeClass",
+			Name: ReadNodeV1beta1RuntimeClassOperation,
 			ID:   "readNodeV1beta1RuntimeClass",
 		}
 	)
@@ -48534,7 +48534,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadNodeV1beta1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -48589,7 +48589,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadNodeV1beta1RuntimeClass",
+			OperationName:    ReadNodeV1beta1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "readNodeV1beta1RuntimeClass",
 			Body:             nil,
@@ -48655,7 +48655,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1NamespacedPodDisruptionBudget",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadPolicyV1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48686,7 +48686,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1NamespacedPodDisruptionBudget",
+			Name: ReadPolicyV1NamespacedPodDisruptionBudgetOperation,
 			ID:   "readPolicyV1NamespacedPodDisruptionBudget",
 		}
 	)
@@ -48694,7 +48694,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadPolicyV1NamespacedPodDisruptionBudgetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -48749,7 +48749,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadPolicyV1NamespacedPodDisruptionBudget",
+			OperationName:    ReadPolicyV1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1NamespacedPodDisruptionBudget",
 			Body:             nil,
@@ -48819,7 +48819,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -48850,7 +48850,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
+			Name: ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation,
 			ID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
 		}
 	)
@@ -48858,7 +48858,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -48913,7 +48913,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
+			OperationName:    ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1NamespacedPodDisruptionBudgetStatus",
 			Body:             nil,
@@ -48983,7 +48983,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49014,7 +49014,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
+			Name: ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
 		}
 	)
@@ -49022,7 +49022,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -49077,7 +49077,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationName:    ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:             nil,
@@ -49147,7 +49147,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49178,7 +49178,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			Name: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation,
 			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 		}
 	)
@@ -49186,7 +49186,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -49241,7 +49241,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			OperationName:    ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 			Body:             nil,
@@ -49311,7 +49311,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1beta1PodSecurityPolicy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadPolicyV1beta1PodSecurityPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49342,7 +49342,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadPolicyV1beta1PodSecurityPolicy",
+			Name: ReadPolicyV1beta1PodSecurityPolicyOperation,
 			ID:   "readPolicyV1beta1PodSecurityPolicy",
 		}
 	)
@@ -49350,7 +49350,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadPolicyV1beta1PodSecurityPolicyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -49405,7 +49405,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadPolicyV1beta1PodSecurityPolicy",
+			OperationName:    ReadPolicyV1beta1PodSecurityPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1PodSecurityPolicy",
 			Body:             nil,
@@ -49471,7 +49471,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1ClusterRole",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadRbacAuthorizationV1ClusterRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49502,7 +49502,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1ClusterRole",
+			Name: ReadRbacAuthorizationV1ClusterRoleOperation,
 			ID:   "readRbacAuthorizationV1ClusterRole",
 		}
 	)
@@ -49510,7 +49510,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadRbacAuthorizationV1ClusterRoleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -49565,7 +49565,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadRbacAuthorizationV1ClusterRole",
+			OperationName:    ReadRbacAuthorizationV1ClusterRoleOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1ClusterRole",
 			Body:             nil,
@@ -49631,7 +49631,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1ClusterRoleBinding",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadRbacAuthorizationV1ClusterRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49662,7 +49662,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1ClusterRoleBinding",
+			Name: ReadRbacAuthorizationV1ClusterRoleBindingOperation,
 			ID:   "readRbacAuthorizationV1ClusterRoleBinding",
 		}
 	)
@@ -49670,7 +49670,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadRbacAuthorizationV1ClusterRoleBindingOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -49725,7 +49725,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadRbacAuthorizationV1ClusterRoleBinding",
+			OperationName:    ReadRbacAuthorizationV1ClusterRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1ClusterRoleBinding",
 			Body:             nil,
@@ -49791,7 +49791,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1NamespacedRole",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadRbacAuthorizationV1NamespacedRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49822,7 +49822,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1NamespacedRole",
+			Name: ReadRbacAuthorizationV1NamespacedRoleOperation,
 			ID:   "readRbacAuthorizationV1NamespacedRole",
 		}
 	)
@@ -49830,7 +49830,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadRbacAuthorizationV1NamespacedRoleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -49885,7 +49885,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadRbacAuthorizationV1NamespacedRole",
+			OperationName:    ReadRbacAuthorizationV1NamespacedRoleOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1NamespacedRole",
 			Body:             nil,
@@ -49955,7 +49955,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1NamespacedRoleBinding",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadRbacAuthorizationV1NamespacedRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -49986,7 +49986,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadRbacAuthorizationV1NamespacedRoleBinding",
+			Name: ReadRbacAuthorizationV1NamespacedRoleBindingOperation,
 			ID:   "readRbacAuthorizationV1NamespacedRoleBinding",
 		}
 	)
@@ -49994,7 +49994,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadRbacAuthorizationV1NamespacedRoleBindingOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -50049,7 +50049,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadRbacAuthorizationV1NamespacedRoleBinding",
+			OperationName:    ReadRbacAuthorizationV1NamespacedRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1NamespacedRoleBinding",
 			Body:             nil,
@@ -50119,7 +50119,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadSchedulingV1PriorityClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadSchedulingV1PriorityClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50150,7 +50150,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadSchedulingV1PriorityClass",
+			Name: ReadSchedulingV1PriorityClassOperation,
 			ID:   "readSchedulingV1PriorityClass",
 		}
 	)
@@ -50158,7 +50158,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadSchedulingV1PriorityClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -50213,7 +50213,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadSchedulingV1PriorityClass",
+			OperationName:    ReadSchedulingV1PriorityClassOperation,
 			OperationSummary: "",
 			OperationID:      "readSchedulingV1PriorityClass",
 			Body:             nil,
@@ -50279,7 +50279,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1CSIDriver",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadStorageV1CSIDriverOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50310,7 +50310,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1CSIDriver",
+			Name: ReadStorageV1CSIDriverOperation,
 			ID:   "readStorageV1CSIDriver",
 		}
 	)
@@ -50318,7 +50318,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadStorageV1CSIDriverOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -50373,7 +50373,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadStorageV1CSIDriver",
+			OperationName:    ReadStorageV1CSIDriverOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1CSIDriver",
 			Body:             nil,
@@ -50439,7 +50439,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1CSINode",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadStorageV1CSINodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50470,7 +50470,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1CSINode",
+			Name: ReadStorageV1CSINodeOperation,
 			ID:   "readStorageV1CSINode",
 		}
 	)
@@ -50478,7 +50478,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadStorageV1CSINode", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadStorageV1CSINodeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -50533,7 +50533,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadStorageV1CSINode",
+			OperationName:    ReadStorageV1CSINodeOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1CSINode",
 			Body:             nil,
@@ -50599,7 +50599,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1StorageClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadStorageV1StorageClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50630,7 +50630,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1StorageClass",
+			Name: ReadStorageV1StorageClassOperation,
 			ID:   "readStorageV1StorageClass",
 		}
 	)
@@ -50638,7 +50638,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadStorageV1StorageClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadStorageV1StorageClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -50693,7 +50693,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadStorageV1StorageClass",
+			OperationName:    ReadStorageV1StorageClassOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1StorageClass",
 			Body:             nil,
@@ -50759,7 +50759,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1VolumeAttachment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadStorageV1VolumeAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50790,7 +50790,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1VolumeAttachment",
+			Name: ReadStorageV1VolumeAttachmentOperation,
 			ID:   "readStorageV1VolumeAttachment",
 		}
 	)
@@ -50798,7 +50798,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadStorageV1VolumeAttachmentOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -50853,7 +50853,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadStorageV1VolumeAttachment",
+			OperationName:    ReadStorageV1VolumeAttachmentOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1VolumeAttachment",
 			Body:             nil,
@@ -50919,7 +50919,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1VolumeAttachmentStatus",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadStorageV1VolumeAttachmentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -50950,7 +50950,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1VolumeAttachmentStatus",
+			Name: ReadStorageV1VolumeAttachmentStatusOperation,
 			ID:   "readStorageV1VolumeAttachmentStatus",
 		}
 	)
@@ -50958,7 +50958,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadStorageV1VolumeAttachmentStatusOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -51013,7 +51013,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadStorageV1VolumeAttachmentStatus",
+			OperationName:    ReadStorageV1VolumeAttachmentStatusOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1VolumeAttachmentStatus",
 			Body:             nil,
@@ -51079,7 +51079,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51110,7 +51110,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
+			Name: ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			ID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
 		}
 	)
@@ -51118,7 +51118,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -51173,7 +51173,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationName:    ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:             nil,
@@ -51243,7 +51243,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1beta1NamespacedCSIStorageCapacity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ReadStorageV1beta1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51274,7 +51274,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
+			Name: ReadStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			ID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
 		}
 	)
@@ -51282,7 +51282,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, ReadStorageV1beta1NamespacedCSIStorageCapacityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -51337,7 +51337,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ReadStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationName:    ReadStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "readStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:             nil,
@@ -51409,7 +51409,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51440,7 +51440,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
+			Name: WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			ID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
 		}
 	)
@@ -51448,7 +51448,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -51503,7 +51503,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationName:    WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:             nil,
@@ -51606,7 +51606,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51637,7 +51637,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			Name: WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation,
 			ID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
 		}
 	)
@@ -51645,7 +51645,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -51700,7 +51700,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			OperationName:    WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
 			Body:             nil,
@@ -51800,7 +51800,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -51831,7 +51831,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Name: WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
 		}
 	)
@@ -51839,7 +51839,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -51894,7 +51894,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationName:    WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:             nil,
@@ -51997,7 +51997,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52028,7 +52028,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			Name: WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation,
 			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 		}
 	)
@@ -52036,7 +52036,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -52091,7 +52091,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			OperationName:    WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 			Body:             nil,
@@ -52190,7 +52190,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiextensionsV1CustomResourceDefinition",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchApiextensionsV1CustomResourceDefinitionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52221,7 +52221,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiextensionsV1CustomResourceDefinition",
+			Name: WatchApiextensionsV1CustomResourceDefinitionOperation,
 			ID:   "watchApiextensionsV1CustomResourceDefinition",
 		}
 	)
@@ -52229,7 +52229,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchApiextensionsV1CustomResourceDefinitionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -52284,7 +52284,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchApiextensionsV1CustomResourceDefinition",
+			OperationName:    WatchApiextensionsV1CustomResourceDefinitionOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiextensionsV1CustomResourceDefinition",
 			Body:             nil,
@@ -52387,7 +52387,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiextensionsV1CustomResourceDefinitionList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchApiextensionsV1CustomResourceDefinitionListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52418,7 +52418,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiextensionsV1CustomResourceDefinitionList",
+			Name: WatchApiextensionsV1CustomResourceDefinitionListOperation,
 			ID:   "watchApiextensionsV1CustomResourceDefinitionList",
 		}
 	)
@@ -52426,7 +52426,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchApiextensionsV1CustomResourceDefinitionListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -52481,7 +52481,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchApiextensionsV1CustomResourceDefinitionList",
+			OperationName:    WatchApiextensionsV1CustomResourceDefinitionListOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiextensionsV1CustomResourceDefinitionList",
 			Body:             nil,
@@ -52580,7 +52580,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiregistrationV1APIService",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchApiregistrationV1APIServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52611,7 +52611,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiregistrationV1APIService",
+			Name: WatchApiregistrationV1APIServiceOperation,
 			ID:   "watchApiregistrationV1APIService",
 		}
 	)
@@ -52619,7 +52619,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchApiregistrationV1APIServiceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -52674,7 +52674,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchApiregistrationV1APIService",
+			OperationName:    WatchApiregistrationV1APIServiceOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiregistrationV1APIService",
 			Body:             nil,
@@ -52777,7 +52777,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiregistrationV1APIServiceList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchApiregistrationV1APIServiceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -52808,7 +52808,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchApiregistrationV1APIServiceList",
+			Name: WatchApiregistrationV1APIServiceListOperation,
 			ID:   "watchApiregistrationV1APIServiceList",
 		}
 	)
@@ -52816,7 +52816,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchApiregistrationV1APIServiceListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -52871,7 +52871,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchApiregistrationV1APIServiceList",
+			OperationName:    WatchApiregistrationV1APIServiceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchApiregistrationV1APIServiceList",
 			Body:             nil,
@@ -52970,7 +52970,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1ControllerRevisionListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1ControllerRevisionListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53001,7 +53001,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1ControllerRevisionListForAllNamespaces",
+			Name: WatchAppsV1ControllerRevisionListForAllNamespacesOperation,
 			ID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
 		}
 	)
@@ -53009,7 +53009,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1ControllerRevisionListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -53064,7 +53064,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1ControllerRevisionListForAllNamespaces",
+			OperationName:    WatchAppsV1ControllerRevisionListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1ControllerRevisionListForAllNamespaces",
 			Body:             nil,
@@ -53163,7 +53163,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1DaemonSetListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1DaemonSetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53194,7 +53194,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1DaemonSetListForAllNamespaces",
+			Name: WatchAppsV1DaemonSetListForAllNamespacesOperation,
 			ID:   "watchAppsV1DaemonSetListForAllNamespaces",
 		}
 	)
@@ -53202,7 +53202,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1DaemonSetListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -53257,7 +53257,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1DaemonSetListForAllNamespaces",
+			OperationName:    WatchAppsV1DaemonSetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1DaemonSetListForAllNamespaces",
 			Body:             nil,
@@ -53356,7 +53356,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1DeploymentListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1DeploymentListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53387,7 +53387,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1DeploymentListForAllNamespaces",
+			Name: WatchAppsV1DeploymentListForAllNamespacesOperation,
 			ID:   "watchAppsV1DeploymentListForAllNamespaces",
 		}
 	)
@@ -53395,7 +53395,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1DeploymentListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -53450,7 +53450,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1DeploymentListForAllNamespaces",
+			OperationName:    WatchAppsV1DeploymentListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1DeploymentListForAllNamespaces",
 			Body:             nil,
@@ -53549,7 +53549,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedControllerRevision",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedControllerRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53580,7 +53580,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedControllerRevision",
+			Name: WatchAppsV1NamespacedControllerRevisionOperation,
 			ID:   "watchAppsV1NamespacedControllerRevision",
 		}
 	)
@@ -53588,7 +53588,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedControllerRevisionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -53643,7 +53643,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedControllerRevision",
+			OperationName:    WatchAppsV1NamespacedControllerRevisionOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedControllerRevision",
 			Body:             nil,
@@ -53750,7 +53750,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedControllerRevisionList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedControllerRevisionListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53781,7 +53781,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedControllerRevisionList",
+			Name: WatchAppsV1NamespacedControllerRevisionListOperation,
 			ID:   "watchAppsV1NamespacedControllerRevisionList",
 		}
 	)
@@ -53789,7 +53789,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedControllerRevisionListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -53844,7 +53844,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedControllerRevisionList",
+			OperationName:    WatchAppsV1NamespacedControllerRevisionListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedControllerRevisionList",
 			Body:             nil,
@@ -53947,7 +53947,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDaemonSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedDaemonSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -53978,7 +53978,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDaemonSet",
+			Name: WatchAppsV1NamespacedDaemonSetOperation,
 			ID:   "watchAppsV1NamespacedDaemonSet",
 		}
 	)
@@ -53986,7 +53986,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedDaemonSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -54041,7 +54041,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedDaemonSet",
+			OperationName:    WatchAppsV1NamespacedDaemonSetOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDaemonSet",
 			Body:             nil,
@@ -54148,7 +54148,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDaemonSetList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedDaemonSetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54179,7 +54179,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDaemonSetList",
+			Name: WatchAppsV1NamespacedDaemonSetListOperation,
 			ID:   "watchAppsV1NamespacedDaemonSetList",
 		}
 	)
@@ -54187,7 +54187,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedDaemonSetListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -54242,7 +54242,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedDaemonSetList",
+			OperationName:    WatchAppsV1NamespacedDaemonSetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDaemonSetList",
 			Body:             nil,
@@ -54345,7 +54345,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDeployment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54376,7 +54376,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDeployment",
+			Name: WatchAppsV1NamespacedDeploymentOperation,
 			ID:   "watchAppsV1NamespacedDeployment",
 		}
 	)
@@ -54384,7 +54384,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedDeploymentOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -54439,7 +54439,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedDeployment",
+			OperationName:    WatchAppsV1NamespacedDeploymentOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDeployment",
 			Body:             nil,
@@ -54546,7 +54546,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDeploymentList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedDeploymentListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54577,7 +54577,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedDeploymentList",
+			Name: WatchAppsV1NamespacedDeploymentListOperation,
 			ID:   "watchAppsV1NamespacedDeploymentList",
 		}
 	)
@@ -54585,7 +54585,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedDeploymentListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -54640,7 +54640,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedDeploymentList",
+			OperationName:    WatchAppsV1NamespacedDeploymentListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDeploymentList",
 			Body:             nil,
@@ -54743,7 +54743,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedReplicaSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedReplicaSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54774,7 +54774,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedReplicaSet",
+			Name: WatchAppsV1NamespacedReplicaSetOperation,
 			ID:   "watchAppsV1NamespacedReplicaSet",
 		}
 	)
@@ -54782,7 +54782,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedReplicaSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -54837,7 +54837,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedReplicaSet",
+			OperationName:    WatchAppsV1NamespacedReplicaSetOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedReplicaSet",
 			Body:             nil,
@@ -54944,7 +54944,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedReplicaSetList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedReplicaSetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -54975,7 +54975,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedReplicaSetList",
+			Name: WatchAppsV1NamespacedReplicaSetListOperation,
 			ID:   "watchAppsV1NamespacedReplicaSetList",
 		}
 	)
@@ -54983,7 +54983,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedReplicaSetListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -55038,7 +55038,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedReplicaSetList",
+			OperationName:    WatchAppsV1NamespacedReplicaSetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedReplicaSetList",
 			Body:             nil,
@@ -55141,7 +55141,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedStatefulSet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedStatefulSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55172,7 +55172,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedStatefulSet",
+			Name: WatchAppsV1NamespacedStatefulSetOperation,
 			ID:   "watchAppsV1NamespacedStatefulSet",
 		}
 	)
@@ -55180,7 +55180,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedStatefulSetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -55235,7 +55235,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedStatefulSet",
+			OperationName:    WatchAppsV1NamespacedStatefulSetOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedStatefulSet",
 			Body:             nil,
@@ -55342,7 +55342,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedStatefulSetList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1NamespacedStatefulSetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55373,7 +55373,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1NamespacedStatefulSetList",
+			Name: WatchAppsV1NamespacedStatefulSetListOperation,
 			ID:   "watchAppsV1NamespacedStatefulSetList",
 		}
 	)
@@ -55381,7 +55381,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1NamespacedStatefulSetListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -55436,7 +55436,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1NamespacedStatefulSetList",
+			OperationName:    WatchAppsV1NamespacedStatefulSetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedStatefulSetList",
 			Body:             nil,
@@ -55539,7 +55539,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1ReplicaSetListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1ReplicaSetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55570,7 +55570,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1ReplicaSetListForAllNamespaces",
+			Name: WatchAppsV1ReplicaSetListForAllNamespacesOperation,
 			ID:   "watchAppsV1ReplicaSetListForAllNamespaces",
 		}
 	)
@@ -55578,7 +55578,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1ReplicaSetListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -55633,7 +55633,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1ReplicaSetListForAllNamespaces",
+			OperationName:    WatchAppsV1ReplicaSetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1ReplicaSetListForAllNamespaces",
 			Body:             nil,
@@ -55732,7 +55732,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1StatefulSetListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAppsV1StatefulSetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55763,7 +55763,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAppsV1StatefulSetListForAllNamespaces",
+			Name: WatchAppsV1StatefulSetListForAllNamespacesOperation,
 			ID:   "watchAppsV1StatefulSetListForAllNamespaces",
 		}
 	)
@@ -55771,7 +55771,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAppsV1StatefulSetListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -55826,7 +55826,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAppsV1StatefulSetListForAllNamespaces",
+			OperationName:    WatchAppsV1StatefulSetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1StatefulSetListForAllNamespaces",
 			Body:             nil,
@@ -55925,7 +55925,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -55956,7 +55956,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			Name: WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation,
 			ID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 		}
 	)
@@ -55964,7 +55964,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -56019,7 +56019,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			OperationName:    WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 			Body:             nil,
@@ -56118,7 +56118,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56149,7 +56149,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Name: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -56157,7 +56157,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -56212,7 +56212,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationName:    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -56319,7 +56319,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56350,7 +56350,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			Name: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation,
 			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 		}
 	)
@@ -56358,7 +56358,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -56413,7 +56413,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			OperationName:    WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 			Body:             nil,
@@ -56516,7 +56516,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56547,7 +56547,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			Name: WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation,
 			ID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 		}
 	)
@@ -56555,7 +56555,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -56610,7 +56610,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			OperationName:    WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 			Body:             nil,
@@ -56709,7 +56709,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56740,7 +56740,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Name: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -56748,7 +56748,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -56803,7 +56803,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationName:    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -56910,7 +56910,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -56941,7 +56941,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			Name: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation,
 			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 		}
 	)
@@ -56949,7 +56949,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -57004,7 +57004,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			OperationName:    WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 			Body:             nil,
@@ -57107,7 +57107,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57138,7 +57138,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			Name: WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation,
 			ID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 		}
 	)
@@ -57146,7 +57146,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -57201,7 +57201,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			OperationName:    WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 			Body:             nil,
@@ -57300,7 +57300,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57331,7 +57331,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Name: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		}
 	)
@@ -57339,7 +57339,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -57394,7 +57394,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationName:    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
@@ -57501,7 +57501,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57532,7 +57532,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			Name: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation,
 			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 		}
 	)
@@ -57540,7 +57540,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -57595,7 +57595,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			OperationName:    WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 			Body:             nil,
@@ -57698,7 +57698,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1CronJobListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1CronJobListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57729,7 +57729,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1CronJobListForAllNamespaces",
+			Name: WatchBatchV1CronJobListForAllNamespacesOperation,
 			ID:   "watchBatchV1CronJobListForAllNamespaces",
 		}
 	)
@@ -57737,7 +57737,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1CronJobListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -57792,7 +57792,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1CronJobListForAllNamespaces",
+			OperationName:    WatchBatchV1CronJobListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1CronJobListForAllNamespaces",
 			Body:             nil,
@@ -57891,7 +57891,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1JobListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1JobListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -57922,7 +57922,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1JobListForAllNamespaces",
+			Name: WatchBatchV1JobListForAllNamespacesOperation,
 			ID:   "watchBatchV1JobListForAllNamespaces",
 		}
 	)
@@ -57930,7 +57930,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1JobListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -57985,7 +57985,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1JobListForAllNamespaces",
+			OperationName:    WatchBatchV1JobListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1JobListForAllNamespaces",
 			Body:             nil,
@@ -58084,7 +58084,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedCronJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58115,7 +58115,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedCronJob",
+			Name: WatchBatchV1NamespacedCronJobOperation,
 			ID:   "watchBatchV1NamespacedCronJob",
 		}
 	)
@@ -58123,7 +58123,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1NamespacedCronJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -58178,7 +58178,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1NamespacedCronJob",
+			OperationName:    WatchBatchV1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedCronJob",
 			Body:             nil,
@@ -58285,7 +58285,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedCronJobList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1NamespacedCronJobListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58316,7 +58316,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedCronJobList",
+			Name: WatchBatchV1NamespacedCronJobListOperation,
 			ID:   "watchBatchV1NamespacedCronJobList",
 		}
 	)
@@ -58324,7 +58324,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1NamespacedCronJobListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -58379,7 +58379,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1NamespacedCronJobList",
+			OperationName:    WatchBatchV1NamespacedCronJobListOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedCronJobList",
 			Body:             nil,
@@ -58482,7 +58482,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1NamespacedJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58513,7 +58513,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedJob",
+			Name: WatchBatchV1NamespacedJobOperation,
 			ID:   "watchBatchV1NamespacedJob",
 		}
 	)
@@ -58521,7 +58521,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1NamespacedJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -58576,7 +58576,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1NamespacedJob",
+			OperationName:    WatchBatchV1NamespacedJobOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedJob",
 			Body:             nil,
@@ -58683,7 +58683,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedJobList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1NamespacedJobListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58714,7 +58714,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1NamespacedJobList",
+			Name: WatchBatchV1NamespacedJobListOperation,
 			ID:   "watchBatchV1NamespacedJobList",
 		}
 	)
@@ -58722,7 +58722,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1NamespacedJobListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -58777,7 +58777,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1NamespacedJobList",
+			OperationName:    WatchBatchV1NamespacedJobListOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedJobList",
 			Body:             nil,
@@ -58880,7 +58880,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1beta1CronJobListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1beta1CronJobListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -58911,7 +58911,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1beta1CronJobListForAllNamespaces",
+			Name: WatchBatchV1beta1CronJobListForAllNamespacesOperation,
 			ID:   "watchBatchV1beta1CronJobListForAllNamespaces",
 		}
 	)
@@ -58919,7 +58919,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1beta1CronJobListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -58974,7 +58974,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1beta1CronJobListForAllNamespaces",
+			OperationName:    WatchBatchV1beta1CronJobListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1CronJobListForAllNamespaces",
 			Body:             nil,
@@ -59073,7 +59073,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1beta1NamespacedCronJob",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1beta1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59104,7 +59104,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1beta1NamespacedCronJob",
+			Name: WatchBatchV1beta1NamespacedCronJobOperation,
 			ID:   "watchBatchV1beta1NamespacedCronJob",
 		}
 	)
@@ -59112,7 +59112,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1beta1NamespacedCronJobOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -59167,7 +59167,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1beta1NamespacedCronJob",
+			OperationName:    WatchBatchV1beta1NamespacedCronJobOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1NamespacedCronJob",
 			Body:             nil,
@@ -59274,7 +59274,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1beta1NamespacedCronJobList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchBatchV1beta1NamespacedCronJobListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59305,7 +59305,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchBatchV1beta1NamespacedCronJobList",
+			Name: WatchBatchV1beta1NamespacedCronJobListOperation,
 			ID:   "watchBatchV1beta1NamespacedCronJobList",
 		}
 	)
@@ -59313,7 +59313,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchBatchV1beta1NamespacedCronJobListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -59368,7 +59368,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchBatchV1beta1NamespacedCronJobList",
+			OperationName:    WatchBatchV1beta1NamespacedCronJobListOperation,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1NamespacedCronJobList",
 			Body:             nil,
@@ -59472,7 +59472,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCertificatesV1CertificateSigningRequest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCertificatesV1CertificateSigningRequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59503,7 +59503,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCertificatesV1CertificateSigningRequest",
+			Name: WatchCertificatesV1CertificateSigningRequestOperation,
 			ID:   "watchCertificatesV1CertificateSigningRequest",
 		}
 	)
@@ -59511,7 +59511,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCertificatesV1CertificateSigningRequestOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -59566,7 +59566,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCertificatesV1CertificateSigningRequest",
+			OperationName:    WatchCertificatesV1CertificateSigningRequestOperation,
 			OperationSummary: "",
 			OperationID:      "watchCertificatesV1CertificateSigningRequest",
 			Body:             nil,
@@ -59669,7 +59669,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCertificatesV1CertificateSigningRequestList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCertificatesV1CertificateSigningRequestListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59700,7 +59700,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCertificatesV1CertificateSigningRequestList",
+			Name: WatchCertificatesV1CertificateSigningRequestListOperation,
 			ID:   "watchCertificatesV1CertificateSigningRequestList",
 		}
 	)
@@ -59708,7 +59708,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCertificatesV1CertificateSigningRequestListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -59763,7 +59763,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCertificatesV1CertificateSigningRequestList",
+			OperationName:    WatchCertificatesV1CertificateSigningRequestListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCertificatesV1CertificateSigningRequestList",
 			Body:             nil,
@@ -59862,7 +59862,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoordinationV1LeaseListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoordinationV1LeaseListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -59893,7 +59893,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoordinationV1LeaseListForAllNamespaces",
+			Name: WatchCoordinationV1LeaseListForAllNamespacesOperation,
 			ID:   "watchCoordinationV1LeaseListForAllNamespaces",
 		}
 	)
@@ -59901,7 +59901,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoordinationV1LeaseListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -59956,7 +59956,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoordinationV1LeaseListForAllNamespaces",
+			OperationName:    WatchCoordinationV1LeaseListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1LeaseListForAllNamespaces",
 			Body:             nil,
@@ -60055,7 +60055,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoordinationV1NamespacedLease",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoordinationV1NamespacedLeaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60086,7 +60086,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoordinationV1NamespacedLease",
+			Name: WatchCoordinationV1NamespacedLeaseOperation,
 			ID:   "watchCoordinationV1NamespacedLease",
 		}
 	)
@@ -60094,7 +60094,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoordinationV1NamespacedLeaseOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -60149,7 +60149,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoordinationV1NamespacedLease",
+			OperationName:    WatchCoordinationV1NamespacedLeaseOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1NamespacedLease",
 			Body:             nil,
@@ -60256,7 +60256,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoordinationV1NamespacedLeaseList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoordinationV1NamespacedLeaseListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60287,7 +60287,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoordinationV1NamespacedLeaseList",
+			Name: WatchCoordinationV1NamespacedLeaseListOperation,
 			ID:   "watchCoordinationV1NamespacedLeaseList",
 		}
 	)
@@ -60295,7 +60295,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoordinationV1NamespacedLeaseListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -60350,7 +60350,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoordinationV1NamespacedLeaseList",
+			OperationName:    WatchCoordinationV1NamespacedLeaseListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1NamespacedLeaseList",
 			Body:             nil,
@@ -60453,7 +60453,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ConfigMapListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1ConfigMapListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60484,7 +60484,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ConfigMapListForAllNamespaces",
+			Name: WatchCoreV1ConfigMapListForAllNamespacesOperation,
 			ID:   "watchCoreV1ConfigMapListForAllNamespaces",
 		}
 	)
@@ -60492,7 +60492,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1ConfigMapListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -60547,7 +60547,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1ConfigMapListForAllNamespaces",
+			OperationName:    WatchCoreV1ConfigMapListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ConfigMapListForAllNamespaces",
 			Body:             nil,
@@ -60646,7 +60646,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1EndpointsListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1EndpointsListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60677,7 +60677,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1EndpointsListForAllNamespaces",
+			Name: WatchCoreV1EndpointsListForAllNamespacesOperation,
 			ID:   "watchCoreV1EndpointsListForAllNamespaces",
 		}
 	)
@@ -60685,7 +60685,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1EndpointsListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -60740,7 +60740,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1EndpointsListForAllNamespaces",
+			OperationName:    WatchCoreV1EndpointsListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1EndpointsListForAllNamespaces",
 			Body:             nil,
@@ -60839,7 +60839,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1EventListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1EventListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -60870,7 +60870,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1EventListForAllNamespaces",
+			Name: WatchCoreV1EventListForAllNamespacesOperation,
 			ID:   "watchCoreV1EventListForAllNamespaces",
 		}
 	)
@@ -60878,7 +60878,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1EventListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -60933,7 +60933,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1EventListForAllNamespaces",
+			OperationName:    WatchCoreV1EventListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1EventListForAllNamespaces",
 			Body:             nil,
@@ -61032,7 +61032,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1LimitRangeListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1LimitRangeListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61063,7 +61063,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1LimitRangeListForAllNamespaces",
+			Name: WatchCoreV1LimitRangeListForAllNamespacesOperation,
 			ID:   "watchCoreV1LimitRangeListForAllNamespaces",
 		}
 	)
@@ -61071,7 +61071,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1LimitRangeListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -61126,7 +61126,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1LimitRangeListForAllNamespaces",
+			OperationName:    WatchCoreV1LimitRangeListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1LimitRangeListForAllNamespaces",
 			Body:             nil,
@@ -61225,7 +61225,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1Namespace",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespaceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61256,7 +61256,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1Namespace",
+			Name: WatchCoreV1NamespaceOperation,
 			ID:   "watchCoreV1Namespace",
 		}
 	)
@@ -61264,7 +61264,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1Namespace", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespaceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -61319,7 +61319,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1Namespace",
+			OperationName:    WatchCoreV1NamespaceOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1Namespace",
 			Body:             nil,
@@ -61422,7 +61422,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespaceList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespaceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61453,7 +61453,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespaceList",
+			Name: WatchCoreV1NamespaceListOperation,
 			ID:   "watchCoreV1NamespaceList",
 		}
 	)
@@ -61461,7 +61461,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespaceListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -61516,7 +61516,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespaceList",
+			OperationName:    WatchCoreV1NamespaceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespaceList",
 			Body:             nil,
@@ -61615,7 +61615,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedConfigMap",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedConfigMapOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61646,7 +61646,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedConfigMap",
+			Name: WatchCoreV1NamespacedConfigMapOperation,
 			ID:   "watchCoreV1NamespacedConfigMap",
 		}
 	)
@@ -61654,7 +61654,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedConfigMapOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -61709,7 +61709,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedConfigMap",
+			OperationName:    WatchCoreV1NamespacedConfigMapOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedConfigMap",
 			Body:             nil,
@@ -61816,7 +61816,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedConfigMapList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedConfigMapListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61847,7 +61847,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedConfigMapList",
+			Name: WatchCoreV1NamespacedConfigMapListOperation,
 			ID:   "watchCoreV1NamespacedConfigMapList",
 		}
 	)
@@ -61855,7 +61855,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedConfigMapListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -61910,7 +61910,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedConfigMapList",
+			OperationName:    WatchCoreV1NamespacedConfigMapListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedConfigMapList",
 			Body:             nil,
@@ -62013,7 +62013,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEndpoints",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedEndpointsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62044,7 +62044,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEndpoints",
+			Name: WatchCoreV1NamespacedEndpointsOperation,
 			ID:   "watchCoreV1NamespacedEndpoints",
 		}
 	)
@@ -62052,7 +62052,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedEndpointsOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -62107,7 +62107,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedEndpoints",
+			OperationName:    WatchCoreV1NamespacedEndpointsOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEndpoints",
 			Body:             nil,
@@ -62214,7 +62214,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEndpointsList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedEndpointsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62245,7 +62245,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEndpointsList",
+			Name: WatchCoreV1NamespacedEndpointsListOperation,
 			ID:   "watchCoreV1NamespacedEndpointsList",
 		}
 	)
@@ -62253,7 +62253,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedEndpointsListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -62308,7 +62308,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedEndpointsList",
+			OperationName:    WatchCoreV1NamespacedEndpointsListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEndpointsList",
 			Body:             nil,
@@ -62411,7 +62411,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62442,7 +62442,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEvent",
+			Name: WatchCoreV1NamespacedEventOperation,
 			ID:   "watchCoreV1NamespacedEvent",
 		}
 	)
@@ -62450,7 +62450,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -62505,7 +62505,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedEvent",
+			OperationName:    WatchCoreV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEvent",
 			Body:             nil,
@@ -62612,7 +62612,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEventList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedEventListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62643,7 +62643,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedEventList",
+			Name: WatchCoreV1NamespacedEventListOperation,
 			ID:   "watchCoreV1NamespacedEventList",
 		}
 	)
@@ -62651,7 +62651,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedEventListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -62706,7 +62706,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedEventList",
+			OperationName:    WatchCoreV1NamespacedEventListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEventList",
 			Body:             nil,
@@ -62809,7 +62809,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedLimitRange",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedLimitRangeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62840,7 +62840,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedLimitRange",
+			Name: WatchCoreV1NamespacedLimitRangeOperation,
 			ID:   "watchCoreV1NamespacedLimitRange",
 		}
 	)
@@ -62848,7 +62848,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedLimitRangeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -62903,7 +62903,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedLimitRange",
+			OperationName:    WatchCoreV1NamespacedLimitRangeOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedLimitRange",
 			Body:             nil,
@@ -63010,7 +63010,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedLimitRangeList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedLimitRangeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63041,7 +63041,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedLimitRangeList",
+			Name: WatchCoreV1NamespacedLimitRangeListOperation,
 			ID:   "watchCoreV1NamespacedLimitRangeList",
 		}
 	)
@@ -63049,7 +63049,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedLimitRangeListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -63104,7 +63104,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedLimitRangeList",
+			OperationName:    WatchCoreV1NamespacedLimitRangeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedLimitRangeList",
 			Body:             nil,
@@ -63207,7 +63207,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPersistentVolumeClaim",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedPersistentVolumeClaimOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63238,7 +63238,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPersistentVolumeClaim",
+			Name: WatchCoreV1NamespacedPersistentVolumeClaimOperation,
 			ID:   "watchCoreV1NamespacedPersistentVolumeClaim",
 		}
 	)
@@ -63246,7 +63246,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedPersistentVolumeClaimOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -63301,7 +63301,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedPersistentVolumeClaim",
+			OperationName:    WatchCoreV1NamespacedPersistentVolumeClaimOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPersistentVolumeClaim",
 			Body:             nil,
@@ -63408,7 +63408,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPersistentVolumeClaimList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedPersistentVolumeClaimListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63439,7 +63439,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPersistentVolumeClaimList",
+			Name: WatchCoreV1NamespacedPersistentVolumeClaimListOperation,
 			ID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
 		}
 	)
@@ -63447,7 +63447,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedPersistentVolumeClaimListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -63502,7 +63502,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedPersistentVolumeClaimList",
+			OperationName:    WatchCoreV1NamespacedPersistentVolumeClaimListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPersistentVolumeClaimList",
 			Body:             nil,
@@ -63605,7 +63605,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPod",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedPodOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63636,7 +63636,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPod",
+			Name: WatchCoreV1NamespacedPodOperation,
 			ID:   "watchCoreV1NamespacedPod",
 		}
 	)
@@ -63644,7 +63644,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedPodOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -63699,7 +63699,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedPod",
+			OperationName:    WatchCoreV1NamespacedPodOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPod",
 			Body:             nil,
@@ -63806,7 +63806,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPodList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedPodListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -63837,7 +63837,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPodList",
+			Name: WatchCoreV1NamespacedPodListOperation,
 			ID:   "watchCoreV1NamespacedPodList",
 		}
 	)
@@ -63845,7 +63845,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedPodListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -63900,7 +63900,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedPodList",
+			OperationName:    WatchCoreV1NamespacedPodListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodList",
 			Body:             nil,
@@ -64003,7 +64003,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPodTemplate",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedPodTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64034,7 +64034,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPodTemplate",
+			Name: WatchCoreV1NamespacedPodTemplateOperation,
 			ID:   "watchCoreV1NamespacedPodTemplate",
 		}
 	)
@@ -64042,7 +64042,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedPodTemplateOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -64097,7 +64097,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedPodTemplate",
+			OperationName:    WatchCoreV1NamespacedPodTemplateOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodTemplate",
 			Body:             nil,
@@ -64204,7 +64204,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPodTemplateList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedPodTemplateListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64235,7 +64235,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedPodTemplateList",
+			Name: WatchCoreV1NamespacedPodTemplateListOperation,
 			ID:   "watchCoreV1NamespacedPodTemplateList",
 		}
 	)
@@ -64243,7 +64243,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedPodTemplateListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -64298,7 +64298,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedPodTemplateList",
+			OperationName:    WatchCoreV1NamespacedPodTemplateListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodTemplateList",
 			Body:             nil,
@@ -64401,7 +64401,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedReplicationController",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedReplicationControllerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64432,7 +64432,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedReplicationController",
+			Name: WatchCoreV1NamespacedReplicationControllerOperation,
 			ID:   "watchCoreV1NamespacedReplicationController",
 		}
 	)
@@ -64440,7 +64440,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedReplicationControllerOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -64495,7 +64495,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedReplicationController",
+			OperationName:    WatchCoreV1NamespacedReplicationControllerOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedReplicationController",
 			Body:             nil,
@@ -64602,7 +64602,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedReplicationControllerList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedReplicationControllerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64633,7 +64633,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedReplicationControllerList",
+			Name: WatchCoreV1NamespacedReplicationControllerListOperation,
 			ID:   "watchCoreV1NamespacedReplicationControllerList",
 		}
 	)
@@ -64641,7 +64641,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedReplicationControllerListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -64696,7 +64696,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedReplicationControllerList",
+			OperationName:    WatchCoreV1NamespacedReplicationControllerListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedReplicationControllerList",
 			Body:             nil,
@@ -64799,7 +64799,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedResourceQuota",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedResourceQuotaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64830,7 +64830,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedResourceQuota",
+			Name: WatchCoreV1NamespacedResourceQuotaOperation,
 			ID:   "watchCoreV1NamespacedResourceQuota",
 		}
 	)
@@ -64838,7 +64838,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedResourceQuotaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -64893,7 +64893,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedResourceQuota",
+			OperationName:    WatchCoreV1NamespacedResourceQuotaOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedResourceQuota",
 			Body:             nil,
@@ -65000,7 +65000,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedResourceQuotaList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedResourceQuotaListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65031,7 +65031,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedResourceQuotaList",
+			Name: WatchCoreV1NamespacedResourceQuotaListOperation,
 			ID:   "watchCoreV1NamespacedResourceQuotaList",
 		}
 	)
@@ -65039,7 +65039,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedResourceQuotaListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -65094,7 +65094,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedResourceQuotaList",
+			OperationName:    WatchCoreV1NamespacedResourceQuotaListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedResourceQuotaList",
 			Body:             nil,
@@ -65197,7 +65197,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedSecret",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65228,7 +65228,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedSecret",
+			Name: WatchCoreV1NamespacedSecretOperation,
 			ID:   "watchCoreV1NamespacedSecret",
 		}
 	)
@@ -65236,7 +65236,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedSecretOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -65291,7 +65291,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedSecret",
+			OperationName:    WatchCoreV1NamespacedSecretOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedSecret",
 			Body:             nil,
@@ -65398,7 +65398,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedSecretList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedSecretListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65429,7 +65429,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedSecretList",
+			Name: WatchCoreV1NamespacedSecretListOperation,
 			ID:   "watchCoreV1NamespacedSecretList",
 		}
 	)
@@ -65437,7 +65437,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedSecretListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -65492,7 +65492,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedSecretList",
+			OperationName:    WatchCoreV1NamespacedSecretListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedSecretList",
 			Body:             nil,
@@ -65595,7 +65595,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedService",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65626,7 +65626,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedService",
+			Name: WatchCoreV1NamespacedServiceOperation,
 			ID:   "watchCoreV1NamespacedService",
 		}
 	)
@@ -65634,7 +65634,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedServiceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -65689,7 +65689,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedService",
+			OperationName:    WatchCoreV1NamespacedServiceOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedService",
 			Body:             nil,
@@ -65796,7 +65796,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedServiceAccount",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedServiceAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -65827,7 +65827,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedServiceAccount",
+			Name: WatchCoreV1NamespacedServiceAccountOperation,
 			ID:   "watchCoreV1NamespacedServiceAccount",
 		}
 	)
@@ -65835,7 +65835,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedServiceAccountOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -65890,7 +65890,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedServiceAccount",
+			OperationName:    WatchCoreV1NamespacedServiceAccountOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceAccount",
 			Body:             nil,
@@ -65997,7 +65997,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedServiceAccountList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedServiceAccountListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66028,7 +66028,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedServiceAccountList",
+			Name: WatchCoreV1NamespacedServiceAccountListOperation,
 			ID:   "watchCoreV1NamespacedServiceAccountList",
 		}
 	)
@@ -66036,7 +66036,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedServiceAccountListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -66091,7 +66091,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedServiceAccountList",
+			OperationName:    WatchCoreV1NamespacedServiceAccountListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceAccountList",
 			Body:             nil,
@@ -66194,7 +66194,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedServiceList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NamespacedServiceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66225,7 +66225,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NamespacedServiceList",
+			Name: WatchCoreV1NamespacedServiceListOperation,
 			ID:   "watchCoreV1NamespacedServiceList",
 		}
 	)
@@ -66233,7 +66233,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NamespacedServiceListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -66288,7 +66288,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NamespacedServiceList",
+			OperationName:    WatchCoreV1NamespacedServiceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceList",
 			Body:             nil,
@@ -66391,7 +66391,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1Node",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66422,7 +66422,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1Node",
+			Name: WatchCoreV1NodeOperation,
 			ID:   "watchCoreV1Node",
 		}
 	)
@@ -66430,7 +66430,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1Node", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NodeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -66485,7 +66485,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1Node",
+			OperationName:    WatchCoreV1NodeOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1Node",
 			Body:             nil,
@@ -66588,7 +66588,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NodeList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1NodeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66619,7 +66619,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1NodeList",
+			Name: WatchCoreV1NodeListOperation,
 			ID:   "watchCoreV1NodeList",
 		}
 	)
@@ -66627,7 +66627,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1NodeList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1NodeListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -66682,7 +66682,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1NodeList",
+			OperationName:    WatchCoreV1NodeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NodeList",
 			Body:             nil,
@@ -66781,7 +66781,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PersistentVolume",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1PersistentVolumeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -66812,7 +66812,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PersistentVolume",
+			Name: WatchCoreV1PersistentVolumeOperation,
 			ID:   "watchCoreV1PersistentVolume",
 		}
 	)
@@ -66820,7 +66820,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1PersistentVolumeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -66875,7 +66875,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1PersistentVolume",
+			OperationName:    WatchCoreV1PersistentVolumeOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolume",
 			Body:             nil,
@@ -66978,7 +66978,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67009,7 +67009,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			Name: WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation,
 			ID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
 		}
 	)
@@ -67017,7 +67017,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -67072,7 +67072,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			OperationName:    WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
 			Body:             nil,
@@ -67171,7 +67171,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PersistentVolumeList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1PersistentVolumeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67202,7 +67202,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PersistentVolumeList",
+			Name: WatchCoreV1PersistentVolumeListOperation,
 			ID:   "watchCoreV1PersistentVolumeList",
 		}
 	)
@@ -67210,7 +67210,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1PersistentVolumeListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -67265,7 +67265,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1PersistentVolumeList",
+			OperationName:    WatchCoreV1PersistentVolumeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolumeList",
 			Body:             nil,
@@ -67364,7 +67364,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PodListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1PodListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67395,7 +67395,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PodListForAllNamespaces",
+			Name: WatchCoreV1PodListForAllNamespacesOperation,
 			ID:   "watchCoreV1PodListForAllNamespaces",
 		}
 	)
@@ -67403,7 +67403,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1PodListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -67458,7 +67458,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1PodListForAllNamespaces",
+			OperationName:    WatchCoreV1PodListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PodListForAllNamespaces",
 			Body:             nil,
@@ -67557,7 +67557,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PodTemplateListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1PodTemplateListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67588,7 +67588,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1PodTemplateListForAllNamespaces",
+			Name: WatchCoreV1PodTemplateListForAllNamespacesOperation,
 			ID:   "watchCoreV1PodTemplateListForAllNamespaces",
 		}
 	)
@@ -67596,7 +67596,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1PodTemplateListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -67651,7 +67651,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1PodTemplateListForAllNamespaces",
+			OperationName:    WatchCoreV1PodTemplateListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PodTemplateListForAllNamespaces",
 			Body:             nil,
@@ -67750,7 +67750,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ReplicationControllerListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1ReplicationControllerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67781,7 +67781,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ReplicationControllerListForAllNamespaces",
+			Name: WatchCoreV1ReplicationControllerListForAllNamespacesOperation,
 			ID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
 		}
 	)
@@ -67789,7 +67789,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1ReplicationControllerListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -67844,7 +67844,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1ReplicationControllerListForAllNamespaces",
+			OperationName:    WatchCoreV1ReplicationControllerListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ReplicationControllerListForAllNamespaces",
 			Body:             nil,
@@ -67943,7 +67943,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ResourceQuotaListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1ResourceQuotaListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -67974,7 +67974,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ResourceQuotaListForAllNamespaces",
+			Name: WatchCoreV1ResourceQuotaListForAllNamespacesOperation,
 			ID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
 		}
 	)
@@ -67982,7 +67982,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1ResourceQuotaListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -68037,7 +68037,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1ResourceQuotaListForAllNamespaces",
+			OperationName:    WatchCoreV1ResourceQuotaListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ResourceQuotaListForAllNamespaces",
 			Body:             nil,
@@ -68136,7 +68136,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1SecretListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1SecretListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68167,7 +68167,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1SecretListForAllNamespaces",
+			Name: WatchCoreV1SecretListForAllNamespacesOperation,
 			ID:   "watchCoreV1SecretListForAllNamespaces",
 		}
 	)
@@ -68175,7 +68175,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1SecretListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -68230,7 +68230,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1SecretListForAllNamespaces",
+			OperationName:    WatchCoreV1SecretListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1SecretListForAllNamespaces",
 			Body:             nil,
@@ -68329,7 +68329,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ServiceAccountListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1ServiceAccountListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68360,7 +68360,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ServiceAccountListForAllNamespaces",
+			Name: WatchCoreV1ServiceAccountListForAllNamespacesOperation,
 			ID:   "watchCoreV1ServiceAccountListForAllNamespaces",
 		}
 	)
@@ -68368,7 +68368,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1ServiceAccountListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -68423,7 +68423,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1ServiceAccountListForAllNamespaces",
+			OperationName:    WatchCoreV1ServiceAccountListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ServiceAccountListForAllNamespaces",
 			Body:             nil,
@@ -68522,7 +68522,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ServiceListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchCoreV1ServiceListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68553,7 +68553,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchCoreV1ServiceListForAllNamespaces",
+			Name: WatchCoreV1ServiceListForAllNamespacesOperation,
 			ID:   "watchCoreV1ServiceListForAllNamespaces",
 		}
 	)
@@ -68561,7 +68561,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchCoreV1ServiceListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -68616,7 +68616,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchCoreV1ServiceListForAllNamespaces",
+			OperationName:    WatchCoreV1ServiceListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ServiceListForAllNamespaces",
 			Body:             nil,
@@ -68715,7 +68715,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68746,7 +68746,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
+			Name: WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation,
 			ID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
 		}
 	)
@@ -68754,7 +68754,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -68809,7 +68809,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
+			OperationName:    WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1EndpointSliceListForAllNamespaces",
 			Body:             nil,
@@ -68908,7 +68908,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1NamespacedEndpointSlice",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchDiscoveryV1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68939,7 +68939,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1NamespacedEndpointSlice",
+			Name: WatchDiscoveryV1NamespacedEndpointSliceOperation,
 			ID:   "watchDiscoveryV1NamespacedEndpointSlice",
 		}
 	)
@@ -68947,7 +68947,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchDiscoveryV1NamespacedEndpointSliceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -69002,7 +69002,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchDiscoveryV1NamespacedEndpointSlice",
+			OperationName:    WatchDiscoveryV1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1NamespacedEndpointSlice",
 			Body:             nil,
@@ -69109,7 +69109,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1NamespacedEndpointSliceList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchDiscoveryV1NamespacedEndpointSliceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69140,7 +69140,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1NamespacedEndpointSliceList",
+			Name: WatchDiscoveryV1NamespacedEndpointSliceListOperation,
 			ID:   "watchDiscoveryV1NamespacedEndpointSliceList",
 		}
 	)
@@ -69148,7 +69148,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchDiscoveryV1NamespacedEndpointSliceListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -69203,7 +69203,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchDiscoveryV1NamespacedEndpointSliceList",
+			OperationName:    WatchDiscoveryV1NamespacedEndpointSliceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1NamespacedEndpointSliceList",
 			Body:             nil,
@@ -69306,7 +69306,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69337,7 +69337,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			Name: WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation,
 			ID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 		}
 	)
@@ -69345,7 +69345,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -69400,7 +69400,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			OperationName:    WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 			Body:             nil,
@@ -69499,7 +69499,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1beta1NamespacedEndpointSlice",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchDiscoveryV1beta1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69530,7 +69530,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
+			Name: WatchDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			ID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
 		}
 	)
@@ -69538,7 +69538,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchDiscoveryV1beta1NamespacedEndpointSliceOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -69593,7 +69593,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationName:    WatchDiscoveryV1beta1NamespacedEndpointSliceOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:             nil,
@@ -69700,7 +69700,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69731,7 +69731,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
+			Name: WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation,
 			ID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
 		}
 	)
@@ -69739,7 +69739,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -69794,7 +69794,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
+			OperationName:    WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation,
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1NamespacedEndpointSliceList",
 			Body:             nil,
@@ -69897,7 +69897,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1EventListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchEventsV1EventListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -69928,7 +69928,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1EventListForAllNamespaces",
+			Name: WatchEventsV1EventListForAllNamespacesOperation,
 			ID:   "watchEventsV1EventListForAllNamespaces",
 		}
 	)
@@ -69936,7 +69936,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchEventsV1EventListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -69991,7 +69991,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchEventsV1EventListForAllNamespaces",
+			OperationName:    WatchEventsV1EventListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1EventListForAllNamespaces",
 			Body:             nil,
@@ -70090,7 +70090,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchEventsV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70121,7 +70121,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1NamespacedEvent",
+			Name: WatchEventsV1NamespacedEventOperation,
 			ID:   "watchEventsV1NamespacedEvent",
 		}
 	)
@@ -70129,7 +70129,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchEventsV1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -70184,7 +70184,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchEventsV1NamespacedEvent",
+			OperationName:    WatchEventsV1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1NamespacedEvent",
 			Body:             nil,
@@ -70291,7 +70291,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1NamespacedEventList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchEventsV1NamespacedEventListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70322,7 +70322,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1NamespacedEventList",
+			Name: WatchEventsV1NamespacedEventListOperation,
 			ID:   "watchEventsV1NamespacedEventList",
 		}
 	)
@@ -70330,7 +70330,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchEventsV1NamespacedEventListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -70385,7 +70385,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchEventsV1NamespacedEventList",
+			OperationName:    WatchEventsV1NamespacedEventListOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1NamespacedEventList",
 			Body:             nil,
@@ -70488,7 +70488,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1beta1EventListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchEventsV1beta1EventListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70519,7 +70519,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1beta1EventListForAllNamespaces",
+			Name: WatchEventsV1beta1EventListForAllNamespacesOperation,
 			ID:   "watchEventsV1beta1EventListForAllNamespaces",
 		}
 	)
@@ -70527,7 +70527,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchEventsV1beta1EventListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -70582,7 +70582,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchEventsV1beta1EventListForAllNamespaces",
+			OperationName:    WatchEventsV1beta1EventListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1EventListForAllNamespaces",
 			Body:             nil,
@@ -70681,7 +70681,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1beta1NamespacedEvent",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchEventsV1beta1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70712,7 +70712,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1beta1NamespacedEvent",
+			Name: WatchEventsV1beta1NamespacedEventOperation,
 			ID:   "watchEventsV1beta1NamespacedEvent",
 		}
 	)
@@ -70720,7 +70720,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchEventsV1beta1NamespacedEventOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -70775,7 +70775,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchEventsV1beta1NamespacedEvent",
+			OperationName:    WatchEventsV1beta1NamespacedEventOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1NamespacedEvent",
 			Body:             nil,
@@ -70882,7 +70882,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1beta1NamespacedEventList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchEventsV1beta1NamespacedEventListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -70913,7 +70913,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchEventsV1beta1NamespacedEventList",
+			Name: WatchEventsV1beta1NamespacedEventListOperation,
 			ID:   "watchEventsV1beta1NamespacedEventList",
 		}
 	)
@@ -70921,7 +70921,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchEventsV1beta1NamespacedEventListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -70976,7 +70976,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchEventsV1beta1NamespacedEventList",
+			OperationName:    WatchEventsV1beta1NamespacedEventListOperation,
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1NamespacedEventList",
 			Body:             nil,
@@ -71079,7 +71079,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1FlowSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta1FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71110,7 +71110,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1FlowSchema",
+			Name: WatchFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			ID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
 		}
 	)
@@ -71118,7 +71118,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1FlowSchemaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -71173,7 +71173,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta1FlowSchema",
+			OperationName:    WatchFlowcontrolApiserverV1beta1FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1FlowSchema",
 			Body:             nil,
@@ -71276,7 +71276,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71307,7 +71307,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
+			Name: WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation,
 			ID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
 		}
 	)
@@ -71315,7 +71315,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -71370,7 +71370,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
+			OperationName:    WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1FlowSchemaList",
 			Body:             nil,
@@ -71470,7 +71470,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71501,7 +71501,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Name: WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		}
 	)
@@ -71509,7 +71509,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -71564,7 +71564,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationName:    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:             nil,
@@ -71667,7 +71667,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71698,7 +71698,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			Name: WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation,
 			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 		}
 	)
@@ -71706,7 +71706,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -71761,7 +71761,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			OperationName:    WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 			Body:             nil,
@@ -71860,7 +71860,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2FlowSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta2FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -71891,7 +71891,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2FlowSchema",
+			Name: WatchFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			ID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
 		}
 	)
@@ -71899,7 +71899,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2FlowSchemaOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -71954,7 +71954,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta2FlowSchema",
+			OperationName:    WatchFlowcontrolApiserverV1beta2FlowSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2FlowSchema",
 			Body:             nil,
@@ -72057,7 +72057,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72088,7 +72088,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
+			Name: WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation,
 			ID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
 		}
 	)
@@ -72096,7 +72096,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -72151,7 +72151,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
+			OperationName:    WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2FlowSchemaList",
 			Body:             nil,
@@ -72251,7 +72251,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72282,7 +72282,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Name: WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		}
 	)
@@ -72290,7 +72290,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -72345,7 +72345,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationName:    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:             nil,
@@ -72448,7 +72448,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72479,7 +72479,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			Name: WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation,
 			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 		}
 	)
@@ -72487,7 +72487,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -72542,7 +72542,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			OperationName:    WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation,
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 			Body:             nil,
@@ -72641,7 +72641,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchInternalApiserverV1alpha1StorageVersion",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchInternalApiserverV1alpha1StorageVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72672,7 +72672,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchInternalApiserverV1alpha1StorageVersion",
+			Name: WatchInternalApiserverV1alpha1StorageVersionOperation,
 			ID:   "watchInternalApiserverV1alpha1StorageVersion",
 		}
 	)
@@ -72680,7 +72680,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchInternalApiserverV1alpha1StorageVersionOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -72735,7 +72735,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchInternalApiserverV1alpha1StorageVersion",
+			OperationName:    WatchInternalApiserverV1alpha1StorageVersionOperation,
 			OperationSummary: "",
 			OperationID:      "watchInternalApiserverV1alpha1StorageVersion",
 			Body:             nil,
@@ -72838,7 +72838,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchInternalApiserverV1alpha1StorageVersionList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchInternalApiserverV1alpha1StorageVersionListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -72869,7 +72869,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchInternalApiserverV1alpha1StorageVersionList",
+			Name: WatchInternalApiserverV1alpha1StorageVersionListOperation,
 			ID:   "watchInternalApiserverV1alpha1StorageVersionList",
 		}
 	)
@@ -72877,7 +72877,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchInternalApiserverV1alpha1StorageVersionListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -72932,7 +72932,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchInternalApiserverV1alpha1StorageVersionList",
+			OperationName:    WatchInternalApiserverV1alpha1StorageVersionListOperation,
 			OperationSummary: "",
 			OperationID:      "watchInternalApiserverV1alpha1StorageVersionList",
 			Body:             nil,
@@ -73031,7 +73031,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1IngressClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1IngressClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73062,7 +73062,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1IngressClass",
+			Name: WatchNetworkingV1IngressClassOperation,
 			ID:   "watchNetworkingV1IngressClass",
 		}
 	)
@@ -73070,7 +73070,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1IngressClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -73125,7 +73125,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1IngressClass",
+			OperationName:    WatchNetworkingV1IngressClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressClass",
 			Body:             nil,
@@ -73228,7 +73228,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1IngressClassList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1IngressClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73259,7 +73259,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1IngressClassList",
+			Name: WatchNetworkingV1IngressClassListOperation,
 			ID:   "watchNetworkingV1IngressClassList",
 		}
 	)
@@ -73267,7 +73267,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1IngressClassListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -73322,7 +73322,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1IngressClassList",
+			OperationName:    WatchNetworkingV1IngressClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressClassList",
 			Body:             nil,
@@ -73421,7 +73421,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1IngressListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1IngressListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73452,7 +73452,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1IngressListForAllNamespaces",
+			Name: WatchNetworkingV1IngressListForAllNamespacesOperation,
 			ID:   "watchNetworkingV1IngressListForAllNamespaces",
 		}
 	)
@@ -73460,7 +73460,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1IngressListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -73515,7 +73515,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1IngressListForAllNamespaces",
+			OperationName:    WatchNetworkingV1IngressListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressListForAllNamespaces",
 			Body:             nil,
@@ -73614,7 +73614,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedIngress",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1NamespacedIngressOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73645,7 +73645,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedIngress",
+			Name: WatchNetworkingV1NamespacedIngressOperation,
 			ID:   "watchNetworkingV1NamespacedIngress",
 		}
 	)
@@ -73653,7 +73653,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1NamespacedIngressOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -73708,7 +73708,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1NamespacedIngress",
+			OperationName:    WatchNetworkingV1NamespacedIngressOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedIngress",
 			Body:             nil,
@@ -73815,7 +73815,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedIngressList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1NamespacedIngressListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -73846,7 +73846,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedIngressList",
+			Name: WatchNetworkingV1NamespacedIngressListOperation,
 			ID:   "watchNetworkingV1NamespacedIngressList",
 		}
 	)
@@ -73854,7 +73854,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1NamespacedIngressListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -73909,7 +73909,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1NamespacedIngressList",
+			OperationName:    WatchNetworkingV1NamespacedIngressListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedIngressList",
 			Body:             nil,
@@ -74012,7 +74012,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedNetworkPolicy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1NamespacedNetworkPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74043,7 +74043,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedNetworkPolicy",
+			Name: WatchNetworkingV1NamespacedNetworkPolicyOperation,
 			ID:   "watchNetworkingV1NamespacedNetworkPolicy",
 		}
 	)
@@ -74051,7 +74051,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1NamespacedNetworkPolicyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -74106,7 +74106,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1NamespacedNetworkPolicy",
+			OperationName:    WatchNetworkingV1NamespacedNetworkPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedNetworkPolicy",
 			Body:             nil,
@@ -74213,7 +74213,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedNetworkPolicyList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1NamespacedNetworkPolicyListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74244,7 +74244,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NamespacedNetworkPolicyList",
+			Name: WatchNetworkingV1NamespacedNetworkPolicyListOperation,
 			ID:   "watchNetworkingV1NamespacedNetworkPolicyList",
 		}
 	)
@@ -74252,7 +74252,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1NamespacedNetworkPolicyListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -74307,7 +74307,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1NamespacedNetworkPolicyList",
+			OperationName:    WatchNetworkingV1NamespacedNetworkPolicyListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedNetworkPolicyList",
 			Body:             nil,
@@ -74410,7 +74410,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74441,7 +74441,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
+			Name: WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation,
 			ID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
 		}
 	)
@@ -74449,7 +74449,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -74504,7 +74504,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
+			OperationName:    WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NetworkPolicyListForAllNamespaces",
 			Body:             nil,
@@ -74603,7 +74603,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNodeV1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74634,7 +74634,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1RuntimeClass",
+			Name: WatchNodeV1RuntimeClassOperation,
 			ID:   "watchNodeV1RuntimeClass",
 		}
 	)
@@ -74642,7 +74642,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNodeV1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -74697,7 +74697,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNodeV1RuntimeClass",
+			OperationName:    WatchNodeV1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1RuntimeClass",
 			Body:             nil,
@@ -74800,7 +74800,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1RuntimeClassList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNodeV1RuntimeClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -74831,7 +74831,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1RuntimeClassList",
+			Name: WatchNodeV1RuntimeClassListOperation,
 			ID:   "watchNodeV1RuntimeClassList",
 		}
 	)
@@ -74839,7 +74839,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNodeV1RuntimeClassListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -74894,7 +74894,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNodeV1RuntimeClassList",
+			OperationName:    WatchNodeV1RuntimeClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1RuntimeClassList",
 			Body:             nil,
@@ -74993,7 +74993,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1alpha1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNodeV1alpha1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75024,7 +75024,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1alpha1RuntimeClass",
+			Name: WatchNodeV1alpha1RuntimeClassOperation,
 			ID:   "watchNodeV1alpha1RuntimeClass",
 		}
 	)
@@ -75032,7 +75032,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNodeV1alpha1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -75087,7 +75087,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNodeV1alpha1RuntimeClass",
+			OperationName:    WatchNodeV1alpha1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1alpha1RuntimeClass",
 			Body:             nil,
@@ -75190,7 +75190,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1alpha1RuntimeClassList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNodeV1alpha1RuntimeClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75221,7 +75221,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1alpha1RuntimeClassList",
+			Name: WatchNodeV1alpha1RuntimeClassListOperation,
 			ID:   "watchNodeV1alpha1RuntimeClassList",
 		}
 	)
@@ -75229,7 +75229,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNodeV1alpha1RuntimeClassListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -75284,7 +75284,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNodeV1alpha1RuntimeClassList",
+			OperationName:    WatchNodeV1alpha1RuntimeClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1alpha1RuntimeClassList",
 			Body:             nil,
@@ -75383,7 +75383,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1beta1RuntimeClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNodeV1beta1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75414,7 +75414,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1beta1RuntimeClass",
+			Name: WatchNodeV1beta1RuntimeClassOperation,
 			ID:   "watchNodeV1beta1RuntimeClass",
 		}
 	)
@@ -75422,7 +75422,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNodeV1beta1RuntimeClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -75477,7 +75477,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNodeV1beta1RuntimeClass",
+			OperationName:    WatchNodeV1beta1RuntimeClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1beta1RuntimeClass",
 			Body:             nil,
@@ -75580,7 +75580,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1beta1RuntimeClassList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchNodeV1beta1RuntimeClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75611,7 +75611,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchNodeV1beta1RuntimeClassList",
+			Name: WatchNodeV1beta1RuntimeClassListOperation,
 			ID:   "watchNodeV1beta1RuntimeClassList",
 		}
 	)
@@ -75619,7 +75619,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchNodeV1beta1RuntimeClassListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -75674,7 +75674,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchNodeV1beta1RuntimeClassList",
+			OperationName:    WatchNodeV1beta1RuntimeClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchNodeV1beta1RuntimeClassList",
 			Body:             nil,
@@ -75773,7 +75773,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1NamespacedPodDisruptionBudget",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -75804,7 +75804,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1NamespacedPodDisruptionBudget",
+			Name: WatchPolicyV1NamespacedPodDisruptionBudgetOperation,
 			ID:   "watchPolicyV1NamespacedPodDisruptionBudget",
 		}
 	)
@@ -75812,7 +75812,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1NamespacedPodDisruptionBudgetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -75867,7 +75867,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1NamespacedPodDisruptionBudget",
+			OperationName:    WatchPolicyV1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1NamespacedPodDisruptionBudget",
 			Body:             nil,
@@ -75974,7 +75974,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1NamespacedPodDisruptionBudgetList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1NamespacedPodDisruptionBudgetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76005,7 +76005,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
+			Name: WatchPolicyV1NamespacedPodDisruptionBudgetListOperation,
 			ID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
 		}
 	)
@@ -76013,7 +76013,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1NamespacedPodDisruptionBudgetListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -76068,7 +76068,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1NamespacedPodDisruptionBudgetList",
+			OperationName:    WatchPolicyV1NamespacedPodDisruptionBudgetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1NamespacedPodDisruptionBudgetList",
 			Body:             nil,
@@ -76171,7 +76171,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76202,7 +76202,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			Name: WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation,
 			ID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 		}
 	)
@@ -76210,7 +76210,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -76265,7 +76265,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			OperationName:    WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 			Body:             nil,
@@ -76364,7 +76364,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76395,7 +76395,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
+			Name: WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
 		}
 	)
@@ -76403,7 +76403,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -76458,7 +76458,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationName:    WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:             nil,
@@ -76565,7 +76565,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76596,7 +76596,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			Name: WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation,
 			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 		}
 	)
@@ -76604,7 +76604,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -76659,7 +76659,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			OperationName:    WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 			Body:             nil,
@@ -76762,7 +76762,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76793,7 +76793,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			Name: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation,
 			ID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 		}
 	)
@@ -76801,7 +76801,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -76856,7 +76856,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			OperationName:    WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 			Body:             nil,
@@ -76955,7 +76955,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1PodSecurityPolicy",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1beta1PodSecurityPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -76986,7 +76986,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1PodSecurityPolicy",
+			Name: WatchPolicyV1beta1PodSecurityPolicyOperation,
 			ID:   "watchPolicyV1beta1PodSecurityPolicy",
 		}
 	)
@@ -76994,7 +76994,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1beta1PodSecurityPolicyOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -77049,7 +77049,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1beta1PodSecurityPolicy",
+			OperationName:    WatchPolicyV1beta1PodSecurityPolicyOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodSecurityPolicy",
 			Body:             nil,
@@ -77152,7 +77152,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1PodSecurityPolicyList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchPolicyV1beta1PodSecurityPolicyListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77183,7 +77183,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchPolicyV1beta1PodSecurityPolicyList",
+			Name: WatchPolicyV1beta1PodSecurityPolicyListOperation,
 			ID:   "watchPolicyV1beta1PodSecurityPolicyList",
 		}
 	)
@@ -77191,7 +77191,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchPolicyV1beta1PodSecurityPolicyListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -77246,7 +77246,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchPolicyV1beta1PodSecurityPolicyList",
+			OperationName:    WatchPolicyV1beta1PodSecurityPolicyListOperation,
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodSecurityPolicyList",
 			Body:             nil,
@@ -77345,7 +77345,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRole",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1ClusterRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77376,7 +77376,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRole",
+			Name: WatchRbacAuthorizationV1ClusterRoleOperation,
 			ID:   "watchRbacAuthorizationV1ClusterRole",
 		}
 	)
@@ -77384,7 +77384,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -77439,7 +77439,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1ClusterRole",
+			OperationName:    WatchRbacAuthorizationV1ClusterRoleOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRole",
 			Body:             nil,
@@ -77542,7 +77542,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRoleBinding",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1ClusterRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77573,7 +77573,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRoleBinding",
+			Name: WatchRbacAuthorizationV1ClusterRoleBindingOperation,
 			ID:   "watchRbacAuthorizationV1ClusterRoleBinding",
 		}
 	)
@@ -77581,7 +77581,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleBindingOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -77636,7 +77636,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1ClusterRoleBinding",
+			OperationName:    WatchRbacAuthorizationV1ClusterRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleBinding",
 			Body:             nil,
@@ -77739,7 +77739,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRoleBindingList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1ClusterRoleBindingListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77770,7 +77770,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRoleBindingList",
+			Name: WatchRbacAuthorizationV1ClusterRoleBindingListOperation,
 			ID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
 		}
 	)
@@ -77778,7 +77778,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleBindingListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -77833,7 +77833,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1ClusterRoleBindingList",
+			OperationName:    WatchRbacAuthorizationV1ClusterRoleBindingListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleBindingList",
 			Body:             nil,
@@ -77932,7 +77932,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRoleList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1ClusterRoleListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -77963,7 +77963,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1ClusterRoleList",
+			Name: WatchRbacAuthorizationV1ClusterRoleListOperation,
 			ID:   "watchRbacAuthorizationV1ClusterRoleList",
 		}
 	)
@@ -77971,7 +77971,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -78026,7 +78026,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1ClusterRoleList",
+			OperationName:    WatchRbacAuthorizationV1ClusterRoleListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleList",
 			Body:             nil,
@@ -78125,7 +78125,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRole",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1NamespacedRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78156,7 +78156,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRole",
+			Name: WatchRbacAuthorizationV1NamespacedRoleOperation,
 			ID:   "watchRbacAuthorizationV1NamespacedRole",
 		}
 	)
@@ -78164,7 +78164,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -78219,7 +78219,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1NamespacedRole",
+			OperationName:    WatchRbacAuthorizationV1NamespacedRoleOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRole",
 			Body:             nil,
@@ -78326,7 +78326,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRoleBinding",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1NamespacedRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78357,7 +78357,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRoleBinding",
+			Name: WatchRbacAuthorizationV1NamespacedRoleBindingOperation,
 			ID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
 		}
 	)
@@ -78365,7 +78365,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleBindingOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -78420,7 +78420,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1NamespacedRoleBinding",
+			OperationName:    WatchRbacAuthorizationV1NamespacedRoleBindingOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleBinding",
 			Body:             nil,
@@ -78527,7 +78527,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRoleBindingList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1NamespacedRoleBindingListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78558,7 +78558,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
+			Name: WatchRbacAuthorizationV1NamespacedRoleBindingListOperation,
 			ID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
 		}
 	)
@@ -78566,7 +78566,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleBindingListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -78621,7 +78621,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1NamespacedRoleBindingList",
+			OperationName:    WatchRbacAuthorizationV1NamespacedRoleBindingListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleBindingList",
 			Body:             nil,
@@ -78724,7 +78724,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRoleList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1NamespacedRoleListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78755,7 +78755,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1NamespacedRoleList",
+			Name: WatchRbacAuthorizationV1NamespacedRoleListOperation,
 			ID:   "watchRbacAuthorizationV1NamespacedRoleList",
 		}
 	)
@@ -78763,7 +78763,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -78818,7 +78818,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1NamespacedRoleList",
+			OperationName:    WatchRbacAuthorizationV1NamespacedRoleListOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleList",
 			Body:             nil,
@@ -78921,7 +78921,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -78952,7 +78952,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			Name: WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation,
 			ID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 		}
 	)
@@ -78960,7 +78960,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -79015,7 +79015,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			OperationName:    WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 			Body:             nil,
@@ -79114,7 +79114,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1RoleListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchRbacAuthorizationV1RoleListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79145,7 +79145,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
+			Name: WatchRbacAuthorizationV1RoleListForAllNamespacesOperation,
 			ID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
 		}
 	)
@@ -79153,7 +79153,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchRbacAuthorizationV1RoleListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -79208,7 +79208,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchRbacAuthorizationV1RoleListForAllNamespaces",
+			OperationName:    WatchRbacAuthorizationV1RoleListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1RoleListForAllNamespaces",
 			Body:             nil,
@@ -79307,7 +79307,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchSchedulingV1PriorityClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchSchedulingV1PriorityClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79338,7 +79338,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchSchedulingV1PriorityClass",
+			Name: WatchSchedulingV1PriorityClassOperation,
 			ID:   "watchSchedulingV1PriorityClass",
 		}
 	)
@@ -79346,7 +79346,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchSchedulingV1PriorityClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -79401,7 +79401,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchSchedulingV1PriorityClass",
+			OperationName:    WatchSchedulingV1PriorityClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchSchedulingV1PriorityClass",
 			Body:             nil,
@@ -79504,7 +79504,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchSchedulingV1PriorityClassList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchSchedulingV1PriorityClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79535,7 +79535,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchSchedulingV1PriorityClassList",
+			Name: WatchSchedulingV1PriorityClassListOperation,
 			ID:   "watchSchedulingV1PriorityClassList",
 		}
 	)
@@ -79543,7 +79543,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchSchedulingV1PriorityClassListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -79598,7 +79598,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchSchedulingV1PriorityClassList",
+			OperationName:    WatchSchedulingV1PriorityClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchSchedulingV1PriorityClassList",
 			Body:             nil,
@@ -79697,7 +79697,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSIDriver",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1CSIDriverOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79728,7 +79728,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSIDriver",
+			Name: WatchStorageV1CSIDriverOperation,
 			ID:   "watchStorageV1CSIDriver",
 		}
 	)
@@ -79736,7 +79736,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1CSIDriverOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -79791,7 +79791,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1CSIDriver",
+			OperationName:    WatchStorageV1CSIDriverOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSIDriver",
 			Body:             nil,
@@ -79894,7 +79894,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSIDriverList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1CSIDriverListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -79925,7 +79925,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSIDriverList",
+			Name: WatchStorageV1CSIDriverListOperation,
 			ID:   "watchStorageV1CSIDriverList",
 		}
 	)
@@ -79933,7 +79933,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1CSIDriverListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -79988,7 +79988,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1CSIDriverList",
+			OperationName:    WatchStorageV1CSIDriverListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSIDriverList",
 			Body:             nil,
@@ -80087,7 +80087,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSINode",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1CSINodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80118,7 +80118,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSINode",
+			Name: WatchStorageV1CSINodeOperation,
 			ID:   "watchStorageV1CSINode",
 		}
 	)
@@ -80126,7 +80126,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1CSINode", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1CSINodeOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -80181,7 +80181,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1CSINode",
+			OperationName:    WatchStorageV1CSINodeOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSINode",
 			Body:             nil,
@@ -80284,7 +80284,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSINodeList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1CSINodeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80315,7 +80315,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1CSINodeList",
+			Name: WatchStorageV1CSINodeListOperation,
 			ID:   "watchStorageV1CSINodeList",
 		}
 	)
@@ -80323,7 +80323,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1CSINodeListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -80378,7 +80378,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1CSINodeList",
+			OperationName:    WatchStorageV1CSINodeListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSINodeList",
 			Body:             nil,
@@ -80477,7 +80477,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1StorageClass",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1StorageClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80508,7 +80508,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1StorageClass",
+			Name: WatchStorageV1StorageClassOperation,
 			ID:   "watchStorageV1StorageClass",
 		}
 	)
@@ -80516,7 +80516,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClass", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1StorageClassOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -80571,7 +80571,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1StorageClass",
+			OperationName:    WatchStorageV1StorageClassOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1StorageClass",
 			Body:             nil,
@@ -80674,7 +80674,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1StorageClassList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1StorageClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80705,7 +80705,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1StorageClassList",
+			Name: WatchStorageV1StorageClassListOperation,
 			ID:   "watchStorageV1StorageClassList",
 		}
 	)
@@ -80713,7 +80713,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1StorageClassListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -80768,7 +80768,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1StorageClassList",
+			OperationName:    WatchStorageV1StorageClassListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1StorageClassList",
 			Body:             nil,
@@ -80867,7 +80867,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1VolumeAttachment",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1VolumeAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -80898,7 +80898,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1VolumeAttachment",
+			Name: WatchStorageV1VolumeAttachmentOperation,
 			ID:   "watchStorageV1VolumeAttachment",
 		}
 	)
@@ -80906,7 +80906,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1VolumeAttachmentOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -80961,7 +80961,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1VolumeAttachment",
+			OperationName:    WatchStorageV1VolumeAttachmentOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1VolumeAttachment",
 			Body:             nil,
@@ -81064,7 +81064,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1VolumeAttachmentList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1VolumeAttachmentListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81095,7 +81095,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1VolumeAttachmentList",
+			Name: WatchStorageV1VolumeAttachmentListOperation,
 			ID:   "watchStorageV1VolumeAttachmentList",
 		}
 	)
@@ -81103,7 +81103,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1VolumeAttachmentListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -81158,7 +81158,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1VolumeAttachmentList",
+			OperationName:    WatchStorageV1VolumeAttachmentListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1VolumeAttachmentList",
 			Body:             nil,
@@ -81257,7 +81257,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81288,7 +81288,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			Name: WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation,
 			ID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 		}
 	)
@@ -81296,7 +81296,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -81351,7 +81351,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			OperationName:    WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 			Body:             nil,
@@ -81450,7 +81450,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81481,7 +81481,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
+			Name: WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
 		}
 	)
@@ -81489,7 +81489,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -81544,7 +81544,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationName:    WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:             nil,
@@ -81651,7 +81651,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81682,7 +81682,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			Name: WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation,
 			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
 		}
 	)
@@ -81690,7 +81690,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -81745,7 +81745,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			OperationName:    WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
 			Body:             nil,
@@ -81848,7 +81848,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -81879,7 +81879,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			Name: WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation,
 			ID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 		}
 	)
@@ -81887,7 +81887,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -81942,7 +81942,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			OperationName:    WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 			Body:             nil,
@@ -82041,7 +82041,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1beta1NamespacedCSIStorageCapacity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1beta1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82072,7 +82072,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
+			Name: WatchStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
 		}
 	)
@@ -82080,7 +82080,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1beta1NamespacedCSIStorageCapacityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -82135,7 +82135,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationName:    WatchStorageV1beta1NamespacedCSIStorageCapacityOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:             nil,
@@ -82242,7 +82242,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -82273,7 +82273,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
+			Name: WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation,
 			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
 		}
 	)
@@ -82281,7 +82281,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r)
+			sctx, ok, err := s.securityBearerToken(ctx, WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -82336,7 +82336,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
+			OperationName:    WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1NamespacedCSIStorageCapacityList",
 			Body:             nil,

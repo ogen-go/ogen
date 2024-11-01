@@ -101,7 +101,7 @@ func (c *Client) sendFooGet(ctx context.Context) (res string, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "FooGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, FooGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

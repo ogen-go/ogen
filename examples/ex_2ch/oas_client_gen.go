@@ -202,7 +202,7 @@ func (c *Client) sendAPICaptcha2chcaptchaIDGet(ctx context.Context, params APICa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaIDGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APICaptcha2chcaptchaIDGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -311,7 +311,7 @@ func (c *Client) sendAPICaptcha2chcaptchaShowGet(ctx context.Context, params API
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaShowGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APICaptcha2chcaptchaShowGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -404,7 +404,7 @@ func (c *Client) sendAPICaptchaAppIDPublicKeyGet(ctx context.Context, params API
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaAppIDPublicKeyGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APICaptchaAppIDPublicKeyGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -531,7 +531,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaIDGet(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaIDGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APICaptchaInvisibleRecaptchaIDGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -640,7 +640,7 @@ func (c *Client) sendAPICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaMobileGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APICaptchaInvisibleRecaptchaMobileGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -711,7 +711,7 @@ func (c *Client) sendAPICaptchaRecaptchaIDGet(ctx context.Context, params APICap
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaIDGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APICaptchaRecaptchaIDGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -820,7 +820,7 @@ func (c *Client) sendAPICaptchaRecaptchaMobileGet(ctx context.Context) (res *API
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaMobileGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APICaptchaRecaptchaMobileGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -891,7 +891,7 @@ func (c *Client) sendAPIDislikeGet(ctx context.Context, params APIDislikeGetPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APIDislikeGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APIDislikeGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -994,7 +994,7 @@ func (c *Client) sendAPILikeGet(ctx context.Context, params APILikeGetParams) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APILikeGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APILikeGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1099,7 +1099,7 @@ func (c *Client) sendAPIMobileV2AfterBoardThreadNumGet(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2AfterBoardThreadNumGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APIMobileV2AfterBoardThreadNumGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1226,7 +1226,7 @@ func (c *Client) sendAPIMobileV2BoardsGet(ctx context.Context) (res Boards, err 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2BoardsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APIMobileV2BoardsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1297,7 +1297,7 @@ func (c *Client) sendAPIMobileV2InfoBoardThreadGet(ctx context.Context, params A
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2InfoBoardThreadGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APIMobileV2InfoBoardThreadGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1405,7 +1405,7 @@ func (c *Client) sendAPIMobileV2PostBoardNumGet(ctx context.Context, params APIM
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2PostBoardNumGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, APIMobileV2PostBoardNumGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1513,7 +1513,7 @@ func (c *Client) sendUserPassloginPost(ctx context.Context, request OptUserPassl
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UserPassloginPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, UserPassloginPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1605,7 +1605,7 @@ func (c *Client) sendUserPostingPost(ctx context.Context, request OptUserPosting
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UserPostingPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, UserPostingPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -1679,7 +1679,7 @@ func (c *Client) sendUserReportPost(ctx context.Context, request OptUserReportPo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UserReportPost",
+	ctx, span := c.cfg.Tracer.Start(ctx, UserReportPostOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

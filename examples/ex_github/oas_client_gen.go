@@ -7854,7 +7854,7 @@ func (c *Client) sendActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7986,7 +7986,7 @@ func (c *Client) sendActionsAddSelectedRepoToOrgSecret(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddSelectedRepoToOrgSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsAddSelectedRepoToOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8119,7 +8119,7 @@ func (c *Client) sendActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddSelfHostedRunnerToGroupForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsAddSelfHostedRunnerToGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8251,7 +8251,7 @@ func (c *Client) sendActionsApproveWorkflowRun(ctx context.Context, params Actio
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsApproveWorkflowRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsApproveWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8382,7 +8382,7 @@ func (c *Client) sendActionsCancelWorkflowRun(ctx context.Context, params Action
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCancelWorkflowRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCancelWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8564,7 +8564,7 @@ func (c *Client) sendActionsCreateOrUpdateEnvironmentSecret(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateEnvironmentSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateOrUpdateEnvironmentSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8748,7 +8748,7 @@ func (c *Client) sendActionsCreateOrUpdateOrgSecret(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateOrgSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateOrUpdateOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8913,7 +8913,7 @@ func (c *Client) sendActionsCreateOrUpdateRepoSecret(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateRepoSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateOrUpdateRepoSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9051,7 +9051,7 @@ func (c *Client) sendActionsCreateRegistrationTokenForOrg(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRegistrationTokenForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateRegistrationTokenForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9150,7 +9150,7 @@ func (c *Client) sendActionsCreateRegistrationTokenForRepo(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRegistrationTokenForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateRegistrationTokenForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9269,7 +9269,7 @@ func (c *Client) sendActionsCreateRemoveTokenForOrg(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRemoveTokenForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateRemoveTokenForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9368,7 +9368,7 @@ func (c *Client) sendActionsCreateRemoveTokenForRepo(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRemoveTokenForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateRemoveTokenForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9482,7 +9482,7 @@ func (c *Client) sendActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateSelfHostedRunnerGroupForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsCreateSelfHostedRunnerGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9578,7 +9578,7 @@ func (c *Client) sendActionsDeleteArtifact(ctx context.Context, params ActionsDe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteArtifact",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteArtifactOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9708,7 +9708,7 @@ func (c *Client) sendActionsDeleteEnvironmentSecret(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteEnvironmentSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteEnvironmentSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9838,7 +9838,7 @@ func (c *Client) sendActionsDeleteOrgSecret(ctx context.Context, params ActionsD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteOrgSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9949,7 +9949,7 @@ func (c *Client) sendActionsDeleteRepoSecret(ctx context.Context, params Actions
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteRepoSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteRepoSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10079,7 +10079,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerFromOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteSelfHostedRunnerFromOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10191,7 +10191,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerFromRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteSelfHostedRunnerFromRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10323,7 +10323,7 @@ func (c *Client) sendActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteSelfHostedRunnerGroupFromOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10436,7 +10436,7 @@ func (c *Client) sendActionsDeleteWorkflowRun(ctx context.Context, params Action
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteWorkflowRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10566,7 +10566,7 @@ func (c *Client) sendActionsDeleteWorkflowRunLogs(ctx context.Context, params Ac
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteWorkflowRunLogs",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDeleteWorkflowRunLogsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10700,7 +10700,7 @@ func (c *Client) sendActionsDisableSelectedRepositoryGithubActionsOrganization(c
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDisableSelectedRepositoryGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10815,7 +10815,7 @@ func (c *Client) sendActionsDownloadArtifact(ctx context.Context, params Actions
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadArtifact",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDownloadArtifactOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10970,7 +10970,7 @@ func (c *Client) sendActionsDownloadJobLogsForWorkflowRun(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadJobLogsForWorkflowRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDownloadJobLogsForWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11105,7 +11105,7 @@ func (c *Client) sendActionsDownloadWorkflowRunLogs(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadWorkflowRunLogs",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsDownloadWorkflowRunLogsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11239,7 +11239,7 @@ func (c *Client) sendActionsEnableSelectedRepositoryGithubActionsOrganization(ct
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsEnableSelectedRepositoryGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11353,7 +11353,7 @@ func (c *Client) sendActionsGetAllowedActionsOrganization(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetAllowedActionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetAllowedActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11449,7 +11449,7 @@ func (c *Client) sendActionsGetAllowedActionsRepository(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetAllowedActionsRepository",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetAllowedActionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11561,7 +11561,7 @@ func (c *Client) sendActionsGetArtifact(ctx context.Context, params ActionsGetAr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetArtifact",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetArtifactOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11692,7 +11692,7 @@ func (c *Client) sendActionsGetEnvironmentPublicKey(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetEnvironmentPublicKey",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetEnvironmentPublicKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11804,7 +11804,7 @@ func (c *Client) sendActionsGetEnvironmentSecret(ctx context.Context, params Act
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetEnvironmentSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetEnvironmentSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11934,7 +11934,7 @@ func (c *Client) sendActionsGetGithubActionsPermissionsOrganization(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetGithubActionsPermissionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetGithubActionsPermissionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12028,7 +12028,7 @@ func (c *Client) sendActionsGetGithubActionsPermissionsRepository(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetGithubActionsPermissionsRepository",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetGithubActionsPermissionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12140,7 +12140,7 @@ func (c *Client) sendActionsGetJobForWorkflowRun(ctx context.Context, params Act
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetJobForWorkflowRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetJobForWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12271,7 +12271,7 @@ func (c *Client) sendActionsGetOrgPublicKey(ctx context.Context, params ActionsG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetOrgPublicKey",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetOrgPublicKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12364,7 +12364,7 @@ func (c *Client) sendActionsGetOrgSecret(ctx context.Context, params ActionsGetO
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetOrgSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12476,7 +12476,7 @@ func (c *Client) sendActionsGetRepoPublicKey(ctx context.Context, params Actions
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetRepoPublicKey",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetRepoPublicKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12588,7 +12588,7 @@ func (c *Client) sendActionsGetRepoSecret(ctx context.Context, params ActionsGet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetRepoSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetRepoSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12718,7 +12718,7 @@ func (c *Client) sendActionsGetReviewsForRun(ctx context.Context, params Actions
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetReviewsForRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetReviewsForRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12848,7 +12848,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerForOrg(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetSelfHostedRunnerForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12959,7 +12959,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerForRepo(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetSelfHostedRunnerForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13091,7 +13091,7 @@ func (c *Client) sendActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerGroupForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetSelfHostedRunnerGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13202,7 +13202,7 @@ func (c *Client) sendActionsGetWorkflowRun(ctx context.Context, params ActionsGe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetWorkflowRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13339,7 +13339,7 @@ func (c *Client) sendActionsGetWorkflowRunUsage(ctx context.Context, params Acti
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetWorkflowRunUsage",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsGetWorkflowRunUsageOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13470,7 +13470,7 @@ func (c *Client) sendActionsListArtifactsForRepo(ctx context.Context, params Act
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListArtifactsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListArtifactsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13620,7 +13620,7 @@ func (c *Client) sendActionsListEnvironmentSecrets(ctx context.Context, params A
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListEnvironmentSecrets",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListEnvironmentSecretsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13772,7 +13772,7 @@ func (c *Client) sendActionsListJobsForWorkflowRun(ctx context.Context, params A
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListJobsForWorkflowRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListJobsForWorkflowRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13958,7 +13958,7 @@ func (c *Client) sendActionsListOrgSecrets(ctx context.Context, params ActionsLi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListOrgSecrets",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListOrgSecretsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14091,7 +14091,7 @@ func (c *Client) sendActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14241,7 +14241,7 @@ func (c *Client) sendActionsListRepoSecrets(ctx context.Context, params ActionsL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoSecrets",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListRepoSecretsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14391,7 +14391,7 @@ func (c *Client) sendActionsListRepoWorkflows(ctx context.Context, params Action
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoWorkflows",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListRepoWorkflowsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14540,7 +14540,7 @@ func (c *Client) sendActionsListRunnerApplicationsForOrg(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRunnerApplicationsForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListRunnerApplicationsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14632,7 +14632,7 @@ func (c *Client) sendActionsListRunnerApplicationsForRepo(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRunnerApplicationsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListRunnerApplicationsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14745,7 +14745,7 @@ func (c *Client) sendActionsListSelectedReposForOrgSecret(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelectedReposForOrgSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListSelectedReposForOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14898,7 +14898,7 @@ func (c *Client) sendActionsListSelectedRepositoriesEnabledGithubActionsOrganiza
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15031,7 +15031,7 @@ func (c *Client) sendActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnerGroupsForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListSelfHostedRunnerGroupsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15161,7 +15161,7 @@ func (c *Client) sendActionsListSelfHostedRunnersForOrg(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListSelfHostedRunnersForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15291,7 +15291,7 @@ func (c *Client) sendActionsListSelfHostedRunnersForRepo(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListSelfHostedRunnersForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15443,7 +15443,7 @@ func (c *Client) sendActionsListSelfHostedRunnersInGroupForOrg(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersInGroupForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListSelfHostedRunnersInGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15593,7 +15593,7 @@ func (c *Client) sendActionsListWorkflowRunArtifacts(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListWorkflowRunArtifacts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListWorkflowRunArtifactsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15765,7 +15765,7 @@ func (c *Client) sendActionsListWorkflowRunsForRepo(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListWorkflowRunsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsListWorkflowRunsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16005,7 +16005,7 @@ func (c *Client) sendActionsReRunWorkflow(ctx context.Context, params ActionsReR
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsReRunWorkflow",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsReRunWorkflowOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16141,7 +16141,7 @@ func (c *Client) sendActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16273,7 +16273,7 @@ func (c *Client) sendActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveSelectedRepoFromOrgSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsRemoveSelectedRepoFromOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16406,7 +16406,7 @@ func (c *Client) sendActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsRemoveSelfHostedRunnerFromGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16536,7 +16536,7 @@ func (c *Client) sendActionsRetryWorkflow(ctx context.Context, params ActionsRet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRetryWorkflow",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsRetryWorkflowOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16666,7 +16666,7 @@ func (c *Client) sendActionsReviewPendingDeploymentsForRun(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsReviewPendingDeploymentsForRun",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsReviewPendingDeploymentsForRunOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16808,7 +16808,7 @@ func (c *Client) sendActionsSetAllowedActionsOrganization(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetAllowedActionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetAllowedActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16911,7 +16911,7 @@ func (c *Client) sendActionsSetAllowedActionsRepository(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetAllowedActionsRepository",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetAllowedActionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17029,7 +17029,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsOrganization(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetGithubActionsPermissionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetGithubActionsPermissionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17129,7 +17129,7 @@ func (c *Client) sendActionsSetGithubActionsPermissionsRepository(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetGithubActionsPermissionsRepository",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetGithubActionsPermissionsRepositoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17247,7 +17247,7 @@ func (c *Client) sendActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17364,7 +17364,7 @@ func (c *Client) sendActionsSetSelectedReposForOrgSecret(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelectedReposForOrgSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetSelectedReposForOrgSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17482,7 +17482,7 @@ func (c *Client) sendActionsSetSelectedRepositoriesEnabledGithubActionsOrganizat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17580,7 +17580,7 @@ func (c *Client) sendActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelfHostedRunnersInGroupForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsSetSelfHostedRunnersInGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17697,7 +17697,7 @@ func (c *Client) sendActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsUpdateSelfHostedRunnerGroupForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActionsUpdateSelfHostedRunnerGroupForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17809,7 +17809,7 @@ func (c *Client) sendActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityCheckRepoIsStarredByAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityCheckRepoIsStarredByAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17920,7 +17920,7 @@ func (c *Client) sendActivityDeleteRepoSubscription(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityDeleteRepoSubscription",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityDeleteRepoSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18034,7 +18034,7 @@ func (c *Client) sendActivityDeleteThreadSubscription(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityDeleteThreadSubscription",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityDeleteThreadSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18139,7 +18139,7 @@ func (c *Client) sendActivityGetFeeds(ctx context.Context) (res *Feed, err error
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetFeeds",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityGetFeedsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18211,7 +18211,7 @@ func (c *Client) sendActivityGetRepoSubscription(ctx context.Context, params Act
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetRepoSubscription",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityGetRepoSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18321,7 +18321,7 @@ func (c *Client) sendActivityGetThread(ctx context.Context, params ActivityGetTh
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetThread",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityGetThreadOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18414,7 +18414,7 @@ func (c *Client) sendActivityGetThreadSubscriptionForAuthenticatedUser(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetThreadSubscriptionForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityGetThreadSubscriptionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18506,7 +18506,7 @@ func (c *Client) sendActivityListEventsForAuthenticatedUser(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListEventsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListEventsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18635,7 +18635,7 @@ func (c *Client) sendActivityListNotificationsForAuthenticatedUser(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListNotificationsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListNotificationsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18813,7 +18813,7 @@ func (c *Client) sendActivityListOrgEventsForAuthenticatedUser(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListOrgEventsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListOrgEventsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18961,7 +18961,7 @@ func (c *Client) sendActivityListPublicEvents(ctx context.Context, params Activi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEvents",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListPublicEventsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19071,7 +19071,7 @@ func (c *Client) sendActivityListPublicEventsForRepoNetwork(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEventsForRepoNetwork",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListPublicEventsForRepoNetworkOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19219,7 +19219,7 @@ func (c *Client) sendActivityListPublicEventsForUser(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEventsForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListPublicEventsForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19348,7 +19348,7 @@ func (c *Client) sendActivityListPublicOrgEvents(ctx context.Context, params Act
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicOrgEvents",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListPublicOrgEventsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19479,7 +19479,7 @@ func (c *Client) sendActivityListReceivedEventsForUser(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReceivedEventsForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListReceivedEventsForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19608,7 +19608,7 @@ func (c *Client) sendActivityListReceivedPublicEventsForUser(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReceivedPublicEventsForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListReceivedPublicEventsForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19737,7 +19737,7 @@ func (c *Client) sendActivityListRepoEvents(ctx context.Context, params Activity
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListRepoEvents",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListRepoEventsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19885,7 +19885,7 @@ func (c *Client) sendActivityListRepoNotificationsForAuthenticatedUser(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListRepoNotificationsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListRepoNotificationsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20103,7 +20103,7 @@ func (c *Client) sendActivityListReposStarredByAuthenticatedUser(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReposStarredByAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListReposStarredByAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20247,7 +20247,7 @@ func (c *Client) sendActivityListReposWatchedByUser(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReposWatchedByUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListReposWatchedByUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20376,7 +20376,7 @@ func (c *Client) sendActivityListWatchedReposForAuthenticatedUser(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListWatchedReposForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListWatchedReposForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20486,7 +20486,7 @@ func (c *Client) sendActivityListWatchersForRepo(ctx context.Context, params Act
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListWatchersForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityListWatchersForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20640,7 +20640,7 @@ func (c *Client) sendActivityMarkNotificationsAsRead(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkNotificationsAsRead",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityMarkNotificationsAsReadOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20721,7 +20721,7 @@ func (c *Client) sendActivityMarkRepoNotificationsAsRead(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkRepoNotificationsAsRead",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityMarkRepoNotificationsAsReadOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20834,7 +20834,7 @@ func (c *Client) sendActivityMarkThreadAsRead(ctx context.Context, params Activi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkThreadAsRead",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityMarkThreadAsReadOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20927,7 +20927,7 @@ func (c *Client) sendActivitySetRepoSubscription(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivitySetRepoSubscription",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivitySetRepoSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21047,7 +21047,7 @@ func (c *Client) sendActivitySetThreadSubscription(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivitySetThreadSubscription",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivitySetThreadSubscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21143,7 +21143,7 @@ func (c *Client) sendActivityStarRepoForAuthenticatedUser(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityStarRepoForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityStarRepoForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21252,7 +21252,7 @@ func (c *Client) sendActivityUnstarRepoForAuthenticatedUser(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityUnstarRepoForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ActivityUnstarRepoForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21366,7 +21366,7 @@ func (c *Client) sendAppsAddRepoToInstallation(ctx context.Context, params AppsA
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsAddRepoToInstallation",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsAddRepoToInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21480,7 +21480,7 @@ func (c *Client) sendAppsCheckToken(ctx context.Context, request *AppsCheckToken
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCheckToken",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsCheckTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21583,7 +21583,7 @@ func (c *Client) sendAppsCreateContentAttachment(ctx context.Context, request *A
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateContentAttachment",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsCreateContentAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21718,7 +21718,7 @@ func (c *Client) sendAppsCreateFromManifest(ctx context.Context, request *AppsCr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateFromManifest",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsCreateFromManifestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21821,7 +21821,7 @@ func (c *Client) sendAppsCreateInstallationAccessToken(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateInstallationAccessToken",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsCreateInstallationAccessTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21924,7 +21924,7 @@ func (c *Client) sendAppsDeleteAuthorization(ctx context.Context, request *AppsD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteAuthorization",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsDeleteAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22023,7 +22023,7 @@ func (c *Client) sendAppsDeleteInstallation(ctx context.Context, params AppsDele
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteInstallation",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsDeleteInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22116,7 +22116,7 @@ func (c *Client) sendAppsDeleteToken(ctx context.Context, request *AppsDeleteTok
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteToken",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsDeleteTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22217,7 +22217,7 @@ func (c *Client) sendAppsGetAuthenticated(ctx context.Context) (res *Integration
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsGetAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22296,7 +22296,7 @@ func (c *Client) sendAppsGetBySlug(ctx context.Context, params AppsGetBySlugPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetBySlug",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsGetBySlugOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22393,7 +22393,7 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccount(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetSubscriptionPlanForAccount",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsGetSubscriptionPlanForAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22490,7 +22490,7 @@ func (c *Client) sendAppsGetSubscriptionPlanForAccountStubbed(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetSubscriptionPlanForAccountStubbed",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsGetSubscriptionPlanForAccountStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22584,7 +22584,7 @@ func (c *Client) sendAppsGetWebhookConfigForApp(ctx context.Context) (res *Webho
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetWebhookConfigForApp",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsGetWebhookConfigForAppOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22659,7 +22659,7 @@ func (c *Client) sendAppsGetWebhookDelivery(ctx context.Context, params AppsGetW
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetWebhookDelivery",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsGetWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22757,7 +22757,7 @@ func (c *Client) sendAppsListAccountsForPlan(ctx context.Context, params AppsLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListAccountsForPlan",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListAccountsForPlanOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22928,7 +22928,7 @@ func (c *Client) sendAppsListAccountsForPlanStubbed(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListAccountsForPlanStubbed",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListAccountsForPlanStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23097,7 +23097,7 @@ func (c *Client) sendAppsListInstallationReposForAuthenticatedUser(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListInstallationReposForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListInstallationReposForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23231,7 +23231,7 @@ func (c *Client) sendAppsListPlans(ctx context.Context, params AppsListPlansPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListPlans",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListPlansOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23346,7 +23346,7 @@ func (c *Client) sendAppsListPlansStubbed(ctx context.Context, params AppsListPl
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListPlansStubbed",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListPlansStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23459,7 +23459,7 @@ func (c *Client) sendAppsListReposAccessibleToInstallation(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListReposAccessibleToInstallation",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListReposAccessibleToInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23571,7 +23571,7 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUser(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListSubscriptionsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListSubscriptionsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23683,7 +23683,7 @@ func (c *Client) sendAppsListSubscriptionsForAuthenticatedUserStubbed(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListSubscriptionsForAuthenticatedUserStubbed",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListSubscriptionsForAuthenticatedUserStubbedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23796,7 +23796,7 @@ func (c *Client) sendAppsListWebhookDeliveries(ctx context.Context, params AppsL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListWebhookDeliveries",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsListWebhookDeliveriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23909,7 +23909,7 @@ func (c *Client) sendAppsRedeliverWebhookDelivery(ctx context.Context, params Ap
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRedeliverWebhookDelivery",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsRedeliverWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24005,7 +24005,7 @@ func (c *Client) sendAppsRemoveRepoFromInstallation(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRemoveRepoFromInstallation",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsRemoveRepoFromInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24119,7 +24119,7 @@ func (c *Client) sendAppsResetToken(ctx context.Context, request *AppsResetToken
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsResetToken",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsResetTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24222,7 +24222,7 @@ func (c *Client) sendAppsRevokeInstallationAccessToken(ctx context.Context) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRevokeInstallationAccessToken",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsRevokeInstallationAccessTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24299,7 +24299,7 @@ func (c *Client) sendAppsScopeToken(ctx context.Context, request *AppsScopeToken
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsScopeToken",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsScopeTokenOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24398,7 +24398,7 @@ func (c *Client) sendAppsSuspendInstallation(ctx context.Context, params AppsSus
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsSuspendInstallation",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsSuspendInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24492,7 +24492,7 @@ func (c *Client) sendAppsUnsuspendInstallation(ctx context.Context, params AppsU
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsUnsuspendInstallation",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsUnsuspendInstallationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24587,7 +24587,7 @@ func (c *Client) sendAppsUpdateWebhookConfigForApp(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AppsUpdateWebhookConfigForApp",
+	ctx, span := c.cfg.Tracer.Start(ctx, AppsUpdateWebhookConfigForAppOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24669,7 +24669,7 @@ func (c *Client) sendBillingGetGithubActionsBillingGhe(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingGhe",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetGithubActionsBillingGheOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24767,7 +24767,7 @@ func (c *Client) sendBillingGetGithubActionsBillingOrg(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetGithubActionsBillingOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24865,7 +24865,7 @@ func (c *Client) sendBillingGetGithubActionsBillingUser(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetGithubActionsBillingUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24960,7 +24960,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingGhe(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingGhe",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetGithubPackagesBillingGheOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25055,7 +25055,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingOrg(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetGithubPackagesBillingOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25150,7 +25150,7 @@ func (c *Client) sendBillingGetGithubPackagesBillingUser(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetGithubPackagesBillingUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25245,7 +25245,7 @@ func (c *Client) sendBillingGetSharedStorageBillingGhe(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingGhe",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetSharedStorageBillingGheOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25340,7 +25340,7 @@ func (c *Client) sendBillingGetSharedStorageBillingOrg(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetSharedStorageBillingOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25435,7 +25435,7 @@ func (c *Client) sendBillingGetSharedStorageBillingUser(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, BillingGetSharedStorageBillingUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25534,7 +25534,7 @@ func (c *Client) sendChecksCreateSuite(ctx context.Context, request *ChecksCreat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksCreateSuite",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksCreateSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25652,7 +25652,7 @@ func (c *Client) sendChecksGet(ctx context.Context, params ChecksGetParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25785,7 +25785,7 @@ func (c *Client) sendChecksGetSuite(ctx context.Context, params ChecksGetSuitePa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksGetSuite",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksGetSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25916,7 +25916,7 @@ func (c *Client) sendChecksListAnnotations(ctx context.Context, params ChecksLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListAnnotations",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksListAnnotationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26089,7 +26089,7 @@ func (c *Client) sendChecksListForRef(ctx context.Context, params ChecksListForR
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListForRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksListForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26329,7 +26329,7 @@ func (c *Client) sendChecksListForSuite(ctx context.Context, params ChecksListFo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListForSuite",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksListForSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26553,7 +26553,7 @@ func (c *Client) sendChecksListSuitesForRef(ctx context.Context, params ChecksLi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListSuitesForRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksListSuitesForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26759,7 +26759,7 @@ func (c *Client) sendChecksRerequestSuite(ctx context.Context, params ChecksRere
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksRerequestSuite",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksRerequestSuiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26892,7 +26892,7 @@ func (c *Client) sendChecksSetSuitesPreferences(ctx context.Context, request *Ch
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksSetSuitesPreferences",
+	ctx, span := c.cfg.Tracer.Start(ctx, ChecksSetSuitesPreferencesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27063,7 +27063,7 @@ func (c *Client) sendCodeScanningDeleteAnalysis(ctx context.Context, params Code
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningDeleteAnalysis",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningDeleteAnalysisOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27218,7 +27218,7 @@ func (c *Client) sendCodeScanningGetAlert(ctx context.Context, params CodeScanni
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetAlert",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningGetAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27367,7 +27367,7 @@ func (c *Client) sendCodeScanningGetAnalysis(ctx context.Context, params CodeSca
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetAnalysis",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningGetAnalysisOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27500,7 +27500,7 @@ func (c *Client) sendCodeScanningGetSarif(ctx context.Context, params CodeScanni
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetSarif",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningGetSarifOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27630,7 +27630,7 @@ func (c *Client) sendCodeScanningListAlertInstances(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListAlertInstances",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningListAlertInstancesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27827,7 +27827,7 @@ func (c *Client) sendCodeScanningListAlertsForRepo(ctx context.Context, params C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListAlertsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningListAlertsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28066,7 +28066,7 @@ func (c *Client) sendCodeScanningListRecentAnalyses(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListRecentAnalyses",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningListRecentAnalysesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28296,7 +28296,7 @@ func (c *Client) sendCodeScanningUpdateAlert(ctx context.Context, request *CodeS
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningUpdateAlert",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningUpdateAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28456,7 +28456,7 @@ func (c *Client) sendCodeScanningUploadSarif(ctx context.Context, request *CodeS
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningUploadSarif",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodeScanningUploadSarifOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28569,7 +28569,7 @@ func (c *Client) sendCodesOfConductGetAllCodesOfConduct(ctx context.Context) (re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodesOfConductGetAllCodesOfConduct",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodesOfConductGetAllCodesOfConductOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28641,7 +28641,7 @@ func (c *Client) sendCodesOfConductGetConductCode(ctx context.Context, params Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "CodesOfConductGetConductCode",
+	ctx, span := c.cfg.Tracer.Start(ctx, CodesOfConductGetConductCodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28731,7 +28731,7 @@ func (c *Client) sendEmojisGet(ctx context.Context) (res EmojisGetRes, err error
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EmojisGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, EmojisGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28807,7 +28807,7 @@ func (c *Client) sendEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28937,7 +28937,7 @@ func (c *Client) sendEnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29072,7 +29072,7 @@ func (c *Client) sendEnterpriseAdminCreateRegistrationTokenForEnterprise(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminCreateRegistrationTokenForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29172,7 +29172,7 @@ func (c *Client) sendEnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateRemoveTokenForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminCreateRemoveTokenForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29264,7 +29264,7 @@ func (c *Client) sendEnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29359,7 +29359,7 @@ func (c *Client) sendEnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteScimGroupFromEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminDeleteScimGroupFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29470,7 +29470,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29580,7 +29580,7 @@ func (c *Client) sendEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ct
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29690,7 +29690,7 @@ func (c *Client) sendEnterpriseAdminDeleteUserFromEnterprise(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteUserFromEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminDeleteUserFromEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29803,7 +29803,7 @@ func (c *Client) sendEnterpriseAdminDisableSelectedOrganizationGithubActionsEnte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29916,7 +29916,7 @@ func (c *Client) sendEnterpriseAdminEnableSelectedOrganizationGithubActionsEnter
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30029,7 +30029,7 @@ func (c *Client) sendEnterpriseAdminGetAllowedActionsEnterprise(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetAllowedActionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminGetAllowedActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30121,7 +30121,7 @@ func (c *Client) sendEnterpriseAdminGetAuditLog(ctx context.Context, params Ente
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetAuditLog",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminGetAuditLogOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30336,7 +30336,7 @@ func (c *Client) sendEnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminGetGithubActionsPermissionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30428,7 +30428,7 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminGetProvisioningInformationForEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30559,7 +30559,7 @@ func (c *Client) sendEnterpriseAdminGetProvisioningInformationForEnterpriseUser(
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminGetProvisioningInformationForEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30669,7 +30669,7 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminGetSelfHostedRunnerForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30779,7 +30779,7 @@ func (c *Client) sendEnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30889,7 +30889,7 @@ func (c *Client) sendEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterp
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31038,7 +31038,7 @@ func (c *Client) sendEnterpriseAdminListProvisionedGroupsEnterprise(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListProvisionedGroupsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListProvisionedGroupsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31227,7 +31227,7 @@ func (c *Client) sendEnterpriseAdminListProvisionedIdentitiesEnterprise(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListProvisionedIdentitiesEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31374,7 +31374,7 @@ func (c *Client) sendEnterpriseAdminListRunnerApplicationsForEnterprise(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListRunnerApplicationsForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListRunnerApplicationsForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31469,7 +31469,7 @@ func (c *Client) sendEnterpriseAdminListSelectedOrganizationsEnabledGithubAction
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31599,7 +31599,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31729,7 +31729,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersForEnterprise(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListSelfHostedRunnersForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31859,7 +31859,7 @@ func (c *Client) sendEnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ct
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32011,7 +32011,7 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminProvisionAndInviteEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32111,7 +32111,7 @@ func (c *Client) sendEnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminProvisionAndInviteEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32209,7 +32209,7 @@ func (c *Client) sendEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32339,7 +32339,7 @@ func (c *Client) sendEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32471,7 +32471,7 @@ func (c *Client) sendEnterpriseAdminSetAllowedActionsEnterprise(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetAllowedActionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminSetAllowedActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32566,7 +32566,7 @@ func (c *Client) sendEnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminSetGithubActionsPermissionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32666,7 +32666,7 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseGroup(
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminSetInformationForProvisionedEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32787,7 +32787,7 @@ func (c *Client) sendEnterpriseAdminSetInformationForProvisionedEnterpriseUser(c
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminSetInformationForProvisionedEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32901,7 +32901,7 @@ func (c *Client) sendEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33018,7 +33018,7 @@ func (c *Client) sendEnterpriseAdminSetSelectedOrganizationsEnabledGithubActions
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33113,7 +33113,7 @@ func (c *Client) sendEnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33231,7 +33231,7 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminUpdateAttributeForEnterpriseGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33365,7 +33365,7 @@ func (c *Client) sendEnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminUpdateAttributeForEnterpriseUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33478,7 +33478,7 @@ func (c *Client) sendEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+	ctx, span := c.cfg.Tracer.Start(ctx, EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33590,7 +33590,7 @@ func (c *Client) sendGistsCheckIsStarred(ctx context.Context, params GistsCheckI
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCheckIsStarred",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsCheckIsStarredOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33683,7 +33683,7 @@ func (c *Client) sendGistsCreate(ctx context.Context, request *GistsCreateReq) (
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCreate",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33758,7 +33758,7 @@ func (c *Client) sendGistsCreateComment(ctx context.Context, request *GistsCreat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCreateComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsCreateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33852,7 +33852,7 @@ func (c *Client) sendGistsDelete(ctx context.Context, params GistsDeleteParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsDelete",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33942,7 +33942,7 @@ func (c *Client) sendGistsDeleteComment(ctx context.Context, params GistsDeleteC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsDeleteComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsDeleteCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34051,7 +34051,7 @@ func (c *Client) sendGistsFork(ctx context.Context, params GistsForkParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsFork",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsForkOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34142,7 +34142,7 @@ func (c *Client) sendGistsGet(ctx context.Context, params GistsGetParams) (res G
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34232,7 +34232,7 @@ func (c *Client) sendGistsGetComment(ctx context.Context, params GistsGetComment
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGetComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsGetCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34341,7 +34341,7 @@ func (c *Client) sendGistsGetRevision(ctx context.Context, params GistsGetRevisi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGetRevision",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsGetRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34451,7 +34451,7 @@ func (c *Client) sendGistsList(ctx context.Context, params GistsListParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsList",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34578,7 +34578,7 @@ func (c *Client) sendGistsListComments(ctx context.Context, params GistsListComm
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListComments",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsListCommentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34707,7 +34707,7 @@ func (c *Client) sendGistsListCommits(ctx context.Context, params GistsListCommi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListCommits",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsListCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34836,7 +34836,7 @@ func (c *Client) sendGistsListForUser(ctx context.Context, params GistsListForUs
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34982,7 +34982,7 @@ func (c *Client) sendGistsListForks(ctx context.Context, params GistsListForksPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListForks",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsListForksOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35114,7 +35114,7 @@ func (c *Client) sendGistsListPublic(ctx context.Context, params GistsListPublic
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListPublic",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsListPublicOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35241,7 +35241,7 @@ func (c *Client) sendGistsListStarred(ctx context.Context, params GistsListStarr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListStarred",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsListStarredOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35370,7 +35370,7 @@ func (c *Client) sendGistsStar(ctx context.Context, params GistsStarParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsStar",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsStarOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35461,7 +35461,7 @@ func (c *Client) sendGistsUnstar(ctx context.Context, params GistsUnstarParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsUnstar",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsUnstarOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35552,7 +35552,7 @@ func (c *Client) sendGistsUpdateComment(ctx context.Context, request *GistsUpdat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GistsUpdateComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, GistsUpdateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35664,7 +35664,7 @@ func (c *Client) sendGitCreateBlob(ctx context.Context, request *GitCreateBlobRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateBlob",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitCreateBlobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35810,7 +35810,7 @@ func (c *Client) sendGitCreateCommit(ctx context.Context, request *GitCreateComm
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateCommit",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitCreateCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35925,7 +35925,7 @@ func (c *Client) sendGitCreateRef(ctx context.Context, request *GitCreateRefReq,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitCreateRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36074,7 +36074,7 @@ func (c *Client) sendGitCreateTag(ctx context.Context, request *GitCreateTagReq,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateTag",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitCreateTagOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36193,7 +36193,7 @@ func (c *Client) sendGitCreateTree(ctx context.Context, request *GitCreateTreeRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateTree",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitCreateTreeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36306,7 +36306,7 @@ func (c *Client) sendGitDeleteRef(ctx context.Context, params GitDeleteRefParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitDeleteRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitDeleteRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36435,7 +36435,7 @@ func (c *Client) sendGitGetBlob(ctx context.Context, params GitGetBlobParams) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetBlob",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitGetBlobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36596,7 +36596,7 @@ func (c *Client) sendGitGetCommit(ctx context.Context, params GitGetCommitParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetCommit",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitGetCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36731,7 +36731,7 @@ func (c *Client) sendGitGetRef(ctx context.Context, params GitGetRefParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitGetRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36890,7 +36890,7 @@ func (c *Client) sendGitGetTag(ctx context.Context, params GitGetTagParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetTag",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitGetTagOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37021,7 +37021,7 @@ func (c *Client) sendGitGetTree(ctx context.Context, params GitGetTreeParams) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetTree",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitGetTreeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37184,7 +37184,7 @@ func (c *Client) sendGitListMatchingRefs(ctx context.Context, params GitListMatc
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitListMatchingRefs",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitListMatchingRefsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37350,7 +37350,7 @@ func (c *Client) sendGitUpdateRef(ctx context.Context, request *GitUpdateRefReq,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitUpdateRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitUpdateRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37482,7 +37482,7 @@ func (c *Client) sendGitignoreGetAllTemplates(ctx context.Context) (res Gitignor
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitignoreGetAllTemplates",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitignoreGetAllTemplatesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37556,7 +37556,7 @@ func (c *Client) sendGitignoreGetTemplate(ctx context.Context, params GitignoreG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GitignoreGetTemplate",
+	ctx, span := c.cfg.Tracer.Start(ctx, GitignoreGetTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37646,7 +37646,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForAuthenticatedUser(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, InteractionsRemoveRestrictionsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37719,7 +37719,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForOrg(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, InteractionsRemoveRestrictionsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37813,7 +37813,7 @@ func (c *Client) sendInteractionsRemoveRestrictionsForRepo(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, InteractionsRemoveRestrictionsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37925,7 +37925,7 @@ func (c *Client) sendInteractionsSetRestrictionsForAuthenticatedUser(ctx context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, InteractionsSetRestrictionsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38003,7 +38003,7 @@ func (c *Client) sendInteractionsSetRestrictionsForOrg(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, InteractionsSetRestrictionsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38100,7 +38100,7 @@ func (c *Client) sendInteractionsSetRestrictionsForRepo(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, InteractionsSetRestrictionsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38213,7 +38213,7 @@ func (c *Client) sendIssuesAddAssignees(ctx context.Context, request OptIssuesAd
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesAddAssignees",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesAddAssigneesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38348,7 +38348,7 @@ func (c *Client) sendIssuesCheckUserCanBeAssigned(ctx context.Context, params Is
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCheckUserCanBeAssigned",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesCheckUserCanBeAssignedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38485,7 +38485,7 @@ func (c *Client) sendIssuesCreate(ctx context.Context, request *IssuesCreateReq,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreate",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38604,7 +38604,7 @@ func (c *Client) sendIssuesCreateComment(ctx context.Context, request *IssuesCre
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesCreateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38736,7 +38736,7 @@ func (c *Client) sendIssuesCreateLabel(ctx context.Context, request *IssuesCreat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateLabel",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesCreateLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38849,7 +38849,7 @@ func (c *Client) sendIssuesCreateMilestone(ctx context.Context, request *IssuesC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateMilestone",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesCreateMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38962,7 +38962,7 @@ func (c *Client) sendIssuesDeleteComment(ctx context.Context, params IssuesDelet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesDeleteCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39090,7 +39090,7 @@ func (c *Client) sendIssuesDeleteLabel(ctx context.Context, params IssuesDeleteL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteLabel",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesDeleteLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39218,7 +39218,7 @@ func (c *Client) sendIssuesDeleteMilestone(ctx context.Context, params IssuesDel
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteMilestone",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesDeleteMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39364,7 +39364,7 @@ func (c *Client) sendIssuesGet(ctx context.Context, params IssuesGetParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39492,7 +39492,7 @@ func (c *Client) sendIssuesGetComment(ctx context.Context, params IssuesGetComme
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesGetCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39620,7 +39620,7 @@ func (c *Client) sendIssuesGetEvent(ctx context.Context, params IssuesGetEventPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesGetEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39748,7 +39748,7 @@ func (c *Client) sendIssuesGetLabel(ctx context.Context, params IssuesGetLabelPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetLabel",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesGetLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39876,7 +39876,7 @@ func (c *Client) sendIssuesGetMilestone(ctx context.Context, params IssuesGetMil
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetMilestone",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesGetMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40016,7 +40016,7 @@ func (c *Client) sendIssuesList(ctx context.Context, params IssuesListParams) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesList",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40297,7 +40297,7 @@ func (c *Client) sendIssuesListAssignees(ctx context.Context, params IssuesListA
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListAssignees",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListAssigneesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40445,7 +40445,7 @@ func (c *Client) sendIssuesListComments(ctx context.Context, params IssuesListCo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListComments",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListCommentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40629,7 +40629,7 @@ func (c *Client) sendIssuesListCommentsForRepo(ctx context.Context, params Issue
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListCommentsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListCommentsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40828,7 +40828,7 @@ func (c *Client) sendIssuesListEventsForRepo(ctx context.Context, params IssuesL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListEventsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListEventsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40984,7 +40984,7 @@ func (c *Client) sendIssuesListForAuthenticatedUser(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41204,7 +41204,7 @@ func (c *Client) sendIssuesListForOrg(ctx context.Context, params IssuesListForO
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41443,7 +41443,7 @@ func (c *Client) sendIssuesListForRepo(ctx context.Context, params IssuesListFor
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41744,7 +41744,7 @@ func (c *Client) sendIssuesListLabelsForMilestone(ctx context.Context, params Is
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsForMilestone",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListLabelsForMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41911,7 +41911,7 @@ func (c *Client) sendIssuesListLabelsForRepo(ctx context.Context, params IssuesL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListLabelsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42059,7 +42059,7 @@ func (c *Client) sendIssuesListLabelsOnIssue(ctx context.Context, params IssuesL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsOnIssue",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListLabelsOnIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42226,7 +42226,7 @@ func (c *Client) sendIssuesListMilestones(ctx context.Context, params IssuesList
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListMilestones",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesListMilestonesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42428,7 +42428,7 @@ func (c *Client) sendIssuesLock(ctx context.Context, request OptNilIssuesLockReq
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesLock",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesLockOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42560,7 +42560,7 @@ func (c *Client) sendIssuesRemoveAllLabels(ctx context.Context, params IssuesRem
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveAllLabels",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesRemoveAllLabelsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42689,7 +42689,7 @@ func (c *Client) sendIssuesRemoveAssignees(ctx context.Context, request OptIssue
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveAssignees",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesRemoveAssigneesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42822,7 +42822,7 @@ func (c *Client) sendIssuesRemoveLabel(ctx context.Context, params IssuesRemoveL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveLabel",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesRemoveLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42969,7 +42969,7 @@ func (c *Client) sendIssuesUnlock(ctx context.Context, params IssuesUnlockParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUnlock",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesUnlockOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43098,7 +43098,7 @@ func (c *Client) sendIssuesUpdate(ctx context.Context, request OptIssuesUpdateRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdate",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43229,7 +43229,7 @@ func (c *Client) sendIssuesUpdateComment(ctx context.Context, request *IssuesUpd
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesUpdateCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43360,7 +43360,7 @@ func (c *Client) sendIssuesUpdateLabel(ctx context.Context, request OptIssuesUpd
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateLabel",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesUpdateLabelOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43491,7 +43491,7 @@ func (c *Client) sendIssuesUpdateMilestone(ctx context.Context, request OptIssue
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateMilestone",
+	ctx, span := c.cfg.Tracer.Start(ctx, IssuesUpdateMilestoneOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43622,7 +43622,7 @@ func (c *Client) sendLicensesGet(ctx context.Context, params LicensesGetParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, LicensesGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43712,7 +43712,7 @@ func (c *Client) sendLicensesGetAllCommonlyUsed(ctx context.Context, params Lice
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGetAllCommonlyUsed",
+	ctx, span := c.cfg.Tracer.Start(ctx, LicensesGetAllCommonlyUsedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43843,7 +43843,7 @@ func (c *Client) sendLicensesGetForRepo(ctx context.Context, params LicensesGetF
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGetForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, LicensesGetForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43953,7 +43953,7 @@ func (c *Client) sendMarkdownRender(ctx context.Context, request *MarkdownRender
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarkdownRender",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarkdownRenderOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44031,7 +44031,7 @@ func (c *Client) sendMarkdownRenderRaw(ctx context.Context, request MarkdownRend
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MarkdownRenderRaw",
+	ctx, span := c.cfg.Tracer.Start(ctx, MarkdownRenderRawOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44110,7 +44110,7 @@ func (c *Client) sendMetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, MetaGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44182,7 +44182,7 @@ func (c *Client) sendMetaGetOctocat(ctx context.Context, params MetaGetOctocatPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGetOctocat",
+	ctx, span := c.cfg.Tracer.Start(ctx, MetaGetOctocatOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44275,7 +44275,7 @@ func (c *Client) sendMetaGetZen(ctx context.Context) (res MetaGetZenOK, err erro
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGetZen",
+	ctx, span := c.cfg.Tracer.Start(ctx, MetaGetZenOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44347,7 +44347,7 @@ func (c *Client) sendMetaRoot(ctx context.Context) (res *MetaRootOK, err error) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MetaRoot",
+	ctx, span := c.cfg.Tracer.Start(ctx, MetaRootOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44419,7 +44419,7 @@ func (c *Client) sendMigrationsCancelImport(ctx context.Context, params Migratio
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsCancelImport",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsCancelImportOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44533,7 +44533,7 @@ func (c *Client) sendMigrationsDeleteArchiveForAuthenticatedUser(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDeleteArchiveForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsDeleteArchiveForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44625,7 +44625,7 @@ func (c *Client) sendMigrationsDeleteArchiveForOrg(ctx context.Context, params M
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDeleteArchiveForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsDeleteArchiveForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44735,7 +44735,7 @@ func (c *Client) sendMigrationsDownloadArchiveForOrg(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDownloadArchiveForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsDownloadArchiveForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44865,7 +44865,7 @@ func (c *Client) sendMigrationsGetArchiveForAuthenticatedUser(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetArchiveForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsGetArchiveForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44963,7 +44963,7 @@ func (c *Client) sendMigrationsGetCommitAuthors(ctx context.Context, params Migr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetCommitAuthors",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsGetCommitAuthorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45146,7 +45146,7 @@ func (c *Client) sendMigrationsGetImportStatus(ctx context.Context, params Migra
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetImportStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsGetImportStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45256,7 +45256,7 @@ func (c *Client) sendMigrationsGetLargeFiles(ctx context.Context, params Migrati
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetLargeFiles",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsGetLargeFilesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45373,7 +45373,7 @@ func (c *Client) sendMigrationsGetStatusForAuthenticatedUser(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetStatusForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsGetStatusForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45498,7 +45498,7 @@ func (c *Client) sendMigrationsGetStatusForOrg(ctx context.Context, params Migra
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetStatusForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsGetStatusForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45637,7 +45637,7 @@ func (c *Client) sendMigrationsListForAuthenticatedUser(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45747,7 +45747,7 @@ func (c *Client) sendMigrationsListForOrg(ctx context.Context, params Migrations
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45902,7 +45902,7 @@ func (c *Client) sendMigrationsListReposForOrg(ctx context.Context, params Migra
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListReposForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsListReposForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46050,7 +46050,7 @@ func (c *Client) sendMigrationsListReposForUser(ctx context.Context, params Migr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListReposForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsListReposForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46180,7 +46180,7 @@ func (c *Client) sendMigrationsMapCommitAuthor(ctx context.Context, request OptM
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsMapCommitAuthor",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsMapCommitAuthorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46314,7 +46314,7 @@ func (c *Client) sendMigrationsSetLfsPreference(ctx context.Context, request *Mi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsSetLfsPreference",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsSetLfsPreferenceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46427,7 +46427,7 @@ func (c *Client) sendMigrationsStartForAuthenticatedUser(ctx context.Context, re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsStartForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46502,7 +46502,7 @@ func (c *Client) sendMigrationsStartForOrg(ctx context.Context, request *Migrati
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsStartForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46596,7 +46596,7 @@ func (c *Client) sendMigrationsStartImport(ctx context.Context, request *Migrati
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartImport",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsStartImportOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46713,7 +46713,7 @@ func (c *Client) sendMigrationsUnlockRepoForAuthenticatedUser(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUnlockRepoForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsUnlockRepoForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46825,7 +46825,7 @@ func (c *Client) sendMigrationsUnlockRepoForOrg(ctx context.Context, params Migr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUnlockRepoForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsUnlockRepoForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46956,7 +46956,7 @@ func (c *Client) sendMigrationsUpdateImport(ctx context.Context, request OptNilM
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUpdateImport",
+	ctx, span := c.cfg.Tracer.Start(ctx, MigrationsUpdateImportOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47098,7 +47098,7 @@ func (c *Client) sendOAuthAuthorizationsCreateAuthorization(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsCreateAuthorization",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsCreateAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47182,7 +47182,7 @@ func (c *Client) sendOAuthAuthorizationsDeleteAuthorization(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsDeleteAuthorization",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsDeleteAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47284,7 +47284,7 @@ func (c *Client) sendOAuthAuthorizationsDeleteGrant(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsDeleteGrant",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsDeleteGrantOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47383,7 +47383,7 @@ func (c *Client) sendOAuthAuthorizationsGetAuthorization(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetAuthorization",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsGetAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47482,7 +47482,7 @@ func (c *Client) sendOAuthAuthorizationsGetGrant(ctx context.Context, params OAu
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetGrant",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsGetGrantOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47600,7 +47600,7 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsGetOrCreateAuthorizationForAppOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47716,7 +47716,7 @@ func (c *Client) sendOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerp
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47837,7 +47837,7 @@ func (c *Client) sendOAuthAuthorizationsListAuthorizations(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsListAuthorizations",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsListAuthorizationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47984,7 +47984,7 @@ func (c *Client) sendOAuthAuthorizationsListGrants(ctx context.Context, params O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsListGrants",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsListGrantsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48124,7 +48124,7 @@ func (c *Client) sendOAuthAuthorizationsUpdateAuthorization(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsUpdateAuthorization",
+	ctx, span := c.cfg.Tracer.Start(ctx, OAuthAuthorizationsUpdateAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48217,7 +48217,7 @@ func (c *Client) sendOrgsBlockUser(ctx context.Context, params OrgsBlockUserPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsBlockUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsBlockUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48329,7 +48329,7 @@ func (c *Client) sendOrgsCancelInvitation(ctx context.Context, params OrgsCancel
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCancelInvitation",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsCancelInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48438,7 +48438,7 @@ func (c *Client) sendOrgsCheckBlockedUser(ctx context.Context, params OrgsCheckB
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckBlockedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsCheckBlockedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48547,7 +48547,7 @@ func (c *Client) sendOrgsCheckMembershipForUser(ctx context.Context, params Orgs
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckMembershipForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsCheckMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48656,7 +48656,7 @@ func (c *Client) sendOrgsCheckPublicMembershipForUser(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckPublicMembershipForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsCheckPublicMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48769,7 +48769,7 @@ func (c *Client) sendOrgsConvertMemberToOutsideCollaborator(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsConvertMemberToOutsideCollaborator",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsConvertMemberToOutsideCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48886,7 +48886,7 @@ func (c *Client) sendOrgsCreateInvitation(ctx context.Context, request OptOrgsCr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCreateInvitation",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsCreateInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48980,7 +48980,7 @@ func (c *Client) sendOrgsCreateWebhook(ctx context.Context, request *OrgsCreateW
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCreateWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsCreateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49074,7 +49074,7 @@ func (c *Client) sendOrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWeb
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsDeleteWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsDeleteWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49191,7 +49191,7 @@ func (c *Client) sendOrgsGet(ctx context.Context, params OrgsGetParams) (res Org
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49286,7 +49286,7 @@ func (c *Client) sendOrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLog
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetAuditLog",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsGetAuditLogOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49500,7 +49500,7 @@ func (c *Client) sendOrgsGetMembershipForAuthenticatedUser(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetMembershipForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsGetMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49592,7 +49592,7 @@ func (c *Client) sendOrgsGetMembershipForUser(ctx context.Context, params OrgsGe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetMembershipForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsGetMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49703,7 +49703,7 @@ func (c *Client) sendOrgsGetWebhook(ctx context.Context, params OrgsGetWebhookPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsGetWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49816,7 +49816,7 @@ func (c *Client) sendOrgsGetWebhookConfigForOrg(ctx context.Context, params Orgs
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhookConfigForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsGetWebhookConfigForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49926,7 +49926,7 @@ func (c *Client) sendOrgsGetWebhookDelivery(ctx context.Context, params OrgsGetW
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhookDelivery",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsGetWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50057,7 +50057,7 @@ func (c *Client) sendOrgsList(ctx context.Context, params OrgsListParams) (res O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsList",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50167,7 +50167,7 @@ func (c *Client) sendOrgsListBlockedUsers(ctx context.Context, params OrgsListBl
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListBlockedUsers",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListBlockedUsersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50259,7 +50259,7 @@ func (c *Client) sendOrgsListFailedInvitations(ctx context.Context, params OrgsL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListFailedInvitations",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListFailedInvitationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50393,7 +50393,7 @@ func (c *Client) sendOrgsListForAuthenticatedUser(ctx context.Context, params Or
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50508,7 +50508,7 @@ func (c *Client) sendOrgsListForUser(ctx context.Context, params OrgsListForUser
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50638,7 +50638,7 @@ func (c *Client) sendOrgsListInvitationTeams(ctx context.Context, params OrgsLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListInvitationTeams",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListInvitationTeamsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50787,7 +50787,7 @@ func (c *Client) sendOrgsListMembers(ctx context.Context, params OrgsListMembers
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListMembers",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListMembersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50950,7 +50950,7 @@ func (c *Client) sendOrgsListMembershipsForAuthenticatedUser(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListMembershipsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListMembershipsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51077,7 +51077,7 @@ func (c *Client) sendOrgsListOutsideCollaborators(ctx context.Context, params Or
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListOutsideCollaborators",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListOutsideCollaboratorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51226,7 +51226,7 @@ func (c *Client) sendOrgsListPendingInvitations(ctx context.Context, params Orgs
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListPendingInvitations",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListPendingInvitationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51355,7 +51355,7 @@ func (c *Client) sendOrgsListPublicMembers(ctx context.Context, params OrgsListP
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListPublicMembers",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListPublicMembersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51491,7 +51491,7 @@ func (c *Client) sendOrgsListSamlSSOAuthorizations(ctx context.Context, params O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListSamlSSOAuthorizations",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListSamlSSOAuthorizationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51582,7 +51582,7 @@ func (c *Client) sendOrgsListWebhookDeliveries(ctx context.Context, params OrgsL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListWebhookDeliveries",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListWebhookDeliveriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51730,7 +51730,7 @@ func (c *Client) sendOrgsListWebhooks(ctx context.Context, params OrgsListWebhoo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListWebhooks",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsListWebhooksOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51860,7 +51860,7 @@ func (c *Client) sendOrgsPingWebhook(ctx context.Context, params OrgsPingWebhook
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsPingWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsPingWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51970,7 +51970,7 @@ func (c *Client) sendOrgsRedeliverWebhookDelivery(ctx context.Context, params Or
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRedeliverWebhookDelivery",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsRedeliverWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52100,7 +52100,7 @@ func (c *Client) sendOrgsRemoveMember(ctx context.Context, params OrgsRemoveMemb
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveMember",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsRemoveMemberOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52213,7 +52213,7 @@ func (c *Client) sendOrgsRemoveMembershipForUser(ctx context.Context, params Org
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveMembershipForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsRemoveMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52322,7 +52322,7 @@ func (c *Client) sendOrgsRemoveOutsideCollaborator(ctx context.Context, params O
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveOutsideCollaborator",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsRemoveOutsideCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52431,7 +52431,7 @@ func (c *Client) sendOrgsRemovePublicMembershipForAuthenticatedUser(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemovePublicMembershipForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsRemovePublicMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52546,7 +52546,7 @@ func (c *Client) sendOrgsRemoveSamlSSOAuthorization(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveSamlSSOAuthorization",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsRemoveSamlSSOAuthorizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52668,7 +52668,7 @@ func (c *Client) sendOrgsSetMembershipForUser(ctx context.Context, request OptOr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsSetMembershipForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsSetMembershipForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52784,7 +52784,7 @@ func (c *Client) sendOrgsSetPublicMembershipForAuthenticatedUser(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsSetPublicMembershipForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsSetPublicMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52893,7 +52893,7 @@ func (c *Client) sendOrgsUnblockUser(ctx context.Context, params OrgsUnblockUser
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUnblockUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsUnblockUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53002,7 +53002,7 @@ func (c *Client) sendOrgsUpdateMembershipForAuthenticatedUser(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateMembershipForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsUpdateMembershipForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53099,7 +53099,7 @@ func (c *Client) sendOrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsUpdateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53215,7 +53215,7 @@ func (c *Client) sendOrgsUpdateWebhookConfigForOrg(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateWebhookConfigForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, OrgsUpdateWebhookConfigForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53333,7 +53333,7 @@ func (c *Client) sendPackagesDeletePackageForAuthenticatedUser(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesDeletePackageForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53449,7 +53449,7 @@ func (c *Client) sendPackagesDeletePackageForOrg(ctx context.Context, params Pac
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesDeletePackageForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53584,7 +53584,7 @@ func (c *Client) sendPackagesDeletePackageForUser(ctx context.Context, params Pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesDeletePackageForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53717,7 +53717,7 @@ func (c *Client) sendPackagesDeletePackageVersionForAuthenticatedUser(ctx contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesDeletePackageVersionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53852,7 +53852,7 @@ func (c *Client) sendPackagesDeletePackageVersionForOrg(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesDeletePackageVersionForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54006,7 +54006,7 @@ func (c *Client) sendPackagesDeletePackageVersionForUser(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesDeletePackageVersionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54155,7 +54155,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByAuthenticated
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54322,7 +54322,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetAllPackageVersionsForPackageOwnedByOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54508,7 +54508,7 @@ func (c *Client) sendPackagesGetAllPackageVersionsForPackageOwnedByUser(ctx cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetAllPackageVersionsForPackageOwnedByUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54639,7 +54639,7 @@ func (c *Client) sendPackagesGetPackageForAuthenticatedUser(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetPackageForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54750,7 +54750,7 @@ func (c *Client) sendPackagesGetPackageForOrganization(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetPackageForOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54880,7 +54880,7 @@ func (c *Client) sendPackagesGetPackageForUser(ctx context.Context, params Packa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetPackageForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55010,7 +55010,7 @@ func (c *Client) sendPackagesGetPackageVersionForAuthenticatedUser(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetPackageVersionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55140,7 +55140,7 @@ func (c *Client) sendPackagesGetPackageVersionForOrganization(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetPackageVersionForOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55290,7 +55290,7 @@ func (c *Client) sendPackagesGetPackageVersionForUser(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesGetPackageVersionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55439,7 +55439,7 @@ func (c *Client) sendPackagesListPackagesForAuthenticatedUser(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesListPackagesForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55548,7 +55548,7 @@ func (c *Client) sendPackagesListPackagesForOrganization(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForOrganization",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesListPackagesForOrganizationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55676,7 +55676,7 @@ func (c *Client) sendPackagesListPackagesForUser(ctx context.Context, params Pac
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesListPackagesForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55811,7 +55811,7 @@ func (c *Client) sendPackagesRestorePackageForAuthenticatedUser(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesRestorePackageForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55953,7 +55953,7 @@ func (c *Client) sendPackagesRestorePackageForOrg(ctx context.Context, params Pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesRestorePackageForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56114,7 +56114,7 @@ func (c *Client) sendPackagesRestorePackageForUser(ctx context.Context, params P
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesRestorePackageForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56273,7 +56273,7 @@ func (c *Client) sendPackagesRestorePackageVersionForAuthenticatedUser(ctx conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesRestorePackageVersionForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56413,7 +56413,7 @@ func (c *Client) sendPackagesRestorePackageVersionForOrg(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesRestorePackageVersionForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56572,7 +56572,7 @@ func (c *Client) sendPackagesRestorePackageVersionForUser(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, PackagesRestorePackageVersionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56721,7 +56721,7 @@ func (c *Client) sendProjectsAddCollaborator(ctx context.Context, request OptNil
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsAddCollaborator",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsAddCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56833,7 +56833,7 @@ func (c *Client) sendProjectsCreateColumn(ctx context.Context, request *Projects
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateColumn",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsCreateColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56927,7 +56927,7 @@ func (c *Client) sendProjectsCreateForAuthenticatedUser(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsCreateForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57004,7 +57004,7 @@ func (c *Client) sendProjectsCreateForOrg(ctx context.Context, request *Projects
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsCreateForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57100,7 +57100,7 @@ func (c *Client) sendProjectsCreateForRepo(ctx context.Context, request *Project
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsCreateForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57213,7 +57213,7 @@ func (c *Client) sendProjectsDelete(ctx context.Context, params ProjectsDeletePa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDelete",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57303,7 +57303,7 @@ func (c *Client) sendProjectsDeleteCard(ctx context.Context, params ProjectsDele
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDeleteCard",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsDeleteCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57393,7 +57393,7 @@ func (c *Client) sendProjectsDeleteColumn(ctx context.Context, params ProjectsDe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDeleteColumn",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsDeleteColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57485,7 +57485,7 @@ func (c *Client) sendProjectsGet(ctx context.Context, params ProjectsGetParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57575,7 +57575,7 @@ func (c *Client) sendProjectsGetCard(ctx context.Context, params ProjectsGetCard
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetCard",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsGetCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57665,7 +57665,7 @@ func (c *Client) sendProjectsGetColumn(ctx context.Context, params ProjectsGetCo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetColumn",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsGetColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57757,7 +57757,7 @@ func (c *Client) sendProjectsGetPermissionForUser(ctx context.Context, params Pr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetPermissionForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsGetPermissionForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57867,7 +57867,7 @@ func (c *Client) sendProjectsListCards(ctx context.Context, params ProjectsListC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListCards",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsListCardsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58017,7 +58017,7 @@ func (c *Client) sendProjectsListCollaborators(ctx context.Context, params Proje
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListCollaborators",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsListCollaboratorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58163,7 +58163,7 @@ func (c *Client) sendProjectsListColumns(ctx context.Context, params ProjectsLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListColumns",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsListColumnsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58294,7 +58294,7 @@ func (c *Client) sendProjectsListForOrg(ctx context.Context, params ProjectsList
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58442,7 +58442,7 @@ func (c *Client) sendProjectsListForRepo(ctx context.Context, params ProjectsLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsListForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58607,7 +58607,7 @@ func (c *Client) sendProjectsListForUser(ctx context.Context, params ProjectsLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58753,7 +58753,7 @@ func (c *Client) sendProjectsMoveCard(ctx context.Context, request *ProjectsMove
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsMoveCard",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsMoveCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58847,7 +58847,7 @@ func (c *Client) sendProjectsMoveColumn(ctx context.Context, request *ProjectsMo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsMoveColumn",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsMoveColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58942,7 +58942,7 @@ func (c *Client) sendProjectsRemoveCollaborator(ctx context.Context, params Proj
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsRemoveCollaborator",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsRemoveCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59053,7 +59053,7 @@ func (c *Client) sendProjectsUpdate(ctx context.Context, request OptProjectsUpda
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdate",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59146,7 +59146,7 @@ func (c *Client) sendProjectsUpdateCard(ctx context.Context, request OptProjects
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdateCard",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsUpdateCardOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59239,7 +59239,7 @@ func (c *Client) sendProjectsUpdateColumn(ctx context.Context, request *Projects
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdateColumn",
+	ctx, span := c.cfg.Tracer.Start(ctx, ProjectsUpdateColumnOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59332,7 +59332,7 @@ func (c *Client) sendPullsCheckIfMerged(ctx context.Context, params PullsCheckIf
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCheckIfMerged",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsCheckIfMergedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59476,7 +59476,7 @@ func (c *Client) sendPullsCreate(ctx context.Context, request *PullsCreateReq, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreate",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59598,7 +59598,7 @@ func (c *Client) sendPullsCreateReplyForReviewComment(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReplyForReviewComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsCreateReplyForReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59767,7 +59767,7 @@ func (c *Client) sendPullsCreateReview(ctx context.Context, request OptPullsCrea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReview",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsCreateReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59918,7 +59918,7 @@ func (c *Client) sendPullsCreateReviewComment(ctx context.Context, request *Pull
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReviewComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsCreateReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60050,7 +60050,7 @@ func (c *Client) sendPullsDeletePendingReview(ctx context.Context, params PullsD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDeletePendingReview",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsDeletePendingReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60197,7 +60197,7 @@ func (c *Client) sendPullsDeleteReviewComment(ctx context.Context, params PullsD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDeleteReviewComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsDeleteReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60327,7 +60327,7 @@ func (c *Client) sendPullsDismissReview(ctx context.Context, request *PullsDismi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDismissReview",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsDismissReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60511,7 +60511,7 @@ func (c *Client) sendPullsGet(ctx context.Context, params PullsGetParams) (res P
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60639,7 +60639,7 @@ func (c *Client) sendPullsGetReview(ctx context.Context, params PullsGetReviewPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGetReview",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsGetReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60786,7 +60786,7 @@ func (c *Client) sendPullsGetReviewComment(ctx context.Context, params PullsGetR
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGetReviewComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsGetReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60918,7 +60918,7 @@ func (c *Client) sendPullsList(ctx context.Context, params PullsListParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsList",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61151,7 +61151,7 @@ func (c *Client) sendPullsListCommentsForReview(ctx context.Context, params Pull
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListCommentsForReview",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListCommentsForReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61339,7 +61339,7 @@ func (c *Client) sendPullsListCommits(ctx context.Context, params PullsListCommi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListCommits",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61507,7 +61507,7 @@ func (c *Client) sendPullsListFiles(ctx context.Context, params PullsListFilesPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListFiles",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListFilesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61674,7 +61674,7 @@ func (c *Client) sendPullsListRequestedReviewers(ctx context.Context, params Pul
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListRequestedReviewers",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListRequestedReviewersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61842,7 +61842,7 @@ func (c *Client) sendPullsListReviewComments(ctx context.Context, params PullsLi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviewComments",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListReviewCommentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62061,7 +62061,7 @@ func (c *Client) sendPullsListReviewCommentsForRepo(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviewCommentsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListReviewCommentsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62260,7 +62260,7 @@ func (c *Client) sendPullsListReviews(ctx context.Context, params PullsListRevie
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviews",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsListReviewsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62433,7 +62433,7 @@ func (c *Client) sendPullsMerge(ctx context.Context, request OptNilPullsMergeReq
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsMerge",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsMergeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62565,7 +62565,7 @@ func (c *Client) sendPullsRemoveRequestedReviewers(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsRemoveRequestedReviewers",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsRemoveRequestedReviewersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62697,7 +62697,7 @@ func (c *Client) sendPullsSubmitReview(ctx context.Context, request *PullsSubmit
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsSubmitReview",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsSubmitReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62855,7 +62855,7 @@ func (c *Client) sendPullsUpdate(ctx context.Context, request OptPullsUpdateReq,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdate",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62987,7 +62987,7 @@ func (c *Client) sendPullsUpdateBranch(ctx context.Context, request OptNilPullsU
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateBranch",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsUpdateBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63119,7 +63119,7 @@ func (c *Client) sendPullsUpdateReview(ctx context.Context, request *PullsUpdate
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateReview",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsUpdateReviewOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63269,7 +63269,7 @@ func (c *Client) sendPullsUpdateReviewComment(ctx context.Context, request *Pull
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateReviewComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, PullsUpdateReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63403,7 +63403,7 @@ func (c *Client) sendRateLimitGet(ctx context.Context) (res RateLimitGetRes, err
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "RateLimitGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, RateLimitGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63477,7 +63477,7 @@ func (c *Client) sendReactionsCreateForCommitComment(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForCommitComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63610,7 +63610,7 @@ func (c *Client) sendReactionsCreateForIssue(ctx context.Context, request *React
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForIssue",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63744,7 +63744,7 @@ func (c *Client) sendReactionsCreateForIssueComment(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForIssueComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForIssueCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63878,7 +63878,7 @@ func (c *Client) sendReactionsCreateForPullRequestReviewComment(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForPullRequestReviewComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForPullRequestReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64011,7 +64011,7 @@ func (c *Client) sendReactionsCreateForRelease(ctx context.Context, request *Rea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForRelease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64149,7 +64149,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionCommentInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForTeamDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64310,7 +64310,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionCommentLegacy(ctx context.C
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionCommentLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForTeamDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64449,7 +64449,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionInOrg(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForTeamDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64592,7 +64592,7 @@ func (c *Client) sendReactionsCreateForTeamDiscussionLegacy(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsCreateForTeamDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64707,7 +64707,7 @@ func (c *Client) sendReactionsDeleteForCommitComment(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForCommitComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsDeleteForCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64856,7 +64856,7 @@ func (c *Client) sendReactionsDeleteForIssue(ctx context.Context, params Reactio
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForIssue",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsDeleteForIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65005,7 +65005,7 @@ func (c *Client) sendReactionsDeleteForIssueComment(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForIssueComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsDeleteForIssueCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65155,7 +65155,7 @@ func (c *Client) sendReactionsDeleteForPullRequestComment(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForPullRequestComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsDeleteForPullRequestCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65309,7 +65309,7 @@ func (c *Client) sendReactionsDeleteForTeamDiscussion(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForTeamDiscussion",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsDeleteForTeamDiscussionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65461,7 +65461,7 @@ func (c *Client) sendReactionsDeleteForTeamDiscussionComment(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForTeamDiscussionComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsDeleteForTeamDiscussionCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65636,7 +65636,7 @@ func (c *Client) sendReactionsDeleteLegacy(ctx context.Context, params Reactions
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsDeleteLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65726,7 +65726,7 @@ func (c *Client) sendReactionsListForCommitComment(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForCommitComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65910,7 +65910,7 @@ func (c *Client) sendReactionsListForIssue(ctx context.Context, params Reactions
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForIssue",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForIssueOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66094,7 +66094,7 @@ func (c *Client) sendReactionsListForIssueComment(ctx context.Context, params Re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForIssueComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForIssueCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66279,7 +66279,7 @@ func (c *Client) sendReactionsListForPullRequestReviewComment(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForPullRequestReviewComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForPullRequestReviewCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66467,7 +66467,7 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentInOrg(ctx context.Cont
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionCommentInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForTeamDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66678,7 +66678,7 @@ func (c *Client) sendReactionsListForTeamDiscussionCommentLegacy(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionCommentLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForTeamDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66866,7 +66866,7 @@ func (c *Client) sendReactionsListForTeamDiscussionInOrg(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForTeamDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67058,7 +67058,7 @@ func (c *Client) sendReactionsListForTeamDiscussionLegacy(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReactionsListForTeamDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67223,7 +67223,7 @@ func (c *Client) sendReposAcceptInvitation(ctx context.Context, params ReposAcce
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAcceptInvitation",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposAcceptInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67327,7 +67327,7 @@ func (c *Client) sendReposAddAppAccessRestrictions(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddAppAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposAddAppAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67478,7 +67478,7 @@ func (c *Client) sendReposAddCollaborator(ctx context.Context, request OptReposA
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddCollaborator",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposAddCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67613,7 +67613,7 @@ func (c *Client) sendReposAddStatusCheckContexts(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddStatusCheckContexts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposAddStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67759,7 +67759,7 @@ func (c *Client) sendReposAddTeamAccessRestrictions(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddTeamAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposAddTeamAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67904,7 +67904,7 @@ func (c *Client) sendReposAddUserAccessRestrictions(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddUserAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposAddUserAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68040,7 +68040,7 @@ func (c *Client) sendReposCheckCollaborator(ctx context.Context, params ReposChe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCheckCollaborator",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCheckCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68171,7 +68171,7 @@ func (c *Client) sendReposCheckVulnerabilityAlerts(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCheckVulnerabilityAlerts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCheckVulnerabilityAlertsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68335,7 +68335,7 @@ func (c *Client) sendReposCompareCommits(ctx context.Context, params ReposCompar
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCompareCommits",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCompareCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68501,7 +68501,7 @@ func (c *Client) sendReposCreateAutolink(ctx context.Context, request *ReposCrea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateAutolink",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateAutolinkOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68621,7 +68621,7 @@ func (c *Client) sendReposCreateCommitComment(ctx context.Context, request *Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68759,7 +68759,7 @@ func (c *Client) sendReposCreateCommitSignatureProtection(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitSignatureProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateCommitSignatureProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68890,7 +68890,7 @@ func (c *Client) sendReposCreateCommitStatus(ctx context.Context, request *Repos
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateCommitStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69021,7 +69021,7 @@ func (c *Client) sendReposCreateDeployKey(ctx context.Context, request *ReposCre
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeployKey",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateDeployKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69189,7 +69189,7 @@ func (c *Client) sendReposCreateDeployment(ctx context.Context, request *ReposCr
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeployment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69304,7 +69304,7 @@ func (c *Client) sendReposCreateDeploymentStatus(ctx context.Context, request *R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeploymentStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateDeploymentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69455,7 +69455,7 @@ func (c *Client) sendReposCreateDispatchEvent(ctx context.Context, request *Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDispatchEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateDispatchEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69574,7 +69574,7 @@ func (c *Client) sendReposCreateForAuthenticatedUser(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69652,7 +69652,7 @@ func (c *Client) sendReposCreateFork(ctx context.Context, request OptNilReposCre
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateFork",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateForkOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69772,7 +69772,7 @@ func (c *Client) sendReposCreateInOrg(ctx context.Context, request *ReposCreateI
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69866,7 +69866,7 @@ func (c *Client) sendReposCreateOrUpdateFileContents(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateOrUpdateFileContents",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateOrUpdateFileContentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69998,7 +69998,7 @@ func (c *Client) sendReposCreatePagesSite(ctx context.Context, request NilReposC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreatePagesSite",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreatePagesSiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70118,7 +70118,7 @@ func (c *Client) sendReposCreateRelease(ctx context.Context, request *ReposCreat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateRelease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70242,7 +70242,7 @@ func (c *Client) sendReposCreateUsingTemplate(ctx context.Context, request *Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateUsingTemplate",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateUsingTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70357,7 +70357,7 @@ func (c *Client) sendReposCreateWebhook(ctx context.Context, request OptNilRepos
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposCreateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70470,7 +70470,7 @@ func (c *Client) sendReposDeclineInvitation(ctx context.Context, params ReposDec
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeclineInvitation",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeclineInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70563,7 +70563,7 @@ func (c *Client) sendReposDelete(ctx context.Context, params ReposDeleteParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDelete",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70677,7 +70677,7 @@ func (c *Client) sendReposDeleteAccessRestrictions(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70812,7 +70812,7 @@ func (c *Client) sendReposDeleteAdminBranchProtection(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAdminBranchProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteAdminBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70941,7 +70941,7 @@ func (c *Client) sendReposDeleteAnEnvironment(ctx context.Context, params ReposD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAnEnvironment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteAnEnvironmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71070,7 +71070,7 @@ func (c *Client) sendReposDeleteAutolink(ctx context.Context, params ReposDelete
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAutolink",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteAutolinkOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71202,7 +71202,7 @@ func (c *Client) sendReposDeleteBranchProtection(ctx context.Context, params Rep
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteBranchProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71331,7 +71331,7 @@ func (c *Client) sendReposDeleteCommitComment(ctx context.Context, params ReposD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteCommitComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71466,7 +71466,7 @@ func (c *Client) sendReposDeleteCommitSignatureProtection(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteCommitSignatureProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteCommitSignatureProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71596,7 +71596,7 @@ func (c *Client) sendReposDeleteDeployKey(ctx context.Context, params ReposDelet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteDeployKey",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteDeployKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71732,7 +71732,7 @@ func (c *Client) sendReposDeleteDeployment(ctx context.Context, params ReposDele
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteDeployment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71867,7 +71867,7 @@ func (c *Client) sendReposDeleteFile(ctx context.Context, request *ReposDeleteFi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteFile",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71998,7 +71998,7 @@ func (c *Client) sendReposDeleteInvitation(ctx context.Context, params ReposDele
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteInvitation",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72126,7 +72126,7 @@ func (c *Client) sendReposDeletePagesSite(ctx context.Context, params ReposDelet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeletePagesSite",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeletePagesSiteOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72240,7 +72240,7 @@ func (c *Client) sendReposDeletePullRequestReviewProtection(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeletePullRequestReviewProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeletePullRequestReviewProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72369,7 +72369,7 @@ func (c *Client) sendReposDeleteRelease(ctx context.Context, params ReposDeleteR
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteRelease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72497,7 +72497,7 @@ func (c *Client) sendReposDeleteReleaseAsset(ctx context.Context, params ReposDe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteReleaseAsset",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72625,7 +72625,7 @@ func (c *Client) sendReposDeleteWebhook(ctx context.Context, params ReposDeleteW
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDeleteWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72755,7 +72755,7 @@ func (c *Client) sendReposDisableAutomatedSecurityFixes(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableAutomatedSecurityFixes",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDisableAutomatedSecurityFixesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72865,7 +72865,7 @@ func (c *Client) sendReposDisableLfsForRepo(ctx context.Context, params ReposDis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableLfsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDisableLfsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72978,7 +72978,7 @@ func (c *Client) sendReposDisableVulnerabilityAlerts(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableVulnerabilityAlerts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDisableVulnerabilityAlertsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73093,7 +73093,7 @@ func (c *Client) sendReposDownloadTarballArchive(ctx context.Context, params Rep
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDownloadTarballArchive",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDownloadTarballArchiveOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73226,7 +73226,7 @@ func (c *Client) sendReposDownloadZipballArchive(ctx context.Context, params Rep
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDownloadZipballArchive",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposDownloadZipballArchiveOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73356,7 +73356,7 @@ func (c *Client) sendReposEnableAutomatedSecurityFixes(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableAutomatedSecurityFixes",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposEnableAutomatedSecurityFixesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73466,7 +73466,7 @@ func (c *Client) sendReposEnableLfsForRepo(ctx context.Context, params ReposEnab
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableLfsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposEnableLfsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73579,7 +73579,7 @@ func (c *Client) sendReposEnableVulnerabilityAlerts(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableVulnerabilityAlerts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposEnableVulnerabilityAlertsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73690,7 +73690,7 @@ func (c *Client) sendReposGet(ctx context.Context, params ReposGetParams) (res R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73806,7 +73806,7 @@ func (c *Client) sendReposGetAccessRestrictions(ctx context.Context, params Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73939,7 +73939,7 @@ func (c *Client) sendReposGetAdminBranchProtection(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAdminBranchProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetAdminBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74072,7 +74072,7 @@ func (c *Client) sendReposGetAllStatusCheckContexts(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAllStatusCheckContexts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetAllStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74201,7 +74201,7 @@ func (c *Client) sendReposGetAllTopics(ctx context.Context, params ReposGetAllTo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAllTopics",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetAllTopicsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74356,7 +74356,7 @@ func (c *Client) sendReposGetAppsWithAccessToProtectedBranch(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAppsWithAccessToProtectedBranch",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetAppsWithAccessToProtectedBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74486,7 +74486,7 @@ func (c *Client) sendReposGetAutolink(ctx context.Context, params ReposGetAutoli
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAutolink",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetAutolinkOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74614,7 +74614,7 @@ func (c *Client) sendReposGetBranch(ctx context.Context, params ReposGetBranchPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetBranch",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74746,7 +74746,7 @@ func (c *Client) sendReposGetBranchProtection(ctx context.Context, params ReposG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetBranchProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74876,7 +74876,7 @@ func (c *Client) sendReposGetClones(ctx context.Context, params ReposGetClonesPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetClones",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetClonesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75007,7 +75007,7 @@ func (c *Client) sendReposGetCodeFrequencyStats(ctx context.Context, params Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCodeFrequencyStats",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCodeFrequencyStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75118,7 +75118,7 @@ func (c *Client) sendReposGetCollaboratorPermissionLevel(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCollaboratorPermissionLevel",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCollaboratorPermissionLevelOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75255,7 +75255,7 @@ func (c *Client) sendReposGetCombinedStatusForRef(ctx context.Context, params Re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCombinedStatusForRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCombinedStatusForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75468,7 +75468,7 @@ func (c *Client) sendReposGetCommit(ctx context.Context, params ReposGetCommitPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommit",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75635,7 +75635,7 @@ func (c *Client) sendReposGetCommitActivityStats(ctx context.Context, params Rep
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitActivityStats",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCommitActivityStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75745,7 +75745,7 @@ func (c *Client) sendReposGetCommitComment(ctx context.Context, params ReposGetC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75882,7 +75882,7 @@ func (c *Client) sendReposGetCommitSignatureProtection(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitSignatureProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCommitSignatureProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76020,7 +76020,7 @@ func (c *Client) sendReposGetCommunityProfileMetrics(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommunityProfileMetrics",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetCommunityProfileMetricsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76135,7 +76135,7 @@ func (c *Client) sendReposGetContributorsStats(ctx context.Context, params Repos
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetContributorsStats",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetContributorsStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76245,7 +76245,7 @@ func (c *Client) sendReposGetDeployKey(ctx context.Context, params ReposGetDeplo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeployKey",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetDeployKeyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76373,7 +76373,7 @@ func (c *Client) sendReposGetDeployment(ctx context.Context, params ReposGetDepl
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeployment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76501,7 +76501,7 @@ func (c *Client) sendReposGetDeploymentStatus(ctx context.Context, params ReposG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeploymentStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetDeploymentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76648,7 +76648,7 @@ func (c *Client) sendReposGetLatestPagesBuild(ctx context.Context, params ReposG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetLatestPagesBuild",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetLatestPagesBuildOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76761,7 +76761,7 @@ func (c *Client) sendReposGetLatestRelease(ctx context.Context, params ReposGetL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetLatestRelease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetLatestReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76871,7 +76871,7 @@ func (c *Client) sendReposGetPages(ctx context.Context, params ReposGetPagesPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPages",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetPagesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76981,7 +76981,7 @@ func (c *Client) sendReposGetPagesBuild(ctx context.Context, params ReposGetPage
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPagesBuild",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetPagesBuildOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77115,7 +77115,7 @@ func (c *Client) sendReposGetPagesHealthCheck(ctx context.Context, params ReposG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPagesHealthCheck",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetPagesHealthCheckOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77228,7 +77228,7 @@ func (c *Client) sendReposGetParticipationStats(ctx context.Context, params Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetParticipationStats",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetParticipationStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77342,7 +77342,7 @@ func (c *Client) sendReposGetPullRequestReviewProtection(ctx context.Context, pa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPullRequestReviewProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetPullRequestReviewProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77476,7 +77476,7 @@ func (c *Client) sendReposGetPunchCardStats(ctx context.Context, params ReposGet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPunchCardStats",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetPunchCardStatsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77588,7 +77588,7 @@ func (c *Client) sendReposGetReadme(ctx context.Context, params ReposGetReadmePa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReadme",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetReadmeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77721,7 +77721,7 @@ func (c *Client) sendReposGetReadmeInDirectory(ctx context.Context, params Repos
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReadmeInDirectory",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetReadmeInDirectoryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77872,7 +77872,7 @@ func (c *Client) sendReposGetRelease(ctx context.Context, params ReposGetRelease
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetRelease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78003,7 +78003,7 @@ func (c *Client) sendReposGetReleaseAsset(ctx context.Context, params ReposGetRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReleaseAsset",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78131,7 +78131,7 @@ func (c *Client) sendReposGetReleaseByTag(ctx context.Context, params ReposGetRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReleaseByTag",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetReleaseByTagOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78263,7 +78263,7 @@ func (c *Client) sendReposGetStatusChecksProtection(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetStatusChecksProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetStatusChecksProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78397,7 +78397,7 @@ func (c *Client) sendReposGetTeamsWithAccessToProtectedBranch(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTeamsWithAccessToProtectedBranch",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetTeamsWithAccessToProtectedBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78526,7 +78526,7 @@ func (c *Client) sendReposGetTopPaths(ctx context.Context, params ReposGetTopPat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTopPaths",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetTopPathsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78636,7 +78636,7 @@ func (c *Client) sendReposGetTopReferrers(ctx context.Context, params ReposGetTo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTopReferrers",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetTopReferrersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78751,7 +78751,7 @@ func (c *Client) sendReposGetUsersWithAccessToProtectedBranch(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetUsersWithAccessToProtectedBranch",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetUsersWithAccessToProtectedBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78881,7 +78881,7 @@ func (c *Client) sendReposGetViews(ctx context.Context, params ReposGetViewsPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetViews",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetViewsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79014,7 +79014,7 @@ func (c *Client) sendReposGetWebhook(ctx context.Context, params ReposGetWebhook
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79146,7 +79146,7 @@ func (c *Client) sendReposGetWebhookConfigForRepo(ctx context.Context, params Re
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhookConfigForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetWebhookConfigForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79275,7 +79275,7 @@ func (c *Client) sendReposGetWebhookDelivery(ctx context.Context, params ReposGe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhookDelivery",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposGetWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79423,7 +79423,7 @@ func (c *Client) sendReposListAutolinks(ctx context.Context, params ReposListAut
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListAutolinks",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListAutolinksOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79554,7 +79554,7 @@ func (c *Client) sendReposListBranches(ctx context.Context, params ReposListBran
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListBranches",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListBranchesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79724,7 +79724,7 @@ func (c *Client) sendReposListBranchesForHeadCommit(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListBranchesForHeadCommit",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListBranchesForHeadCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79857,7 +79857,7 @@ func (c *Client) sendReposListCollaborators(ctx context.Context, params ReposLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCollaborators",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListCollaboratorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80022,7 +80022,7 @@ func (c *Client) sendReposListCommentsForCommit(ctx context.Context, params Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommentsForCommit",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListCommentsForCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80192,7 +80192,7 @@ func (c *Client) sendReposListCommitCommentsForRepo(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommitCommentsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListCommitCommentsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80343,7 +80343,7 @@ func (c *Client) sendReposListCommitStatusesForRef(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommitStatusesForRef",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListCommitStatusesForRefOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80541,7 +80541,7 @@ func (c *Client) sendReposListCommits(ctx context.Context, params ReposListCommi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommits",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80780,7 +80780,7 @@ func (c *Client) sendReposListContributors(ctx context.Context, params ReposList
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListContributors",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListContributorsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80945,7 +80945,7 @@ func (c *Client) sendReposListDeployKeys(ctx context.Context, params ReposListDe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeployKeys",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListDeployKeysOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81093,7 +81093,7 @@ func (c *Client) sendReposListDeploymentStatuses(ctx context.Context, params Rep
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeploymentStatuses",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListDeploymentStatusesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81260,7 +81260,7 @@ func (c *Client) sendReposListDeployments(ctx context.Context, params ReposListD
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeployments",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListDeploymentsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81479,7 +81479,7 @@ func (c *Client) sendReposListForAuthenticatedUser(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81708,7 +81708,7 @@ func (c *Client) sendReposListForOrg(ctx context.Context, params ReposListForOrg
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81889,7 +81889,7 @@ func (c *Client) sendReposListForUser(ctx context.Context, params ReposListForUs
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82069,7 +82069,7 @@ func (c *Client) sendReposListForks(ctx context.Context, params ReposListForksPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForks",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListForksOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82235,7 +82235,7 @@ func (c *Client) sendReposListInvitations(ctx context.Context, params ReposListI
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListInvitations",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListInvitationsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82384,7 +82384,7 @@ func (c *Client) sendReposListInvitationsForAuthenticatedUser(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListInvitationsForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListInvitationsForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82495,7 +82495,7 @@ func (c *Client) sendReposListLanguages(ctx context.Context, params ReposListLan
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListLanguages",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListLanguagesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82605,7 +82605,7 @@ func (c *Client) sendReposListPagesBuilds(ctx context.Context, params ReposListP
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPagesBuilds",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListPagesBuildsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82759,7 +82759,7 @@ func (c *Client) sendReposListPublic(ctx context.Context, params ReposListPublic
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPublic",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListPublicOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82857,7 +82857,7 @@ func (c *Client) sendReposListPullRequestsAssociatedWithCommit(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPullRequestsAssociatedWithCommit",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListPullRequestsAssociatedWithCommitOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83024,7 +83024,7 @@ func (c *Client) sendReposListReleaseAssets(ctx context.Context, params ReposLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListReleaseAssets",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListReleaseAssetsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83195,7 +83195,7 @@ func (c *Client) sendReposListReleases(ctx context.Context, params ReposListRele
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListReleases",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListReleasesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83343,7 +83343,7 @@ func (c *Client) sendReposListTags(ctx context.Context, params ReposListTagsPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListTags",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListTagsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83491,7 +83491,7 @@ func (c *Client) sendReposListTeams(ctx context.Context, params ReposListTeamsPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListTeams",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListTeamsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83639,7 +83639,7 @@ func (c *Client) sendReposListWebhookDeliveries(ctx context.Context, params Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListWebhookDeliveries",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListWebhookDeliveriesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83806,7 +83806,7 @@ func (c *Client) sendReposListWebhooks(ctx context.Context, params ReposListWebh
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListWebhooks",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposListWebhooksOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83954,7 +83954,7 @@ func (c *Client) sendReposMerge(ctx context.Context, request *ReposMergeReq, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposMerge",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposMergeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84068,7 +84068,7 @@ func (c *Client) sendReposMergeUpstream(ctx context.Context, request *ReposMerge
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposMergeUpstream",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposMergeUpstreamOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84182,7 +84182,7 @@ func (c *Client) sendReposPingWebhook(ctx context.Context, params ReposPingWebho
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposPingWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposPingWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84311,7 +84311,7 @@ func (c *Client) sendReposRedeliverWebhookDelivery(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRedeliverWebhookDelivery",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRedeliverWebhookDeliveryOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84473,7 +84473,7 @@ func (c *Client) sendReposRemoveAppAccessRestrictions(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveAppAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRemoveAppAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84605,7 +84605,7 @@ func (c *Client) sendReposRemoveCollaborator(ctx context.Context, params ReposRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveCollaborator",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRemoveCollaboratorOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84737,7 +84737,7 @@ func (c *Client) sendReposRemoveStatusCheckContexts(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveStatusCheckContexts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRemoveStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84873,7 +84873,7 @@ func (c *Client) sendReposRemoveStatusCheckProtection(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveStatusCheckProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRemoveStatusCheckProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85016,7 +85016,7 @@ func (c *Client) sendReposRemoveTeamAccessRestrictions(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveTeamAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRemoveTeamAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85161,7 +85161,7 @@ func (c *Client) sendReposRemoveUserAccessRestrictions(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveUserAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRemoveUserAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85305,7 +85305,7 @@ func (c *Client) sendReposRenameBranch(ctx context.Context, request OptReposRena
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRenameBranch",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRenameBranchOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85437,7 +85437,7 @@ func (c *Client) sendReposReplaceAllTopics(ctx context.Context, request *ReposRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposReplaceAllTopics",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposReplaceAllTopicsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85555,7 +85555,7 @@ func (c *Client) sendReposRequestPagesBuild(ctx context.Context, params ReposReq
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRequestPagesBuild",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposRequestPagesBuildOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85671,7 +85671,7 @@ func (c *Client) sendReposSetAdminBranchProtection(ctx context.Context, params R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetAdminBranchProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposSetAdminBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85816,7 +85816,7 @@ func (c *Client) sendReposSetAppAccessRestrictions(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetAppAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposSetAppAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85952,7 +85952,7 @@ func (c *Client) sendReposSetStatusCheckContexts(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetStatusCheckContexts",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposSetStatusCheckContextsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86099,7 +86099,7 @@ func (c *Client) sendReposSetTeamAccessRestrictions(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetTeamAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposSetTeamAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86245,7 +86245,7 @@ func (c *Client) sendReposSetUserAccessRestrictions(ctx context.Context, request
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetUserAccessRestrictions",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposSetUserAccessRestrictionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86380,7 +86380,7 @@ func (c *Client) sendReposTestPushWebhook(ctx context.Context, params ReposTestP
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposTestPushWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposTestPushWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86513,7 +86513,7 @@ func (c *Client) sendReposTransfer(ctx context.Context, request *ReposTransferRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposTransfer",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposTransferOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86627,7 +86627,7 @@ func (c *Client) sendReposUpdate(ctx context.Context, request OptReposUpdateReq,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdate",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86746,7 +86746,7 @@ func (c *Client) sendReposUpdateBranchProtection(ctx context.Context, request *R
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateBranchProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateBranchProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86878,7 +86878,7 @@ func (c *Client) sendReposUpdateCommitComment(ctx context.Context, request *Repo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateCommitComment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateCommitCommentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87009,7 +87009,7 @@ func (c *Client) sendReposUpdateInvitation(ctx context.Context, request OptRepos
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateInvitation",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateInvitationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87147,7 +87147,7 @@ func (c *Client) sendReposUpdatePullRequestReviewProtection(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdatePullRequestReviewProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdatePullRequestReviewProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87279,7 +87279,7 @@ func (c *Client) sendReposUpdateRelease(ctx context.Context, request OptReposUpd
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateRelease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateReleaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87410,7 +87410,7 @@ func (c *Client) sendReposUpdateReleaseAsset(ctx context.Context, request OptRep
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateReleaseAsset",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87547,7 +87547,7 @@ func (c *Client) sendReposUpdateStatusCheckProtection(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateStatusCheckProtection",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateStatusCheckProtectionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87682,7 +87682,7 @@ func (c *Client) sendReposUpdateWebhook(ctx context.Context, request OptReposUpd
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateWebhook",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateWebhookOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87817,7 +87817,7 @@ func (c *Client) sendReposUpdateWebhookConfigForRepo(ctx context.Context, reques
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateWebhookConfigForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUpdateWebhookConfigForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87974,7 +87974,7 @@ func (c *Client) sendReposUploadReleaseAsset(ctx context.Context, request *Repos
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUploadReleaseAsset",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReposUploadReleaseAssetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88141,7 +88141,7 @@ func (c *Client) sendScimDeleteUserFromOrg(ctx context.Context, params ScimDelet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ScimDeleteUserFromOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, ScimDeleteUserFromOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88269,7 +88269,7 @@ func (c *Client) sendSearchCode(ctx context.Context, params SearchCodeParams) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchCode",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchCodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88437,7 +88437,7 @@ func (c *Client) sendSearchCommits(ctx context.Context, params SearchCommitsPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchCommits",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchCommitsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88617,7 +88617,7 @@ func (c *Client) sendSearchIssuesAndPullRequests(ctx context.Context, params Sea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchIssuesAndPullRequests",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchIssuesAndPullRequestsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88784,7 +88784,7 @@ func (c *Client) sendSearchLabels(ctx context.Context, params SearchLabelsParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchLabels",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchLabelsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88971,7 +88971,7 @@ func (c *Client) sendSearchRepos(ctx context.Context, params SearchReposParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchRepos",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchReposOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89142,7 +89142,7 @@ func (c *Client) sendSearchTopics(ctx context.Context, params SearchTopicsParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchTopics",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchTopicsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89277,7 +89277,7 @@ func (c *Client) sendSearchUsers(ctx context.Context, params SearchUsersParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SearchUsers",
+	ctx, span := c.cfg.Tracer.Start(ctx, SearchUsersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89438,7 +89438,7 @@ func (c *Client) sendSecretScanningGetAlert(ctx context.Context, params SecretSc
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningGetAlert",
+	ctx, span := c.cfg.Tracer.Start(ctx, SecretScanningGetAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89573,7 +89573,7 @@ func (c *Client) sendSecretScanningListAlertsForOrg(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningListAlertsForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, SecretScanningListAlertsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89739,7 +89739,7 @@ func (c *Client) sendSecretScanningListAlertsForRepo(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningListAlertsForRepo",
+	ctx, span := c.cfg.Tracer.Start(ctx, SecretScanningListAlertsForRepoOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89924,7 +89924,7 @@ func (c *Client) sendSecretScanningUpdateAlert(ctx context.Context, request *Sec
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningUpdateAlert",
+	ctx, span := c.cfg.Tracer.Start(ctx, SecretScanningUpdateAlertOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90079,7 +90079,7 @@ func (c *Client) sendTeamsAddMemberLegacy(ctx context.Context, params TeamsAddMe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddMemberLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsAddMemberLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90209,7 +90209,7 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateMembershipForUserInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsAddOrUpdateMembershipForUserInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90366,7 +90366,7 @@ func (c *Client) sendTeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateMembershipForUserLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsAddOrUpdateMembershipForUserLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90482,7 +90482,7 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateProjectPermissionsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsAddOrUpdateProjectPermissionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90621,7 +90621,7 @@ func (c *Client) sendTeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Contex
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateProjectPermissionsLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsAddOrUpdateProjectPermissionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90744,7 +90744,7 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateRepoPermissionsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsAddOrUpdateRepoPermissionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90907,7 +90907,7 @@ func (c *Client) sendTeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateRepoPermissionsLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsAddOrUpdateRepoPermissionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91041,7 +91041,7 @@ func (c *Client) sendTeamsCheckPermissionsForProjectInOrg(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForProjectInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCheckPermissionsForProjectInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91176,7 +91176,7 @@ func (c *Client) sendTeamsCheckPermissionsForProjectLegacy(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForProjectLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCheckPermissionsForProjectLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91293,7 +91293,7 @@ func (c *Client) sendTeamsCheckPermissionsForRepoInOrg(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForRepoInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCheckPermissionsForRepoInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91449,7 +91449,7 @@ func (c *Client) sendTeamsCheckPermissionsForRepoLegacy(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForRepoLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCheckPermissionsForRepoLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91584,7 +91584,7 @@ func (c *Client) sendTeamsCreate(ctx context.Context, request *TeamsCreateReq, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreate",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCreateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91688,7 +91688,7 @@ func (c *Client) sendTeamsCreateDiscussionCommentInOrg(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionCommentInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCreateDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91833,7 +91833,7 @@ func (c *Client) sendTeamsCreateDiscussionCommentLegacy(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionCommentLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCreateDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91956,7 +91956,7 @@ func (c *Client) sendTeamsCreateDiscussionInOrg(ctx context.Context, request *Te
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCreateDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92082,7 +92082,7 @@ func (c *Client) sendTeamsCreateDiscussionLegacy(ctx context.Context, request *T
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCreateDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92183,7 +92183,7 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Con
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCreateOrUpdateIdpGroupConnectionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92307,7 +92307,7 @@ func (c *Client) sendTeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Co
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsCreateOrUpdateIdpGroupConnectionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92404,7 +92404,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentInOrg(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionCommentInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsDeleteDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92557,7 +92557,7 @@ func (c *Client) sendTeamsDeleteDiscussionCommentLegacy(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionCommentLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsDeleteDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92688,7 +92688,7 @@ func (c *Client) sendTeamsDeleteDiscussionInOrg(ctx context.Context, params Team
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsDeleteDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92822,7 +92822,7 @@ func (c *Client) sendTeamsDeleteDiscussionLegacy(ctx context.Context, params Tea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsDeleteDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92935,7 +92935,7 @@ func (c *Client) sendTeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInO
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsDeleteInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93051,7 +93051,7 @@ func (c *Client) sendTeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsDeleteLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93143,7 +93143,7 @@ func (c *Client) sendTeamsGetByName(ctx context.Context, params TeamsGetByNamePa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetByName",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetByNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93255,7 +93255,7 @@ func (c *Client) sendTeamsGetDiscussionCommentInOrg(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionCommentInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93408,7 +93408,7 @@ func (c *Client) sendTeamsGetDiscussionCommentLegacy(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionCommentLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93539,7 +93539,7 @@ func (c *Client) sendTeamsGetDiscussionInOrg(ctx context.Context, params TeamsGe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93673,7 +93673,7 @@ func (c *Client) sendTeamsGetDiscussionLegacy(ctx context.Context, params TeamsG
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93786,7 +93786,7 @@ func (c *Client) sendTeamsGetLegacy(ctx context.Context, params TeamsGetLegacyPa
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93882,7 +93882,7 @@ func (c *Client) sendTeamsGetMemberLegacy(ctx context.Context, params TeamsGetMe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMemberLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetMemberLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93998,7 +93998,7 @@ func (c *Client) sendTeamsGetMembershipForUserInOrg(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMembershipForUserInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetMembershipForUserInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94136,7 +94136,7 @@ func (c *Client) sendTeamsGetMembershipForUserLegacy(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMembershipForUserLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsGetMembershipForUserLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94245,7 +94245,7 @@ func (c *Client) sendTeamsList(ctx context.Context, params TeamsListParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsList",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94376,7 +94376,7 @@ func (c *Client) sendTeamsListChildInOrg(ctx context.Context, params TeamsListCh
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListChildInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListChildInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94528,7 +94528,7 @@ func (c *Client) sendTeamsListChildLegacy(ctx context.Context, params TeamsListC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListChildLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListChildLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94660,7 +94660,7 @@ func (c *Client) sendTeamsListDiscussionCommentsInOrg(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionCommentsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListDiscussionCommentsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94850,7 +94850,7 @@ func (c *Client) sendTeamsListDiscussionCommentsLegacy(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionCommentsLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListDiscussionCommentsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95018,7 +95018,7 @@ func (c *Client) sendTeamsListDiscussionsInOrg(ctx context.Context, params Teams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListDiscussionsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95206,7 +95206,7 @@ func (c *Client) sendTeamsListDiscussionsLegacy(ctx context.Context, params Team
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionsLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListDiscussionsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95355,7 +95355,7 @@ func (c *Client) sendTeamsListForAuthenticatedUser(ctx context.Context, params T
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95473,7 +95473,7 @@ func (c *Client) sendTeamsListIdpGroupsForLegacy(ctx context.Context, params Tea
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsForLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListIdpGroupsForLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95570,7 +95570,7 @@ func (c *Client) sendTeamsListIdpGroupsForOrg(ctx context.Context, params TeamsL
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsForOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListIdpGroupsForOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95704,7 +95704,7 @@ func (c *Client) sendTeamsListIdpGroupsInOrg(ctx context.Context, params TeamsLi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListIdpGroupsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95815,7 +95815,7 @@ func (c *Client) sendTeamsListMembersInOrg(ctx context.Context, params TeamsList
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListMembersInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListMembersInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95985,7 +95985,7 @@ func (c *Client) sendTeamsListMembersLegacy(ctx context.Context, params TeamsLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListMembersLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListMembersLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96136,7 +96136,7 @@ func (c *Client) sendTeamsListPendingInvitationsInOrg(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListPendingInvitationsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListPendingInvitationsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96292,7 +96292,7 @@ func (c *Client) sendTeamsListPendingInvitationsLegacy(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListPendingInvitationsLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListPendingInvitationsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96423,7 +96423,7 @@ func (c *Client) sendTeamsListProjectsInOrg(ctx context.Context, params TeamsLis
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListProjectsInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListProjectsInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96576,7 +96576,7 @@ func (c *Client) sendTeamsListProjectsLegacy(ctx context.Context, params TeamsLi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListProjectsLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListProjectsLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96707,7 +96707,7 @@ func (c *Client) sendTeamsListReposInOrg(ctx context.Context, params TeamsListRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListReposInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListReposInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96859,7 +96859,7 @@ func (c *Client) sendTeamsListReposLegacy(ctx context.Context, params TeamsListR
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListReposLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsListReposLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97008,7 +97008,7 @@ func (c *Client) sendTeamsRemoveMemberLegacy(ctx context.Context, params TeamsRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMemberLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsRemoveMemberLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97131,7 +97131,7 @@ func (c *Client) sendTeamsRemoveMembershipForUserInOrg(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMembershipForUserInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsRemoveMembershipForUserInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97276,7 +97276,7 @@ func (c *Client) sendTeamsRemoveMembershipForUserLegacy(ctx context.Context, par
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMembershipForUserLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsRemoveMembershipForUserLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97390,7 +97390,7 @@ func (c *Client) sendTeamsRemoveProjectInOrg(ctx context.Context, params TeamsRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveProjectInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsRemoveProjectInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97526,7 +97526,7 @@ func (c *Client) sendTeamsRemoveProjectLegacy(ctx context.Context, params TeamsR
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveProjectLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsRemoveProjectLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97640,7 +97640,7 @@ func (c *Client) sendTeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemov
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveRepoInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsRemoveRepoInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97795,7 +97795,7 @@ func (c *Client) sendTeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveRepoLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsRemoveRepoLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97926,7 +97926,7 @@ func (c *Client) sendTeamsUpdateDiscussionCommentInOrg(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionCommentInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsUpdateDiscussionCommentInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98082,7 +98082,7 @@ func (c *Client) sendTeamsUpdateDiscussionCommentLegacy(ctx context.Context, req
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionCommentLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsUpdateDiscussionCommentLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98217,7 +98217,7 @@ func (c *Client) sendTeamsUpdateDiscussionInOrg(ctx context.Context, request Opt
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsUpdateDiscussionInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98355,7 +98355,7 @@ func (c *Client) sendTeamsUpdateDiscussionLegacy(ctx context.Context, request Op
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsUpdateDiscussionLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98469,7 +98469,7 @@ func (c *Client) sendTeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdat
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateInOrg",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsUpdateInOrgOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98587,7 +98587,7 @@ func (c *Client) sendTeamsUpdateLegacy(ctx context.Context, request *TeamsUpdate
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateLegacy",
+	ctx, span := c.cfg.Tracer.Start(ctx, TeamsUpdateLegacyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98680,7 +98680,7 @@ func (c *Client) sendUsersAddEmailForAuthenticated(ctx context.Context, request 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersAddEmailForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersAddEmailForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98755,7 +98755,7 @@ func (c *Client) sendUsersBlock(ctx context.Context, params UsersBlockParams) (r
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersBlock",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersBlockOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98845,7 +98845,7 @@ func (c *Client) sendUsersCheckBlocked(ctx context.Context, params UsersCheckBlo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckBlocked",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersCheckBlockedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98935,7 +98935,7 @@ func (c *Client) sendUsersCheckFollowingForUser(ctx context.Context, params User
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckFollowingForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersCheckFollowingForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99044,7 +99044,7 @@ func (c *Client) sendUsersCheckPersonIsFollowedByAuthenticated(ctx context.Conte
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckPersonIsFollowedByAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersCheckPersonIsFollowedByAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99136,7 +99136,7 @@ func (c *Client) sendUsersCreateGpgKeyForAuthenticated(ctx context.Context, requ
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCreateGpgKeyForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersCreateGpgKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99213,7 +99213,7 @@ func (c *Client) sendUsersCreatePublicSSHKeyForAuthenticated(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCreatePublicSSHKeyForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersCreatePublicSSHKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99288,7 +99288,7 @@ func (c *Client) sendUsersDeleteEmailForAuthenticated(ctx context.Context, reque
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeleteEmailForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersDeleteEmailForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99365,7 +99365,7 @@ func (c *Client) sendUsersDeleteGpgKeyForAuthenticated(ctx context.Context, para
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeleteGpgKeyForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersDeleteGpgKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99457,7 +99457,7 @@ func (c *Client) sendUsersDeletePublicSSHKeyForAuthenticated(ctx context.Context
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeletePublicSSHKeyForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersDeletePublicSSHKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99551,7 +99551,7 @@ func (c *Client) sendUsersFollow(ctx context.Context, params UsersFollowParams) 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersFollow",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersFollowOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99644,7 +99644,7 @@ func (c *Client) sendUsersGetAuthenticated(ctx context.Context) (res UsersGetAut
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersGetAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99730,7 +99730,7 @@ func (c *Client) sendUsersGetByUsername(ctx context.Context, params UsersGetByUs
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetByUsername",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersGetByUsernameOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99829,7 +99829,7 @@ func (c *Client) sendUsersGetContextForUser(ctx context.Context, params UsersGet
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetContextForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersGetContextForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99960,7 +99960,7 @@ func (c *Client) sendUsersGetGpgKeyForAuthenticated(ctx context.Context, params 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetGpgKeyForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersGetGpgKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100052,7 +100052,7 @@ func (c *Client) sendUsersGetPublicSSHKeyForAuthenticated(ctx context.Context, p
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetPublicSSHKeyForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersGetPublicSSHKeyForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100146,7 +100146,7 @@ func (c *Client) sendUsersList(ctx context.Context, params UsersListParams) (res
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersList",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100256,7 +100256,7 @@ func (c *Client) sendUsersListBlockedByAuthenticated(ctx context.Context) (res U
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListBlockedByAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListBlockedByAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100329,7 +100329,7 @@ func (c *Client) sendUsersListEmailsForAuthenticated(ctx context.Context, params
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListEmailsForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListEmailsForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100439,7 +100439,7 @@ func (c *Client) sendUsersListFollowedByAuthenticated(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowedByAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListFollowedByAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100549,7 +100549,7 @@ func (c *Client) sendUsersListFollowersForAuthenticatedUser(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowersForAuthenticatedUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListFollowersForAuthenticatedUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100659,7 +100659,7 @@ func (c *Client) sendUsersListFollowersForUser(ctx context.Context, params Users
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowersForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListFollowersForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100788,7 +100788,7 @@ func (c *Client) sendUsersListFollowingForUser(ctx context.Context, params Users
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowingForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListFollowingForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100919,7 +100919,7 @@ func (c *Client) sendUsersListGpgKeysForAuthenticated(ctx context.Context, param
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListGpgKeysForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListGpgKeysForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101029,7 +101029,7 @@ func (c *Client) sendUsersListGpgKeysForUser(ctx context.Context, params UsersLi
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListGpgKeysForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListGpgKeysForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101161,7 +101161,7 @@ func (c *Client) sendUsersListPublicEmailsForAuthenticated(ctx context.Context, 
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicEmailsForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListPublicEmailsForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101271,7 +101271,7 @@ func (c *Client) sendUsersListPublicKeysForUser(ctx context.Context, params User
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicKeysForUser",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListPublicKeysForUserOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101402,7 +101402,7 @@ func (c *Client) sendUsersListPublicSSHKeysForAuthenticated(ctx context.Context,
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicSSHKeysForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersListPublicSSHKeysForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101512,7 +101512,7 @@ func (c *Client) sendUsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersSetPrimaryEmailVisibilityForAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersSetPrimaryEmailVisibilityForAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101587,7 +101587,7 @@ func (c *Client) sendUsersUnblock(ctx context.Context, params UsersUnblockParams
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUnblock",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersUnblockOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101678,7 +101678,7 @@ func (c *Client) sendUsersUnfollow(ctx context.Context, params UsersUnfollowPara
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUnfollow",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersUnfollowOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101770,7 +101770,7 @@ func (c *Client) sendUsersUpdateAuthenticated(ctx context.Context, request OptUs
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUpdateAuthenticated",
+	ctx, span := c.cfg.Tracer.Start(ctx, UsersUpdateAuthenticatedOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

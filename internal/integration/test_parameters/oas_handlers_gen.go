@@ -30,7 +30,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ComplicatedParameterNameGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ComplicatedParameterNameGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -61,7 +61,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ComplicatedParameterNameGet",
+			Name: ComplicatedParameterNameGetOperation,
 			ID:   "",
 		}
 	)
@@ -80,7 +80,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ComplicatedParameterNameGet",
+			OperationName:    ComplicatedParameterNameGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
@@ -156,7 +156,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ContentParameters",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ContentParametersOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -187,7 +187,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ContentParameters",
+			Name: ContentParametersOperation,
 			ID:   "contentParameters",
 		}
 	)
@@ -206,7 +206,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ContentParameters",
+			OperationName:    ContentParametersOperation,
 			OperationSummary: "",
 			OperationID:      "contentParameters",
 			Body:             nil,
@@ -280,7 +280,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CookieParameter",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CookieParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -311,7 +311,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CookieParameter",
+			Name: CookieParameterOperation,
 			ID:   "cookieParameter",
 		}
 	)
@@ -330,7 +330,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CookieParameter",
+			OperationName:    CookieParameterOperation,
 			OperationSummary: "",
 			OperationID:      "cookieParameter",
 			Body:             nil,
@@ -392,7 +392,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "HeaderParameter",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), HeaderParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -423,7 +423,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "HeaderParameter",
+			Name: HeaderParameterOperation,
 			ID:   "headerParameter",
 		}
 	)
@@ -442,7 +442,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "HeaderParameter",
+			OperationName:    HeaderParameterOperation,
 			OperationSummary: "",
 			OperationID:      "headerParameter",
 			Body:             nil,
@@ -502,7 +502,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ObjectCookieParameter",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ObjectCookieParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -533,7 +533,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ObjectCookieParameter",
+			Name: ObjectCookieParameterOperation,
 			ID:   "objectCookieParameter",
 		}
 	)
@@ -552,7 +552,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ObjectCookieParameter",
+			OperationName:    ObjectCookieParameterOperation,
 			OperationSummary: "",
 			OperationID:      "objectCookieParameter",
 			Body:             nil,
@@ -612,7 +612,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ObjectQueryParameter",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ObjectQueryParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -643,7 +643,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ObjectQueryParameter",
+			Name: ObjectQueryParameterOperation,
 			ID:   "objectQueryParameter",
 		}
 	)
@@ -662,7 +662,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ObjectQueryParameter",
+			OperationName:    ObjectQueryParameterOperation,
 			OperationSummary: "",
 			OperationID:      "objectQueryParameter",
 			Body:             nil,
@@ -726,7 +726,7 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OptionalArrayParameter",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OptionalArrayParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -757,7 +757,7 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OptionalArrayParameter",
+			Name: OptionalArrayParameterOperation,
 			ID:   "optionalArrayParameter",
 		}
 	)
@@ -776,7 +776,7 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OptionalArrayParameter",
+			OperationName:    OptionalArrayParameterOperation,
 			OperationSummary: "",
 			OperationID:      "optionalArrayParameter",
 			Body:             nil,
@@ -842,7 +842,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "PathParameter",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PathParameterOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -873,7 +873,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "PathParameter",
+			Name: PathParameterOperation,
 			ID:   "pathParameter",
 		}
 	)
@@ -892,7 +892,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "PathParameter",
+			OperationName:    PathParameterOperation,
 			OperationSummary: "",
 			OperationID:      "pathParameter",
 			Body:             nil,
@@ -954,7 +954,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SameName",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SameNameOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -985,7 +985,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SameName",
+			Name: SameNameOperation,
 			ID:   "sameName",
 		}
 	)
@@ -1004,7 +1004,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SameName",
+			OperationName:    SameNameOperation,
 			OperationSummary: "parameters with different location, but with the same name",
 			OperationID:      "sameName",
 			Body:             nil,
@@ -1070,7 +1070,7 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "SimilarNames",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), SimilarNamesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1101,7 +1101,7 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "SimilarNames",
+			Name: SimilarNamesOperation,
 			ID:   "similarNames",
 		}
 	)
@@ -1120,7 +1120,7 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "SimilarNames",
+			OperationName:    SimilarNamesOperation,
 			OperationSummary: "parameters with different location, but with similar names",
 			OperationID:      "similarNames",
 			Body:             nil,

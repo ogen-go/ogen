@@ -32,7 +32,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProbeLiveness",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ProbeLivenessOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -68,7 +68,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ProbeLiveness",
+			OperationName:    ProbeLivenessOperation,
 			OperationSummary: "",
 			OperationID:      "probeLiveness",
 			Body:             nil,

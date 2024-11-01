@@ -31,7 +31,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OnlyForm",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OnlyFormOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -62,7 +62,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OnlyForm",
+			Name: OnlyFormOperation,
 			ID:   "onlyForm",
 		}
 	)
@@ -86,7 +86,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OnlyForm",
+			OperationName:    OnlyFormOperation,
 			OperationSummary: "",
 			OperationID:      "onlyForm",
 			Body:             request,
@@ -141,7 +141,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OnlyMultipartFile",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OnlyMultipartFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -172,7 +172,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OnlyMultipartFile",
+			Name: OnlyMultipartFileOperation,
 			ID:   "onlyMultipartFile",
 		}
 	)
@@ -196,7 +196,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OnlyMultipartFile",
+			OperationName:    OnlyMultipartFileOperation,
 			OperationSummary: "",
 			OperationID:      "onlyMultipartFile",
 			Body:             request,
@@ -251,7 +251,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OnlyMultipartForm",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OnlyMultipartFormOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -282,7 +282,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OnlyMultipartForm",
+			Name: OnlyMultipartFormOperation,
 			ID:   "onlyMultipartForm",
 		}
 	)
@@ -306,7 +306,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OnlyMultipartForm",
+			OperationName:    OnlyMultipartFormOperation,
 			OperationSummary: "",
 			OperationID:      "onlyMultipartForm",
 			Body:             request,
@@ -361,7 +361,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestFormURLEncoded",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestFormURLEncodedOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -392,7 +392,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestFormURLEncoded",
+			Name: TestFormURLEncodedOperation,
 			ID:   "testFormURLEncoded",
 		}
 	)
@@ -416,7 +416,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestFormURLEncoded",
+			OperationName:    TestFormURLEncodedOperation,
 			OperationSummary: "",
 			OperationID:      "testFormURLEncoded",
 			Body:             request,
@@ -471,7 +471,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestMultipart",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestMultipartOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -502,7 +502,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestMultipart",
+			Name: TestMultipartOperation,
 			ID:   "testMultipart",
 		}
 	)
@@ -526,7 +526,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestMultipart",
+			OperationName:    TestMultipartOperation,
 			OperationSummary: "",
 			OperationID:      "testMultipart",
 			Body:             request,
@@ -581,7 +581,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestMultipartUpload",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestMultipartUploadOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -612,7 +612,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestMultipartUpload",
+			Name: TestMultipartUploadOperation,
 			ID:   "testMultipartUpload",
 		}
 	)
@@ -636,7 +636,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestMultipartUpload",
+			OperationName:    TestMultipartUploadOperation,
 			OperationSummary: "",
 			OperationID:      "testMultipartUpload",
 			Body:             request,
@@ -691,7 +691,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestReuseFormOptionalSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestReuseFormOptionalSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -722,7 +722,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestReuseFormOptionalSchema",
+			Name: TestReuseFormOptionalSchemaOperation,
 			ID:   "testReuseFormOptionalSchema",
 		}
 	)
@@ -746,7 +746,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestReuseFormOptionalSchema",
+			OperationName:    TestReuseFormOptionalSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "testReuseFormOptionalSchema",
 			Body:             request,
@@ -801,7 +801,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestReuseFormSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestReuseFormSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -832,7 +832,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestReuseFormSchema",
+			Name: TestReuseFormSchemaOperation,
 			ID:   "testReuseFormSchema",
 		}
 	)
@@ -856,7 +856,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestReuseFormSchema",
+			OperationName:    TestReuseFormSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "testReuseFormSchema",
 			Body:             request,
@@ -911,7 +911,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestShareFormSchema",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), TestShareFormSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -942,7 +942,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "TestShareFormSchema",
+			Name: TestShareFormSchemaOperation,
 			ID:   "testShareFormSchema",
 		}
 	)
@@ -966,7 +966,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "TestShareFormSchema",
+			OperationName:    TestShareFormSchemaOperation,
 			OperationSummary: "",
 			OperationID:      "testShareFormSchema",
 			Body:             request,

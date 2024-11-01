@@ -220,7 +220,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 		// Start a span for this request.
-		ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
+		ctx, span := c.cfg.Tracer.Start(ctx, {{ $op.Name }}Operation,
 			{{- if $hasOTELAttrs }}
 			trace.WithAttributes(otelAttrs...),
 			{{- end }}
@@ -283,7 +283,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{
 			{{- $securityName := $s.Type.Name }}
 			{{ if $otel }}stage = {{ printf "Security:%s" $securityName | quote }}{{ end }}
-			switch err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); {
+			switch err := c.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r); {
 			case err == nil: // if NO error
 				satisfied[{{ div $idx 8 }}] |= 1 << {{ mod $idx 8 }}
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):

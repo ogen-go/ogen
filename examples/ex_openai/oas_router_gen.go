@@ -871,7 +871,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateAnswer"
+							r.name = CreateAnswerOperation
 							r.summary = "Answers the specified question using the provided documents and examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).\n"
 							r.operationID = "createAnswer"
 							r.pathPattern = "/answers"
@@ -908,7 +908,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "CreateTranscription"
+								r.name = CreateTranscriptionOperation
 								r.summary = "Transcribes audio into the input language."
 								r.operationID = "createTranscription"
 								r.pathPattern = "/audio/transcriptions"
@@ -933,7 +933,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "CreateTranslation"
+								r.name = CreateTranslationOperation
 								r.summary = "Translates audio into into English."
 								r.operationID = "createTranslation"
 								r.pathPattern = "/audio/translations"
@@ -976,7 +976,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateChatCompletion"
+							r.name = CreateChatCompletionOperation
 							r.summary = "Creates a completion for the chat message"
 							r.operationID = "createChatCompletion"
 							r.pathPattern = "/chat/completions"
@@ -1001,7 +1001,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateClassification"
+							r.name = CreateClassificationOperation
 							r.summary = "Classifies the specified `query` using provided examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over the labeled examples\nto select the ones most relevant for the particular query. Then, the relevant examples\nare combined with the query to construct a prompt to produce the final label via the\n[completions](/docs/api-reference/completions) endpoint.\n\nLabeled examples can be provided via an uploaded `file`, or explicitly listed in the\nrequest using the `examples` parameter for quick tests and small scale use cases.\n"
 							r.operationID = "createClassification"
 							r.pathPattern = "/classifications"
@@ -1026,7 +1026,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateCompletion"
+							r.name = CreateCompletionOperation
 							r.summary = "Creates a completion for the provided prompt and parameters"
 							r.operationID = "createCompletion"
 							r.pathPattern = "/completions"
@@ -1066,7 +1066,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateEdit"
+							r.name = CreateEditOperation
 							r.summary = "Creates a new edit for the provided input, instruction, and parameters."
 							r.operationID = "createEdit"
 							r.pathPattern = "/edits"
@@ -1091,7 +1091,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateEmbedding"
+							r.name = CreateEmbeddingOperation
 							r.summary = "Creates an embedding vector representing the input text."
 							r.operationID = "createEmbedding"
 							r.pathPattern = "/embeddings"
@@ -1115,7 +1115,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							r.name = "ListEngines"
+							r.name = ListEnginesOperation
 							r.summary = "Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability."
 							r.operationID = "listEngines"
 							r.pathPattern = "/engines"
@@ -1147,7 +1147,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "RetrieveEngine"
+								r.name = RetrieveEngineOperation
 								r.summary = "Retrieves a model instance, providing basic information about it such as the owner and availability."
 								r.operationID = "retrieveEngine"
 								r.pathPattern = "/engines/{engine_id}"
@@ -1171,7 +1171,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "POST":
-									r.name = "CreateSearch"
+									r.name = CreateSearchOperation
 									r.summary = "The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.\n\nTo go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.\n\nThe similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.\n"
 									r.operationID = "createSearch"
 									r.pathPattern = "/engines/{engine_id}/search"
@@ -1216,7 +1216,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							r.name = "ListFiles"
+							r.name = ListFilesOperation
 							r.summary = "Returns a list of files that belong to the user's organization."
 							r.operationID = "listFiles"
 							r.pathPattern = "/files"
@@ -1224,7 +1224,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.count = 0
 							return r, true
 						case "POST":
-							r.name = "CreateFile"
+							r.name = CreateFileOperation
 							r.summary = "Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.\n"
 							r.operationID = "createFile"
 							r.pathPattern = "/files"
@@ -1256,7 +1256,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "DELETE":
-								r.name = "DeleteFile"
+								r.name = DeleteFileOperation
 								r.summary = "Delete a file."
 								r.operationID = "deleteFile"
 								r.pathPattern = "/files/{file_id}"
@@ -1264,7 +1264,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "GET":
-								r.name = "RetrieveFile"
+								r.name = RetrieveFileOperation
 								r.summary = "Returns information about a specific file."
 								r.operationID = "retrieveFile"
 								r.pathPattern = "/files/{file_id}"
@@ -1288,7 +1288,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								// Leaf node.
 								switch method {
 								case "GET":
-									r.name = "DownloadFile"
+									r.name = DownloadFileOperation
 									r.summary = "Returns the contents of the specified file"
 									r.operationID = "downloadFile"
 									r.pathPattern = "/files/{file_id}/content"
@@ -1318,7 +1318,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							r.name = "ListFineTunes"
+							r.name = ListFineTunesOperation
 							r.summary = "List your organization's fine-tuning jobs\n"
 							r.operationID = "listFineTunes"
 							r.pathPattern = "/fine-tunes"
@@ -1326,7 +1326,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							r.count = 0
 							return r, true
 						case "POST":
-							r.name = "CreateFineTune"
+							r.name = CreateFineTuneOperation
 							r.summary = "Creates a job that fine-tunes a specified model from a given dataset.\n\nResponse includes details of the enqueued job including job status and the name of the fine-tuned models once complete.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n"
 							r.operationID = "createFineTune"
 							r.pathPattern = "/fine-tunes"
@@ -1358,7 +1358,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						if len(elem) == 0 {
 							switch method {
 							case "GET":
-								r.name = "RetrieveFineTune"
+								r.name = RetrieveFineTuneOperation
 								r.summary = "Gets info about the fine-tune job.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n"
 								r.operationID = "retrieveFineTune"
 								r.pathPattern = "/fine-tunes/{fine_tune_id}"
@@ -1394,7 +1394,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "POST":
-										r.name = "CancelFineTune"
+										r.name = CancelFineTuneOperation
 										r.summary = "Immediately cancel a fine-tune job.\n"
 										r.operationID = "cancelFineTune"
 										r.pathPattern = "/fine-tunes/{fine_tune_id}/cancel"
@@ -1419,7 +1419,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									// Leaf node.
 									switch method {
 									case "GET":
-										r.name = "ListFineTuneEvents"
+										r.name = ListFineTuneEventsOperation
 										r.summary = "Get fine-grained status updates for a fine-tune job.\n"
 										r.operationID = "listFineTuneEvents"
 										r.pathPattern = "/fine-tunes/{fine_tune_id}/events"
@@ -1468,7 +1468,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateImageEdit"
+							r.name = CreateImageEditOperation
 							r.summary = "Creates an edited or extended image given an original image and a prompt."
 							r.operationID = "createImageEdit"
 							r.pathPattern = "/images/edits"
@@ -1493,7 +1493,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateImage"
+							r.name = CreateImageOperation
 							r.summary = "Creates an image given a prompt."
 							r.operationID = "createImage"
 							r.pathPattern = "/images/generations"
@@ -1518,7 +1518,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateImageVariation"
+							r.name = CreateImageVariationOperation
 							r.summary = "Creates a variation of a given image."
 							r.operationID = "createImageVariation"
 							r.pathPattern = "/images/variations"
@@ -1557,7 +1557,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "GET":
-							r.name = "ListModels"
+							r.name = ListModelsOperation
 							r.summary = "Lists the currently available models, and provides basic information about each one such as the owner and availability."
 							r.operationID = "listModels"
 							r.pathPattern = "/models"
@@ -1586,7 +1586,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "DELETE":
-								r.name = "DeleteModel"
+								r.name = DeleteModelOperation
 								r.summary = "Delete a fine-tuned model. You must have the Owner role in your organization."
 								r.operationID = "deleteModel"
 								r.pathPattern = "/models/{model}"
@@ -1594,7 +1594,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 								r.count = 1
 								return r, true
 							case "GET":
-								r.name = "RetrieveModel"
+								r.name = RetrieveModelOperation
 								r.summary = "Retrieves a model instance, providing basic information about the model such as the owner and permissioning."
 								r.operationID = "retrieveModel"
 								r.pathPattern = "/models/{model}"
@@ -1622,7 +1622,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "CreateModeration"
+							r.name = CreateModerationOperation
 							r.summary = "Classifies if text violates OpenAI's Content Policy"
 							r.operationID = "createModeration"
 							r.pathPattern = "/moderations"

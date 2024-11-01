@@ -123,7 +123,7 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AllRequestBodies",
+	ctx, span := c.cfg.Tracer.Start(ctx, AllRequestBodiesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -196,7 +196,7 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "AllRequestBodiesOptional",
+	ctx, span := c.cfg.Tracer.Start(ctx, AllRequestBodiesOptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -269,7 +269,7 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "Base64Request",
+	ctx, span := c.cfg.Tracer.Start(ctx, Base64RequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -342,7 +342,7 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MaskContentType",
+	ctx, span := c.cfg.Tracer.Start(ctx, MaskContentTypeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -415,7 +415,7 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "MaskContentTypeOptional",
+	ctx, span := c.cfg.Tracer.Start(ctx, MaskContentTypeOptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -488,7 +488,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "StreamJSON",
+	ctx, span := c.cfg.Tracer.Start(ctx, StreamJSONOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)

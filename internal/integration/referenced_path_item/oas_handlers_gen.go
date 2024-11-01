@@ -28,7 +28,7 @@ func (s *Server) handleFooGetRequest(args [0]string, argsEscaped bool, w http.Re
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "FooGet",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), FooGetOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleFooGetRequest(args [0]string, argsEscaped bool, w http.Re
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "FooGet",
+			OperationName:    FooGetOperation,
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,

@@ -434,7 +434,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "Search"
+								r.name = SearchOperation
 								r.summary = "Search for comics"
 								r.operationID = "search"
 								r.pathPattern = "/api/galleries/search"
@@ -459,7 +459,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "SearchByTagID"
+								r.name = SearchByTagIDOperation
 								r.summary = "Search for comics by tag ID"
 								r.operationID = "searchByTagID"
 								r.pathPattern = "/api/galleries/tagged"
@@ -492,7 +492,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "GET":
-							r.name = "GetBook"
+							r.name = GetBookOperation
 							r.summary = "Gets metadata of book"
 							r.operationID = "getBook"
 							r.pathPattern = "/api/gallery/{book_id}"
@@ -558,7 +558,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "GetPageCoverImage"
+								r.name = GetPageCoverImageOperation
 								r.summary = "Gets page cover"
 								r.operationID = "getPageCoverImage"
 								r.pathPattern = "/galleries/{media_id}/cover.{format}"
@@ -602,7 +602,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "GetPageImage"
+								r.name = GetPageImageOperation
 								r.summary = "Gets page"
 								r.operationID = "getPageImage"
 								r.pathPattern = "/galleries/{media_id}/{page}.{format}"
@@ -632,7 +632,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "GET":
-								r.name = "GetPageThumbnailImage"
+								r.name = GetPageThumbnailImageOperation
 								r.summary = "Gets page thumbnail"
 								r.operationID = "getPageThumbnailImage"
 								r.pathPattern = "/galleries/{media_id}/{page}t.{format}"

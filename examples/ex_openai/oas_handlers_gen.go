@@ -33,7 +33,7 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CancelFineTune",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CancelFineTuneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -64,7 +64,7 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CancelFineTune",
+			Name: CancelFineTuneOperation,
 			ID:   "cancelFineTune",
 		}
 	)
@@ -83,7 +83,7 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CancelFineTune",
+			OperationName:    CancelFineTuneOperation,
 			OperationSummary: "Immediately cancel a fine-tune job.\n",
 			OperationID:      "cancelFineTune",
 			Body:             nil,
@@ -150,7 +150,7 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateAnswer",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateAnswerOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -181,7 +181,7 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateAnswer",
+			Name: CreateAnswerOperation,
 			ID:   "createAnswer",
 		}
 	)
@@ -205,7 +205,7 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateAnswer",
+			OperationName:    CreateAnswerOperation,
 			OperationSummary: "Answers the specified question using the provided documents and examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).\n",
 			OperationID:      "createAnswer",
 			Body:             request,
@@ -262,7 +262,7 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateChatCompletion",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateChatCompletionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -293,7 +293,7 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateChatCompletion",
+			Name: CreateChatCompletionOperation,
 			ID:   "createChatCompletion",
 		}
 	)
@@ -317,7 +317,7 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateChatCompletion",
+			OperationName:    CreateChatCompletionOperation,
 			OperationSummary: "Creates a completion for the chat message",
 			OperationID:      "createChatCompletion",
 			Body:             request,
@@ -382,7 +382,7 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateClassification",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateClassificationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -413,7 +413,7 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateClassification",
+			Name: CreateClassificationOperation,
 			ID:   "createClassification",
 		}
 	)
@@ -437,7 +437,7 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateClassification",
+			OperationName:    CreateClassificationOperation,
 			OperationSummary: "Classifies the specified `query` using provided examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over the labeled examples\nto select the ones most relevant for the particular query. Then, the relevant examples\nare combined with the query to construct a prompt to produce the final label via the\n[completions](/docs/api-reference/completions) endpoint.\n\nLabeled examples can be provided via an uploaded `file`, or explicitly listed in the\nrequest using the `examples` parameter for quick tests and small scale use cases.\n",
 			OperationID:      "createClassification",
 			Body:             request,
@@ -494,7 +494,7 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateCompletion",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateCompletionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -525,7 +525,7 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateCompletion",
+			Name: CreateCompletionOperation,
 			ID:   "createCompletion",
 		}
 	)
@@ -549,7 +549,7 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateCompletion",
+			OperationName:    CreateCompletionOperation,
 			OperationSummary: "Creates a completion for the provided prompt and parameters",
 			OperationID:      "createCompletion",
 			Body:             request,
@@ -606,7 +606,7 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateEdit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateEditOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -637,7 +637,7 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateEdit",
+			Name: CreateEditOperation,
 			ID:   "createEdit",
 		}
 	)
@@ -661,7 +661,7 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateEdit",
+			OperationName:    CreateEditOperation,
 			OperationSummary: "Creates a new edit for the provided input, instruction, and parameters.",
 			OperationID:      "createEdit",
 			Body:             request,
@@ -718,7 +718,7 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateEmbedding",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateEmbeddingOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -749,7 +749,7 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateEmbedding",
+			Name: CreateEmbeddingOperation,
 			ID:   "createEmbedding",
 		}
 	)
@@ -773,7 +773,7 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateEmbedding",
+			OperationName:    CreateEmbeddingOperation,
 			OperationSummary: "Creates an embedding vector representing the input text.",
 			OperationID:      "createEmbedding",
 			Body:             request,
@@ -832,7 +832,7 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateFile",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -863,7 +863,7 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateFile",
+			Name: CreateFileOperation,
 			ID:   "createFile",
 		}
 	)
@@ -887,7 +887,7 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateFile",
+			OperationName:    CreateFileOperation,
 			OperationSummary: "Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.\n",
 			OperationID:      "createFile",
 			Body:             request,
@@ -947,7 +947,7 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateFineTune",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateFineTuneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -978,7 +978,7 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateFineTune",
+			Name: CreateFineTuneOperation,
 			ID:   "createFineTune",
 		}
 	)
@@ -1002,7 +1002,7 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateFineTune",
+			OperationName:    CreateFineTuneOperation,
 			OperationSummary: "Creates a job that fine-tunes a specified model from a given dataset.\n\nResponse includes details of the enqueued job including job status and the name of the fine-tuned models once complete.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n",
 			OperationID:      "createFineTune",
 			Body:             request,
@@ -1059,7 +1059,7 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateImage",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateImageOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1090,7 +1090,7 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateImage",
+			Name: CreateImageOperation,
 			ID:   "createImage",
 		}
 	)
@@ -1114,7 +1114,7 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateImage",
+			OperationName:    CreateImageOperation,
 			OperationSummary: "Creates an image given a prompt.",
 			OperationID:      "createImage",
 			Body:             request,
@@ -1171,7 +1171,7 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateImageEdit",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateImageEditOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1202,7 +1202,7 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateImageEdit",
+			Name: CreateImageEditOperation,
 			ID:   "createImageEdit",
 		}
 	)
@@ -1226,7 +1226,7 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateImageEdit",
+			OperationName:    CreateImageEditOperation,
 			OperationSummary: "Creates an edited or extended image given an original image and a prompt.",
 			OperationID:      "createImageEdit",
 			Body:             request,
@@ -1283,7 +1283,7 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateImageVariation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateImageVariationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1314,7 +1314,7 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateImageVariation",
+			Name: CreateImageVariationOperation,
 			ID:   "createImageVariation",
 		}
 	)
@@ -1338,7 +1338,7 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateImageVariation",
+			OperationName:    CreateImageVariationOperation,
 			OperationSummary: "Creates a variation of a given image.",
 			OperationID:      "createImageVariation",
 			Body:             request,
@@ -1395,7 +1395,7 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateModeration",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateModerationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1426,7 +1426,7 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateModeration",
+			Name: CreateModerationOperation,
 			ID:   "createModeration",
 		}
 	)
@@ -1450,7 +1450,7 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateModeration",
+			OperationName:    CreateModerationOperation,
 			OperationSummary: "Classifies if text violates OpenAI's Content Policy",
 			OperationID:      "createModeration",
 			Body:             request,
@@ -1516,7 +1516,7 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateSearch",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateSearchOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1547,7 +1547,7 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateSearch",
+			Name: CreateSearchOperation,
 			ID:   "createSearch",
 		}
 	)
@@ -1581,7 +1581,7 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateSearch",
+			OperationName:    CreateSearchOperation,
 			OperationSummary: "The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.\n\nTo go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.\n\nThe similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.\n",
 			OperationID:      "createSearch",
 			Body:             request,
@@ -1643,7 +1643,7 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateTranscription",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateTranscriptionOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1674,7 +1674,7 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateTranscription",
+			Name: CreateTranscriptionOperation,
 			ID:   "createTranscription",
 		}
 	)
@@ -1698,7 +1698,7 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateTranscription",
+			OperationName:    CreateTranscriptionOperation,
 			OperationSummary: "Transcribes audio into the input language.",
 			OperationID:      "createTranscription",
 			Body:             request,
@@ -1755,7 +1755,7 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateTranslation",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CreateTranslationOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1786,7 +1786,7 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CreateTranslation",
+			Name: CreateTranslationOperation,
 			ID:   "createTranslation",
 		}
 	)
@@ -1810,7 +1810,7 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CreateTranslation",
+			OperationName:    CreateTranslationOperation,
 			OperationSummary: "Translates audio into into English.",
 			OperationID:      "createTranslation",
 			Body:             request,
@@ -1867,7 +1867,7 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteFile",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DeleteFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -1898,7 +1898,7 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteFile",
+			Name: DeleteFileOperation,
 			ID:   "deleteFile",
 		}
 	)
@@ -1917,7 +1917,7 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DeleteFile",
+			OperationName:    DeleteFileOperation,
 			OperationSummary: "Delete a file.",
 			OperationID:      "deleteFile",
 			Body:             nil,
@@ -1979,7 +1979,7 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteModel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DeleteModelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2010,7 +2010,7 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DeleteModel",
+			Name: DeleteModelOperation,
 			ID:   "deleteModel",
 		}
 	)
@@ -2029,7 +2029,7 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DeleteModel",
+			OperationName:    DeleteModelOperation,
 			OperationSummary: "Delete a fine-tuned model. You must have the Owner role in your organization.",
 			OperationID:      "deleteModel",
 			Body:             nil,
@@ -2091,7 +2091,7 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DownloadFile",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DownloadFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2122,7 +2122,7 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DownloadFile",
+			Name: DownloadFileOperation,
 			ID:   "downloadFile",
 		}
 	)
@@ -2141,7 +2141,7 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DownloadFile",
+			OperationName:    DownloadFileOperation,
 			OperationSummary: "Returns the contents of the specified file",
 			OperationID:      "downloadFile",
 			Body:             nil,
@@ -2206,7 +2206,7 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEngines",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListEnginesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2242,7 +2242,7 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListEngines",
+			OperationName:    ListEnginesOperation,
 			OperationSummary: "Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.",
 			OperationID:      "listEngines",
 			Body:             nil,
@@ -2299,7 +2299,7 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFiles",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListFilesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2335,7 +2335,7 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListFiles",
+			OperationName:    ListFilesOperation,
 			OperationSummary: "Returns a list of files that belong to the user's organization.",
 			OperationID:      "listFiles",
 			Body:             nil,
@@ -2392,7 +2392,7 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFineTuneEvents",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListFineTuneEventsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2423,7 +2423,7 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "ListFineTuneEvents",
+			Name: ListFineTuneEventsOperation,
 			ID:   "listFineTuneEvents",
 		}
 	)
@@ -2442,7 +2442,7 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListFineTuneEvents",
+			OperationName:    ListFineTuneEventsOperation,
 			OperationSummary: "Get fine-grained status updates for a fine-tune job.\n",
 			OperationID:      "listFineTuneEvents",
 			Body:             nil,
@@ -2508,7 +2508,7 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFineTunes",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListFineTunesOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2544,7 +2544,7 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListFineTunes",
+			OperationName:    ListFineTunesOperation,
 			OperationSummary: "List your organization's fine-tuning jobs\n",
 			OperationID:      "listFineTunes",
 			Body:             nil,
@@ -2602,7 +2602,7 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListModels",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), ListModelsOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2638,7 +2638,7 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "ListModels",
+			OperationName:    ListModelsOperation,
 			OperationSummary: "Lists the currently available models, and provides basic information about each one such as the owner and availability.",
 			OperationID:      "listModels",
 			Body:             nil,
@@ -2698,7 +2698,7 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "RetrieveEngine",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RetrieveEngineOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2729,7 +2729,7 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "RetrieveEngine",
+			Name: RetrieveEngineOperation,
 			ID:   "retrieveEngine",
 		}
 	)
@@ -2748,7 +2748,7 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RetrieveEngine",
+			OperationName:    RetrieveEngineOperation,
 			OperationSummary: "Retrieves a model instance, providing basic information about it such as the owner and availability.",
 			OperationID:      "retrieveEngine",
 			Body:             nil,
@@ -2810,7 +2810,7 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "RetrieveFile",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RetrieveFileOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2841,7 +2841,7 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "RetrieveFile",
+			Name: RetrieveFileOperation,
 			ID:   "retrieveFile",
 		}
 	)
@@ -2860,7 +2860,7 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RetrieveFile",
+			OperationName:    RetrieveFileOperation,
 			OperationSummary: "Returns information about a specific file.",
 			OperationID:      "retrieveFile",
 			Body:             nil,
@@ -2923,7 +2923,7 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "RetrieveFineTune",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RetrieveFineTuneOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -2954,7 +2954,7 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "RetrieveFineTune",
+			Name: RetrieveFineTuneOperation,
 			ID:   "retrieveFineTune",
 		}
 	)
@@ -2973,7 +2973,7 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RetrieveFineTune",
+			OperationName:    RetrieveFineTuneOperation,
 			OperationSummary: "Gets info about the fine-tune job.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n",
 			OperationID:      "retrieveFineTune",
 			Body:             nil,
@@ -3036,7 +3036,7 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "RetrieveModel",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), RetrieveModelOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -3067,7 +3067,7 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "RetrieveModel",
+			Name: RetrieveModelOperation,
 			ID:   "retrieveModel",
 		}
 	)
@@ -3086,7 +3086,7 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "RetrieveModel",
+			OperationName:    RetrieveModelOperation,
 			OperationSummary: "Retrieves a model instance, providing basic information about the model such as the owner and permissioning.",
 			OperationID:      "retrieveModel",
 			Body:             nil,
