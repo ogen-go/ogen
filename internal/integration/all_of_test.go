@@ -2,6 +2,7 @@ package integration
 
 import (
 	"context"
+	"fmt"
 	"net/http/httptest"
 	"strings"
 	"testing"
@@ -50,15 +51,27 @@ func TestAllof(t *testing.T) {
 		require.NoError(t, err)
 	}
 
+	regexPattern := "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
+
 	ctx := context.Background()
 	t.Run("nullableStrings", func(t *testing.T) {
 		err := client.NullableStrings(ctx, api.NilString{})
-		_, ok := errors.Into[*validate.NoRegexMatchError](err)
+		regexMatchErr, ok := errors.Into[*validate.NoRegexMatchError](err)
 		require.True(t, ok, "validate: string: no regex match")
+		require.ErrorContains(
+			t,
+			regexMatchErr,
+			fmt.Sprintf("no regex match: %s", regexPattern),
+		)
 
 		err = client.NullableStrings(ctx, api.NewNilString("foo"))
-		_, ok = errors.Into[*validate.NoRegexMatchError](err)
+		regexMatchErr, ok = errors.Into[*validate.NoRegexMatchError](err)
 		require.True(t, ok, "validate: string: no regex match")
+		require.ErrorContains(
+			t,
+			regexMatchErr,
+			fmt.Sprintf("no regex match: %s", regexPattern),
+		)
 
 		err = client.NullableStrings(ctx, api.NewNilString("127.0.0.1"))
 		require.NoError(t, err)

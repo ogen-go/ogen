@@ -224,17 +224,17 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return p.wrapField(field, p.file(ctx), schema.Common.Locator, err)
 	}
 
-	validateMinMax := func(prop string, min, max *uint64) (rerr error) {
-		if min == nil || max == nil {
+	validateMinMax := func(prop string, minVal *uint64, maxVal *uint64) (rerr error) {
+		if minVal == nil || maxVal == nil {
 			return nil
 		}
-		if *min > *max {
-			msg := fmt.Sprintf("min%s (%d) is greater than max%s (%d)", prop, *min, prop, *max)
+		if *minVal > *maxVal {
+			msg := fmt.Sprintf("minVal%s (%d) is greater than maxVal%s (%d)", prop, *minVal, prop, *maxVal)
 			ptr := schema.Common.Locator.Pointer(p.file(ctx))
 
 			me := new(location.MultiError)
-			me.ReportPtr(ptr.Field("min"+prop), msg)
-			me.ReportPtr(ptr.Field("max"+prop), "")
+			me.ReportPtr(ptr.Field("minVal"+prop), msg)
+			me.ReportPtr(ptr.Field("maxVal"+prop), "")
 			return me
 		}
 		return nil
