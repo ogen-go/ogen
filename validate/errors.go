@@ -2,6 +2,7 @@ package validate
 
 import (
 	"fmt"
+	"github.com/ogen-go/ogen/ogenregex"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -102,9 +103,11 @@ func (e *MaxLengthError) Error() string {
 }
 
 // NoRegexMatchError reports that value have no regexp match.
-type NoRegexMatchError struct{}
+type NoRegexMatchError struct {
+	Pattern ogenregex.Regexp
+}
 
 // MaxLengthError implements error.
-func (*NoRegexMatchError) Error() string {
-	return "no regex match"
+func (e *NoRegexMatchError) Error() string {
+	return fmt.Sprintf("no regex match: %s", e.Pattern.String())
 }
