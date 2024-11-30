@@ -62,6 +62,9 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -216,6 +219,9 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -368,6 +374,9 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -508,6 +517,9 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -646,6 +658,9 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -784,6 +799,9 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -926,6 +944,9 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1070,6 +1091,9 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1210,6 +1234,9 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1354,6 +1381,9 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 

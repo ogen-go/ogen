@@ -65,6 +65,9 @@ func (s *Server) handleGetBookRequest(args [1]string, argsEscaped bool, w http.R
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -205,6 +208,9 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, argsEscaped bool
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -349,6 +355,9 @@ func (s *Server) handleGetPageImageRequest(args [3]string, argsEscaped bool, w h
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -497,6 +506,9 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, argsEscaped 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -645,6 +657,9 @@ func (s *Server) handleSearchRequest(args [0]string, argsEscaped bool, w http.Re
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -789,6 +804,9 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, argsEscaped bool, w 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 

@@ -60,6 +60,9 @@ func (s *Server) handleHealthzGetRequest(args [0]string, argsEscaped bool, w htt
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 

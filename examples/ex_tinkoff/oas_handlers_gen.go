@@ -63,6 +63,9 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, argsEscaped bool, w
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -231,6 +234,9 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, argsEscaped bool,
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -426,6 +432,9 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, argsEscaped bo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -594,6 +603,9 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, argsEscaped bool, w 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -762,6 +774,9 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, argsEscaped boo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -949,6 +964,9 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, argsEscaped 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1132,6 +1150,9 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, argsEscape
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1315,6 +1336,9 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1483,6 +1507,9 @@ func (s *Server) handleOperationsGetRequest(args [0]string, argsEscaped bool, w 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1678,6 +1705,9 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, argsEscaped bool,
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1865,6 +1895,9 @@ func (s *Server) handleOrdersGetRequest(args [0]string, argsEscaped bool, w http
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2048,6 +2081,9 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, argsEscaped b
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2250,6 +2286,9 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, argsEscaped 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2452,6 +2491,9 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, argsEscaped
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2635,6 +2677,9 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, argsEscaped bool, w h
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2818,6 +2863,9 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, argsEscaped bool,
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3001,6 +3049,9 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, argsE
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3199,6 +3250,9 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, argsEs
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3397,6 +3451,9 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, argsEscaped bo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3580,6 +3637,9 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, argsEscaped bool
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3763,6 +3823,9 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 

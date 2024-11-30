@@ -65,6 +65,9 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -219,6 +222,9 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -374,6 +380,9 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -495,6 +504,9 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -639,6 +651,9 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -776,6 +791,9 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -895,6 +913,9 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1014,6 +1035,9 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1133,6 +1157,9 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1270,6 +1297,9 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1391,6 +1421,9 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1531,6 +1564,9 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1671,6 +1707,9 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1823,6 +1862,9 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -1963,6 +2005,9 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2103,6 +2148,9 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2243,6 +2291,9 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2380,6 +2431,9 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2517,6 +2571,9 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2657,6 +2714,9 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2809,6 +2869,9 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -2927,6 +2990,9 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3046,6 +3112,9 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3212,6 +3281,9 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3331,6 +3403,9 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3469,6 +3544,9 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3588,6 +3666,9 @@ func (s *Server) handleTestIssue1310Request(args [0]string, argsEscaped bool, w 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3707,6 +3788,9 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3826,6 +3910,9 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -3945,6 +4032,9 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
@@ -4064,6 +4154,9 @@ func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, 
 		code := statusWriter.status
 		if code != 0 {
 			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
 		}
 		attrOpt := metric.WithAttributes(attrs...)
 
