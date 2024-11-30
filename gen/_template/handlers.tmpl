@@ -81,6 +81,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
             code := statusWriter.status
             if code != 0 {
                 attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+                codeAttr := semconv.HTTPResponseStatusCode(code)
+                attrs = append(attrs, codeAttr)
+                span.SetAttributes(codeAttr)
             }
             attrOpt := metric.WithAttributes(attrs...)
 
