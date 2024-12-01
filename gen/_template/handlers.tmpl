@@ -107,7 +107,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 				// max redirects exceeded), in which case status MUST be set to Error.
                 setStatus := true
                 code := statusWriter.status
-				if code / 100 == 1 || code / 100 == 2 || code / 100 == 3  {
+if code >= 100 && code < 400 {
                     setStatus = false
                 }
 				if setStatus {
