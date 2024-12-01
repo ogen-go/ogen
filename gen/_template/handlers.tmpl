@@ -2,6 +2,16 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ template "header" $ }}
 
+type codeRecorder struct {
+	http.ResponseWriter
+    status int
+}
+
+func (c *codeRecorder) WriteHeader(status int) {
+    c.status = status
+    c.ResponseWriter.WriteHeader(status)
+}
+
 {{- if not $.OpenTelemetryEnabled }}
 {{/* Define static no-op recordError, it would be optimized to nothing. */}}
 func recordError(string, error) {}
@@ -28,7 +38,9 @@ func recordError(string, error) {}
 //
 {{- template "godoc_op" $op }}
 func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
-	{{- if $.Config.OpenTelemetryEnabled }}
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+    {{- if $.Config.OpenTelemetryEnabled }}
 		{{- $hasOTELAttrs := false }}
 		{{- $ogenAttrs := $op.OTELAttributes }}
 		{{- if or $ogenAttrs (not $op.WebhookInfo) }}
@@ -63,7 +75,16 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		startTime := time.Now()
 		defer func() {
 			elapsedDuration := time.Since(startTime)
-			attrOpt := metric.WithAttributeSet(labeler.AttributeSet())
+
+            attrSet := labeler.AttributeSet()
+            attrs := attrSet.ToSlice()
+            code := statusWriter.status
+            if code != 0 {
+                codeAttr := semconv.HTTPResponseStatusCode(code)
+                attrs = append(attrs, codeAttr)
+                span.SetAttributes(codeAttr)
+            }
+            attrOpt := metric.WithAttributes(attrs...)
 
 			// Increment request counter.
 			s.requests.Add(ctx, 1, attrOpt)
@@ -79,8 +100,27 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		{{- if $.Config.OpenTelemetryEnabled }}
 		recordError = func(stage string, err error) {
 				span.RecordError(err)
-				span.SetStatus(codes.Error, stage)
-				s.errors.Add(ctx, 1, metric.WithAttributeSet(labeler.AttributeSet()))
+
+				// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+				// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+				// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+				// max redirects exceeded), in which case status MUST be set to Error.
+                setStatus := true
+                code := statusWriter.status
+if code >= 100 && code < 400 {
+                    setStatus = false
+                }
+				if setStatus {
+                    span.SetStatus(codes.Error, stage)
+				}
+
+                attrSet := labeler.AttributeSet()
+                attrs := attrSet.ToSlice()
+                if code != 0 {
+                    attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+                }
+
+				s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
 		}
 		{{- end }}
 		err error
