@@ -21,7 +21,7 @@ func EncodeUUID(s *jx.Encoder, v uuid.UUID) {
 		length       = len(v)*2 + 4
 		quotedLength = length + 2
 	)
-	var dst = [quotedLength]byte{
+	dst := [quotedLength]byte{
 		0:                '"',
 		quotedLength - 1: '"',
 	}

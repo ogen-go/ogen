@@ -10,8 +10,7 @@ import (
 	api "github.com/ogen-go/ogen/internal/integration/sample_err"
 )
 
-type sampleErrServer struct {
-}
+type sampleErrServer struct{}
 
 func (s sampleErrServer) DataCreate(ctx context.Context, req api.OptData) (*api.Data, error) {
 	panic("implement me")

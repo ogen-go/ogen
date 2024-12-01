@@ -46,8 +46,11 @@ func (h metricsTestHandler) APIKey(ctx context.Context, operationName string) (a
 }
 
 var _ api.Handler = metricsTestHandler{}
-var _ api.SecurityHandler = metricsTestHandler{}
-var _ api.SecuritySource = metricsTestHandler{}
+
+var (
+	_ api.SecurityHandler = metricsTestHandler{}
+	_ api.SecuritySource  = metricsTestHandler{}
+)
 
 func labelerMiddleware(req middleware.Request, next middleware.Next) (middleware.Response, error) {
 	labeler, _ := api.LabelerFromContext(req.Context)

@@ -71,6 +71,6 @@ func TestStringUnix(t *testing.T) {
 func TestDecodeStringUnixNano(t *testing.T) {
 	got, err := DecodeStringUnixNano(jx.DecodeStr(`"1586960586000000000"`))
 	require.NoError(t, err)
-	want := time.Date(2020, 04, 15, 14, 23, 06, 0, time.UTC)
+	want := time.Date(2020, 0o4, 15, 14, 23, 0o6, 0, time.UTC)
 	require.True(t, want.Equal(got))
 }

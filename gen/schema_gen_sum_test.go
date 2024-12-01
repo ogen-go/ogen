@@ -26,12 +26,14 @@ func Test_mergeEnums(t *testing.T) {
 			"a", "b",
 			0, 2,
 			false, true,
-			[]any{1}, []any{2},
+			[]any{1},
+			[]any{2},
 		}, []any{
 			"a", "c",
 			0, 3,
 			true,
-			[]any{1}, []any{[]any{1}},
+			[]any{1},
+			[]any{[]any{1}},
 		}, []any{
 			"a",
 			0,
