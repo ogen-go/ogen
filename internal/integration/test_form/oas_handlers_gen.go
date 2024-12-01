@@ -62,7 +62,6 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -86,7 +85,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -203,7 +202,6 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -227,7 +225,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -344,7 +342,6 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -368,7 +365,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -485,7 +482,6 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -509,7 +505,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -626,7 +622,6 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -650,7 +645,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -767,7 +762,6 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -791,7 +785,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -908,7 +902,6 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -932,7 +925,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1049,7 +1042,6 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1073,7 +1065,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1190,7 +1182,6 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1214,7 +1205,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {

@@ -64,7 +64,6 @@ func (s *Server) handleGetBookRequest(args [1]string, argsEscaped bool, w http.R
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -88,7 +87,7 @@ func (s *Server) handleGetBookRequest(args [1]string, argsEscaped bool, w http.R
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -207,7 +206,6 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, argsEscaped bool
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -231,7 +229,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, argsEscaped bool
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -354,7 +352,6 @@ func (s *Server) handleGetPageImageRequest(args [3]string, argsEscaped bool, w h
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -378,7 +375,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, argsEscaped bool, w h
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -505,7 +502,6 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, argsEscaped 
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -529,7 +525,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, argsEscaped 
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -656,7 +652,6 @@ func (s *Server) handleSearchRequest(args [0]string, argsEscaped bool, w http.Re
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -680,7 +675,7 @@ func (s *Server) handleSearchRequest(args [0]string, argsEscaped bool, w http.Re
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -803,7 +798,6 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, argsEscaped bool, w 
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -827,7 +821,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, argsEscaped bool, w 
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {

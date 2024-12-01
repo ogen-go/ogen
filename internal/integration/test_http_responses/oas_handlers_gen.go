@@ -62,7 +62,6 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -86,7 +85,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -184,7 +183,6 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -208,7 +206,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -306,7 +304,6 @@ func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -330,7 +327,7 @@ func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -447,7 +444,6 @@ func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w htt
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -471,7 +467,7 @@ func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w htt
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -569,7 +565,6 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, 
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -593,7 +588,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, 
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -710,7 +705,6 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -734,7 +728,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -832,7 +826,6 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w ht
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -856,7 +849,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w ht
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -954,7 +947,6 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -978,7 +970,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1079,7 +1071,6 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped b
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1103,7 +1094,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped b
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1220,7 +1211,6 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscap
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1244,7 +1234,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscap
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1342,7 +1332,6 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, args
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1366,7 +1355,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, args
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1464,7 +1453,6 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1488,7 +1476,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1588,7 +1576,6 @@ func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, 
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1612,7 +1599,7 @@ func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, 
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1710,7 +1697,6 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1734,7 +1720,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
@@ -1851,7 +1837,6 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEs
 		attrs := attrSet.ToSlice()
 		code := statusWriter.status
 		if code != 0 {
-			attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
 			codeAttr := semconv.HTTPResponseStatusCode(code)
 			attrs = append(attrs, codeAttr)
 			span.SetAttributes(codeAttr)
@@ -1875,7 +1860,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEs
 			// max redirects exceeded), in which case status MUST be set to Error.
 			setStatus := true
 			code := statusWriter.status
-			if code/100 == 1 || code/100 == 2 || code/100 == 3 {
+			if code >= 100 && code < 400 {
 				setStatus = false
 			}
 			if setStatus {
