@@ -74,7 +74,7 @@ func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.R
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -85,12 +85,8 @@ func (s *Server) handleDataGetRequest(args [2]string, argsEscaped bool, w http.R
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -220,7 +216,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, argsEscaped bool, w htt
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -231,12 +227,8 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, argsEscaped bool, w htt
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -343,7 +335,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -354,12 +346,8 @@ func (s *Server) handleDataGetIDRequest(args [1]string, argsEscaped bool, w http
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 

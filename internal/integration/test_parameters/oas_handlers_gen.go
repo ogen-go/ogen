@@ -71,7 +71,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -82,12 +82,8 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -227,7 +223,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -238,12 +234,8 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -381,7 +373,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -392,12 +384,8 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -523,7 +511,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -534,12 +522,8 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -663,7 +647,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -674,12 +658,8 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -803,7 +783,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -814,12 +794,8 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -947,7 +923,7 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -958,12 +934,8 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1093,7 +1065,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -1104,12 +1076,8 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1235,7 +1203,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -1246,12 +1214,8 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1381,7 +1345,7 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
@@ -1392,12 +1356,8 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
-			setStatus := true
 			code := statusWriter.status
-			if code >= 100 && code < 400 {
-				setStatus = false
-			}
-			if setStatus {
+			if code >= 100 && code < 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
