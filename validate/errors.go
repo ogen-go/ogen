@@ -2,8 +2,9 @@ package validate
 
 import (
 	"fmt"
-	"github.com/ogen-go/ogen/ogenregex"
 	"strings"
+
+	"github.com/ogen-go/ogen/ogenregex"
 
 	"github.com/go-faster/errors"
 )
