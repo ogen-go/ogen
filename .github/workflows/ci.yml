@@ -107,3 +107,21 @@ jobs:
 
       - name: Run tests
         run: cd examples && go test ./...
+
+  ensure-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build image
+        run: |
+          docker build . \
+          --tag ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA
+
+      - name: Check image
+        run: |
+          docker run \
+          -v ./_testdata/examples/petstore.yml:/petstore.yml \
+          --rm \
+          ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA /petstore.yml
