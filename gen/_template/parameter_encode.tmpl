@@ -1,5 +1,4 @@
 {{ define "encode_path_parameters" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
-u := uri.Clone(c.requestURL(ctx))
 var pathParts [{{ len $.PathParts }}]string
 {{- range $idx, $part := $.PathParts }}{{/* Range over path parts */}}
 	{{- if $part.Raw }}

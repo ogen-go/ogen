@@ -113,6 +113,10 @@ var (
 		"client/security/reentrant",
 		`Enables client usage in security source implementations`,
 	}
+	ClientRequestOptions = Feature{
+		"client/request/options",
+		`Enables function options for client requests`,
+	}
 	ClientRequestValidation = Feature{
 		"client/request/validation",
 		`Enables validation of client requests`,
@@ -152,6 +156,7 @@ var AllFeatures = []Feature{
 	WebhooksClient,
 	WebhooksServer,
 	ClientSecurityReentrant,
+	ClientRequestOptions,
 	ClientRequestValidation,
 	ServerResponseValidation,
 	OgenOtel,
