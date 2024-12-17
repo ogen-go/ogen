@@ -12,6 +12,7 @@ type Ref = jsonpointer.RefKey
 // API represents parsed OpenAPI spec.
 type API struct {
 	Version    Version
+	Tags       []Tag
 	Servers    []Server
 	Operations []*Operation
 	Webhooks   []Webhook
