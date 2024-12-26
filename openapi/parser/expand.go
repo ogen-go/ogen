@@ -15,11 +15,11 @@ import (
 )
 
 // Expand generates an expanded ogen.Spec from given api.
-func Expand(api *openapi.API) (*ogen.Spec, error) {
+func Expand(api *openapi.API, spec *ogen.Spec) (*ogen.Spec, error) {
 	e := expander{
 		localToRemote: map[string]localToRemote{},
 	}
-	return e.Spec(api)
+	return e.Spec(api, spec)
 }
 
 type localToRemote struct {
@@ -32,27 +32,14 @@ type expander struct {
 	localToRemote map[string]localToRemote
 }
 
-func (e *expander) Spec(api *openapi.API) (spec *ogen.Spec, err error) {
+func (e *expander) Spec(api *openapi.API, srcSpec *ogen.Spec) (spec *ogen.Spec, err error) {
 	spec = new(ogen.Spec)
 	spec.Init()
 	e.components = spec.Components
 
 	spec.OpenAPI = api.Version.String()
-
-	tags := make([]ogen.Tag, len(api.Tags))
-	for i, tag := range api.Tags {
-		tags[i] = ogen.Tag{
-			Name:        tag.Name,
-			Description: tag.Description,
-		}
-	}
-	spec.Tags = tags
-
-	// FIXME(tdakkota): store actual information
-	spec.Info = ogen.Info{
-		Title:   "Expanded spec",
-		Version: "v0.1.0",
-	}
+	spec.Info = srcSpec.Info
+	spec.Tags = srcSpec.Tags
 
 	if servers := api.Servers; len(servers) > 0 {
 		expanded := make([]ogen.Server, len(servers))

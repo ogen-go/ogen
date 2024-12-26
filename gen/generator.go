@@ -39,7 +39,7 @@ type Generator struct {
 	log *zap.Logger
 }
 
-func expandSpec(api *openapi.API, p string) (err error) {
+func expandSpec(api *openapi.API, spec *ogen.Spec, p string) (err error) {
 	p, err = filepath.Abs(filepath.Clean(p))
 	if err != nil {
 		return err
@@ -50,12 +50,12 @@ func expandSpec(api *openapi.API, p string) (err error) {
 		return err
 	}
 
-	spec, err := parser.Expand(api)
+	mergedSpec, err := parser.Expand(api, spec)
 	if err != nil {
 		return errors.Wrap(err, "expand")
 	}
 
-	data, err := yaml.Marshal(spec)
+	data, err := yaml.Marshal(mergedSpec)
 	if err != nil {
 		return errors.Wrap(err, "marshal")
 	}
@@ -86,7 +86,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	if p := opts.ExpandSpec; p != "" {
-		if err := expandSpec(api, p); err != nil {
+		if err := expandSpec(api, spec, p); err != nil {
 			return nil, errors.Wrap(err, "expand spec")
 		}
 	}
