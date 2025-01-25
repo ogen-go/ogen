@@ -55,6 +55,11 @@ func WithEditResponse(fn func(resp *http.Response) error) RequestOption {
 }
 {{- end }}
 
+func trimTrailingSlashes(u *url.URL) {
+    u.Path = strings.TrimRight(u.Path, "/")
+    u.RawPath = strings.TrimRight(u.RawPath, "/")
+}
+
 {{- if $.PathsClientEnabled }}
 
 // Invoker invokes operations described by OpenAPI v3 specification.
@@ -112,11 +117,6 @@ var _ Handler = struct{
 	*Client
 }{}
 {{- end }}
-
-func trimTrailingSlashes(u *url.URL) {
-	u.Path = strings.TrimRight(u.Path, "/")
-	u.RawPath = strings.TrimRight(u.RawPath, "/")
-}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*Client, error) {
