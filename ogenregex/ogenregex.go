@@ -22,7 +22,8 @@ var _ = []Regexp{
 }
 
 type goRegexp struct {
-	exp *regexp.Regexp
+	orig string
+	exp  *regexp.Regexp
 }
 
 func (r goRegexp) Match(s []byte) (bool, error) {
@@ -34,7 +35,7 @@ func (r goRegexp) MatchString(s string) (bool, error) {
 }
 
 func (r goRegexp) String() string {
-	return r.exp.String()
+	return r.orig
 }
 
 type regexp2Regexp struct {
@@ -67,7 +68,7 @@ type Regexp interface {
 func Compile(exp string) (Regexp, error) {
 	if converted, ok := Convert(exp); ok {
 		if re, err := regexp.Compile(converted); err == nil {
-			return goRegexp{re}, nil
+			return goRegexp{orig: exp, exp: re}, nil
 		}
 	}
 	re, err := regexp2.Compile(exp, regexp2.ECMAScript|regexp2.Unicode)
