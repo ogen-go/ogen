@@ -1311,7 +1311,7 @@ func NewIssue943MapIssue943(v Issue943Map) Issue943 {
 // Ref: #/components/schemas/Issue943Map
 type Issue943Map struct {
 	Selector string `json:"selector"`
-	// Pattern: "^variant3_[^\r\n\u2028\u2029]*".
+	// Pattern: "^variant3_.*".
 	Pattern0Props Issue943MapPattern0
 }
 
@@ -5544,7 +5544,7 @@ func (s *RecursiveMapAdditional) init() RecursiveMapAdditional {
 // Ref: #/components/schemas/StringIntMap
 type StringIntMap struct {
 	AdditionalProps StringIntMapAdditional
-	// Pattern: "string_[^\r\n\u2028\u2029]*".
+	// Pattern: "string_.*".
 	Pattern0Props StringIntMapPattern0
 }
 

@@ -2942,7 +2942,7 @@ func (s *Issue943Map) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			switch match, err := regexMap["^variant3_[^\r\n\u2028\u2029]*"].Match(k); {
+			switch match, err := regexMap["^variant3_.*"].Match(k); {
 			case err != nil:
 				return errors.Wrap(err, "execute regex")
 			case match:
@@ -3040,7 +3040,7 @@ func (s *Issue943MapPattern0) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Issue943MapPattern0 to nil")
 	}
 	m := s.init()
-	pattern := regexMap["^variant3_[^\r\n\u2028\u2029]*"]
+	pattern := regexMap["^variant3_.*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch match, err := pattern.Match(k); {
 		case err != nil:
@@ -6092,7 +6092,7 @@ func (s *OnlyPatternedPropsObject) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OnlyPatternedPropsObject to nil")
 	}
 	m := s.init()
-	pattern := regexMap["string_[^\r\n\u2028\u2029]*"]
+	pattern := regexMap["string_.*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch match, err := pattern.Match(k); {
 		case err != nil:
@@ -7625,7 +7625,7 @@ func (s *PatternRecursiveMap) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode PatternRecursiveMap to nil")
 	}
 	m := s.init()
-	pattern := regexMap["foo[^\r\n\u2028\u2029]*"]
+	pattern := regexMap["foo.*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch match, err := pattern.Match(k); {
 		case err != nil:
@@ -8742,7 +8742,7 @@ func (s *StringIntMap) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			var handled bool
-			switch match, err := regexMap["string_[^\r\n\u2028\u2029]*"].Match(k); {
+			switch match, err := regexMap["string_.*"].Match(k); {
 			case err != nil:
 				return errors.Wrap(err, "execute regex")
 			case match:
@@ -8875,7 +8875,7 @@ func (s *StringIntMapPattern0) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode StringIntMapPattern0 to nil")
 	}
 	m := s.init()
-	pattern := regexMap["string_[^\r\n\u2028\u2029]*"]
+	pattern := regexMap["string_.*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch match, err := pattern.Match(k); {
 		case err != nil:
