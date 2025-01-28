@@ -17,6 +17,7 @@ type API struct {
 	Operations []*Operation
 	Webhooks   []Webhook
 	Components *Components
+	Info       Info
 }
 
 // Components represent parsed components of OpenAPI spec.
