@@ -25,6 +25,7 @@ components:
           type: integer
       x-ogen-properties:
         id:
+          # Pattern0Props is a reserved keyword when utilizing patternProperties
           name: "Pattern0Props"
       patternProperties:
         "^x-.*":

@@ -25,6 +25,7 @@ components:
           type: integer
       x-ogen-properties:
         id:
+          # AdditionalProps is a reserved keyword when utilizing additionalProperties
           name: "AdditionalProps"
       additionalProperties:
         type: string

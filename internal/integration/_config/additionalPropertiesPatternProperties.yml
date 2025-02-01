@@ -1,0 +1,6 @@
+generator:
+  features:
+    enable:
+      - "debug/example_tests"
+      - "paths/server"
+      - "paths/client"

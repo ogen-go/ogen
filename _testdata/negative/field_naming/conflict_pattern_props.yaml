@@ -21,6 +21,7 @@ components:
     User:
       type: object
       properties:
+        # Pattern0Props is a reserved keyword when utilizing patternProperties
         Pattern0Props:
           type: integer
       patternProperties:
