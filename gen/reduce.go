@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"bytes"
 	"maps"
 	"reflect"
 	"slices"
@@ -299,6 +300,9 @@ func (c responseComparator) compareXML(a, b *jsonschema.XML) bool {
 }
 
 func (c responseComparator) compareNum(a, b jsonschema.Num) bool {
+	if bytes.Equal(a, b) {
+		return true
+	}
 	r, _ := ogenjson.Equal(a, b)
 	return r
 }
