@@ -21,6 +21,7 @@ components:
     User:
       type: object
       properties:
+        # AdditionalProps is a reserved keyword when utilizing additionalProperties
         AdditionalProps:
           type: integer
       additionalProperties:

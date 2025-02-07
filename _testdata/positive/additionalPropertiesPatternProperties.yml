@@ -1,0 +1,31 @@
+openapi: 3.1.0
+info:
+  title: "REST API"
+  version: 0.0.1
+
+servers:
+  - url: "http://localhost:8888"
+
+paths:
+  /api/alive:
+    get:
+      operationId: alive
+      tags:
+        - system
+      parameters:
+        - name: flexData
+          in: query
+          style: deepObject
+          schema:
+              type: object
+              properties:
+                hello_world:
+                  type: string
+              patternProperties:
+                "^pat-.*":
+                  type: string
+              additionalProperties:
+                type: string
+      responses:
+        "200":
+          description: ok
