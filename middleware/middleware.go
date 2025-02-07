@@ -80,12 +80,14 @@ type (
 	Middleware func(req Request, next Next) (Response, error)
 )
 
+func justCallNext(req Request, next Next) (Response, error) {
+	return next(req)
+}
+
 // ChainMiddlewares chains middlewares into a single middleware, which will be executed in the order they are passed.
 func ChainMiddlewares(m ...Middleware) Middleware {
 	if len(m) == 0 {
-		return func(req Request, next Next) (Response, error) {
-			return next(req)
-		}
+		return justCallNext
 	}
 	tail := ChainMiddlewares(m[1:]...)
 	return func(req Request, next Next) (Response, error) {
