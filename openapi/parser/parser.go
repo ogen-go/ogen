@@ -146,6 +146,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 		Operations: p.operations,
 		Webhooks:   webhooks,
 		Components: components,
+		Info:       fromOgenInfo(p.spec.Info),
 	}, nil
 }
 

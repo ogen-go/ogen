@@ -47,12 +47,7 @@ func (e *expander) Spec(api *openapi.API) (spec *ogen.Spec, err error) {
 		}
 	}
 	spec.Tags = tags
-
-	// FIXME(tdakkota): store actual information
-	spec.Info = ogen.Info{
-		Title:   "Expanded spec",
-		Version: "v0.1.0",
-	}
+	spec.Info = fromOpenapiInfo(api.Info)
 
 	if servers := api.Servers; len(servers) > 0 {
 		expanded := make([]ogen.Server, len(servers))
