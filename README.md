@@ -14,7 +14,7 @@ OpenAPI v3 Code Generator for Go.
 # Install
 
 ```console
-go get -d github.com/ogen-go/ogen
+go install -v github.com/ogen-go/ogen/cmd/ogen@latest
 ```
 
 # Usage
