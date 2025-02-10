@@ -40,6 +40,13 @@ func WithRequestClient(client ht.Client) RequestOption {
 	}
 }
 
+// WithServerURL sets client for request.
+func WithServerURL(u *url.URL) RequestOption {
+	return func(cfg *requestConfig) {
+		cfg.ServerURL = u
+	}
+}
+
 // WithEditRequest sets function to edit request.
 func WithEditRequest(fn func(req *http.Request) error) RequestOption {
 	return func(cfg *requestConfig) {
