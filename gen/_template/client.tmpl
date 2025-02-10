@@ -205,6 +205,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 		{{- if $op.WebhookInfo }},targetURL{{ end -}}
 		{{- if $op.Request }},request{{ end -}}
 		{{- if $op.Params }},params{{ end -}}
+		{{- if $cfg.RequestOptionsEnabled }},options...{{ end -}}
 	)
 	return {{ if $op.Responses.DoPass }}res,{{ end }} err
 }
