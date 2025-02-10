@@ -40,6 +40,13 @@ func WithRequestClient(client ht.Client) RequestOption {
 	}
 }
 
+// WithServerURL sets client for request.
+func WithServerURL(u *url.URL) RequestOption {
+	return func(cfg *requestConfig) {
+		cfg.ServerURL = u
+	}
+}
+
 // WithEditRequest sets function to edit request.
 func WithEditRequest(fn func(req *http.Request) error) RequestOption {
 	return func(cfg *requestConfig) {
@@ -205,6 +212,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 		{{- if $op.WebhookInfo }},targetURL{{ end -}}
 		{{- if $op.Request }},request{{ end -}}
 		{{- if $op.Params }},params{{ end -}}
+		{{- if $cfg.RequestOptionsEnabled }},options...{{ end -}}
 	)
 	return {{ if $op.Responses.DoPass }}res,{{ end }} err
 }

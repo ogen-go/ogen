@@ -1,0 +1,31 @@
+{
+    "openapi": "3.0.3",
+    "paths": {
+        "/foo": {
+            "get": {
+                "operationId": "Foo",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
