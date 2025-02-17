@@ -8,8 +8,6 @@ linters-settings:
       - G115 # Annoying and have a lot of false-positive results.
   gocyclo:
     min-complexity: 15
-  maligned:
-    suggest-new: true
   dupl:
     threshold: 120
   goconst:
