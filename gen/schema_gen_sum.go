@@ -373,9 +373,9 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 				// As always, OpenAPI is not clear enough.
 				key, ok := schemaName(ref)
 				if !ok {
-					return "", errors.Wrap(
+					return "", errors.Wrapf(
 						&ErrNotImplemented{"complicated reference"},
-						"unable to extract schema name",
+						"unable to extract schema name from %s", ref,
 					)
 				}
 
