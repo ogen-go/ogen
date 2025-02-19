@@ -33675,10 +33675,10 @@ func (o *NilAutoMerge) SetTo(v AutoMerge) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilAutoMerge) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilAutoMerge) SetToNull() {
 	o.Null = true
 	var v AutoMerge
@@ -33720,10 +33720,10 @@ func (o *NilBool) SetTo(v bool) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilBool) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilBool) SetToNull() {
 	o.Null = true
 	var v bool
@@ -33765,10 +33765,10 @@ func (o *NilCheckRunCheckSuite) SetTo(v CheckRunCheckSuite) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilCheckRunCheckSuite) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilCheckRunCheckSuite) SetToNull() {
 	o.Null = true
 	var v CheckRunCheckSuite
@@ -33810,10 +33810,10 @@ func (o *NilCheckRunConclusion) SetTo(v CheckRunConclusion) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilCheckRunConclusion) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilCheckRunConclusion) SetToNull() {
 	o.Null = true
 	var v CheckRunConclusion
@@ -33855,10 +33855,10 @@ func (o *NilCheckSuiteConclusion) SetTo(v CheckSuiteConclusion) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilCheckSuiteConclusion) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilCheckSuiteConclusion) SetToNull() {
 	o.Null = true
 	var v CheckSuiteConclusion
@@ -33900,10 +33900,10 @@ func (o *NilCheckSuiteStatus) SetTo(v CheckSuiteStatus) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilCheckSuiteStatus) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilCheckSuiteStatus) SetToNull() {
 	o.Null = true
 	var v CheckSuiteStatus
@@ -33945,10 +33945,10 @@ func (o *NilCodeScanningAlertClassification) SetTo(v CodeScanningAlertClassifica
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilCodeScanningAlertClassification) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilCodeScanningAlertClassification) SetToNull() {
 	o.Null = true
 	var v CodeScanningAlertClassification
@@ -33990,10 +33990,10 @@ func (o *NilCodeScanningAlertDismissedAt) SetTo(v CodeScanningAlertDismissedAt) 
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilCodeScanningAlertDismissedAt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilCodeScanningAlertDismissedAt) SetToNull() {
 	o.Null = true
 	var v CodeScanningAlertDismissedAt
@@ -34035,10 +34035,10 @@ func (o *NilCodeScanningAlertDismissedReason) SetTo(v CodeScanningAlertDismissed
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilCodeScanningAlertDismissedReason) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilCodeScanningAlertDismissedReason) SetToNull() {
 	o.Null = true
 	var v CodeScanningAlertDismissedReason
@@ -34080,10 +34080,10 @@ func (o *NilDateTime) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilDateTime) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilDateTime) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -34125,10 +34125,10 @@ func (o *NilFileCommitContent) SetTo(v FileCommitContent) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilFileCommitContent) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilFileCommitContent) SetToNull() {
 	o.Null = true
 	var v FileCommitContent
@@ -34170,10 +34170,10 @@ func (o *NilGistSimpleFilesItem) SetTo(v GistSimpleFilesItem) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilGistSimpleFilesItem) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilGistSimpleFilesItem) SetToNull() {
 	o.Null = true
 	var v GistSimpleFilesItem
@@ -34215,10 +34215,10 @@ func (o *NilHookDeliveryRequestHeaders) SetTo(v HookDeliveryRequestHeaders) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilHookDeliveryRequestHeaders) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilHookDeliveryRequestHeaders) SetToNull() {
 	o.Null = true
 	var v HookDeliveryRequestHeaders
@@ -34260,10 +34260,10 @@ func (o *NilHookDeliveryRequestPayload) SetTo(v HookDeliveryRequestPayload) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilHookDeliveryRequestPayload) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilHookDeliveryRequestPayload) SetToNull() {
 	o.Null = true
 	var v HookDeliveryRequestPayload
@@ -34305,10 +34305,10 @@ func (o *NilHookDeliveryResponseHeaders) SetTo(v HookDeliveryResponseHeaders) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilHookDeliveryResponseHeaders) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilHookDeliveryResponseHeaders) SetToNull() {
 	o.Null = true
 	var v HookDeliveryResponseHeaders
@@ -34350,10 +34350,10 @@ func (o *NilInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt) SetToNull() {
 	o.Null = true
 	var v int
@@ -34395,10 +34395,10 @@ func (o *NilNullableCodeOfConductSimple) SetTo(v NullableCodeOfConductSimple) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableCodeOfConductSimple) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableCodeOfConductSimple) SetToNull() {
 	o.Null = true
 	var v NullableCodeOfConductSimple
@@ -34440,10 +34440,10 @@ func (o *NilNullableCommunityHealthFile) SetTo(v NullableCommunityHealthFile) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableCommunityHealthFile) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableCommunityHealthFile) SetToNull() {
 	o.Null = true
 	var v NullableCommunityHealthFile
@@ -34485,10 +34485,10 @@ func (o *NilNullableGitUser) SetTo(v NullableGitUser) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableGitUser) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableGitUser) SetToNull() {
 	o.Null = true
 	var v NullableGitUser
@@ -34530,10 +34530,10 @@ func (o *NilNullableIntegration) SetTo(v NullableIntegration) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableIntegration) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableIntegration) SetToNull() {
 	o.Null = true
 	var v NullableIntegration
@@ -34575,10 +34575,10 @@ func (o *NilNullableLicenseSimple) SetTo(v NullableLicenseSimple) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableLicenseSimple) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableLicenseSimple) SetToNull() {
 	o.Null = true
 	var v NullableLicenseSimple
@@ -34620,10 +34620,10 @@ func (o *NilNullableMilestone) SetTo(v NullableMilestone) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableMilestone) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableMilestone) SetToNull() {
 	o.Null = true
 	var v NullableMilestone
@@ -34665,10 +34665,10 @@ func (o *NilNullableSimpleCommit) SetTo(v NullableSimpleCommit) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableSimpleCommit) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableSimpleCommit) SetToNull() {
 	o.Null = true
 	var v NullableSimpleCommit
@@ -34710,10 +34710,10 @@ func (o *NilNullableSimpleCommitAuthor) SetTo(v NullableSimpleCommitAuthor) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableSimpleCommitAuthor) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableSimpleCommitAuthor) SetToNull() {
 	o.Null = true
 	var v NullableSimpleCommitAuthor
@@ -34755,10 +34755,10 @@ func (o *NilNullableSimpleCommitCommitter) SetTo(v NullableSimpleCommitCommitter
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableSimpleCommitCommitter) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableSimpleCommitCommitter) SetToNull() {
 	o.Null = true
 	var v NullableSimpleCommitCommitter
@@ -34800,10 +34800,10 @@ func (o *NilNullableSimpleUser) SetTo(v NullableSimpleUser) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableSimpleUser) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableSimpleUser) SetToNull() {
 	o.Null = true
 	var v NullableSimpleUser
@@ -34845,10 +34845,10 @@ func (o *NilNullableTeamSimple) SetTo(v NullableTeamSimple) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableTeamSimple) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableTeamSimple) SetToNull() {
 	o.Null = true
 	var v NullableTeamSimple
@@ -34890,10 +34890,10 @@ func (o *NilPageStatus) SetTo(v PageStatus) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilPageStatus) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilPageStatus) SetToNull() {
 	o.Null = true
 	var v PageStatus
@@ -34935,10 +34935,10 @@ func (o *NilPullRequestHeadRepo) SetTo(v PullRequestHeadRepo) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilPullRequestHeadRepo) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilPullRequestHeadRepo) SetToNull() {
 	o.Null = true
 	var v PullRequestHeadRepo
@@ -34980,10 +34980,10 @@ func (o *NilPullRequestHeadRepoLicense) SetTo(v PullRequestHeadRepoLicense) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilPullRequestHeadRepoLicense) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilPullRequestHeadRepoLicense) SetToNull() {
 	o.Null = true
 	var v PullRequestHeadRepoLicense
@@ -35025,10 +35025,10 @@ func (o *NilReposCreatePagesSiteReq) SetTo(v ReposCreatePagesSiteReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilReposCreatePagesSiteReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilReposCreatePagesSiteReq) SetToNull() {
 	o.Null = true
 	var v ReposCreatePagesSiteReq
@@ -35070,10 +35070,10 @@ func (o *NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) SetTo(v Re
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) SetToNull() {
 	o.Null = true
 	var v ReposUpdateBranchProtectionReqRequiredPullRequestReviews
@@ -35115,10 +35115,10 @@ func (o *NilReposUpdateBranchProtectionReqRequiredStatusChecks) SetTo(v ReposUpd
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilReposUpdateBranchProtectionReqRequiredStatusChecks) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilReposUpdateBranchProtectionReqRequiredStatusChecks) SetToNull() {
 	o.Null = true
 	var v ReposUpdateBranchProtectionReqRequiredStatusChecks
@@ -35160,10 +35160,10 @@ func (o *NilReposUpdateBranchProtectionReqRestrictions) SetTo(v ReposUpdateBranc
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilReposUpdateBranchProtectionReqRestrictions) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilReposUpdateBranchProtectionReqRestrictions) SetToNull() {
 	o.Null = true
 	var v ReposUpdateBranchProtectionReqRestrictions
@@ -35205,10 +35205,10 @@ func (o *NilSimpleCommitAuthor) SetTo(v SimpleCommitAuthor) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilSimpleCommitAuthor) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilSimpleCommitAuthor) SetToNull() {
 	o.Null = true
 	var v SimpleCommitAuthor
@@ -35250,10 +35250,10 @@ func (o *NilSimpleCommitCommitter) SetTo(v SimpleCommitCommitter) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilSimpleCommitCommitter) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilSimpleCommitCommitter) SetToNull() {
 	o.Null = true
 	var v SimpleCommitCommitter
@@ -35295,10 +35295,10 @@ func (o *NilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilString) SetToNull() {
 	o.Null = true
 	var v string
@@ -35340,10 +35340,10 @@ func (o *NilURI) SetTo(v url.URL) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilURI) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilURI) SetToNull() {
 	o.Null = true
 	var v url.URL
@@ -47788,10 +47788,10 @@ func (o *OptNilBool) SetTo(v bool) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilBool) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilBool) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -47851,10 +47851,10 @@ func (o *OptNilCodeScanningAlertDismissedReason) SetTo(v CodeScanningAlertDismis
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCodeScanningAlertDismissedReason) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCodeScanningAlertDismissedReason) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -47914,10 +47914,10 @@ func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) SetTo(v CodeScanningA
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCodeScanningAlertRuleSecuritySeverityLevel) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -47977,10 +47977,10 @@ func (o *OptNilCodeScanningAlertRuleSeverity) SetTo(v CodeScanningAlertRuleSever
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCodeScanningAlertRuleSeverity) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCodeScanningAlertRuleSeverity) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48040,10 +48040,10 @@ func (o *OptNilCodeScanningAlertRuleSummarySeverity) SetTo(v CodeScanningAlertRu
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCodeScanningAlertRuleSummarySeverity) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCodeScanningAlertRuleSummarySeverity) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48103,10 +48103,10 @@ func (o *OptNilCodeScanningAnalysisToolGUID) SetTo(v CodeScanningAnalysisToolGUI
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCodeScanningAnalysisToolGUID) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCodeScanningAnalysisToolGUID) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48166,10 +48166,10 @@ func (o *OptNilCodeScanningAnalysisToolVersion) SetTo(v CodeScanningAnalysisTool
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCodeScanningAnalysisToolVersion) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCodeScanningAnalysisToolVersion) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48229,10 +48229,10 @@ func (o *OptNilDateTime) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilDateTime) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilDateTime) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48292,10 +48292,10 @@ func (o *OptNilFullRepositorySecurityAndAnalysis) SetTo(v FullRepositorySecurity
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilFullRepositorySecurityAndAnalysis) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilFullRepositorySecurityAndAnalysis) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48355,10 +48355,10 @@ func (o *OptNilGistHistoryArray) SetTo(v []GistHistory) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilGistHistoryArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilGistHistoryArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48418,10 +48418,10 @@ func (o *OptNilGistSimpleForkOf) SetTo(v GistSimpleForkOf) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilGistSimpleForkOf) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilGistSimpleForkOf) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48481,10 +48481,10 @@ func (o *OptNilGistSimpleForksItemArray) SetTo(v []GistSimpleForksItem) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilGistSimpleForksItemArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilGistSimpleForksItemArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48544,10 +48544,10 @@ func (o *OptNilInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilInt) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48607,10 +48607,10 @@ func (o *OptNilIssuesCreateReqMilestone) SetTo(v IssuesCreateReqMilestone) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilIssuesCreateReqMilestone) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilIssuesCreateReqMilestone) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48670,10 +48670,10 @@ func (o *OptNilIssuesLockReq) SetTo(v IssuesLockReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilIssuesLockReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilIssuesLockReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48733,10 +48733,10 @@ func (o *OptNilIssuesUpdateReqMilestone) SetTo(v IssuesUpdateReqMilestone) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilIssuesUpdateReqMilestone) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilIssuesUpdateReqMilestone) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48796,10 +48796,10 @@ func (o *OptNilIssuesUpdateReqTitle) SetTo(v IssuesUpdateReqTitle) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilIssuesUpdateReqTitle) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilIssuesUpdateReqTitle) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48859,10 +48859,10 @@ func (o *OptNilMarketplacePurchaseMarketplacePendingChange) SetTo(v MarketplaceP
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilMarketplacePurchaseMarketplacePendingChange) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilMarketplacePurchaseMarketplacePendingChange) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48922,10 +48922,10 @@ func (o *OptNilMigrationsUpdateImportReq) SetTo(v MigrationsUpdateImportReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilMigrationsUpdateImportReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilMigrationsUpdateImportReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -48985,10 +48985,10 @@ func (o *OptNilMinimalRepositoryLicense) SetTo(v MinimalRepositoryLicense) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilMinimalRepositoryLicense) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilMinimalRepositoryLicense) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49048,10 +49048,10 @@ func (o *OptNilNullableIntegration) SetTo(v NullableIntegration) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableIntegration) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableIntegration) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49111,10 +49111,10 @@ func (o *OptNilNullableMinimalRepository) SetTo(v NullableMinimalRepository) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableMinimalRepository) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableMinimalRepository) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49174,10 +49174,10 @@ func (o *OptNilNullableMinimalRepositoryLicense) SetTo(v NullableMinimalReposito
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableMinimalRepositoryLicense) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableMinimalRepositoryLicense) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49237,10 +49237,10 @@ func (o *OptNilNullableRepository) SetTo(v NullableRepository) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableRepository) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableRepository) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49300,10 +49300,10 @@ func (o *OptNilNullableRepositoryTemplateRepository) SetTo(v NullableRepositoryT
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableRepositoryTemplateRepository) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableRepositoryTemplateRepository) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49363,10 +49363,10 @@ func (o *OptNilNullableScopedInstallation) SetTo(v NullableScopedInstallation) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableScopedInstallation) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableScopedInstallation) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49426,10 +49426,10 @@ func (o *OptNilNullableSimpleUser) SetTo(v NullableSimpleUser) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableSimpleUser) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableSimpleUser) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49489,10 +49489,10 @@ func (o *OptNilNullableTeamSimple) SetTo(v NullableTeamSimple) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilNullableTeamSimple) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilNullableTeamSimple) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49552,10 +49552,10 @@ func (o *OptNilPageProtectedDomainState) SetTo(v PageProtectedDomainState) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilPageProtectedDomainState) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilPageProtectedDomainState) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49615,10 +49615,10 @@ func (o *OptNilPagesHealthCheckAltDomain) SetTo(v PagesHealthCheckAltDomain) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilPagesHealthCheckAltDomain) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilPagesHealthCheckAltDomain) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49678,10 +49678,10 @@ func (o *OptNilProjectsAddCollaboratorReq) SetTo(v ProjectsAddCollaboratorReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilProjectsAddCollaboratorReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilProjectsAddCollaboratorReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49741,10 +49741,10 @@ func (o *OptNilPullRequestReviewCommentStartSide) SetTo(v PullRequestReviewComme
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilPullRequestReviewCommentStartSide) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilPullRequestReviewCommentStartSide) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49804,10 +49804,10 @@ func (o *OptNilPullsMergeReq) SetTo(v PullsMergeReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilPullsMergeReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilPullsMergeReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49867,10 +49867,10 @@ func (o *OptNilPullsUpdateBranchReq) SetTo(v PullsUpdateBranchReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilPullsUpdateBranchReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilPullsUpdateBranchReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49930,10 +49930,10 @@ func (o *OptNilReposCreateForkReq) SetTo(v ReposCreateForkReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilReposCreateForkReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilReposCreateForkReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -49993,10 +49993,10 @@ func (o *OptNilReposCreateWebhookReq) SetTo(v ReposCreateWebhookReq) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilReposCreateWebhookReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilReposCreateWebhookReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50056,10 +50056,10 @@ func (o *OptNilReposUpdateReqSecurityAndAnalysis) SetTo(v ReposUpdateReqSecurity
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilReposUpdateReqSecurityAndAnalysis) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilReposUpdateReqSecurityAndAnalysis) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50119,10 +50119,10 @@ func (o *OptNilRepositoryTemplateRepository) SetTo(v RepositoryTemplateRepositor
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilRepositoryTemplateRepository) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilRepositoryTemplateRepository) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50182,10 +50182,10 @@ func (o *OptNilReviewCommentStartSide) SetTo(v ReviewCommentStartSide) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilReviewCommentStartSide) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilReviewCommentStartSide) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50245,10 +50245,10 @@ func (o *OptNilSecretScanningAlertResolution) SetTo(v SecretScanningAlertResolut
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilSecretScanningAlertResolution) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilSecretScanningAlertResolution) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50308,10 +50308,10 @@ func (o *OptNilSimpleUserArray) SetTo(v []SimpleUser) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilSimpleUserArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilSimpleUserArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50371,10 +50371,10 @@ func (o *OptNilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilString) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50434,10 +50434,10 @@ func (o *OptNilStringArray) SetTo(v []string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50497,10 +50497,10 @@ func (o *OptNilTeamArray) SetTo(v []Team) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilTeamArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilTeamArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50560,10 +50560,10 @@ func (o *OptNilTeamSimpleArray) SetTo(v []TeamSimple) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilTeamSimpleArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilTeamSimpleArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50623,10 +50623,10 @@ func (o *OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq) SetTo(v TeamsAddOrUpd
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50686,10 +50686,10 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) SetTo(v []TopicSearchResul
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilTopicSearchResultItemAliasesItemArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilTopicSearchResultItemAliasesItemArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50749,10 +50749,10 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) SetTo(v []TopicSearchResul
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilTopicSearchResultItemRelatedItemArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilTopicSearchResultItemRelatedItemArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -50812,10 +50812,10 @@ func (o *OptNilURI) SetTo(v url.URL) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilURI) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilURI) SetToNull() {
 	o.Set = true
 	o.Null = true

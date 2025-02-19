@@ -1747,10 +1747,10 @@ func (o *NilInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt) SetToNull() {
 	o.Null = true
 	var v int
@@ -1818,10 +1818,10 @@ func (o *NilNullableEnumsBoth) SetTo(v NullableEnumsBoth) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableEnumsBoth) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableEnumsBoth) SetToNull() {
 	o.Null = true
 	var v NullableEnumsBoth
@@ -1863,10 +1863,10 @@ func (o *NilNullableEnumsOnlyNullValue) SetTo(v NullableEnumsOnlyNullValue) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableEnumsOnlyNullValue) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableEnumsOnlyNullValue) SetToNull() {
 	o.Null = true
 	var v NullableEnumsOnlyNullValue
@@ -1908,10 +1908,10 @@ func (o *NilNullableEnumsOnlyNullable) SetTo(v NullableEnumsOnlyNullable) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilNullableEnumsOnlyNullable) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilNullableEnumsOnlyNullable) SetToNull() {
 	o.Null = true
 	var v NullableEnumsOnlyNullable
@@ -1953,10 +1953,10 @@ func (o *NilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilString) SetToNull() {
 	o.Null = true
 	var v string
@@ -4104,10 +4104,10 @@ func (o *OptNilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilString) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4167,10 +4167,10 @@ func (o *OptNilStringArray) SetTo(v []string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringArray) SetToNull() {
 	o.Set = true
 	o.Null = true

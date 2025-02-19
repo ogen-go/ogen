@@ -4579,10 +4579,10 @@ func (o *OptNilAnyArray) SetTo(v []jx.Raw) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilAnyArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilAnyArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4642,10 +4642,10 @@ func (o *OptNilBool) SetTo(v bool) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilBool) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilBool) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4705,10 +4705,10 @@ func (o *OptNilCreateAnswerRequestStop) SetTo(v CreateAnswerRequestStop) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateAnswerRequestStop) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateAnswerRequestStop) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4768,10 +4768,10 @@ func (o *OptNilCreateChatCompletionRequestStop) SetTo(v CreateChatCompletionRequ
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateChatCompletionRequestStop) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateChatCompletionRequestStop) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4831,10 +4831,10 @@ func (o *OptNilCreateCompletionRequestPrompt) SetTo(v CreateCompletionRequestPro
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateCompletionRequestPrompt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateCompletionRequestPrompt) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4894,10 +4894,10 @@ func (o *OptNilCreateCompletionRequestStop) SetTo(v CreateCompletionRequestStop)
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateCompletionRequestStop) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateCompletionRequestStop) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4957,10 +4957,10 @@ func (o *OptNilCreateCompletionResponseChoicesItemLogprobs) SetTo(v CreateComple
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateCompletionResponseChoicesItemLogprobs) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateCompletionResponseChoicesItemLogprobs) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5020,10 +5020,10 @@ func (o *OptNilCreateEditResponseChoicesItemLogprobs) SetTo(v CreateEditResponse
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateEditResponseChoicesItemLogprobs) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateEditResponseChoicesItemLogprobs) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5083,10 +5083,10 @@ func (o *OptNilCreateImageEditRequestMultipartResponseFormat) SetTo(v CreateImag
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateImageEditRequestMultipartResponseFormat) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateImageEditRequestMultipartResponseFormat) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5146,10 +5146,10 @@ func (o *OptNilCreateImageEditRequestMultipartSize) SetTo(v CreateImageEditReque
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateImageEditRequestMultipartSize) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateImageEditRequestMultipartSize) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5209,10 +5209,10 @@ func (o *OptNilCreateImageRequestResponseFormat) SetTo(v CreateImageRequestRespo
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateImageRequestResponseFormat) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateImageRequestResponseFormat) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5272,10 +5272,10 @@ func (o *OptNilCreateImageRequestSize) SetTo(v CreateImageRequestSize) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateImageRequestSize) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateImageRequestSize) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5335,10 +5335,10 @@ func (o *OptNilCreateImageVariationRequestMultipartResponseFormat) SetTo(v Creat
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateImageVariationRequestMultipartResponseFormat) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateImageVariationRequestMultipartResponseFormat) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5398,10 +5398,10 @@ func (o *OptNilCreateImageVariationRequestMultipartSize) SetTo(v CreateImageVari
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilCreateImageVariationRequestMultipartSize) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilCreateImageVariationRequestMultipartSize) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5461,10 +5461,10 @@ func (o *OptNilFloat64) SetTo(v float64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilFloat64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilFloat64) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5524,10 +5524,10 @@ func (o *OptNilFloat64Array) SetTo(v []float64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilFloat64Array) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilFloat64Array) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5587,10 +5587,10 @@ func (o *OptNilInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilInt) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5650,10 +5650,10 @@ func (o *OptNilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilString) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5713,10 +5713,10 @@ func (o *OptNilStringArray) SetTo(v []string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringArray) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5776,10 +5776,10 @@ func (o *OptNilStringArrayArray) SetTo(v [][]string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringArrayArray) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringArrayArray) SetToNull() {
 	o.Set = true
 	o.Null = true
