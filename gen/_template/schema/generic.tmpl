@@ -52,10 +52,10 @@ func (o *{{ $.Name }}) SetTo(v {{ $g.Go }}) {
 }
 
 {{- if $v.Nullable  }}
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o {{ $.ReadOnlyReceiver }}) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *{{ $.Name }}) SetToNull() {
 	{{- if $v.Optional }}
 	o.Set = true
