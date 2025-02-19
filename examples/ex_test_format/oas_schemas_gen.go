@@ -57,10 +57,10 @@ func (o *NilBool) SetTo(v bool) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilBool) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilBool) SetToNull() {
 	o.Null = true
 	var v bool
@@ -102,10 +102,10 @@ func (o *NilDate) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilDate) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilDate) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -147,10 +147,10 @@ func (o *NilDateTime) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilDateTime) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilDateTime) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -192,10 +192,10 @@ func (o *NilDuration) SetTo(v time.Duration) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilDuration) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilDuration) SetToNull() {
 	o.Null = true
 	var v time.Duration
@@ -237,10 +237,10 @@ func (o *NilFloat32) SetTo(v float32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilFloat32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilFloat32) SetToNull() {
 	o.Null = true
 	var v float32
@@ -282,10 +282,10 @@ func (o *NilFloat64) SetTo(v float64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilFloat64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilFloat64) SetToNull() {
 	o.Null = true
 	var v float64
@@ -327,10 +327,10 @@ func (o *NilHardwareAddr) SetTo(v net.HardwareAddr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilHardwareAddr) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilHardwareAddr) SetToNull() {
 	o.Null = true
 	var v net.HardwareAddr
@@ -372,10 +372,10 @@ func (o *NilIP) SetTo(v netip.Addr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilIP) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilIP) SetToNull() {
 	o.Null = true
 	var v netip.Addr
@@ -417,10 +417,10 @@ func (o *NilIPv4) SetTo(v netip.Addr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilIPv4) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilIPv4) SetToNull() {
 	o.Null = true
 	var v netip.Addr
@@ -462,10 +462,10 @@ func (o *NilIPv6) SetTo(v netip.Addr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilIPv6) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilIPv6) SetToNull() {
 	o.Null = true
 	var v netip.Addr
@@ -507,10 +507,10 @@ func (o *NilInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt) SetToNull() {
 	o.Null = true
 	var v int
@@ -552,10 +552,10 @@ func (o *NilInt16) SetTo(v int16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt16) SetToNull() {
 	o.Null = true
 	var v int16
@@ -597,10 +597,10 @@ func (o *NilInt32) SetTo(v int32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt32) SetToNull() {
 	o.Null = true
 	var v int32
@@ -642,10 +642,10 @@ func (o *NilInt64) SetTo(v int64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt64) SetToNull() {
 	o.Null = true
 	var v int64
@@ -687,10 +687,10 @@ func (o *NilInt8) SetTo(v int8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt8) SetToNull() {
 	o.Null = true
 	var v int8
@@ -732,10 +732,10 @@ func (o *NilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilString) SetToNull() {
 	o.Null = true
 	var v string
@@ -777,10 +777,10 @@ func (o *NilStringFloat32) SetTo(v float32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringFloat32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringFloat32) SetToNull() {
 	o.Null = true
 	var v float32
@@ -822,10 +822,10 @@ func (o *NilStringFloat64) SetTo(v float64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringFloat64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringFloat64) SetToNull() {
 	o.Null = true
 	var v float64
@@ -867,10 +867,10 @@ func (o *NilStringInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringInt) SetToNull() {
 	o.Null = true
 	var v int
@@ -912,10 +912,10 @@ func (o *NilStringInt16) SetTo(v int16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringInt16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringInt16) SetToNull() {
 	o.Null = true
 	var v int16
@@ -957,10 +957,10 @@ func (o *NilStringInt32) SetTo(v int32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringInt32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringInt32) SetToNull() {
 	o.Null = true
 	var v int32
@@ -1002,10 +1002,10 @@ func (o *NilStringInt64) SetTo(v int64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringInt64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringInt64) SetToNull() {
 	o.Null = true
 	var v int64
@@ -1047,10 +1047,10 @@ func (o *NilStringInt8) SetTo(v int8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringInt8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringInt8) SetToNull() {
 	o.Null = true
 	var v int8
@@ -1092,10 +1092,10 @@ func (o *NilStringUint) SetTo(v uint) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUint) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUint) SetToNull() {
 	o.Null = true
 	var v uint
@@ -1137,10 +1137,10 @@ func (o *NilStringUint16) SetTo(v uint16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUint16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUint16) SetToNull() {
 	o.Null = true
 	var v uint16
@@ -1182,10 +1182,10 @@ func (o *NilStringUint32) SetTo(v uint32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUint32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUint32) SetToNull() {
 	o.Null = true
 	var v uint32
@@ -1227,10 +1227,10 @@ func (o *NilStringUint64) SetTo(v uint64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUint64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUint64) SetToNull() {
 	o.Null = true
 	var v uint64
@@ -1272,10 +1272,10 @@ func (o *NilStringUint8) SetTo(v uint8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUint8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUint8) SetToNull() {
 	o.Null = true
 	var v uint8
@@ -1317,10 +1317,10 @@ func (o *NilStringUnixMicro) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUnixMicro) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUnixMicro) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1362,10 +1362,10 @@ func (o *NilStringUnixMilli) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUnixMilli) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUnixMilli) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1407,10 +1407,10 @@ func (o *NilStringUnixNano) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUnixNano) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUnixNano) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1452,10 +1452,10 @@ func (o *NilStringUnixSeconds) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilStringUnixSeconds) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilStringUnixSeconds) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1497,10 +1497,10 @@ func (o *NilTime) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilTime) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilTime) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1542,10 +1542,10 @@ func (o *NilURI) SetTo(v url.URL) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilURI) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilURI) SetToNull() {
 	o.Null = true
 	var v url.URL
@@ -1587,10 +1587,10 @@ func (o *NilUUID) SetTo(v uuid.UUID) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUUID) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUUID) SetToNull() {
 	o.Null = true
 	var v uuid.UUID
@@ -1632,10 +1632,10 @@ func (o *NilUint) SetTo(v uint) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUint) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUint) SetToNull() {
 	o.Null = true
 	var v uint
@@ -1677,10 +1677,10 @@ func (o *NilUint16) SetTo(v uint16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUint16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUint16) SetToNull() {
 	o.Null = true
 	var v uint16
@@ -1722,10 +1722,10 @@ func (o *NilUint32) SetTo(v uint32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUint32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUint32) SetToNull() {
 	o.Null = true
 	var v uint32
@@ -1767,10 +1767,10 @@ func (o *NilUint64) SetTo(v uint64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUint64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUint64) SetToNull() {
 	o.Null = true
 	var v uint64
@@ -1812,10 +1812,10 @@ func (o *NilUint8) SetTo(v uint8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUint8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUint8) SetToNull() {
 	o.Null = true
 	var v uint8
@@ -1857,10 +1857,10 @@ func (o *NilUnixMicro) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUnixMicro) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUnixMicro) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1902,10 +1902,10 @@ func (o *NilUnixMilli) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUnixMilli) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUnixMilli) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1947,10 +1947,10 @@ func (o *NilUnixNano) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUnixNano) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUnixNano) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -1992,10 +1992,10 @@ func (o *NilUnixSeconds) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilUnixSeconds) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilUnixSeconds) SetToNull() {
 	o.Null = true
 	var v time.Time
@@ -2741,10 +2741,10 @@ func (o *OptNilBool) SetTo(v bool) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilBool) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilBool) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -2804,10 +2804,10 @@ func (o *OptNilByte) SetTo(v []byte) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilByte) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilByte) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -2867,10 +2867,10 @@ func (o *OptNilDate) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilDate) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilDate) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -2930,10 +2930,10 @@ func (o *OptNilDateTime) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilDateTime) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilDateTime) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -2993,10 +2993,10 @@ func (o *OptNilDuration) SetTo(v time.Duration) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilDuration) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilDuration) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3056,10 +3056,10 @@ func (o *OptNilFloat32) SetTo(v float32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilFloat32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilFloat32) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3119,10 +3119,10 @@ func (o *OptNilFloat64) SetTo(v float64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilFloat64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilFloat64) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3182,10 +3182,10 @@ func (o *OptNilHardwareAddr) SetTo(v net.HardwareAddr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilHardwareAddr) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilHardwareAddr) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3245,10 +3245,10 @@ func (o *OptNilIP) SetTo(v netip.Addr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilIP) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilIP) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3308,10 +3308,10 @@ func (o *OptNilIPv4) SetTo(v netip.Addr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilIPv4) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilIPv4) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3371,10 +3371,10 @@ func (o *OptNilIPv6) SetTo(v netip.Addr) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilIPv6) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilIPv6) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3434,10 +3434,10 @@ func (o *OptNilInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilInt) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3497,10 +3497,10 @@ func (o *OptNilInt16) SetTo(v int16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilInt16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilInt16) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3560,10 +3560,10 @@ func (o *OptNilInt32) SetTo(v int32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilInt32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilInt32) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3623,10 +3623,10 @@ func (o *OptNilInt64) SetTo(v int64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilInt64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilInt64) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3686,10 +3686,10 @@ func (o *OptNilInt8) SetTo(v int8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilInt8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilInt8) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3749,10 +3749,10 @@ func (o *OptNilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilString) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3812,10 +3812,10 @@ func (o *OptNilStringFloat32) SetTo(v float32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringFloat32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringFloat32) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3875,10 +3875,10 @@ func (o *OptNilStringFloat64) SetTo(v float64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringFloat64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringFloat64) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -3938,10 +3938,10 @@ func (o *OptNilStringInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringInt) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4001,10 +4001,10 @@ func (o *OptNilStringInt16) SetTo(v int16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringInt16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringInt16) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4064,10 +4064,10 @@ func (o *OptNilStringInt32) SetTo(v int32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringInt32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringInt32) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4127,10 +4127,10 @@ func (o *OptNilStringInt64) SetTo(v int64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringInt64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringInt64) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4190,10 +4190,10 @@ func (o *OptNilStringInt8) SetTo(v int8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringInt8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringInt8) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4253,10 +4253,10 @@ func (o *OptNilStringUint) SetTo(v uint) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUint) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUint) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4316,10 +4316,10 @@ func (o *OptNilStringUint16) SetTo(v uint16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUint16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUint16) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4379,10 +4379,10 @@ func (o *OptNilStringUint32) SetTo(v uint32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUint32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUint32) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4442,10 +4442,10 @@ func (o *OptNilStringUint64) SetTo(v uint64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUint64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUint64) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4505,10 +4505,10 @@ func (o *OptNilStringUint8) SetTo(v uint8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUint8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUint8) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4568,10 +4568,10 @@ func (o *OptNilStringUnixMicro) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUnixMicro) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUnixMicro) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4631,10 +4631,10 @@ func (o *OptNilStringUnixMilli) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUnixMilli) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUnixMilli) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4694,10 +4694,10 @@ func (o *OptNilStringUnixNano) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUnixNano) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUnixNano) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4757,10 +4757,10 @@ func (o *OptNilStringUnixSeconds) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilStringUnixSeconds) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilStringUnixSeconds) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4820,10 +4820,10 @@ func (o *OptNilTime) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilTime) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilTime) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4883,10 +4883,10 @@ func (o *OptNilURI) SetTo(v url.URL) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilURI) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilURI) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -4946,10 +4946,10 @@ func (o *OptNilUUID) SetTo(v uuid.UUID) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUUID) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUUID) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5009,10 +5009,10 @@ func (o *OptNilUint) SetTo(v uint) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUint) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUint) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5072,10 +5072,10 @@ func (o *OptNilUint16) SetTo(v uint16) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUint16) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUint16) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5135,10 +5135,10 @@ func (o *OptNilUint32) SetTo(v uint32) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUint32) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUint32) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5198,10 +5198,10 @@ func (o *OptNilUint64) SetTo(v uint64) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUint64) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUint64) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5261,10 +5261,10 @@ func (o *OptNilUint8) SetTo(v uint8) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUint8) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUint8) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5324,10 +5324,10 @@ func (o *OptNilUnixMicro) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUnixMicro) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUnixMicro) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5387,10 +5387,10 @@ func (o *OptNilUnixMilli) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUnixMilli) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUnixMilli) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5450,10 +5450,10 @@ func (o *OptNilUnixNano) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUnixNano) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUnixNano) SetToNull() {
 	o.Set = true
 	o.Null = true
@@ -5513,10 +5513,10 @@ func (o *OptNilUnixSeconds) SetTo(v time.Time) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o OptNilUnixSeconds) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *OptNilUnixSeconds) SetToNull() {
 	o.Set = true
 	o.Null = true
