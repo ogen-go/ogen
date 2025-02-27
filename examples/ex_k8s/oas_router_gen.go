@@ -172,7 +172,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									// Param: "name"
-									// Leaf parameter
+									// Leaf parameter, slashes are prohibited
+									idx := strings.IndexByte(elem, '/')
+									if idx >= 0 {
+										break
+									}
 									args[0] = elem
 									elem = ""
 
@@ -399,7 +403,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -464,7 +472,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -517,7 +529,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -573,7 +589,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -989,7 +1009,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		}
 
 																		// Param: "path"
-																		// Leaf parameter
+																		// Leaf parameter, slashes are prohibited
+																		idx := strings.IndexByte(elem, '/')
+																		if idx >= 0 {
+																			break
+																		}
 																		args[2] = elem
 																		elem = ""
 
@@ -1115,7 +1139,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -1416,7 +1444,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -1481,7 +1513,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -1629,7 +1665,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																		}
 
 																		// Param: "path"
-																		// Leaf parameter
+																		// Leaf parameter, slashes are prohibited
+																		idx := strings.IndexByte(elem, '/')
+																		if idx >= 0 {
+																			break
+																		}
 																		args[2] = elem
 																		elem = ""
 
@@ -1878,7 +1918,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "path"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -2516,7 +2560,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -2581,7 +2629,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -2634,7 +2686,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -2690,7 +2746,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -2755,7 +2815,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -2820,7 +2884,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -2873,7 +2941,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -2944,7 +3016,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -2997,7 +3073,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -3065,7 +3145,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -3130,7 +3214,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -3183,7 +3271,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -3249,7 +3341,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -3347,7 +3443,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -3688,7 +3788,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -3738,7 +3842,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -3800,7 +3908,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -3850,7 +3962,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -4049,7 +4165,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -4221,7 +4341,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -4431,7 +4555,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -5115,7 +5243,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -5180,7 +5312,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -5233,7 +5369,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -5289,7 +5429,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -5342,7 +5486,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -5799,7 +5947,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -6073,7 +6225,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -6335,7 +6491,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -6794,7 +6954,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -6847,7 +7011,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -7112,7 +7280,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -7344,7 +7516,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -7482,7 +7658,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -7592,7 +7772,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -7752,7 +7936,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -7862,7 +8050,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -7985,7 +8177,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -8095,7 +8291,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -8255,7 +8455,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -8365,7 +8569,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -8488,7 +8696,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -8598,7 +8810,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -8882,7 +9098,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -8932,7 +9152,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -9175,7 +9399,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -9225,7 +9453,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -9403,7 +9635,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									// Param: "name"
-									// Leaf parameter
+									// Leaf parameter, slashes are prohibited
+									idx := strings.IndexByte(elem, '/')
+									if idx >= 0 {
+										break
+									}
 									args[0] = elem
 									elem = ""
 
@@ -9521,7 +9757,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -9724,7 +9964,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -9829,7 +10073,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -9950,7 +10198,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -10003,7 +10255,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -10143,7 +10399,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -10193,7 +10453,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -10265,7 +10529,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -10315,7 +10583,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -10387,7 +10659,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -10437,7 +10713,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -10711,7 +10991,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -10950,7 +11234,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -11038,7 +11326,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -11125,7 +11417,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -11240,7 +11536,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -11290,7 +11590,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -11378,7 +11682,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -11431,7 +11739,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -11569,7 +11881,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -11619,7 +11935,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -11707,7 +12027,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -11760,7 +12084,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -11933,7 +12261,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -11983,7 +12315,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -12101,7 +12437,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -12151,7 +12491,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -12204,7 +12548,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -12356,7 +12704,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[0] = elem
 													elem = ""
 
@@ -12406,7 +12758,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[0] = elem
 													elem = ""
 
@@ -12459,7 +12815,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -12509,7 +12869,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -12628,7 +12992,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -12738,7 +13106,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -12861,7 +13233,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -12971,7 +13347,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -13037,7 +13417,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 				// Param: "logpath"
-				// Leaf parameter
+				// Leaf parameter, slashes are prohibited
+				idx := strings.IndexByte(elem, '/')
+				if idx >= 0 {
+					break
+				}
 				args[0] = elem
 				elem = ""
 
@@ -13320,7 +13704,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									// Param: "name"
-									// Leaf parameter
+									// Leaf parameter, slashes are prohibited
+									idx := strings.IndexByte(elem, '/')
+									if idx >= 0 {
+										break
+									}
 									args[0] = elem
 									elem = ""
 
@@ -13573,7 +13961,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -13641,7 +14033,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -13697,7 +14093,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -13756,7 +14156,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -14213,7 +14617,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		// Param: "path"
-																		// Leaf parameter
+																		// Leaf parameter, slashes are prohibited
+																		idx := strings.IndexByte(elem, '/')
+																		if idx >= 0 {
+																			break
+																		}
 																		args[2] = elem
 																		elem = ""
 
@@ -14354,7 +14762,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -14667,7 +15079,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -14735,7 +15151,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -14906,7 +15326,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																		}
 
 																		// Param: "path"
-																		// Leaf parameter
+																		// Leaf parameter, slashes are prohibited
+																		idx := strings.IndexByte(elem, '/')
+																		if idx >= 0 {
+																			break
+																		}
 																		args[2] = elem
 																		elem = ""
 
@@ -15202,7 +15626,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "path"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -15925,7 +16353,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -15993,7 +16425,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -16049,7 +16485,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -16108,7 +16548,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -16176,7 +16620,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -16244,7 +16692,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -16300,7 +16752,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -16374,7 +16830,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -16430,7 +16890,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -16501,7 +16965,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -16569,7 +17037,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -16625,7 +17097,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -16696,7 +17172,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -16804,7 +17284,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -17191,7 +17675,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -17247,7 +17735,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -17315,7 +17807,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -17371,7 +17867,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -17592,7 +18092,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -17786,7 +18290,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -18020,7 +18528,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -18746,7 +19258,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -18814,7 +19330,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -18870,7 +19390,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -18929,7 +19453,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -18985,7 +19513,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -19489,7 +20021,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -19782,7 +20318,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -20063,7 +20603,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															}
 
 															// Param: "name"
-															// Leaf parameter
+															// Leaf parameter, slashes are prohibited
+															idx := strings.IndexByte(elem, '/')
+															if idx >= 0 {
+																break
+															}
 															args[1] = elem
 															elem = ""
 
@@ -20557,7 +21101,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -20613,7 +21161,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -20897,7 +21449,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -21152,7 +21708,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -21306,7 +21866,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -21423,7 +21987,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -21598,7 +22166,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -21715,7 +22287,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -21849,7 +22425,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -21966,7 +22546,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -22141,7 +22725,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -22258,7 +22846,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -22392,7 +22984,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -22509,7 +23105,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -22822,7 +23422,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -22878,7 +23482,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -23147,7 +23755,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -23203,7 +23815,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -23403,7 +24019,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 									}
 
 									// Param: "name"
-									// Leaf parameter
+									// Leaf parameter, slashes are prohibited
+									idx := strings.IndexByte(elem, '/')
+									if idx >= 0 {
+										break
+									}
 									args[0] = elem
 									elem = ""
 
@@ -23535,7 +24155,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -23750,7 +24374,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -23864,7 +24492,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -23993,7 +24625,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -24049,7 +24685,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														}
 
 														// Param: "name"
-														// Leaf parameter
+														// Leaf parameter, slashes are prohibited
+														idx := strings.IndexByte(elem, '/')
+														if idx >= 0 {
+															break
+														}
 														args[1] = elem
 														elem = ""
 
@@ -24206,7 +24846,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -24262,7 +24906,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -24344,7 +24992,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -24400,7 +25052,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -24482,7 +25138,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -24538,7 +25198,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -24832,7 +25496,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -25092,7 +25760,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -25184,7 +25856,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -25280,7 +25956,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -25409,7 +26089,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -25465,7 +26149,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -25557,7 +26245,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -25613,7 +26305,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[1] = elem
 											elem = ""
 
@@ -25764,7 +26460,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -25820,7 +26520,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -25912,7 +26616,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -25968,7 +26676,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -26162,7 +26874,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -26218,7 +26934,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 										}
 
 										// Param: "name"
-										// Leaf parameter
+										// Leaf parameter, slashes are prohibited
+										idx := strings.IndexByte(elem, '/')
+										if idx >= 0 {
+											break
+										}
 										args[0] = elem
 										elem = ""
 
@@ -26350,7 +27070,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -26406,7 +27130,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -26465,7 +27193,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 											}
 
 											// Param: "name"
-											// Leaf parameter
+											// Leaf parameter, slashes are prohibited
+											idx := strings.IndexByte(elem, '/')
+											if idx >= 0 {
+												break
+											}
 											args[0] = elem
 											elem = ""
 
@@ -26631,7 +27363,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[0] = elem
 													elem = ""
 
@@ -26687,7 +27423,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[0] = elem
 													elem = ""
 
@@ -26746,7 +27486,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -26802,7 +27546,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[0] = elem
 												elem = ""
 
@@ -26933,7 +27681,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -27050,7 +27802,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -27184,7 +27940,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												}
 
 												// Param: "name"
-												// Leaf parameter
+												// Leaf parameter, slashes are prohibited
+												idx := strings.IndexByte(elem, '/')
+												if idx >= 0 {
+													break
+												}
 												args[1] = elem
 												elem = ""
 
@@ -27301,7 +28061,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													}
 
 													// Param: "name"
-													// Leaf parameter
+													// Leaf parameter, slashes are prohibited
+													idx := strings.IndexByte(elem, '/')
+													if idx >= 0 {
+														break
+													}
 													args[1] = elem
 													elem = ""
 
@@ -27372,7 +28136,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 				// Param: "logpath"
-				// Leaf parameter
+				// Leaf parameter, slashes are prohibited
+				idx := strings.IndexByte(elem, '/')
+				if idx >= 0 {
+					break
+				}
 				args[0] = elem
 				elem = ""
 
