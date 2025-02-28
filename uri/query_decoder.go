@@ -4,6 +4,7 @@ import (
 	"net/url"
 
 	"github.com/go-faster/errors"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type QueryDecoder struct {
@@ -50,7 +51,14 @@ func (d *QueryDecoder) HasParam(cfg QueryParameterDecodingConfig) error {
 				}
 
 				if field.Required {
-					return errors.Errorf("query parameter %q not set", qparam)
+					return &validate.Error{
+						Fields: []validate.FieldError{
+							{
+								Name:  qparam,
+								Error: validate.ErrFieldRequired,
+							},
+						},
+					}
 				}
 			}
 

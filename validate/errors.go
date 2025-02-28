@@ -9,7 +9,7 @@ import (
 	"github.com/go-faster/errors"
 )
 
-// ErrFieldRequired reports that field is required, but not found.
+// ErrFieldRequired reports that a field is required, but not found.
 var ErrFieldRequired = errors.New("field required")
 
 // Error represents validation error.

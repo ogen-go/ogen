@@ -17,7 +17,7 @@ func TestCookieDecoder_HasParam(t *testing.T) {
 		{
 			Input:      http.Header{},
 			CookieName: "foo",
-			WantErr:    "cookie parameter \"foo\" not set",
+			WantErr:    "invalid: foo (field required)",
 		},
 		{
 			Input: http.Header{

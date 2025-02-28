@@ -58055,7 +58055,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, argsEs
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -58203,7 +58203,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, argsEscaped
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -58396,7 +58396,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, argsEscaped bool, r
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -102403,7 +102403,7 @@ func decodeReposUploadReleaseAssetParams(args [3]string, argsEscaped bool, r *ht
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -102672,7 +102672,7 @@ func decodeSearchCodeParams(args [0]string, argsEscaped bool, r *http.Request) (
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -102989,7 +102989,7 @@ func decodeSearchCommitsParams(args [0]string, argsEscaped bool, r *http.Request
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -103309,7 +103309,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -103633,7 +103633,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -103669,7 +103669,7 @@ func decodeSearchLabelsParams(args [0]string, argsEscaped bool, r *http.Request)
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -103988,7 +103988,7 @@ func decodeSearchReposParams(args [0]string, argsEscaped bool, r *http.Request) 
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -104280,7 +104280,7 @@ func decodeSearchTopicsParams(args [0]string, argsEscaped bool, r *http.Request)
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -104481,7 +104481,7 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {

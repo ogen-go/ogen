@@ -63,7 +63,7 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyResponse(resp *http.Response) (r
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -126,7 +126,7 @@ func decodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(resp *http.Resp
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -189,7 +189,7 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyResponse(resp *http.Response
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -252,7 +252,7 @@ func decodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(resp *http.
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -315,7 +315,7 @@ func decodeConnectCoreV1DeleteNodeProxyResponse(resp *http.Response) (res Connec
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -378,7 +378,7 @@ func decodeConnectCoreV1DeleteNodeProxyWithPathResponse(resp *http.Response) (re
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -441,7 +441,7 @@ func decodeConnectCoreV1GetNamespacedPodAttachResponse(resp *http.Response) (res
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -504,7 +504,7 @@ func decodeConnectCoreV1GetNamespacedPodExecResponse(resp *http.Response) (res C
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -567,7 +567,7 @@ func decodeConnectCoreV1GetNamespacedPodPortforwardResponse(resp *http.Response)
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -630,7 +630,7 @@ func decodeConnectCoreV1GetNamespacedPodProxyResponse(resp *http.Response) (res 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -693,7 +693,7 @@ func decodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(resp *http.Respons
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -756,7 +756,7 @@ func decodeConnectCoreV1GetNamespacedServiceProxyResponse(resp *http.Response) (
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -819,7 +819,7 @@ func decodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(resp *http.Res
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -882,7 +882,7 @@ func decodeConnectCoreV1GetNodeProxyResponse(resp *http.Response) (res ConnectCo
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -945,7 +945,7 @@ func decodeConnectCoreV1GetNodeProxyWithPathResponse(resp *http.Response) (res C
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1008,7 +1008,7 @@ func decodeConnectCoreV1HeadNamespacedPodProxyResponse(resp *http.Response) (res
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1071,7 +1071,7 @@ func decodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(resp *http.Respon
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1134,7 +1134,7 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyResponse(resp *http.Response) 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1197,7 +1197,7 @@ func decodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(resp *http.Re
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1260,7 +1260,7 @@ func decodeConnectCoreV1HeadNodeProxyResponse(resp *http.Response) (res ConnectC
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1323,7 +1323,7 @@ func decodeConnectCoreV1HeadNodeProxyWithPathResponse(resp *http.Response) (res 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1386,7 +1386,7 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyResponse(resp *http.Response) (
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1449,7 +1449,7 @@ func decodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(resp *http.Res
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1512,7 +1512,7 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyResponse(resp *http.Respons
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1575,7 +1575,7 @@ func decodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(resp *http
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1638,7 +1638,7 @@ func decodeConnectCoreV1OptionsNodeProxyResponse(resp *http.Response) (res Conne
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1701,7 +1701,7 @@ func decodeConnectCoreV1OptionsNodeProxyWithPathResponse(resp *http.Response) (r
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1764,7 +1764,7 @@ func decodeConnectCoreV1PatchNamespacedPodProxyResponse(resp *http.Response) (re
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1827,7 +1827,7 @@ func decodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(resp *http.Respo
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1890,7 +1890,7 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyResponse(resp *http.Response)
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -1953,7 +1953,7 @@ func decodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(resp *http.R
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2016,7 +2016,7 @@ func decodeConnectCoreV1PatchNodeProxyResponse(resp *http.Response) (res Connect
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2079,7 +2079,7 @@ func decodeConnectCoreV1PatchNodeProxyWithPathResponse(resp *http.Response) (res
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2142,7 +2142,7 @@ func decodeConnectCoreV1PostNamespacedPodAttachResponse(resp *http.Response) (re
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2205,7 +2205,7 @@ func decodeConnectCoreV1PostNamespacedPodExecResponse(resp *http.Response) (res 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2268,7 +2268,7 @@ func decodeConnectCoreV1PostNamespacedPodPortforwardResponse(resp *http.Response
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2331,7 +2331,7 @@ func decodeConnectCoreV1PostNamespacedPodProxyResponse(resp *http.Response) (res
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2394,7 +2394,7 @@ func decodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(resp *http.Respon
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2457,7 +2457,7 @@ func decodeConnectCoreV1PostNamespacedServiceProxyResponse(resp *http.Response) 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2520,7 +2520,7 @@ func decodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(resp *http.Re
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2583,7 +2583,7 @@ func decodeConnectCoreV1PostNodeProxyResponse(resp *http.Response) (res ConnectC
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2646,7 +2646,7 @@ func decodeConnectCoreV1PostNodeProxyWithPathResponse(resp *http.Response) (res 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2709,7 +2709,7 @@ func decodeConnectCoreV1PutNamespacedPodProxyResponse(resp *http.Response) (res 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2772,7 +2772,7 @@ func decodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(resp *http.Respons
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2835,7 +2835,7 @@ func decodeConnectCoreV1PutNamespacedServiceProxyResponse(resp *http.Response) (
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2898,7 +2898,7 @@ func decodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(resp *http.Res
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -2961,7 +2961,7 @@ func decodeConnectCoreV1PutNodeProxyResponse(resp *http.Response) (res ConnectCo
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -3024,7 +3024,7 @@ func decodeConnectCoreV1PutNodeProxyWithPathResponse(resp *http.Response) (res C
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
