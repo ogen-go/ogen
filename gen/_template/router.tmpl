@@ -248,7 +248,11 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			elem = elem[idx:]
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
 			{{- else }}
-			// Leaf parameter
+			// Leaf parameter, slashes are prohibited
+			idx := strings.IndexByte(elem, '/')
+			if (idx >= 0) {
+				break
+			}
 			args[{{ $.ParameterIndex }}] = elem
 			elem = ""
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
@@ -333,7 +337,11 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			elem = elem[idx:]
 			{{ template "find_edge" router_elem $c $.ParameterIndex }}
 			{{- else }}
-			// Leaf parameter
+			// Leaf parameter, slashes are prohibited
+			idx := strings.IndexByte(elem, '/')
+			if (idx >= 0) {
+				break
+			}
 			args[{{ $.ParameterIndex }}] = elem
 			elem = ""
 			{{ template "find_edge" router_elem $c $.ParameterIndex }}
