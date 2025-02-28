@@ -332,14 +332,14 @@ func TestResponsesOptionalHeaders(t *testing.T) {
 		{
 			Name:    "NoHeaders",
 			Headers: nil,
-			Error:   `X-Required header: field required`,
+			Error:   `X-Required (header parameter required)`,
 		},
 		{
 			Name: "OnlyOptionalHeaders",
 			Headers: []header{
 				{"X-Optional", "optional"},
 			},
-			Error: `X-Required header: field required`,
+			Error: `X-Required (header parameter required)`,
 		},
 		{
 			Name: "OnlyRequiredHeaders",

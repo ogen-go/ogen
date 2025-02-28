@@ -497,7 +497,7 @@ func decodeFoobarGetParams(args [0]string, argsEscaped bool, r *http.Request) (p
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -533,7 +533,7 @@ func decodeFoobarGetParams(args [0]string, argsEscaped bool, r *http.Request) (p
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -702,7 +702,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -753,7 +753,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -804,7 +804,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -840,7 +840,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -898,7 +898,7 @@ func decodePetGetAvatarByIDParams(args [0]string, argsEscaped bool, r *http.Requ
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -1154,7 +1154,7 @@ func decodePetUploadAvatarByIDParams(args [0]string, argsEscaped bool, r *http.R
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
