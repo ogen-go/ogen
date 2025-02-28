@@ -63,7 +63,7 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res *A
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -123,7 +123,7 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -368,7 +368,7 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, _ error) 
 						return err
 					}
 				} else {
-					return validate.ErrFieldRequired
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -411,7 +411,7 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 						return err
 					}
 				} else {
-					return validate.ErrFieldRequired
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -452,7 +452,7 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -496,7 +496,7 @@ func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes,
 						return err
 					}
 				} else {
-					return validate.ErrFieldRequired
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -542,7 +542,7 @@ func decodeHeadersDefaultResponse(resp *http.Response) (res *HeadersDefaultDef, 
 						return err
 					}
 				} else {
-					return validate.ErrFieldRequired
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -591,7 +591,7 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, _ error
 						return err
 					}
 				} else {
-					return validate.ErrFieldRequired
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -632,7 +632,7 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, _ error
 						return err
 					}
 				} else {
-					return validate.ErrFieldRequired
+					return err
 				}
 				return nil
 			}(); err != nil {
@@ -677,7 +677,7 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -977,7 +977,7 @@ func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK,
 						return err
 					}
 				} else {
-					return validate.ErrFieldRequired
+					return err
 				}
 				return nil
 			}(); err != nil {

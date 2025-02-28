@@ -17,7 +17,7 @@ func TestHeaderDecoder_HasParam(t *testing.T) {
 		{
 			Input:      http.Header{},
 			HeaderName: "X-Foo",
-			WantErr:    "header parameter \"X-Foo\" not set",
+			WantErr:    "invalid: X-Foo (header parameter required)",
 		},
 		{
 			Input: http.Header{

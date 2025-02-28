@@ -68,7 +68,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, argsEscaped 
 			}
 			{{- end }}
 		} {{- if $p.Spec.Required }} else {
-			return validate.ErrFieldRequired
+			return err
 		} {{- end }}
 	{{- else if $p.Spec.In.Path }}
 	{{- /* If we cannot find such path parameter, defined path parameter is not used */ -}}
@@ -129,7 +129,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, argsEscaped 
 			}
 			{{- end }}
 		} {{ if $p.Spec.Required }} else {
-			return validate.ErrFieldRequired
+			return err
 		} {{ end }}
 	{{- else if $p.Spec.In.Cookie }}
 		cfg := uri.CookieParameterDecodingConfig{
@@ -151,7 +151,7 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, argsEscaped 
 			}
 			{{- end }}
 		} {{ if $p.Spec.Required }} else {
-			return validate.ErrFieldRequired
+			return err
 		} {{ end }}
 	{{- else }}
 		{{ errorf "unsupported location %s" $p.Spec.In }}

@@ -9,7 +9,6 @@ import (
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 )
 
 // CachingParams is parameters of Caching operation.
@@ -56,7 +55,7 @@ func decodeCachingParams(args [0]string, argsEscaped bool, r *http.Request) (par
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -113,7 +112,7 @@ func decodeQueriesParams(args [0]string, argsEscaped bool, r *http.Request) (par
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -170,7 +169,7 @@ func decodeUpdatesParams(args [0]string, argsEscaped bool, r *http.Request) (par
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {

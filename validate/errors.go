@@ -9,8 +9,17 @@ import (
 	"github.com/go-faster/errors"
 )
 
-// ErrFieldRequired reports that field is required, but not found.
+// ErrFieldRequired reports that a field is required, but not found.
 var ErrFieldRequired = errors.New("field required")
+
+// ErrQueryParamRequired reports that a query parameter is required, but not found.
+var ErrQueryParamRequired = errors.New("query parameter required")
+
+// ErrHeaderParamRequired reports that a header parameter is required, but not found.
+var ErrHeaderParamRequired = errors.New("header parameter required")
+
+// ErrCookieParamRequired reports that a cookie parameter is required, but not found.
+var ErrCookieParamRequired = errors.New("cookie parameter required")
 
 // Error represents validation error.
 type Error struct {
