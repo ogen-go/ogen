@@ -19,6 +19,11 @@ func encodeAllRequestBodiesResponse(response AllRequestBodiesOK, w http.Response
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
+	if closer, ok := response.Data.(io.Closer); ok {
+		defer func() {
+			_ = closer.Close()
+		}()
+	}
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -32,6 +37,11 @@ func encodeAllRequestBodiesOptionalResponse(response AllRequestBodiesOptionalOK,
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
+	if closer, ok := response.Data.(io.Closer); ok {
+		defer func() {
+			_ = closer.Close()
+		}()
+	}
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -46,6 +56,11 @@ func encodeBase64RequestResponse(response Base64RequestOK, w http.ResponseWriter
 
 	writer := base64.NewEncoder(base64.StdEncoding, w)
 	defer writer.Close()
+	if closer, ok := response.Data.(io.Closer); ok {
+		defer func() {
+			_ = closer.Close()
+		}()
+	}
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
