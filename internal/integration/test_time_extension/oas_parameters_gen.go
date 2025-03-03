@@ -12,7 +12,6 @@ import (
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 )
 
 // DefaultParams is parameters of default operation.
@@ -256,7 +255,7 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -292,7 +291,7 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -328,7 +327,7 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
