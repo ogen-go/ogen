@@ -1,8 +1,8 @@
 module github.com/ogen-go/ogen/examples
 
-go 1.22.0
+go 1.23.0
 
-toolchain go1.23.1
+toolchain go1.23.6
 
 require (
 	github.com/go-faster/errors v0.7.1
@@ -33,7 +33,7 @@ require (
 	github.com/segmentio/asm v1.2.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	golang.org/x/mod v0.23.0 // indirect
-	golang.org/x/net v0.35.0 // indirect
+	golang.org/x/net v0.36.0 // indirect
 	golang.org/x/sync v0.11.0 // indirect
 	golang.org/x/sys v0.30.0 // indirect
 	golang.org/x/text v0.22.0 // indirect
