@@ -49,7 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -61,7 +61,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "allRequestBodies"
-				origElem := elem
+
 				if l := len("allRequestBodies"); len(elem) >= l && elem[0:l] == "allRequestBodies" {
 					elem = elem[l:]
 				} else {
@@ -80,7 +80,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'O': // Prefix: "Optional"
-					origElem := elem
+
 					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
 						elem = elem[l:]
 					} else {
@@ -99,12 +99,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			case 'b': // Prefix: "base64Request"
-				origElem := elem
+
 				if l := len("base64Request"); len(elem) >= l && elem[0:l] == "base64Request" {
 					elem = elem[l:]
 				} else {
@@ -123,9 +121,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'm': // Prefix: "maskContentType"
-				origElem := elem
+
 				if l := len("maskContentType"); len(elem) >= l && elem[0:l] == "maskContentType" {
 					elem = elem[l:]
 				} else {
@@ -144,7 +141,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'O': // Prefix: "Optional"
-					origElem := elem
+
 					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
 						elem = elem[l:]
 					} else {
@@ -163,12 +160,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			case 's': // Prefix: "streamJSON"
-				origElem := elem
+
 				if l := len("streamJSON"); len(elem) >= l && elem[0:l] == "streamJSON" {
 					elem = elem[l:]
 				} else {
@@ -187,10 +182,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -272,7 +265,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -284,7 +277,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "allRequestBodies"
-				origElem := elem
+
 				if l := len("allRequestBodies"); len(elem) >= l && elem[0:l] == "allRequestBodies" {
 					elem = elem[l:]
 				} else {
@@ -307,7 +300,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'O': // Prefix: "Optional"
-					origElem := elem
+
 					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
 						elem = elem[l:]
 					} else {
@@ -330,12 +323,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			case 'b': // Prefix: "base64Request"
-				origElem := elem
+
 				if l := len("base64Request"); len(elem) >= l && elem[0:l] == "base64Request" {
 					elem = elem[l:]
 				} else {
@@ -358,9 +349,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'm': // Prefix: "maskContentType"
-				origElem := elem
+
 				if l := len("maskContentType"); len(elem) >= l && elem[0:l] == "maskContentType" {
 					elem = elem[l:]
 				} else {
@@ -383,7 +373,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'O': // Prefix: "Optional"
-					origElem := elem
+
 					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
 						elem = elem[l:]
 					} else {
@@ -406,12 +396,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			case 's': // Prefix: "streamJSON"
-				origElem := elem
+
 				if l := len("streamJSON"); len(elem) >= l && elem[0:l] == "streamJSON" {
 					elem = elem[l:]
 				} else {
@@ -434,10 +422,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false
