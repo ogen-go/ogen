@@ -217,7 +217,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
-			origElem := elem
+			{{ if $r.ParamChildren -}} origElem := elem {{- end }}
 			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
@@ -225,7 +225,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			}
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
 
-			elem = origElem
+			{{ if $r.ParamChildren -}} elem = origElem {{- end }}
 		{{- end }}
 		}
 	{{- end }}
@@ -306,7 +306,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
-			origElem := elem
+			{{ if $r.ParamChildren -}} origElem := elem {{- end }}
 			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
@@ -314,7 +314,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			}
 			{{ template "find_edge" router_elem $c $.ParameterIndex }}
 
-			elem = origElem
+			{{ if $r.ParamChildren -}} elem = origElem {{- end }}
 		{{- end }}
 		}
 	{{- end }}
