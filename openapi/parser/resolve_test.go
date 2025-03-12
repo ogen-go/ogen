@@ -257,6 +257,7 @@ func TestComplicatedReference(t *testing.T) {
 			testGet,
 			testPost,
 		},
+		Tags: []openapi.Tag{},
 		Components: &openapi.Components{
 			Schemas:       map[string]*jsonschema.Schema{},
 			Responses:     map[string]*openapi.Response{},

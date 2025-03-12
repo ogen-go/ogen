@@ -1,0 +1,11 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: info_test
+tags:
+  - name: Order
+    description: orders
+  - name: Invoice
+    description: invoices
+  - name: Product
+    description: products
