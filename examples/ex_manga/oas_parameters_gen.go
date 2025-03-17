@@ -678,7 +678,7 @@ type SearchParams struct {
 	// -tag:"big dogs".
 	Query string
 	// Number of result page.
-	Page OptInt
+	Page OptInt `json:",omitempty,omitzero"`
 }
 
 func unpackSearchParams(packed middleware.Parameters) (params SearchParams) {
@@ -788,7 +788,7 @@ type SearchByTagIDParams struct {
 	// Tag ID.
 	TagID int
 	// Number of result page.
-	Page OptInt
+	Page OptInt `json:",omitempty,omitzero"`
 }
 
 func unpackSearchByTagIDParams(packed middleware.Parameters) (params SearchByTagIDParams) {
