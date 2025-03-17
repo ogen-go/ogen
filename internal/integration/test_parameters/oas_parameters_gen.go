@@ -638,8 +638,8 @@ func decodeObjectCookieParameterParams(args [0]string, argsEscaped bool, r *http
 
 // ObjectQueryParameterParams is parameters of objectQueryParameter operation.
 type ObjectQueryParameterParams struct {
-	FormObject OptOneLevelObject
-	DeepObject OptOneLevelObject
+	FormObject OptOneLevelObject `json:",omitempty,omitzero"`
+	DeepObject OptOneLevelObject `json:",omitempty,omitzero"`
 }
 
 func unpackObjectQueryParameterParams(packed middleware.Parameters) (params ObjectQueryParameterParams) {
@@ -733,8 +733,8 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 
 // OptionalArrayParameterParams is parameters of optionalArrayParameter operation.
 type OptionalArrayParameterParams struct {
-	Query  []string
-	Header []string
+	Query  []string `json:",omitempty"`
+	Header []string `json:",omitempty"`
 }
 
 func unpackOptionalArrayParameterParams(packed middleware.Parameters) (params OptionalArrayParameterParams) {
@@ -851,12 +851,12 @@ func decodeOptionalArrayParameterParams(args [0]string, argsEscaped bool, r *htt
 
 // OptionalParametersParams is parameters of optionalParameters operation.
 type OptionalParametersParams struct {
-	Integer   OptInt
-	String    OptString
-	Boolean   OptBool
-	Object    OptOptionalParametersObject
-	Timestamp OptDateTime
-	Array     []string
+	Integer   OptInt                      `json:",omitempty,omitzero"`
+	String    OptString                   `json:",omitempty,omitzero"`
+	Boolean   OptBool                     `json:",omitempty,omitzero"`
+	Object    OptOptionalParametersObject `json:",omitempty,omitzero"`
+	Timestamp OptDateTime                 `json:",omitempty,omitzero"`
+	Array     []string                    `json:",omitempty"`
 }
 
 func unpackOptionalParametersParams(packed middleware.Parameters) (params OptionalParametersParams) {
