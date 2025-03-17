@@ -3,6 +3,8 @@
 package api
 
 import (
+	"time"
+
 	"github.com/go-faster/errors"
 )
 
@@ -118,6 +120,144 @@ func (s *OneLevelObject) SetFilter(val string) {
 	s.Filter = val
 }
 
+// NewOptBool returns new OptBool with value set to v.
+func NewOptBool(v bool) OptBool {
+	return OptBool{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptBool is optional bool.
+type OptBool struct {
+	Value bool
+	Set   bool
+}
+
+// IsSet returns true if OptBool was set.
+func (o OptBool) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptBool) Reset() {
+	var v bool
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptBool) SetTo(v bool) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptBool) Get() (v bool, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptBool) Or(d bool) bool {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptDateTime returns new OptDateTime with value set to v.
+func NewOptDateTime(v time.Time) OptDateTime {
+	return OptDateTime{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptDateTime is optional time.Time.
+type OptDateTime struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptDateTime was set.
+func (o OptDateTime) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptDateTime) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptDateTime) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptDateTime) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptDateTime) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptInt returns new OptInt with value set to v.
+func NewOptInt(v int) OptInt {
+	return OptInt{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptInt is optional int.
+type OptInt struct {
+	Value int
+	Set   bool
+}
+
+// IsSet returns true if OptInt was set.
+func (o OptInt) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptInt) Reset() {
+	var v int
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptInt) SetTo(v int) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptInt) Get() (v int, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptInt) Or(d int) int {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptOneLevelObject returns new OptOneLevelObject with value set to v.
 func NewOptOneLevelObject(v OneLevelObject) OptOneLevelObject {
 	return OptOneLevelObject{
@@ -162,6 +302,242 @@ func (o OptOneLevelObject) Or(d OneLevelObject) OneLevelObject {
 		return v
 	}
 	return d
+}
+
+// NewOptOptionalParametersObject returns new OptOptionalParametersObject with value set to v.
+func NewOptOptionalParametersObject(v OptionalParametersObject) OptOptionalParametersObject {
+	return OptOptionalParametersObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOptionalParametersObject is optional OptionalParametersObject.
+type OptOptionalParametersObject struct {
+	Value OptionalParametersObject
+	Set   bool
+}
+
+// IsSet returns true if OptOptionalParametersObject was set.
+func (o OptOptionalParametersObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOptionalParametersObject) Reset() {
+	var v OptionalParametersObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOptionalParametersObject) SetTo(v OptionalParametersObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOptionalParametersObject) Get() (v OptionalParametersObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOptionalParametersObject) Or(d OptionalParametersObject) OptionalParametersObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptOptionalQueryParametersResponseObject returns new OptOptionalQueryParametersResponseObject with value set to v.
+func NewOptOptionalQueryParametersResponseObject(v OptionalQueryParametersResponseObject) OptOptionalQueryParametersResponseObject {
+	return OptOptionalQueryParametersResponseObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOptionalQueryParametersResponseObject is optional OptionalQueryParametersResponseObject.
+type OptOptionalQueryParametersResponseObject struct {
+	Value OptionalQueryParametersResponseObject
+	Set   bool
+}
+
+// IsSet returns true if OptOptionalQueryParametersResponseObject was set.
+func (o OptOptionalQueryParametersResponseObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOptionalQueryParametersResponseObject) Reset() {
+	var v OptionalQueryParametersResponseObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOptionalQueryParametersResponseObject) SetTo(v OptionalQueryParametersResponseObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOptionalQueryParametersResponseObject) Get() (v OptionalQueryParametersResponseObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOptionalQueryParametersResponseObject) Or(d OptionalQueryParametersResponseObject) OptionalQueryParametersResponseObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptString returns new OptString with value set to v.
+func NewOptString(v string) OptString {
+	return OptString{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptString is optional string.
+type OptString struct {
+	Value string
+	Set   bool
+}
+
+// IsSet returns true if OptString was set.
+func (o OptString) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptString) Reset() {
+	var v string
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptString) SetTo(v string) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptString) Get() (v string, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+type OptionalParametersObject struct {
+	Key OptString `json:"key"`
+}
+
+// GetKey returns the value of Key.
+func (s *OptionalParametersObject) GetKey() OptString {
+	return s.Key
+}
+
+// SetKey sets the value of Key.
+func (s *OptionalParametersObject) SetKey(val OptString) {
+	s.Key = val
+}
+
+// Ref: #/components/schemas/OptionalQueryParametersResponse
+type OptionalQueryParametersResponse struct {
+	Integer   OptInt                                   `json:"integer"`
+	String    OptString                                `json:"string"`
+	Boolean   OptBool                                  `json:"boolean"`
+	Object    OptOptionalQueryParametersResponseObject `json:"object"`
+	Timestamp OptDateTime                              `json:"timestamp"`
+	Array     []string                                 `json:"array"`
+}
+
+// GetInteger returns the value of Integer.
+func (s *OptionalQueryParametersResponse) GetInteger() OptInt {
+	return s.Integer
+}
+
+// GetString returns the value of String.
+func (s *OptionalQueryParametersResponse) GetString() OptString {
+	return s.String
+}
+
+// GetBoolean returns the value of Boolean.
+func (s *OptionalQueryParametersResponse) GetBoolean() OptBool {
+	return s.Boolean
+}
+
+// GetObject returns the value of Object.
+func (s *OptionalQueryParametersResponse) GetObject() OptOptionalQueryParametersResponseObject {
+	return s.Object
+}
+
+// GetTimestamp returns the value of Timestamp.
+func (s *OptionalQueryParametersResponse) GetTimestamp() OptDateTime {
+	return s.Timestamp
+}
+
+// GetArray returns the value of Array.
+func (s *OptionalQueryParametersResponse) GetArray() []string {
+	return s.Array
+}
+
+// SetInteger sets the value of Integer.
+func (s *OptionalQueryParametersResponse) SetInteger(val OptInt) {
+	s.Integer = val
+}
+
+// SetString sets the value of String.
+func (s *OptionalQueryParametersResponse) SetString(val OptString) {
+	s.String = val
+}
+
+// SetBoolean sets the value of Boolean.
+func (s *OptionalQueryParametersResponse) SetBoolean(val OptBool) {
+	s.Boolean = val
+}
+
+// SetObject sets the value of Object.
+func (s *OptionalQueryParametersResponse) SetObject(val OptOptionalQueryParametersResponseObject) {
+	s.Object = val
+}
+
+// SetTimestamp sets the value of Timestamp.
+func (s *OptionalQueryParametersResponse) SetTimestamp(val OptDateTime) {
+	s.Timestamp = val
+}
+
+// SetArray sets the value of Array.
+func (s *OptionalQueryParametersResponse) SetArray(val []string) {
+	s.Array = val
+}
+
+type OptionalQueryParametersResponseObject struct {
+	Key OptString `json:"key"`
+}
+
+// GetKey returns the value of Key.
+func (s *OptionalQueryParametersResponseObject) GetKey() OptString {
+	return s.Key
+}
+
+// SetKey sets the value of Key.
+func (s *OptionalQueryParametersResponseObject) SetKey(val OptString) {
+	s.Key = val
 }
 
 // SameNameOK is response for SameName operation.
