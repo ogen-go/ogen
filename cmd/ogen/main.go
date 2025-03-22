@@ -17,7 +17,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
-	"go.uber.org/multierr"
 	"go.uber.org/zap"
 	"golang.org/x/exp/maps"
 
@@ -45,7 +44,7 @@ func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
 		// Do not return error if file does not exist.
 		if err := os.Remove(filepath.Join(targetDir, name)); err != nil && !os.IsNotExist(err) {
 			// Do not stop on first error, try to remove all files.
-			rerr = multierr.Append(rerr, err)
+			rerr = errors.Join(rerr, err)
 		}
 	}
 	return rerr
