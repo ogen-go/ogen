@@ -73,6 +73,8 @@
 	return nil
 {{- else if $t.IsStruct }}
 	return {{ $var }}.DecodeURI(d)
+{{- else if $t.IsMap }}
+	return {{ $var }}.DecodeURI(d)
 {{- else }}
     {{ errorf "unexpected kind" $t.Kind }}
 {{- end }}
