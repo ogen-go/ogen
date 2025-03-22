@@ -176,7 +176,6 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 {{- $t := $.Type }}
 {{- $v := $.Var }}
 
-
 {{- if $t.IsAlias }}
 	{
 		var unwrapped {{ $t.AliasTo.Go -}}
@@ -193,6 +192,10 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		}
 	}
 {{- else if $t.IsStruct }}
+	{{- if $t.HasDefaultFields }}
+	{{ $v }}.setDefaults()
+	{{- end }}
+
 	{{- if $t.DenyAdditionalProps }}
 		defined := func(name string) bool {
 			switch name {
