@@ -131,3 +131,102 @@ func (s *AliveFlexData) DecodeURI(d uri.Decoder) error {
 
 	return nil
 }
+
+// EncodeURI encodes AliveFlexDataAdditional as URI form.
+func (s AliveFlexDataAdditional) EncodeURI(e uri.Encoder) error {
+	for k, elem := range s {
+		if err := e.EncodeField(k, func(e uri.Encoder) error {
+
+			return e.EncodeValue(conv.StringToString(elem))
+		}); err != nil {
+			return errors.Wrapf(err, "encode field %q", k)
+		}
+	}
+	return nil
+}
+
+// DecodeURI decodes AliveFlexDataAdditional from URI form.
+func (s *AliveFlexDataAdditional) DecodeURI(d uri.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AliveFlexDataAdditional to nil")
+	}
+	m := s.init()
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
+		var elem string
+		if err := func() error {
+			val, err := d.DecodeValue()
+			if err != nil {
+				return err
+			}
+
+			c, err := conv.ToString(val)
+			if err != nil {
+				return err
+			}
+
+			elem = c
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode AliveFlexDataAdditional")
+	}
+
+	return nil
+}
+
+// EncodeURI encodes AliveFlexDataPattern0 as URI form.
+func (s AliveFlexDataPattern0) EncodeURI(e uri.Encoder) error {
+	for k, elem := range s {
+		if err := e.EncodeField(k, func(e uri.Encoder) error {
+
+			return e.EncodeValue(conv.StringToString(elem))
+		}); err != nil {
+			return errors.Wrapf(err, "encode field %q", k)
+		}
+	}
+	return nil
+}
+
+// DecodeURI decodes AliveFlexDataPattern0 from URI form.
+func (s *AliveFlexDataPattern0) DecodeURI(d uri.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode AliveFlexDataPattern0 to nil")
+	}
+	m := s.init()
+	pattern := regexMap["^pat-.*"]
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
+		switch match, err := pattern.MatchString(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
+			return nil
+		}
+		var elem string
+		if err := func() error {
+			val, err := d.DecodeValue()
+			if err != nil {
+				return err
+			}
+
+			c, err := conv.ToString(val)
+			if err != nil {
+				return err
+			}
+
+			elem = c
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode AliveFlexDataPattern0")
+	}
+
+	return nil
+}
