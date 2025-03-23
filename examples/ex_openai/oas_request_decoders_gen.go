@@ -728,6 +728,7 @@ func (s *Server) decodeCreateImageEditRequest(r *http.Request) (
 		_ = form
 
 		var request CreateImageEditRequestMultipart
+		request.setDefaults()
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -1034,6 +1035,7 @@ func (s *Server) decodeCreateImageVariationRequest(r *http.Request) (
 		_ = form
 
 		var request CreateImageVariationRequestMultipart
+		request.setDefaults()
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -1431,6 +1433,7 @@ func (s *Server) decodeCreateTranscriptionRequest(r *http.Request) (
 		_ = form
 
 		var request CreateTranscriptionRequestMultipart
+		request.setDefaults()
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
@@ -1674,6 +1677,7 @@ func (s *Server) decodeCreateTranslationRequest(r *http.Request) (
 		_ = form
 
 		var request CreateTranslationRequestMultipart
+		request.setDefaults()
 		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
