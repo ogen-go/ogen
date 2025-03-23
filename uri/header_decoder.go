@@ -1,8 +1,9 @@
 package uri
 
 import (
-	"github.com/ogen-go/ogen/validate"
 	"net/http"
+
+	"github.com/ogen-go/ogen/validate"
 )
 
 type HeaderDecoder struct {
