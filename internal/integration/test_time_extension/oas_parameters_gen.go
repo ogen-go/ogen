@@ -16,9 +16,9 @@ import (
 
 // DefaultParams is parameters of default operation.
 type DefaultParams struct {
-	Date     OptDate
-	Time     OptTime
-	DateTime OptDateTime
+	Date     OptDate     `json:",omitempty,omitzero"`
+	Time     OptTime     `json:",omitempty,omitzero"`
+	DateTime OptDateTime `json:",omitempty,omitzero"`
 }
 
 func unpackDefaultParams(packed middleware.Parameters) (params DefaultParams) {

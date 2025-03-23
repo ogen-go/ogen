@@ -18,9 +18,9 @@ import (
 // APICaptcha2chcaptchaIDGetParams is parameters of GET /api/captcha/2chcaptcha/id operation.
 type APICaptcha2chcaptchaIDGetParams struct {
 	// ID доски, например, b.
-	Board OptString
+	Board OptString `json:",omitempty,omitzero"`
 	// Номер треда.
-	Thread OptInt
+	Thread OptInt `json:",omitempty,omitzero"`
 }
 
 func unpackAPICaptcha2chcaptchaIDGetParams(packed middleware.Parameters) (params APICaptcha2chcaptchaIDGetParams) {
@@ -221,9 +221,9 @@ type APICaptchaAppIDPublicKeyGetParams struct {
 	// ваш клиент.
 	PublicKey string
 	// ID доски, например, b.
-	Board OptString
+	Board OptString `json:",omitempty,omitzero"`
 	// Номер треда.
-	Thread OptInt
+	Thread OptInt `json:",omitempty,omitzero"`
 }
 
 func unpackAPICaptchaAppIDPublicKeyGetParams(packed middleware.Parameters) (params APICaptchaAppIDPublicKeyGetParams) {
@@ -414,9 +414,9 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r
 // APICaptchaInvisibleRecaptchaIDGetParams is parameters of GET /api/captcha/invisible_recaptcha/id operation.
 type APICaptchaInvisibleRecaptchaIDGetParams struct {
 	// ID доски, например, b.
-	Board OptString
+	Board OptString `json:",omitempty,omitzero"`
 	// Номер треда.
-	Thread OptInt
+	Thread OptInt `json:",omitempty,omitzero"`
 }
 
 func unpackAPICaptchaInvisibleRecaptchaIDGetParams(packed middleware.Parameters) (params APICaptchaInvisibleRecaptchaIDGetParams) {
@@ -555,9 +555,9 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped b
 // APICaptchaRecaptchaIDGetParams is parameters of GET /api/captcha/recaptcha/id operation.
 type APICaptchaRecaptchaIDGetParams struct {
 	// ID доски, например, b.
-	Board OptString
+	Board OptString `json:",omitempty,omitzero"`
 	// Номер треда.
-	Thread OptInt
+	Thread OptInt `json:",omitempty,omitzero"`
 }
 
 func unpackAPICaptchaRecaptchaIDGetParams(packed middleware.Parameters) (params APICaptchaRecaptchaIDGetParams) {

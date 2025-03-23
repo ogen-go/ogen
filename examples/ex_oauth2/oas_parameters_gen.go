@@ -150,9 +150,9 @@ func decodeFindPetByIDParams(args [1]string, argsEscaped bool, r *http.Request) 
 // FindPetsParams is parameters of findPets operation.
 type FindPetsParams struct {
 	// Tags to filter by.
-	Tags []string
+	Tags []string `json:",omitempty"`
 	// Maximum number of results to return.
-	Limit OptInt32
+	Limit OptInt32 `json:",omitempty,omitzero"`
 }
 
 func unpackFindPetsParams(packed middleware.Parameters) (params FindPetsParams) {
