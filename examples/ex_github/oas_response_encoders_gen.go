@@ -9335,7 +9335,7 @@ func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span
 }
 
 func encodeMetaRootResponse(response *MetaRootOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Content-Type", "application/problem+json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 

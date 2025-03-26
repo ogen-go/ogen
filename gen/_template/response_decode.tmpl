@@ -113,7 +113,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 			{{- $type = ($type.MustField "Response").Type }}
 		{{- end }}
 
-		{{- if $encoding.JSON }}
+		{{- if or $encoding.JSON $encoding.ProblemJSON }}
 			{{- if $media.JSONStreaming }}
 			d := jx.Decode(resp.Body, -1)
 			{{- else }}

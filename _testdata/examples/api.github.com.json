@@ -166,7 +166,7 @@
           "200": {
             "description": "Response",
             "content": {
-              "application/json": {
+              "application/problem+json": {
                 "schema": {
                   "type": "object",
                   "properties": {

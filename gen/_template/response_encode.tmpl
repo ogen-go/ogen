@@ -164,7 +164,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		{{- $var = "response.Response" }}
 	{{- end }}
 
-	{{- if $.Encoding.JSON }}
+	{{- if or $.Encoding.JSON $.Encoding.ProblemJSON }}
 		{{- if $.JSONStreaming }}
 		e := jx.NewStreamingEncoder(w, -1)
 		{{- template "json/enc" elem $type $var }}

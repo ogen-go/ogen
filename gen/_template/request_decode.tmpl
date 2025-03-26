@@ -70,7 +70,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		reader := r.Body
 		{{- end }}
 		request := {{ $t.Go }}{Data: reader}
-	{{- else if $e.JSON }}
+	{{- else if or $e.JSON $e.ProblemJSON}}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
 			return req, rawBody, close, nil
