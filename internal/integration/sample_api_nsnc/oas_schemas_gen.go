@@ -3,6 +3,7 @@
 package api
 
 import (
+	"fmt"
 	"io"
 	"net/netip"
 	"net/url"
@@ -252,6 +253,22 @@ func NewDescriptionDetailedDataDescription(v DescriptionDetailed) DataDescriptio
 	return s
 }
 
+// encodeFields encodes the fields of sum type DataDescription.
+func (s DataDescription) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case DescriptionDetailedDataDescription:
+		s.DescriptionDetailed.encodeFields(e)
+		return nil
+	case DescriptionSimpleDataDescription:
+		s.DescriptionSimple.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetDescriptionSimple sets DataDescription to DescriptionSimple.
 func (s *DataDescription) SetDescriptionSimple(v DescriptionSimple) {
 	s.Type = DescriptionSimpleDataDescription
@@ -271,6 +288,22 @@ func NewDescriptionSimpleDataDescription(v DescriptionSimple) DataDescription {
 	var s DataDescription
 	s.SetDescriptionSimple(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type DataDescription.
+func (s DataDescription) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case DescriptionDetailedDataDescription:
+		s.DescriptionDetailed.encodeFields(e)
+		return nil
+	case DescriptionSimpleDataDescription:
+		s.DescriptionSimple.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/DefaultTest
@@ -650,6 +683,22 @@ func NewStringID(v string) ID {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ID.
+func (s ID) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringID:
+		s.String.encodeFields(e)
+		return nil
+	case IntID:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInt sets ID to int.
 func (s *ID) SetInt(v int) {
 	s.Type = IntID
@@ -669,6 +718,22 @@ func NewIntID(v int) ID {
 	var s ID
 	s.SetInt(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ID.
+func (s ID) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringID:
+		s.String.encodeFields(e)
+		return nil
+	case IntID:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/InlineDiscriminatorOneOf
@@ -744,6 +809,22 @@ func NewInlineOneOfFooInlineDiscriminatorOneOfSum(v InlineOneOfFoo) InlineDiscri
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineDiscriminatorOneOfSum.
+func (s InlineDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooInlineDiscriminatorOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarInlineDiscriminatorOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineOneOfBar sets InlineDiscriminatorOneOfSum to InlineOneOfBar.
 func (s *InlineDiscriminatorOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
 	s.Type = InlineOneOfBarInlineDiscriminatorOneOfSum
@@ -763,6 +844,22 @@ func NewInlineOneOfBarInlineDiscriminatorOneOfSum(v InlineOneOfBar) InlineDiscri
 	var s InlineDiscriminatorOneOfSum
 	s.SetInlineOneOfBar(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineDiscriminatorOneOfSum.
+func (s InlineDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooInlineDiscriminatorOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarInlineDiscriminatorOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/InlineOneOfBar
@@ -890,6 +987,22 @@ func NewInlineOneOfFooInlineUniqueFieldsOneOfSum(v InlineOneOfFoo) InlineUniqueF
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineUniqueFieldsOneOfSum.
+func (s InlineUniqueFieldsOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineOneOfBar sets InlineUniqueFieldsOneOfSum to InlineOneOfBar.
 func (s *InlineUniqueFieldsOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
 	s.Type = InlineOneOfBarInlineUniqueFieldsOneOfSum
@@ -909,6 +1022,22 @@ func NewInlineOneOfBarInlineUniqueFieldsOneOfSum(v InlineOneOfBar) InlineUniqueF
 	var s InlineUniqueFieldsOneOfSum
 	s.SetInlineOneOfBar(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineUniqueFieldsOneOfSum.
+func (s InlineUniqueFieldsOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarInlineUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // An API error.
@@ -1010,6 +1139,28 @@ func NewIssue1430Issue143(v Issue1430) Issue143 {
 	return s
 }
 
+// encodeFields encodes the fields of sum type Issue143.
+func (s Issue143) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case Issue1430Issue143:
+		s.Issue1430.encodeFields(e)
+		return nil
+	case Issue1431Issue143:
+		s.Issue1431.encodeFields(e)
+		return nil
+	case Issue1432Issue143:
+		s.Issue1432.encodeFields(e)
+		return nil
+	case Issue1433Issue143:
+		s.Issue1433.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetIssue1431 sets Issue143 to Issue1431.
 func (s *Issue143) SetIssue1431(v Issue1431) {
 	s.Type = Issue1431Issue143
@@ -1029,6 +1180,28 @@ func NewIssue1431Issue143(v Issue1431) Issue143 {
 	var s Issue143
 	s.SetIssue1431(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type Issue143.
+func (s Issue143) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case Issue1430Issue143:
+		s.Issue1430.encodeFields(e)
+		return nil
+	case Issue1431Issue143:
+		s.Issue1431.encodeFields(e)
+		return nil
+	case Issue1432Issue143:
+		s.Issue1432.encodeFields(e)
+		return nil
+	case Issue1433Issue143:
+		s.Issue1433.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetIssue1432 sets Issue143 to Issue1432.
@@ -1052,6 +1225,28 @@ func NewIssue1432Issue143(v Issue1432) Issue143 {
 	return s
 }
 
+// encodeFields encodes the fields of sum type Issue143.
+func (s Issue143) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case Issue1430Issue143:
+		s.Issue1430.encodeFields(e)
+		return nil
+	case Issue1431Issue143:
+		s.Issue1431.encodeFields(e)
+		return nil
+	case Issue1432Issue143:
+		s.Issue1432.encodeFields(e)
+		return nil
+	case Issue1433Issue143:
+		s.Issue1433.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetIssue1433 sets Issue143 to Issue1433.
 func (s *Issue143) SetIssue1433(v Issue1433) {
 	s.Type = Issue1433Issue143
@@ -1071,6 +1266,28 @@ func NewIssue1433Issue143(v Issue1433) Issue143 {
 	var s Issue143
 	s.SetIssue1433(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type Issue143.
+func (s Issue143) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case Issue1430Issue143:
+		s.Issue1430.encodeFields(e)
+		return nil
+	case Issue1431Issue143:
+		s.Issue1431.encodeFields(e)
+		return nil
+	case Issue1432Issue143:
+		s.Issue1432.encodeFields(e)
+		return nil
+	case Issue1433Issue143:
+		s.Issue1433.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type Issue1430 struct {
@@ -1266,6 +1483,25 @@ func NewIssue943Variant1Issue943(v Issue943Variant1) Issue943 {
 	return s
 }
 
+// encodeFields encodes the fields of sum type Issue943.
+func (s Issue943) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case Issue943Variant1Issue943:
+		s.Issue943Variant1.encodeFields(e)
+		return nil
+	case Issue943Variant2Issue943:
+		s.Issue943Variant2.encodeFields(e)
+		return nil
+	case Issue943MapIssue943:
+		s.Issue943Map.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetIssue943Variant2 sets Issue943 to Issue943Variant2.
 func (s *Issue943) SetIssue943Variant2(v Issue943Variant2) {
 	s.Type = Issue943Variant2Issue943
@@ -1287,6 +1523,25 @@ func NewIssue943Variant2Issue943(v Issue943Variant2) Issue943 {
 	return s
 }
 
+// encodeFields encodes the fields of sum type Issue943.
+func (s Issue943) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case Issue943Variant1Issue943:
+		s.Issue943Variant1.encodeFields(e)
+		return nil
+	case Issue943Variant2Issue943:
+		s.Issue943Variant2.encodeFields(e)
+		return nil
+	case Issue943MapIssue943:
+		s.Issue943Map.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetIssue943Map sets Issue943 to Issue943Map.
 func (s *Issue943) SetIssue943Map(v Issue943Map) {
 	s.Type = Issue943MapIssue943
@@ -1306,6 +1561,25 @@ func NewIssue943MapIssue943(v Issue943Map) Issue943 {
 	var s Issue943
 	s.SetIssue943Map(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type Issue943.
+func (s Issue943) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case Issue943Variant1Issue943:
+		s.Issue943Variant1.encodeFields(e)
+		return nil
+	case Issue943Variant2Issue943:
+		s.Issue943Variant2.encodeFields(e)
+		return nil
+	case Issue943MapIssue943:
+		s.Issue943Map.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/Issue943Map
@@ -1612,6 +1886,22 @@ func NewInlineOneOfFooMergeDiscriminatorOneOfSum(v InlineOneOfFoo) MergeDiscrimi
 	return s
 }
 
+// encodeFields encodes the fields of sum type MergeDiscriminatorOneOfSum.
+func (s MergeDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooMergeDiscriminatorOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarMergeDiscriminatorOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineOneOfBar sets MergeDiscriminatorOneOfSum to InlineOneOfBar.
 func (s *MergeDiscriminatorOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
 	s.Type = InlineOneOfBarMergeDiscriminatorOneOfSum
@@ -1631,6 +1921,22 @@ func NewInlineOneOfBarMergeDiscriminatorOneOfSum(v InlineOneOfBar) MergeDiscrimi
 	var s MergeDiscriminatorOneOfSum
 	s.SetInlineOneOfBar(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type MergeDiscriminatorOneOfSum.
+func (s MergeDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooMergeDiscriminatorOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarMergeDiscriminatorOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Merged schema.
@@ -1707,6 +2013,22 @@ func NewInlineOneOfFooMergeUniqueFieldsOneOfSum(v InlineOneOfFoo) MergeUniqueFie
 	return s
 }
 
+// encodeFields encodes the fields of sum type MergeUniqueFieldsOneOfSum.
+func (s MergeUniqueFieldsOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineOneOfBar sets MergeUniqueFieldsOneOfSum to InlineOneOfBar.
 func (s *MergeUniqueFieldsOneOfSum) SetInlineOneOfBar(v InlineOneOfBar) {
 	s.Type = InlineOneOfBarMergeUniqueFieldsOneOfSum
@@ -1726,6 +2048,22 @@ func NewInlineOneOfBarMergeUniqueFieldsOneOfSum(v InlineOneOfBar) MergeUniqueFie
 	var s MergeUniqueFieldsOneOfSum
 	s.SetInlineOneOfBar(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type MergeUniqueFieldsOneOfSum.
+func (s MergeUniqueFieldsOneOfSum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineOneOfFooMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfFoo.encodeFields(e)
+		return nil
+	case InlineOneOfBarMergeUniqueFieldsOneOfSum:
+		s.InlineOneOfBar.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // NewNilInt returns new NilInt with value set to v.
@@ -2239,6 +2577,22 @@ func NewBoolOneOfBooleanSumNullables(v bool) OneOfBooleanSumNullables {
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneOfBooleanSumNullables.
+func (s OneOfBooleanSumNullables) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BoolOneOfBooleanSumNullables:
+		s.Bool.encodeFields(e)
+		return nil
+	case OneOfNullablesOneOfBooleanSumNullables:
+		s.OneOfNullables.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetOneOfNullables sets OneOfBooleanSumNullables to OneOfNullables.
 func (s *OneOfBooleanSumNullables) SetOneOfNullables(v OneOfNullables) {
 	s.Type = OneOfNullablesOneOfBooleanSumNullables
@@ -2258,6 +2612,22 @@ func NewOneOfNullablesOneOfBooleanSumNullables(v OneOfNullables) OneOfBooleanSum
 	var s OneOfBooleanSumNullables
 	s.SetOneOfNullables(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneOfBooleanSumNullables.
+func (s OneOfBooleanSumNullables) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BoolOneOfBooleanSumNullables:
+		s.Bool.encodeFields(e)
+		return nil
+	case OneOfNullablesOneOfBooleanSumNullables:
+		s.OneOfNullables.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 func (*OneOfBooleanSumNullables) testNullableOneofsRes() {}
@@ -2369,6 +2739,22 @@ func NewOneOfMappingReferenceAOneOfMappingReference(v OneOfMappingReferenceA) On
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneOfMappingReference.
+func (s OneOfMappingReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case OneOfMappingReferenceAOneOfMappingReference:
+		s.OneOfMappingReferenceA.encodeFields(e)
+		return nil
+	case OneOfMappingReferenceBOneOfMappingReference:
+		s.OneOfMappingReferenceB.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetOneOfMappingReferenceB sets OneOfMappingReference to OneOfMappingReferenceB.
 func (s *OneOfMappingReference) SetOneOfMappingReferenceB(v OneOfMappingReferenceB) {
 	s.Type = OneOfMappingReferenceBOneOfMappingReference
@@ -2388,6 +2774,22 @@ func NewOneOfMappingReferenceBOneOfMappingReference(v OneOfMappingReferenceB) On
 	var s OneOfMappingReference
 	s.SetOneOfMappingReferenceB(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneOfMappingReference.
+func (s OneOfMappingReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case OneOfMappingReferenceAOneOfMappingReference:
+		s.OneOfMappingReferenceA.encodeFields(e)
+		return nil
+	case OneOfMappingReferenceBOneOfMappingReference:
+		s.OneOfMappingReferenceB.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/OneOfMappingReferenceA
@@ -2520,6 +2922,28 @@ func NewNullOneOfNullables(v struct{}) OneOfNullables {
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneOfNullables.
+func (s OneOfNullables) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfNullables:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfNullables:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfNullables:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfNullables:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets OneOfNullables to string.
 func (s *OneOfNullables) SetString(v string) {
 	s.Type = StringOneOfNullables
@@ -2539,6 +2963,28 @@ func NewStringOneOfNullables(v string) OneOfNullables {
 	var s OneOfNullables
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneOfNullables.
+func (s OneOfNullables) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfNullables:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfNullables:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfNullables:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfNullables:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInt sets OneOfNullables to int.
@@ -2562,6 +3008,28 @@ func NewIntOneOfNullables(v int) OneOfNullables {
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneOfNullables.
+func (s OneOfNullables) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfNullables:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfNullables:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfNullables:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfNullables:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets OneOfNullables to []string.
 func (s *OneOfNullables) SetStringArray(v []string) {
 	s.Type = StringArrayOneOfNullables
@@ -2581,6 +3049,28 @@ func NewStringArrayOneOfNullables(v []string) OneOfNullables {
 	var s OneOfNullables
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneOfNullables.
+func (s OneOfNullables) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfNullables:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfNullables:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfNullables:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfNullables:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/OneOfUUIDAndIntEnum
@@ -2629,6 +3119,22 @@ func NewUUIDOneOfUUIDAndIntEnum(v uuid.UUID) OneOfUUIDAndIntEnum {
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneOfUUIDAndIntEnum.
+func (s OneOfUUIDAndIntEnum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UUIDOneOfUUIDAndIntEnum:
+		s.UUID.encodeFields(e)
+		return nil
+	case OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum:
+		s.OneOfUUIDAndIntEnum1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetOneOfUUIDAndIntEnum1 sets OneOfUUIDAndIntEnum to OneOfUUIDAndIntEnum1.
 func (s *OneOfUUIDAndIntEnum) SetOneOfUUIDAndIntEnum1(v OneOfUUIDAndIntEnum1) {
 	s.Type = OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum
@@ -2648,6 +3154,22 @@ func NewOneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum(v OneOfUUIDAndIntEnum1) OneOfUUI
 	var s OneOfUUIDAndIntEnum
 	s.SetOneOfUUIDAndIntEnum1(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneOfUUIDAndIntEnum.
+func (s OneOfUUIDAndIntEnum) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UUIDOneOfUUIDAndIntEnum:
+		s.UUID.encodeFields(e)
+		return nil
+	case OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum:
+		s.OneOfUUIDAndIntEnum1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type OneOfUUIDAndIntEnum1 int
@@ -2719,6 +3241,28 @@ func NewNullOneOfWithNullable(v struct{}) OneOfWithNullable {
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneOfWithNullable.
+func (s OneOfWithNullable) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfWithNullable:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfWithNullable:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfWithNullable:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfWithNullable:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets OneOfWithNullable to string.
 func (s *OneOfWithNullable) SetString(v string) {
 	s.Type = StringOneOfWithNullable
@@ -2738,6 +3282,28 @@ func NewStringOneOfWithNullable(v string) OneOfWithNullable {
 	var s OneOfWithNullable
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneOfWithNullable.
+func (s OneOfWithNullable) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfWithNullable:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfWithNullable:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfWithNullable:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfWithNullable:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInt sets OneOfWithNullable to int.
@@ -2761,6 +3327,28 @@ func NewIntOneOfWithNullable(v int) OneOfWithNullable {
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneOfWithNullable.
+func (s OneOfWithNullable) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfWithNullable:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfWithNullable:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfWithNullable:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfWithNullable:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets OneOfWithNullable to []string.
 func (s *OneOfWithNullable) SetStringArray(v []string) {
 	s.Type = StringArrayOneOfWithNullable
@@ -2780,6 +3368,28 @@ func NewStringArrayOneOfWithNullable(v []string) OneOfWithNullable {
 	var s OneOfWithNullable
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneOfWithNullable.
+func (s OneOfWithNullable) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullOneOfWithNullable:
+		s.Null.encodeFields(e)
+		return nil
+	case StringOneOfWithNullable:
+		s.String.encodeFields(e)
+		return nil
+	case IntOneOfWithNullable:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayOneOfWithNullable:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/OnePropertyObject
@@ -2845,6 +3455,22 @@ func NewOneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields(v OneVariantHasN
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneVariantHasNoUniqueFields.
+func (s OneVariantHasNoUniqueFields) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields0.encodeFields(e)
+		return nil
+	case OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetOneVariantHasNoUniqueFields1 sets OneVariantHasNoUniqueFields to OneVariantHasNoUniqueFields1.
 func (s *OneVariantHasNoUniqueFields) SetOneVariantHasNoUniqueFields1(v OneVariantHasNoUniqueFields1) {
 	s.Type = OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields
@@ -2864,6 +3490,22 @@ func NewOneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields(v OneVariantHasN
 	var s OneVariantHasNoUniqueFields
 	s.SetOneVariantHasNoUniqueFields1(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type OneVariantHasNoUniqueFields.
+func (s OneVariantHasNoUniqueFields) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields0.encodeFields(e)
+		return nil
+	case OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields:
+		s.OneVariantHasNoUniqueFields1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type OneVariantHasNoUniqueFields0 struct {

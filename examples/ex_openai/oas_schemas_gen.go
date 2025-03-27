@@ -3,6 +3,8 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
@@ -486,6 +488,22 @@ func NewStringCreateAnswerRequestStop(v string) CreateAnswerRequestStop {
 	return s
 }
 
+// encodeFields encodes the fields of sum type CreateAnswerRequestStop.
+func (s CreateAnswerRequestStop) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateAnswerRequestStop:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateAnswerRequestStop:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets CreateAnswerRequestStop to []string.
 func (s *CreateAnswerRequestStop) SetStringArray(v []string) {
 	s.Type = StringArrayCreateAnswerRequestStop
@@ -505,6 +523,22 @@ func NewStringArrayCreateAnswerRequestStop(v []string) CreateAnswerRequestStop {
 	var s CreateAnswerRequestStop
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CreateAnswerRequestStop.
+func (s CreateAnswerRequestStop) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateAnswerRequestStop:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateAnswerRequestStop:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/CreateAnswerResponse
@@ -828,6 +862,22 @@ func NewStringCreateChatCompletionRequestStop(v string) CreateChatCompletionRequ
 	return s
 }
 
+// encodeFields encodes the fields of sum type CreateChatCompletionRequestStop.
+func (s CreateChatCompletionRequestStop) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateChatCompletionRequestStop:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateChatCompletionRequestStop:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets CreateChatCompletionRequestStop to []string.
 func (s *CreateChatCompletionRequestStop) SetStringArray(v []string) {
 	s.Type = StringArrayCreateChatCompletionRequestStop
@@ -847,6 +897,22 @@ func NewStringArrayCreateChatCompletionRequestStop(v []string) CreateChatComplet
 	var s CreateChatCompletionRequestStop
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CreateChatCompletionRequestStop.
+func (s CreateChatCompletionRequestStop) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateChatCompletionRequestStop:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateChatCompletionRequestStop:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/CreateChatCompletionResponse
@@ -1617,6 +1683,22 @@ func NewStringCreateCompletionRequestPrompt(v string) CreateCompletionRequestPro
 	return s
 }
 
+// encodeFields encodes the fields of sum type CreateCompletionRequestPrompt.
+func (s CreateCompletionRequestPrompt) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateCompletionRequestPrompt:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateCompletionRequestPrompt:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets CreateCompletionRequestPrompt to []string.
 func (s *CreateCompletionRequestPrompt) SetStringArray(v []string) {
 	s.Type = StringArrayCreateCompletionRequestPrompt
@@ -1636,6 +1718,22 @@ func NewStringArrayCreateCompletionRequestPrompt(v []string) CreateCompletionReq
 	var s CreateCompletionRequestPrompt
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CreateCompletionRequestPrompt.
+func (s CreateCompletionRequestPrompt) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateCompletionRequestPrompt:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateCompletionRequestPrompt:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Up to 4 sequences where the API will stop generating further tokens. The returned text will not
@@ -1692,6 +1790,25 @@ func NewNullCreateCompletionRequestStop(v struct{}) CreateCompletionRequestStop 
 	return s
 }
 
+// encodeFields encodes the fields of sum type CreateCompletionRequestStop.
+func (s CreateCompletionRequestStop) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullCreateCompletionRequestStop:
+		s.Null.encodeFields(e)
+		return nil
+	case StringCreateCompletionRequestStop:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateCompletionRequestStop:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets CreateCompletionRequestStop to string.
 func (s *CreateCompletionRequestStop) SetString(v string) {
 	s.Type = StringCreateCompletionRequestStop
@@ -1713,6 +1830,25 @@ func NewStringCreateCompletionRequestStop(v string) CreateCompletionRequestStop 
 	return s
 }
 
+// encodeFields encodes the fields of sum type CreateCompletionRequestStop.
+func (s CreateCompletionRequestStop) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullCreateCompletionRequestStop:
+		s.Null.encodeFields(e)
+		return nil
+	case StringCreateCompletionRequestStop:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateCompletionRequestStop:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets CreateCompletionRequestStop to []string.
 func (s *CreateCompletionRequestStop) SetStringArray(v []string) {
 	s.Type = StringArrayCreateCompletionRequestStop
@@ -1732,6 +1868,25 @@ func NewStringArrayCreateCompletionRequestStop(v []string) CreateCompletionReque
 	var s CreateCompletionRequestStop
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CreateCompletionRequestStop.
+func (s CreateCompletionRequestStop) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullCreateCompletionRequestStop:
+		s.Null.encodeFields(e)
+		return nil
+	case StringCreateCompletionRequestStop:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateCompletionRequestStop:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/CreateCompletionResponse
@@ -2293,6 +2448,22 @@ func NewStringCreateEmbeddingRequestInput(v string) CreateEmbeddingRequestInput 
 	return s
 }
 
+// encodeFields encodes the fields of sum type CreateEmbeddingRequestInput.
+func (s CreateEmbeddingRequestInput) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateEmbeddingRequestInput:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateEmbeddingRequestInput:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets CreateEmbeddingRequestInput to []string.
 func (s *CreateEmbeddingRequestInput) SetStringArray(v []string) {
 	s.Type = StringArrayCreateEmbeddingRequestInput
@@ -2312,6 +2483,22 @@ func NewStringArrayCreateEmbeddingRequestInput(v []string) CreateEmbeddingReques
 	var s CreateEmbeddingRequestInput
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CreateEmbeddingRequestInput.
+func (s CreateEmbeddingRequestInput) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateEmbeddingRequestInput:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateEmbeddingRequestInput:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/CreateEmbeddingResponse
@@ -3233,6 +3420,22 @@ func NewStringCreateModerationRequestInput(v string) CreateModerationRequestInpu
 	return s
 }
 
+// encodeFields encodes the fields of sum type CreateModerationRequestInput.
+func (s CreateModerationRequestInput) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateModerationRequestInput:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateModerationRequestInput:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets CreateModerationRequestInput to []string.
 func (s *CreateModerationRequestInput) SetStringArray(v []string) {
 	s.Type = StringArrayCreateModerationRequestInput
@@ -3252,6 +3455,22 @@ func NewStringArrayCreateModerationRequestInput(v []string) CreateModerationRequ
 	var s CreateModerationRequestInput
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CreateModerationRequestInput.
+func (s CreateModerationRequestInput) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringCreateModerationRequestInput:
+		s.String.encodeFields(e)
+		return nil
+	case StringArrayCreateModerationRequestInput:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/CreateModerationResponse

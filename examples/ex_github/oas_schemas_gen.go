@@ -3,6 +3,7 @@
 package api
 
 import (
+	"fmt"
 	"io"
 	"net/url"
 	"time"
@@ -14799,6 +14800,22 @@ func NewDeploymentPayload0DeploymentPayload(v DeploymentPayload0) DeploymentPayl
 	return s
 }
 
+// encodeFields encodes the fields of sum type DeploymentPayload.
+func (s DeploymentPayload) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case DeploymentPayload0DeploymentPayload:
+		s.DeploymentPayload0.encodeFields(e)
+		return nil
+	case StringDeploymentPayload:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets DeploymentPayload to string.
 func (s *DeploymentPayload) SetString(v string) {
 	s.Type = StringDeploymentPayload
@@ -14818,6 +14835,22 @@ func NewStringDeploymentPayload(v string) DeploymentPayload {
 	var s DeploymentPayload
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type DeploymentPayload.
+func (s DeploymentPayload) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case DeploymentPayload0DeploymentPayload:
+		s.DeploymentPayload0.encodeFields(e)
+		return nil
+	case StringDeploymentPayload:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type DeploymentPayload0 map[string]jx.Raw
@@ -16659,6 +16692,25 @@ func NewStringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemV
 	return s
 }
 
+// encodeFields encodes the fields of sum type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.String.encodeFields(e)
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.encodeFields(e)
+		return nil
+	case AnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.AnyArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1(v EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1) {
 	s.Type = EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
@@ -16680,6 +16732,25 @@ func NewEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1E
 	return s
 }
 
+// encodeFields encodes the fields of sum type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.String.encodeFields(e)
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.encodeFields(e)
+		return nil
+	case AnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.AnyArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetAnyArray sets EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to []jx.Raw.
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetAnyArray(v []jx.Raw) {
 	s.Type = AnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
@@ -16699,6 +16770,25 @@ func NewAnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsIte
 	var s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
 	s.SetAnyArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue.
+func (s EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.String.encodeFields(e)
+		return nil
+	case EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1.encodeFields(e)
+		return nil
+	case AnyArrayEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue:
+		s.AnyArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1 struct{}
@@ -20390,6 +20480,22 @@ func NewBoolGistsCreateReqPublic(v bool) GistsCreateReqPublic {
 	return s
 }
 
+// encodeFields encodes the fields of sum type GistsCreateReqPublic.
+func (s GistsCreateReqPublic) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BoolGistsCreateReqPublic:
+		s.Bool.encodeFields(e)
+		return nil
+	case GistsCreateReqPublic1GistsCreateReqPublic:
+		s.GistsCreateReqPublic1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetGistsCreateReqPublic1 sets GistsCreateReqPublic to GistsCreateReqPublic1.
 func (s *GistsCreateReqPublic) SetGistsCreateReqPublic1(v GistsCreateReqPublic1) {
 	s.Type = GistsCreateReqPublic1GistsCreateReqPublic
@@ -20409,6 +20515,22 @@ func NewGistsCreateReqPublic1GistsCreateReqPublic(v GistsCreateReqPublic1) Gists
 	var s GistsCreateReqPublic
 	s.SetGistsCreateReqPublic1(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type GistsCreateReqPublic.
+func (s GistsCreateReqPublic) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BoolGistsCreateReqPublic:
+		s.Bool.encodeFields(e)
+		return nil
+	case GistsCreateReqPublic1GistsCreateReqPublic:
+		s.GistsCreateReqPublic1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type GistsCreateReqPublic1 string
@@ -25669,6 +25791,22 @@ func NewStringIssueLabelsItem(v string) IssueLabelsItem {
 	return s
 }
 
+// encodeFields encodes the fields of sum type IssueLabelsItem.
+func (s IssueLabelsItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssueLabelsItem:
+		s.String.encodeFields(e)
+		return nil
+	case IssueLabelsItem1IssueLabelsItem:
+		s.IssueLabelsItem1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetIssueLabelsItem1 sets IssueLabelsItem to IssueLabelsItem1.
 func (s *IssueLabelsItem) SetIssueLabelsItem1(v IssueLabelsItem1) {
 	s.Type = IssueLabelsItem1IssueLabelsItem
@@ -25688,6 +25826,22 @@ func NewIssueLabelsItem1IssueLabelsItem(v IssueLabelsItem1) IssueLabelsItem {
 	var s IssueLabelsItem
 	s.SetIssueLabelsItem1(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type IssueLabelsItem.
+func (s IssueLabelsItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssueLabelsItem:
+		s.String.encodeFields(e)
+		return nil
+	case IssueLabelsItem1IssueLabelsItem:
+		s.IssueLabelsItem1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type IssueLabelsItem1 struct {
@@ -27047,6 +27201,22 @@ func NewStringIssuesCreateReqLabelsItem(v string) IssuesCreateReqLabelsItem {
 	return s
 }
 
+// encodeFields encodes the fields of sum type IssuesCreateReqLabelsItem.
+func (s IssuesCreateReqLabelsItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesCreateReqLabelsItem:
+		s.String.encodeFields(e)
+		return nil
+	case IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem:
+		s.IssuesCreateReqLabelsItem1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetIssuesCreateReqLabelsItem1 sets IssuesCreateReqLabelsItem to IssuesCreateReqLabelsItem1.
 func (s *IssuesCreateReqLabelsItem) SetIssuesCreateReqLabelsItem1(v IssuesCreateReqLabelsItem1) {
 	s.Type = IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem
@@ -27066,6 +27236,22 @@ func NewIssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem(v IssuesCreateReqLab
 	var s IssuesCreateReqLabelsItem
 	s.SetIssuesCreateReqLabelsItem1(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type IssuesCreateReqLabelsItem.
+func (s IssuesCreateReqLabelsItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesCreateReqLabelsItem:
+		s.String.encodeFields(e)
+		return nil
+	case IssuesCreateReqLabelsItem1IssuesCreateReqLabelsItem:
+		s.IssuesCreateReqLabelsItem1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type IssuesCreateReqLabelsItem1 struct {
@@ -27158,6 +27344,22 @@ func NewStringIssuesCreateReqMilestone(v string) IssuesCreateReqMilestone {
 	return s
 }
 
+// encodeFields encodes the fields of sum type IssuesCreateReqMilestone.
+func (s IssuesCreateReqMilestone) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesCreateReqMilestone:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesCreateReqMilestone:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInt sets IssuesCreateReqMilestone to int.
 func (s *IssuesCreateReqMilestone) SetInt(v int) {
 	s.Type = IntIssuesCreateReqMilestone
@@ -27177,6 +27379,22 @@ func NewIntIssuesCreateReqMilestone(v int) IssuesCreateReqMilestone {
 	var s IssuesCreateReqMilestone
 	s.SetInt(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type IssuesCreateReqMilestone.
+func (s IssuesCreateReqMilestone) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesCreateReqMilestone:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesCreateReqMilestone:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // The title of the issue.
@@ -27223,6 +27441,22 @@ func NewStringIssuesCreateReqTitle(v string) IssuesCreateReqTitle {
 	return s
 }
 
+// encodeFields encodes the fields of sum type IssuesCreateReqTitle.
+func (s IssuesCreateReqTitle) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesCreateReqTitle:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesCreateReqTitle:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInt sets IssuesCreateReqTitle to int.
 func (s *IssuesCreateReqTitle) SetInt(v int) {
 	s.Type = IntIssuesCreateReqTitle
@@ -27242,6 +27476,22 @@ func NewIntIssuesCreateReqTitle(v int) IssuesCreateReqTitle {
 	var s IssuesCreateReqTitle
 	s.SetInt(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type IssuesCreateReqTitle.
+func (s IssuesCreateReqTitle) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesCreateReqTitle:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesCreateReqTitle:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // IssuesDeleteCommentNoContent is response for IssuesDeleteComment operation.
@@ -28839,6 +29089,22 @@ func NewStringIssuesUpdateReqLabelsItem(v string) IssuesUpdateReqLabelsItem {
 	return s
 }
 
+// encodeFields encodes the fields of sum type IssuesUpdateReqLabelsItem.
+func (s IssuesUpdateReqLabelsItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesUpdateReqLabelsItem:
+		s.String.encodeFields(e)
+		return nil
+	case IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem:
+		s.IssuesUpdateReqLabelsItem1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetIssuesUpdateReqLabelsItem1 sets IssuesUpdateReqLabelsItem to IssuesUpdateReqLabelsItem1.
 func (s *IssuesUpdateReqLabelsItem) SetIssuesUpdateReqLabelsItem1(v IssuesUpdateReqLabelsItem1) {
 	s.Type = IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem
@@ -28858,6 +29124,22 @@ func NewIssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem(v IssuesUpdateReqLab
 	var s IssuesUpdateReqLabelsItem
 	s.SetIssuesUpdateReqLabelsItem1(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type IssuesUpdateReqLabelsItem.
+func (s IssuesUpdateReqLabelsItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesUpdateReqLabelsItem:
+		s.String.encodeFields(e)
+		return nil
+	case IssuesUpdateReqLabelsItem1IssuesUpdateReqLabelsItem:
+		s.IssuesUpdateReqLabelsItem1.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type IssuesUpdateReqLabelsItem1 struct {
@@ -28950,6 +29232,22 @@ func NewStringIssuesUpdateReqMilestone(v string) IssuesUpdateReqMilestone {
 	return s
 }
 
+// encodeFields encodes the fields of sum type IssuesUpdateReqMilestone.
+func (s IssuesUpdateReqMilestone) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesUpdateReqMilestone:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesUpdateReqMilestone:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInt sets IssuesUpdateReqMilestone to int.
 func (s *IssuesUpdateReqMilestone) SetInt(v int) {
 	s.Type = IntIssuesUpdateReqMilestone
@@ -28969,6 +29267,22 @@ func NewIntIssuesUpdateReqMilestone(v int) IssuesUpdateReqMilestone {
 	var s IssuesUpdateReqMilestone
 	s.SetInt(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type IssuesUpdateReqMilestone.
+func (s IssuesUpdateReqMilestone) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesUpdateReqMilestone:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesUpdateReqMilestone:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // State of the issue. Either `open` or `closed`.
@@ -29057,6 +29371,22 @@ func NewStringIssuesUpdateReqTitle(v string) IssuesUpdateReqTitle {
 	return s
 }
 
+// encodeFields encodes the fields of sum type IssuesUpdateReqTitle.
+func (s IssuesUpdateReqTitle) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesUpdateReqTitle:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesUpdateReqTitle:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInt sets IssuesUpdateReqTitle to int.
 func (s *IssuesUpdateReqTitle) SetInt(v int) {
 	s.Type = IntIssuesUpdateReqTitle
@@ -29076,6 +29406,22 @@ func NewIntIssuesUpdateReqTitle(v int) IssuesUpdateReqTitle {
 	var s IssuesUpdateReqTitle
 	s.SetInt(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type IssuesUpdateReqTitle.
+func (s IssuesUpdateReqTitle) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringIssuesUpdateReqTitle:
+		s.String.encodeFields(e)
+		return nil
+	case IntIssuesUpdateReqTitle:
+		s.Int.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Information of a job execution in a workflow run.
@@ -79792,6 +80138,22 @@ func NewReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq(v Repo
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposAddAppAccessRestrictionsReq.
+func (s ReposAddAppAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq:
+		s.ReposAddAppAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddAppAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposAddAppAccessRestrictionsReq to []string.
 func (s *ReposAddAppAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposAddAppAccessRestrictionsReq
@@ -79811,6 +80173,22 @@ func NewStringArrayReposAddAppAccessRestrictionsReq(v []string) ReposAddAppAcces
 	var s ReposAddAppAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposAddAppAccessRestrictionsReq.
+func (s ReposAddAppAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddAppAccessRestrictionsReq0ReposAddAppAccessRestrictionsReq:
+		s.ReposAddAppAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddAppAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposAddAppAccessRestrictionsReq0 struct {
@@ -80001,6 +80379,22 @@ func NewReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq(v ReposAdd
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposAddStatusCheckContextsReq.
+func (s ReposAddStatusCheckContextsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq:
+		s.ReposAddStatusCheckContextsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddStatusCheckContextsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposAddStatusCheckContextsReq to []string.
 func (s *ReposAddStatusCheckContextsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposAddStatusCheckContextsReq
@@ -80020,6 +80414,22 @@ func NewStringArrayReposAddStatusCheckContextsReq(v []string) ReposAddStatusChec
 	var s ReposAddStatusCheckContextsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposAddStatusCheckContextsReq.
+func (s ReposAddStatusCheckContextsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddStatusCheckContextsReq0ReposAddStatusCheckContextsReq:
+		s.ReposAddStatusCheckContextsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddStatusCheckContextsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposAddStatusCheckContextsReq0 struct {
@@ -80088,6 +80498,22 @@ func NewReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq(v Re
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposAddTeamAccessRestrictionsReq.
+func (s ReposAddTeamAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq:
+		s.ReposAddTeamAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddTeamAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposAddTeamAccessRestrictionsReq to []string.
 func (s *ReposAddTeamAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposAddTeamAccessRestrictionsReq
@@ -80107,6 +80533,22 @@ func NewStringArrayReposAddTeamAccessRestrictionsReq(v []string) ReposAddTeamAcc
 	var s ReposAddTeamAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposAddTeamAccessRestrictionsReq.
+func (s ReposAddTeamAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddTeamAccessRestrictionsReq0ReposAddTeamAccessRestrictionsReq:
+		s.ReposAddTeamAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddTeamAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposAddTeamAccessRestrictionsReq0 struct {
@@ -80175,6 +80617,22 @@ func NewReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq(v Re
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposAddUserAccessRestrictionsReq.
+func (s ReposAddUserAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq:
+		s.ReposAddUserAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddUserAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposAddUserAccessRestrictionsReq to []string.
 func (s *ReposAddUserAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposAddUserAccessRestrictionsReq
@@ -80194,6 +80652,22 @@ func NewStringArrayReposAddUserAccessRestrictionsReq(v []string) ReposAddUserAcc
 	var s ReposAddUserAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposAddUserAccessRestrictionsReq.
+func (s ReposAddUserAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposAddUserAccessRestrictionsReq0ReposAddUserAccessRestrictionsReq:
+		s.ReposAddUserAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposAddUserAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposAddUserAccessRestrictionsReq0 struct {
@@ -80666,6 +81140,22 @@ func NewReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload(v ReposC
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposCreateDeploymentReqPayload.
+func (s ReposCreateDeploymentReqPayload) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload:
+		s.ReposCreateDeploymentReqPayload0.encodeFields(e)
+		return nil
+	case StringReposCreateDeploymentReqPayload:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets ReposCreateDeploymentReqPayload to string.
 func (s *ReposCreateDeploymentReqPayload) SetString(v string) {
 	s.Type = StringReposCreateDeploymentReqPayload
@@ -80685,6 +81175,22 @@ func NewStringReposCreateDeploymentReqPayload(v string) ReposCreateDeploymentReq
 	var s ReposCreateDeploymentReqPayload
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposCreateDeploymentReqPayload.
+func (s ReposCreateDeploymentReqPayload) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposCreateDeploymentReqPayload0ReposCreateDeploymentReqPayload:
+		s.ReposCreateDeploymentReqPayload0.encodeFields(e)
+		return nil
+	case StringReposCreateDeploymentReqPayload:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposCreateDeploymentReqPayload0 map[string]jx.Raw
@@ -83928,6 +84434,22 @@ func NewReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq(
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposRemoveAppAccessRestrictionsReq.
+func (s ReposRemoveAppAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq:
+		s.ReposRemoveAppAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveAppAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposRemoveAppAccessRestrictionsReq to []string.
 func (s *ReposRemoveAppAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposRemoveAppAccessRestrictionsReq
@@ -83947,6 +84469,22 @@ func NewStringArrayReposRemoveAppAccessRestrictionsReq(v []string) ReposRemoveAp
 	var s ReposRemoveAppAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposRemoveAppAccessRestrictionsReq.
+func (s ReposRemoveAppAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveAppAccessRestrictionsReq0ReposRemoveAppAccessRestrictionsReq:
+		s.ReposRemoveAppAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveAppAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposRemoveAppAccessRestrictionsReq0 struct {
@@ -84018,6 +84556,22 @@ func NewReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq(v Re
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposRemoveStatusCheckContextsReq.
+func (s ReposRemoveStatusCheckContextsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq:
+		s.ReposRemoveStatusCheckContextsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveStatusCheckContextsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposRemoveStatusCheckContextsReq to []string.
 func (s *ReposRemoveStatusCheckContextsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposRemoveStatusCheckContextsReq
@@ -84037,6 +84591,22 @@ func NewStringArrayReposRemoveStatusCheckContextsReq(v []string) ReposRemoveStat
 	var s ReposRemoveStatusCheckContextsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposRemoveStatusCheckContextsReq.
+func (s ReposRemoveStatusCheckContextsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveStatusCheckContextsReq0ReposRemoveStatusCheckContextsReq:
+		s.ReposRemoveStatusCheckContextsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveStatusCheckContextsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposRemoveStatusCheckContextsReq0 struct {
@@ -84108,6 +84678,22 @@ func NewReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsRe
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposRemoveTeamAccessRestrictionsReq.
+func (s ReposRemoveTeamAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq:
+		s.ReposRemoveTeamAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveTeamAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposRemoveTeamAccessRestrictionsReq to []string.
 func (s *ReposRemoveTeamAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposRemoveTeamAccessRestrictionsReq
@@ -84127,6 +84713,22 @@ func NewStringArrayReposRemoveTeamAccessRestrictionsReq(v []string) ReposRemoveT
 	var s ReposRemoveTeamAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposRemoveTeamAccessRestrictionsReq.
+func (s ReposRemoveTeamAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveTeamAccessRestrictionsReq0ReposRemoveTeamAccessRestrictionsReq:
+		s.ReposRemoveTeamAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveTeamAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposRemoveTeamAccessRestrictionsReq0 struct {
@@ -84195,6 +84797,22 @@ func NewReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsRe
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposRemoveUserAccessRestrictionsReq.
+func (s ReposRemoveUserAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq:
+		s.ReposRemoveUserAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveUserAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposRemoveUserAccessRestrictionsReq to []string.
 func (s *ReposRemoveUserAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposRemoveUserAccessRestrictionsReq
@@ -84214,6 +84832,22 @@ func NewStringArrayReposRemoveUserAccessRestrictionsReq(v []string) ReposRemoveU
 	var s ReposRemoveUserAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposRemoveUserAccessRestrictionsReq.
+func (s ReposRemoveUserAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposRemoveUserAccessRestrictionsReq0ReposRemoveUserAccessRestrictionsReq:
+		s.ReposRemoveUserAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposRemoveUserAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposRemoveUserAccessRestrictionsReq0 struct {
@@ -84322,6 +84956,22 @@ func NewReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq(v Repo
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposSetAppAccessRestrictionsReq.
+func (s ReposSetAppAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq:
+		s.ReposSetAppAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetAppAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposSetAppAccessRestrictionsReq to []string.
 func (s *ReposSetAppAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposSetAppAccessRestrictionsReq
@@ -84341,6 +84991,22 @@ func NewStringArrayReposSetAppAccessRestrictionsReq(v []string) ReposSetAppAcces
 	var s ReposSetAppAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposSetAppAccessRestrictionsReq.
+func (s ReposSetAppAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetAppAccessRestrictionsReq0ReposSetAppAccessRestrictionsReq:
+		s.ReposSetAppAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetAppAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposSetAppAccessRestrictionsReq0 struct {
@@ -84409,6 +85075,22 @@ func NewReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq(v ReposSet
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposSetStatusCheckContextsReq.
+func (s ReposSetStatusCheckContextsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq:
+		s.ReposSetStatusCheckContextsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetStatusCheckContextsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposSetStatusCheckContextsReq to []string.
 func (s *ReposSetStatusCheckContextsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposSetStatusCheckContextsReq
@@ -84428,6 +85110,22 @@ func NewStringArrayReposSetStatusCheckContextsReq(v []string) ReposSetStatusChec
 	var s ReposSetStatusCheckContextsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposSetStatusCheckContextsReq.
+func (s ReposSetStatusCheckContextsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetStatusCheckContextsReq0ReposSetStatusCheckContextsReq:
+		s.ReposSetStatusCheckContextsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetStatusCheckContextsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposSetStatusCheckContextsReq0 struct {
@@ -84496,6 +85194,22 @@ func NewReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq(v Re
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposSetTeamAccessRestrictionsReq.
+func (s ReposSetTeamAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq:
+		s.ReposSetTeamAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetTeamAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposSetTeamAccessRestrictionsReq to []string.
 func (s *ReposSetTeamAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposSetTeamAccessRestrictionsReq
@@ -84515,6 +85229,22 @@ func NewStringArrayReposSetTeamAccessRestrictionsReq(v []string) ReposSetTeamAcc
 	var s ReposSetTeamAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposSetTeamAccessRestrictionsReq.
+func (s ReposSetTeamAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetTeamAccessRestrictionsReq0ReposSetTeamAccessRestrictionsReq:
+		s.ReposSetTeamAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetTeamAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposSetTeamAccessRestrictionsReq0 struct {
@@ -84583,6 +85313,22 @@ func NewReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq(v Re
 	return s
 }
 
+// encodeFields encodes the fields of sum type ReposSetUserAccessRestrictionsReq.
+func (s ReposSetUserAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq:
+		s.ReposSetUserAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetUserAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ReposSetUserAccessRestrictionsReq to []string.
 func (s *ReposSetUserAccessRestrictionsReq) SetStringArray(v []string) {
 	s.Type = StringArrayReposSetUserAccessRestrictionsReq
@@ -84602,6 +85348,22 @@ func NewStringArrayReposSetUserAccessRestrictionsReq(v []string) ReposSetUserAcc
 	var s ReposSetUserAccessRestrictionsReq
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ReposSetUserAccessRestrictionsReq.
+func (s ReposSetUserAccessRestrictionsReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ReposSetUserAccessRestrictionsReq0ReposSetUserAccessRestrictionsReq:
+		s.ReposSetUserAccessRestrictionsReq0.encodeFields(e)
+		return nil
+	case StringArrayReposSetUserAccessRestrictionsReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ReposSetUserAccessRestrictionsReq0 struct {
@@ -98044,6 +98806,25 @@ func NewUsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq(v User
 	return s
 }
 
+// encodeFields encodes the fields of sum type UsersAddEmailForAuthenticatedReq.
+func (s UsersAddEmailForAuthenticatedReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq:
+		s.UsersAddEmailForAuthenticatedReq0.encodeFields(e)
+		return nil
+	case StringArrayUsersAddEmailForAuthenticatedReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	case StringUsersAddEmailForAuthenticatedReq:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets UsersAddEmailForAuthenticatedReq to []string.
 func (s *UsersAddEmailForAuthenticatedReq) SetStringArray(v []string) {
 	s.Type = StringArrayUsersAddEmailForAuthenticatedReq
@@ -98065,6 +98846,25 @@ func NewStringArrayUsersAddEmailForAuthenticatedReq(v []string) UsersAddEmailFor
 	return s
 }
 
+// encodeFields encodes the fields of sum type UsersAddEmailForAuthenticatedReq.
+func (s UsersAddEmailForAuthenticatedReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq:
+		s.UsersAddEmailForAuthenticatedReq0.encodeFields(e)
+		return nil
+	case StringArrayUsersAddEmailForAuthenticatedReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	case StringUsersAddEmailForAuthenticatedReq:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets UsersAddEmailForAuthenticatedReq to string.
 func (s *UsersAddEmailForAuthenticatedReq) SetString(v string) {
 	s.Type = StringUsersAddEmailForAuthenticatedReq
@@ -98084,6 +98884,25 @@ func NewStringUsersAddEmailForAuthenticatedReq(v string) UsersAddEmailForAuthent
 	var s UsersAddEmailForAuthenticatedReq
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type UsersAddEmailForAuthenticatedReq.
+func (s UsersAddEmailForAuthenticatedReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UsersAddEmailForAuthenticatedReq0UsersAddEmailForAuthenticatedReq:
+		s.UsersAddEmailForAuthenticatedReq0.encodeFields(e)
+		return nil
+	case StringArrayUsersAddEmailForAuthenticatedReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	case StringUsersAddEmailForAuthenticatedReq:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type UsersAddEmailForAuthenticatedReq0 struct {
@@ -98308,6 +99127,25 @@ func NewUsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq(
 	return s
 }
 
+// encodeFields encodes the fields of sum type UsersDeleteEmailForAuthenticatedReq.
+func (s UsersDeleteEmailForAuthenticatedReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq:
+		s.UsersDeleteEmailForAuthenticatedReq0.encodeFields(e)
+		return nil
+	case StringArrayUsersDeleteEmailForAuthenticatedReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	case StringUsersDeleteEmailForAuthenticatedReq:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets UsersDeleteEmailForAuthenticatedReq to []string.
 func (s *UsersDeleteEmailForAuthenticatedReq) SetStringArray(v []string) {
 	s.Type = StringArrayUsersDeleteEmailForAuthenticatedReq
@@ -98329,6 +99167,25 @@ func NewStringArrayUsersDeleteEmailForAuthenticatedReq(v []string) UsersDeleteEm
 	return s
 }
 
+// encodeFields encodes the fields of sum type UsersDeleteEmailForAuthenticatedReq.
+func (s UsersDeleteEmailForAuthenticatedReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq:
+		s.UsersDeleteEmailForAuthenticatedReq0.encodeFields(e)
+		return nil
+	case StringArrayUsersDeleteEmailForAuthenticatedReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	case StringUsersDeleteEmailForAuthenticatedReq:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets UsersDeleteEmailForAuthenticatedReq to string.
 func (s *UsersDeleteEmailForAuthenticatedReq) SetString(v string) {
 	s.Type = StringUsersDeleteEmailForAuthenticatedReq
@@ -98348,6 +99205,25 @@ func NewStringUsersDeleteEmailForAuthenticatedReq(v string) UsersDeleteEmailForA
 	var s UsersDeleteEmailForAuthenticatedReq
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type UsersDeleteEmailForAuthenticatedReq.
+func (s UsersDeleteEmailForAuthenticatedReq) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UsersDeleteEmailForAuthenticatedReq0UsersDeleteEmailForAuthenticatedReq:
+		s.UsersDeleteEmailForAuthenticatedReq0.encodeFields(e)
+		return nil
+	case StringArrayUsersDeleteEmailForAuthenticatedReq:
+		s.StringArray.encodeFields(e)
+		return nil
+	case StringUsersDeleteEmailForAuthenticatedReq:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Deletes one or more email addresses from your GitHub account. Must contain at least one email
@@ -98478,6 +99354,22 @@ func NewPrivateUserUsersGetAuthenticatedOK(v PrivateUser) UsersGetAuthenticatedO
 	return s
 }
 
+// encodeFields encodes the fields of sum type UsersGetAuthenticatedOK.
+func (s UsersGetAuthenticatedOK) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PrivateUserUsersGetAuthenticatedOK:
+		s.PrivateUser.encodeFields(e)
+		return nil
+	case PublicUserUsersGetAuthenticatedOK:
+		s.PublicUser.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPublicUser sets UsersGetAuthenticatedOK to PublicUser.
 func (s *UsersGetAuthenticatedOK) SetPublicUser(v PublicUser) {
 	s.Type = PublicUserUsersGetAuthenticatedOK
@@ -98497,6 +99389,22 @@ func NewPublicUserUsersGetAuthenticatedOK(v PublicUser) UsersGetAuthenticatedOK 
 	var s UsersGetAuthenticatedOK
 	s.SetPublicUser(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type UsersGetAuthenticatedOK.
+func (s UsersGetAuthenticatedOK) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PrivateUserUsersGetAuthenticatedOK:
+		s.PrivateUser.encodeFields(e)
+		return nil
+	case PublicUserUsersGetAuthenticatedOK:
+		s.PublicUser.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 func (*UsersGetAuthenticatedOK) usersGetAuthenticatedRes() {}
@@ -98548,6 +99456,22 @@ func NewPrivateUserUsersGetByUsernameOK(v PrivateUser) UsersGetByUsernameOK {
 	return s
 }
 
+// encodeFields encodes the fields of sum type UsersGetByUsernameOK.
+func (s UsersGetByUsernameOK) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PrivateUserUsersGetByUsernameOK:
+		s.PrivateUser.encodeFields(e)
+		return nil
+	case PublicUserUsersGetByUsernameOK:
+		s.PublicUser.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPublicUser sets UsersGetByUsernameOK to PublicUser.
 func (s *UsersGetByUsernameOK) SetPublicUser(v PublicUser) {
 	s.Type = PublicUserUsersGetByUsernameOK
@@ -98567,6 +99491,22 @@ func NewPublicUserUsersGetByUsernameOK(v PublicUser) UsersGetByUsernameOK {
 	var s UsersGetByUsernameOK
 	s.SetPublicUser(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type UsersGetByUsernameOK.
+func (s UsersGetByUsernameOK) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PrivateUserUsersGetByUsernameOK:
+		s.PrivateUser.encodeFields(e)
+		return nil
+	case PublicUserUsersGetByUsernameOK:
+		s.PublicUser.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 func (*UsersGetByUsernameOK) usersGetByUsernameRes() {}
@@ -99568,6 +100508,28 @@ func NewNullValidationErrorErrorsItemValue(v struct{}) ValidationErrorErrorsItem
 	return s
 }
 
+// encodeFields encodes the fields of sum type ValidationErrorErrorsItemValue.
+func (s ValidationErrorErrorsItemValue) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullValidationErrorErrorsItemValue:
+		s.Null.encodeFields(e)
+		return nil
+	case StringValidationErrorErrorsItemValue:
+		s.String.encodeFields(e)
+		return nil
+	case IntValidationErrorErrorsItemValue:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayValidationErrorErrorsItemValue:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets ValidationErrorErrorsItemValue to string.
 func (s *ValidationErrorErrorsItemValue) SetString(v string) {
 	s.Type = StringValidationErrorErrorsItemValue
@@ -99587,6 +100549,28 @@ func NewStringValidationErrorErrorsItemValue(v string) ValidationErrorErrorsItem
 	var s ValidationErrorErrorsItemValue
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ValidationErrorErrorsItemValue.
+func (s ValidationErrorErrorsItemValue) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullValidationErrorErrorsItemValue:
+		s.Null.encodeFields(e)
+		return nil
+	case StringValidationErrorErrorsItemValue:
+		s.String.encodeFields(e)
+		return nil
+	case IntValidationErrorErrorsItemValue:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayValidationErrorErrorsItemValue:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInt sets ValidationErrorErrorsItemValue to int.
@@ -99610,6 +100594,28 @@ func NewIntValidationErrorErrorsItemValue(v int) ValidationErrorErrorsItemValue 
 	return s
 }
 
+// encodeFields encodes the fields of sum type ValidationErrorErrorsItemValue.
+func (s ValidationErrorErrorsItemValue) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullValidationErrorErrorsItemValue:
+		s.Null.encodeFields(e)
+		return nil
+	case StringValidationErrorErrorsItemValue:
+		s.String.encodeFields(e)
+		return nil
+	case IntValidationErrorErrorsItemValue:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayValidationErrorErrorsItemValue:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetStringArray sets ValidationErrorErrorsItemValue to []string.
 func (s *ValidationErrorErrorsItemValue) SetStringArray(v []string) {
 	s.Type = StringArrayValidationErrorErrorsItemValue
@@ -99629,6 +100635,28 @@ func NewStringArrayValidationErrorErrorsItemValue(v []string) ValidationErrorErr
 	var s ValidationErrorErrorsItemValue
 	s.SetStringArray(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ValidationErrorErrorsItemValue.
+func (s ValidationErrorErrorsItemValue) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case NullValidationErrorErrorsItemValue:
+		s.Null.encodeFields(e)
+		return nil
+	case StringValidationErrorErrorsItemValue:
+		s.String.encodeFields(e)
+		return nil
+	case IntValidationErrorErrorsItemValue:
+		s.Int.encodeFields(e)
+		return nil
+	case StringArrayValidationErrorErrorsItemValue:
+		s.StringArray.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Validation Error Simple.
@@ -99871,6 +100899,22 @@ func NewStringWebhookConfigInsecureSsl(v string) WebhookConfigInsecureSsl {
 	return s
 }
 
+// encodeFields encodes the fields of sum type WebhookConfigInsecureSsl.
+func (s WebhookConfigInsecureSsl) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringWebhookConfigInsecureSsl:
+		s.String.encodeFields(e)
+		return nil
+	case Float64WebhookConfigInsecureSsl:
+		s.Float64.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetFloat64 sets WebhookConfigInsecureSsl to float64.
 func (s *WebhookConfigInsecureSsl) SetFloat64(v float64) {
 	s.Type = Float64WebhookConfigInsecureSsl
@@ -99890,6 +100934,22 @@ func NewFloat64WebhookConfigInsecureSsl(v float64) WebhookConfigInsecureSsl {
 	var s WebhookConfigInsecureSsl
 	s.SetFloat64(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type WebhookConfigInsecureSsl.
+func (s WebhookConfigInsecureSsl) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringWebhookConfigInsecureSsl:
+		s.String.encodeFields(e)
+		return nil
+	case Float64WebhookConfigInsecureSsl:
+		s.Float64.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type WebhookConfigSecret string

@@ -7,6 +7,7 @@ import (
 	"net/url"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
 func (s *ErrorStatusCode) Error() string {
@@ -817,6 +818,37 @@ func NewBotCommandScopeDefaultBotCommandScope(v BotCommandScopeDefault) BotComma
 	return s
 }
 
+// encodeFields encodes the fields of sum type BotCommandScope.
+func (s BotCommandScope) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.encodeFields(e)
+		return nil
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.encodeFields(e)
+		return nil
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetBotCommandScopeAllPrivateChats sets BotCommandScope to BotCommandScopeAllPrivateChats.
 func (s *BotCommandScope) SetBotCommandScopeAllPrivateChats(v BotCommandScopeAllPrivateChats) {
 	s.Type = BotCommandScopeAllPrivateChatsBotCommandScope
@@ -836,6 +868,37 @@ func NewBotCommandScopeAllPrivateChatsBotCommandScope(v BotCommandScopeAllPrivat
 	var s BotCommandScope
 	s.SetBotCommandScopeAllPrivateChats(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type BotCommandScope.
+func (s BotCommandScope) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.encodeFields(e)
+		return nil
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.encodeFields(e)
+		return nil
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetBotCommandScopeAllGroupChats sets BotCommandScope to BotCommandScopeAllGroupChats.
@@ -859,6 +922,37 @@ func NewBotCommandScopeAllGroupChatsBotCommandScope(v BotCommandScopeAllGroupCha
 	return s
 }
 
+// encodeFields encodes the fields of sum type BotCommandScope.
+func (s BotCommandScope) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.encodeFields(e)
+		return nil
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.encodeFields(e)
+		return nil
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetBotCommandScopeAllChatAdministrators sets BotCommandScope to BotCommandScopeAllChatAdministrators.
 func (s *BotCommandScope) SetBotCommandScopeAllChatAdministrators(v BotCommandScopeAllChatAdministrators) {
 	s.Type = BotCommandScopeAllChatAdministratorsBotCommandScope
@@ -878,6 +972,37 @@ func NewBotCommandScopeAllChatAdministratorsBotCommandScope(v BotCommandScopeAll
 	var s BotCommandScope
 	s.SetBotCommandScopeAllChatAdministrators(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type BotCommandScope.
+func (s BotCommandScope) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.encodeFields(e)
+		return nil
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.encodeFields(e)
+		return nil
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetBotCommandScopeChat sets BotCommandScope to BotCommandScopeChat.
@@ -901,6 +1026,37 @@ func NewBotCommandScopeChatBotCommandScope(v BotCommandScopeChat) BotCommandScop
 	return s
 }
 
+// encodeFields encodes the fields of sum type BotCommandScope.
+func (s BotCommandScope) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.encodeFields(e)
+		return nil
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.encodeFields(e)
+		return nil
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetBotCommandScopeChatAdministrators sets BotCommandScope to BotCommandScopeChatAdministrators.
 func (s *BotCommandScope) SetBotCommandScopeChatAdministrators(v BotCommandScopeChatAdministrators) {
 	s.Type = BotCommandScopeChatAdministratorsBotCommandScope
@@ -922,6 +1078,37 @@ func NewBotCommandScopeChatAdministratorsBotCommandScope(v BotCommandScopeChatAd
 	return s
 }
 
+// encodeFields encodes the fields of sum type BotCommandScope.
+func (s BotCommandScope) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.encodeFields(e)
+		return nil
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.encodeFields(e)
+		return nil
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetBotCommandScopeChatMember sets BotCommandScope to BotCommandScopeChatMember.
 func (s *BotCommandScope) SetBotCommandScopeChatMember(v BotCommandScopeChatMember) {
 	s.Type = BotCommandScopeChatMemberBotCommandScope
@@ -941,6 +1128,37 @@ func NewBotCommandScopeChatMemberBotCommandScope(v BotCommandScopeChatMember) Bo
 	var s BotCommandScope
 	s.SetBotCommandScopeChatMember(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type BotCommandScope.
+func (s BotCommandScope) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case BotCommandScopeDefaultBotCommandScope:
+		s.BotCommandScopeDefault.encodeFields(e)
+		return nil
+	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		return nil
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatBotCommandScope:
+		s.BotCommandScopeChat.encodeFields(e)
+		return nil
+	case BotCommandScopeChatAdministratorsBotCommandScope:
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		return nil
+	case BotCommandScopeChatMemberBotCommandScope:
+		s.BotCommandScopeChatMember.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Represents the scope of bot commands, covering all group and supergroup chat administrators.
@@ -1729,6 +1947,34 @@ func NewChatMemberOwnerChatMember(v ChatMemberOwner) ChatMember {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ChatMember.
+func (s ChatMember) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ChatMemberOwnerChatMember:
+		s.ChatMemberOwner.encodeFields(e)
+		return nil
+	case ChatMemberAdministratorChatMember:
+		s.ChatMemberAdministrator.encodeFields(e)
+		return nil
+	case ChatMemberMemberChatMember:
+		s.ChatMemberMember.encodeFields(e)
+		return nil
+	case ChatMemberRestrictedChatMember:
+		s.ChatMemberRestricted.encodeFields(e)
+		return nil
+	case ChatMemberLeftChatMember:
+		s.ChatMemberLeft.encodeFields(e)
+		return nil
+	case ChatMemberBannedChatMember:
+		s.ChatMemberBanned.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetChatMemberAdministrator sets ChatMember to ChatMemberAdministrator.
 func (s *ChatMember) SetChatMemberAdministrator(v ChatMemberAdministrator) {
 	s.Type = ChatMemberAdministratorChatMember
@@ -1748,6 +1994,34 @@ func NewChatMemberAdministratorChatMember(v ChatMemberAdministrator) ChatMember 
 	var s ChatMember
 	s.SetChatMemberAdministrator(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ChatMember.
+func (s ChatMember) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ChatMemberOwnerChatMember:
+		s.ChatMemberOwner.encodeFields(e)
+		return nil
+	case ChatMemberAdministratorChatMember:
+		s.ChatMemberAdministrator.encodeFields(e)
+		return nil
+	case ChatMemberMemberChatMember:
+		s.ChatMemberMember.encodeFields(e)
+		return nil
+	case ChatMemberRestrictedChatMember:
+		s.ChatMemberRestricted.encodeFields(e)
+		return nil
+	case ChatMemberLeftChatMember:
+		s.ChatMemberLeft.encodeFields(e)
+		return nil
+	case ChatMemberBannedChatMember:
+		s.ChatMemberBanned.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetChatMemberMember sets ChatMember to ChatMemberMember.
@@ -1771,6 +2045,34 @@ func NewChatMemberMemberChatMember(v ChatMemberMember) ChatMember {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ChatMember.
+func (s ChatMember) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ChatMemberOwnerChatMember:
+		s.ChatMemberOwner.encodeFields(e)
+		return nil
+	case ChatMemberAdministratorChatMember:
+		s.ChatMemberAdministrator.encodeFields(e)
+		return nil
+	case ChatMemberMemberChatMember:
+		s.ChatMemberMember.encodeFields(e)
+		return nil
+	case ChatMemberRestrictedChatMember:
+		s.ChatMemberRestricted.encodeFields(e)
+		return nil
+	case ChatMemberLeftChatMember:
+		s.ChatMemberLeft.encodeFields(e)
+		return nil
+	case ChatMemberBannedChatMember:
+		s.ChatMemberBanned.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetChatMemberRestricted sets ChatMember to ChatMemberRestricted.
 func (s *ChatMember) SetChatMemberRestricted(v ChatMemberRestricted) {
 	s.Type = ChatMemberRestrictedChatMember
@@ -1790,6 +2092,34 @@ func NewChatMemberRestrictedChatMember(v ChatMemberRestricted) ChatMember {
 	var s ChatMember
 	s.SetChatMemberRestricted(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ChatMember.
+func (s ChatMember) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ChatMemberOwnerChatMember:
+		s.ChatMemberOwner.encodeFields(e)
+		return nil
+	case ChatMemberAdministratorChatMember:
+		s.ChatMemberAdministrator.encodeFields(e)
+		return nil
+	case ChatMemberMemberChatMember:
+		s.ChatMemberMember.encodeFields(e)
+		return nil
+	case ChatMemberRestrictedChatMember:
+		s.ChatMemberRestricted.encodeFields(e)
+		return nil
+	case ChatMemberLeftChatMember:
+		s.ChatMemberLeft.encodeFields(e)
+		return nil
+	case ChatMemberBannedChatMember:
+		s.ChatMemberBanned.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetChatMemberLeft sets ChatMember to ChatMemberLeft.
@@ -1813,6 +2143,34 @@ func NewChatMemberLeftChatMember(v ChatMemberLeft) ChatMember {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ChatMember.
+func (s ChatMember) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ChatMemberOwnerChatMember:
+		s.ChatMemberOwner.encodeFields(e)
+		return nil
+	case ChatMemberAdministratorChatMember:
+		s.ChatMemberAdministrator.encodeFields(e)
+		return nil
+	case ChatMemberMemberChatMember:
+		s.ChatMemberMember.encodeFields(e)
+		return nil
+	case ChatMemberRestrictedChatMember:
+		s.ChatMemberRestricted.encodeFields(e)
+		return nil
+	case ChatMemberLeftChatMember:
+		s.ChatMemberLeft.encodeFields(e)
+		return nil
+	case ChatMemberBannedChatMember:
+		s.ChatMemberBanned.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetChatMemberBanned sets ChatMember to ChatMemberBanned.
 func (s *ChatMember) SetChatMemberBanned(v ChatMemberBanned) {
 	s.Type = ChatMemberBannedChatMember
@@ -1832,6 +2190,34 @@ func NewChatMemberBannedChatMember(v ChatMemberBanned) ChatMember {
 	var s ChatMember
 	s.SetChatMemberBanned(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ChatMember.
+func (s ChatMember) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ChatMemberOwnerChatMember:
+		s.ChatMemberOwner.encodeFields(e)
+		return nil
+	case ChatMemberAdministratorChatMember:
+		s.ChatMemberAdministrator.encodeFields(e)
+		return nil
+	case ChatMemberMemberChatMember:
+		s.ChatMemberMember.encodeFields(e)
+		return nil
+	case ChatMemberRestrictedChatMember:
+		s.ChatMemberRestricted.encodeFields(e)
+		return nil
+	case ChatMemberLeftChatMember:
+		s.ChatMemberLeft.encodeFields(e)
+		return nil
+	case ChatMemberBannedChatMember:
+		s.ChatMemberBanned.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Represents a chat member that has some additional privileges.
@@ -2932,6 +3318,28 @@ func NewInlineKeyboardMarkupCopyMessageReplyMarkup(v InlineKeyboardMarkup) CopyM
 	return s
 }
 
+// encodeFields encodes the fields of sum type CopyMessageReplyMarkup.
+func (s CopyMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupCopyMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupCopyMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveCopyMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplyCopyMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets CopyMessageReplyMarkup to ReplyKeyboardMarkup.
 func (s *CopyMessageReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
@@ -2951,6 +3359,28 @@ func NewReplyKeyboardMarkupCopyMessageReplyMarkup(v ReplyKeyboardMarkup) CopyMes
 	var s CopyMessageReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CopyMessageReplyMarkup.
+func (s CopyMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupCopyMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupCopyMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveCopyMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplyCopyMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets CopyMessageReplyMarkup to ReplyKeyboardRemove.
@@ -2974,6 +3404,28 @@ func NewReplyKeyboardRemoveCopyMessageReplyMarkup(v ReplyKeyboardRemove) CopyMes
 	return s
 }
 
+// encodeFields encodes the fields of sum type CopyMessageReplyMarkup.
+func (s CopyMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupCopyMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupCopyMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveCopyMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplyCopyMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets CopyMessageReplyMarkup to ForceReply.
 func (s *CopyMessageReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplyCopyMessageReplyMarkup
@@ -2993,6 +3445,28 @@ func NewForceReplyCopyMessageReplyMarkup(v ForceReply) CopyMessageReplyMarkup {
 	var s CopyMessageReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CopyMessageReplyMarkup.
+func (s CopyMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupCopyMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupCopyMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveCopyMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplyCopyMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for createChatInviteLink.
@@ -4921,6 +5395,22 @@ func NewStringID(v string) ID {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ID.
+func (s ID) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringID:
+		s.String.encodeFields(e)
+		return nil
+	case Int64ID:
+		s.Int64.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInt64 sets ID to int64.
 func (s *ID) SetInt64(v int64) {
 	s.Type = Int64ID
@@ -4940,6 +5430,22 @@ func NewInt64ID(v int64) ID {
 	var s ID
 	s.SetInt64(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ID.
+func (s ID) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringID:
+		s.String.encodeFields(e)
+		return nil
+	case Int64ID:
+		s.Int64.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // This object represents one button of an inline keyboard. You must use exactly one of the optional
@@ -5390,6 +5896,76 @@ func NewInlineQueryResultCachedAudioInlineQueryResult(v InlineQueryResultCachedA
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultCachedDocument sets InlineQueryResult to InlineQueryResultCachedDocument.
 func (s *InlineQueryResult) SetInlineQueryResultCachedDocument(v InlineQueryResultCachedDocument) {
 	s.Type = InlineQueryResultCachedDocumentInlineQueryResult
@@ -5409,6 +5985,76 @@ func NewInlineQueryResultCachedDocumentInlineQueryResult(v InlineQueryResultCach
 	var s InlineQueryResult
 	s.SetInlineQueryResultCachedDocument(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultCachedGif sets InlineQueryResult to InlineQueryResultCachedGif.
@@ -5432,6 +6078,76 @@ func NewInlineQueryResultCachedGifInlineQueryResult(v InlineQueryResultCachedGif
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultCachedMpeg4Gif sets InlineQueryResult to InlineQueryResultCachedMpeg4Gif.
 func (s *InlineQueryResult) SetInlineQueryResultCachedMpeg4Gif(v InlineQueryResultCachedMpeg4Gif) {
 	s.Type = InlineQueryResultCachedMpeg4GifInlineQueryResult
@@ -5451,6 +6167,76 @@ func NewInlineQueryResultCachedMpeg4GifInlineQueryResult(v InlineQueryResultCach
 	var s InlineQueryResult
 	s.SetInlineQueryResultCachedMpeg4Gif(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultCachedPhoto sets InlineQueryResult to InlineQueryResultCachedPhoto.
@@ -5474,6 +6260,76 @@ func NewInlineQueryResultCachedPhotoInlineQueryResult(v InlineQueryResultCachedP
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultCachedSticker sets InlineQueryResult to InlineQueryResultCachedSticker.
 func (s *InlineQueryResult) SetInlineQueryResultCachedSticker(v InlineQueryResultCachedSticker) {
 	s.Type = InlineQueryResultCachedStickerInlineQueryResult
@@ -5493,6 +6349,76 @@ func NewInlineQueryResultCachedStickerInlineQueryResult(v InlineQueryResultCache
 	var s InlineQueryResult
 	s.SetInlineQueryResultCachedSticker(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultCachedVideo sets InlineQueryResult to InlineQueryResultCachedVideo.
@@ -5516,6 +6442,76 @@ func NewInlineQueryResultCachedVideoInlineQueryResult(v InlineQueryResultCachedV
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultCachedVoice sets InlineQueryResult to InlineQueryResultCachedVoice.
 func (s *InlineQueryResult) SetInlineQueryResultCachedVoice(v InlineQueryResultCachedVoice) {
 	s.Type = InlineQueryResultCachedVoiceInlineQueryResult
@@ -5535,6 +6531,76 @@ func NewInlineQueryResultCachedVoiceInlineQueryResult(v InlineQueryResultCachedV
 	var s InlineQueryResult
 	s.SetInlineQueryResultCachedVoice(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultArticle sets InlineQueryResult to InlineQueryResultArticle.
@@ -5558,6 +6624,76 @@ func NewInlineQueryResultArticleInlineQueryResult(v InlineQueryResultArticle) In
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultAudio sets InlineQueryResult to InlineQueryResultAudio.
 func (s *InlineQueryResult) SetInlineQueryResultAudio(v InlineQueryResultAudio) {
 	s.Type = InlineQueryResultAudioInlineQueryResult
@@ -5577,6 +6713,76 @@ func NewInlineQueryResultAudioInlineQueryResult(v InlineQueryResultAudio) Inline
 	var s InlineQueryResult
 	s.SetInlineQueryResultAudio(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultContact sets InlineQueryResult to InlineQueryResultContact.
@@ -5600,6 +6806,76 @@ func NewInlineQueryResultContactInlineQueryResult(v InlineQueryResultContact) In
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultGame sets InlineQueryResult to InlineQueryResultGame.
 func (s *InlineQueryResult) SetInlineQueryResultGame(v InlineQueryResultGame) {
 	s.Type = InlineQueryResultGameInlineQueryResult
@@ -5619,6 +6895,76 @@ func NewInlineQueryResultGameInlineQueryResult(v InlineQueryResultGame) InlineQu
 	var s InlineQueryResult
 	s.SetInlineQueryResultGame(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultDocument sets InlineQueryResult to InlineQueryResultDocument.
@@ -5642,6 +6988,76 @@ func NewInlineQueryResultDocumentInlineQueryResult(v InlineQueryResultDocument) 
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultGif sets InlineQueryResult to InlineQueryResultGif.
 func (s *InlineQueryResult) SetInlineQueryResultGif(v InlineQueryResultGif) {
 	s.Type = InlineQueryResultGifInlineQueryResult
@@ -5661,6 +7077,76 @@ func NewInlineQueryResultGifInlineQueryResult(v InlineQueryResultGif) InlineQuer
 	var s InlineQueryResult
 	s.SetInlineQueryResultGif(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultLocation sets InlineQueryResult to InlineQueryResultLocation.
@@ -5684,6 +7170,76 @@ func NewInlineQueryResultLocationInlineQueryResult(v InlineQueryResultLocation) 
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultMpeg4Gif sets InlineQueryResult to InlineQueryResultMpeg4Gif.
 func (s *InlineQueryResult) SetInlineQueryResultMpeg4Gif(v InlineQueryResultMpeg4Gif) {
 	s.Type = InlineQueryResultMpeg4GifInlineQueryResult
@@ -5703,6 +7259,76 @@ func NewInlineQueryResultMpeg4GifInlineQueryResult(v InlineQueryResultMpeg4Gif) 
 	var s InlineQueryResult
 	s.SetInlineQueryResultMpeg4Gif(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultPhoto sets InlineQueryResult to InlineQueryResultPhoto.
@@ -5726,6 +7352,76 @@ func NewInlineQueryResultPhotoInlineQueryResult(v InlineQueryResultPhoto) Inline
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultVenue sets InlineQueryResult to InlineQueryResultVenue.
 func (s *InlineQueryResult) SetInlineQueryResultVenue(v InlineQueryResultVenue) {
 	s.Type = InlineQueryResultVenueInlineQueryResult
@@ -5745,6 +7441,76 @@ func NewInlineQueryResultVenueInlineQueryResult(v InlineQueryResultVenue) Inline
 	var s InlineQueryResult
 	s.SetInlineQueryResultVenue(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInlineQueryResultVideo sets InlineQueryResult to InlineQueryResultVideo.
@@ -5768,6 +7534,76 @@ func NewInlineQueryResultVideoInlineQueryResult(v InlineQueryResultVideo) Inline
 	return s
 }
 
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInlineQueryResultVoice sets InlineQueryResult to InlineQueryResultVoice.
 func (s *InlineQueryResult) SetInlineQueryResultVoice(v InlineQueryResultVoice) {
 	s.Type = InlineQueryResultVoiceInlineQueryResult
@@ -5787,6 +7623,76 @@ func NewInlineQueryResultVoiceInlineQueryResult(v InlineQueryResultVoice) Inline
 	var s InlineQueryResult
 	s.SetInlineQueryResultVoice(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InlineQueryResult.
+func (s InlineQueryResult) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		s.InlineQueryResultCachedAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		s.InlineQueryResultCachedDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedGifInlineQueryResult:
+		s.InlineQueryResultCachedGif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		s.InlineQueryResultCachedMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		s.InlineQueryResultCachedPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		s.InlineQueryResultCachedVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		s.InlineQueryResultCachedVoice.encodeFields(e)
+		return nil
+	case InlineQueryResultArticleInlineQueryResult:
+		s.InlineQueryResultArticle.encodeFields(e)
+		return nil
+	case InlineQueryResultAudioInlineQueryResult:
+		s.InlineQueryResultAudio.encodeFields(e)
+		return nil
+	case InlineQueryResultContactInlineQueryResult:
+		s.InlineQueryResultContact.encodeFields(e)
+		return nil
+	case InlineQueryResultGameInlineQueryResult:
+		s.InlineQueryResultGame.encodeFields(e)
+		return nil
+	case InlineQueryResultDocumentInlineQueryResult:
+		s.InlineQueryResultDocument.encodeFields(e)
+		return nil
+	case InlineQueryResultGifInlineQueryResult:
+		s.InlineQueryResultGif.encodeFields(e)
+		return nil
+	case InlineQueryResultLocationInlineQueryResult:
+		s.InlineQueryResultLocation.encodeFields(e)
+		return nil
+	case InlineQueryResultMpeg4GifInlineQueryResult:
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		return nil
+	case InlineQueryResultPhotoInlineQueryResult:
+		s.InlineQueryResultPhoto.encodeFields(e)
+		return nil
+	case InlineQueryResultVenueInlineQueryResult:
+		s.InlineQueryResultVenue.encodeFields(e)
+		return nil
+	case InlineQueryResultVideoInlineQueryResult:
+		s.InlineQueryResultVideo.encodeFields(e)
+		return nil
+	case InlineQueryResultVoiceInlineQueryResult:
+		s.InlineQueryResultVoice.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Represents a link to an article or web page.
@@ -8929,6 +10835,31 @@ func NewInputMediaAnimationInputMedia(v InputMediaAnimation) InputMedia {
 	return s
 }
 
+// encodeFields encodes the fields of sum type InputMedia.
+func (s InputMedia) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAnimationInputMedia:
+		s.InputMediaAnimation.encodeFields(e)
+		return nil
+	case InputMediaDocumentInputMedia:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaAudioInputMedia:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaPhotoInputMedia:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoInputMedia:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputMediaDocument sets InputMedia to InputMediaDocument.
 func (s *InputMedia) SetInputMediaDocument(v InputMediaDocument) {
 	s.Type = InputMediaDocumentInputMedia
@@ -8948,6 +10879,31 @@ func NewInputMediaDocumentInputMedia(v InputMediaDocument) InputMedia {
 	var s InputMedia
 	s.SetInputMediaDocument(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InputMedia.
+func (s InputMedia) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAnimationInputMedia:
+		s.InputMediaAnimation.encodeFields(e)
+		return nil
+	case InputMediaDocumentInputMedia:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaAudioInputMedia:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaPhotoInputMedia:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoInputMedia:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInputMediaAudio sets InputMedia to InputMediaAudio.
@@ -8971,6 +10927,31 @@ func NewInputMediaAudioInputMedia(v InputMediaAudio) InputMedia {
 	return s
 }
 
+// encodeFields encodes the fields of sum type InputMedia.
+func (s InputMedia) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAnimationInputMedia:
+		s.InputMediaAnimation.encodeFields(e)
+		return nil
+	case InputMediaDocumentInputMedia:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaAudioInputMedia:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaPhotoInputMedia:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoInputMedia:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputMediaPhoto sets InputMedia to InputMediaPhoto.
 func (s *InputMedia) SetInputMediaPhoto(v InputMediaPhoto) {
 	s.Type = InputMediaPhotoInputMedia
@@ -8992,6 +10973,31 @@ func NewInputMediaPhotoInputMedia(v InputMediaPhoto) InputMedia {
 	return s
 }
 
+// encodeFields encodes the fields of sum type InputMedia.
+func (s InputMedia) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAnimationInputMedia:
+		s.InputMediaAnimation.encodeFields(e)
+		return nil
+	case InputMediaDocumentInputMedia:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaAudioInputMedia:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaPhotoInputMedia:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoInputMedia:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputMediaVideo sets InputMedia to InputMediaVideo.
 func (s *InputMedia) SetInputMediaVideo(v InputMediaVideo) {
 	s.Type = InputMediaVideoInputMedia
@@ -9011,6 +11017,31 @@ func NewInputMediaVideoInputMedia(v InputMediaVideo) InputMedia {
 	var s InputMedia
 	s.SetInputMediaVideo(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InputMedia.
+func (s InputMedia) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAnimationInputMedia:
+		s.InputMediaAnimation.encodeFields(e)
+		return nil
+	case InputMediaDocumentInputMedia:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaAudioInputMedia:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaPhotoInputMedia:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoInputMedia:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
@@ -9625,6 +11656,31 @@ func NewInputTextMessageContentInputMessageContent(v InputTextMessageContent) In
 	return s
 }
 
+// encodeFields encodes the fields of sum type InputMessageContent.
+func (s InputMessageContent) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputTextMessageContentInputMessageContent:
+		s.InputTextMessageContent.encodeFields(e)
+		return nil
+	case InputLocationMessageContentInputMessageContent:
+		s.InputLocationMessageContent.encodeFields(e)
+		return nil
+	case InputVenueMessageContentInputMessageContent:
+		s.InputVenueMessageContent.encodeFields(e)
+		return nil
+	case InputContactMessageContentInputMessageContent:
+		s.InputContactMessageContent.encodeFields(e)
+		return nil
+	case InputInvoiceMessageContentInputMessageContent:
+		s.InputInvoiceMessageContent.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputLocationMessageContent sets InputMessageContent to InputLocationMessageContent.
 func (s *InputMessageContent) SetInputLocationMessageContent(v InputLocationMessageContent) {
 	s.Type = InputLocationMessageContentInputMessageContent
@@ -9644,6 +11700,31 @@ func NewInputLocationMessageContentInputMessageContent(v InputLocationMessageCon
 	var s InputMessageContent
 	s.SetInputLocationMessageContent(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InputMessageContent.
+func (s InputMessageContent) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputTextMessageContentInputMessageContent:
+		s.InputTextMessageContent.encodeFields(e)
+		return nil
+	case InputLocationMessageContentInputMessageContent:
+		s.InputLocationMessageContent.encodeFields(e)
+		return nil
+	case InputVenueMessageContentInputMessageContent:
+		s.InputVenueMessageContent.encodeFields(e)
+		return nil
+	case InputContactMessageContentInputMessageContent:
+		s.InputContactMessageContent.encodeFields(e)
+		return nil
+	case InputInvoiceMessageContentInputMessageContent:
+		s.InputInvoiceMessageContent.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInputVenueMessageContent sets InputMessageContent to InputVenueMessageContent.
@@ -9667,6 +11748,31 @@ func NewInputVenueMessageContentInputMessageContent(v InputVenueMessageContent) 
 	return s
 }
 
+// encodeFields encodes the fields of sum type InputMessageContent.
+func (s InputMessageContent) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputTextMessageContentInputMessageContent:
+		s.InputTextMessageContent.encodeFields(e)
+		return nil
+	case InputLocationMessageContentInputMessageContent:
+		s.InputLocationMessageContent.encodeFields(e)
+		return nil
+	case InputVenueMessageContentInputMessageContent:
+		s.InputVenueMessageContent.encodeFields(e)
+		return nil
+	case InputContactMessageContentInputMessageContent:
+		s.InputContactMessageContent.encodeFields(e)
+		return nil
+	case InputInvoiceMessageContentInputMessageContent:
+		s.InputInvoiceMessageContent.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputContactMessageContent sets InputMessageContent to InputContactMessageContent.
 func (s *InputMessageContent) SetInputContactMessageContent(v InputContactMessageContent) {
 	s.Type = InputContactMessageContentInputMessageContent
@@ -9688,6 +11794,31 @@ func NewInputContactMessageContentInputMessageContent(v InputContactMessageConte
 	return s
 }
 
+// encodeFields encodes the fields of sum type InputMessageContent.
+func (s InputMessageContent) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputTextMessageContentInputMessageContent:
+		s.InputTextMessageContent.encodeFields(e)
+		return nil
+	case InputLocationMessageContentInputMessageContent:
+		s.InputLocationMessageContent.encodeFields(e)
+		return nil
+	case InputVenueMessageContentInputMessageContent:
+		s.InputVenueMessageContent.encodeFields(e)
+		return nil
+	case InputContactMessageContentInputMessageContent:
+		s.InputContactMessageContent.encodeFields(e)
+		return nil
+	case InputInvoiceMessageContentInputMessageContent:
+		s.InputInvoiceMessageContent.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputInvoiceMessageContent sets InputMessageContent to InputInvoiceMessageContent.
 func (s *InputMessageContent) SetInputInvoiceMessageContent(v InputInvoiceMessageContent) {
 	s.Type = InputInvoiceMessageContentInputMessageContent
@@ -9707,6 +11838,31 @@ func NewInputInvoiceMessageContentInputMessageContent(v InputInvoiceMessageConte
 	var s InputMessageContent
 	s.SetInputInvoiceMessageContent(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type InputMessageContent.
+func (s InputMessageContent) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputTextMessageContentInputMessageContent:
+		s.InputTextMessageContent.encodeFields(e)
+		return nil
+	case InputLocationMessageContentInputMessageContent:
+		s.InputLocationMessageContent.encodeFields(e)
+		return nil
+	case InputVenueMessageContentInputMessageContent:
+		s.InputVenueMessageContent.encodeFields(e)
+		return nil
+	case InputContactMessageContentInputMessageContent:
+		s.InputContactMessageContent.encodeFields(e)
+		return nil
+	case InputInvoiceMessageContentInputMessageContent:
+		s.InputInvoiceMessageContent.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Represents the content of a text message to be sent as the result of an inline query.
@@ -9980,6 +12136,22 @@ func NewStringKeyboardButton(v string) KeyboardButton {
 	return s
 }
 
+// encodeFields encodes the fields of sum type KeyboardButton.
+func (s KeyboardButton) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringKeyboardButton:
+		s.String.encodeFields(e)
+		return nil
+	case KeyboardButtonObjectKeyboardButton:
+		s.KeyboardButtonObject.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetKeyboardButtonObject sets KeyboardButton to KeyboardButtonObject.
 func (s *KeyboardButton) SetKeyboardButtonObject(v KeyboardButtonObject) {
 	s.Type = KeyboardButtonObjectKeyboardButton
@@ -9999,6 +12171,22 @@ func NewKeyboardButtonObjectKeyboardButton(v KeyboardButtonObject) KeyboardButto
 	var s KeyboardButton
 	s.SetKeyboardButtonObject(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type KeyboardButton.
+func (s KeyboardButton) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case StringKeyboardButton:
+		s.String.encodeFields(e)
+		return nil
+	case KeyboardButtonObjectKeyboardButton:
+		s.KeyboardButtonObject.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // This object represents one button of the reply keyboard. For simple text buttons String can be
@@ -15074,6 +17262,43 @@ func NewPassportElementErrorDataFieldPassportElementError(v PassportElementError
 	return s
 }
 
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPassportElementErrorFrontSide sets PassportElementError to PassportElementErrorFrontSide.
 func (s *PassportElementError) SetPassportElementErrorFrontSide(v PassportElementErrorFrontSide) {
 	s.Type = PassportElementErrorFrontSidePassportElementError
@@ -15093,6 +17318,43 @@ func NewPassportElementErrorFrontSidePassportElementError(v PassportElementError
 	var s PassportElementError
 	s.SetPassportElementErrorFrontSide(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetPassportElementErrorReverseSide sets PassportElementError to PassportElementErrorReverseSide.
@@ -15116,6 +17378,43 @@ func NewPassportElementErrorReverseSidePassportElementError(v PassportElementErr
 	return s
 }
 
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPassportElementErrorSelfie sets PassportElementError to PassportElementErrorSelfie.
 func (s *PassportElementError) SetPassportElementErrorSelfie(v PassportElementErrorSelfie) {
 	s.Type = PassportElementErrorSelfiePassportElementError
@@ -15135,6 +17434,43 @@ func NewPassportElementErrorSelfiePassportElementError(v PassportElementErrorSel
 	var s PassportElementError
 	s.SetPassportElementErrorSelfie(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetPassportElementErrorFile sets PassportElementError to PassportElementErrorFile.
@@ -15158,6 +17494,43 @@ func NewPassportElementErrorFilePassportElementError(v PassportElementErrorFile)
 	return s
 }
 
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPassportElementErrorFiles sets PassportElementError to PassportElementErrorFiles.
 func (s *PassportElementError) SetPassportElementErrorFiles(v PassportElementErrorFiles) {
 	s.Type = PassportElementErrorFilesPassportElementError
@@ -15177,6 +17550,43 @@ func NewPassportElementErrorFilesPassportElementError(v PassportElementErrorFile
 	var s PassportElementError
 	s.SetPassportElementErrorFiles(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetPassportElementErrorTranslationFile sets PassportElementError to PassportElementErrorTranslationFile.
@@ -15200,6 +17610,43 @@ func NewPassportElementErrorTranslationFilePassportElementError(v PassportElemen
 	return s
 }
 
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPassportElementErrorTranslationFiles sets PassportElementError to PassportElementErrorTranslationFiles.
 func (s *PassportElementError) SetPassportElementErrorTranslationFiles(v PassportElementErrorTranslationFiles) {
 	s.Type = PassportElementErrorTranslationFilesPassportElementError
@@ -15221,6 +17668,43 @@ func NewPassportElementErrorTranslationFilesPassportElementError(v PassportEleme
 	return s
 }
 
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPassportElementErrorUnspecified sets PassportElementError to PassportElementErrorUnspecified.
 func (s *PassportElementError) SetPassportElementErrorUnspecified(v PassportElementErrorUnspecified) {
 	s.Type = PassportElementErrorUnspecifiedPassportElementError
@@ -15240,6 +17724,43 @@ func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErr
 	var s PassportElementError
 	s.SetPassportElementErrorUnspecified(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type PassportElementError.
+func (s PassportElementError) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PassportElementErrorDataFieldPassportElementError:
+		s.PassportElementErrorDataField.encodeFields(e)
+		return nil
+	case PassportElementErrorFrontSidePassportElementError:
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		return nil
+	case PassportElementErrorReverseSidePassportElementError:
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		return nil
+	case PassportElementErrorSelfiePassportElementError:
+		s.PassportElementErrorSelfie.encodeFields(e)
+		return nil
+	case PassportElementErrorFilePassportElementError:
+		s.PassportElementErrorFile.encodeFields(e)
+		return nil
+	case PassportElementErrorFilesPassportElementError:
+		s.PassportElementErrorFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilePassportElementError:
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		return nil
+	case PassportElementErrorTranslationFilesPassportElementError:
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		return nil
+	case PassportElementErrorUnspecifiedPassportElementError:
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Represents an issue in one of the data fields that was provided by the user. The error is
@@ -17959,6 +20480,28 @@ func NewInlineKeyboardMarkupSendAnimationReplyMarkup(v InlineKeyboardMarkup) Sen
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendAnimationReplyMarkup.
+func (s SendAnimationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAnimationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAnimationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAnimationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAnimationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendAnimationReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendAnimationReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
@@ -17978,6 +20521,28 @@ func NewReplyKeyboardMarkupSendAnimationReplyMarkup(v ReplyKeyboardMarkup) SendA
 	var s SendAnimationReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendAnimationReplyMarkup.
+func (s SendAnimationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAnimationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAnimationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAnimationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAnimationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendAnimationReplyMarkup to ReplyKeyboardRemove.
@@ -18001,6 +20566,28 @@ func NewReplyKeyboardRemoveSendAnimationReplyMarkup(v ReplyKeyboardRemove) SendA
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendAnimationReplyMarkup.
+func (s SendAnimationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAnimationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAnimationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAnimationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAnimationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendAnimationReplyMarkup to ForceReply.
 func (s *SendAnimationReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendAnimationReplyMarkup
@@ -18020,6 +20607,28 @@ func NewForceReplySendAnimationReplyMarkup(v ForceReply) SendAnimationReplyMarku
 	var s SendAnimationReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendAnimationReplyMarkup.
+func (s SendAnimationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAnimationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAnimationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAnimationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAnimationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendAudio.
@@ -18252,6 +20861,28 @@ func NewInlineKeyboardMarkupSendAudioReplyMarkup(v InlineKeyboardMarkup) SendAud
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendAudioReplyMarkup.
+func (s SendAudioReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAudioReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAudioReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAudioReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAudioReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendAudioReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendAudioReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
@@ -18271,6 +20902,28 @@ func NewReplyKeyboardMarkupSendAudioReplyMarkup(v ReplyKeyboardMarkup) SendAudio
 	var s SendAudioReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendAudioReplyMarkup.
+func (s SendAudioReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAudioReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAudioReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAudioReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAudioReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendAudioReplyMarkup to ReplyKeyboardRemove.
@@ -18294,6 +20947,28 @@ func NewReplyKeyboardRemoveSendAudioReplyMarkup(v ReplyKeyboardRemove) SendAudio
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendAudioReplyMarkup.
+func (s SendAudioReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAudioReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAudioReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAudioReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAudioReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendAudioReplyMarkup to ForceReply.
 func (s *SendAudioReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendAudioReplyMarkup
@@ -18313,6 +20988,28 @@ func NewForceReplySendAudioReplyMarkup(v ForceReply) SendAudioReplyMarkup {
 	var s SendAudioReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendAudioReplyMarkup.
+func (s SendAudioReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendAudioReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendAudioReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendAudioReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendAudioReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendChatAction.
@@ -18522,6 +21219,28 @@ func NewInlineKeyboardMarkupSendContactReplyMarkup(v InlineKeyboardMarkup) SendC
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendContactReplyMarkup.
+func (s SendContactReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendContactReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendContactReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendContactReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendContactReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendContactReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendContactReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
@@ -18541,6 +21260,28 @@ func NewReplyKeyboardMarkupSendContactReplyMarkup(v ReplyKeyboardMarkup) SendCon
 	var s SendContactReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendContactReplyMarkup.
+func (s SendContactReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendContactReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendContactReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendContactReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendContactReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendContactReplyMarkup to ReplyKeyboardRemove.
@@ -18564,6 +21305,28 @@ func NewReplyKeyboardRemoveSendContactReplyMarkup(v ReplyKeyboardRemove) SendCon
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendContactReplyMarkup.
+func (s SendContactReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendContactReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendContactReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendContactReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendContactReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendContactReplyMarkup to ForceReply.
 func (s *SendContactReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendContactReplyMarkup
@@ -18583,6 +21346,28 @@ func NewForceReplySendContactReplyMarkup(v ForceReply) SendContactReplyMarkup {
 	var s SendContactReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendContactReplyMarkup.
+func (s SendContactReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendContactReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendContactReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendContactReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendContactReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendDice.
@@ -18725,6 +21510,28 @@ func NewInlineKeyboardMarkupSendDiceReplyMarkup(v InlineKeyboardMarkup) SendDice
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendDiceReplyMarkup.
+func (s SendDiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendDiceReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendDiceReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
@@ -18744,6 +21551,28 @@ func NewReplyKeyboardMarkupSendDiceReplyMarkup(v ReplyKeyboardMarkup) SendDiceRe
 	var s SendDiceReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendDiceReplyMarkup.
+func (s SendDiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendDiceReplyMarkup to ReplyKeyboardRemove.
@@ -18767,6 +21596,28 @@ func NewReplyKeyboardRemoveSendDiceReplyMarkup(v ReplyKeyboardRemove) SendDiceRe
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendDiceReplyMarkup.
+func (s SendDiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendDiceReplyMarkup to ForceReply.
 func (s *SendDiceReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendDiceReplyMarkup
@@ -18786,6 +21637,28 @@ func NewForceReplySendDiceReplyMarkup(v ForceReply) SendDiceReplyMarkup {
 	var s SendDiceReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendDiceReplyMarkup.
+func (s SendDiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendDocument.
@@ -18997,6 +21870,28 @@ func NewInlineKeyboardMarkupSendDocumentReplyMarkup(v InlineKeyboardMarkup) Send
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendDocumentReplyMarkup.
+func (s SendDocumentReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDocumentReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDocumentReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDocumentReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDocumentReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendDocumentReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendDocumentReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
@@ -19016,6 +21911,28 @@ func NewReplyKeyboardMarkupSendDocumentReplyMarkup(v ReplyKeyboardMarkup) SendDo
 	var s SendDocumentReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendDocumentReplyMarkup.
+func (s SendDocumentReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDocumentReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDocumentReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDocumentReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDocumentReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendDocumentReplyMarkup to ReplyKeyboardRemove.
@@ -19039,6 +21956,28 @@ func NewReplyKeyboardRemoveSendDocumentReplyMarkup(v ReplyKeyboardRemove) SendDo
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendDocumentReplyMarkup.
+func (s SendDocumentReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDocumentReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDocumentReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDocumentReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDocumentReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendDocumentReplyMarkup to ForceReply.
 func (s *SendDocumentReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendDocumentReplyMarkup
@@ -19058,6 +21997,28 @@ func NewForceReplySendDocumentReplyMarkup(v ForceReply) SendDocumentReplyMarkup 
 	var s SendDocumentReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendDocumentReplyMarkup.
+func (s SendDocumentReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendDocumentReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendDocumentReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendDocumentReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendDocumentReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendGame.
@@ -19667,6 +22628,28 @@ func NewInlineKeyboardMarkupSendLocationReplyMarkup(v InlineKeyboardMarkup) Send
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendLocationReplyMarkup.
+func (s SendLocationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendLocationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendLocationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendLocationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendLocationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendLocationReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendLocationReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
@@ -19686,6 +22669,28 @@ func NewReplyKeyboardMarkupSendLocationReplyMarkup(v ReplyKeyboardMarkup) SendLo
 	var s SendLocationReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendLocationReplyMarkup.
+func (s SendLocationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendLocationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendLocationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendLocationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendLocationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendLocationReplyMarkup to ReplyKeyboardRemove.
@@ -19709,6 +22714,28 @@ func NewReplyKeyboardRemoveSendLocationReplyMarkup(v ReplyKeyboardRemove) SendLo
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendLocationReplyMarkup.
+func (s SendLocationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendLocationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendLocationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendLocationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendLocationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendLocationReplyMarkup to ForceReply.
 func (s *SendLocationReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendLocationReplyMarkup
@@ -19728,6 +22755,28 @@ func NewForceReplySendLocationReplyMarkup(v ForceReply) SendLocationReplyMarkup 
 	var s SendLocationReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendLocationReplyMarkup.
+func (s SendLocationReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendLocationReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendLocationReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendLocationReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendLocationReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendMediaGroup.
@@ -19855,6 +22904,28 @@ func NewInputMediaAudioSendMediaGroupMediaItem(v InputMediaAudio) SendMediaGroup
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendMediaGroupMediaItem.
+func (s SendMediaGroupMediaItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAudioSendMediaGroupMediaItem:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaDocumentSendMediaGroupMediaItem:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaPhotoSendMediaGroupMediaItem:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoSendMediaGroupMediaItem:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputMediaDocument sets SendMediaGroupMediaItem to InputMediaDocument.
 func (s *SendMediaGroupMediaItem) SetInputMediaDocument(v InputMediaDocument) {
 	s.Type = InputMediaDocumentSendMediaGroupMediaItem
@@ -19874,6 +22945,28 @@ func NewInputMediaDocumentSendMediaGroupMediaItem(v InputMediaDocument) SendMedi
 	var s SendMediaGroupMediaItem
 	s.SetInputMediaDocument(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendMediaGroupMediaItem.
+func (s SendMediaGroupMediaItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAudioSendMediaGroupMediaItem:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaDocumentSendMediaGroupMediaItem:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaPhotoSendMediaGroupMediaItem:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoSendMediaGroupMediaItem:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetInputMediaPhoto sets SendMediaGroupMediaItem to InputMediaPhoto.
@@ -19897,6 +22990,28 @@ func NewInputMediaPhotoSendMediaGroupMediaItem(v InputMediaPhoto) SendMediaGroup
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendMediaGroupMediaItem.
+func (s SendMediaGroupMediaItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAudioSendMediaGroupMediaItem:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaDocumentSendMediaGroupMediaItem:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaPhotoSendMediaGroupMediaItem:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoSendMediaGroupMediaItem:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetInputMediaVideo sets SendMediaGroupMediaItem to InputMediaVideo.
 func (s *SendMediaGroupMediaItem) SetInputMediaVideo(v InputMediaVideo) {
 	s.Type = InputMediaVideoSendMediaGroupMediaItem
@@ -19916,6 +23031,28 @@ func NewInputMediaVideoSendMediaGroupMediaItem(v InputMediaVideo) SendMediaGroup
 	var s SendMediaGroupMediaItem
 	s.SetInputMediaVideo(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendMediaGroupMediaItem.
+func (s SendMediaGroupMediaItem) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InputMediaAudioSendMediaGroupMediaItem:
+		s.InputMediaAudio.encodeFields(e)
+		return nil
+	case InputMediaDocumentSendMediaGroupMediaItem:
+		s.InputMediaDocument.encodeFields(e)
+		return nil
+	case InputMediaPhotoSendMediaGroupMediaItem:
+		s.InputMediaPhoto.encodeFields(e)
+		return nil
+	case InputMediaVideoSendMediaGroupMediaItem:
+		s.InputMediaVideo.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendMessage.
@@ -20095,6 +23232,28 @@ func NewInlineKeyboardMarkupSendMessageReplyMarkup(v InlineKeyboardMarkup) SendM
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendMessageReplyMarkup.
+func (s SendMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendMessageReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendMessageReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
@@ -20114,6 +23273,28 @@ func NewReplyKeyboardMarkupSendMessageReplyMarkup(v ReplyKeyboardMarkup) SendMes
 	var s SendMessageReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendMessageReplyMarkup.
+func (s SendMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendMessageReplyMarkup to ReplyKeyboardRemove.
@@ -20137,6 +23318,28 @@ func NewReplyKeyboardRemoveSendMessageReplyMarkup(v ReplyKeyboardRemove) SendMes
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendMessageReplyMarkup.
+func (s SendMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendMessageReplyMarkup to ForceReply.
 func (s *SendMessageReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendMessageReplyMarkup
@@ -20156,6 +23359,28 @@ func NewForceReplySendMessageReplyMarkup(v ForceReply) SendMessageReplyMarkup {
 	var s SendMessageReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendMessageReplyMarkup.
+func (s SendMessageReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendMessageReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendMessageReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendMessageReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendMessageReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendPhoto.
@@ -20338,6 +23563,28 @@ func NewInlineKeyboardMarkupSendPhotoReplyMarkup(v InlineKeyboardMarkup) SendPho
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendPhotoReplyMarkup.
+func (s SendPhotoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPhotoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPhotoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPhotoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPhotoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendPhotoReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendPhotoReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
@@ -20357,6 +23604,28 @@ func NewReplyKeyboardMarkupSendPhotoReplyMarkup(v ReplyKeyboardMarkup) SendPhoto
 	var s SendPhotoReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendPhotoReplyMarkup.
+func (s SendPhotoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPhotoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPhotoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPhotoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPhotoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendPhotoReplyMarkup to ReplyKeyboardRemove.
@@ -20380,6 +23649,28 @@ func NewReplyKeyboardRemoveSendPhotoReplyMarkup(v ReplyKeyboardRemove) SendPhoto
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendPhotoReplyMarkup.
+func (s SendPhotoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPhotoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPhotoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPhotoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPhotoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendPhotoReplyMarkup to ForceReply.
 func (s *SendPhotoReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendPhotoReplyMarkup
@@ -20399,6 +23690,28 @@ func NewForceReplySendPhotoReplyMarkup(v ForceReply) SendPhotoReplyMarkup {
 	var s SendPhotoReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendPhotoReplyMarkup.
+func (s SendPhotoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPhotoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPhotoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPhotoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPhotoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendPoll.
@@ -20675,6 +23988,28 @@ func NewInlineKeyboardMarkupSendPollReplyMarkup(v InlineKeyboardMarkup) SendPoll
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendPollReplyMarkup.
+func (s SendPollReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPollReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPollReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPollReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPollReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendPollReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendPollReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
@@ -20694,6 +24029,28 @@ func NewReplyKeyboardMarkupSendPollReplyMarkup(v ReplyKeyboardMarkup) SendPollRe
 	var s SendPollReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendPollReplyMarkup.
+func (s SendPollReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPollReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPollReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPollReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPollReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendPollReplyMarkup to ReplyKeyboardRemove.
@@ -20717,6 +24074,28 @@ func NewReplyKeyboardRemoveSendPollReplyMarkup(v ReplyKeyboardRemove) SendPollRe
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendPollReplyMarkup.
+func (s SendPollReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPollReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPollReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPollReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPollReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendPollReplyMarkup to ForceReply.
 func (s *SendPollReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendPollReplyMarkup
@@ -20736,6 +24115,28 @@ func NewForceReplySendPollReplyMarkup(v ForceReply) SendPollReplyMarkup {
 	var s SendPollReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendPollReplyMarkup.
+func (s SendPollReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendPollReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendPollReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendPollReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendPollReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendSticker.
@@ -20880,6 +24281,28 @@ func NewInlineKeyboardMarkupSendStickerReplyMarkup(v InlineKeyboardMarkup) SendS
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendStickerReplyMarkup.
+func (s SendStickerReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendStickerReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendStickerReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendStickerReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendStickerReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendStickerReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendStickerReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
@@ -20899,6 +24322,28 @@ func NewReplyKeyboardMarkupSendStickerReplyMarkup(v ReplyKeyboardMarkup) SendSti
 	var s SendStickerReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendStickerReplyMarkup.
+func (s SendStickerReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendStickerReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendStickerReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendStickerReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendStickerReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendStickerReplyMarkup to ReplyKeyboardRemove.
@@ -20922,6 +24367,28 @@ func NewReplyKeyboardRemoveSendStickerReplyMarkup(v ReplyKeyboardRemove) SendSti
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendStickerReplyMarkup.
+func (s SendStickerReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendStickerReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendStickerReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendStickerReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendStickerReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendStickerReplyMarkup to ForceReply.
 func (s *SendStickerReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendStickerReplyMarkup
@@ -20941,6 +24408,28 @@ func NewForceReplySendStickerReplyMarkup(v ForceReply) SendStickerReplyMarkup {
 	var s SendStickerReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendStickerReplyMarkup.
+func (s SendStickerReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendStickerReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendStickerReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendStickerReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendStickerReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendVenue.
@@ -21166,6 +24655,28 @@ func NewInlineKeyboardMarkupSendVenueReplyMarkup(v InlineKeyboardMarkup) SendVen
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVenueReplyMarkup.
+func (s SendVenueReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVenueReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVenueReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVenueReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVenueReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendVenueReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendVenueReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
@@ -21185,6 +24696,28 @@ func NewReplyKeyboardMarkupSendVenueReplyMarkup(v ReplyKeyboardMarkup) SendVenue
 	var s SendVenueReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVenueReplyMarkup.
+func (s SendVenueReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVenueReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVenueReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVenueReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVenueReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendVenueReplyMarkup to ReplyKeyboardRemove.
@@ -21208,6 +24741,28 @@ func NewReplyKeyboardRemoveSendVenueReplyMarkup(v ReplyKeyboardRemove) SendVenue
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVenueReplyMarkup.
+func (s SendVenueReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVenueReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVenueReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVenueReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVenueReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendVenueReplyMarkup to ForceReply.
 func (s *SendVenueReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendVenueReplyMarkup
@@ -21227,6 +24782,28 @@ func NewForceReplySendVenueReplyMarkup(v ForceReply) SendVenueReplyMarkup {
 	var s SendVenueReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVenueReplyMarkup.
+func (s SendVenueReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVenueReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVenueReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVenueReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVenueReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendVideo.
@@ -21594,6 +25171,28 @@ func NewInlineKeyboardMarkupSendVideoNoteReplyMarkup(v InlineKeyboardMarkup) Sen
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVideoNoteReplyMarkup.
+func (s SendVideoNoteReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoNoteReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendVideoNoteReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendVideoNoteReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
@@ -21613,6 +25212,28 @@ func NewReplyKeyboardMarkupSendVideoNoteReplyMarkup(v ReplyKeyboardMarkup) SendV
 	var s SendVideoNoteReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVideoNoteReplyMarkup.
+func (s SendVideoNoteReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoNoteReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendVideoNoteReplyMarkup to ReplyKeyboardRemove.
@@ -21636,6 +25257,28 @@ func NewReplyKeyboardRemoveSendVideoNoteReplyMarkup(v ReplyKeyboardRemove) SendV
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVideoNoteReplyMarkup.
+func (s SendVideoNoteReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoNoteReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendVideoNoteReplyMarkup to ForceReply.
 func (s *SendVideoNoteReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendVideoNoteReplyMarkup
@@ -21655,6 +25298,28 @@ func NewForceReplySendVideoNoteReplyMarkup(v ForceReply) SendVideoNoteReplyMarku
 	var s SendVideoNoteReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVideoNoteReplyMarkup.
+func (s SendVideoNoteReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoNoteReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoNoteReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
@@ -21718,6 +25383,28 @@ func NewInlineKeyboardMarkupSendVideoReplyMarkup(v InlineKeyboardMarkup) SendVid
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVideoReplyMarkup.
+func (s SendVideoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendVideoReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendVideoReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
@@ -21737,6 +25424,28 @@ func NewReplyKeyboardMarkupSendVideoReplyMarkup(v ReplyKeyboardMarkup) SendVideo
 	var s SendVideoReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVideoReplyMarkup.
+func (s SendVideoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendVideoReplyMarkup to ReplyKeyboardRemove.
@@ -21760,6 +25469,28 @@ func NewReplyKeyboardRemoveSendVideoReplyMarkup(v ReplyKeyboardRemove) SendVideo
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVideoReplyMarkup.
+func (s SendVideoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendVideoReplyMarkup to ForceReply.
 func (s *SendVideoReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendVideoReplyMarkup
@@ -21779,6 +25510,28 @@ func NewForceReplySendVideoReplyMarkup(v ForceReply) SendVideoReplyMarkup {
 	var s SendVideoReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVideoReplyMarkup.
+func (s SendVideoReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVideoReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVideoReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVideoReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVideoReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for sendVoice.
@@ -21970,6 +25723,28 @@ func NewInlineKeyboardMarkupSendVoiceReplyMarkup(v InlineKeyboardMarkup) SendVoi
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVoiceReplyMarkup.
+func (s SendVoiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVoiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVoiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVoiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVoiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReplyKeyboardMarkup sets SendVoiceReplyMarkup to ReplyKeyboardMarkup.
 func (s *SendVoiceReplyMarkup) SetReplyKeyboardMarkup(v ReplyKeyboardMarkup) {
 	s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
@@ -21989,6 +25764,28 @@ func NewReplyKeyboardMarkupSendVoiceReplyMarkup(v ReplyKeyboardMarkup) SendVoice
 	var s SendVoiceReplyMarkup
 	s.SetReplyKeyboardMarkup(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVoiceReplyMarkup.
+func (s SendVoiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVoiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVoiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVoiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVoiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // SetReplyKeyboardRemove sets SendVoiceReplyMarkup to ReplyKeyboardRemove.
@@ -22012,6 +25809,28 @@ func NewReplyKeyboardRemoveSendVoiceReplyMarkup(v ReplyKeyboardRemove) SendVoice
 	return s
 }
 
+// encodeFields encodes the fields of sum type SendVoiceReplyMarkup.
+func (s SendVoiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVoiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVoiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVoiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVoiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetForceReply sets SendVoiceReplyMarkup to ForceReply.
 func (s *SendVoiceReplyMarkup) SetForceReply(v ForceReply) {
 	s.Type = ForceReplySendVoiceReplyMarkup
@@ -22031,6 +25850,28 @@ func NewForceReplySendVoiceReplyMarkup(v ForceReply) SendVoiceReplyMarkup {
 	var s SendVoiceReplyMarkup
 	s.SetForceReply(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SendVoiceReplyMarkup.
+func (s SendVoiceReplyMarkup) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case InlineKeyboardMarkupSendVoiceReplyMarkup:
+		s.InlineKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardMarkupSendVoiceReplyMarkup:
+		s.ReplyKeyboardMarkup.encodeFields(e)
+		return nil
+	case ReplyKeyboardRemoveSendVoiceReplyMarkup:
+		s.ReplyKeyboardRemove.encodeFields(e)
+		return nil
+	case ForceReplySendVoiceReplyMarkup:
+		s.ForceReply.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Input for setChatAdministratorCustomTitle.

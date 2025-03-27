@@ -3,6 +3,9 @@
 package api
 
 import (
+	"fmt"
+
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 )
 
@@ -55,6 +58,25 @@ func NewIntAnyOfIntegerNumberString(v int) AnyOfIntegerNumberString {
 	return s
 }
 
+// encodeFields encodes the fields of sum type AnyOfIntegerNumberString.
+func (s AnyOfIntegerNumberString) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case IntAnyOfIntegerNumberString:
+		s.Int.encodeFields(e)
+		return nil
+	case Float64AnyOfIntegerNumberString:
+		s.Float64.encodeFields(e)
+		return nil
+	case StringAnyOfIntegerNumberString:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetFloat64 sets AnyOfIntegerNumberString to float64.
 func (s *AnyOfIntegerNumberString) SetFloat64(v float64) {
 	s.Type = Float64AnyOfIntegerNumberString
@@ -76,6 +98,25 @@ func NewFloat64AnyOfIntegerNumberString(v float64) AnyOfIntegerNumberString {
 	return s
 }
 
+// encodeFields encodes the fields of sum type AnyOfIntegerNumberString.
+func (s AnyOfIntegerNumberString) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case IntAnyOfIntegerNumberString:
+		s.Int.encodeFields(e)
+		return nil
+	case Float64AnyOfIntegerNumberString:
+		s.Float64.encodeFields(e)
+		return nil
+	case StringAnyOfIntegerNumberString:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets AnyOfIntegerNumberString to string.
 func (s *AnyOfIntegerNumberString) SetString(v string) {
 	s.Type = StringAnyOfIntegerNumberString
@@ -95,6 +136,25 @@ func NewStringAnyOfIntegerNumberString(v string) AnyOfIntegerNumberString {
 	var s AnyOfIntegerNumberString
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type AnyOfIntegerNumberString.
+func (s AnyOfIntegerNumberString) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case IntAnyOfIntegerNumberString:
+		s.Int.encodeFields(e)
+		return nil
+	case Float64AnyOfIntegerNumberString:
+		s.Float64.encodeFields(e)
+		return nil
+	case StringAnyOfIntegerNumberString:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/IntegerNumber
@@ -181,6 +241,22 @@ func NewIntJaegerAnyOfSizeLimit(v int) JaegerAnyOfSizeLimit {
 	return s
 }
 
+// encodeFields encodes the fields of sum type JaegerAnyOfSizeLimit.
+func (s JaegerAnyOfSizeLimit) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case IntJaegerAnyOfSizeLimit:
+		s.Int.encodeFields(e)
+		return nil
+	case StringJaegerAnyOfSizeLimit:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetString sets JaegerAnyOfSizeLimit to string.
 func (s *JaegerAnyOfSizeLimit) SetString(v string) {
 	s.Type = StringJaegerAnyOfSizeLimit
@@ -200,6 +276,22 @@ func NewStringJaegerAnyOfSizeLimit(v string) JaegerAnyOfSizeLimit {
 	var s JaegerAnyOfSizeLimit
 	s.SetString(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type JaegerAnyOfSizeLimit.
+func (s JaegerAnyOfSizeLimit) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case IntJaegerAnyOfSizeLimit:
+		s.Int.encodeFields(e)
+		return nil
+	case StringJaegerAnyOfSizeLimit:
+		s.String.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/components/schemas/OneUUID
@@ -279,6 +371,19 @@ func NewSubscriptionUUIDOneUUIDSubscriptionID(v SubscriptionUUID) OneUUIDSubscri
 	return s
 }
 
+// encodeFields encodes the fields of sum type OneUUIDSubscriptionID.
+func (s OneUUIDSubscriptionID) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case SubscriptionUUIDOneUUIDSubscriptionID:
+		s.SubscriptionUUID.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // Ref: #/components/schemas/SubscriptionUUID
 // SubscriptionUUID represents sum type.
 type SubscriptionUUID struct {
@@ -316,6 +421,19 @@ func NewUUIDv4SubscriptionUUID(v UUIDv4) SubscriptionUUID {
 	var s SubscriptionUUID
 	s.SetUUIDv4(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SubscriptionUUID.
+func (s SubscriptionUUID) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case UUIDv4SubscriptionUUID:
+		s.UUIDv4.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type UUIDv4 uuid.UUID

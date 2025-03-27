@@ -112,6 +112,22 @@ func NewCallbackCallbackOrReference(v Callback) CallbackOrReference {
 	return s
 }
 
+// encodeFields encodes the fields of sum type CallbackOrReference.
+func (s CallbackOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case CallbackCallbackOrReference:
+		s.Callback.encodeFields(e)
+		return nil
+	case ReferenceCallbackOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets CallbackOrReference to Reference.
 func (s *CallbackOrReference) SetReference(v Reference) {
 	s.Type = ReferenceCallbackOrReference
@@ -131,6 +147,22 @@ func NewReferenceCallbackOrReference(v Reference) CallbackOrReference {
 	var s CallbackOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type CallbackOrReference.
+func (s CallbackOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case CallbackCallbackOrReference:
+		s.Callback.encodeFields(e)
+		return nil
+	case ReferenceCallbackOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type CallbackPattern0 map[string]PathItem
@@ -591,6 +623,22 @@ func NewExampleExampleOrReference(v Example) ExampleOrReference {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ExampleOrReference.
+func (s ExampleOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ExampleExampleOrReference:
+		s.Example.encodeFields(e)
+		return nil
+	case ReferenceExampleOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets ExampleOrReference to Reference.
 func (s *ExampleOrReference) SetReference(v Reference) {
 	s.Type = ReferenceExampleOrReference
@@ -610,6 +658,22 @@ func NewReferenceExampleOrReference(v Reference) ExampleOrReference {
 	var s ExampleOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ExampleOrReference.
+func (s ExampleOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ExampleExampleOrReference:
+		s.Example.encodeFields(e)
+		return nil
+	case ReferenceExampleOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ExamplePattern0 map[string]SpecificationExtension
@@ -874,6 +938,22 @@ func NewHeaderHeaderOrReference(v Header) HeaderOrReference {
 	return s
 }
 
+// encodeFields encodes the fields of sum type HeaderOrReference.
+func (s HeaderOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case HeaderHeaderOrReference:
+		s.Header.encodeFields(e)
+		return nil
+	case ReferenceHeaderOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets HeaderOrReference to Reference.
 func (s *HeaderOrReference) SetReference(v Reference) {
 	s.Type = ReferenceHeaderOrReference
@@ -893,6 +973,22 @@ func NewReferenceHeaderOrReference(v Reference) HeaderOrReference {
 	var s HeaderOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type HeaderOrReference.
+func (s HeaderOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case HeaderHeaderOrReference:
+		s.Header.encodeFields(e)
+		return nil
+	case ReferenceHeaderOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type HeaderPattern0 map[string]SpecificationExtension
@@ -1196,6 +1292,22 @@ func NewLinkLinkOrReference(v Link) LinkOrReference {
 	return s
 }
 
+// encodeFields encodes the fields of sum type LinkOrReference.
+func (s LinkOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case LinkLinkOrReference:
+		s.Link.encodeFields(e)
+		return nil
+	case ReferenceLinkOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets LinkOrReference to Reference.
 func (s *LinkOrReference) SetReference(v Reference) {
 	s.Type = ReferenceLinkOrReference
@@ -1215,6 +1327,22 @@ func NewReferenceLinkOrReference(v Reference) LinkOrReference {
 	var s LinkOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type LinkOrReference.
+func (s LinkOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case LinkLinkOrReference:
+		s.Link.encodeFields(e)
+		return nil
+	case ReferenceLinkOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type LinkPattern0 map[string]SpecificationExtension
@@ -3872,6 +4000,22 @@ func NewParameterParameterOrReference(v Parameter) ParameterOrReference {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ParameterOrReference.
+func (s ParameterOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ParameterParameterOrReference:
+		s.Parameter.encodeFields(e)
+		return nil
+	case ReferenceParameterOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets ParameterOrReference to Reference.
 func (s *ParameterOrReference) SetReference(v Reference) {
 	s.Type = ReferenceParameterOrReference
@@ -3891,6 +4035,22 @@ func NewReferenceParameterOrReference(v Reference) ParameterOrReference {
 	var s ParameterOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ParameterOrReference.
+func (s ParameterOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ParameterParameterOrReference:
+		s.Parameter.encodeFields(e)
+		return nil
+	case ReferenceParameterOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ParameterPattern0 map[string]SpecificationExtension
@@ -4349,6 +4509,22 @@ func NewRequestBodyRequestBodyOrReference(v RequestBody) RequestBodyOrReference 
 	return s
 }
 
+// encodeFields encodes the fields of sum type RequestBodyOrReference.
+func (s RequestBodyOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case RequestBodyRequestBodyOrReference:
+		s.RequestBody.encodeFields(e)
+		return nil
+	case ReferenceRequestBodyOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets RequestBodyOrReference to Reference.
 func (s *RequestBodyOrReference) SetReference(v Reference) {
 	s.Type = ReferenceRequestBodyOrReference
@@ -4368,6 +4544,22 @@ func NewReferenceRequestBodyOrReference(v Reference) RequestBodyOrReference {
 	var s RequestBodyOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type RequestBodyOrReference.
+func (s RequestBodyOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case RequestBodyRequestBodyOrReference:
+		s.RequestBody.encodeFields(e)
+		return nil
+	case ReferenceRequestBodyOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type RequestBodyPattern0 map[string]SpecificationExtension
@@ -4487,6 +4679,22 @@ func NewResponseResponseOrReference(v Response) ResponseOrReference {
 	return s
 }
 
+// encodeFields encodes the fields of sum type ResponseOrReference.
+func (s ResponseOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ResponseResponseOrReference:
+		s.Response.encodeFields(e)
+		return nil
+	case ReferenceResponseOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets ResponseOrReference to Reference.
 func (s *ResponseOrReference) SetReference(v Reference) {
 	s.Type = ReferenceResponseOrReference
@@ -4506,6 +4714,22 @@ func NewReferenceResponseOrReference(v Reference) ResponseOrReference {
 	var s ResponseOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type ResponseOrReference.
+func (s ResponseOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case ResponseResponseOrReference:
+		s.Response.encodeFields(e)
+		return nil
+	case ReferenceResponseOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type ResponsePattern0 map[string]SpecificationExtension
@@ -5054,6 +5278,22 @@ func NewSchemaOrReferenceSchemaAdditionalProperties(v SchemaOrReference) SchemaA
 	return s
 }
 
+// encodeFields encodes the fields of sum type SchemaAdditionalProperties.
+func (s SchemaAdditionalProperties) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case SchemaOrReferenceSchemaAdditionalProperties:
+		s.SchemaOrReference.encodeFields(e)
+		return nil
+	case BoolSchemaAdditionalProperties:
+		s.Bool.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetBool sets SchemaAdditionalProperties to bool.
 func (s *SchemaAdditionalProperties) SetBool(v bool) {
 	s.Type = BoolSchemaAdditionalProperties
@@ -5073,6 +5313,22 @@ func NewBoolSchemaAdditionalProperties(v bool) SchemaAdditionalProperties {
 	var s SchemaAdditionalProperties
 	s.SetBool(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SchemaAdditionalProperties.
+func (s SchemaAdditionalProperties) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case SchemaOrReferenceSchemaAdditionalProperties:
+		s.SchemaOrReference.encodeFields(e)
+		return nil
+	case BoolSchemaAdditionalProperties:
+		s.Bool.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 // Ref: #/definitions/schemaOrReference
@@ -5119,6 +5375,22 @@ func NewSchemaSchemaOrReference(v Schema) SchemaOrReference {
 	return s
 }
 
+// encodeFields encodes the fields of sum type SchemaOrReference.
+func (s SchemaOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case SchemaSchemaOrReference:
+		s.Schema.encodeFields(e)
+		return nil
+	case ReferenceSchemaOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets SchemaOrReference to Reference.
 func (s *SchemaOrReference) SetReference(v Reference) {
 	s.Type = ReferenceSchemaOrReference
@@ -5138,6 +5410,22 @@ func NewReferenceSchemaOrReference(v Reference) SchemaOrReference {
 	var s SchemaOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SchemaOrReference.
+func (s SchemaOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case SchemaSchemaOrReference:
+		s.Schema.encodeFields(e)
+		return nil
+	case ReferenceSchemaOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type SchemaPattern0 map[string]SpecificationExtension
@@ -5427,6 +5715,22 @@ func NewSecuritySchemeSecuritySchemeOrReference(v SecurityScheme) SecurityScheme
 	return s
 }
 
+// encodeFields encodes the fields of sum type SecuritySchemeOrReference.
+func (s SecuritySchemeOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case SecuritySchemeSecuritySchemeOrReference:
+		s.SecurityScheme.encodeFields(e)
+		return nil
+	case ReferenceSecuritySchemeOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetReference sets SecuritySchemeOrReference to Reference.
 func (s *SecuritySchemeOrReference) SetReference(v Reference) {
 	s.Type = ReferenceSecuritySchemeOrReference
@@ -5446,6 +5750,22 @@ func NewReferenceSecuritySchemeOrReference(v Reference) SecuritySchemeOrReferenc
 	var s SecuritySchemeOrReference
 	s.SetReference(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type SecuritySchemeOrReference.
+func (s SecuritySchemeOrReference) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case SecuritySchemeSecuritySchemeOrReference:
+		s.SecurityScheme.encodeFields(e)
+		return nil
+	case ReferenceSecuritySchemeOrReference:
+		s.Reference.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type SecuritySchemePattern0 map[string]SpecificationExtension

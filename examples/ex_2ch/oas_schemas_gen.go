@@ -3,7 +3,10 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 
 	ht "github.com/ogen-go/ogen/http"
 )
@@ -2073,6 +2076,22 @@ func NewPostingNewThreadUserPostingPostOK(v PostingNewThread) UserPostingPostOK 
 	return s
 }
 
+// encodeFields encodes the fields of sum type UserPostingPostOK.
+func (s UserPostingPostOK) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PostingNewThreadUserPostingPostOK:
+		s.PostingNewThread.encodeFields(e)
+		return nil
+	case PostingNewPostUserPostingPostOK:
+		s.PostingNewPost.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
+
 // SetPostingNewPost sets UserPostingPostOK to PostingNewPost.
 func (s *UserPostingPostOK) SetPostingNewPost(v PostingNewPost) {
 	s.Type = PostingNewPostUserPostingPostOK
@@ -2092,6 +2111,22 @@ func NewPostingNewPostUserPostingPostOK(v PostingNewPost) UserPostingPostOK {
 	var s UserPostingPostOK
 	s.SetPostingNewPost(v)
 	return s
+}
+
+// encodeFields encodes the fields of sum type UserPostingPostOK.
+func (s UserPostingPostOK) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	case PostingNewThreadUserPostingPostOK:
+		s.PostingNewThread.encodeFields(e)
+		return nil
+	case PostingNewPostUserPostingPostOK:
+		s.PostingNewPost.encodeFields(e)
+		return nil
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
 }
 
 type UserPostingPostReq struct {
