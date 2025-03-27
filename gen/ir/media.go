@@ -14,7 +14,8 @@ type Encoding string
 
 const (
 	// EncodingJSON is Encoding for json.
-	EncodingJSON Encoding = "application/json"
+	EncodingJSON        Encoding = "application/json"
+	EncodingProblemJSON Encoding = "application/problem+json"
 	// EncodingFormURLEncoded is Encoding for URL-encoded form.
 	EncodingFormURLEncoded Encoding = "application/x-www-form-urlencoded"
 	// EncodingMultipart is Encoding for multipart form.
@@ -28,6 +29,8 @@ const (
 func (t Encoding) String() string { return string(t) }
 
 func (t Encoding) JSON() bool { return t == EncodingJSON }
+
+func (t Encoding) ProblemJSON() bool { return t == EncodingProblemJSON }
 
 func (t Encoding) FormURLEncoded() bool { return t == EncodingFormURLEncoded }
 
