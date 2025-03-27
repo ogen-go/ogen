@@ -51,6 +51,21 @@ func New{{ $s.Name }}{{ $.Name }}(v {{ $s.Go }}) {{ $.Go }} {
 	s.Set{{ $s.Name }}(v)
 	return s
 }
+
+// encodeFields encodes the fields of sum type {{ $.Name }}.
+func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) error {
+	switch s.Type {
+	{{- range $s := $.SumOf }}
+	case {{ $s.Name }}{{ $.Name }}:
+		s.{{ $s.Name }}.encodeFields(e)
+		return nil
+	{{- end }}
+	default:
+		// We shouldn't ever reach this branch since all cases are enumerated above,
+		// but we include it in case something unexpected happens
+		return fmt.Errorf("encodeFields: unknown sum type %s", s.Type)
+	}
+}
 {{- end }}
 
 {{ end }}
