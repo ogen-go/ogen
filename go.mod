@@ -2,7 +2,7 @@ module github.com/ogen-go/ogen
 
 go 1.23.0
 
-toolchain go1.23.7
+toolchain go1.24.1
 
 require (
 	github.com/davecgh/go-spew v1.1.1
@@ -24,7 +24,7 @@ require (
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/exp v0.0.0-20230725093048-515e97ebf090
-	golang.org/x/net v0.37.0
+	golang.org/x/net v0.38.0
 	golang.org/x/sync v0.12.0
 	golang.org/x/text v0.23.0
 	golang.org/x/tools v0.31.0
