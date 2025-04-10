@@ -23,115 +23,115 @@ import (
 // TestQueryParameterParams is parameters of test_query_parameter operation.
 type TestQueryParameterParams struct {
 	Boolean                 bool
-	BooleanArray            []bool
+	BooleanArray            []bool `json:",omitempty"`
 	Integer                 int
-	IntegerArray            []int
+	IntegerArray            []int `json:",omitempty"`
 	IntegerInt16            int16
-	IntegerInt16Array       []int16
+	IntegerInt16Array       []int16 `json:",omitempty"`
 	IntegerInt32            int32
-	IntegerInt32Array       []int32
+	IntegerInt32Array       []int32 `json:",omitempty"`
 	IntegerInt64            int64
-	IntegerInt64Array       []int64
+	IntegerInt64Array       []int64 `json:",omitempty"`
 	IntegerInt8             int8
-	IntegerInt8Array        []int8
+	IntegerInt8Array        []int8 `json:",omitempty"`
 	IntegerUint             uint
 	IntegerUint16           uint16
-	IntegerUint16Array      []uint16
+	IntegerUint16Array      []uint16 `json:",omitempty"`
 	IntegerUint32           uint32
-	IntegerUint32Array      []uint32
+	IntegerUint32Array      []uint32 `json:",omitempty"`
 	IntegerUint64           uint64
-	IntegerUint64Array      []uint64
+	IntegerUint64Array      []uint64 `json:",omitempty"`
 	IntegerUint8            uint8
-	IntegerUint8Array       []uint8
-	IntegerUintArray        []uint
+	IntegerUint8Array       []uint8 `json:",omitempty"`
+	IntegerUintArray        []uint  `json:",omitempty"`
 	IntegerUnix             time.Time
 	IntegerUnixMicro        time.Time
-	IntegerUnixMicroArray   []time.Time
+	IntegerUnixMicroArray   []time.Time `json:",omitempty"`
 	IntegerUnixMilli        time.Time
-	IntegerUnixMilliArray   []time.Time
+	IntegerUnixMilliArray   []time.Time `json:",omitempty"`
 	IntegerUnixNano         time.Time
-	IntegerUnixNanoArray    []time.Time
+	IntegerUnixNanoArray    []time.Time `json:",omitempty"`
 	IntegerUnixSeconds      time.Time
-	IntegerUnixSecondsArray []time.Time
-	IntegerUnixArray        []time.Time
+	IntegerUnixSecondsArray []time.Time `json:",omitempty"`
+	IntegerUnixArray        []time.Time `json:",omitempty"`
 	Number                  float64
-	NumberArray             []float64
+	NumberArray             []float64 `json:",omitempty"`
 	NumberDouble            float64
-	NumberDoubleArray       []float64
+	NumberDoubleArray       []float64 `json:",omitempty"`
 	NumberFloat             float32
-	NumberFloatArray        []float32
+	NumberFloatArray        []float32 `json:",omitempty"`
 	NumberInt32             int32
-	NumberInt32Array        []int32
+	NumberInt32Array        []int32 `json:",omitempty"`
 	NumberInt64             int64
-	NumberInt64Array        []int64
+	NumberInt64Array        []int64 `json:",omitempty"`
 	String                  string
-	StringArray             []string
+	StringArray             []string `json:",omitempty"`
 	StringBase64            []byte
-	StringBase64Array       [][]byte
+	StringBase64Array       [][]byte `json:",omitempty"`
 	StringBinary            string
-	StringBinaryArray       []string
+	StringBinaryArray       []string `json:",omitempty"`
 	StringByte              []byte
-	StringByteArray         [][]byte
+	StringByteArray         [][]byte `json:",omitempty"`
 	StringDate              time.Time
 	StringDateTime          time.Time
-	StringDateTimeArray     []time.Time
-	StringDateArray         []time.Time
+	StringDateTimeArray     []time.Time `json:",omitempty"`
+	StringDateArray         []time.Time `json:",omitempty"`
 	StringDuration          time.Duration
-	StringDurationArray     []time.Duration
+	StringDurationArray     []time.Duration `json:",omitempty"`
 	StringEmail             string
-	StringEmailArray        []string
+	StringEmailArray        []string `json:",omitempty"`
 	StringFloat32           float32
-	StringFloat32Array      []float32
+	StringFloat32Array      []float32 `json:",omitempty"`
 	StringFloat64           float64
-	StringFloat64Array      []float64
+	StringFloat64Array      []float64 `json:",omitempty"`
 	StringHostname          string
-	StringHostnameArray     []string
+	StringHostnameArray     []string `json:",omitempty"`
 	StringInt               int
 	StringInt16             int16
-	StringInt16Array        []int16
+	StringInt16Array        []int16 `json:",omitempty"`
 	StringInt32             int32
-	StringInt32Array        []int32
+	StringInt32Array        []int32 `json:",omitempty"`
 	StringInt64             int64
-	StringInt64Array        []int64
+	StringInt64Array        []int64 `json:",omitempty"`
 	StringInt8              int8
-	StringInt8Array         []int8
-	StringIntArray          []int
+	StringInt8Array         []int8 `json:",omitempty"`
+	StringIntArray          []int  `json:",omitempty"`
 	StringIP                netip.Addr
-	StringIPArray           []netip.Addr
+	StringIPArray           []netip.Addr `json:",omitempty"`
 	StringIpv4              netip.Addr
-	StringIpv4Array         []netip.Addr
+	StringIpv4Array         []netip.Addr `json:",omitempty"`
 	StringIpv6              netip.Addr
-	StringIpv6Array         []netip.Addr
+	StringIpv6Array         []netip.Addr `json:",omitempty"`
 	StringMAC               net.HardwareAddr
-	StringMACArray          []net.HardwareAddr
+	StringMACArray          []net.HardwareAddr `json:",omitempty"`
 	StringPassword          string
-	StringPasswordArray     []string
+	StringPasswordArray     []string `json:",omitempty"`
 	StringTime              time.Time
-	StringTimeArray         []time.Time
+	StringTimeArray         []time.Time `json:",omitempty"`
 	StringUint              uint
 	StringUint16            uint16
-	StringUint16Array       []uint16
+	StringUint16Array       []uint16 `json:",omitempty"`
 	StringUint32            uint32
-	StringUint32Array       []uint32
+	StringUint32Array       []uint32 `json:",omitempty"`
 	StringUint64            uint64
-	StringUint64Array       []uint64
+	StringUint64Array       []uint64 `json:",omitempty"`
 	StringUint8             uint8
-	StringUint8Array        []uint8
-	StringUintArray         []uint
+	StringUint8Array        []uint8 `json:",omitempty"`
+	StringUintArray         []uint  `json:",omitempty"`
 	StringUnix              time.Time
 	StringUnixMicro         time.Time
-	StringUnixMicroArray    []time.Time
+	StringUnixMicroArray    []time.Time `json:",omitempty"`
 	StringUnixMilli         time.Time
-	StringUnixMilliArray    []time.Time
+	StringUnixMilliArray    []time.Time `json:",omitempty"`
 	StringUnixNano          time.Time
-	StringUnixNanoArray     []time.Time
+	StringUnixNanoArray     []time.Time `json:",omitempty"`
 	StringUnixSeconds       time.Time
-	StringUnixSecondsArray  []time.Time
-	StringUnixArray         []time.Time
+	StringUnixSecondsArray  []time.Time `json:",omitempty"`
+	StringUnixArray         []time.Time `json:",omitempty"`
 	StringURI               url.URL
-	StringURIArray          []url.URL
+	StringURIArray          []url.URL `json:",omitempty"`
 	StringUUID              uuid.UUID
-	StringUUIDArray         []uuid.UUID
+	StringUUIDArray         []uuid.UUID `json:",omitempty"`
 }
 
 func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQueryParameterParams) {

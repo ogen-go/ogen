@@ -19,7 +19,7 @@
 type {{ $op.Name }}Params struct {
 {{- range $p := $op.Params }}
 	{{- template "godoc" $p.GoDoc }}
-	{{ $p.Name }} {{ $p.Type.Go }}
+	{{ $p.Name }} {{ $p.Type.Go }} {{ if $p.GoStructTag }}{{ backquote $p.GoStructTag }}{{ end }}
 {{- end }}
 }
 

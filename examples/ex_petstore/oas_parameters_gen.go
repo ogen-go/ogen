@@ -18,7 +18,7 @@ import (
 // ListPetsParams is parameters of listPets operation.
 type ListPetsParams struct {
 	// How many items to return at one time (max 100).
-	Limit OptInt32
+	Limit OptInt32 `json:",omitempty,omitzero"`
 }
 
 func unpackListPetsParams(packed middleware.Parameters) (params ListPetsParams) {

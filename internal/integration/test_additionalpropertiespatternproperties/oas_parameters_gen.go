@@ -12,7 +12,7 @@ import (
 
 // AliveParams is parameters of alive operation.
 type AliveParams struct {
-	FlexData OptAliveFlexData
+	FlexData OptAliveFlexData `json:",omitempty,omitzero"`
 }
 
 func unpackAliveParams(packed middleware.Parameters) (params AliveParams) {
