@@ -59,54 +59,6 @@ func TestReferencedAllOfNullable_EncodeDecode(t *testing.T) {
 	var typ2 ReferencedAllOfNullable
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestReferencedAllOfNullableAllOfLocation_EncodeDecode(t *testing.T) {
-	var typ ReferencedAllOfNullableAllOfLocation
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReferencedAllOfNullableAllOfLocation
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReferencedAllOfNullableMultipartAllOfLocation_EncodeDecode(t *testing.T) {
-	var typ ReferencedAllOfNullableMultipartAllOfLocation
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReferencedAllOfNullableMultipartAllOfLocation
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReferencedAllOfNullableMultipartNullableAllOfLocation_EncodeDecode(t *testing.T) {
-	var typ ReferencedAllOfNullableMultipartNullableAllOfLocation
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReferencedAllOfNullableMultipartNullableAllOfLocation
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReferencedAllOfNullableNullableAllOfLocation_EncodeDecode(t *testing.T) {
-	var typ ReferencedAllOfNullableNullableAllOfLocation
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReferencedAllOfNullableNullableAllOfLocation
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestRobot_EncodeDecode(t *testing.T) {
 	var typ Robot
 	typ.SetFake()
