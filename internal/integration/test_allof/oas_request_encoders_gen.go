@@ -58,6 +58,102 @@ func encodeObjectsWithConflictingPropertiesRequest(
 	return nil
 }
 
+func encodeReferencedAllOfNullableRequest(
+	req ReferencedAllOfNullableReq,
+	r *http.Request,
+) error {
+	switch req := req.(type) {
+	case *ReferencedAllOfNullableReqEmptyBody:
+		// Empty body case.
+		return nil
+	case *ReferencedAllOfNullable:
+		const contentType = "application/json"
+		e := new(jx.Encoder)
+		{
+			req.Encode(e)
+		}
+		encoded := e.Bytes()
+		ht.SetBody(r, bytes.NewReader(encoded), contentType)
+		return nil
+	case *ReferencedAllOfNullableMultipart:
+		const contentType = "multipart/form-data"
+		request := req
+
+		q := uri.NewFormEncoder(map[string]string{
+			"location":              "application/json; charset=utf-8",
+			"allOfLocation":         "application/json; charset=utf-8",
+			"nullableAllOfLocation": "application/json; charset=utf-8",
+		})
+		{
+			// Encode "location" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "location",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				var enc jx.Encoder
+				func(e *jx.Encoder) {
+					if request.Location.Set {
+						request.Location.Encode(e)
+					}
+				}(&enc)
+				return e.EncodeValue(string(enc.Bytes()))
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
+		}
+		{
+			// Encode "allOfLocation" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "allOfLocation",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				var enc jx.Encoder
+				func(e *jx.Encoder) {
+					if request.AllOfLocation.Set {
+						request.AllOfLocation.Encode(e)
+					}
+				}(&enc)
+				return e.EncodeValue(string(enc.Bytes()))
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
+		}
+		{
+			// Encode "nullableAllOfLocation" form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    "nullableAllOfLocation",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				var enc jx.Encoder
+				func(e *jx.Encoder) {
+					if request.NullableAllOfLocation.Set {
+						request.NullableAllOfLocation.Encode(e)
+					}
+				}(&enc)
+				return e.EncodeValue(string(enc.Bytes()))
+			}); err != nil {
+				return errors.Wrap(err, "encode query")
+			}
+		}
+		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
+			if err := q.WriteMultipart(w); err != nil {
+				return errors.Wrap(err, "write multipart")
+			}
+			return nil
+		})
+		ht.SetCloserBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
+		return nil
+	default:
+		return errors.Errorf("unexpected request type: %T", req)
+	}
+}
+
 func encodeReferencedAllofRequest(
 	req ReferencedAllofReq,
 	r *http.Request,

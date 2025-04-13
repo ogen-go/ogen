@@ -134,28 +134,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 				}
 
-			case 'r': // Prefix: "referencedAllof"
+			case 'r': // Prefix: "referencedAll"
 
-				if l := len("referencedAllof"); len(elem) >= l && elem[0:l] == "referencedAllof" {
+				if l := len("referencedAll"); len(elem) >= l && elem[0:l] == "referencedAll" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					switch r.Method {
-					case "POST":
-						s.handleReferencedAllofRequest([0]string{}, elemIsEscaped, w, r)
-					default:
-						s.notAllowed(w, r, "POST")
-					}
-
-					return
+					break
 				}
 				switch elem[0] {
-				case 'O': // Prefix: "Optional"
+				case 'O': // Prefix: "OfNullable"
 
-					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+					if l := len("OfNullable"); len(elem) >= l && elem[0:l] == "OfNullable" {
 						elem = elem[l:]
 					} else {
 						break
@@ -165,12 +158,53 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleReferencedAllofOptionalRequest([0]string{}, elemIsEscaped, w, r)
+							s.handleReferencedAllOfNullableRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
 
 						return
+					}
+
+				case 'o': // Prefix: "of"
+
+					if l := len("of"); len(elem) >= l && elem[0:l] == "of" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch r.Method {
+						case "POST":
+							s.handleReferencedAllofRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
+
+						return
+					}
+					switch elem[0] {
+					case 'O': // Prefix: "Optional"
+
+						if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleReferencedAllofOptionalRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
+
 					}
 
 				}
@@ -443,32 +477,21 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 				}
 
-			case 'r': // Prefix: "referencedAllof"
+			case 'r': // Prefix: "referencedAll"
 
-				if l := len("referencedAllof"); len(elem) >= l && elem[0:l] == "referencedAllof" {
+				if l := len("referencedAll"); len(elem) >= l && elem[0:l] == "referencedAll" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					switch method {
-					case "POST":
-						r.name = ReferencedAllofOperation
-						r.summary = ""
-						r.operationID = "referencedAllof"
-						r.pathPattern = "/referencedAllof"
-						r.args = args
-						r.count = 0
-						return r, true
-					default:
-						return
-					}
+					break
 				}
 				switch elem[0] {
-				case 'O': // Prefix: "Optional"
+				case 'O': // Prefix: "OfNullable"
 
-					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+					if l := len("OfNullable"); len(elem) >= l && elem[0:l] == "OfNullable" {
 						elem = elem[l:]
 					} else {
 						break
@@ -478,16 +501,65 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = ReferencedAllofOptionalOperation
+							r.name = ReferencedAllOfNullableOperation
 							r.summary = ""
-							r.operationID = "referencedAllofOptional"
-							r.pathPattern = "/referencedAllofOptional"
+							r.operationID = "referencedAllOfNullable"
+							r.pathPattern = "/referencedAllOfNullable"
 							r.args = args
 							r.count = 0
 							return r, true
 						default:
 							return
 						}
+					}
+
+				case 'o': // Prefix: "of"
+
+					if l := len("of"); len(elem) >= l && elem[0:l] == "of" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "POST":
+							r.name = ReferencedAllofOperation
+							r.summary = ""
+							r.operationID = "referencedAllof"
+							r.pathPattern = "/referencedAllof"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+					switch elem[0] {
+					case 'O': // Prefix: "Optional"
+
+						if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch method {
+							case "POST":
+								r.name = ReferencedAllofOptionalOperation
+								r.summary = ""
+								r.operationID = "referencedAllofOptional"
+								r.pathPattern = "/referencedAllofOptional"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
 					}
 
 				}

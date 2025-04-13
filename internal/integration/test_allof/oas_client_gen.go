@@ -46,6 +46,12 @@ type Invoker interface {
 	//
 	// POST /objectsWithConflictingProperties
 	ObjectsWithConflictingProperties(ctx context.Context, request *ObjectsWithConflictingPropertiesReq) error
+	// ReferencedAllOfNullable invokes referencedAllOfNullable operation.
+	//
+	// Referenced allOf, but requestBody contains nullable refs.
+	//
+	// POST /referencedAllOfNullable
+	ReferencedAllOfNullable(ctx context.Context, request ReferencedAllOfNullableReq) error
 	// ReferencedAllof invokes referencedAllof operation.
 	//
 	// Referenced allOf.
@@ -379,6 +385,106 @@ func (c *Client) sendObjectsWithConflictingProperties(ctx context.Context, reque
 
 	stage = "DecodeResponse"
 	result, err := decodeObjectsWithConflictingPropertiesResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ReferencedAllOfNullable invokes referencedAllOfNullable operation.
+//
+// Referenced allOf, but requestBody contains nullable refs.
+//
+// POST /referencedAllOfNullable
+func (c *Client) ReferencedAllOfNullable(ctx context.Context, request ReferencedAllOfNullableReq) error {
+	_, err := c.sendReferencedAllOfNullable(ctx, request)
+	return err
+}
+
+func (c *Client) sendReferencedAllOfNullable(ctx context.Context, request ReferencedAllOfNullableReq) (res *ReferencedAllOfNullableOK, err error) {
+	// Validate request before sending.
+	switch request := request.(type) {
+	case *ReferencedAllOfNullableReqEmptyBody:
+		// Validation is not needed for the empty body type.
+	case *ReferencedAllOfNullable:
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
+		}
+	case *ReferencedAllOfNullableMultipart:
+		if err := func() error {
+			if err := request.Validate(); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return res, errors.Wrap(err, "validate")
+		}
+	default:
+		return res, errors.Errorf("unexpected request type: %T", request)
+	}
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("referencedAllOfNullable"),
+		semconv.HTTPRequestMethodKey.String("POST"),
+		semconv.HTTPRouteKey.String("/referencedAllOfNullable"),
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, ReferencedAllOfNullableOperation,
+		trace.WithAttributes(otelAttrs...),
+		clientSpanKind,
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/referencedAllOfNullable"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	stage = "EncodeRequest"
+	r, err := ht.NewRequest(ctx, "POST", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+	if err := encodeReferencedAllOfNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeReferencedAllOfNullableResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

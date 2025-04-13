@@ -26,6 +26,12 @@ type Handler interface {
 	//
 	// POST /objectsWithConflictingProperties
 	ObjectsWithConflictingProperties(ctx context.Context, req *ObjectsWithConflictingPropertiesReq) error
+	// ReferencedAllOfNullable implements referencedAllOfNullable operation.
+	//
+	// Referenced allOf, but requestBody contains nullable refs.
+	//
+	// POST /referencedAllOfNullable
+	ReferencedAllOfNullable(ctx context.Context, req ReferencedAllOfNullableReq) error
 	// ReferencedAllof implements referencedAllof operation.
 	//
 	// Referenced allOf.

@@ -79,12 +79,126 @@ func (s *OptInt) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptLocation) SetFake() {
+	var elem Location
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptNilReferencedAllOfNullableMultipartNullableAllOfLocation) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilReferencedAllOfNullableNullableAllOfLocation) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptReferencedAllOfNullableAllOfLocation) SetFake() {
+	var elem ReferencedAllOfNullableAllOfLocation
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptReferencedAllOfNullableMultipartAllOfLocation) SetFake() {
+	var elem ReferencedAllOfNullableMultipartAllOfLocation
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
 	{
 		elem = "string"
 	}
 	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllOfNullable) SetFake() {
+	{
+		{
+			s.Location.SetFake()
+		}
+	}
+	{
+		{
+			s.AllOfLocation.SetFake()
+		}
+	}
+	{
+		{
+			s.NullableAllOfLocation.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllOfNullableAllOfLocation) SetFake() {
+	{
+		{
+			s.Lat = float64(0)
+		}
+	}
+	{
+		{
+			s.Lon = float64(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllOfNullableMultipartAllOfLocation) SetFake() {
+	{
+		{
+			s.Lat = float64(0)
+		}
+	}
+	{
+		{
+			s.Lon = float64(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllOfNullableMultipartNullableAllOfLocation) SetFake() {
+	{
+		{
+			s.Lat = float64(0)
+		}
+	}
+	{
+		{
+			s.Lon = float64(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllOfNullableNullableAllOfLocation) SetFake() {
+	{
+		{
+			s.Lat = float64(0)
+		}
+	}
+	{
+		{
+			s.Lon = float64(0)
+		}
+	}
 }
 
 // SetFake set fake values.
