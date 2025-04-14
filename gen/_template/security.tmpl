@@ -9,11 +9,7 @@ type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
 	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
 	{{- template "godoc" $s.GoDoc }}
-	{{- if $s.Format.IsCustomSecurity }}
-	Handle{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, error)
-	{{- else }}
 	Handle{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, t {{ $s.Type.Name }}) (context.Context, error)
-	{{- end }}
 {{- end }}
 }
 
@@ -107,7 +103,9 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 		t.Token = token
 		t.Scopes = oauth2Scopes{{ $s.Type.Name }}[operationName]
 	{{- else if $s.Format.IsCustomSecurity }}
-		t := req
+		var t {{ $s.Type.Name }}
+		t.Request = req
+        t.Roles = operationRoles{{ $s.Type.Name }}[operationName]
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
