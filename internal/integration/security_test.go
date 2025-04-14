@@ -78,8 +78,8 @@ func (t *testSecurity) HandleCookieKey(ctx context.Context, operationName string
 	return context.WithValue(ctx, tokenKey("CookieKey"), v), nil
 }
 
-func (t *testSecurity) HandleCustom(ctx context.Context, operationName string, req *http.Request) (context.Context, error) {
-	got := req.Header.Get(customSecurityHeader)
+func (t *testSecurity) HandleCustom(ctx context.Context, operationName string, v api.Custom) (context.Context, error) {
+	got := v.Request.Header.Get(customSecurityHeader)
 	if got != t.custom {
 		return nil, errors.Errorf("invalid custom auth: %q", got)
 	}
