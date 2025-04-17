@@ -18,8 +18,10 @@ import (
 // APICaptcha2chcaptchaIDGetParams is parameters of GET /api/captcha/2chcaptcha/id operation.
 type APICaptcha2chcaptchaIDGetParams struct {
 	// ID доски, например, b.
+
 	Board OptString
 	// Номер треда.
+
 	Thread OptInt
 }
 
@@ -159,6 +161,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, argsEscaped bool, r *
 // APICaptcha2chcaptchaShowGetParams is parameters of GET /api/captcha/2chcaptcha/show operation.
 type APICaptcha2chcaptchaShowGetParams struct {
 	// ID капчи.
+
 	ID string
 }
 
@@ -219,10 +222,13 @@ type APICaptchaAppIDPublicKeyGetParams struct {
 	// Публичный ключ, для получения напишите admin@2ch.hk с темой
 	// письма "Получение ключа для приложения" и ссылкой на
 	// ваш клиент.
+
 	PublicKey string
 	// ID доски, например, b.
+
 	Board OptString
 	// Номер треда.
+
 	Thread OptInt
 }
 
@@ -414,8 +420,10 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, argsEscaped bool, r
 // APICaptchaInvisibleRecaptchaIDGetParams is parameters of GET /api/captcha/invisible_recaptcha/id operation.
 type APICaptchaInvisibleRecaptchaIDGetParams struct {
 	// ID доски, например, b.
+
 	Board OptString
 	// Номер треда.
+
 	Thread OptInt
 }
 
@@ -555,8 +563,10 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, argsEscaped b
 // APICaptchaRecaptchaIDGetParams is parameters of GET /api/captcha/recaptcha/id operation.
 type APICaptchaRecaptchaIDGetParams struct {
 	// ID доски, например, b.
+
 	Board OptString
 	// Номер треда.
+
 	Thread OptInt
 }
 
@@ -696,8 +706,10 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, argsEscaped bool, r *h
 // APIDislikeGetParams is parameters of GET /api/dislike operation.
 type APIDislikeGetParams struct {
 	// ID доски, например, b.
+
 	Board string
 	// Номер поста.
+
 	Num int
 }
 
@@ -816,8 +828,10 @@ func decodeAPIDislikeGetParams(args [0]string, argsEscaped bool, r *http.Request
 // APILikeGetParams is parameters of GET /api/like operation.
 type APILikeGetParams struct {
 	// ID доски, например, b.
+
 	Board string
 	// Номер поста.
+
 	Num int
 }
 
@@ -936,10 +950,13 @@ func decodeAPILikeGetParams(args [0]string, argsEscaped bool, r *http.Request) (
 // APIMobileV2AfterBoardThreadNumGetParams is parameters of GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
 type APIMobileV2AfterBoardThreadNumGetParams struct {
 	// ID доски, например, b.
+
 	Board string
 	// Номер треда.
+
 	Thread int
 	// Номер поста.
+
 	Num int
 }
 
@@ -1144,8 +1161,10 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, argsEscaped b
 // APIMobileV2InfoBoardThreadGetParams is parameters of GET /api/mobile/v2/info/{board}/{thread} operation.
 type APIMobileV2InfoBoardThreadGetParams struct {
 	// ID доски, например, b.
+
 	Board string
 	// Номер треда.
+
 	Thread int
 }
 
@@ -1281,8 +1300,10 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, argsEscaped bool,
 // APIMobileV2PostBoardNumGetParams is parameters of GET /api/mobile/v2/post/{board}/{num} operation.
 type APIMobileV2PostBoardNumGetParams struct {
 	// ID доски, например, b.
+
 	Board string
 	// Номер поста.
+
 	Num int
 }
 
@@ -1419,6 +1440,7 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, argsEscaped bool, r 
 type UserPassloginPostParams struct {
 	// Параметр, указывающий что запрос выполняется не
 	// пользователем и ответ нужен в формате json.
+
 	JSON int
 }
 

@@ -18,11 +18,15 @@ import (
 
 // ComplicatedParameterNameGetParams is parameters of GET /complicatedParameterName operation.
 type ComplicatedParameterNameGetParams struct {
-	Eq       string
-	Plus     string
+	Eq string
+
+	Plus string
+
 	Question string
-	And      string
-	Percent  string
+
+	And string
+
+	Percent string
 }
 
 func unpackComplicatedParameterNameGetParams(packed middleware.Parameters) (params ComplicatedParameterNameGetParams) {
@@ -251,10 +255,13 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 
 // ContentParametersParams is parameters of contentParameters operation.
 type ContentParametersParams struct {
-	Query   User
-	Path    User
+	Query User
+
+	Path User
+
 	XHeader User
-	Cookie  User
+
+	Cookie User
 }
 
 func unpackContentParametersParams(packed middleware.Parameters) (params ContentParametersParams) {
@@ -638,6 +645,7 @@ func decodeObjectCookieParameterParams(args [0]string, argsEscaped bool, r *http
 // ObjectQueryParameterParams is parameters of objectQueryParameter operation.
 type ObjectQueryParameterParams struct {
 	FormObject OptOneLevelObject
+
 	DeepObject OptOneLevelObject
 }
 
@@ -732,7 +740,8 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 
 // OptionalArrayParameterParams is parameters of optionalArrayParameter operation.
 type OptionalArrayParameterParams struct {
-	Query  []string
+	Query []string
+
 	Header []string
 }
 
@@ -915,7 +924,8 @@ func decodePathParameterParams(args [1]string, argsEscaped bool, r *http.Request
 
 // SameNameParams is parameters of sameName operation.
 type SameNameParams struct {
-	PathParam  string
+	PathParam string
+
 	QueryParam string
 }
 
@@ -1025,7 +1035,8 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 
 // SimilarNamesParams is parameters of similarNames operation.
 type SimilarNamesParams struct {
-	QueryXParam  string
+	QueryXParam string
+
 	HeaderXParam string
 }
 

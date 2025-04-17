@@ -18,6 +18,7 @@ import (
 // CancelFineTuneParams is parameters of cancelFineTune operation.
 type CancelFineTuneParams struct {
 	// The ID of the fine-tune job to cancel.
+
 	FineTuneID string
 }
 
@@ -85,6 +86,7 @@ func decodeCancelFineTuneParams(args [1]string, argsEscaped bool, r *http.Reques
 type CreateSearchParams struct {
 	// The ID of the engine to use for this request.  You can select one of `ada`, `babbage`, `curie`, or
 	// `davinci`.
+
 	EngineID string
 }
 
@@ -151,6 +153,7 @@ func decodeCreateSearchParams(args [1]string, argsEscaped bool, r *http.Request)
 // DeleteFileParams is parameters of deleteFile operation.
 type DeleteFileParams struct {
 	// The ID of the file to use for this request.
+
 	FileID string
 }
 
@@ -217,6 +220,7 @@ func decodeDeleteFileParams(args [1]string, argsEscaped bool, r *http.Request) (
 // DeleteModelParams is parameters of deleteModel operation.
 type DeleteModelParams struct {
 	// The model to delete.
+
 	Model string
 }
 
@@ -283,6 +287,7 @@ func decodeDeleteModelParams(args [1]string, argsEscaped bool, r *http.Request) 
 // DownloadFileParams is parameters of downloadFile operation.
 type DownloadFileParams struct {
 	// The ID of the file to use for this request.
+
 	FileID string
 }
 
@@ -349,6 +354,7 @@ func decodeDownloadFileParams(args [1]string, argsEscaped bool, r *http.Request)
 // ListFineTuneEventsParams is parameters of listFineTuneEvents operation.
 type ListFineTuneEventsParams struct {
 	// The ID of the fine-tune job to get events for.
+
 	FineTuneID string
 	// Whether to stream events for the fine-tune job. If set to true,
 	// events will be sent as data-only
@@ -358,6 +364,7 @@ type ListFineTuneEventsParams struct {
 	// `data: [DONE]` message when the job is finished (succeeded, cancelled,
 	// or failed).
 	// If set to false, only events generated so far will be returned.
+
 	Stream OptBool
 }
 
@@ -480,6 +487,7 @@ func decodeListFineTuneEventsParams(args [1]string, argsEscaped bool, r *http.Re
 // RetrieveEngineParams is parameters of retrieveEngine operation.
 type RetrieveEngineParams struct {
 	// The ID of the engine to use for this request.
+
 	EngineID string
 }
 
@@ -546,6 +554,7 @@ func decodeRetrieveEngineParams(args [1]string, argsEscaped bool, r *http.Reques
 // RetrieveFileParams is parameters of retrieveFile operation.
 type RetrieveFileParams struct {
 	// The ID of the file to use for this request.
+
 	FileID string
 }
 
@@ -612,6 +621,7 @@ func decodeRetrieveFileParams(args [1]string, argsEscaped bool, r *http.Request)
 // RetrieveFineTuneParams is parameters of retrieveFineTune operation.
 type RetrieveFineTuneParams struct {
 	// The ID of the fine-tune job.
+
 	FineTuneID string
 }
 
@@ -678,6 +688,7 @@ func decodeRetrieveFineTuneParams(args [1]string, argsEscaped bool, r *http.Requ
 // RetrieveModelParams is parameters of retrieveModel operation.
 type RetrieveModelParams struct {
 	// The ID of the model to use for this request.
+
 	Model string
 }
 

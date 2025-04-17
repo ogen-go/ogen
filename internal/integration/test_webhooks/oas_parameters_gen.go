@@ -13,7 +13,8 @@ import (
 
 // UpdateWebhookParams is parameters of updateWebhook operation.
 type UpdateWebhookParams struct {
-	EventType     string
+	EventType string
+
 	XWebhookToken OptString
 }
 

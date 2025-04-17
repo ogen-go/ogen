@@ -22,116 +22,225 @@ import (
 
 // TestQueryParameterParams is parameters of test_query_parameter operation.
 type TestQueryParameterParams struct {
-	Boolean                 bool
-	BooleanArray            []bool
-	Integer                 int
-	IntegerArray            []int
-	IntegerInt16            int16
-	IntegerInt16Array       []int16
-	IntegerInt32            int32
-	IntegerInt32Array       []int32
-	IntegerInt64            int64
-	IntegerInt64Array       []int64
-	IntegerInt8             int8
-	IntegerInt8Array        []int8
-	IntegerUint             uint
-	IntegerUint16           uint16
-	IntegerUint16Array      []uint16
-	IntegerUint32           uint32
-	IntegerUint32Array      []uint32
-	IntegerUint64           uint64
-	IntegerUint64Array      []uint64
-	IntegerUint8            uint8
-	IntegerUint8Array       []uint8
-	IntegerUintArray        []uint
-	IntegerUnix             time.Time
-	IntegerUnixMicro        time.Time
-	IntegerUnixMicroArray   []time.Time
-	IntegerUnixMilli        time.Time
-	IntegerUnixMilliArray   []time.Time
-	IntegerUnixNano         time.Time
-	IntegerUnixNanoArray    []time.Time
-	IntegerUnixSeconds      time.Time
+	Boolean bool
+
+	BooleanArray []bool
+
+	Integer int
+
+	IntegerArray []int
+
+	IntegerInt16 int16
+
+	IntegerInt16Array []int16
+
+	IntegerInt32 int32
+
+	IntegerInt32Array []int32
+
+	IntegerInt64 int64
+
+	IntegerInt64Array []int64
+
+	IntegerInt8 int8
+
+	IntegerInt8Array []int8
+
+	IntegerUint uint
+
+	IntegerUint16 uint16
+
+	IntegerUint16Array []uint16
+
+	IntegerUint32 uint32
+
+	IntegerUint32Array []uint32
+
+	IntegerUint64 uint64
+
+	IntegerUint64Array []uint64
+
+	IntegerUint8 uint8
+
+	IntegerUint8Array []uint8
+
+	IntegerUintArray []uint
+
+	IntegerUnix time.Time
+
+	IntegerUnixMicro time.Time
+
+	IntegerUnixMicroArray []time.Time
+
+	IntegerUnixMilli time.Time
+
+	IntegerUnixMilliArray []time.Time
+
+	IntegerUnixNano time.Time
+
+	IntegerUnixNanoArray []time.Time
+
+	IntegerUnixSeconds time.Time
+
 	IntegerUnixSecondsArray []time.Time
-	IntegerUnixArray        []time.Time
-	Number                  float64
-	NumberArray             []float64
-	NumberDouble            float64
-	NumberDoubleArray       []float64
-	NumberFloat             float32
-	NumberFloatArray        []float32
-	NumberInt32             int32
-	NumberInt32Array        []int32
-	NumberInt64             int64
-	NumberInt64Array        []int64
-	String                  string
-	StringArray             []string
-	StringBase64            []byte
-	StringBase64Array       [][]byte
-	StringBinary            string
-	StringBinaryArray       []string
-	StringByte              []byte
-	StringByteArray         [][]byte
-	StringDate              time.Time
-	StringDateTime          time.Time
-	StringDateTimeArray     []time.Time
-	StringDateArray         []time.Time
-	StringDuration          time.Duration
-	StringDurationArray     []time.Duration
-	StringEmail             string
-	StringEmailArray        []string
-	StringFloat32           float32
-	StringFloat32Array      []float32
-	StringFloat64           float64
-	StringFloat64Array      []float64
-	StringHostname          string
-	StringHostnameArray     []string
-	StringInt               int
-	StringInt16             int16
-	StringInt16Array        []int16
-	StringInt32             int32
-	StringInt32Array        []int32
-	StringInt64             int64
-	StringInt64Array        []int64
-	StringInt8              int8
-	StringInt8Array         []int8
-	StringIntArray          []int
-	StringIP                netip.Addr
-	StringIPArray           []netip.Addr
-	StringIpv4              netip.Addr
-	StringIpv4Array         []netip.Addr
-	StringIpv6              netip.Addr
-	StringIpv6Array         []netip.Addr
-	StringMAC               net.HardwareAddr
-	StringMACArray          []net.HardwareAddr
-	StringPassword          string
-	StringPasswordArray     []string
-	StringTime              time.Time
-	StringTimeArray         []time.Time
-	StringUint              uint
-	StringUint16            uint16
-	StringUint16Array       []uint16
-	StringUint32            uint32
-	StringUint32Array       []uint32
-	StringUint64            uint64
-	StringUint64Array       []uint64
-	StringUint8             uint8
-	StringUint8Array        []uint8
-	StringUintArray         []uint
-	StringUnix              time.Time
-	StringUnixMicro         time.Time
-	StringUnixMicroArray    []time.Time
-	StringUnixMilli         time.Time
-	StringUnixMilliArray    []time.Time
-	StringUnixNano          time.Time
-	StringUnixNanoArray     []time.Time
-	StringUnixSeconds       time.Time
-	StringUnixSecondsArray  []time.Time
-	StringUnixArray         []time.Time
-	StringURI               url.URL
-	StringURIArray          []url.URL
-	StringUUID              uuid.UUID
-	StringUUIDArray         []uuid.UUID
+
+	IntegerUnixArray []time.Time
+
+	Number float64
+
+	NumberArray []float64
+
+	NumberDouble float64
+
+	NumberDoubleArray []float64
+
+	NumberFloat float32
+
+	NumberFloatArray []float32
+
+	NumberInt32 int32
+
+	NumberInt32Array []int32
+
+	NumberInt64 int64
+
+	NumberInt64Array []int64
+
+	String string
+
+	StringArray []string
+
+	StringBase64 []byte
+
+	StringBase64Array [][]byte
+
+	StringBinary string
+
+	StringBinaryArray []string
+
+	StringByte []byte
+
+	StringByteArray [][]byte
+
+	StringDate time.Time
+
+	StringDateTime time.Time
+
+	StringDateTimeArray []time.Time
+
+	StringDateArray []time.Time
+
+	StringDuration time.Duration
+
+	StringDurationArray []time.Duration
+
+	StringEmail string
+
+	StringEmailArray []string
+
+	StringFloat32 float32
+
+	StringFloat32Array []float32
+
+	StringFloat64 float64
+
+	StringFloat64Array []float64
+
+	StringHostname string
+
+	StringHostnameArray []string
+
+	StringInt int
+
+	StringInt16 int16
+
+	StringInt16Array []int16
+
+	StringInt32 int32
+
+	StringInt32Array []int32
+
+	StringInt64 int64
+
+	StringInt64Array []int64
+
+	StringInt8 int8
+
+	StringInt8Array []int8
+
+	StringIntArray []int
+
+	StringIP netip.Addr
+
+	StringIPArray []netip.Addr
+
+	StringIpv4 netip.Addr
+
+	StringIpv4Array []netip.Addr
+
+	StringIpv6 netip.Addr
+
+	StringIpv6Array []netip.Addr
+
+	StringMAC net.HardwareAddr
+
+	StringMACArray []net.HardwareAddr
+
+	StringPassword string
+
+	StringPasswordArray []string
+
+	StringTime time.Time
+
+	StringTimeArray []time.Time
+
+	StringUint uint
+
+	StringUint16 uint16
+
+	StringUint16Array []uint16
+
+	StringUint32 uint32
+
+	StringUint32Array []uint32
+
+	StringUint64 uint64
+
+	StringUint64Array []uint64
+
+	StringUint8 uint8
+
+	StringUint8Array []uint8
+
+	StringUintArray []uint
+
+	StringUnix time.Time
+
+	StringUnixMicro time.Time
+
+	StringUnixMicroArray []time.Time
+
+	StringUnixMilli time.Time
+
+	StringUnixMilliArray []time.Time
+
+	StringUnixNano time.Time
+
+	StringUnixNanoArray []time.Time
+
+	StringUnixSeconds time.Time
+
+	StringUnixSecondsArray []time.Time
+
+	StringUnixArray []time.Time
+
+	StringURI url.URL
+
+	StringURIArray []url.URL
+
+	StringUUID uuid.UUID
+
+	StringUUIDArray []uuid.UUID
 }
 
 func unpackTestQueryParameterParams(packed middleware.Parameters) (params TestQueryParameterParams) {

@@ -18,6 +18,7 @@ import (
 // DeletePetParams is parameters of deletePet operation.
 type DeletePetParams struct {
 	// ID of pet to delete.
+
 	ID int64
 }
 
@@ -84,6 +85,7 @@ func decodeDeletePetParams(args [1]string, argsEscaped bool, r *http.Request) (p
 // FindPetByIDParams is parameters of find pet by id operation.
 type FindPetByIDParams struct {
 	// ID of pet to fetch.
+
 	ID int64
 }
 
@@ -150,8 +152,10 @@ func decodeFindPetByIDParams(args [1]string, argsEscaped bool, r *http.Request) 
 // FindPetsParams is parameters of findPets operation.
 type FindPetsParams struct {
 	// Tags to filter by.
+
 	Tags []string
 	// Maximum number of results to return.
+
 	Limit OptInt32
 }
 

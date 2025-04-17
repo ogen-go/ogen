@@ -18,10 +18,14 @@ import (
 
 // DataGetFormatParams is parameters of dataGetFormat operation.
 type DataGetFormatParams struct {
-	ID  int
+	ID int
+
 	Foo string
+
 	Bar string
+
 	Baz string
+
 	Kek string
 }
 
@@ -446,8 +450,10 @@ func decodeDefaultTestParams(args [0]string, argsEscaped bool, r *http.Request) 
 // FoobarGetParams is parameters of foobarGet operation.
 type FoobarGetParams struct {
 	// InlinedParam.
+
 	InlinedParam int64
 	// Number of items to skip.
+
 	Skip int32
 }
 
@@ -549,6 +555,7 @@ func decodeFoobarGetParams(args [0]string, argsEscaped bool, r *http.Request) (p
 // PetFriendsNamesByIDParams is parameters of petFriendsNamesByID operation.
 type PetFriendsNamesByIDParams struct {
 	// Pet ID.
+
 	ID int
 }
 
@@ -615,12 +622,16 @@ func decodePetFriendsNamesByIDParams(args [1]string, argsEscaped bool, r *http.R
 // PetGetParams is parameters of petGet operation.
 type PetGetParams struct {
 	// ID of pet.
+
 	PetID int64
 	// Tags of pets.
+
 	XTags []uuid.UUID
 	// Pet scopes.
+
 	XScope []string
 	// Token.
+
 	Token string
 }
 
@@ -856,6 +867,7 @@ func decodePetGetParams(args [0]string, argsEscaped bool, r *http.Request) (para
 // PetGetAvatarByIDParams is parameters of petGetAvatarByID operation.
 type PetGetAvatarByIDParams struct {
 	// ID of pet.
+
 	PetID int64
 }
 
@@ -914,6 +926,7 @@ func decodePetGetAvatarByIDParams(args [0]string, argsEscaped bool, r *http.Requ
 // PetGetAvatarByNameParams is parameters of petGetAvatarByName operation.
 type PetGetAvatarByNameParams struct {
 	// Name of pet.
+
 	Name string
 }
 
@@ -980,6 +993,7 @@ func decodePetGetAvatarByNameParams(args [1]string, argsEscaped bool, r *http.Re
 // PetGetByNameParams is parameters of petGetByName operation.
 type PetGetByNameParams struct {
 	// Name of pet.
+
 	Name string
 }
 
@@ -1046,6 +1060,7 @@ func decodePetGetByNameParams(args [1]string, argsEscaped bool, r *http.Request)
 // PetNameByIDParams is parameters of petNameByID operation.
 type PetNameByIDParams struct {
 	// Pet ID.
+
 	ID int
 }
 
@@ -1112,6 +1127,7 @@ func decodePetNameByIDParams(args [1]string, argsEscaped bool, r *http.Request) 
 // PetUploadAvatarByIDParams is parameters of petUploadAvatarByID operation.
 type PetUploadAvatarByIDParams struct {
 	// ID of pet.
+
 	PetID int64
 }
 

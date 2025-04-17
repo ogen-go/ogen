@@ -18,6 +18,7 @@ import (
 // CreatePetCategoriesParams is parameters of createPetCategories operation.
 type CreatePetCategoriesParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
@@ -84,6 +85,7 @@ func decodeCreatePetCategoriesParams(args [1]string, argsEscaped bool, r *http.R
 // CreatePetFriendsParams is parameters of createPetFriends operation.
 type CreatePetFriendsParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
@@ -150,6 +152,7 @@ func decodeCreatePetFriendsParams(args [1]string, argsEscaped bool, r *http.Requ
 // CreatePetOwnerParams is parameters of createPetOwner operation.
 type CreatePetOwnerParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
@@ -216,6 +219,7 @@ func decodeCreatePetOwnerParams(args [1]string, argsEscaped bool, r *http.Reques
 // DeletePetParams is parameters of deletePet operation.
 type DeletePetParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
@@ -282,6 +286,7 @@ func decodeDeletePetParams(args [1]string, argsEscaped bool, r *http.Request) (p
 // DeletePetOwnerParams is parameters of deletePetOwner operation.
 type DeletePetOwnerParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
@@ -348,8 +353,10 @@ func decodeDeletePetOwnerParams(args [1]string, argsEscaped bool, r *http.Reques
 // ListPetParams is parameters of listPet operation.
 type ListPetParams struct {
 	// What page to render.
+
 	Page OptInt32
 	// Item count to render per page.
+
 	ItemsPerPage OptInt32
 }
 
@@ -465,10 +472,13 @@ func decodeListPetParams(args [0]string, argsEscaped bool, r *http.Request) (par
 // ListPetCategoriesParams is parameters of listPetCategories operation.
 type ListPetCategoriesParams struct {
 	// ID of the Pet.
+
 	ID int
 	// What page to render.
+
 	Page OptInt32
 	// Item count to render per page.
+
 	ItemsPerPage OptInt32
 }
 
@@ -636,10 +646,13 @@ func decodeListPetCategoriesParams(args [1]string, argsEscaped bool, r *http.Req
 // ListPetFriendsParams is parameters of listPetFriends operation.
 type ListPetFriendsParams struct {
 	// ID of the Pet.
+
 	ID int
 	// What page to render.
+
 	Page OptInt32
 	// Item count to render per page.
+
 	ItemsPerPage OptInt32
 }
 
@@ -807,6 +820,7 @@ func decodeListPetFriendsParams(args [1]string, argsEscaped bool, r *http.Reques
 // ReadPetParams is parameters of readPet operation.
 type ReadPetParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
@@ -873,6 +887,7 @@ func decodeReadPetParams(args [1]string, argsEscaped bool, r *http.Request) (par
 // ReadPetOwnerParams is parameters of readPetOwner operation.
 type ReadPetOwnerParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
@@ -939,6 +954,7 @@ func decodeReadPetOwnerParams(args [1]string, argsEscaped bool, r *http.Request)
 // UpdatePetParams is parameters of updatePet operation.
 type UpdatePetParams struct {
 	// ID of the Pet.
+
 	ID int
 }
 
