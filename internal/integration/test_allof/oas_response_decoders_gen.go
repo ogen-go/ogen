@@ -35,6 +35,15 @@ func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response) (res *O
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
+func decodeReferencedAllOfNullableResponse(resp *http.Response) (res *ReferencedAllOfNullableOK, _ error) {
+	switch resp.StatusCode {
+	case 200:
+		// Code 200.
+		return &ReferencedAllOfNullableOK{}, nil
+	}
+	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+}
+
 func decodeReferencedAllofResponse(resp *http.Response) (res *ReferencedAllofOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
