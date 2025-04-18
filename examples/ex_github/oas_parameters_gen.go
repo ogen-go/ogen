@@ -21,10 +21,8 @@ import (
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
-
-	RepositoryID int
+	RepositoryID  int
 }
 
 func unpackActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middleware.Parameters) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) {
@@ -195,9 +193,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 type ActionsAddSelectedRepoToOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
-
-	SecretName string
-
+	SecretName   string
 	RepositoryID int
 }
 
@@ -369,10 +365,8 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, argsEscaped b
 type ActionsAddSelfHostedRunnerToGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -543,10 +537,8 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, argsEsc
 // ActionsApproveWorkflowRunParams is parameters of actions/approve-workflow-run operation.
 type ActionsApproveWorkflowRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -717,10 +709,8 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, argsEscaped bool, r *
 // ActionsCancelWorkflowRunParams is parameters of actions/cancel-workflow-run operation.
 type ActionsCancelWorkflowRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -892,10 +882,8 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, argsEscaped bool, r *h
 type ActionsCreateOrUpdateEnvironmentSecretParams struct {
 	RepositoryID int
 	// The name of the environment.
-
 	EnvironmentName string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -1067,7 +1055,6 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, argsEsca
 type ActionsCreateOrUpdateOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -1186,10 +1173,8 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, argsEscaped bool
 // ActionsCreateOrUpdateRepoSecretParams is parameters of actions/create-or-update-repo-secret operation.
 type ActionsCreateOrUpdateRepoSecretParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -1425,8 +1410,7 @@ func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, argsEscape
 // ActionsCreateRegistrationTokenForRepoParams is parameters of actions/create-registration-token-for-repo operation.
 type ActionsCreateRegistrationTokenForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsCreateRegistrationTokenForRepoParams(packed middleware.Parameters) (params ActionsCreateRegistrationTokenForRepoParams) {
@@ -1609,8 +1593,7 @@ func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, argsEscaped bool
 // ActionsCreateRemoveTokenForRepoParams is parameters of actions/create-remove-token-for-repo operation.
 type ActionsCreateRemoveTokenForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsCreateRemoveTokenForRepoParams(packed middleware.Parameters) (params ActionsCreateRemoveTokenForRepoParams) {
@@ -1793,10 +1776,8 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, argsEs
 // ActionsDeleteArtifactParams is parameters of actions/delete-artifact operation.
 type ActionsDeleteArtifactParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Artifact_id parameter.
-
 	ArtifactID int
 }
 
@@ -1968,10 +1949,8 @@ func decodeActionsDeleteArtifactParams(args [3]string, argsEscaped bool, r *http
 type ActionsDeleteEnvironmentSecretParams struct {
 	RepositoryID int
 	// The name of the environment.
-
 	EnvironmentName string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -2143,7 +2122,6 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, argsEscaped bool
 type ActionsDeleteOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -2262,10 +2240,8 @@ func decodeActionsDeleteOrgSecretParams(args [2]string, argsEscaped bool, r *htt
 // ActionsDeleteRepoSecretParams is parameters of actions/delete-repo-secret operation.
 type ActionsDeleteRepoSecretParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -2437,7 +2413,6 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, argsEscaped bool, r *ht
 type ActionsDeleteSelfHostedRunnerFromOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -2556,10 +2531,8 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, argsEscape
 // ActionsDeleteSelfHostedRunnerFromRepoParams is parameters of actions/delete-self-hosted-runner-from-repo operation.
 type ActionsDeleteSelfHostedRunnerFromRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -2731,7 +2704,6 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, argsEscap
 type ActionsDeleteSelfHostedRunnerGroupFromOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -2850,10 +2822,8 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, argsE
 // ActionsDeleteWorkflowRunParams is parameters of actions/delete-workflow-run operation.
 type ActionsDeleteWorkflowRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -3024,10 +2994,8 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, argsEscaped bool, r *h
 // ActionsDeleteWorkflowRunLogsParams is parameters of actions/delete-workflow-run-logs operation.
 type ActionsDeleteWorkflowRunLogsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -3197,8 +3165,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, argsEscaped bool, 
 
 // ActionsDisableSelectedRepositoryGithubActionsOrganizationParams is parameters of actions/disable-selected-repository-github-actions-organization operation.
 type ActionsDisableSelectedRepositoryGithubActionsOrganizationParams struct {
-	Org string
-
+	Org          string
 	RepositoryID int
 }
 
@@ -3317,12 +3284,9 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 // ActionsDownloadArtifactParams is parameters of actions/download-artifact operation.
 type ActionsDownloadArtifactParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Artifact_id parameter.
-
-	ArtifactID int
-
+	ArtifactID    int
 	ArchiveFormat string
 }
 
@@ -3545,10 +3509,8 @@ func decodeActionsDownloadArtifactParams(args [4]string, argsEscaped bool, r *ht
 // ActionsDownloadJobLogsForWorkflowRunParams is parameters of actions/download-job-logs-for-workflow-run operation.
 type ActionsDownloadJobLogsForWorkflowRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Job_id parameter.
-
 	JobID int
 }
 
@@ -3719,10 +3681,8 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, argsEscape
 // ActionsDownloadWorkflowRunLogsParams is parameters of actions/download-workflow-run-logs operation.
 type ActionsDownloadWorkflowRunLogsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -3892,8 +3852,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, argsEscaped bool
 
 // ActionsEnableSelectedRepositoryGithubActionsOrganizationParams is parameters of actions/enable-selected-repository-github-actions-organization operation.
 type ActionsEnableSelectedRepositoryGithubActionsOrganizationParams struct {
-	Org string
-
+	Org          string
 	RepositoryID int
 }
 
@@ -4077,8 +4036,7 @@ func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, argsEscape
 // ActionsGetAllowedActionsRepositoryParams is parameters of actions/get-allowed-actions-repository operation.
 type ActionsGetAllowedActionsRepositoryParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsGetAllowedActionsRepositoryParams(packed middleware.Parameters) (params ActionsGetAllowedActionsRepositoryParams) {
@@ -4196,10 +4154,8 @@ func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, argsEscaped 
 // ActionsGetArtifactParams is parameters of actions/get-artifact operation.
 type ActionsGetArtifactParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Artifact_id parameter.
-
 	ArtifactID int
 }
 
@@ -4371,7 +4327,6 @@ func decodeActionsGetArtifactParams(args [3]string, argsEscaped bool, r *http.Re
 type ActionsGetEnvironmentPublicKeyParams struct {
 	RepositoryID int
 	// The name of the environment.
-
 	EnvironmentName string
 }
 
@@ -4491,10 +4446,8 @@ func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, argsEscaped bool
 type ActionsGetEnvironmentSecretParams struct {
 	RepositoryID int
 	// The name of the environment.
-
 	EnvironmentName string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -4730,8 +4683,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, 
 // ActionsGetGithubActionsPermissionsRepositoryParams is parameters of actions/get-github-actions-permissions-repository operation.
 type ActionsGetGithubActionsPermissionsRepositoryParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsGetGithubActionsPermissionsRepositoryParams(packed middleware.Parameters) (params ActionsGetGithubActionsPermissionsRepositoryParams) {
@@ -4849,10 +4801,8 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, ar
 // ActionsGetJobForWorkflowRunParams is parameters of actions/get-job-for-workflow-run operation.
 type ActionsGetJobForWorkflowRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Job_id parameter.
-
 	JobID int
 }
 
@@ -5089,7 +5039,6 @@ func decodeActionsGetOrgPublicKeyParams(args [1]string, argsEscaped bool, r *htt
 type ActionsGetOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -5208,8 +5157,7 @@ func decodeActionsGetOrgSecretParams(args [2]string, argsEscaped bool, r *http.R
 // ActionsGetRepoPublicKeyParams is parameters of actions/get-repo-public-key operation.
 type ActionsGetRepoPublicKeyParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsGetRepoPublicKeyParams(packed middleware.Parameters) (params ActionsGetRepoPublicKeyParams) {
@@ -5327,10 +5275,8 @@ func decodeActionsGetRepoPublicKeyParams(args [2]string, argsEscaped bool, r *ht
 // ActionsGetRepoSecretParams is parameters of actions/get-repo-secret operation.
 type ActionsGetRepoSecretParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -5501,10 +5447,8 @@ func decodeActionsGetRepoSecretParams(args [3]string, argsEscaped bool, r *http.
 // ActionsGetReviewsForRunParams is parameters of actions/get-reviews-for-run operation.
 type ActionsGetReviewsForRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -5676,7 +5620,6 @@ func decodeActionsGetReviewsForRunParams(args [3]string, argsEscaped bool, r *ht
 type ActionsGetSelfHostedRunnerForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -5795,10 +5738,8 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, argsEscaped bo
 // ActionsGetSelfHostedRunnerForRepoParams is parameters of actions/get-self-hosted-runner-for-repo operation.
 type ActionsGetSelfHostedRunnerForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -5970,7 +5911,6 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, argsEscaped b
 type ActionsGetSelfHostedRunnerGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -6089,10 +6029,8 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, argsEscap
 // ActionsGetWorkflowRunParams is parameters of actions/get-workflow-run operation.
 type ActionsGetWorkflowRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -6263,10 +6201,8 @@ func decodeActionsGetWorkflowRunParams(args [3]string, argsEscaped bool, r *http
 // ActionsGetWorkflowRunUsageParams is parameters of actions/get-workflow-run-usage operation.
 type ActionsGetWorkflowRunUsageParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -6437,13 +6373,10 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, argsEscaped bool, r 
 // ActionsListArtifactsForRepoParams is parameters of actions/list-artifacts-for-repo operation.
 type ActionsListArtifactsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -6674,13 +6607,10 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, argsEscaped bool, r
 type ActionsListEnvironmentSecretsParams struct {
 	RepositoryID int
 	// The name of the environment.
-
 	EnvironmentName string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -6910,21 +6840,16 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, argsEscaped bool,
 // ActionsListJobsForWorkflowRunParams is parameters of actions/list-jobs-for-workflow-run operation.
 type ActionsListJobsForWorkflowRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 	// Filters jobs by their `completed_at` timestamp. Can be one of:
 	// \* `latest`: Returns jobs from the most recent execution of the workflow run.
 	// \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
-
 	Filter OptActionsListJobsForWorkflowRunFilter
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -7277,10 +7202,8 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, argsEscaped bool,
 type ActionsListOrgSecretsParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -7459,13 +7382,10 @@ func decodeActionsListOrgSecretsParams(args [1]string, argsEscaped bool, r *http
 type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -7695,13 +7615,10 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 // ActionsListRepoSecretsParams is parameters of actions/list-repo-secrets operation.
 type ActionsListRepoSecretsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -7931,13 +7848,10 @@ func decodeActionsListRepoSecretsParams(args [2]string, argsEscaped bool, r *htt
 // ActionsListRepoWorkflowsParams is parameters of actions/list-repo-workflows operation.
 type ActionsListRepoWorkflowsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -8232,8 +8146,7 @@ func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, argsEscaped
 // ActionsListRunnerApplicationsForRepoParams is parameters of actions/list-runner-applications-for-repo operation.
 type ActionsListRunnerApplicationsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsListRunnerApplicationsForRepoParams(packed middleware.Parameters) (params ActionsListRunnerApplicationsForRepoParams) {
@@ -8352,13 +8265,10 @@ func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, argsEscape
 type ActionsListSelectedReposForOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
-
 	SecretName string
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -8589,10 +8499,8 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, argsEscape
 type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -8771,10 +8679,8 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -8953,10 +8859,8 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, argsEsc
 type ActionsListSelfHostedRunnersForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -9134,13 +9038,10 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, argsEscaped 
 // ActionsListSelfHostedRunnersForRepoParams is parameters of actions/list-self-hosted-runners-for-repo operation.
 type ActionsListSelfHostedRunnersForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -9371,13 +9272,10 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, argsEscaped
 type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -9607,16 +9505,12 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, argsE
 // ActionsListWorkflowRunArtifactsParams is parameters of actions/list-workflow-run-artifacts operation.
 type ActionsListWorkflowRunArtifactsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -9898,33 +9792,25 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, argsEscaped boo
 // ActionsListWorkflowRunsForRepoParams is parameters of actions/list-workflow-runs-for-repo operation.
 type ActionsListWorkflowRunsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Returns someone's workflow runs. Use the login for the user who created the `push` associated with
 	// the check suite or workflow run.
-
 	Actor OptString
 	// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
-
 	Branch OptString
 	// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or
 	// `issue`. For more information, see "[Events that trigger workflows](https://help.github.
 	// com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows).".
-
 	Event OptString
 	// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a
 	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
 	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
 	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
-
 	Status OptWorkflowRunStatus
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
-	Page OptInt
-
+	Page    OptInt
 	Created OptDateTime
 }
 
@@ -10419,10 +10305,8 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, argsEscaped bool
 // ActionsReRunWorkflowParams is parameters of actions/re-run-workflow operation.
 type ActionsReRunWorkflowParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -10594,10 +10478,8 @@ func decodeActionsReRunWorkflowParams(args [3]string, argsEscaped bool, r *http.
 type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
-
-	RepositoryID int
+	RepositoryID  int
 }
 
 func unpackActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(packed middleware.Parameters) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) {
@@ -10768,9 +10650,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 type ActionsRemoveSelectedRepoFromOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
-
-	SecretName string
-
+	SecretName   string
 	RepositoryID int
 }
 
@@ -10942,10 +10822,8 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, argsEsca
 type ActionsRemoveSelfHostedRunnerFromGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -11116,10 +10994,8 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, ar
 // ActionsRetryWorkflowParams is parameters of actions/retry-workflow operation.
 type ActionsRetryWorkflowParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -11290,10 +11166,8 @@ func decodeActionsRetryWorkflowParams(args [3]string, argsEscaped bool, r *http.
 // ActionsReviewPendingDeploymentsForRunParams is parameters of actions/review-pending-deployments-for-run operation.
 type ActionsReviewPendingDeploymentsForRunParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The id of the workflow run.
-
 	RunID int
 }
 
@@ -11529,8 +11403,7 @@ func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, argsEscape
 // ActionsSetAllowedActionsRepositoryParams is parameters of actions/set-allowed-actions-repository operation.
 type ActionsSetAllowedActionsRepositoryParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsSetAllowedActionsRepositoryParams(packed middleware.Parameters) (params ActionsSetAllowedActionsRepositoryParams) {
@@ -11713,8 +11586,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, 
 // ActionsSetGithubActionsPermissionsRepositoryParams is parameters of actions/set-github-actions-permissions-repository operation.
 type ActionsSetGithubActionsPermissionsRepositoryParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActionsSetGithubActionsPermissionsRepositoryParams(packed middleware.Parameters) (params ActionsSetGithubActionsPermissionsRepositoryParams) {
@@ -11833,7 +11705,6 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, ar
 type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -11953,7 +11824,6 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string
 type ActionsSetSelectedReposForOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
-
 	SecretName string
 }
 
@@ -12138,7 +12008,6 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 type ActionsSetSelfHostedRunnersInGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -12258,7 +12127,6 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, argsEs
 type ActionsUpdateSelfHostedRunnerGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -12377,8 +12245,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, argsEs
 // ActivityCheckRepoIsStarredByAuthenticatedUserParams is parameters of activity/check-repo-is-starred-by-authenticated-user operation.
 type ActivityCheckRepoIsStarredByAuthenticatedUserParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActivityCheckRepoIsStarredByAuthenticatedUserParams(packed middleware.Parameters) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams) {
@@ -12496,8 +12363,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, a
 // ActivityDeleteRepoSubscriptionParams is parameters of activity/delete-repo-subscription operation.
 type ActivityDeleteRepoSubscriptionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActivityDeleteRepoSubscriptionParams(packed middleware.Parameters) (params ActivityDeleteRepoSubscriptionParams) {
@@ -12615,7 +12481,6 @@ func decodeActivityDeleteRepoSubscriptionParams(args [2]string, argsEscaped bool
 // ActivityDeleteThreadSubscriptionParams is parameters of activity/delete-thread-subscription operation.
 type ActivityDeleteThreadSubscriptionParams struct {
 	// Thread_id parameter.
-
 	ThreadID int
 }
 
@@ -12682,8 +12547,7 @@ func decodeActivityDeleteThreadSubscriptionParams(args [1]string, argsEscaped bo
 // ActivityGetRepoSubscriptionParams is parameters of activity/get-repo-subscription operation.
 type ActivityGetRepoSubscriptionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActivityGetRepoSubscriptionParams(packed middleware.Parameters) (params ActivityGetRepoSubscriptionParams) {
@@ -12801,7 +12665,6 @@ func decodeActivityGetRepoSubscriptionParams(args [2]string, argsEscaped bool, r
 // ActivityGetThreadParams is parameters of activity/get-thread operation.
 type ActivityGetThreadParams struct {
 	// Thread_id parameter.
-
 	ThreadID int
 }
 
@@ -12868,7 +12731,6 @@ func decodeActivityGetThreadParams(args [1]string, argsEscaped bool, r *http.Req
 // ActivityGetThreadSubscriptionForAuthenticatedUserParams is parameters of activity/get-thread-subscription-for-authenticated-user operation.
 type ActivityGetThreadSubscriptionForAuthenticatedUserParams struct {
 	// Thread_id parameter.
-
 	ThreadID int
 }
 
@@ -12936,10 +12798,8 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]strin
 type ActivityListEventsForAuthenticatedUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -13117,24 +12977,18 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, argsEsca
 // ActivityListNotificationsForAuthenticatedUserParams is parameters of activity/list-notifications-for-authenticated-user operation.
 type ActivityListNotificationsForAuthenticatedUserParams struct {
 	// If `true`, show notifications marked as read.
-
 	All OptBool
 	// If `true`, only shows notifications in which the user is directly participating or mentioned.
-
 	Participating OptBool
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Before OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -13470,13 +13324,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, a
 // ActivityListOrgEventsForAuthenticatedUserParams is parameters of activity/list-org-events-for-authenticated-user operation.
 type ActivityListOrgEventsForAuthenticatedUserParams struct {
 	Username string
-
-	Org string
+	Org      string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -13706,10 +13557,8 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, argsE
 // ActivityListPublicEventsParams is parameters of activity/list-public-events operation.
 type ActivityListPublicEventsParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -13835,13 +13684,10 @@ func decodeActivityListPublicEventsParams(args [0]string, argsEscaped bool, r *h
 // ActivityListPublicEventsForRepoNetworkParams is parameters of activity/list-public-events-for-repo-network operation.
 type ActivityListPublicEventsForRepoNetworkParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -14072,10 +13918,8 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, argsEsca
 type ActivityListPublicEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -14254,10 +14098,8 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, argsEscaped boo
 type ActivityListPublicOrgEventsParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -14436,10 +14278,8 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, argsEscaped bool, r
 type ActivityListReceivedEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -14618,10 +14458,8 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, argsEscaped b
 type ActivityListReceivedPublicEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -14799,13 +14637,10 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, argsEsc
 // ActivityListRepoEventsParams is parameters of activity/list-repo-events operation.
 type ActivityListRepoEventsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -15035,27 +14870,20 @@ func decodeActivityListRepoEventsParams(args [2]string, argsEscaped bool, r *htt
 // ActivityListRepoNotificationsForAuthenticatedUserParams is parameters of activity/list-repo-notifications-for-authenticated-user operation.
 type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// If `true`, show notifications marked as read.
-
 	All OptBool
 	// If `true`, only shows notifications in which the user is directly participating or mentioned.
-
 	Participating OptBool
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Before OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -15495,16 +15323,12 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 // ActivityListReposStarredByAuthenticatedUserParams is parameters of activity/list-repos-starred-by-authenticated-user operation.
 type ActivityListReposStarredByAuthenticatedUserParams struct {
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-
 	Sort OptSort
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -15771,10 +15595,8 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, arg
 type ActivityListReposWatchedByUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -15952,10 +15774,8 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, argsEscaped bool
 // ActivityListWatchedReposForAuthenticatedUserParams is parameters of activity/list-watched-repos-for-authenticated-user operation.
 type ActivityListWatchedReposForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -16081,13 +15901,10 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, ar
 // ActivityListWatchersForRepoParams is parameters of activity/list-watchers-for-repo operation.
 type ActivityListWatchersForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -16317,8 +16134,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, argsEscaped bool, r
 // ActivityMarkRepoNotificationsAsReadParams is parameters of activity/mark-repo-notifications-as-read operation.
 type ActivityMarkRepoNotificationsAsReadParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActivityMarkRepoNotificationsAsReadParams(packed middleware.Parameters) (params ActivityMarkRepoNotificationsAsReadParams) {
@@ -16436,7 +16252,6 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, argsEscaped
 // ActivityMarkThreadAsReadParams is parameters of activity/mark-thread-as-read operation.
 type ActivityMarkThreadAsReadParams struct {
 	// Thread_id parameter.
-
 	ThreadID int
 }
 
@@ -16503,8 +16318,7 @@ func decodeActivityMarkThreadAsReadParams(args [1]string, argsEscaped bool, r *h
 // ActivitySetRepoSubscriptionParams is parameters of activity/set-repo-subscription operation.
 type ActivitySetRepoSubscriptionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActivitySetRepoSubscriptionParams(packed middleware.Parameters) (params ActivitySetRepoSubscriptionParams) {
@@ -16622,7 +16436,6 @@ func decodeActivitySetRepoSubscriptionParams(args [2]string, argsEscaped bool, r
 // ActivitySetThreadSubscriptionParams is parameters of activity/set-thread-subscription operation.
 type ActivitySetThreadSubscriptionParams struct {
 	// Thread_id parameter.
-
 	ThreadID int
 }
 
@@ -16689,8 +16502,7 @@ func decodeActivitySetThreadSubscriptionParams(args [1]string, argsEscaped bool,
 // ActivityStarRepoForAuthenticatedUserParams is parameters of activity/star-repo-for-authenticated-user operation.
 type ActivityStarRepoForAuthenticatedUserParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActivityStarRepoForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityStarRepoForAuthenticatedUserParams) {
@@ -16808,8 +16620,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, argsEscape
 // ActivityUnstarRepoForAuthenticatedUserParams is parameters of activity/unstar-repo-for-authenticated-user operation.
 type ActivityUnstarRepoForAuthenticatedUserParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackActivityUnstarRepoForAuthenticatedUserParams(packed middleware.Parameters) (params ActivityUnstarRepoForAuthenticatedUserParams) {
@@ -16927,10 +16738,8 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, argsEsca
 // AppsAddRepoToInstallationParams is parameters of apps/add-repo-to-installation operation.
 type AppsAddRepoToInstallationParams struct {
 	// Installation_id parameter.
-
 	InstallationID int
-
-	RepositoryID int
+	RepositoryID   int
 }
 
 func unpackAppsAddRepoToInstallationParams(packed middleware.Parameters) (params AppsAddRepoToInstallationParams) {
@@ -17048,7 +16857,6 @@ func decodeAppsAddRepoToInstallationParams(args [2]string, argsEscaped bool, r *
 // AppsCheckTokenParams is parameters of apps/check-token operation.
 type AppsCheckTokenParams struct {
 	// The client ID of your GitHub app.
-
 	ClientID string
 }
 
@@ -17116,14 +16924,11 @@ func decodeAppsCheckTokenParams(args [1]string, argsEscaped bool, r *http.Reques
 type AppsCreateContentAttachmentParams struct {
 	// The owner of the repository. Determined from the `repository` `full_name` of the
 	// `content_reference` event.
-
 	Owner string
 	// The name of the repository. Determined from the `repository` `full_name` of the
 	// `content_reference` event.
-
 	Repo string
 	// The `id` of the `content_reference` event.
-
 	ContentReferenceID int
 }
 
@@ -17359,7 +17164,6 @@ func decodeAppsCreateFromManifestParams(args [1]string, argsEscaped bool, r *htt
 // AppsCreateInstallationAccessTokenParams is parameters of apps/create-installation-access-token operation.
 type AppsCreateInstallationAccessTokenParams struct {
 	// Installation_id parameter.
-
 	InstallationID int
 }
 
@@ -17426,7 +17230,6 @@ func decodeAppsCreateInstallationAccessTokenParams(args [1]string, argsEscaped b
 // AppsDeleteAuthorizationParams is parameters of apps/delete-authorization operation.
 type AppsDeleteAuthorizationParams struct {
 	// The client ID of your GitHub app.
-
 	ClientID string
 }
 
@@ -17493,7 +17296,6 @@ func decodeAppsDeleteAuthorizationParams(args [1]string, argsEscaped bool, r *ht
 // AppsDeleteInstallationParams is parameters of apps/delete-installation operation.
 type AppsDeleteInstallationParams struct {
 	// Installation_id parameter.
-
 	InstallationID int
 }
 
@@ -17560,7 +17362,6 @@ func decodeAppsDeleteInstallationParams(args [1]string, argsEscaped bool, r *htt
 // AppsDeleteTokenParams is parameters of apps/delete-token operation.
 type AppsDeleteTokenParams struct {
 	// The client ID of your GitHub app.
-
 	ClientID string
 }
 
@@ -17692,7 +17493,6 @@ func decodeAppsGetBySlugParams(args [1]string, argsEscaped bool, r *http.Request
 // AppsGetSubscriptionPlanForAccountParams is parameters of apps/get-subscription-plan-for-account operation.
 type AppsGetSubscriptionPlanForAccountParams struct {
 	// Account_id parameter.
-
 	AccountID int
 }
 
@@ -17759,7 +17559,6 @@ func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, argsEscaped b
 // AppsGetSubscriptionPlanForAccountStubbedParams is parameters of apps/get-subscription-plan-for-account-stubbed operation.
 type AppsGetSubscriptionPlanForAccountStubbedParams struct {
 	// Account_id parameter.
-
 	AccountID int
 }
 
@@ -17891,20 +17690,15 @@ func decodeAppsGetWebhookDeliveryParams(args [1]string, argsEscaped bool, r *htt
 // AppsListAccountsForPlanParams is parameters of apps/list-accounts-for-plan operation.
 type AppsListAccountsForPlanParams struct {
 	// Plan_id parameter.
-
 	PlanID int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-
 	Sort OptSort
 	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
 	// the `sort` parameter.
-
 	Direction OptAppsListAccountsForPlanDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -18217,20 +18011,15 @@ func decodeAppsListAccountsForPlanParams(args [1]string, argsEscaped bool, r *ht
 // AppsListAccountsForPlanStubbedParams is parameters of apps/list-accounts-for-plan-stubbed operation.
 type AppsListAccountsForPlanStubbedParams struct {
 	// Plan_id parameter.
-
 	PlanID int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-
 	Sort OptSort
 	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
 	// the `sort` parameter.
-
 	Direction OptAppsListAccountsForPlanStubbedDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -18543,13 +18332,10 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, argsEscaped bool
 // AppsListInstallationReposForAuthenticatedUserParams is parameters of apps/list-installation-repos-for-authenticated-user operation.
 type AppsListInstallationReposForAuthenticatedUserParams struct {
 	// Installation_id parameter.
-
 	InstallationID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -18727,10 +18513,8 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, a
 // AppsListPlansParams is parameters of apps/list-plans operation.
 type AppsListPlansParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -18856,10 +18640,8 @@ func decodeAppsListPlansParams(args [0]string, argsEscaped bool, r *http.Request
 // AppsListPlansStubbedParams is parameters of apps/list-plans-stubbed operation.
 type AppsListPlansStubbedParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -18985,10 +18767,8 @@ func decodeAppsListPlansStubbedParams(args [0]string, argsEscaped bool, r *http.
 // AppsListReposAccessibleToInstallationParams is parameters of apps/list-repos-accessible-to-installation operation.
 type AppsListReposAccessibleToInstallationParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -19114,10 +18894,8 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, argsEscap
 // AppsListSubscriptionsForAuthenticatedUserParams is parameters of apps/list-subscriptions-for-authenticated-user operation.
 type AppsListSubscriptionsForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -19243,10 +19021,8 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, argsE
 // AppsListSubscriptionsForAuthenticatedUserStubbedParams is parameters of apps/list-subscriptions-for-authenticated-user-stubbed operation.
 type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -19372,11 +19148,9 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 // AppsListWebhookDeliveriesParams is parameters of apps/list-webhook-deliveries operation.
 type AppsListWebhookDeliveriesParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
 	// the `link` header for the next and previous page cursors.
-
 	Cursor OptString
 }
 
@@ -19562,10 +19336,8 @@ func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, argsEscaped bool, 
 // AppsRemoveRepoFromInstallationParams is parameters of apps/remove-repo-from-installation operation.
 type AppsRemoveRepoFromInstallationParams struct {
 	// Installation_id parameter.
-
 	InstallationID int
-
-	RepositoryID int
+	RepositoryID   int
 }
 
 func unpackAppsRemoveRepoFromInstallationParams(packed middleware.Parameters) (params AppsRemoveRepoFromInstallationParams) {
@@ -19683,7 +19455,6 @@ func decodeAppsRemoveRepoFromInstallationParams(args [2]string, argsEscaped bool
 // AppsResetTokenParams is parameters of apps/reset-token operation.
 type AppsResetTokenParams struct {
 	// The client ID of your GitHub app.
-
 	ClientID string
 }
 
@@ -19750,7 +19521,6 @@ func decodeAppsResetTokenParams(args [1]string, argsEscaped bool, r *http.Reques
 // AppsScopeTokenParams is parameters of apps/scope-token operation.
 type AppsScopeTokenParams struct {
 	// The client ID of your GitHub app.
-
 	ClientID string
 }
 
@@ -19817,7 +19587,6 @@ func decodeAppsScopeTokenParams(args [1]string, argsEscaped bool, r *http.Reques
 // AppsSuspendInstallationParams is parameters of apps/suspend-installation operation.
 type AppsSuspendInstallationParams struct {
 	// Installation_id parameter.
-
 	InstallationID int
 }
 
@@ -19884,7 +19653,6 @@ func decodeAppsSuspendInstallationParams(args [1]string, argsEscaped bool, r *ht
 // AppsUnsuspendInstallationParams is parameters of apps/unsuspend-installation operation.
 type AppsUnsuspendInstallationParams struct {
 	// Installation_id parameter.
-
 	InstallationID int
 }
 
@@ -19951,7 +19719,6 @@ func decodeAppsUnsuspendInstallationParams(args [1]string, argsEscaped bool, r *
 // BillingGetGithubActionsBillingGheParams is parameters of billing/get-github-actions-billing-ghe operation.
 type BillingGetGithubActionsBillingGheParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -20148,7 +19915,6 @@ func decodeBillingGetGithubActionsBillingUserParams(args [1]string, argsEscaped 
 // BillingGetGithubPackagesBillingGheParams is parameters of billing/get-github-packages-billing-ghe operation.
 type BillingGetGithubPackagesBillingGheParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -20345,7 +20111,6 @@ func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, argsEscaped
 // BillingGetSharedStorageBillingGheParams is parameters of billing/get-shared-storage-billing-ghe operation.
 type BillingGetSharedStorageBillingGheParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -20542,8 +20307,7 @@ func decodeBillingGetSharedStorageBillingUserParams(args [1]string, argsEscaped 
 // ChecksCreateSuiteParams is parameters of checks/create-suite operation.
 type ChecksCreateSuiteParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackChecksCreateSuiteParams(packed middleware.Parameters) (params ChecksCreateSuiteParams) {
@@ -20661,10 +20425,8 @@ func decodeChecksCreateSuiteParams(args [2]string, argsEscaped bool, r *http.Req
 // ChecksGetParams is parameters of checks/get operation.
 type ChecksGetParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Check_run_id parameter.
-
 	CheckRunID int
 }
 
@@ -20835,10 +20597,8 @@ func decodeChecksGetParams(args [3]string, argsEscaped bool, r *http.Request) (p
 // ChecksGetSuiteParams is parameters of checks/get-suite operation.
 type ChecksGetSuiteParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Check_suite_id parameter.
-
 	CheckSuiteID int
 }
 
@@ -21009,16 +20769,12 @@ func decodeChecksGetSuiteParams(args [3]string, argsEscaped bool, r *http.Reques
 // ChecksListAnnotationsParams is parameters of checks/list-annotations operation.
 type ChecksListAnnotationsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Check_run_id parameter.
-
 	CheckRunID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -21300,29 +21056,21 @@ func decodeChecksListAnnotationsParams(args [3]string, argsEscaped bool, r *http
 // ChecksListForRefParams is parameters of checks/list-for-ref operation.
 type ChecksListForRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 	// Returns check runs with the specified `name`.
-
 	CheckName OptString
 	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
 	// `completed`.
-
 	Status OptStatusParameter
 	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
 	// recent check runs) or `all`.
-
 	Filter OptChecksListForRefFilter
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
-	Page OptInt
-
+	Page  OptInt
 	AppID OptInt
 }
 
@@ -21839,27 +21587,20 @@ func decodeChecksListForRefParams(args [3]string, argsEscaped bool, r *http.Requ
 // ChecksListForSuiteParams is parameters of checks/list-for-suite operation.
 type ChecksListForSuiteParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Check_suite_id parameter.
-
 	CheckSuiteID int
 	// Returns check runs with the specified `name`.
-
 	CheckName OptString
 	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
 	// `completed`.
-
 	Status OptStatusParameter
 	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
 	// recent check runs) or `all`.
-
 	Filter OptChecksListForSuiteFilter
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -22326,22 +22067,16 @@ func decodeChecksListForSuiteParams(args [3]string, argsEscaped bool, r *http.Re
 // ChecksListSuitesForRefParams is parameters of checks/list-suites-for-ref operation.
 type ChecksListSuitesForRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 	// Filters check suites by GitHub App `id`.
-
 	AppID OptInt
 	// Returns check runs with the specified `name`.
-
 	CheckName OptString
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -22723,10 +22458,8 @@ func decodeChecksListSuitesForRefParams(args [3]string, argsEscaped bool, r *htt
 // ChecksRerequestSuiteParams is parameters of checks/rerequest-suite operation.
 type ChecksRerequestSuiteParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Check_suite_id parameter.
-
 	CheckSuiteID int
 }
 
@@ -22897,8 +22630,7 @@ func decodeChecksRerequestSuiteParams(args [3]string, argsEscaped bool, r *http.
 // ChecksSetSuitesPreferencesParams is parameters of checks/set-suites-preferences operation.
 type ChecksSetSuitesPreferencesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackChecksSetSuitesPreferencesParams(packed middleware.Parameters) (params ChecksSetSuitesPreferencesParams) {
@@ -23016,17 +22748,14 @@ func decodeChecksSetSuitesPreferencesParams(args [2]string, argsEscaped bool, r 
 // CodeScanningDeleteAnalysisParams is parameters of code-scanning/delete-analysis operation.
 type CodeScanningDeleteAnalysisParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses`
 	// operation.
-
 	AnalysisID int
 	// Allow deletion if the specified analysis is the last in a set. If you attempt to delete the final
 	// analysis in a set without setting this parameter to `true`, you'll get a 400 response with the
 	// message: `Analysis is last of its type and deletion may result in the loss of historical alert
 	// data. Please specify confirm_delete.`.
-
 	ConfirmDelete OptNilString
 }
 
@@ -23248,12 +22977,10 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, argsEscaped bool, r 
 // CodeScanningGetAlertParams is parameters of code-scanning/get-alert operation.
 type CodeScanningGetAlertParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
 	// alert within GitHub, and in the `number` field in the response from the `GET
 	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
-
 	AlertNumber AlertNumber
 }
 
@@ -23431,11 +23158,9 @@ func decodeCodeScanningGetAlertParams(args [3]string, argsEscaped bool, r *http.
 // CodeScanningGetAnalysisParams is parameters of code-scanning/get-analysis operation.
 type CodeScanningGetAnalysisParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses`
 	// operation.
-
 	AnalysisID int
 }
 
@@ -23606,10 +23331,8 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, argsEscaped bool, r *ht
 // CodeScanningGetSarifParams is parameters of code-scanning/get-sarif operation.
 type CodeScanningGetSarifParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The SARIF ID obtained after uploading.
-
 	SarifID string
 }
 
@@ -23780,23 +23503,18 @@ func decodeCodeScanningGetSarifParams(args [3]string, argsEscaped bool, r *http.
 // CodeScanningListAlertInstancesParams is parameters of code-scanning/list-alert-instances operation.
 type CodeScanningListAlertInstancesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
 	// alert within GitHub, and in the `number` field in the response from the `GET
 	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
-
 	AlertNumber AlertNumber
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
 	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
 	// `refs/pull/<number>/merge`.
-
 	Ref OptCodeScanningRef
 }
 
@@ -24142,30 +23860,23 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, argsEscaped bool
 // CodeScanningListAlertsForRepoParams is parameters of code-scanning/list-alerts-for-repo operation.
 type CodeScanningListAlertsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
 	// tool by using either `tool_name` or `tool_guid`, but not both.
-
 	ToolName OptCodeScanningAnalysisToolName
 	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
 	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
 	// either `tool_guid` or `tool_name`, but not both.
-
 	ToolGUID OptNilCodeScanningAnalysisToolGUID
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
 	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
 	// `refs/pull/<number>/merge`.
-
 	Ref OptCodeScanningRef
 	// Set to `open`, `fixed`, or `dismissed` to list code scanning alerts in a specific state.
-
 	State OptCodeScanningAlertState
 }
 
@@ -24631,30 +24342,23 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, argsEscaped bool,
 // CodeScanningListRecentAnalysesParams is parameters of code-scanning/list-recent-analyses operation.
 type CodeScanningListRecentAnalysesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
 	// tool by using either `tool_name` or `tool_guid`, but not both.
-
 	ToolName OptCodeScanningAnalysisToolName
 	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
 	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
 	// either `tool_guid` or `tool_name`, but not both.
-
 	ToolGUID OptNilCodeScanningAnalysisToolGUID
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// The Git reference for the analyses you want to list. The `ref` for a branch can be formatted
 	// either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
 	// `refs/pull/<number>/merge`.
-
 	Ref OptCodeScanningRef
 	// Filter analyses belonging to the same SARIF upload.
-
 	SarifID OptCodeScanningAnalysisSarifID
 }
 
@@ -25112,12 +24816,10 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, argsEscaped bool
 // CodeScanningUpdateAlertParams is parameters of code-scanning/update-alert operation.
 type CodeScanningUpdateAlertParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
 	// alert within GitHub, and in the `number` field in the response from the `GET
 	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
-
 	AlertNumber AlertNumber
 }
 
@@ -25295,8 +24997,7 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, argsEscaped bool, r *ht
 // CodeScanningUploadSarifParams is parameters of code-scanning/upload-sarif operation.
 type CodeScanningUploadSarifParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackCodeScanningUploadSarifParams(packed middleware.Parameters) (params CodeScanningUploadSarifParams) {
@@ -25479,13 +25180,10 @@ func decodeCodesOfConductGetConductCodeParams(args [1]string, argsEscaped bool, 
 // EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Unique identifier of an organization.
-
 	OrgID int
 }
 
@@ -25656,13 +25354,10 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 // EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams is parameters of enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
 type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -25833,7 +25528,6 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 // EnterpriseAdminCreateRegistrationTokenForEnterpriseParams is parameters of enterprise-admin/create-registration-token-for-enterprise operation.
 type EnterpriseAdminCreateRegistrationTokenForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -25900,7 +25594,6 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]str
 // EnterpriseAdminCreateRemoveTokenForEnterpriseParams is parameters of enterprise-admin/create-remove-token-for-enterprise operation.
 type EnterpriseAdminCreateRemoveTokenForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -25967,7 +25660,6 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, a
 // EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams is parameters of enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -26034,10 +25726,8 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1
 // EnterpriseAdminDeleteScimGroupFromEnterpriseParams is parameters of enterprise-admin/delete-scim-group-from-enterprise operation.
 type EnterpriseAdminDeleteScimGroupFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Identifier generated by the GitHub SCIM endpoint.
-
 	ScimGroupID string
 }
 
@@ -26156,10 +25846,8 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, ar
 // EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams is parameters of enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
 type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -26278,10 +25966,8 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]str
 // EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams is parameters of enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
 type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -26400,10 +26086,8 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [
 // EnterpriseAdminDeleteUserFromEnterpriseParams is parameters of enterprise-admin/delete-user-from-enterprise operation.
 type EnterpriseAdminDeleteUserFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Scim_user_id parameter.
-
 	ScimUserID string
 }
 
@@ -26522,10 +26206,8 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, argsEsc
 // EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams is parameters of enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
 type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of an organization.
-
 	OrgID int
 }
 
@@ -26644,10 +26326,8 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 // EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams is parameters of enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
 type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of an organization.
-
 	OrgID int
 }
 
@@ -26766,7 +26446,6 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 // EnterpriseAdminGetAllowedActionsEnterpriseParams is parameters of enterprise-admin/get-allowed-actions-enterprise operation.
 type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -26833,39 +26512,31 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, args
 // EnterpriseAdminGetAuditLogParams is parameters of enterprise-admin/get-audit-log operation.
 type EnterpriseAdminGetAuditLogParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
 	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
-
 	Phrase OptString
 	// The event types to include:
 	// - `web` - returns web (non-Git) events
 	// - `git` - returns Git events
 	// - `all` - returns both web and Git events
 	// The default is `web`.
-
 	Include OptAuditLogInclude
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events after this cursor.
-
 	After OptString
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events before this cursor.
-
 	Before OptString
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
 	// The default is `desc`.
-
 	Order OptAuditLogOrder
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -27323,7 +26994,6 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, argsEscaped bool, r 
 // EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams is parameters of enterprise-admin/get-github-actions-permissions-enterprise operation.
 type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -27390,13 +27060,10 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]st
 // EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams is parameters of enterprise-admin/get-provisioning-information-for-enterprise-group operation.
 type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Identifier generated by the GitHub SCIM endpoint.
-
 	ScimGroupID string
 	// Attributes to exclude.
-
 	ExcludedAttributes OptString
 }
 
@@ -27566,10 +27233,8 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 // EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams is parameters of enterprise-admin/get-provisioning-information-for-enterprise-user operation.
 type EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Scim_user_id parameter.
-
 	ScimUserID string
 }
 
@@ -27688,10 +27353,8 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 // EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams is parameters of enterprise-admin/get-self-hosted-runner-for-enterprise operation.
 type EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -27810,10 +27473,8 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string,
 // EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams is parameters of enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
 type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -27932,16 +27593,12 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]st
 // EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -28171,19 +27828,14 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 // EnterpriseAdminListProvisionedGroupsEnterpriseParams is parameters of enterprise-admin/list-provisioned-groups-enterprise operation.
 type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Used for pagination: the index of the first result to return.
-
 	StartIndex OptInt
 	// Used for pagination: the number of results to return.
-
 	Count OptInt
 	// Filter results.
-
 	Filter OptString
 	// Attributes to exclude.
-
 	ExcludedAttributes OptString
 }
 
@@ -28451,16 +28103,12 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 // EnterpriseAdminListProvisionedIdentitiesEnterpriseParams is parameters of enterprise-admin/list-provisioned-identities-enterprise operation.
 type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Used for pagination: the index of the first result to return.
-
 	StartIndex OptInt
 	// Used for pagination: the number of results to return.
-
 	Count OptInt
 	// Filter results.
-
 	Filter OptString
 }
 
@@ -28678,7 +28326,6 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 // EnterpriseAdminListRunnerApplicationsForEnterpriseParams is parameters of enterprise-admin/list-runner-applications-for-enterprise operation.
 type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -28745,13 +28392,10 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]stri
 // EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams is parameters of enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
 type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -28929,13 +28573,10 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 // EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams is parameters of enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
 type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -29113,13 +28754,10 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 // EnterpriseAdminListSelfHostedRunnersForEnterpriseParams is parameters of enterprise-admin/list-self-hosted-runners-for-enterprise operation.
 type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -29297,16 +28935,12 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 // EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams is parameters of enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
 type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -29536,7 +29170,6 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 // EnterpriseAdminProvisionAndInviteEnterpriseGroupParams is parameters of enterprise-admin/provision-and-invite-enterprise-group operation.
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -29603,7 +29236,6 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string
 // EnterpriseAdminProvisionAndInviteEnterpriseUserParams is parameters of enterprise-admin/provision-and-invite-enterprise-user operation.
 type EnterpriseAdminProvisionAndInviteEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -29670,13 +29302,10 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string,
 // EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Unique identifier of an organization.
-
 	OrgID int
 }
 
@@ -29847,13 +29476,10 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 // EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams is parameters of enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
 type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 	// Unique identifier of the self-hosted runner.
-
 	RunnerID int
 }
 
@@ -30024,7 +29650,6 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 // EnterpriseAdminSetAllowedActionsEnterpriseParams is parameters of enterprise-admin/set-allowed-actions-enterprise operation.
 type EnterpriseAdminSetAllowedActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -30091,7 +29716,6 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, args
 // EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams is parameters of enterprise-admin/set-github-actions-permissions-enterprise operation.
 type EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -30158,10 +29782,8 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]st
 // EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams is parameters of enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Identifier generated by the GitHub SCIM endpoint.
-
 	ScimGroupID string
 }
 
@@ -30280,10 +29902,8 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args
 // EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams is parameters of enterprise-admin/set-information-for-provisioned-enterprise-user operation.
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Scim_user_id parameter.
-
 	ScimUserID string
 }
 
@@ -30402,10 +30022,8 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args 
 // EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -30524,7 +30142,6 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 // EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams is parameters of enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
 type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 }
 
@@ -30591,10 +30208,8 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 // EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams is parameters of enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
 type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -30713,10 +30328,8 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2
 // EnterpriseAdminUpdateAttributeForEnterpriseGroupParams is parameters of enterprise-admin/update-attribute-for-enterprise-group operation.
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Identifier generated by the GitHub SCIM endpoint.
-
 	ScimGroupID string
 }
 
@@ -30835,10 +30448,8 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string
 // EnterpriseAdminUpdateAttributeForEnterpriseUserParams is parameters of enterprise-admin/update-attribute-for-enterprise-user operation.
 type EnterpriseAdminUpdateAttributeForEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Scim_user_id parameter.
-
 	ScimUserID string
 }
 
@@ -30957,10 +30568,8 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string,
 // EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams is parameters of enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
-
 	Enterprise string
 	// Unique identifier of the self-hosted runner group.
-
 	RunnerGroupID int
 }
 
@@ -31079,7 +30688,6 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2
 // GistsCheckIsStarredParams is parameters of gists/check-is-starred operation.
 type GistsCheckIsStarredParams struct {
 	// Gist_id parameter.
-
 	GistID string
 }
 
@@ -31146,7 +30754,6 @@ func decodeGistsCheckIsStarredParams(args [1]string, argsEscaped bool, r *http.R
 // GistsCreateCommentParams is parameters of gists/create-comment operation.
 type GistsCreateCommentParams struct {
 	// Gist_id parameter.
-
 	GistID string
 }
 
@@ -31213,7 +30820,6 @@ func decodeGistsCreateCommentParams(args [1]string, argsEscaped bool, r *http.Re
 // GistsDeleteParams is parameters of gists/delete operation.
 type GistsDeleteParams struct {
 	// Gist_id parameter.
-
 	GistID string
 }
 
@@ -31280,10 +30886,8 @@ func decodeGistsDeleteParams(args [1]string, argsEscaped bool, r *http.Request) 
 // GistsDeleteCommentParams is parameters of gists/delete-comment operation.
 type GistsDeleteCommentParams struct {
 	// Gist_id parameter.
-
 	GistID string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -31402,7 +31006,6 @@ func decodeGistsDeleteCommentParams(args [2]string, argsEscaped bool, r *http.Re
 // GistsForkParams is parameters of gists/fork operation.
 type GistsForkParams struct {
 	// Gist_id parameter.
-
 	GistID string
 }
 
@@ -31469,7 +31072,6 @@ func decodeGistsForkParams(args [1]string, argsEscaped bool, r *http.Request) (p
 // GistsGetParams is parameters of gists/get operation.
 type GistsGetParams struct {
 	// Gist_id parameter.
-
 	GistID string
 }
 
@@ -31536,10 +31138,8 @@ func decodeGistsGetParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 // GistsGetCommentParams is parameters of gists/get-comment operation.
 type GistsGetCommentParams struct {
 	// Gist_id parameter.
-
 	GistID string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -31658,10 +31258,8 @@ func decodeGistsGetCommentParams(args [2]string, argsEscaped bool, r *http.Reque
 // GistsGetRevisionParams is parameters of gists/get-revision operation.
 type GistsGetRevisionParams struct {
 	// Gist_id parameter.
-
 	GistID string
-
-	Sha string
+	Sha    string
 }
 
 func unpackGistsGetRevisionParams(packed middleware.Parameters) (params GistsGetRevisionParams) {
@@ -31780,13 +31378,10 @@ func decodeGistsGetRevisionParams(args [2]string, argsEscaped bool, r *http.Requ
 type GistsListParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -31962,13 +31557,10 @@ func decodeGistsListParams(args [0]string, argsEscaped bool, r *http.Request) (p
 // GistsListCommentsParams is parameters of gists/list-comments operation.
 type GistsListCommentsParams struct {
 	// Gist_id parameter.
-
 	GistID string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -32146,13 +31738,10 @@ func decodeGistsListCommentsParams(args [1]string, argsEscaped bool, r *http.Req
 // GistsListCommitsParams is parameters of gists/list-commits operation.
 type GistsListCommitsParams struct {
 	// Gist_id parameter.
-
 	GistID string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -32332,13 +31921,10 @@ type GistsListForUserParams struct {
 	Username string
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -32566,13 +32152,10 @@ func decodeGistsListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 // GistsListForksParams is parameters of gists/list-forks operation.
 type GistsListForksParams struct {
 	// Gist_id parameter.
-
 	GistID string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -32751,13 +32334,10 @@ func decodeGistsListForksParams(args [1]string, argsEscaped bool, r *http.Reques
 type GistsListPublicParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -32934,13 +32514,10 @@ func decodeGistsListPublicParams(args [0]string, argsEscaped bool, r *http.Reque
 type GistsListStarredParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -33116,7 +32693,6 @@ func decodeGistsListStarredParams(args [0]string, argsEscaped bool, r *http.Requ
 // GistsStarParams is parameters of gists/star operation.
 type GistsStarParams struct {
 	// Gist_id parameter.
-
 	GistID string
 }
 
@@ -33183,7 +32759,6 @@ func decodeGistsStarParams(args [1]string, argsEscaped bool, r *http.Request) (p
 // GistsUnstarParams is parameters of gists/unstar operation.
 type GistsUnstarParams struct {
 	// Gist_id parameter.
-
 	GistID string
 }
 
@@ -33250,10 +32825,8 @@ func decodeGistsUnstarParams(args [1]string, argsEscaped bool, r *http.Request) 
 // GistsUpdateCommentParams is parameters of gists/update-comment operation.
 type GistsUpdateCommentParams struct {
 	// Gist_id parameter.
-
 	GistID string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -33372,8 +32945,7 @@ func decodeGistsUpdateCommentParams(args [2]string, argsEscaped bool, r *http.Re
 // GitCreateBlobParams is parameters of git/create-blob operation.
 type GitCreateBlobParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackGitCreateBlobParams(packed middleware.Parameters) (params GitCreateBlobParams) {
@@ -33491,8 +33063,7 @@ func decodeGitCreateBlobParams(args [2]string, argsEscaped bool, r *http.Request
 // GitCreateCommitParams is parameters of git/create-commit operation.
 type GitCreateCommitParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackGitCreateCommitParams(packed middleware.Parameters) (params GitCreateCommitParams) {
@@ -33610,8 +33181,7 @@ func decodeGitCreateCommitParams(args [2]string, argsEscaped bool, r *http.Reque
 // GitCreateRefParams is parameters of git/create-ref operation.
 type GitCreateRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackGitCreateRefParams(packed middleware.Parameters) (params GitCreateRefParams) {
@@ -33729,8 +33299,7 @@ func decodeGitCreateRefParams(args [2]string, argsEscaped bool, r *http.Request)
 // GitCreateTagParams is parameters of git/create-tag operation.
 type GitCreateTagParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackGitCreateTagParams(packed middleware.Parameters) (params GitCreateTagParams) {
@@ -33848,8 +33417,7 @@ func decodeGitCreateTagParams(args [2]string, argsEscaped bool, r *http.Request)
 // GitCreateTreeParams is parameters of git/create-tree operation.
 type GitCreateTreeParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackGitCreateTreeParams(packed middleware.Parameters) (params GitCreateTreeParams) {
@@ -33967,10 +33535,8 @@ func decodeGitCreateTreeParams(args [2]string, argsEscaped bool, r *http.Request
 // GitDeleteRefParams is parameters of git/delete-ref operation.
 type GitDeleteRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 }
 
@@ -34140,10 +33706,8 @@ func decodeGitDeleteRefParams(args [3]string, argsEscaped bool, r *http.Request)
 
 // GitGetBlobParams is parameters of git/get-blob operation.
 type GitGetBlobParams struct {
-	Owner string
-
-	Repo string
-
+	Owner   string
+	Repo    string
 	FileSha string
 }
 
@@ -34314,10 +33878,8 @@ func decodeGitGetBlobParams(args [3]string, argsEscaped bool, r *http.Request) (
 // GitGetCommitParams is parameters of git/get-commit operation.
 type GitGetCommitParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Commit_sha parameter.
-
 	CommitSha string
 }
 
@@ -34488,10 +34050,8 @@ func decodeGitGetCommitParams(args [3]string, argsEscaped bool, r *http.Request)
 // GitGetRefParams is parameters of git/get-ref operation.
 type GitGetRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 }
 
@@ -34661,10 +34221,8 @@ func decodeGitGetRefParams(args [3]string, argsEscaped bool, r *http.Request) (p
 
 // GitGetTagParams is parameters of git/get-tag operation.
 type GitGetTagParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	TagSha string
 }
 
@@ -34834,16 +34392,13 @@ func decodeGitGetTagParams(args [3]string, argsEscaped bool, r *http.Request) (p
 
 // GitGetTreeParams is parameters of git/get-tree operation.
 type GitGetTreeParams struct {
-	Owner string
-
-	Repo string
-
+	Owner   string
+	Repo    string
 	TreeSha string
 	// Setting this parameter to any value returns the objects or subtrees referenced by the tree
 	// specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable
 	// returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent
 	// recursively returning objects or subtrees.
-
 	Recursive OptString
 }
 
@@ -35065,16 +34620,12 @@ func decodeGitGetTreeParams(args [3]string, argsEscaped bool, r *http.Request) (
 // GitListMatchingRefsParams is parameters of git/list-matching-refs operation.
 type GitListMatchingRefsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -35356,10 +34907,8 @@ func decodeGitListMatchingRefsParams(args [3]string, argsEscaped bool, r *http.R
 // GitUpdateRefParams is parameters of git/update-ref operation.
 type GitUpdateRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 }
 
@@ -35660,8 +35209,7 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, argsEscape
 // InteractionsRemoveRestrictionsForRepoParams is parameters of interactions/remove-restrictions-for-repo operation.
 type InteractionsRemoveRestrictionsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackInteractionsRemoveRestrictionsForRepoParams(packed middleware.Parameters) (params InteractionsRemoveRestrictionsForRepoParams) {
@@ -35844,8 +35392,7 @@ func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, argsEscaped b
 // InteractionsSetRestrictionsForRepoParams is parameters of interactions/set-restrictions-for-repo operation.
 type InteractionsSetRestrictionsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackInteractionsSetRestrictionsForRepoParams(packed middleware.Parameters) (params InteractionsSetRestrictionsForRepoParams) {
@@ -35963,10 +35510,8 @@ func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, argsEscaped 
 // IssuesAddAssigneesParams is parameters of issues/add-assignees operation.
 type IssuesAddAssigneesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -36136,10 +35681,8 @@ func decodeIssuesAddAssigneesParams(args [3]string, argsEscaped bool, r *http.Re
 
 // IssuesCheckUserCanBeAssignedParams is parameters of issues/check-user-can-be-assigned operation.
 type IssuesCheckUserCanBeAssignedParams struct {
-	Owner string
-
-	Repo string
-
+	Owner    string
+	Repo     string
 	Assignee string
 }
 
@@ -36310,8 +35853,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, argsEscaped bool, 
 // IssuesCreateParams is parameters of issues/create operation.
 type IssuesCreateParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackIssuesCreateParams(packed middleware.Parameters) (params IssuesCreateParams) {
@@ -36429,10 +35971,8 @@ func decodeIssuesCreateParams(args [2]string, argsEscaped bool, r *http.Request)
 // IssuesCreateCommentParams is parameters of issues/create-comment operation.
 type IssuesCreateCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -36603,8 +36143,7 @@ func decodeIssuesCreateCommentParams(args [3]string, argsEscaped bool, r *http.R
 // IssuesCreateLabelParams is parameters of issues/create-label operation.
 type IssuesCreateLabelParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackIssuesCreateLabelParams(packed middleware.Parameters) (params IssuesCreateLabelParams) {
@@ -36722,8 +36261,7 @@ func decodeIssuesCreateLabelParams(args [2]string, argsEscaped bool, r *http.Req
 // IssuesCreateMilestoneParams is parameters of issues/create-milestone operation.
 type IssuesCreateMilestoneParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackIssuesCreateMilestoneParams(packed middleware.Parameters) (params IssuesCreateMilestoneParams) {
@@ -36841,10 +36379,8 @@ func decodeIssuesCreateMilestoneParams(args [2]string, argsEscaped bool, r *http
 // IssuesDeleteCommentParams is parameters of issues/delete-comment operation.
 type IssuesDeleteCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -37015,10 +36551,8 @@ func decodeIssuesDeleteCommentParams(args [3]string, argsEscaped bool, r *http.R
 // IssuesDeleteLabelParams is parameters of issues/delete-label operation.
 type IssuesDeleteLabelParams struct {
 	Owner string
-
-	Repo string
-
-	Name string
+	Repo  string
+	Name  string
 }
 
 func unpackIssuesDeleteLabelParams(packed middleware.Parameters) (params IssuesDeleteLabelParams) {
@@ -37188,10 +36722,8 @@ func decodeIssuesDeleteLabelParams(args [3]string, argsEscaped bool, r *http.Req
 // IssuesDeleteMilestoneParams is parameters of issues/delete-milestone operation.
 type IssuesDeleteMilestoneParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Milestone_number parameter.
-
 	MilestoneNumber int
 }
 
@@ -37362,10 +36894,8 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, argsEscaped bool, r *http
 // IssuesGetParams is parameters of issues/get operation.
 type IssuesGetParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -37536,10 +37066,8 @@ func decodeIssuesGetParams(args [3]string, argsEscaped bool, r *http.Request) (p
 // IssuesGetCommentParams is parameters of issues/get-comment operation.
 type IssuesGetCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -37709,10 +37237,8 @@ func decodeIssuesGetCommentParams(args [3]string, argsEscaped bool, r *http.Requ
 
 // IssuesGetEventParams is parameters of issues/get-event operation.
 type IssuesGetEventParams struct {
-	Owner string
-
-	Repo string
-
+	Owner   string
+	Repo    string
 	EventID int
 }
 
@@ -37883,10 +37409,8 @@ func decodeIssuesGetEventParams(args [3]string, argsEscaped bool, r *http.Reques
 // IssuesGetLabelParams is parameters of issues/get-label operation.
 type IssuesGetLabelParams struct {
 	Owner string
-
-	Repo string
-
-	Name string
+	Repo  string
+	Name  string
 }
 
 func unpackIssuesGetLabelParams(packed middleware.Parameters) (params IssuesGetLabelParams) {
@@ -38056,10 +37580,8 @@ func decodeIssuesGetLabelParams(args [3]string, argsEscaped bool, r *http.Reques
 // IssuesGetMilestoneParams is parameters of issues/get-milestone operation.
 type IssuesGetMilestoneParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Milestone_number parameter.
-
 	MilestoneNumber int
 }
 
@@ -38236,37 +37758,25 @@ type IssuesListParams struct {
 	// \* `subscribed`: Issues you're subscribed to updates for
 	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
 	// creation.
-
 	Filter OptIssuesListFilter
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-
 	State OptIssuesListState
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-
 	Labels OptString
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-
 	Sort OptIssuesListSort
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
-	Since OptDateTime
-
+	Since  OptDateTime
 	Collab OptBool
-
-	Orgs OptBool
-
-	Owned OptBool
-
-	Pulls OptBool
+	Orgs   OptBool
+	Owned  OptBool
+	Pulls  OptBool
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -38972,13 +38482,10 @@ func decodeIssuesListParams(args [0]string, argsEscaped bool, r *http.Request) (
 // IssuesListAssigneesParams is parameters of issues/list-assignees operation.
 type IssuesListAssigneesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -39208,20 +38715,15 @@ func decodeIssuesListAssigneesParams(args [2]string, argsEscaped bool, r *http.R
 // IssuesListCommentsParams is parameters of issues/list-comments operation.
 type IssuesListCommentsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -39553,23 +39055,17 @@ func decodeIssuesListCommentsParams(args [3]string, argsEscaped bool, r *http.Re
 // IssuesListCommentsForRepoParams is parameters of issues/list-comments-for-repo operation.
 type IssuesListCommentsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-
 	Sort OptSort
 	// Either `asc` or `desc`. Ignored without the `sort` parameter.
-
 	Direction OptIssuesListCommentsForRepoDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -39984,13 +39480,10 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, argsEscaped bool, r *
 // IssuesListEventsForRepoParams is parameters of issues/list-events-for-repo operation.
 type IssuesListEventsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -40226,29 +39719,21 @@ type IssuesListForAuthenticatedUserParams struct {
 	// \* `subscribed`: Issues you're subscribed to updates for
 	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
 	// creation.
-
 	Filter OptIssuesListForAuthenticatedUserFilter
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-
 	State OptIssuesListForAuthenticatedUserState
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-
 	Labels OptString
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-
 	Sort OptIssuesListForAuthenticatedUserSort
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -40761,29 +40246,21 @@ type IssuesListForOrgParams struct {
 	// \* `subscribed`: Issues you're subscribed to updates for
 	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
 	// creation.
-
 	Filter OptIssuesListForOrgFilter
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-
 	State OptIssuesListForOrgState
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-
 	Labels OptString
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-
 	Sort OptIssuesListForOrgSort
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -41341,44 +40818,32 @@ func decodeIssuesListForOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 // IssuesListForRepoParams is parameters of issues/list-for-repo operation.
 type IssuesListForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*`
 	// is passed, issues with any milestone are accepted. If the string `none` is passed, issues without
 	// milestones are returned.
-
 	Milestone OptString
 	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
-
 	State OptIssuesListForRepoState
 	// Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues
 	// assigned to any user.
-
 	Assignee OptString
 	// The user that created the issue.
-
 	Creator OptString
 	// A user that's mentioned in the issue.
-
 	Mentioned OptString
 	// A list of comma separated label names. Example: `bug,ui,@high`.
-
 	Labels OptString
 	// What to sort results by. Can be either `created`, `updated`, `comments`.
-
 	Sort OptIssuesListForRepoSort
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -42118,16 +41583,12 @@ func decodeIssuesListForRepoParams(args [2]string, argsEscaped bool, r *http.Req
 // IssuesListLabelsForMilestoneParams is parameters of issues/list-labels-for-milestone operation.
 type IssuesListLabelsForMilestoneParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Milestone_number parameter.
-
 	MilestoneNumber int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -42409,13 +41870,10 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, argsEscaped bool, 
 // IssuesListLabelsForRepoParams is parameters of issues/list-labels-for-repo operation.
 type IssuesListLabelsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -42645,16 +42103,12 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, argsEscaped bool, r *ht
 // IssuesListLabelsOnIssueParams is parameters of issues/list-labels-on-issue operation.
 type IssuesListLabelsOnIssueParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -42936,22 +42390,16 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, argsEscaped bool, r *ht
 // IssuesListMilestonesParams is parameters of issues/list-milestones operation.
 type IssuesListMilestonesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The state of the milestone. Either `open`, `closed`, or `all`.
-
 	State OptIssuesListMilestonesState
 	// What to sort results by. Either `due_on` or `completeness`.
-
 	Sort OptIssuesListMilestonesSort
 	// The direction of the sort. Either `asc` or `desc`.
-
 	Direction OptIssuesListMilestonesDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -43391,10 +42839,8 @@ func decodeIssuesListMilestonesParams(args [2]string, argsEscaped bool, r *http.
 // IssuesLockParams is parameters of issues/lock operation.
 type IssuesLockParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -43565,10 +43011,8 @@ func decodeIssuesLockParams(args [3]string, argsEscaped bool, r *http.Request) (
 // IssuesRemoveAllLabelsParams is parameters of issues/remove-all-labels operation.
 type IssuesRemoveAllLabelsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -43739,10 +43183,8 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, argsEscaped bool, r *http
 // IssuesRemoveAssigneesParams is parameters of issues/remove-assignees operation.
 type IssuesRemoveAssigneesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -43913,13 +43355,10 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, argsEscaped bool, r *http
 // IssuesRemoveLabelParams is parameters of issues/remove-label operation.
 type IssuesRemoveLabelParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
-
-	Name string
+	Name        string
 }
 
 func unpackIssuesRemoveLabelParams(packed middleware.Parameters) (params IssuesRemoveLabelParams) {
@@ -44141,10 +43580,8 @@ func decodeIssuesRemoveLabelParams(args [4]string, argsEscaped bool, r *http.Req
 // IssuesUnlockParams is parameters of issues/unlock operation.
 type IssuesUnlockParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -44315,10 +43752,8 @@ func decodeIssuesUnlockParams(args [3]string, argsEscaped bool, r *http.Request)
 // IssuesUpdateParams is parameters of issues/update operation.
 type IssuesUpdateParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -44489,10 +43924,8 @@ func decodeIssuesUpdateParams(args [3]string, argsEscaped bool, r *http.Request)
 // IssuesUpdateCommentParams is parameters of issues/update-comment operation.
 type IssuesUpdateCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -44663,10 +44096,8 @@ func decodeIssuesUpdateCommentParams(args [3]string, argsEscaped bool, r *http.R
 // IssuesUpdateLabelParams is parameters of issues/update-label operation.
 type IssuesUpdateLabelParams struct {
 	Owner string
-
-	Repo string
-
-	Name string
+	Repo  string
+	Name  string
 }
 
 func unpackIssuesUpdateLabelParams(packed middleware.Parameters) (params IssuesUpdateLabelParams) {
@@ -44836,10 +44267,8 @@ func decodeIssuesUpdateLabelParams(args [3]string, argsEscaped bool, r *http.Req
 // IssuesUpdateMilestoneParams is parameters of issues/update-milestone operation.
 type IssuesUpdateMilestoneParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Milestone_number parameter.
-
 	MilestoneNumber int
 }
 
@@ -45076,10 +44505,8 @@ func decodeLicensesGetParams(args [1]string, argsEscaped bool, r *http.Request) 
 type LicensesGetAllCommonlyUsedParams struct {
 	Featured OptBool
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -45255,8 +44682,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, argsEscaped bool, r 
 // LicensesGetForRepoParams is parameters of licenses/get-for-repo operation.
 type LicensesGetForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackLicensesGetForRepoParams(packed middleware.Parameters) (params LicensesGetForRepoParams) {
@@ -45374,7 +44800,6 @@ func decodeLicensesGetForRepoParams(args [2]string, argsEscaped bool, r *http.Re
 // MetaGetOctocatParams is parameters of meta/get-octocat operation.
 type MetaGetOctocatParams struct {
 	// The words to show in Octocat's speech bubble.
-
 	S OptString
 }
 
@@ -45440,8 +44865,7 @@ func decodeMetaGetOctocatParams(args [0]string, argsEscaped bool, r *http.Reques
 // MigrationsCancelImportParams is parameters of migrations/cancel-import operation.
 type MigrationsCancelImportParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackMigrationsCancelImportParams(packed middleware.Parameters) (params MigrationsCancelImportParams) {
@@ -45559,7 +44983,6 @@ func decodeMigrationsCancelImportParams(args [2]string, argsEscaped bool, r *htt
 // MigrationsDeleteArchiveForAuthenticatedUserParams is parameters of migrations/delete-archive-for-authenticated-user operation.
 type MigrationsDeleteArchiveForAuthenticatedUserParams struct {
 	// Migration_id parameter.
-
 	MigrationID int
 }
 
@@ -45627,7 +45050,6 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, arg
 type MigrationsDeleteArchiveForOrgParams struct {
 	Org string
 	// Migration_id parameter.
-
 	MigrationID int
 }
 
@@ -45747,7 +45169,6 @@ func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, argsEscaped bool,
 type MigrationsDownloadArchiveForOrgParams struct {
 	Org string
 	// Migration_id parameter.
-
 	MigrationID int
 }
 
@@ -45866,7 +45287,6 @@ func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, argsEscaped boo
 // MigrationsGetArchiveForAuthenticatedUserParams is parameters of migrations/get-archive-for-authenticated-user operation.
 type MigrationsGetArchiveForAuthenticatedUserParams struct {
 	// Migration_id parameter.
-
 	MigrationID int
 }
 
@@ -45933,10 +45353,8 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, argsEs
 // MigrationsGetCommitAuthorsParams is parameters of migrations/get-commit-authors operation.
 type MigrationsGetCommitAuthorsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// A user ID. Only return users with an ID greater than this ID.
-
 	Since OptInt
 }
 
@@ -46106,8 +45524,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, argsEscaped bool, r 
 // MigrationsGetImportStatusParams is parameters of migrations/get-import-status operation.
 type MigrationsGetImportStatusParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackMigrationsGetImportStatusParams(packed middleware.Parameters) (params MigrationsGetImportStatusParams) {
@@ -46225,8 +45642,7 @@ func decodeMigrationsGetImportStatusParams(args [2]string, argsEscaped bool, r *
 // MigrationsGetLargeFilesParams is parameters of migrations/get-large-files operation.
 type MigrationsGetLargeFilesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackMigrationsGetLargeFilesParams(packed middleware.Parameters) (params MigrationsGetLargeFilesParams) {
@@ -46344,10 +45760,8 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, argsEscaped bool, r *ht
 // MigrationsGetStatusForAuthenticatedUserParams is parameters of migrations/get-status-for-authenticated-user operation.
 type MigrationsGetStatusForAuthenticatedUserParams struct {
 	// Migration_id parameter.
-
 	MigrationID int
-
-	Exclude []string
+	Exclude     []string
 }
 
 func unpackMigrationsGetStatusForAuthenticatedUserParams(packed middleware.Parameters) (params MigrationsGetStatusForAuthenticatedUserParams) {
@@ -46467,10 +45881,8 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, argsEsc
 type MigrationsGetStatusForOrgParams struct {
 	Org string
 	// Migration_id parameter.
-
 	MigrationID int
 	// Exclude attributes from the API response to improve performance.
-
 	Exclude []MigrationsGetStatusForOrgExcludeItem
 }
 
@@ -46664,10 +46076,8 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, argsEscaped bool, r *
 // MigrationsListForAuthenticatedUserParams is parameters of migrations/list-for-authenticated-user operation.
 type MigrationsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -46794,13 +46204,10 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, argsEscaped 
 type MigrationsListForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Exclude attributes from the API response to improve performance.
-
 	Exclude []MigrationsListForOrgExcludeItem
 }
 
@@ -47053,13 +46460,10 @@ func decodeMigrationsListForOrgParams(args [1]string, argsEscaped bool, r *http.
 type MigrationsListReposForOrgParams struct {
 	Org string
 	// Migration_id parameter.
-
 	MigrationID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -47289,13 +46693,10 @@ func decodeMigrationsListReposForOrgParams(args [2]string, argsEscaped bool, r *
 // MigrationsListReposForUserParams is parameters of migrations/list-repos-for-user operation.
 type MigrationsListReposForUserParams struct {
 	// Migration_id parameter.
-
 	MigrationID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -47472,10 +46873,8 @@ func decodeMigrationsListReposForUserParams(args [1]string, argsEscaped bool, r 
 
 // MigrationsMapCommitAuthorParams is parameters of migrations/map-commit-author operation.
 type MigrationsMapCommitAuthorParams struct {
-	Owner string
-
-	Repo string
-
+	Owner    string
+	Repo     string
 	AuthorID int
 }
 
@@ -47646,8 +47045,7 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, argsEscaped bool, r *
 // MigrationsSetLfsPreferenceParams is parameters of migrations/set-lfs-preference operation.
 type MigrationsSetLfsPreferenceParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackMigrationsSetLfsPreferenceParams(packed middleware.Parameters) (params MigrationsSetLfsPreferenceParams) {
@@ -47830,8 +47228,7 @@ func decodeMigrationsStartForOrgParams(args [1]string, argsEscaped bool, r *http
 // MigrationsStartImportParams is parameters of migrations/start-import operation.
 type MigrationsStartImportParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackMigrationsStartImportParams(packed middleware.Parameters) (params MigrationsStartImportParams) {
@@ -47949,10 +47346,8 @@ func decodeMigrationsStartImportParams(args [2]string, argsEscaped bool, r *http
 // MigrationsUnlockRepoForAuthenticatedUserParams is parameters of migrations/unlock-repo-for-authenticated-user operation.
 type MigrationsUnlockRepoForAuthenticatedUserParams struct {
 	// Migration_id parameter.
-
 	MigrationID int
 	// Repo_name parameter.
-
 	RepoName string
 }
 
@@ -48072,10 +47467,8 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, argsEs
 type MigrationsUnlockRepoForOrgParams struct {
 	Org string
 	// Migration_id parameter.
-
 	MigrationID int
 	// Repo_name parameter.
-
 	RepoName string
 }
 
@@ -48246,8 +47639,7 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, argsEscaped bool, r 
 // MigrationsUpdateImportParams is parameters of migrations/update-import operation.
 type MigrationsUpdateImportParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackMigrationsUpdateImportParams(packed middleware.Parameters) (params MigrationsUpdateImportParams) {
@@ -48365,7 +47757,6 @@ func decodeMigrationsUpdateImportParams(args [2]string, argsEscaped bool, r *htt
 // OAuthAuthorizationsDeleteAuthorizationParams is parameters of oauth-authorizations/delete-authorization operation.
 type OAuthAuthorizationsDeleteAuthorizationParams struct {
 	// Authorization_id parameter.
-
 	AuthorizationID int
 }
 
@@ -48432,7 +47823,6 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, argsEsca
 // OAuthAuthorizationsDeleteGrantParams is parameters of oauth-authorizations/delete-grant operation.
 type OAuthAuthorizationsDeleteGrantParams struct {
 	// Grant_id parameter.
-
 	GrantID int
 }
 
@@ -48499,7 +47889,6 @@ func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, argsEscaped bool
 // OAuthAuthorizationsGetAuthorizationParams is parameters of oauth-authorizations/get-authorization operation.
 type OAuthAuthorizationsGetAuthorizationParams struct {
 	// Authorization_id parameter.
-
 	AuthorizationID int
 }
 
@@ -48566,7 +47955,6 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, argsEscaped
 // OAuthAuthorizationsGetGrantParams is parameters of oauth-authorizations/get-grant operation.
 type OAuthAuthorizationsGetGrantParams struct {
 	// Grant_id parameter.
-
 	GrantID int
 }
 
@@ -48633,7 +48021,6 @@ func decodeOAuthAuthorizationsGetGrantParams(args [1]string, argsEscaped bool, r
 // OAuthAuthorizationsGetOrCreateAuthorizationForAppParams is parameters of oauth-authorizations/get-or-create-authorization-for-app operation.
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppParams struct {
 	// The client ID of your GitHub app.
-
 	ClientID string
 }
 
@@ -48700,9 +48087,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]strin
 // OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams is parameters of oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams struct {
 	// The client ID of your GitHub app.
-
-	ClientID string
-
+	ClientID    string
 	Fingerprint string
 }
 
@@ -48821,13 +48206,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 // OAuthAuthorizationsListAuthorizationsParams is parameters of oauth-authorizations/list-authorizations operation.
 type OAuthAuthorizationsListAuthorizationsParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// The client ID of your GitHub app.
-
 	ClientID OptString
 }
 
@@ -49003,13 +48385,10 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, argsEscap
 // OAuthAuthorizationsListGrantsParams is parameters of oauth-authorizations/list-grants operation.
 type OAuthAuthorizationsListGrantsParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// The client ID of your GitHub app.
-
 	ClientID OptString
 }
 
@@ -49185,7 +48564,6 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, argsEscaped bool,
 // OAuthAuthorizationsUpdateAuthorizationParams is parameters of oauth-authorizations/update-authorization operation.
 type OAuthAuthorizationsUpdateAuthorizationParams struct {
 	// Authorization_id parameter.
-
 	AuthorizationID int
 }
 
@@ -49251,8 +48629,7 @@ func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, argsEsca
 
 // OrgsBlockUserParams is parameters of orgs/block-user operation.
 type OrgsBlockUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -49372,7 +48749,6 @@ func decodeOrgsBlockUserParams(args [2]string, argsEscaped bool, r *http.Request
 type OrgsCancelInvitationParams struct {
 	Org string
 	// Invitation_id parameter.
-
 	InvitationID int
 }
 
@@ -49490,8 +48866,7 @@ func decodeOrgsCancelInvitationParams(args [2]string, argsEscaped bool, r *http.
 
 // OrgsCheckBlockedUserParams is parameters of orgs/check-blocked-user operation.
 type OrgsCheckBlockedUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -49609,8 +48984,7 @@ func decodeOrgsCheckBlockedUserParams(args [2]string, argsEscaped bool, r *http.
 
 // OrgsCheckMembershipForUserParams is parameters of orgs/check-membership-for-user operation.
 type OrgsCheckMembershipForUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -49728,8 +49102,7 @@ func decodeOrgsCheckMembershipForUserParams(args [2]string, argsEscaped bool, r 
 
 // OrgsCheckPublicMembershipForUserParams is parameters of orgs/check-public-membership-for-user operation.
 type OrgsCheckPublicMembershipForUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -49847,8 +49220,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, argsEscaped bo
 
 // OrgsConvertMemberToOutsideCollaboratorParams is parameters of orgs/convert-member-to-outside-collaborator operation.
 type OrgsConvertMemberToOutsideCollaboratorParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -50096,8 +49468,7 @@ func decodeOrgsCreateWebhookParams(args [1]string, argsEscaped bool, r *http.Req
 
 // OrgsDeleteWebhookParams is parameters of orgs/delete-webhook operation.
 type OrgsDeleteWebhookParams struct {
-	Org string
-
+	Org    string
 	HookID int
 }
 
@@ -50283,35 +49654,28 @@ type OrgsGetAuditLogParams struct {
 	Org string
 	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
 	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
-
 	Phrase OptString
 	// The event types to include:
 	// - `web` - returns web (non-Git) events
 	// - `git` - returns Git events
 	// - `all` - returns both web and Git events
 	// The default is `web`.
-
 	Include OptAuditLogInclude
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events after this cursor.
-
 	After OptString
 	// A cursor, as given in the [Link header](https://docs.github.
 	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
 	// for events before this cursor.
-
 	Before OptString
 	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
 	// first, specify `asc`.
 	// The default is `desc`.
-
 	Order OptAuditLogOrder
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -50833,8 +50197,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, argsEscap
 
 // OrgsGetMembershipForUserParams is parameters of orgs/get-membership-for-user operation.
 type OrgsGetMembershipForUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -50952,8 +50315,7 @@ func decodeOrgsGetMembershipForUserParams(args [2]string, argsEscaped bool, r *h
 
 // OrgsGetWebhookParams is parameters of orgs/get-webhook operation.
 type OrgsGetWebhookParams struct {
-	Org string
-
+	Org    string
 	HookID int
 }
 
@@ -51071,8 +50433,7 @@ func decodeOrgsGetWebhookParams(args [2]string, argsEscaped bool, r *http.Reques
 
 // OrgsGetWebhookConfigForOrgParams is parameters of orgs/get-webhook-config-for-org operation.
 type OrgsGetWebhookConfigForOrgParams struct {
-	Org string
-
+	Org    string
 	HookID int
 }
 
@@ -51190,10 +50551,8 @@ func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, argsEscaped bool, r 
 
 // OrgsGetWebhookDeliveryParams is parameters of orgs/get-webhook-delivery operation.
 type OrgsGetWebhookDeliveryParams struct {
-	Org string
-
-	HookID int
-
+	Org        string
+	HookID     int
 	DeliveryID int
 }
 
@@ -51364,10 +50723,8 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, argsEscaped bool, r *htt
 // OrgsListParams is parameters of orgs/list operation.
 type OrgsListParams struct {
 	// An organization ID. Only return organizations with an ID greater than this ID.
-
 	Since OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -51554,10 +50911,8 @@ func decodeOrgsListBlockedUsersParams(args [1]string, argsEscaped bool, r *http.
 type OrgsListFailedInvitationsParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -51735,10 +51090,8 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, argsEscaped bool, r *
 // OrgsListForAuthenticatedUserParams is parameters of orgs/list-for-authenticated-user operation.
 type OrgsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -51865,10 +51218,8 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, argsEscaped bool, 
 type OrgsListForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -52047,13 +51398,10 @@ func decodeOrgsListForUserParams(args [1]string, argsEscaped bool, r *http.Reque
 type OrgsListInvitationTeamsParams struct {
 	Org string
 	// Invitation_id parameter.
-
 	InvitationID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -52287,19 +51635,15 @@ type OrgsListMembersParams struct {
 	// \* `2fa_disabled` - Members without [two-factor authentication](https://github.
 	// com/blog/1614-two-factor-authentication) enabled. Available for organization owners.
 	// \* `all` - All members the authenticated user can see.
-
 	Filter OptOrgsListMembersFilter
 	// Filter members returned by their role. Can be one of:
 	// \* `all` - All members of the organization, regardless of role.
 	// \* `admin` - Organization owners.
 	// \* `member` - Non-owner organization members.
-
 	Role OptOrgsListMembersRole
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -52618,13 +51962,10 @@ func decodeOrgsListMembersParams(args [1]string, argsEscaped bool, r *http.Reque
 type OrgsListMembershipsForAuthenticatedUserParams struct {
 	// Indicates the state of the memberships to return. Can be either `active` or `pending`. If not
 	// specified, the API returns both active and pending memberships.
-
 	State OptOrgsListMembershipsForAuthenticatedUserState
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -52819,13 +52160,10 @@ type OrgsListOutsideCollaboratorsParams struct {
 	// \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.
 	// com/blog/1614-two-factor-authentication) enabled.
 	// \* `all`: All outside collaborators.
-
 	Filter OptOrgsListOutsideCollaboratorsFilter
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -53074,10 +52412,8 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, argsEscaped bool, 
 type OrgsListPendingInvitationsParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -53256,10 +52592,8 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, argsEscaped bool, r 
 type OrgsListPublicMembersParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -53501,15 +52835,12 @@ func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, argsEscaped bool,
 
 // OrgsListWebhookDeliveriesParams is parameters of orgs/list-webhook-deliveries operation.
 type OrgsListWebhookDeliveriesParams struct {
-	Org string
-
+	Org    string
 	HookID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
 	// the `link` header for the next and previous page cursors.
-
 	Cursor OptString
 }
 
@@ -53735,10 +53066,8 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, argsEscaped bool, r *
 type OrgsListWebhooksParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -53915,8 +53244,7 @@ func decodeOrgsListWebhooksParams(args [1]string, argsEscaped bool, r *http.Requ
 
 // OrgsPingWebhookParams is parameters of orgs/ping-webhook operation.
 type OrgsPingWebhookParams struct {
-	Org string
-
+	Org    string
 	HookID int
 }
 
@@ -54034,10 +53362,8 @@ func decodeOrgsPingWebhookParams(args [2]string, argsEscaped bool, r *http.Reque
 
 // OrgsRedeliverWebhookDeliveryParams is parameters of orgs/redeliver-webhook-delivery operation.
 type OrgsRedeliverWebhookDeliveryParams struct {
-	Org string
-
-	HookID int
-
+	Org        string
+	HookID     int
 	DeliveryID int
 }
 
@@ -54207,8 +53533,7 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, argsEscaped bool, 
 
 // OrgsRemoveMemberParams is parameters of orgs/remove-member operation.
 type OrgsRemoveMemberParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -54326,8 +53651,7 @@ func decodeOrgsRemoveMemberParams(args [2]string, argsEscaped bool, r *http.Requ
 
 // OrgsRemoveMembershipForUserParams is parameters of orgs/remove-membership-for-user operation.
 type OrgsRemoveMembershipForUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -54445,8 +53769,7 @@ func decodeOrgsRemoveMembershipForUserParams(args [2]string, argsEscaped bool, r
 
 // OrgsRemoveOutsideCollaboratorParams is parameters of orgs/remove-outside-collaborator operation.
 type OrgsRemoveOutsideCollaboratorParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -54564,8 +53887,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, argsEscaped bool,
 
 // OrgsRemovePublicMembershipForAuthenticatedUserParams is parameters of orgs/remove-public-membership-for-authenticated-user operation.
 type OrgsRemovePublicMembershipForAuthenticatedUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -54683,8 +54005,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, 
 
 // OrgsRemoveSamlSSOAuthorizationParams is parameters of orgs/remove-saml-sso-authorization operation.
 type OrgsRemoveSamlSSOAuthorizationParams struct {
-	Org string
-
+	Org          string
 	CredentialID int
 }
 
@@ -54802,8 +54123,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, argsEscaped bool
 
 // OrgsSetMembershipForUserParams is parameters of orgs/set-membership-for-user operation.
 type OrgsSetMembershipForUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -54921,8 +54241,7 @@ func decodeOrgsSetMembershipForUserParams(args [2]string, argsEscaped bool, r *h
 
 // OrgsSetPublicMembershipForAuthenticatedUserParams is parameters of orgs/set-public-membership-for-authenticated-user operation.
 type OrgsSetPublicMembershipForAuthenticatedUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -55040,8 +54359,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, arg
 
 // OrgsUnblockUserParams is parameters of orgs/unblock-user operation.
 type OrgsUnblockUserParams struct {
-	Org string
-
+	Org      string
 	Username string
 }
 
@@ -55224,8 +54542,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, argsEs
 
 // OrgsUpdateWebhookParams is parameters of orgs/update-webhook operation.
 type OrgsUpdateWebhookParams struct {
-	Org string
-
+	Org    string
 	HookID int
 }
 
@@ -55343,8 +54660,7 @@ func decodeOrgsUpdateWebhookParams(args [2]string, argsEscaped bool, r *http.Req
 
 // OrgsUpdateWebhookConfigForOrgParams is parameters of orgs/update-webhook-config-for-org operation.
 type OrgsUpdateWebhookConfigForOrgParams struct {
-	Org string
-
+	Org    string
 	HookID int
 }
 
@@ -55467,10 +54783,8 @@ type PackagesDeletePackageForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 }
 
@@ -55601,13 +54915,10 @@ type PackagesDeletePackageForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Org string
+	Org         string
 }
 
 func unpackPackagesDeletePackageForOrgParams(packed middleware.Parameters) (params PackagesDeletePackageForOrgParams) {
@@ -55789,13 +55100,10 @@ type PackagesDeletePackageForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Username string
+	Username    string
 }
 
 func unpackPackagesDeletePackageForUserParams(packed middleware.Parameters) (params PackagesDeletePackageForUserParams) {
@@ -55977,13 +55285,10 @@ type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -56166,15 +55471,11 @@ type PackagesDeletePackageVersionForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Org string
+	Org         string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -56409,15 +55710,11 @@ type PackagesDeletePackageVersionForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Username string
+	Username    string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -56652,19 +55949,14 @@ type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struc
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// The state of the package, either active or deleted.
-
 	State OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 }
 
@@ -56976,21 +56268,15 @@ type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Org string
+	Org         string
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// The state of the package, either active or deleted.
-
 	State OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState
 }
 
@@ -57354,13 +56640,10 @@ type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Username string
+	Username    string
 }
 
 func unpackPackagesGetAllPackageVersionsForPackageOwnedByUserParams(packed middleware.Parameters) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) {
@@ -57542,10 +56825,8 @@ type PackagesGetPackageForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 }
 
@@ -57676,13 +56957,10 @@ type PackagesGetPackageForOrganizationParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Org string
+	Org         string
 }
 
 func unpackPackagesGetPackageForOrganizationParams(packed middleware.Parameters) (params PackagesGetPackageForOrganizationParams) {
@@ -57864,13 +57142,10 @@ type PackagesGetPackageForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Username string
+	Username    string
 }
 
 func unpackPackagesGetPackageForUserParams(packed middleware.Parameters) (params PackagesGetPackageForUserParams) {
@@ -58052,13 +57327,10 @@ type PackagesGetPackageVersionForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -58241,15 +57513,11 @@ type PackagesGetPackageVersionForOrganizationParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Org string
+	Org         string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -58484,16 +57752,12 @@ type PackagesGetPackageVersionForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
-
-	Username string
+	Username         string
 }
 
 func unpackPackagesGetPackageVersionForUserParams(packed middleware.Parameters) (params PackagesGetPackageVersionForUserParams) {
@@ -58727,13 +57991,11 @@ type PackagesListPackagesForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackagesListPackagesForAuthenticatedUserPackageType
 	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-
 	Visibility OptPackageVisibilityParam
 }
 
@@ -58869,15 +58131,12 @@ type PackagesListPackagesForOrganizationParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackagesListPackagesForOrganizationPackageType
-
-	Org string
+	Org         string
 	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-
 	Visibility OptPackageVisibilityParam
 }
 
@@ -59065,16 +58324,13 @@ type PackagesListPackagesForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackagesListPackagesForUserPackageType
 	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
 	// `container` package_types currently support `internal` visibility properly. For other ecosystems
 	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
 	// result set.
-
 	Visibility OptPackageVisibilityParam
-
-	Username string
+	Username   string
 }
 
 func unpackPackagesListPackagesForUserParams(packed middleware.Parameters) (params PackagesListPackagesForUserParams) {
@@ -59261,13 +58517,10 @@ type PackagesRestorePackageForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 	// Package token.
-
 	Token OptString
 }
 
@@ -59449,15 +58702,11 @@ type PackagesRestorePackageForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Org string
+	Org         string
 	// Package token.
-
 	Token OptString
 }
 
@@ -59691,15 +58940,11 @@ type PackagesRestorePackageForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Username string
+	Username    string
 	// Package token.
-
 	Token OptString
 }
 
@@ -59933,13 +59178,10 @@ type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -60122,15 +59364,11 @@ type PackagesRestorePackageVersionForOrgParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Org string
+	Org         string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -60365,15 +59603,11 @@ type PackagesRestorePackageVersionForUserParams struct {
 	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
 	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
 	// these have now been migrated to the Container registry.
-
 	PackageType PackageType
 	// The name of the package.
-
 	PackageName string
-
-	Username string
+	Username    string
 	// Unique identifier of the package version.
-
 	PackageVersionID int
 }
 
@@ -60604,8 +59838,7 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, argsEscape
 // ProjectsAddCollaboratorParams is parameters of projects/add-collaborator operation.
 type ProjectsAddCollaboratorParams struct {
 	ProjectID int
-
-	Username string
+	Username  string
 }
 
 func unpackProjectsAddCollaboratorParams(packed middleware.Parameters) (params ProjectsAddCollaboratorParams) {
@@ -60853,8 +60086,7 @@ func decodeProjectsCreateForOrgParams(args [1]string, argsEscaped bool, r *http.
 // ProjectsCreateForRepoParams is parameters of projects/create-for-repo operation.
 type ProjectsCreateForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackProjectsCreateForRepoParams(packed middleware.Parameters) (params ProjectsCreateForRepoParams) {
@@ -61037,7 +60269,6 @@ func decodeProjectsDeleteParams(args [1]string, argsEscaped bool, r *http.Reques
 // ProjectsDeleteCardParams is parameters of projects/delete-card operation.
 type ProjectsDeleteCardParams struct {
 	// Card_id parameter.
-
 	CardID int
 }
 
@@ -61104,7 +60335,6 @@ func decodeProjectsDeleteCardParams(args [1]string, argsEscaped bool, r *http.Re
 // ProjectsDeleteColumnParams is parameters of projects/delete-column operation.
 type ProjectsDeleteColumnParams struct {
 	// Column_id parameter.
-
 	ColumnID int
 }
 
@@ -61236,7 +60466,6 @@ func decodeProjectsGetParams(args [1]string, argsEscaped bool, r *http.Request) 
 // ProjectsGetCardParams is parameters of projects/get-card operation.
 type ProjectsGetCardParams struct {
 	// Card_id parameter.
-
 	CardID int
 }
 
@@ -61303,7 +60532,6 @@ func decodeProjectsGetCardParams(args [1]string, argsEscaped bool, r *http.Reque
 // ProjectsGetColumnParams is parameters of projects/get-column operation.
 type ProjectsGetColumnParams struct {
 	// Column_id parameter.
-
 	ColumnID int
 }
 
@@ -61370,8 +60598,7 @@ func decodeProjectsGetColumnParams(args [1]string, argsEscaped bool, r *http.Req
 // ProjectsGetPermissionForUserParams is parameters of projects/get-permission-for-user operation.
 type ProjectsGetPermissionForUserParams struct {
 	ProjectID int
-
-	Username string
+	Username  string
 }
 
 func unpackProjectsGetPermissionForUserParams(packed middleware.Parameters) (params ProjectsGetPermissionForUserParams) {
@@ -61489,17 +60716,13 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, argsEscaped bool, 
 // ProjectsListCardsParams is parameters of projects/list-cards operation.
 type ProjectsListCardsParams struct {
 	// Column_id parameter.
-
 	ColumnID int
 	// Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`,
 	// or `not_archived`.
-
 	ArchivedState OptProjectsListCardsArchivedState
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -61753,13 +60976,10 @@ type ProjectsListCollaboratorsParams struct {
 	// \* `direct`: Collaborators with permissions to a project, regardless of organization membership
 	// status.
 	// \* `all`: All collaborators the authenticated user can see.
-
 	Affiliation OptProjectsListCollaboratorsAffiliation
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -62008,10 +61228,8 @@ func decodeProjectsListCollaboratorsParams(args [1]string, argsEscaped bool, r *
 type ProjectsListColumnsParams struct {
 	ProjectID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -62190,13 +61408,10 @@ func decodeProjectsListColumnsParams(args [1]string, argsEscaped bool, r *http.R
 type ProjectsListForOrgParams struct {
 	Org string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-
 	State OptProjectsListForOrgState
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -62444,16 +61659,12 @@ func decodeProjectsListForOrgParams(args [1]string, argsEscaped bool, r *http.Re
 // ProjectsListForRepoParams is parameters of projects/list-for-repo operation.
 type ProjectsListForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-
 	State OptProjectsListForRepoState
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -62754,13 +61965,10 @@ func decodeProjectsListForRepoParams(args [2]string, argsEscaped bool, r *http.R
 type ProjectsListForUserParams struct {
 	Username string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
-
 	State OptProjectsListForUserState
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -63008,7 +62216,6 @@ func decodeProjectsListForUserParams(args [1]string, argsEscaped bool, r *http.R
 // ProjectsMoveCardParams is parameters of projects/move-card operation.
 type ProjectsMoveCardParams struct {
 	// Card_id parameter.
-
 	CardID int
 }
 
@@ -63075,7 +62282,6 @@ func decodeProjectsMoveCardParams(args [1]string, argsEscaped bool, r *http.Requ
 // ProjectsMoveColumnParams is parameters of projects/move-column operation.
 type ProjectsMoveColumnParams struct {
 	// Column_id parameter.
-
 	ColumnID int
 }
 
@@ -63142,8 +62348,7 @@ func decodeProjectsMoveColumnParams(args [1]string, argsEscaped bool, r *http.Re
 // ProjectsRemoveCollaboratorParams is parameters of projects/remove-collaborator operation.
 type ProjectsRemoveCollaboratorParams struct {
 	ProjectID int
-
-	Username string
+	Username  string
 }
 
 func unpackProjectsRemoveCollaboratorParams(packed middleware.Parameters) (params ProjectsRemoveCollaboratorParams) {
@@ -63326,7 +62531,6 @@ func decodeProjectsUpdateParams(args [1]string, argsEscaped bool, r *http.Reques
 // ProjectsUpdateCardParams is parameters of projects/update-card operation.
 type ProjectsUpdateCardParams struct {
 	// Card_id parameter.
-
 	CardID int
 }
 
@@ -63393,7 +62597,6 @@ func decodeProjectsUpdateCardParams(args [1]string, argsEscaped bool, r *http.Re
 // ProjectsUpdateColumnParams is parameters of projects/update-column operation.
 type ProjectsUpdateColumnParams struct {
 	// Column_id parameter.
-
 	ColumnID int
 }
 
@@ -63459,10 +62662,8 @@ func decodeProjectsUpdateColumnParams(args [1]string, argsEscaped bool, r *http.
 
 // PullsCheckIfMergedParams is parameters of pulls/check-if-merged operation.
 type PullsCheckIfMergedParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -63633,8 +62834,7 @@ func decodePullsCheckIfMergedParams(args [3]string, argsEscaped bool, r *http.Re
 // PullsCreateParams is parameters of pulls/create operation.
 type PullsCreateParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackPullsCreateParams(packed middleware.Parameters) (params PullsCreateParams) {
@@ -63751,13 +62951,10 @@ func decodePullsCreateParams(args [2]string, argsEscaped bool, r *http.Request) 
 
 // PullsCreateReplyForReviewCommentParams is parameters of pulls/create-reply-for-review-comment operation.
 type PullsCreateReplyForReviewCommentParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -63979,10 +63176,8 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, argsEscaped bo
 
 // PullsCreateReviewParams is parameters of pulls/create-review operation.
 type PullsCreateReviewParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -64152,10 +63347,8 @@ func decodePullsCreateReviewParams(args [3]string, argsEscaped bool, r *http.Req
 
 // PullsCreateReviewCommentParams is parameters of pulls/create-review-comment operation.
 type PullsCreateReviewCommentParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -64325,13 +63518,10 @@ func decodePullsCreateReviewCommentParams(args [3]string, argsEscaped bool, r *h
 
 // PullsDeletePendingReviewParams is parameters of pulls/delete-pending-review operation.
 type PullsDeletePendingReviewParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Review_id parameter.
-
 	ReviewID int
 }
 
@@ -64554,10 +63744,8 @@ func decodePullsDeletePendingReviewParams(args [4]string, argsEscaped bool, r *h
 // PullsDeleteReviewCommentParams is parameters of pulls/delete-review-comment operation.
 type PullsDeleteReviewCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -64727,13 +63915,10 @@ func decodePullsDeleteReviewCommentParams(args [3]string, argsEscaped bool, r *h
 
 // PullsDismissReviewParams is parameters of pulls/dismiss-review operation.
 type PullsDismissReviewParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Review_id parameter.
-
 	ReviewID int
 }
 
@@ -64955,10 +64140,8 @@ func decodePullsDismissReviewParams(args [4]string, argsEscaped bool, r *http.Re
 
 // PullsGetParams is parameters of pulls/get operation.
 type PullsGetParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -65128,13 +64311,10 @@ func decodePullsGetParams(args [3]string, argsEscaped bool, r *http.Request) (pa
 
 // PullsGetReviewParams is parameters of pulls/get-review operation.
 type PullsGetReviewParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Review_id parameter.
-
 	ReviewID int
 }
 
@@ -65357,10 +64537,8 @@ func decodePullsGetReviewParams(args [4]string, argsEscaped bool, r *http.Reques
 // PullsGetReviewCommentParams is parameters of pulls/get-review-comment operation.
 type PullsGetReviewCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -65531,31 +64709,23 @@ func decodePullsGetReviewCommentParams(args [3]string, argsEscaped bool, r *http
 // PullsListParams is parameters of pulls/list operation.
 type PullsListParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Either `open`, `closed`, or `all` to filter by state.
-
 	State OptPullsListState
 	// Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or
 	// `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
-
 	Head OptString
 	// Filter pulls by base branch name. Example: `gh-pages`.
-
 	Base OptString
 	// What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or
 	// `long-running` (age, filtering by pulls updated in the last month).
-
 	Sort OptPullsListSort
 	// The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created`
 	// or sort is not specified, otherwise `asc`.
-
 	Direction OptPullsListDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -66089,19 +65259,14 @@ func decodePullsListParams(args [2]string, argsEscaped bool, r *http.Request) (p
 
 // PullsListCommentsForReviewParams is parameters of pulls/list-comments-for-review operation.
 type PullsListCommentsForReviewParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Review_id parameter.
-
 	ReviewID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -66434,16 +65599,12 @@ func decodePullsListCommentsForReviewParams(args [4]string, argsEscaped bool, r 
 
 // PullsListCommitsParams is parameters of pulls/list-commits operation.
 type PullsListCommitsParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -66724,16 +65885,12 @@ func decodePullsListCommitsParams(args [3]string, argsEscaped bool, r *http.Requ
 
 // PullsListFilesParams is parameters of pulls/list-files operation.
 type PullsListFilesParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -67014,16 +66171,12 @@ func decodePullsListFilesParams(args [3]string, argsEscaped bool, r *http.Reques
 
 // PullsListRequestedReviewersParams is parameters of pulls/list-requested-reviewers operation.
 type PullsListRequestedReviewersParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -67304,26 +66457,19 @@ func decodePullsListRequestedReviewersParams(args [3]string, argsEscaped bool, r
 
 // PullsListReviewCommentsParams is parameters of pulls/list-review-comments operation.
 type PullsListReviewCommentsParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
-
 	Sort OptSort
 	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
-
 	Direction OptPullsListReviewCommentsDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -67790,22 +66936,16 @@ func decodePullsListReviewCommentsParams(args [3]string, argsEscaped bool, r *ht
 // PullsListReviewCommentsForRepoParams is parameters of pulls/list-review-comments-for-repo operation.
 type PullsListReviewCommentsForRepoParams struct {
 	Owner string
-
-	Repo string
-
-	Sort OptPullsListReviewCommentsForRepoSort
+	Repo  string
+	Sort  OptPullsListReviewCommentsForRepoSort
 	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
-
 	Direction OptPullsListReviewCommentsForRepoDirection
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -68214,16 +67354,12 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, argsEscaped bool
 
 // PullsListReviewsParams is parameters of pulls/list-reviews operation.
 type PullsListReviewsParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -68504,10 +67640,8 @@ func decodePullsListReviewsParams(args [3]string, argsEscaped bool, r *http.Requ
 
 // PullsMergeParams is parameters of pulls/merge operation.
 type PullsMergeParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -68677,10 +67811,8 @@ func decodePullsMergeParams(args [3]string, argsEscaped bool, r *http.Request) (
 
 // PullsRemoveRequestedReviewersParams is parameters of pulls/remove-requested-reviewers operation.
 type PullsRemoveRequestedReviewersParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -68850,13 +67982,10 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, argsEscaped bool,
 
 // PullsSubmitReviewParams is parameters of pulls/submit-review operation.
 type PullsSubmitReviewParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Review_id parameter.
-
 	ReviewID int
 }
 
@@ -69078,10 +68207,8 @@ func decodePullsSubmitReviewParams(args [4]string, argsEscaped bool, r *http.Req
 
 // PullsUpdateParams is parameters of pulls/update operation.
 type PullsUpdateParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -69251,10 +68378,8 @@ func decodePullsUpdateParams(args [3]string, argsEscaped bool, r *http.Request) 
 
 // PullsUpdateBranchParams is parameters of pulls/update-branch operation.
 type PullsUpdateBranchParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 }
 
@@ -69424,13 +68549,10 @@ func decodePullsUpdateBranchParams(args [3]string, argsEscaped bool, r *http.Req
 
 // PullsUpdateReviewParams is parameters of pulls/update-review operation.
 type PullsUpdateReviewParams struct {
-	Owner string
-
-	Repo string
-
+	Owner      string
+	Repo       string
 	PullNumber int
 	// Review_id parameter.
-
 	ReviewID int
 }
 
@@ -69653,10 +68775,8 @@ func decodePullsUpdateReviewParams(args [4]string, argsEscaped bool, r *http.Req
 // PullsUpdateReviewCommentParams is parameters of pulls/update-review-comment operation.
 type PullsUpdateReviewCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -69827,10 +68947,8 @@ func decodePullsUpdateReviewCommentParams(args [3]string, argsEscaped bool, r *h
 // ReactionsCreateForCommitCommentParams is parameters of reactions/create-for-commit-comment operation.
 type ReactionsCreateForCommitCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -70001,10 +69119,8 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, argsEscaped boo
 // ReactionsCreateForIssueParams is parameters of reactions/create-for-issue operation.
 type ReactionsCreateForIssueParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 }
 
@@ -70175,10 +69291,8 @@ func decodeReactionsCreateForIssueParams(args [3]string, argsEscaped bool, r *ht
 // ReactionsCreateForIssueCommentParams is parameters of reactions/create-for-issue-comment operation.
 type ReactionsCreateForIssueCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -70349,10 +69463,8 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, argsEscaped bool
 // ReactionsCreateForPullRequestReviewCommentParams is parameters of reactions/create-for-pull-request-review-comment operation.
 type ReactionsCreateForPullRequestReviewCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -70523,10 +69635,8 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, args
 // ReactionsCreateForReleaseParams is parameters of reactions/create-for-release operation.
 type ReactionsCreateForReleaseParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Release_id parameter.
-
 	ReleaseID int
 }
 
@@ -70698,12 +69808,9 @@ func decodeReactionsCreateForReleaseParams(args [3]string, argsEscaped bool, r *
 type ReactionsCreateForTeamDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackReactionsCreateForTeamDiscussionCommentInOrgParams(packed middleware.Parameters) (params ReactionsCreateForTeamDiscussionCommentInOrgParams) {
@@ -70924,11 +70031,9 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, ar
 
 // ReactionsCreateForTeamDiscussionCommentLegacyParams is parameters of reactions/create-for-team-discussion-comment-legacy operation.
 type ReactionsCreateForTeamDiscussionCommentLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackReactionsCreateForTeamDiscussionCommentLegacyParams(packed middleware.Parameters) (params ReactionsCreateForTeamDiscussionCommentLegacyParams) {
@@ -71099,9 +70204,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, a
 type ReactionsCreateForTeamDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
 }
 
@@ -71271,8 +70374,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, argsEscap
 
 // ReactionsCreateForTeamDiscussionLegacyParams is parameters of reactions/create-for-team-discussion-legacy operation.
 type ReactionsCreateForTeamDiscussionLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
 }
 
@@ -71391,12 +70493,9 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, argsEsca
 // ReactionsDeleteForCommitCommentParams is parameters of reactions/delete-for-commit-comment operation.
 type ReactionsDeleteForCommitCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
-	CommentID int
-
+	CommentID  int
 	ReactionID int
 }
 
@@ -71619,13 +70718,10 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, argsEscaped boo
 // ReactionsDeleteForIssueParams is parameters of reactions/delete-for-issue operation.
 type ReactionsDeleteForIssueParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
-
-	ReactionID int
+	ReactionID  int
 }
 
 func unpackReactionsDeleteForIssueParams(packed middleware.Parameters) (params ReactionsDeleteForIssueParams) {
@@ -71847,12 +70943,9 @@ func decodeReactionsDeleteForIssueParams(args [4]string, argsEscaped bool, r *ht
 // ReactionsDeleteForIssueCommentParams is parameters of reactions/delete-for-issue-comment operation.
 type ReactionsDeleteForIssueCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
-	CommentID int
-
+	CommentID  int
 	ReactionID int
 }
 
@@ -72075,12 +71168,9 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, argsEscaped bool
 // ReactionsDeleteForPullRequestCommentParams is parameters of reactions/delete-for-pull-request-comment operation.
 type ReactionsDeleteForPullRequestCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
-	CommentID int
-
+	CommentID  int
 	ReactionID int
 }
 
@@ -72304,12 +71394,9 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, argsEscape
 type ReactionsDeleteForTeamDiscussionParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
-
-	ReactionID int
+	ReactionID       int
 }
 
 func unpackReactionsDeleteForTeamDiscussionParams(packed middleware.Parameters) (params ReactionsDeleteForTeamDiscussionParams) {
@@ -72532,14 +71619,10 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, argsEscaped bo
 type ReactionsDeleteForTeamDiscussionCommentParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
-
-	CommentNumber int
-
-	ReactionID int
+	CommentNumber    int
+	ReactionID       int
 }
 
 func unpackReactionsDeleteForTeamDiscussionCommentParams(packed middleware.Parameters) (params ReactionsDeleteForTeamDiscussionCommentParams) {
@@ -72878,20 +71961,15 @@ func decodeReactionsDeleteLegacyParams(args [1]string, argsEscaped bool, r *http
 // ReactionsListForCommitCommentParams is parameters of reactions/list-for-commit-comment operation.
 type ReactionsListForCommitCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a commit comment.
-
 	Content OptReactionsListForCommitCommentContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -73238,20 +72316,15 @@ func decodeReactionsListForCommitCommentParams(args [3]string, argsEscaped bool,
 // ReactionsListForIssueParams is parameters of reactions/list-for-issue operation.
 type ReactionsListForIssueParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Issue_number parameter.
-
 	IssueNumber int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to an issue.
-
 	Content OptReactionsListForIssueContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -73598,20 +72671,15 @@ func decodeReactionsListForIssueParams(args [3]string, argsEscaped bool, r *http
 // ReactionsListForIssueCommentParams is parameters of reactions/list-for-issue-comment operation.
 type ReactionsListForIssueCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to an issue comment.
-
 	Content OptReactionsListForIssueCommentContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -73958,20 +73026,15 @@ func decodeReactionsListForIssueCommentParams(args [3]string, argsEscaped bool, 
 // ReactionsListForPullRequestReviewCommentParams is parameters of reactions/list-for-pull-request-review-comment operation.
 type ReactionsListForPullRequestReviewCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a pull request review comment.
-
 	Content OptReactionsListForPullRequestReviewCommentContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -74319,21 +73382,15 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, argsEs
 type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion comment.
-
 	Content OptReactionsListForTeamDiscussionCommentInOrgContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -74731,20 +73788,15 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, args
 
 // ReactionsListForTeamDiscussionCommentLegacyParams is parameters of reactions/list-for-team-discussion-comment-legacy operation.
 type ReactionsListForTeamDiscussionCommentLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion comment.
-
 	Content OptReactionsListForTeamDiscussionCommentLegacyContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -75092,19 +74144,14 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, arg
 type ReactionsListForTeamDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion.
-
 	Content OptReactionsListForTeamDiscussionInOrgContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -75450,18 +74497,14 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, argsEscaped
 
 // ReactionsListForTeamDiscussionLegacyParams is parameters of reactions/list-for-team-discussion-legacy operation.
 type ReactionsListForTeamDiscussionLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
 	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
 	// Omit this parameter to list all reactions to a team discussion.
-
 	Content OptReactionsListForTeamDiscussionLegacyContent
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -75756,7 +74799,6 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, argsEscape
 // ReposAcceptInvitationParams is parameters of repos/accept-invitation operation.
 type ReposAcceptInvitationParams struct {
 	// Invitation_id parameter.
-
 	InvitationID int
 }
 
@@ -75823,10 +74865,8 @@ func decodeReposAcceptInvitationParams(args [1]string, argsEscaped bool, r *http
 // ReposAddAppAccessRestrictionsParams is parameters of repos/add-app-access-restrictions operation.
 type ReposAddAppAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -75996,10 +75036,8 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, argsEscaped bool,
 
 // ReposAddCollaboratorParams is parameters of repos/add-collaborator operation.
 type ReposAddCollaboratorParams struct {
-	Owner string
-
-	Repo string
-
+	Owner    string
+	Repo     string
 	Username string
 }
 
@@ -76170,10 +75208,8 @@ func decodeReposAddCollaboratorParams(args [3]string, argsEscaped bool, r *http.
 // ReposAddStatusCheckContextsParams is parameters of repos/add-status-check-contexts operation.
 type ReposAddStatusCheckContextsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -76344,10 +75380,8 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, argsEscaped bool, r
 // ReposAddTeamAccessRestrictionsParams is parameters of repos/add-team-access-restrictions operation.
 type ReposAddTeamAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -76518,10 +75552,8 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, argsEscaped bool
 // ReposAddUserAccessRestrictionsParams is parameters of repos/add-user-access-restrictions operation.
 type ReposAddUserAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -76691,10 +75723,8 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, argsEscaped bool
 
 // ReposCheckCollaboratorParams is parameters of repos/check-collaborator operation.
 type ReposCheckCollaboratorParams struct {
-	Owner string
-
-	Repo string
-
+	Owner    string
+	Repo     string
 	Username string
 }
 
@@ -76865,8 +75895,7 @@ func decodeReposCheckCollaboratorParams(args [3]string, argsEscaped bool, r *htt
 // ReposCheckVulnerabilityAlertsParams is parameters of repos/check-vulnerability-alerts operation.
 type ReposCheckVulnerabilityAlertsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCheckVulnerabilityAlertsParams(packed middleware.Parameters) (params ReposCheckVulnerabilityAlertsParams) {
@@ -76984,16 +76013,12 @@ func decodeReposCheckVulnerabilityAlertsParams(args [2]string, argsEscaped bool,
 // ReposCompareCommitsParams is parameters of repos/compare-commits operation.
 type ReposCompareCommitsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// The base branch and head branch to compare. This parameter expects the format `{base}...{head}`.
-
 	Basehead string
 }
 
@@ -77275,8 +76300,7 @@ func decodeReposCompareCommitsParams(args [3]string, argsEscaped bool, r *http.R
 // ReposCreateAutolinkParams is parameters of repos/create-autolink operation.
 type ReposCreateAutolinkParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreateAutolinkParams(packed middleware.Parameters) (params ReposCreateAutolinkParams) {
@@ -77394,10 +76418,8 @@ func decodeReposCreateAutolinkParams(args [2]string, argsEscaped bool, r *http.R
 // ReposCreateCommitCommentParams is parameters of repos/create-commit-comment operation.
 type ReposCreateCommitCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Commit_sha parameter.
-
 	CommitSha string
 }
 
@@ -77568,10 +76590,8 @@ func decodeReposCreateCommitCommentParams(args [3]string, argsEscaped bool, r *h
 // ReposCreateCommitSignatureProtectionParams is parameters of repos/create-commit-signature-protection operation.
 type ReposCreateCommitSignatureProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -77742,10 +76762,8 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, argsEscape
 // ReposCreateCommitStatusParams is parameters of repos/create-commit-status operation.
 type ReposCreateCommitStatusParams struct {
 	Owner string
-
-	Repo string
-
-	Sha string
+	Repo  string
+	Sha   string
 }
 
 func unpackReposCreateCommitStatusParams(packed middleware.Parameters) (params ReposCreateCommitStatusParams) {
@@ -77915,8 +76933,7 @@ func decodeReposCreateCommitStatusParams(args [3]string, argsEscaped bool, r *ht
 // ReposCreateDeployKeyParams is parameters of repos/create-deploy-key operation.
 type ReposCreateDeployKeyParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreateDeployKeyParams(packed middleware.Parameters) (params ReposCreateDeployKeyParams) {
@@ -78034,8 +77051,7 @@ func decodeReposCreateDeployKeyParams(args [2]string, argsEscaped bool, r *http.
 // ReposCreateDeploymentParams is parameters of repos/create-deployment operation.
 type ReposCreateDeploymentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreateDeploymentParams(packed middleware.Parameters) (params ReposCreateDeploymentParams) {
@@ -78153,10 +77169,8 @@ func decodeReposCreateDeploymentParams(args [2]string, argsEscaped bool, r *http
 // ReposCreateDeploymentStatusParams is parameters of repos/create-deployment-status operation.
 type ReposCreateDeploymentStatusParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Deployment_id parameter.
-
 	DeploymentID int
 }
 
@@ -78327,8 +77341,7 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, argsEscaped bool, r
 // ReposCreateDispatchEventParams is parameters of repos/create-dispatch-event operation.
 type ReposCreateDispatchEventParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreateDispatchEventParams(packed middleware.Parameters) (params ReposCreateDispatchEventParams) {
@@ -78446,8 +77459,7 @@ func decodeReposCreateDispatchEventParams(args [2]string, argsEscaped bool, r *h
 // ReposCreateForkParams is parameters of repos/create-fork operation.
 type ReposCreateForkParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreateForkParams(packed middleware.Parameters) (params ReposCreateForkParams) {
@@ -78630,10 +77642,8 @@ func decodeReposCreateInOrgParams(args [1]string, argsEscaped bool, r *http.Requ
 // ReposCreateOrUpdateFileContentsParams is parameters of repos/create-or-update-file-contents operation.
 type ReposCreateOrUpdateFileContentsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Path parameter.
-
 	Path string
 }
 
@@ -78804,8 +77814,7 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, argsEscaped boo
 // ReposCreatePagesSiteParams is parameters of repos/create-pages-site operation.
 type ReposCreatePagesSiteParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreatePagesSiteParams(packed middleware.Parameters) (params ReposCreatePagesSiteParams) {
@@ -78923,8 +77932,7 @@ func decodeReposCreatePagesSiteParams(args [2]string, argsEscaped bool, r *http.
 // ReposCreateReleaseParams is parameters of repos/create-release operation.
 type ReposCreateReleaseParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreateReleaseParams(packed middleware.Parameters) (params ReposCreateReleaseParams) {
@@ -79042,8 +78050,7 @@ func decodeReposCreateReleaseParams(args [2]string, argsEscaped bool, r *http.Re
 // ReposCreateUsingTemplateParams is parameters of repos/create-using-template operation.
 type ReposCreateUsingTemplateParams struct {
 	TemplateOwner string
-
-	TemplateRepo string
+	TemplateRepo  string
 }
 
 func unpackReposCreateUsingTemplateParams(packed middleware.Parameters) (params ReposCreateUsingTemplateParams) {
@@ -79161,8 +78168,7 @@ func decodeReposCreateUsingTemplateParams(args [2]string, argsEscaped bool, r *h
 // ReposCreateWebhookParams is parameters of repos/create-webhook operation.
 type ReposCreateWebhookParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposCreateWebhookParams(packed middleware.Parameters) (params ReposCreateWebhookParams) {
@@ -79280,7 +78286,6 @@ func decodeReposCreateWebhookParams(args [2]string, argsEscaped bool, r *http.Re
 // ReposDeclineInvitationParams is parameters of repos/decline-invitation operation.
 type ReposDeclineInvitationParams struct {
 	// Invitation_id parameter.
-
 	InvitationID int
 }
 
@@ -79347,8 +78352,7 @@ func decodeReposDeclineInvitationParams(args [1]string, argsEscaped bool, r *htt
 // ReposDeleteParams is parameters of repos/delete operation.
 type ReposDeleteParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposDeleteParams(packed middleware.Parameters) (params ReposDeleteParams) {
@@ -79466,10 +78470,8 @@ func decodeReposDeleteParams(args [2]string, argsEscaped bool, r *http.Request) 
 // ReposDeleteAccessRestrictionsParams is parameters of repos/delete-access-restrictions operation.
 type ReposDeleteAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -79640,10 +78642,8 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, argsEscaped bool,
 // ReposDeleteAdminBranchProtectionParams is parameters of repos/delete-admin-branch-protection operation.
 type ReposDeleteAdminBranchProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -79814,10 +78814,8 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, argsEscaped bo
 // ReposDeleteAnEnvironmentParams is parameters of repos/delete-an-environment operation.
 type ReposDeleteAnEnvironmentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the environment.
-
 	EnvironmentName string
 }
 
@@ -79988,10 +78986,8 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, argsEscaped bool, r *h
 // ReposDeleteAutolinkParams is parameters of repos/delete-autolink operation.
 type ReposDeleteAutolinkParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Autolink_id parameter.
-
 	AutolinkID int
 }
 
@@ -80162,10 +79158,8 @@ func decodeReposDeleteAutolinkParams(args [3]string, argsEscaped bool, r *http.R
 // ReposDeleteBranchProtectionParams is parameters of repos/delete-branch-protection operation.
 type ReposDeleteBranchProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -80336,10 +79330,8 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, argsEscaped bool, r
 // ReposDeleteCommitCommentParams is parameters of repos/delete-commit-comment operation.
 type ReposDeleteCommitCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -80510,10 +79502,8 @@ func decodeReposDeleteCommitCommentParams(args [3]string, argsEscaped bool, r *h
 // ReposDeleteCommitSignatureProtectionParams is parameters of repos/delete-commit-signature-protection operation.
 type ReposDeleteCommitSignatureProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -80684,10 +79674,8 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, argsEscape
 // ReposDeleteDeployKeyParams is parameters of repos/delete-deploy-key operation.
 type ReposDeleteDeployKeyParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Key_id parameter.
-
 	KeyID int
 }
 
@@ -80858,10 +79846,8 @@ func decodeReposDeleteDeployKeyParams(args [3]string, argsEscaped bool, r *http.
 // ReposDeleteDeploymentParams is parameters of repos/delete-deployment operation.
 type ReposDeleteDeploymentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Deployment_id parameter.
-
 	DeploymentID int
 }
 
@@ -81032,10 +80018,8 @@ func decodeReposDeleteDeploymentParams(args [3]string, argsEscaped bool, r *http
 // ReposDeleteFileParams is parameters of repos/delete-file operation.
 type ReposDeleteFileParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Path parameter.
-
 	Path string
 }
 
@@ -81206,10 +80190,8 @@ func decodeReposDeleteFileParams(args [3]string, argsEscaped bool, r *http.Reque
 // ReposDeleteInvitationParams is parameters of repos/delete-invitation operation.
 type ReposDeleteInvitationParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Invitation_id parameter.
-
 	InvitationID int
 }
 
@@ -81380,8 +80362,7 @@ func decodeReposDeleteInvitationParams(args [3]string, argsEscaped bool, r *http
 // ReposDeletePagesSiteParams is parameters of repos/delete-pages-site operation.
 type ReposDeletePagesSiteParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposDeletePagesSiteParams(packed middleware.Parameters) (params ReposDeletePagesSiteParams) {
@@ -81499,10 +80480,8 @@ func decodeReposDeletePagesSiteParams(args [2]string, argsEscaped bool, r *http.
 // ReposDeletePullRequestReviewProtectionParams is parameters of repos/delete-pull-request-review-protection operation.
 type ReposDeletePullRequestReviewProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -81673,10 +80652,8 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, argsEsca
 // ReposDeleteReleaseParams is parameters of repos/delete-release operation.
 type ReposDeleteReleaseParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Release_id parameter.
-
 	ReleaseID int
 }
 
@@ -81847,10 +80824,8 @@ func decodeReposDeleteReleaseParams(args [3]string, argsEscaped bool, r *http.Re
 // ReposDeleteReleaseAssetParams is parameters of repos/delete-release-asset operation.
 type ReposDeleteReleaseAssetParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Asset_id parameter.
-
 	AssetID int
 }
 
@@ -82020,10 +80995,8 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, argsEscaped bool, r *ht
 
 // ReposDeleteWebhookParams is parameters of repos/delete-webhook operation.
 type ReposDeleteWebhookParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 }
 
@@ -82194,8 +81167,7 @@ func decodeReposDeleteWebhookParams(args [3]string, argsEscaped bool, r *http.Re
 // ReposDisableAutomatedSecurityFixesParams is parameters of repos/disable-automated-security-fixes operation.
 type ReposDisableAutomatedSecurityFixesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposDisableAutomatedSecurityFixesParams(packed middleware.Parameters) (params ReposDisableAutomatedSecurityFixesParams) {
@@ -82313,8 +81285,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, argsEscaped 
 // ReposDisableLfsForRepoParams is parameters of repos/disable-lfs-for-repo operation.
 type ReposDisableLfsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposDisableLfsForRepoParams(packed middleware.Parameters) (params ReposDisableLfsForRepoParams) {
@@ -82432,8 +81403,7 @@ func decodeReposDisableLfsForRepoParams(args [2]string, argsEscaped bool, r *htt
 // ReposDisableVulnerabilityAlertsParams is parameters of repos/disable-vulnerability-alerts operation.
 type ReposDisableVulnerabilityAlertsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposDisableVulnerabilityAlertsParams(packed middleware.Parameters) (params ReposDisableVulnerabilityAlertsParams) {
@@ -82551,10 +81521,8 @@ func decodeReposDisableVulnerabilityAlertsParams(args [2]string, argsEscaped boo
 // ReposDownloadTarballArchiveParams is parameters of repos/download-tarball-archive operation.
 type ReposDownloadTarballArchiveParams struct {
 	Owner string
-
-	Repo string
-
-	Ref string
+	Repo  string
+	Ref   string
 }
 
 func unpackReposDownloadTarballArchiveParams(packed middleware.Parameters) (params ReposDownloadTarballArchiveParams) {
@@ -82724,10 +81692,8 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, argsEscaped bool, r
 // ReposDownloadZipballArchiveParams is parameters of repos/download-zipball-archive operation.
 type ReposDownloadZipballArchiveParams struct {
 	Owner string
-
-	Repo string
-
-	Ref string
+	Repo  string
+	Ref   string
 }
 
 func unpackReposDownloadZipballArchiveParams(packed middleware.Parameters) (params ReposDownloadZipballArchiveParams) {
@@ -82897,8 +81863,7 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, argsEscaped bool, r
 // ReposEnableAutomatedSecurityFixesParams is parameters of repos/enable-automated-security-fixes operation.
 type ReposEnableAutomatedSecurityFixesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposEnableAutomatedSecurityFixesParams(packed middleware.Parameters) (params ReposEnableAutomatedSecurityFixesParams) {
@@ -83016,8 +81981,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, argsEscaped b
 // ReposEnableLfsForRepoParams is parameters of repos/enable-lfs-for-repo operation.
 type ReposEnableLfsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposEnableLfsForRepoParams(packed middleware.Parameters) (params ReposEnableLfsForRepoParams) {
@@ -83135,8 +82099,7 @@ func decodeReposEnableLfsForRepoParams(args [2]string, argsEscaped bool, r *http
 // ReposEnableVulnerabilityAlertsParams is parameters of repos/enable-vulnerability-alerts operation.
 type ReposEnableVulnerabilityAlertsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposEnableVulnerabilityAlertsParams(packed middleware.Parameters) (params ReposEnableVulnerabilityAlertsParams) {
@@ -83254,8 +82217,7 @@ func decodeReposEnableVulnerabilityAlertsParams(args [2]string, argsEscaped bool
 // ReposGetParams is parameters of repos/get operation.
 type ReposGetParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetParams(packed middleware.Parameters) (params ReposGetParams) {
@@ -83373,10 +82335,8 @@ func decodeReposGetParams(args [2]string, argsEscaped bool, r *http.Request) (pa
 // ReposGetAccessRestrictionsParams is parameters of repos/get-access-restrictions operation.
 type ReposGetAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -83547,10 +82507,8 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, argsEscaped bool, r 
 // ReposGetAdminBranchProtectionParams is parameters of repos/get-admin-branch-protection operation.
 type ReposGetAdminBranchProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -83721,10 +82679,8 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, argsEscaped bool,
 // ReposGetAllStatusCheckContextsParams is parameters of repos/get-all-status-check-contexts operation.
 type ReposGetAllStatusCheckContextsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -83895,13 +82851,10 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, argsEscaped bool
 // ReposGetAllTopicsParams is parameters of repos/get-all-topics operation.
 type ReposGetAllTopicsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -84131,10 +83084,8 @@ func decodeReposGetAllTopicsParams(args [2]string, argsEscaped bool, r *http.Req
 // ReposGetAppsWithAccessToProtectedBranchParams is parameters of repos/get-apps-with-access-to-protected-branch operation.
 type ReposGetAppsWithAccessToProtectedBranchParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -84305,10 +83256,8 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, argsEsc
 // ReposGetAutolinkParams is parameters of repos/get-autolink operation.
 type ReposGetAutolinkParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Autolink_id parameter.
-
 	AutolinkID int
 }
 
@@ -84479,10 +83428,8 @@ func decodeReposGetAutolinkParams(args [3]string, argsEscaped bool, r *http.Requ
 // ReposGetBranchParams is parameters of repos/get-branch operation.
 type ReposGetBranchParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -84653,10 +83600,8 @@ func decodeReposGetBranchParams(args [3]string, argsEscaped bool, r *http.Reques
 // ReposGetBranchProtectionParams is parameters of repos/get-branch-protection operation.
 type ReposGetBranchProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -84827,10 +83772,8 @@ func decodeReposGetBranchProtectionParams(args [3]string, argsEscaped bool, r *h
 // ReposGetClonesParams is parameters of repos/get-clones operation.
 type ReposGetClonesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Must be one of: `day`, `week`.
-
 	Per OptPer
 }
 
@@ -85020,8 +83963,7 @@ func decodeReposGetClonesParams(args [2]string, argsEscaped bool, r *http.Reques
 // ReposGetCodeFrequencyStatsParams is parameters of repos/get-code-frequency-stats operation.
 type ReposGetCodeFrequencyStatsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetCodeFrequencyStatsParams(packed middleware.Parameters) (params ReposGetCodeFrequencyStatsParams) {
@@ -85138,10 +84080,8 @@ func decodeReposGetCodeFrequencyStatsParams(args [2]string, argsEscaped bool, r 
 
 // ReposGetCollaboratorPermissionLevelParams is parameters of repos/get-collaborator-permission-level operation.
 type ReposGetCollaboratorPermissionLevelParams struct {
-	Owner string
-
-	Repo string
-
+	Owner    string
+	Repo     string
 	Username string
 }
 
@@ -85312,16 +84252,12 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, argsEscaped
 // ReposGetCombinedStatusForRefParams is parameters of repos/get-combined-status-for-ref operation.
 type ReposGetCombinedStatusForRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -85603,16 +84539,12 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, argsEscaped bool, 
 // ReposGetCommitParams is parameters of repos/get-commit operation.
 type ReposGetCommitParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Ref parameter.
-
 	Ref string
 }
 
@@ -85894,8 +84826,7 @@ func decodeReposGetCommitParams(args [3]string, argsEscaped bool, r *http.Reques
 // ReposGetCommitActivityStatsParams is parameters of repos/get-commit-activity-stats operation.
 type ReposGetCommitActivityStatsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetCommitActivityStatsParams(packed middleware.Parameters) (params ReposGetCommitActivityStatsParams) {
@@ -86013,10 +84944,8 @@ func decodeReposGetCommitActivityStatsParams(args [2]string, argsEscaped bool, r
 // ReposGetCommitCommentParams is parameters of repos/get-commit-comment operation.
 type ReposGetCommitCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -86187,10 +85116,8 @@ func decodeReposGetCommitCommentParams(args [3]string, argsEscaped bool, r *http
 // ReposGetCommitSignatureProtectionParams is parameters of repos/get-commit-signature-protection operation.
 type ReposGetCommitSignatureProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -86361,8 +85288,7 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, argsEscaped b
 // ReposGetCommunityProfileMetricsParams is parameters of repos/get-community-profile-metrics operation.
 type ReposGetCommunityProfileMetricsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetCommunityProfileMetricsParams(packed middleware.Parameters) (params ReposGetCommunityProfileMetricsParams) {
@@ -86480,8 +85406,7 @@ func decodeReposGetCommunityProfileMetricsParams(args [2]string, argsEscaped boo
 // ReposGetContributorsStatsParams is parameters of repos/get-contributors-stats operation.
 type ReposGetContributorsStatsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetContributorsStatsParams(packed middleware.Parameters) (params ReposGetContributorsStatsParams) {
@@ -86599,10 +85524,8 @@ func decodeReposGetContributorsStatsParams(args [2]string, argsEscaped bool, r *
 // ReposGetDeployKeyParams is parameters of repos/get-deploy-key operation.
 type ReposGetDeployKeyParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Key_id parameter.
-
 	KeyID int
 }
 
@@ -86773,10 +85696,8 @@ func decodeReposGetDeployKeyParams(args [3]string, argsEscaped bool, r *http.Req
 // ReposGetDeploymentParams is parameters of repos/get-deployment operation.
 type ReposGetDeploymentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Deployment_id parameter.
-
 	DeploymentID int
 }
 
@@ -86947,13 +85868,10 @@ func decodeReposGetDeploymentParams(args [3]string, argsEscaped bool, r *http.Re
 // ReposGetDeploymentStatusParams is parameters of repos/get-deployment-status operation.
 type ReposGetDeploymentStatusParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Deployment_id parameter.
-
 	DeploymentID int
-
-	StatusID int
+	StatusID     int
 }
 
 func unpackReposGetDeploymentStatusParams(packed middleware.Parameters) (params ReposGetDeploymentStatusParams) {
@@ -87175,8 +86093,7 @@ func decodeReposGetDeploymentStatusParams(args [4]string, argsEscaped bool, r *h
 // ReposGetLatestPagesBuildParams is parameters of repos/get-latest-pages-build operation.
 type ReposGetLatestPagesBuildParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetLatestPagesBuildParams(packed middleware.Parameters) (params ReposGetLatestPagesBuildParams) {
@@ -87294,8 +86211,7 @@ func decodeReposGetLatestPagesBuildParams(args [2]string, argsEscaped bool, r *h
 // ReposGetLatestReleaseParams is parameters of repos/get-latest-release operation.
 type ReposGetLatestReleaseParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetLatestReleaseParams(packed middleware.Parameters) (params ReposGetLatestReleaseParams) {
@@ -87413,8 +86329,7 @@ func decodeReposGetLatestReleaseParams(args [2]string, argsEscaped bool, r *http
 // ReposGetPagesParams is parameters of repos/get-pages operation.
 type ReposGetPagesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetPagesParams(packed middleware.Parameters) (params ReposGetPagesParams) {
@@ -87531,10 +86446,8 @@ func decodeReposGetPagesParams(args [2]string, argsEscaped bool, r *http.Request
 
 // ReposGetPagesBuildParams is parameters of repos/get-pages-build operation.
 type ReposGetPagesBuildParams struct {
-	Owner string
-
-	Repo string
-
+	Owner   string
+	Repo    string
 	BuildID int
 }
 
@@ -87705,8 +86618,7 @@ func decodeReposGetPagesBuildParams(args [3]string, argsEscaped bool, r *http.Re
 // ReposGetPagesHealthCheckParams is parameters of repos/get-pages-health-check operation.
 type ReposGetPagesHealthCheckParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetPagesHealthCheckParams(packed middleware.Parameters) (params ReposGetPagesHealthCheckParams) {
@@ -87824,8 +86736,7 @@ func decodeReposGetPagesHealthCheckParams(args [2]string, argsEscaped bool, r *h
 // ReposGetParticipationStatsParams is parameters of repos/get-participation-stats operation.
 type ReposGetParticipationStatsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetParticipationStatsParams(packed middleware.Parameters) (params ReposGetParticipationStatsParams) {
@@ -87943,10 +86854,8 @@ func decodeReposGetParticipationStatsParams(args [2]string, argsEscaped bool, r 
 // ReposGetPullRequestReviewProtectionParams is parameters of repos/get-pull-request-review-protection operation.
 type ReposGetPullRequestReviewProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -88117,8 +87026,7 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, argsEscaped
 // ReposGetPunchCardStatsParams is parameters of repos/get-punch-card-stats operation.
 type ReposGetPunchCardStatsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetPunchCardStatsParams(packed middleware.Parameters) (params ReposGetPunchCardStatsParams) {
@@ -88236,10 +87144,8 @@ func decodeReposGetPunchCardStatsParams(args [2]string, argsEscaped bool, r *htt
 // ReposGetReadmeParams is parameters of repos/get-readme operation.
 type ReposGetReadmeParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
-
 	Ref OptString
 }
 
@@ -88409,13 +87315,10 @@ func decodeReposGetReadmeParams(args [2]string, argsEscaped bool, r *http.Reques
 // ReposGetReadmeInDirectoryParams is parameters of repos/get-readme-in-directory operation.
 type ReposGetReadmeInDirectoryParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The alternate path to look for a README file.
-
 	Dir string
 	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
-
 	Ref OptString
 }
 
@@ -88637,10 +87540,8 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, argsEscaped bool, r *
 // ReposGetReleaseParams is parameters of repos/get-release operation.
 type ReposGetReleaseParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Release_id parameter.
-
 	ReleaseID int
 }
 
@@ -88811,10 +87712,8 @@ func decodeReposGetReleaseParams(args [3]string, argsEscaped bool, r *http.Reque
 // ReposGetReleaseAssetParams is parameters of repos/get-release-asset operation.
 type ReposGetReleaseAssetParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Asset_id parameter.
-
 	AssetID int
 }
 
@@ -88985,10 +87884,8 @@ func decodeReposGetReleaseAssetParams(args [3]string, argsEscaped bool, r *http.
 // ReposGetReleaseByTagParams is parameters of repos/get-release-by-tag operation.
 type ReposGetReleaseByTagParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Tag parameter.
-
 	Tag string
 }
 
@@ -89159,10 +88056,8 @@ func decodeReposGetReleaseByTagParams(args [3]string, argsEscaped bool, r *http.
 // ReposGetStatusChecksProtectionParams is parameters of repos/get-status-checks-protection operation.
 type ReposGetStatusChecksProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -89333,10 +88228,8 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, argsEscaped bool
 // ReposGetTeamsWithAccessToProtectedBranchParams is parameters of repos/get-teams-with-access-to-protected-branch operation.
 type ReposGetTeamsWithAccessToProtectedBranchParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -89507,8 +88400,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, argsEs
 // ReposGetTopPathsParams is parameters of repos/get-top-paths operation.
 type ReposGetTopPathsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetTopPathsParams(packed middleware.Parameters) (params ReposGetTopPathsParams) {
@@ -89626,8 +88518,7 @@ func decodeReposGetTopPathsParams(args [2]string, argsEscaped bool, r *http.Requ
 // ReposGetTopReferrersParams is parameters of repos/get-top-referrers operation.
 type ReposGetTopReferrersParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposGetTopReferrersParams(packed middleware.Parameters) (params ReposGetTopReferrersParams) {
@@ -89745,10 +88636,8 @@ func decodeReposGetTopReferrersParams(args [2]string, argsEscaped bool, r *http.
 // ReposGetUsersWithAccessToProtectedBranchParams is parameters of repos/get-users-with-access-to-protected-branch operation.
 type ReposGetUsersWithAccessToProtectedBranchParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -89919,10 +88808,8 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, argsEs
 // ReposGetViewsParams is parameters of repos/get-views operation.
 type ReposGetViewsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Must be one of: `day`, `week`.
-
 	Per OptPer
 }
 
@@ -90111,10 +88998,8 @@ func decodeReposGetViewsParams(args [2]string, argsEscaped bool, r *http.Request
 
 // ReposGetWebhookParams is parameters of repos/get-webhook operation.
 type ReposGetWebhookParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 }
 
@@ -90284,10 +89169,8 @@ func decodeReposGetWebhookParams(args [3]string, argsEscaped bool, r *http.Reque
 
 // ReposGetWebhookConfigForRepoParams is parameters of repos/get-webhook-config-for-repo operation.
 type ReposGetWebhookConfigForRepoParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 }
 
@@ -90457,12 +89340,9 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, argsEscaped bool, 
 
 // ReposGetWebhookDeliveryParams is parameters of repos/get-webhook-delivery operation.
 type ReposGetWebhookDeliveryParams struct {
-	Owner string
-
-	Repo string
-
-	HookID int
-
+	Owner      string
+	Repo       string
+	HookID     int
 	DeliveryID int
 }
 
@@ -90685,10 +89565,8 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, argsEscaped bool, r *ht
 // ReposListAutolinksParams is parameters of repos/list-autolinks operation.
 type ReposListAutolinksParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -90863,17 +89741,13 @@ func decodeReposListAutolinksParams(args [2]string, argsEscaped bool, r *http.Re
 // ReposListBranchesParams is parameters of repos/list-branches operation.
 type ReposListBranchesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Setting to `true` returns only protected branches. When set to `false`, only unprotected branches
 	// are returned. Omitting this parameter returns all branches.
-
 	Protected OptBool
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -91153,10 +90027,8 @@ func decodeReposListBranchesParams(args [2]string, argsEscaped bool, r *http.Req
 // ReposListBranchesForHeadCommitParams is parameters of repos/list-branches-for-head-commit operation.
 type ReposListBranchesForHeadCommitParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Commit_sha parameter.
-
 	CommitSha string
 }
 
@@ -91327,20 +90199,16 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, argsEscaped bool
 // ReposListCollaboratorsParams is parameters of repos/list-collaborators operation.
 type ReposListCollaboratorsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Filter collaborators returned by their affiliation. Can be one of:
 	// \* `outside`: All outside collaborators of an organization-owned repository.
 	// \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of
 	// organization membership status.
 	// \* `all`: All collaborators the authenticated user can see.
-
 	Affiliation OptReposListCollaboratorsAffiliation
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -91640,16 +90508,12 @@ func decodeReposListCollaboratorsParams(args [2]string, argsEscaped bool, r *htt
 // ReposListCommentsForCommitParams is parameters of repos/list-comments-for-commit operation.
 type ReposListCommentsForCommitParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Commit_sha parameter.
-
 	CommitSha string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -91931,13 +90795,10 @@ func decodeReposListCommentsForCommitParams(args [3]string, argsEscaped bool, r 
 // ReposListCommitCommentsForRepoParams is parameters of repos/list-commit-comments-for-repo operation.
 type ReposListCommitCommentsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -92167,16 +91028,12 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, argsEscaped bool
 // ReposListCommitStatusesForRefParams is parameters of repos/list-commit-statuses-for-ref operation.
 type ReposListCommitStatusesForRefParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Ref parameter.
-
 	Ref string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -92458,31 +91315,23 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, argsEscaped bool,
 // ReposListCommitsParams is parameters of repos/list-commits operation.
 type ReposListCommitsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// SHA or branch to start listing commits from. Default: the repository’s default branch (usually
 	// `master`).
-
 	Sha OptString
 	// Only commits containing this file path will be returned.
-
 	Path OptString
 	// GitHub login or email address by which to filter by commit author.
-
 	Author OptString
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Until OptDateTime
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -92962,16 +91811,12 @@ func decodeReposListCommitsParams(args [2]string, argsEscaped bool, r *http.Requ
 // ReposListContributorsParams is parameters of repos/list-contributors operation.
 type ReposListContributorsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Set to `1` or `true` to include anonymous contributors in results.
-
 	Anon OptString
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -93251,13 +92096,10 @@ func decodeReposListContributorsParams(args [2]string, argsEscaped bool, r *http
 // ReposListDeployKeysParams is parameters of repos/list-deploy-keys operation.
 type ReposListDeployKeysParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -93487,16 +92329,12 @@ func decodeReposListDeployKeysParams(args [2]string, argsEscaped bool, r *http.R
 // ReposListDeploymentStatusesParams is parameters of repos/list-deployment-statuses operation.
 type ReposListDeploymentStatusesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Deployment_id parameter.
-
 	DeploymentID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -93778,25 +92616,18 @@ func decodeReposListDeploymentStatusesParams(args [3]string, argsEscaped bool, r
 // ReposListDeploymentsParams is parameters of repos/list-deployments operation.
 type ReposListDeploymentsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The SHA recorded at creation time.
-
 	Sha OptString
 	// The name of the ref. This can be a branch, tag, or SHA.
-
 	Ref OptString
 	// The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
-
 	Task OptString
 	// The name of the environment that was deployed to (e.g., `staging` or `production`).
-
 	Environment OptNilString
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -94247,40 +93078,31 @@ func decodeReposListDeploymentsParams(args [2]string, argsEscaped bool, r *http.
 type ReposListForAuthenticatedUserParams struct {
 	// Can be one of `all`, `public`, or `private`. Note: For GitHub AE, can be one of `all`, `internal`,
 	// or `private`.
-
 	Visibility OptReposListForAuthenticatedUserVisibility
 	// Comma-separated list of values. Can include:
 	// \* `owner`: Repositories that are owned by the authenticated user.
 	// \* `collaborator`: Repositories that the user has been added to as a collaborator.
 	// \* `organization_member`: Repositories that the user has access to through being a member of an
 	// organization. This includes every repository on every team that the user is on.
-
 	Affiliation OptString
 	// Can be one of `all`, `owner`, `public`, `private`, `member`. Note: For GitHub AE, can be one of
 	// `all`, `owner`, `internal`, `private`, `member`. Default: `all`
 	// Will cause a `422` error if used in the same request as **visibility** or **affiliation**. Will
 	// cause a `422` error if used in the same request as **visibility** or **affiliation**.
-
 	Type OptReposListForAuthenticatedUserType
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
-
 	Sort OptReposListForAuthenticatedUserSort
 	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
-
 	Direction OptReposListForAuthenticatedUserDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Since OptDateTime
 	// Only show notifications updated before the given time. This is a timestamp in [ISO
 	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
-
 	Before OptDateTime
 }
 
@@ -94842,19 +93664,14 @@ type ReposListForOrgParams struct {
 	// an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can
 	// also be `internal`. However, the `internal` value is not yet supported when a GitHub App calls
 	// this API with an installation access token.
-
 	Type OptReposListForOrgType
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
-
 	Sort OptReposListForOrgSort
 	// Can be one of `asc` or `desc`. Default: when using `full_name`: `asc`, otherwise `desc`.
-
 	Direction OptReposListForOrgDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -95233,19 +94050,14 @@ func decodeReposListForOrgParams(args [1]string, argsEscaped bool, r *http.Reque
 type ReposListForUserParams struct {
 	Username string
 	// Can be one of `all`, `owner`, `member`.
-
 	Type OptReposListForUserType
 	// Can be one of `created`, `updated`, `pushed`, `full_name`.
-
 	Sort OptReposListForUserSort
 	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
-
 	Direction OptReposListForUserDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -95628,16 +94440,12 @@ func decodeReposListForUserParams(args [1]string, argsEscaped bool, r *http.Requ
 // ReposListForksParams is parameters of repos/list-forks operation.
 type ReposListForksParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The sort order. Can be either `newest`, `oldest`, or `stargazers`.
-
 	Sort OptReposListForksSort
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -95937,13 +94745,10 @@ func decodeReposListForksParams(args [2]string, argsEscaped bool, r *http.Reques
 // ReposListInvitationsParams is parameters of repos/list-invitations operation.
 type ReposListInvitationsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -96173,10 +94978,8 @@ func decodeReposListInvitationsParams(args [2]string, argsEscaped bool, r *http.
 // ReposListInvitationsForAuthenticatedUserParams is parameters of repos/list-invitations-for-authenticated-user operation.
 type ReposListInvitationsForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -96302,8 +95105,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, argsEs
 // ReposListLanguagesParams is parameters of repos/list-languages operation.
 type ReposListLanguagesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposListLanguagesParams(packed middleware.Parameters) (params ReposListLanguagesParams) {
@@ -96421,13 +95223,10 @@ func decodeReposListLanguagesParams(args [2]string, argsEscaped bool, r *http.Re
 // ReposListPagesBuildsParams is parameters of repos/list-pages-builds operation.
 type ReposListPagesBuildsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -96657,7 +95456,6 @@ func decodeReposListPagesBuildsParams(args [2]string, argsEscaped bool, r *http.
 // ReposListPublicParams is parameters of repos/list-public operation.
 type ReposListPublicParams struct {
 	// A repository ID. Only return repositories with an ID greater than this ID.
-
 	Since OptInt
 }
 
@@ -96723,16 +95521,12 @@ func decodeReposListPublicParams(args [0]string, argsEscaped bool, r *http.Reque
 // ReposListPullRequestsAssociatedWithCommitParams is parameters of repos/list-pull-requests-associated-with-commit operation.
 type ReposListPullRequestsAssociatedWithCommitParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Commit_sha parameter.
-
 	CommitSha string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -97014,16 +95808,12 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, argsE
 // ReposListReleaseAssetsParams is parameters of repos/list-release-assets operation.
 type ReposListReleaseAssetsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Release_id parameter.
-
 	ReleaseID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -97305,13 +96095,10 @@ func decodeReposListReleaseAssetsParams(args [3]string, argsEscaped bool, r *htt
 // ReposListReleasesParams is parameters of repos/list-releases operation.
 type ReposListReleasesParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -97541,13 +96328,10 @@ func decodeReposListReleasesParams(args [2]string, argsEscaped bool, r *http.Req
 // ReposListTagsParams is parameters of repos/list-tags operation.
 type ReposListTagsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -97777,13 +96561,10 @@ func decodeReposListTagsParams(args [2]string, argsEscaped bool, r *http.Request
 // ReposListTeamsParams is parameters of repos/list-teams operation.
 type ReposListTeamsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -98012,17 +96793,13 @@ func decodeReposListTeamsParams(args [2]string, argsEscaped bool, r *http.Reques
 
 // ReposListWebhookDeliveriesParams is parameters of repos/list-webhook-deliveries operation.
 type ReposListWebhookDeliveriesParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
 	// the `link` header for the next and previous page cursors.
-
 	Cursor OptString
 }
 
@@ -98299,13 +97076,10 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, argsEscaped bool, r 
 // ReposListWebhooksParams is parameters of repos/list-webhooks operation.
 type ReposListWebhooksParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -98535,8 +97309,7 @@ func decodeReposListWebhooksParams(args [2]string, argsEscaped bool, r *http.Req
 // ReposMergeParams is parameters of repos/merge operation.
 type ReposMergeParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposMergeParams(packed middleware.Parameters) (params ReposMergeParams) {
@@ -98654,8 +97427,7 @@ func decodeReposMergeParams(args [2]string, argsEscaped bool, r *http.Request) (
 // ReposMergeUpstreamParams is parameters of repos/merge-upstream operation.
 type ReposMergeUpstreamParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposMergeUpstreamParams(packed middleware.Parameters) (params ReposMergeUpstreamParams) {
@@ -98772,10 +97544,8 @@ func decodeReposMergeUpstreamParams(args [2]string, argsEscaped bool, r *http.Re
 
 // ReposPingWebhookParams is parameters of repos/ping-webhook operation.
 type ReposPingWebhookParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 }
 
@@ -98945,12 +97715,9 @@ func decodeReposPingWebhookParams(args [3]string, argsEscaped bool, r *http.Requ
 
 // ReposRedeliverWebhookDeliveryParams is parameters of repos/redeliver-webhook-delivery operation.
 type ReposRedeliverWebhookDeliveryParams struct {
-	Owner string
-
-	Repo string
-
-	HookID int
-
+	Owner      string
+	Repo       string
+	HookID     int
 	DeliveryID int
 }
 
@@ -99173,10 +97940,8 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, argsEscaped bool,
 // ReposRemoveAppAccessRestrictionsParams is parameters of repos/remove-app-access-restrictions operation.
 type ReposRemoveAppAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -99346,10 +98111,8 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, argsEscaped bo
 
 // ReposRemoveCollaboratorParams is parameters of repos/remove-collaborator operation.
 type ReposRemoveCollaboratorParams struct {
-	Owner string
-
-	Repo string
-
+	Owner    string
+	Repo     string
 	Username string
 }
 
@@ -99520,10 +98283,8 @@ func decodeReposRemoveCollaboratorParams(args [3]string, argsEscaped bool, r *ht
 // ReposRemoveStatusCheckContextsParams is parameters of repos/remove-status-check-contexts operation.
 type ReposRemoveStatusCheckContextsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -99694,10 +98455,8 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, argsEscaped bool
 // ReposRemoveStatusCheckProtectionParams is parameters of repos/remove-status-check-protection operation.
 type ReposRemoveStatusCheckProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -99868,10 +98627,8 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, argsEscaped bo
 // ReposRemoveTeamAccessRestrictionsParams is parameters of repos/remove-team-access-restrictions operation.
 type ReposRemoveTeamAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -100042,10 +98799,8 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, argsEscaped b
 // ReposRemoveUserAccessRestrictionsParams is parameters of repos/remove-user-access-restrictions operation.
 type ReposRemoveUserAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -100216,10 +98971,8 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, argsEscaped b
 // ReposRenameBranchParams is parameters of repos/rename-branch operation.
 type ReposRenameBranchParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -100390,8 +99143,7 @@ func decodeReposRenameBranchParams(args [3]string, argsEscaped bool, r *http.Req
 // ReposReplaceAllTopicsParams is parameters of repos/replace-all-topics operation.
 type ReposReplaceAllTopicsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposReplaceAllTopicsParams(packed middleware.Parameters) (params ReposReplaceAllTopicsParams) {
@@ -100509,8 +99261,7 @@ func decodeReposReplaceAllTopicsParams(args [2]string, argsEscaped bool, r *http
 // ReposRequestPagesBuildParams is parameters of repos/request-pages-build operation.
 type ReposRequestPagesBuildParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposRequestPagesBuildParams(packed middleware.Parameters) (params ReposRequestPagesBuildParams) {
@@ -100628,10 +99379,8 @@ func decodeReposRequestPagesBuildParams(args [2]string, argsEscaped bool, r *htt
 // ReposSetAdminBranchProtectionParams is parameters of repos/set-admin-branch-protection operation.
 type ReposSetAdminBranchProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -100802,10 +99551,8 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, argsEscaped bool,
 // ReposSetAppAccessRestrictionsParams is parameters of repos/set-app-access-restrictions operation.
 type ReposSetAppAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -100976,10 +99723,8 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, argsEscaped bool,
 // ReposSetStatusCheckContextsParams is parameters of repos/set-status-check-contexts operation.
 type ReposSetStatusCheckContextsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -101150,10 +99895,8 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, argsEscaped bool, r
 // ReposSetTeamAccessRestrictionsParams is parameters of repos/set-team-access-restrictions operation.
 type ReposSetTeamAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -101324,10 +100067,8 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, argsEscaped bool
 // ReposSetUserAccessRestrictionsParams is parameters of repos/set-user-access-restrictions operation.
 type ReposSetUserAccessRestrictionsParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -101497,10 +100238,8 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, argsEscaped bool
 
 // ReposTestPushWebhookParams is parameters of repos/test-push-webhook operation.
 type ReposTestPushWebhookParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 }
 
@@ -101671,8 +100410,7 @@ func decodeReposTestPushWebhookParams(args [3]string, argsEscaped bool, r *http.
 // ReposTransferParams is parameters of repos/transfer operation.
 type ReposTransferParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposTransferParams(packed middleware.Parameters) (params ReposTransferParams) {
@@ -101790,8 +100528,7 @@ func decodeReposTransferParams(args [2]string, argsEscaped bool, r *http.Request
 // ReposUpdateParams is parameters of repos/update operation.
 type ReposUpdateParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 }
 
 func unpackReposUpdateParams(packed middleware.Parameters) (params ReposUpdateParams) {
@@ -101909,10 +100646,8 @@ func decodeReposUpdateParams(args [2]string, argsEscaped bool, r *http.Request) 
 // ReposUpdateBranchProtectionParams is parameters of repos/update-branch-protection operation.
 type ReposUpdateBranchProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -102083,10 +100818,8 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, argsEscaped bool, r
 // ReposUpdateCommitCommentParams is parameters of repos/update-commit-comment operation.
 type ReposUpdateCommitCommentParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Comment_id parameter.
-
 	CommentID int
 }
 
@@ -102257,10 +100990,8 @@ func decodeReposUpdateCommitCommentParams(args [3]string, argsEscaped bool, r *h
 // ReposUpdateInvitationParams is parameters of repos/update-invitation operation.
 type ReposUpdateInvitationParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Invitation_id parameter.
-
 	InvitationID int
 }
 
@@ -102431,10 +101162,8 @@ func decodeReposUpdateInvitationParams(args [3]string, argsEscaped bool, r *http
 // ReposUpdatePullRequestReviewProtectionParams is parameters of repos/update-pull-request-review-protection operation.
 type ReposUpdatePullRequestReviewProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -102605,10 +101334,8 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, argsEsca
 // ReposUpdateReleaseParams is parameters of repos/update-release operation.
 type ReposUpdateReleaseParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Release_id parameter.
-
 	ReleaseID int
 }
 
@@ -102779,10 +101506,8 @@ func decodeReposUpdateReleaseParams(args [3]string, argsEscaped bool, r *http.Re
 // ReposUpdateReleaseAssetParams is parameters of repos/update-release-asset operation.
 type ReposUpdateReleaseAssetParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Asset_id parameter.
-
 	AssetID int
 }
 
@@ -102953,10 +101678,8 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, argsEscaped bool, r *ht
 // ReposUpdateStatusCheckProtectionParams is parameters of repos/update-status-check-protection operation.
 type ReposUpdateStatusCheckProtectionParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The name of the branch.
-
 	Branch string
 }
 
@@ -103126,10 +101849,8 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, argsEscaped bo
 
 // ReposUpdateWebhookParams is parameters of repos/update-webhook operation.
 type ReposUpdateWebhookParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 }
 
@@ -103299,10 +102020,8 @@ func decodeReposUpdateWebhookParams(args [3]string, argsEscaped bool, r *http.Re
 
 // ReposUpdateWebhookConfigForRepoParams is parameters of repos/update-webhook-config-for-repo operation.
 type ReposUpdateWebhookConfigForRepoParams struct {
-	Owner string
-
-	Repo string
-
+	Owner  string
+	Repo   string
 	HookID int
 }
 
@@ -103473,15 +102192,11 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, argsEscaped boo
 // ReposUploadReleaseAssetParams is parameters of repos/upload-release-asset operation.
 type ReposUploadReleaseAssetParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Release_id parameter.
-
 	ReleaseID int
-
-	Name string
-
-	Label OptString
+	Name      string
+	Label     OptString
 }
 
 func unpackReposUploadReleaseAssetParams(packed middleware.Parameters) (params ReposUploadReleaseAssetParams) {
@@ -103746,7 +102461,6 @@ func decodeReposUploadReleaseAssetParams(args [3]string, argsEscaped bool, r *ht
 type ScimDeleteUserFromOrgParams struct {
 	Org string
 	// Scim_user_id parameter.
-
 	ScimUserID string
 }
 
@@ -103869,22 +102583,17 @@ type SearchCodeParams struct {
 	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
 	// com/rest/reference/search#constructing-a-search-query). See "[Searching code](https://help.github.
 	// com/articles/searching-code/)" for a detailed list of qualifiers.
-
 	Q string
 	// Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has
 	// been indexed by the GitHub search infrastructure. Default: [best match](https://docs.github.
 	// com/rest/reference/search#ranking-search-results).
-
 	Sort OptSearchCodeSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-
 	Order OptOrder
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -104192,21 +102901,16 @@ type SearchCommitsParams struct {
 	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
 	// com/rest/reference/search#constructing-a-search-query). See "[Searching commits](https://help.
 	// github.com/articles/searching-commits/)" for a detailed list of qualifiers.
-
 	Q string
 	// Sorts the results of your query by `author-date` or `committer-date`. Default: [best
 	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
-
 	Sort OptSearchCommitsSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-
 	Order OptOrder
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -104515,23 +103219,18 @@ type SearchIssuesAndPullRequestsParams struct {
 	// com/rest/reference/search#constructing-a-search-query). See "[Searching issues and pull
 	// requests](https://help.github.com/articles/searching-issues-and-pull-requests/)" for a detailed
 	// list of qualifiers.
-
 	Q string
 	// Sorts the results of your query by the number of `comments`, `reactions`, `reactions-+1`,
 	// `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`,
 	// or `interactions`. You can also sort results by how recently the items were `created` or `updated`,
 	//  Default: [best match](https://docs.github.com/rest/reference/search#ranking-search-results).
-
 	Sort OptSearchIssuesAndPullRequestsSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-
 	Order OptOrder
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -104835,26 +103534,20 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, argsEscaped bool, r
 // SearchLabelsParams is parameters of search/labels operation.
 type SearchLabelsParams struct {
 	// The id of the repository.
-
 	RepositoryID int
 	// The search keywords. This endpoint does not accept qualifiers in the query. To learn more about
 	// the format of the query, see [Constructing a search query](https://docs.github.
 	// com/rest/reference/search#constructing-a-search-query).
-
 	Q string
 	// Sorts the results of your query by when the label was `created` or `updated`. Default: [best
 	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
-
 	Sort OptSearchLabelsSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-
 	Order OptOrder
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -105206,22 +103899,17 @@ type SearchReposParams struct {
 	// com/rest/reference/search#constructing-a-search-query). See "[Searching for
 	// repositories](https://help.github.com/articles/searching-for-repositories/)" for a detailed list
 	// of qualifiers.
-
 	Q string
 	// Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how
 	// recently the items were `updated`. Default: [best match](https://docs.github.
 	// com/rest/reference/search#ranking-search-results).
-
 	Sort OptSearchReposSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-
 	Order OptOrder
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -105528,13 +104216,10 @@ type SearchTopicsParams struct {
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
 	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
 	// com/rest/reference/search#constructing-a-search-query).
-
 	Q string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -105707,22 +104392,17 @@ type SearchUsersParams struct {
 	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
 	// com/rest/reference/search#constructing-a-search-query). See "[Searching users](https://help.github.
 	// com/articles/searching-users/)" for a detailed list of qualifiers.
-
 	Q string
 	// Sorts the results of your query by number of `followers` or `repositories`, or when the person
 	// `joined` GitHub. Default: [best match](https://docs.github.
 	// com/rest/reference/search#ranking-search-results).
-
 	Sort OptSearchUsersSort
 	// Determines whether the first search result returned is the highest number of matches (`desc`) or
 	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
-
 	Order OptOrder
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -106026,12 +104706,10 @@ func decodeSearchUsersParams(args [0]string, argsEscaped bool, r *http.Request) 
 // SecretScanningGetAlertParams is parameters of secret-scanning/get-alert operation.
 type SecretScanningGetAlertParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
 	// alert within GitHub, and in the `number` field in the response from the `GET
 	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
-
 	AlertNumber AlertNumber
 }
 
@@ -106210,16 +104888,12 @@ func decodeSecretScanningGetAlertParams(args [3]string, argsEscaped bool, r *htt
 type SecretScanningListAlertsForOrgParams struct {
 	Org string
 	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
-
 	State OptSecretScanningListAlertsForOrgState
 	// A comma separated list of secret types to return. By default all secret types are returned.
-
 	SecretType OptString
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -106512,21 +105186,16 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, argsEscaped bool
 // SecretScanningListAlertsForRepoParams is parameters of secret-scanning/list-alerts-for-repo operation.
 type SecretScanningListAlertsForRepoParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
-
 	State OptSecretScanningListAlertsForRepoState
 	// A comma separated list of secret types to return. By default all secret types are returned. See
 	// "[About secret scanning for private repositories](https://docs.github.
 	// com/code-security/secret-security/about-secret-scanning#about-secret-scanning-for-private-repositories)" for a complete list of secret types (API slug).
-
 	SecretType OptString
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -106871,12 +105540,10 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, argsEscaped boo
 // SecretScanningUpdateAlertParams is parameters of secret-scanning/update-alert operation.
 type SecretScanningUpdateAlertParams struct {
 	Owner string
-
-	Repo string
+	Repo  string
 	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
 	// alert within GitHub, and in the `number` field in the response from the `GET
 	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
-
 	AlertNumber AlertNumber
 }
 
@@ -107053,8 +105720,7 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, argsEscaped bool, r *
 
 // TeamsAddMemberLegacyParams is parameters of teams/add-member-legacy operation.
 type TeamsAddMemberLegacyParams struct {
-	TeamID int
-
+	TeamID   int
 	Username string
 }
 
@@ -107174,9 +105840,7 @@ func decodeTeamsAddMemberLegacyParams(args [2]string, argsEscaped bool, r *http.
 type TeamsAddOrUpdateMembershipForUserInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
-
 	Username string
 }
 
@@ -107346,8 +106010,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, argsEsca
 
 // TeamsAddOrUpdateMembershipForUserLegacyParams is parameters of teams/add-or-update-membership-for-user-legacy operation.
 type TeamsAddOrUpdateMembershipForUserLegacyParams struct {
-	TeamID int
-
+	TeamID   int
 	Username string
 }
 
@@ -107467,9 +106130,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, argsEsc
 type TeamsAddOrUpdateProjectPermissionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug  string
 	ProjectID int
 }
 
@@ -107639,8 +106300,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, argsEsc
 
 // TeamsAddOrUpdateProjectPermissionsLegacyParams is parameters of teams/add-or-update-project-permissions-legacy operation.
 type TeamsAddOrUpdateProjectPermissionsLegacyParams struct {
-	TeamID int
-
+	TeamID    int
 	ProjectID int
 }
 
@@ -107760,12 +106420,9 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, argsEs
 type TeamsAddOrUpdateRepoPermissionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
-
-	Owner string
-
-	Repo string
+	Owner    string
+	Repo     string
 }
 
 func unpackTeamsAddOrUpdateRepoPermissionsInOrgParams(packed middleware.Parameters) (params TeamsAddOrUpdateRepoPermissionsInOrgParams) {
@@ -107987,10 +106644,8 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, argsEscape
 // TeamsAddOrUpdateRepoPermissionsLegacyParams is parameters of teams/add-or-update-repo-permissions-legacy operation.
 type TeamsAddOrUpdateRepoPermissionsLegacyParams struct {
 	TeamID int
-
-	Owner string
-
-	Repo string
+	Owner  string
+	Repo   string
 }
 
 func unpackTeamsAddOrUpdateRepoPermissionsLegacyParams(packed middleware.Parameters) (params TeamsAddOrUpdateRepoPermissionsLegacyParams) {
@@ -108161,9 +106816,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, argsEscap
 type TeamsCheckPermissionsForProjectInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug  string
 	ProjectID int
 }
 
@@ -108333,8 +106986,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, argsEscape
 
 // TeamsCheckPermissionsForProjectLegacyParams is parameters of teams/check-permissions-for-project-legacy operation.
 type TeamsCheckPermissionsForProjectLegacyParams struct {
-	TeamID int
-
+	TeamID    int
 	ProjectID int
 }
 
@@ -108454,12 +107106,9 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, argsEscap
 type TeamsCheckPermissionsForRepoInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
-
-	Owner string
-
-	Repo string
+	Owner    string
+	Repo     string
 }
 
 func unpackTeamsCheckPermissionsForRepoInOrgParams(packed middleware.Parameters) (params TeamsCheckPermissionsForRepoInOrgParams) {
@@ -108681,10 +107330,8 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, argsEscaped b
 // TeamsCheckPermissionsForRepoLegacyParams is parameters of teams/check-permissions-for-repo-legacy operation.
 type TeamsCheckPermissionsForRepoLegacyParams struct {
 	TeamID int
-
-	Owner string
-
-	Repo string
+	Owner  string
+	Repo   string
 }
 
 func unpackTeamsCheckPermissionsForRepoLegacyParams(packed middleware.Parameters) (params TeamsCheckPermissionsForRepoLegacyParams) {
@@ -108920,9 +107567,7 @@ func decodeTeamsCreateParams(args [1]string, argsEscaped bool, r *http.Request) 
 type TeamsCreateDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
 }
 
@@ -109092,8 +107737,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, argsEscaped b
 
 // TeamsCreateDiscussionCommentLegacyParams is parameters of teams/create-discussion-comment-legacy operation.
 type TeamsCreateDiscussionCommentLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
 }
 
@@ -109213,7 +107857,6 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, argsEscaped 
 type TeamsCreateDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 }
 
@@ -109398,7 +108041,6 @@ func decodeTeamsCreateDiscussionLegacyParams(args [1]string, argsEscaped bool, r
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 }
 
@@ -109583,12 +108225,9 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, ar
 type TeamsDeleteDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackTeamsDeleteDiscussionCommentInOrgParams(packed middleware.Parameters) (params TeamsDeleteDiscussionCommentInOrgParams) {
@@ -109809,11 +108448,9 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, argsEscaped b
 
 // TeamsDeleteDiscussionCommentLegacyParams is parameters of teams/delete-discussion-comment-legacy operation.
 type TeamsDeleteDiscussionCommentLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackTeamsDeleteDiscussionCommentLegacyParams(packed middleware.Parameters) (params TeamsDeleteDiscussionCommentLegacyParams) {
@@ -109984,9 +108621,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, argsEscaped 
 type TeamsDeleteDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
 }
 
@@ -110156,8 +108791,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, argsEscaped bool, r 
 
 // TeamsDeleteDiscussionLegacyParams is parameters of teams/delete-discussion-legacy operation.
 type TeamsDeleteDiscussionLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
 }
 
@@ -110277,7 +108911,6 @@ func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, argsEscaped bool, r
 type TeamsDeleteInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 }
 
@@ -110462,7 +109095,6 @@ func decodeTeamsDeleteLegacyParams(args [1]string, argsEscaped bool, r *http.Req
 type TeamsGetByNameParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 }
 
@@ -110582,12 +109214,9 @@ func decodeTeamsGetByNameParams(args [2]string, argsEscaped bool, r *http.Reques
 type TeamsGetDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackTeamsGetDiscussionCommentInOrgParams(packed middleware.Parameters) (params TeamsGetDiscussionCommentInOrgParams) {
@@ -110808,11 +109437,9 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, argsEscaped bool
 
 // TeamsGetDiscussionCommentLegacyParams is parameters of teams/get-discussion-comment-legacy operation.
 type TeamsGetDiscussionCommentLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackTeamsGetDiscussionCommentLegacyParams(packed middleware.Parameters) (params TeamsGetDiscussionCommentLegacyParams) {
@@ -110983,9 +109610,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, argsEscaped boo
 type TeamsGetDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
 }
 
@@ -111155,8 +109780,7 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, argsEscaped bool, r *ht
 
 // TeamsGetDiscussionLegacyParams is parameters of teams/get-discussion-legacy operation.
 type TeamsGetDiscussionLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
 }
 
@@ -111339,8 +109963,7 @@ func decodeTeamsGetLegacyParams(args [1]string, argsEscaped bool, r *http.Reques
 
 // TeamsGetMemberLegacyParams is parameters of teams/get-member-legacy operation.
 type TeamsGetMemberLegacyParams struct {
-	TeamID int
-
+	TeamID   int
 	Username string
 }
 
@@ -111460,9 +110083,7 @@ func decodeTeamsGetMemberLegacyParams(args [2]string, argsEscaped bool, r *http.
 type TeamsGetMembershipForUserInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
-
 	Username string
 }
 
@@ -111632,8 +110253,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, argsEscaped bool
 
 // TeamsGetMembershipForUserLegacyParams is parameters of teams/get-membership-for-user-legacy operation.
 type TeamsGetMembershipForUserLegacyParams struct {
-	TeamID int
-
+	TeamID   int
 	Username string
 }
 
@@ -111753,10 +110373,8 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, argsEscaped boo
 type TeamsListParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -111935,13 +110553,10 @@ func decodeTeamsListParams(args [1]string, argsEscaped bool, r *http.Request) (p
 type TeamsListChildInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -112172,10 +110787,8 @@ func decodeTeamsListChildInOrgParams(args [2]string, argsEscaped bool, r *http.R
 type TeamsListChildLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -112354,18 +110967,13 @@ func decodeTeamsListChildLegacyParams(args [1]string, argsEscaped bool, r *http.
 type TeamsListDiscussionCommentsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -112716,17 +111324,13 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, argsEscaped bo
 
 // TeamsListDiscussionCommentsLegacyParams is parameters of teams/list-discussion-comments-legacy operation.
 type TeamsListDiscussionCommentsLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -113027,19 +111631,14 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, argsEscaped b
 type TeamsListDiscussionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 	// Pinned discussions only filter.
-
 	Pinned OptString
 }
 
@@ -113390,13 +111989,10 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, argsEscaped bool, r *
 type TeamsListDiscussionsLegacyParams struct {
 	TeamID int
 	// One of `asc` (ascending) or `desc` (descending).
-
 	Direction OptDirection
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -113644,10 +112240,8 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, argsEscaped bool, r 
 // TeamsListForAuthenticatedUserParams is parameters of teams/list-for-authenticated-user operation.
 type TeamsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -113839,10 +112433,8 @@ func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, argsEscaped bool, r
 type TeamsListIdpGroupsForOrgParams struct {
 	Org string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page token.
-
 	Page OptString
 }
 
@@ -114016,7 +112608,6 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, argsEscaped bool, r *h
 type TeamsListIdpGroupsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 }
 
@@ -114136,19 +112727,15 @@ func decodeTeamsListIdpGroupsInOrgParams(args [2]string, argsEscaped bool, r *ht
 type TeamsListMembersInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 	// Filters members returned by their role in the team. Can be one of:
 	// \* `member` - normal members of the team.
 	// \* `maintainer` - team maintainers.
 	// \* `all` - all members of the team.
-
 	Role OptTeamsListMembersInOrgRole
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -114452,13 +113039,10 @@ type TeamsListMembersLegacyParams struct {
 	// \* `member` - normal members of the team.
 	// \* `maintainer` - team maintainers.
 	// \* `all` - all members of the team.
-
 	Role OptTeamsListMembersLegacyRole
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -114707,13 +113291,10 @@ func decodeTeamsListMembersLegacyParams(args [1]string, argsEscaped bool, r *htt
 type TeamsListPendingInvitationsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -114944,10 +113525,8 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, argsEscaped bo
 type TeamsListPendingInvitationsLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -115126,13 +113705,10 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, argsEscaped b
 type TeamsListProjectsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -115363,10 +113939,8 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, argsEscaped bool, r *htt
 type TeamsListProjectsLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -115545,13 +114119,10 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, argsEscaped bool, r *ht
 type TeamsListReposInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -115782,10 +114353,8 @@ func decodeTeamsListReposInOrgParams(args [2]string, argsEscaped bool, r *http.R
 type TeamsListReposLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -115962,8 +114531,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, argsEscaped bool, r *http.
 
 // TeamsRemoveMemberLegacyParams is parameters of teams/remove-member-legacy operation.
 type TeamsRemoveMemberLegacyParams struct {
-	TeamID int
-
+	TeamID   int
 	Username string
 }
 
@@ -116083,9 +114651,7 @@ func decodeTeamsRemoveMemberLegacyParams(args [2]string, argsEscaped bool, r *ht
 type TeamsRemoveMembershipForUserInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
-
 	Username string
 }
 
@@ -116255,8 +114821,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, argsEscaped b
 
 // TeamsRemoveMembershipForUserLegacyParams is parameters of teams/remove-membership-for-user-legacy operation.
 type TeamsRemoveMembershipForUserLegacyParams struct {
-	TeamID int
-
+	TeamID   int
 	Username string
 }
 
@@ -116376,9 +114941,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, argsEscaped 
 type TeamsRemoveProjectInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug  string
 	ProjectID int
 }
 
@@ -116548,8 +115111,7 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, argsEscaped bool, r *ht
 
 // TeamsRemoveProjectLegacyParams is parameters of teams/remove-project-legacy operation.
 type TeamsRemoveProjectLegacyParams struct {
-	TeamID int
-
+	TeamID    int
 	ProjectID int
 }
 
@@ -116669,12 +115231,9 @@ func decodeTeamsRemoveProjectLegacyParams(args [2]string, argsEscaped bool, r *h
 type TeamsRemoveRepoInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
-
-	Owner string
-
-	Repo string
+	Owner    string
+	Repo     string
 }
 
 func unpackTeamsRemoveRepoInOrgParams(packed middleware.Parameters) (params TeamsRemoveRepoInOrgParams) {
@@ -116896,10 +115455,8 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, argsEscaped bool, r *http.
 // TeamsRemoveRepoLegacyParams is parameters of teams/remove-repo-legacy operation.
 type TeamsRemoveRepoLegacyParams struct {
 	TeamID int
-
-	Owner string
-
-	Repo string
+	Owner  string
+	Repo   string
 }
 
 func unpackTeamsRemoveRepoLegacyParams(packed middleware.Parameters) (params TeamsRemoveRepoLegacyParams) {
@@ -117070,12 +115627,9 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, argsEscaped bool, r *http
 type TeamsUpdateDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackTeamsUpdateDiscussionCommentInOrgParams(packed middleware.Parameters) (params TeamsUpdateDiscussionCommentInOrgParams) {
@@ -117296,11 +115850,9 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, argsEscaped b
 
 // TeamsUpdateDiscussionCommentLegacyParams is parameters of teams/update-discussion-comment-legacy operation.
 type TeamsUpdateDiscussionCommentLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
-
-	CommentNumber int
+	CommentNumber    int
 }
 
 func unpackTeamsUpdateDiscussionCommentLegacyParams(packed middleware.Parameters) (params TeamsUpdateDiscussionCommentLegacyParams) {
@@ -117471,9 +116023,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, argsEscaped 
 type TeamsUpdateDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
-	TeamSlug string
-
+	TeamSlug         string
 	DiscussionNumber int
 }
 
@@ -117643,8 +116193,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, argsEscaped bool, r 
 
 // TeamsUpdateDiscussionLegacyParams is parameters of teams/update-discussion-legacy operation.
 type TeamsUpdateDiscussionLegacyParams struct {
-	TeamID int
-
+	TeamID           int
 	DiscussionNumber int
 }
 
@@ -117764,7 +116313,6 @@ func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, argsEscaped bool, r
 type TeamsUpdateInOrgParams struct {
 	Org string
 	// Team_slug parameter.
-
 	TeamSlug string
 }
 
@@ -118077,8 +116625,7 @@ func decodeUsersCheckBlockedParams(args [1]string, argsEscaped bool, r *http.Req
 
 // UsersCheckFollowingForUserParams is parameters of users/check-following-for-user operation.
 type UsersCheckFollowingForUserParams struct {
-	Username string
-
+	Username   string
 	TargetUser string
 }
 
@@ -118262,7 +116809,6 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, argsE
 // UsersDeleteGpgKeyForAuthenticatedParams is parameters of users/delete-gpg-key-for-authenticated operation.
 type UsersDeleteGpgKeyForAuthenticatedParams struct {
 	// Gpg_key_id parameter.
-
 	GpgKeyID int
 }
 
@@ -118329,7 +116875,6 @@ func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, argsEscaped b
 // UsersDeletePublicSSHKeyForAuthenticatedParams is parameters of users/delete-public-ssh-key-for-authenticated operation.
 type UsersDeletePublicSSHKeyForAuthenticatedParams struct {
 	// Key_id parameter.
-
 	KeyID int
 }
 
@@ -118528,10 +117073,8 @@ type UsersGetContextForUserParams struct {
 	Username string
 	// Identifies which additional information you'd like to receive about the person's hovercard. Can be
 	// `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
-
 	SubjectType OptUsersGetContextForUserSubjectType
 	// Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
-
 	SubjectID OptString
 }
 
@@ -118714,7 +117257,6 @@ func decodeUsersGetContextForUserParams(args [1]string, argsEscaped bool, r *htt
 // UsersGetGpgKeyForAuthenticatedParams is parameters of users/get-gpg-key-for-authenticated operation.
 type UsersGetGpgKeyForAuthenticatedParams struct {
 	// Gpg_key_id parameter.
-
 	GpgKeyID int
 }
 
@@ -118781,7 +117323,6 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, argsEscaped bool
 // UsersGetPublicSSHKeyForAuthenticatedParams is parameters of users/get-public-ssh-key-for-authenticated operation.
 type UsersGetPublicSSHKeyForAuthenticatedParams struct {
 	// Key_id parameter.
-
 	KeyID int
 }
 
@@ -118848,10 +117389,8 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, argsEscape
 // UsersListParams is parameters of users/list operation.
 type UsersListParams struct {
 	// A user ID. Only return users with an ID greater than this ID.
-
 	Since OptInt
 	// Results per page (max 100).
-
 	PerPage OptInt
 }
 
@@ -118972,10 +117511,8 @@ func decodeUsersListParams(args [0]string, argsEscaped bool, r *http.Request) (p
 // UsersListEmailsForAuthenticatedParams is parameters of users/list-emails-for-authenticated operation.
 type UsersListEmailsForAuthenticatedParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -119101,10 +117638,8 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, argsEscaped boo
 // UsersListFollowedByAuthenticatedParams is parameters of users/list-followed-by-authenticated operation.
 type UsersListFollowedByAuthenticatedParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -119230,10 +117765,8 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, argsEscaped bo
 // UsersListFollowersForAuthenticatedUserParams is parameters of users/list-followers-for-authenticated-user operation.
 type UsersListFollowersForAuthenticatedUserParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -119360,10 +117893,8 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, argsEsca
 type UsersListFollowersForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -119542,10 +118073,8 @@ func decodeUsersListFollowersForUserParams(args [1]string, argsEscaped bool, r *
 type UsersListFollowingForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -119723,10 +118252,8 @@ func decodeUsersListFollowingForUserParams(args [1]string, argsEscaped bool, r *
 // UsersListGpgKeysForAuthenticatedParams is parameters of users/list-gpg-keys-for-authenticated operation.
 type UsersListGpgKeysForAuthenticatedParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -119853,10 +118380,8 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, argsEscaped bo
 type UsersListGpgKeysForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -120034,10 +118559,8 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, argsEscaped bool, r *ht
 // UsersListPublicEmailsForAuthenticatedParams is parameters of users/list-public-emails-for-authenticated operation.
 type UsersListPublicEmailsForAuthenticatedParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -120164,10 +118687,8 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, argsEscap
 type UsersListPublicKeysForUserParams struct {
 	Username string
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 
@@ -120345,10 +118866,8 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, argsEscaped bool, r 
 // UsersListPublicSSHKeysForAuthenticatedParams is parameters of users/list-public-ssh-keys-for-authenticated operation.
 type UsersListPublicSSHKeysForAuthenticatedParams struct {
 	// Results per page (max 100).
-
 	PerPage OptInt
 	// Page number of the results to fetch.
-
 	Page OptInt
 }
 

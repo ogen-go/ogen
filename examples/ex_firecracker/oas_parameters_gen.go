@@ -18,7 +18,6 @@ import (
 // PatchGuestDriveByIDParams is parameters of patchGuestDriveByID operation.
 type PatchGuestDriveByIDParams struct {
 	// The id of the guest drive.
-
 	DriveID string
 }
 
@@ -85,7 +84,6 @@ func decodePatchGuestDriveByIDParams(args [1]string, argsEscaped bool, r *http.R
 // PatchGuestNetworkInterfaceByIDParams is parameters of patchGuestNetworkInterfaceByID operation.
 type PatchGuestNetworkInterfaceByIDParams struct {
 	// The id of the guest network interface.
-
 	IfaceID string
 }
 
@@ -152,7 +150,6 @@ func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, argsEscaped bool
 // PutGuestDriveByIDParams is parameters of putGuestDriveByID operation.
 type PutGuestDriveByIDParams struct {
 	// The id of the guest drive.
-
 	DriveID string
 }
 
@@ -219,7 +216,6 @@ func decodePutGuestDriveByIDParams(args [1]string, argsEscaped bool, r *http.Req
 // PutGuestNetworkInterfaceByIDParams is parameters of putGuestNetworkInterfaceByID operation.
 type PutGuestNetworkInterfaceByIDParams struct {
 	// The id of the guest network interface.
-
 	IfaceID string
 }
 

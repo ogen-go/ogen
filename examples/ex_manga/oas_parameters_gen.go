@@ -18,7 +18,6 @@ import (
 // GetBookParams is parameters of getBook operation.
 type GetBookParams struct {
 	// ID of book.
-
 	BookID int
 }
 
@@ -102,10 +101,8 @@ func decodeGetBookParams(args [1]string, argsEscaped bool, r *http.Request) (par
 // GetPageCoverImageParams is parameters of getPageCoverImage operation.
 type GetPageCoverImageParams struct {
 	// ID of book.
-
 	MediaID int
 	// Image format.
-
 	Format string
 }
 
@@ -246,13 +243,10 @@ func decodeGetPageCoverImageParams(args [2]string, argsEscaped bool, r *http.Req
 // GetPageImageParams is parameters of getPageImage operation.
 type GetPageImageParams struct {
 	// ID of book.
-
 	MediaID int
 	// Number of page.
-
 	Page int
 	// Image format.
-
 	Format string
 }
 
@@ -462,13 +456,10 @@ func decodeGetPageImageParams(args [3]string, argsEscaped bool, r *http.Request)
 // GetPageThumbnailImageParams is parameters of getPageThumbnailImage operation.
 type GetPageThumbnailImageParams struct {
 	// ID of book.
-
 	MediaID int
 	// Number of page.
-
 	Page int
 	// Image format.
-
 	Format string
 }
 
@@ -686,10 +677,8 @@ type SearchParams struct {
 	// matches galleries with "big dogs" somewhere in the title or in tags.
 	// * These can be combined with tag namespaces for finer control over the query: parodies:railgun
 	// -tag:"big dogs".
-
 	Query string
 	// Number of result page.
-
 	Page OptInt
 }
 
@@ -798,10 +787,8 @@ func decodeSearchParams(args [0]string, argsEscaped bool, r *http.Request) (para
 // SearchByTagIDParams is parameters of searchByTagID operation.
 type SearchByTagIDParams struct {
 	// Tag ID.
-
 	TagID int
 	// Number of result page.
-
 	Page OptInt
 }
 

@@ -17,8 +17,7 @@ import (
 
 // DataGetParams is parameters of dataGet operation.
 type DataGetParams struct {
-	ID int
-
+	ID  int
 	Key string
 }
 

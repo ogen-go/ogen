@@ -16,10 +16,8 @@ import (
 
 // DefaultParams is parameters of default operation.
 type DefaultParams struct {
-	Date OptDate
-
-	Time OptTime
-
+	Date     OptDate
+	Time     OptTime
 	DateTime OptDateTime
 }
 
@@ -199,10 +197,8 @@ func decodeDefaultParams(args [0]string, argsEscaped bool, r *http.Request) (par
 
 // RequiredParams is parameters of required operation.
 type RequiredParams struct {
-	Date time.Time
-
-	Time time.Time
-
+	Date     time.Time
+	Time     time.Time
 	DateTime time.Time
 }
 
