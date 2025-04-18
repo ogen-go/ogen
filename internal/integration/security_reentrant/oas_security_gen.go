@@ -43,6 +43,11 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+var operationRolesBasicAuth = map[string][]string{
+	DisjointSecurityOperation:  []string{},
+	IntersectSecurityOperation: []string{},
+}
+
 func (s *Server) securityBasicAuth(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t BasicAuth
 	if _, ok := findAuthorization(req.Header, "Basic"); !ok {
@@ -54,6 +59,7 @@ func (s *Server) securityBasicAuth(ctx context.Context, operationName OperationN
 	}
 	t.Username = username
 	t.Password = password
+	t.Roles = operationRolesBasicAuth[operationName]
 	rctx, err := s.sec.HandleBasicAuth(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
@@ -62,6 +68,11 @@ func (s *Server) securityBasicAuth(ctx context.Context, operationName OperationN
 	}
 	return rctx, true, err
 }
+
+var operationRolesBearerToken = map[string][]string{
+	IntersectSecurityOperation: []string{},
+}
+
 func (s *Server) securityBearerToken(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t BearerToken
 	token, ok := findAuthorization(req.Header, "Bearer")
@@ -69,6 +80,7 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName Operatio
 		return ctx, false, nil
 	}
 	t.Token = token
+	t.Roles = operationRolesBearerToken[operationName]
 	rctx, err := s.sec.HandleBearerToken(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
@@ -77,6 +89,11 @@ func (s *Server) securityBearerToken(ctx context.Context, operationName Operatio
 	}
 	return rctx, true, err
 }
+
+var operationRolesCookieKey = map[string][]string{
+	DisjointSecurityOperation: []string{},
+}
+
 func (s *Server) securityCookieKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t CookieKey
 	const parameterName = "api_key"
@@ -90,6 +107,7 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName OperationN
 		return nil, false, errors.Wrap(err, "get cookie value")
 	}
 	t.APIKey = value
+	t.Roles = operationRolesCookieKey[operationName]
 	rctx, err := s.sec.HandleCookieKey(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
@@ -98,6 +116,11 @@ func (s *Server) securityCookieKey(ctx context.Context, operationName OperationN
 	}
 	return rctx, true, err
 }
+
+var operationRolesCustom = map[string][]string{
+	CustomSecurityOperation: []string{},
+}
+
 func (s *Server) securityCustom(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	t := req
 	rctx, err := s.sec.HandleCustom(ctx, operationName, t)
@@ -108,6 +131,12 @@ func (s *Server) securityCustom(ctx context.Context, operationName OperationName
 	}
 	return rctx, true, err
 }
+
+var operationRolesHeaderKey = map[string][]string{
+	DisjointSecurityOperation:  []string{},
+	IntersectSecurityOperation: []string{},
+}
+
 func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t HeaderKey
 	const parameterName = "X-Api-Key"
@@ -116,6 +145,7 @@ func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationN
 		return ctx, false, nil
 	}
 	t.APIKey = value
+	t.Roles = operationRolesHeaderKey[operationName]
 	rctx, err := s.sec.HandleHeaderKey(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
@@ -124,6 +154,14 @@ func (s *Server) securityHeaderKey(ctx context.Context, operationName OperationN
 	}
 	return rctx, true, err
 }
+
+var operationRolesQueryKey = map[string][]string{
+	DisjointSecurityOperation: []string{},
+	OptionalSecurityOperation: []string{
+		"admin",
+	},
+}
+
 func (s *Server) securityQueryKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t QueryKey
 	const parameterName = "api_key"
@@ -133,6 +171,7 @@ func (s *Server) securityQueryKey(ctx context.Context, operationName OperationNa
 	}
 	value := q.Get(parameterName)
 	t.APIKey = value
+	t.Roles = operationRolesQueryKey[operationName]
 	rctx, err := s.sec.HandleQueryKey(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil

@@ -11,17 +11,31 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.SecurityScheme) (*ir.Security, error) {
+func (g *Generator) generateSecurityAPIKey(
+	s *ir.Security,
+	operationName string,
+	spec openapi.SecurityScheme,
+) (*ir.Security, error) {
 	security := spec.Security
 	if name := security.Name; name == "" {
 		return nil, errors.Errorf(`invalid "apiKey" name %q`, name)
 	}
 	s.Format = ir.APIKeySecurityFormat
 	s.ParameterName = security.Name
-	s.Type.Fields = append(s.Type.Fields, &ir.Field{
-		Name: "APIKey",
-		Type: ir.Primitive(ir.String, nil),
-	})
+	s.Scopes = map[string][]string{
+		operationName: spec.Scopes,
+	}
+
+	s.Type.Fields = append(s.Type.Fields,
+		&ir.Field{
+			Name: "APIKey",
+			Type: ir.Primitive(ir.String, nil),
+		},
+		&ir.Field{
+			Name: "Roles",
+			Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
+		},
+	)
 
 	switch in := security.In; in {
 	case "query":
@@ -61,9 +75,17 @@ func (g *Generator) generateSecurityOauth2(
 	return s
 }
 
-func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityScheme) (*ir.Security, error) {
+func (g *Generator) generateSecurityHTTP(
+	s *ir.Security,
+	operationName string,
+	spec openapi.SecurityScheme,
+) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
+	s.Scopes = map[string][]string{
+		operationName: spec.Scopes,
+	}
+
 	switch scheme := strings.ToLower(security.Scheme); scheme {
 	case "basic":
 		s.Format = ir.BasicHTTPSecurityFormat
@@ -88,14 +110,18 @@ func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecuritySc
 	default:
 		return nil, errors.Wrapf(&ErrNotImplemented{Name: "http security scheme"}, "unsupported scheme %q", scheme)
 	}
+
+	s.Type.Fields = append(s.Type.Fields, &ir.Field{
+		Name: "Roles",
+		Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
+	})
+
 	return s, nil
 }
 
 func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec openapi.SecurityScheme) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
-		if spec.Security.Type == "oauth2" {
-			sec.Scopes[operationName] = append(sec.Scopes[operationName], spec.Scopes...)
-		}
+		sec.Scopes[operationName] = append(sec.Scopes[operationName], spec.Scopes...)
 		return sec, nil
 	}
 	security := spec.Security
@@ -117,6 +143,9 @@ func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec ope
 	// Do not create a type for custom security.
 	if security.XOgenCustomSecurity {
 		s.Format = ir.CustomSecurityFormat
+		s.Scopes = map[string][]string{
+			operationName: spec.Scopes,
+		}
 		return s, nil
 	}
 
@@ -130,9 +159,9 @@ func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec ope
 
 	switch typ := security.Type; typ {
 	case "apiKey":
-		return g.generateSecurityAPIKey(s, spec)
+		return g.generateSecurityAPIKey(s, operationName, spec)
 	case "http":
-		return g.generateSecurityHTTP(s, spec)
+		return g.generateSecurityHTTP(s, operationName, spec)
 	case "oauth2":
 		return g.generateSecurityOauth2(s, operationName, spec), nil
 	case "openIdConnect", "mutualTLS":

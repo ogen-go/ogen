@@ -5,6 +5,7 @@ package api
 type BasicAuth struct {
 	Username string
 	Password string
+	Roles    []string
 }
 
 // GetUsername returns the value of Username.
@@ -17,6 +18,11 @@ func (s *BasicAuth) GetPassword() string {
 	return s.Password
 }
 
+// GetRoles returns the value of Roles.
+func (s *BasicAuth) GetRoles() []string {
+	return s.Roles
+}
+
 // SetUsername sets the value of Username.
 func (s *BasicAuth) SetUsername(val string) {
 	s.Username = val
@@ -27,8 +33,14 @@ func (s *BasicAuth) SetPassword(val string) {
 	s.Password = val
 }
 
+// SetRoles sets the value of Roles.
+func (s *BasicAuth) SetRoles(val []string) {
+	s.Roles = val
+}
+
 type BearerToken struct {
 	Token string
+	Roles []string
 }
 
 // GetToken returns the value of Token.
@@ -36,13 +48,24 @@ func (s *BearerToken) GetToken() string {
 	return s.Token
 }
 
+// GetRoles returns the value of Roles.
+func (s *BearerToken) GetRoles() []string {
+	return s.Roles
+}
+
 // SetToken sets the value of Token.
 func (s *BearerToken) SetToken(val string) {
 	s.Token = val
 }
 
+// SetRoles sets the value of Roles.
+func (s *BearerToken) SetRoles(val []string) {
+	s.Roles = val
+}
+
 type CookieKey struct {
 	APIKey string
+	Roles  []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -50,9 +73,19 @@ func (s *CookieKey) GetAPIKey() string {
 	return s.APIKey
 }
 
+// GetRoles returns the value of Roles.
+func (s *CookieKey) GetRoles() []string {
+	return s.Roles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *CookieKey) SetAPIKey(val string) {
 	s.APIKey = val
+}
+
+// SetRoles sets the value of Roles.
+func (s *CookieKey) SetRoles(val []string) {
+	s.Roles = val
 }
 
 // CustomSecurityOK is response for CustomSecurity operation.
@@ -63,6 +96,7 @@ type DisjointSecurityOK struct{}
 
 type HeaderKey struct {
 	APIKey string
+	Roles  []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -70,9 +104,19 @@ func (s *HeaderKey) GetAPIKey() string {
 	return s.APIKey
 }
 
+// GetRoles returns the value of Roles.
+func (s *HeaderKey) GetRoles() []string {
+	return s.Roles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *HeaderKey) SetAPIKey(val string) {
 	s.APIKey = val
+}
+
+// SetRoles sets the value of Roles.
+func (s *HeaderKey) SetRoles(val []string) {
+	s.Roles = val
 }
 
 // IntersectSecurityOK is response for IntersectSecurity operation.
@@ -83,6 +127,7 @@ type OptionalSecurityOK struct{}
 
 type QueryKey struct {
 	APIKey string
+	Roles  []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -90,7 +135,17 @@ func (s *QueryKey) GetAPIKey() string {
 	return s.APIKey
 }
 
+// GetRoles returns the value of Roles.
+func (s *QueryKey) GetRoles() []string {
+	return s.Roles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *QueryKey) SetAPIKey(val string) {
 	s.APIKey = val
+}
+
+// SetRoles sets the value of Roles.
+func (s *QueryKey) SetRoles(val []string) {
+	s.Roles = val
 }
