@@ -49,7 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -61,7 +61,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'n': // Prefix: "nullableStrings"
-				origElem := elem
+
 				if l := len("nullableStrings"); len(elem) >= l && elem[0:l] == "nullableStrings" {
 					elem = elem[l:]
 				} else {
@@ -80,9 +80,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'o': // Prefix: "objectsWithConflicting"
-				origElem := elem
+
 				if l := len("objectsWithConflicting"); len(elem) >= l && elem[0:l] == "objectsWithConflicting" {
 					elem = elem[l:]
 				} else {
@@ -94,7 +93,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "ArrayProperty"
-					origElem := elem
+
 					if l := len("ArrayProperty"); len(elem) >= l && elem[0:l] == "ArrayProperty" {
 						elem = elem[l:]
 					} else {
@@ -113,9 +112,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				case 'P': // Prefix: "Properties"
-					origElem := elem
+
 					if l := len("Properties"); len(elem) >= l && elem[0:l] == "Properties" {
 						elem = elem[l:]
 					} else {
@@ -134,32 +132,23 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
-			case 'r': // Prefix: "referencedAllof"
-				origElem := elem
-				if l := len("referencedAllof"); len(elem) >= l && elem[0:l] == "referencedAllof" {
+			case 'r': // Prefix: "referencedAll"
+
+				if l := len("referencedAll"); len(elem) >= l && elem[0:l] == "referencedAll" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					switch r.Method {
-					case "POST":
-						s.handleReferencedAllofRequest([0]string{}, elemIsEscaped, w, r)
-					default:
-						s.notAllowed(w, r, "POST")
-					}
-
-					return
+					break
 				}
 				switch elem[0] {
-				case 'O': // Prefix: "Optional"
-					origElem := elem
-					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+				case 'O': // Prefix: "OfNullable"
+
+					if l := len("OfNullable"); len(elem) >= l && elem[0:l] == "OfNullable" {
 						elem = elem[l:]
 					} else {
 						break
@@ -169,7 +158,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						// Leaf node.
 						switch r.Method {
 						case "POST":
-							s.handleReferencedAllofOptionalRequest([0]string{}, elemIsEscaped, w, r)
+							s.handleReferencedAllOfNullableRequest([0]string{}, elemIsEscaped, w, r)
 						default:
 							s.notAllowed(w, r, "POST")
 						}
@@ -177,12 +166,51 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
+				case 'o': // Prefix: "of"
+
+					if l := len("of"); len(elem) >= l && elem[0:l] == "of" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch r.Method {
+						case "POST":
+							s.handleReferencedAllofRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
+
+						return
+					}
+					switch elem[0] {
+					case 'O': // Prefix: "Optional"
+
+						if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch r.Method {
+							case "POST":
+								s.handleReferencedAllofOptionalRequest([0]string{}, elemIsEscaped, w, r)
+							default:
+								s.notAllowed(w, r, "POST")
+							}
+
+							return
+						}
+
+					}
+
 				}
 
-				elem = origElem
 			case 's': // Prefix: "s"
-				origElem := elem
+
 				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
@@ -194,7 +222,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'i': // Prefix: "imple"
-					origElem := elem
+
 					if l := len("imple"); len(elem) >= l && elem[0:l] == "imple" {
 						elem = elem[l:]
 					} else {
@@ -206,7 +234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'I': // Prefix: "Integer"
-						origElem := elem
+
 						if l := len("Integer"); len(elem) >= l && elem[0:l] == "Integer" {
 							elem = elem[l:]
 						} else {
@@ -225,9 +253,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-						elem = origElem
 					case 'O': // Prefix: "Objects"
-						origElem := elem
+
 						if l := len("Objects"); len(elem) >= l && elem[0:l] == "Objects" {
 							elem = elem[l:]
 						} else {
@@ -246,12 +273,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				case 't': // Prefix: "tringsNotype"
-					origElem := elem
+
 					if l := len("tringsNotype"); len(elem) >= l && elem[0:l] == "tringsNotype" {
 						elem = elem[l:]
 					} else {
@@ -270,13 +295,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -358,7 +380,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -370,7 +392,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case 'n': // Prefix: "nullableStrings"
-				origElem := elem
+
 				if l := len("nullableStrings"); len(elem) >= l && elem[0:l] == "nullableStrings" {
 					elem = elem[l:]
 				} else {
@@ -393,9 +415,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'o': // Prefix: "objectsWithConflicting"
-				origElem := elem
+
 				if l := len("objectsWithConflicting"); len(elem) >= l && elem[0:l] == "objectsWithConflicting" {
 					elem = elem[l:]
 				} else {
@@ -407,7 +428,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "ArrayProperty"
-					origElem := elem
+
 					if l := len("ArrayProperty"); len(elem) >= l && elem[0:l] == "ArrayProperty" {
 						elem = elem[l:]
 					} else {
@@ -430,9 +451,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				case 'P': // Prefix: "Properties"
-					origElem := elem
+
 					if l := len("Properties"); len(elem) >= l && elem[0:l] == "Properties" {
 						elem = elem[l:]
 					} else {
@@ -455,36 +475,23 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
-			case 'r': // Prefix: "referencedAllof"
-				origElem := elem
-				if l := len("referencedAllof"); len(elem) >= l && elem[0:l] == "referencedAllof" {
+			case 'r': // Prefix: "referencedAll"
+
+				if l := len("referencedAll"); len(elem) >= l && elem[0:l] == "referencedAll" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					switch method {
-					case "POST":
-						r.name = ReferencedAllofOperation
-						r.summary = ""
-						r.operationID = "referencedAllof"
-						r.pathPattern = "/referencedAllof"
-						r.args = args
-						r.count = 0
-						return r, true
-					default:
-						return
-					}
+					break
 				}
 				switch elem[0] {
-				case 'O': // Prefix: "Optional"
-					origElem := elem
-					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+				case 'O': // Prefix: "OfNullable"
+
+					if l := len("OfNullable"); len(elem) >= l && elem[0:l] == "OfNullable" {
 						elem = elem[l:]
 					} else {
 						break
@@ -494,10 +501,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = ReferencedAllofOptionalOperation
+							r.name = ReferencedAllOfNullableOperation
 							r.summary = ""
-							r.operationID = "referencedAllofOptional"
-							r.pathPattern = "/referencedAllofOptional"
+							r.operationID = "referencedAllOfNullable"
+							r.pathPattern = "/referencedAllOfNullable"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -506,12 +513,59 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
+				case 'o': // Prefix: "of"
+
+					if l := len("of"); len(elem) >= l && elem[0:l] == "of" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "POST":
+							r.name = ReferencedAllofOperation
+							r.summary = ""
+							r.operationID = "referencedAllof"
+							r.pathPattern = "/referencedAllof"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+					switch elem[0] {
+					case 'O': // Prefix: "Optional"
+
+						if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf node.
+							switch method {
+							case "POST":
+								r.name = ReferencedAllofOptionalOperation
+								r.summary = ""
+								r.operationID = "referencedAllofOptional"
+								r.pathPattern = "/referencedAllofOptional"
+								r.args = args
+								r.count = 0
+								return r, true
+							default:
+								return
+							}
+						}
+
+					}
+
 				}
 
-				elem = origElem
 			case 's': // Prefix: "s"
-				origElem := elem
+
 				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
@@ -523,7 +577,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'i': // Prefix: "imple"
-					origElem := elem
+
 					if l := len("imple"); len(elem) >= l && elem[0:l] == "imple" {
 						elem = elem[l:]
 					} else {
@@ -535,7 +589,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 					switch elem[0] {
 					case 'I': // Prefix: "Integer"
-						origElem := elem
+
 						if l := len("Integer"); len(elem) >= l && elem[0:l] == "Integer" {
 							elem = elem[l:]
 						} else {
@@ -558,9 +612,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-						elem = origElem
 					case 'O': // Prefix: "Objects"
-						origElem := elem
+
 						if l := len("Objects"); len(elem) >= l && elem[0:l] == "Objects" {
 							elem = elem[l:]
 						} else {
@@ -583,12 +636,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				case 't': // Prefix: "tringsNotype"
-					origElem := elem
+
 					if l := len("tringsNotype"); len(elem) >= l && elem[0:l] == "tringsNotype" {
 						elem = elem[l:]
 					} else {
@@ -611,13 +662,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false

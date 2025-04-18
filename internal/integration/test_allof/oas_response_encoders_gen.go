@@ -30,6 +30,13 @@ func encodeObjectsWithConflictingPropertiesResponse(response *ObjectsWithConflic
 	return nil
 }
 
+func encodeReferencedAllOfNullableResponse(response *ReferencedAllOfNullableOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	return nil
+}
+
 func encodeReferencedAllofResponse(response *ReferencedAllofOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

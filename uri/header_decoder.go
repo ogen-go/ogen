@@ -3,7 +3,7 @@ package uri
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type HeaderDecoder struct {
@@ -23,7 +23,14 @@ type HeaderParameterDecodingConfig struct {
 
 func (d *HeaderDecoder) HasParam(cfg HeaderParameterDecodingConfig) error {
 	if len(d.header.Values(cfg.Name)) == 0 {
-		return errors.Errorf("header parameter %q not set", cfg.Name)
+		return &validate.Error{
+			Fields: []validate.FieldError{
+				{
+					Name:  cfg.Name,
+					Error: validate.ErrFieldRequired,
+				},
+			},
+		}
 	}
 	return nil
 }

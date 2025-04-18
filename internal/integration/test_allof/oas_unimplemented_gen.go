@@ -40,6 +40,15 @@ func (UnimplementedHandler) ObjectsWithConflictingProperties(ctx context.Context
 	return ht.ErrNotImplemented
 }
 
+// ReferencedAllOfNullable implements referencedAllOfNullable operation.
+//
+// Referenced allOf, but requestBody contains nullable refs.
+//
+// POST /referencedAllOfNullable
+func (UnimplementedHandler) ReferencedAllOfNullable(ctx context.Context, req ReferencedAllOfNullableReq) error {
+	return ht.ErrNotImplemented
+}
+
 // ReferencedAllof implements referencedAllof operation.
 //
 // Referenced allOf.

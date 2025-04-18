@@ -223,7 +223,7 @@ h := uri.NewHeaderDecoder(resp.Header)
 			}
 			{{- end }}
 		} {{ if $header.Spec.Required }} else {
-			return validate.ErrFieldRequired
+			return err
 		} {{ end }}
 		return nil
 	}(); err != nil {

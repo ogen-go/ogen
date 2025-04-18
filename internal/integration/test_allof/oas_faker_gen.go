@@ -79,12 +79,46 @@ func (s *OptInt) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptLocation) SetFake() {
+	var elem Location
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptNilLocation) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
 	{
 		elem = "string"
 	}
 	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *ReferencedAllOfNullable) SetFake() {
+	{
+		{
+			s.Location.SetFake()
+		}
+	}
+	{
+		{
+			s.AllOfLocation.SetFake()
+		}
+	}
+	{
+		{
+			s.NullableAllOfLocation.SetFake()
+		}
+	}
 }
 
 // SetFake set fake values.

@@ -10,10 +10,10 @@ import (
 type ComplicatedParameterNameGetOK struct{}
 
 type ContentParameters struct {
-	Query  User `json:"query"`
-	Path   User `json:"path"`
-	Header User `json:"header"`
-	Cookie User `json:"cookie"`
+	Query  User `json:"query" customTag:"test"`
+	Path   User `json:"path" customTag:"test"`
+	Header User `json:"header" customTag:"test"`
+	Cookie User `json:"cookie" customTag:"test"`
 }
 
 // GetQuery returns the value of Query.
@@ -58,7 +58,7 @@ func (s *ContentParameters) SetCookie(val User) {
 
 type ObjectQueryParameterOK struct {
 	Style string         `json:"style"`
-	Value OneLevelObject `json:"value"`
+	Value OneLevelObject `json:"value" customTag:"test"`
 }
 
 // GetStyle returns the value of Style.

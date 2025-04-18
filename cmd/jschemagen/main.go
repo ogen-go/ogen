@@ -71,6 +71,7 @@ func run() error {
 		typeName      = flag.String("typename", "", "Root schema type name")
 		inferTypes    = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 		performFormat = flag.Bool("format", true, "Perform code formatting")
+		allowRemote   = flag.Bool("allow-remote", true, "Allow remote and external references")
 		trimPrefixes  = StringArrayFlag{"#/definitions/", "#/$defs/"}
 		logOptions    ogenzap.Options
 	)
@@ -82,6 +83,15 @@ func run() error {
 	if flag.NArg() < 1 || specPath == "" {
 		return errors.New("no spec provided")
 	}
+
+	logger, err := ogenzap.Create(logOptions)
+	if err != nil {
+		return err
+	}
+	defer func() {
+		_ = logger.Sync()
+	}()
+
 	specPath = filepath.Clean(specPath)
 	abs, err := filepath.Abs(specPath)
 	if err != nil {
@@ -101,7 +111,16 @@ func run() error {
 	if err := yaml.Unmarshal(data, &root); err != nil {
 		return errors.Wrap(err, "parse yaml")
 	}
+
+	externalResolver := jsonschema.ExternalResolver(nil)
+	if *allowRemote {
+		externalResolver = jsonschema.NewExternalResolver(jsonschema.ExternalOptions{
+			Logger: logger,
+		})
+	}
+
 	p := jsonschema.NewParser(jsonschema.Settings{
+		External:   externalResolver,
 		Resolver:   jsonschema.NewRootResolver(&root),
 		InferTypes: *inferTypes,
 	})
@@ -131,13 +150,6 @@ func run() error {
 		*packageName = "output"
 	}
 
-	logger, err := ogenzap.Create(logOptions)
-	if err != nil {
-		return err
-	}
-	defer func() {
-		_ = logger.Sync()
-	}()
 	if err := gen.GenerateSchema(schema, fs, gen.GenerateSchemaOptions{
 		TypeName:   *typeName,
 		FileName:   file,

@@ -9,6 +9,7 @@ const (
 	NullableStringsOperation                     OperationName = "NullableStrings"
 	ObjectsWithConflictingArrayPropertyOperation OperationName = "ObjectsWithConflictingArrayProperty"
 	ObjectsWithConflictingPropertiesOperation    OperationName = "ObjectsWithConflictingProperties"
+	ReferencedAllOfNullableOperation             OperationName = "ReferencedAllOfNullable"
 	ReferencedAllofOperation                     OperationName = "ReferencedAllof"
 	ReferencedAllofOptionalOperation             OperationName = "ReferencedAllofOptional"
 	SimpleIntegerOperation                       OperationName = "SimpleInteger"

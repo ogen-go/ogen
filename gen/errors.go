@@ -6,8 +6,9 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-	"github.com/ogen-go/ogen/gen/ir"
 	"go.uber.org/zap"
+
+	"github.com/ogen-go/ogen/gen/ir"
 )
 
 type unimplementedError interface {

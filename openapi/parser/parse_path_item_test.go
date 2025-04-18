@@ -86,6 +86,7 @@ func TestXOgenOperationGroup(t *testing.T) {
 
 	expected := &openapi.API{
 		Version: openapi.Version{Major: 3, Minor: 0, Patch: 3},
+		Tags:    []openapi.Tag{},
 		Operations: []*openapi.Operation{
 			{
 				OperationID: "userList",

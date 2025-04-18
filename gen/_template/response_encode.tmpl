@@ -182,6 +182,9 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		{{- else }}
 		writer := w
 		{{- end }}
+		if closer, ok := {{ $var }}.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, {{ $var }}); err != nil {
 			return errors.Wrap(err, "write")
 		}

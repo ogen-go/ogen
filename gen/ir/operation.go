@@ -107,6 +107,7 @@ type Parameter struct {
 	Name string
 	Type *Type
 	Spec *openapi.Parameter
+	Tag  Tag
 }
 
 func (op Parameter) GoDoc() []string {

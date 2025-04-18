@@ -3,7 +3,7 @@
 {{- template "header" $ }}
 
 {{- range $_, $t := $.Types }}
-	{{- if and ($t.HasFeature "uri") $t.IsStruct }}
+	{{- if and ($t.HasFeature "uri") (or $t.IsStruct $t.IsMap) }}
 	{{- template "uri/encoders" $t }}
 	{{- end }}
 {{- end }}

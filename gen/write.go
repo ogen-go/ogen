@@ -385,6 +385,6 @@ func (g *Generator) hasParams() bool {
 
 func (g *Generator) hasURIObjectParams() bool {
 	return g.hasAnyType(func(t *ir.Type) bool {
-		return t.IsStruct() && t.HasFeature("uri")
+		return (t.IsStruct() || t.IsMap()) && t.HasFeature("uri")
 	})
 }

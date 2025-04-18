@@ -32,6 +32,8 @@ linters-settings:
       - octalLiteral
       - httpNoBody
       - unnecessaryBlock # for UUID encoder
+  goimports:
+    local-prefixes: github.com/ogen-go/ogen
 
 linters:
   enable:
@@ -51,6 +53,7 @@ linters:
     - unparam
     - whitespace
     - unused
+    - goimports
     # Do not enable:
     # - wsl       (too opinionated about newlines)
     # - godox     (todos are OK)

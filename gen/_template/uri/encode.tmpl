@@ -38,6 +38,8 @@
 	return nil
 {{- else if $t.IsStruct }}
 	return {{ $var }}.EncodeURI(e)
+{{- else if $t.IsMap }}
+	return {{ $var }}.EncodeURI(e)
 {{- else }}
 	{{ errorf "unexpected kind %s" $t.Kind }}
 {{- end }}

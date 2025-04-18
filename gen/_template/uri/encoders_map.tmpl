@@ -33,7 +33,7 @@ func (s *{{ $.Name }}) DecodeURI(d uri.Decoder) error {
 		propertiesCount++
 		{{- end }}
 		{{- if $.MapPattern }}
-		switch match, err := pattern.Match(k); {
+		switch match, err := pattern.MatchString(k); {
 		case err != nil:
 			return errors.Wrap(err, "execute regex")
 		case !match:

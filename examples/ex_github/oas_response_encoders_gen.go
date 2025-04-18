@@ -4397,6 +4397,9 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9207,6 +9210,9 @@ func encodeMarkdownRenderResponse(response MarkdownRenderRes, w http.ResponseWri
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9251,6 +9257,9 @@ func encodeMarkdownRenderRawResponse(response MarkdownRenderRawRes, w http.Respo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9300,6 +9309,9 @@ func encodeMetaGetOctocatResponse(response MetaGetOctocatOK, w http.ResponseWrit
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
+	if closer, ok := response.Data.(io.Closer); ok {
+		defer closer.Close()
+	}
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -9313,6 +9325,9 @@ func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span
 	span.SetStatus(codes.Ok, http.StatusText(200))
 
 	writer := w
+	if closer, ok := response.Data.(io.Closer); ok {
+		defer closer.Close()
+	}
 	if _, err := io.Copy(writer, response); err != nil {
 		return errors.Wrap(err, "write")
 	}

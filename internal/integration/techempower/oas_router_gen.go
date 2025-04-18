@@ -49,7 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -61,7 +61,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'c': // Prefix: "cached-worlds"
-				origElem := elem
+
 				if l := len("cached-worlds"); len(elem) >= l && elem[0:l] == "cached-worlds" {
 					elem = elem[l:]
 				} else {
@@ -80,9 +80,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'd': // Prefix: "db"
-				origElem := elem
+
 				if l := len("db"); len(elem) >= l && elem[0:l] == "db" {
 					elem = elem[l:]
 				} else {
@@ -101,9 +100,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'j': // Prefix: "json"
-				origElem := elem
+
 				if l := len("json"); len(elem) >= l && elem[0:l] == "json" {
 					elem = elem[l:]
 				} else {
@@ -122,9 +120,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'q': // Prefix: "queries"
-				origElem := elem
+
 				if l := len("queries"); len(elem) >= l && elem[0:l] == "queries" {
 					elem = elem[l:]
 				} else {
@@ -143,9 +140,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'u': // Prefix: "updates"
-				origElem := elem
+
 				if l := len("updates"); len(elem) >= l && elem[0:l] == "updates" {
 					elem = elem[l:]
 				} else {
@@ -164,10 +160,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -249,7 +243,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -261,7 +255,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case 'c': // Prefix: "cached-worlds"
-				origElem := elem
+
 				if l := len("cached-worlds"); len(elem) >= l && elem[0:l] == "cached-worlds" {
 					elem = elem[l:]
 				} else {
@@ -284,9 +278,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'd': // Prefix: "db"
-				origElem := elem
+
 				if l := len("db"); len(elem) >= l && elem[0:l] == "db" {
 					elem = elem[l:]
 				} else {
@@ -309,9 +302,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'j': // Prefix: "json"
-				origElem := elem
+
 				if l := len("json"); len(elem) >= l && elem[0:l] == "json" {
 					elem = elem[l:]
 				} else {
@@ -334,9 +326,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'q': // Prefix: "queries"
-				origElem := elem
+
 				if l := len("queries"); len(elem) >= l && elem[0:l] == "queries" {
 					elem = elem[l:]
 				} else {
@@ -359,9 +350,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'u': // Prefix: "updates"
-				origElem := elem
+
 				if l := len("updates"); len(elem) >= l && elem[0:l] == "updates" {
 					elem = elem[l:]
 				} else {
@@ -384,10 +374,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false
