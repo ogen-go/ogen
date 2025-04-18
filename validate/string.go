@@ -15,6 +15,7 @@ type String struct {
 	MaxLength    int
 	MaxLengthSet bool
 	Email        bool
+	Byte         bool
 	Regex        ogenregex.Regexp
 	Hostname     bool
 }
@@ -100,12 +101,16 @@ func (t String) checkEmail(v string) error {
 
 // Validate returns error if v does not match validation rules.
 func (t String) Validate(v string) error {
+	length := len([]rune(v))
+	if t.Byte {
+		length = len([]byte(v))
+	}
 	if err := (Array{
 		MinLength:    t.MinLength,
 		MinLengthSet: t.MinLengthSet,
 		MaxLength:    t.MaxLength,
 		MaxLengthSet: t.MaxLengthSet,
-	}).ValidateLength(len([]rune(v))); err != nil {
+	}).ValidateLength(length); err != nil {
 		return err
 	}
 	if t.Email {
