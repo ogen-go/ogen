@@ -6,3 +6,5 @@ _bin/*
 
 *.out
 *.dump
+cmd/ogen/ogen
+cmd/jschemagen/jschemagen
