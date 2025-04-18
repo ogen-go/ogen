@@ -1,12 +1,14 @@
 package gen
 
 import (
+	"testing"
+
+	"github.com/stretchr/testify/require"
+	"go.uber.org/zap/zaptest"
+
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/location"
 	"github.com/ogen-go/ogen/openapi"
-	"github.com/stretchr/testify/require"
-	"go.uber.org/zap/zaptest"
-	"testing"
 )
 
 func TestGenerateSecurities(t *testing.T) {
