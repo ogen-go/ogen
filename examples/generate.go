@@ -27,6 +27,7 @@ import (
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config _config/with_tests.yml --target ex_tinkoff           ../_testdata/examples/tinkoff.json
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --target ex_openai                                            ../_testdata/examples/openai.yml
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --target ex_oauth2                                            ../_testdata/examples/petstore-oauth2.yml
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --target ex_oauth2_scopes_and_or                              ../_testdata/examples/oauth2-scopes-and-or.yml
 
 // Partially supported:
 //

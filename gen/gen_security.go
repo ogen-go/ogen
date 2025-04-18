@@ -94,7 +94,7 @@ func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecuritySc
 func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec openapi.SecurityScheme) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
 		if spec.Security.Type == "oauth2" {
-			sec.Scopes[operationName] = spec.Scopes
+			sec.Scopes[operationName] = append(sec.Scopes[operationName], spec.Scopes...)
 		}
 		return sec, nil
 	}
