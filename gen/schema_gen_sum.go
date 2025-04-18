@@ -489,6 +489,14 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		return nil, err
 	}
 
+	// If there is only one schema in allOf, avoid merging to keep the reference.
+	if len(schema.AllOf) == 1 {
+		s := schema.AllOf[0]
+		if s != nil {
+			return g.generate(name, s, false)
+		}
+	}
+
 	mergedSchema, err := mergeNSchemes(schema.AllOf)
 	if err != nil {
 		return nil, err

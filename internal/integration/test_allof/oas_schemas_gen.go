@@ -233,6 +233,115 @@ func (o OptInt) Or(d int) int {
 	return d
 }
 
+// NewOptLocation returns new OptLocation with value set to v.
+func NewOptLocation(v Location) OptLocation {
+	return OptLocation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptLocation is optional Location.
+type OptLocation struct {
+	Value Location
+	Set   bool
+}
+
+// IsSet returns true if OptLocation was set.
+func (o OptLocation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptLocation) Reset() {
+	var v Location
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptLocation) SetTo(v Location) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptLocation) Get() (v Location, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptLocation) Or(d Location) Location {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilLocation returns new OptNilLocation with value set to v.
+func NewOptNilLocation(v Location) OptNilLocation {
+	return OptNilLocation{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilLocation is optional nullable Location.
+type OptNilLocation struct {
+	Value Location
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilLocation was set.
+func (o OptNilLocation) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilLocation) Reset() {
+	var v Location
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilLocation) SetTo(v Location) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsNull returns true if value is Null.
+func (o OptNilLocation) IsNull() bool { return o.Null }
+
+// SetToNull sets value to null.
+func (o *OptNilLocation) SetToNull() {
+	o.Set = true
+	o.Null = true
+	var v Location
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilLocation) Get() (v Location, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilLocation) Or(d Location) Location {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -278,6 +387,91 @@ func (o OptString) Or(d string) string {
 	}
 	return d
 }
+
+// Ref: #/components/schemas/ReferencedAllOfNullable
+type ReferencedAllOfNullable struct {
+	Location              OptLocation    `json:"location"`
+	AllOfLocation         OptLocation    `json:"allOfLocation"`
+	NullableAllOfLocation OptNilLocation `json:"nullableAllOfLocation"`
+}
+
+// GetLocation returns the value of Location.
+func (s *ReferencedAllOfNullable) GetLocation() OptLocation {
+	return s.Location
+}
+
+// GetAllOfLocation returns the value of AllOfLocation.
+func (s *ReferencedAllOfNullable) GetAllOfLocation() OptLocation {
+	return s.AllOfLocation
+}
+
+// GetNullableAllOfLocation returns the value of NullableAllOfLocation.
+func (s *ReferencedAllOfNullable) GetNullableAllOfLocation() OptNilLocation {
+	return s.NullableAllOfLocation
+}
+
+// SetLocation sets the value of Location.
+func (s *ReferencedAllOfNullable) SetLocation(val OptLocation) {
+	s.Location = val
+}
+
+// SetAllOfLocation sets the value of AllOfLocation.
+func (s *ReferencedAllOfNullable) SetAllOfLocation(val OptLocation) {
+	s.AllOfLocation = val
+}
+
+// SetNullableAllOfLocation sets the value of NullableAllOfLocation.
+func (s *ReferencedAllOfNullable) SetNullableAllOfLocation(val OptNilLocation) {
+	s.NullableAllOfLocation = val
+}
+
+func (*ReferencedAllOfNullable) referencedAllOfNullableReq() {}
+
+// Ref: #/components/schemas/ReferencedAllOfNullable
+type ReferencedAllOfNullableMultipart struct {
+	Location              OptLocation    `json:"location"`
+	AllOfLocation         OptLocation    `json:"allOfLocation"`
+	NullableAllOfLocation OptNilLocation `json:"nullableAllOfLocation"`
+}
+
+// GetLocation returns the value of Location.
+func (s *ReferencedAllOfNullableMultipart) GetLocation() OptLocation {
+	return s.Location
+}
+
+// GetAllOfLocation returns the value of AllOfLocation.
+func (s *ReferencedAllOfNullableMultipart) GetAllOfLocation() OptLocation {
+	return s.AllOfLocation
+}
+
+// GetNullableAllOfLocation returns the value of NullableAllOfLocation.
+func (s *ReferencedAllOfNullableMultipart) GetNullableAllOfLocation() OptNilLocation {
+	return s.NullableAllOfLocation
+}
+
+// SetLocation sets the value of Location.
+func (s *ReferencedAllOfNullableMultipart) SetLocation(val OptLocation) {
+	s.Location = val
+}
+
+// SetAllOfLocation sets the value of AllOfLocation.
+func (s *ReferencedAllOfNullableMultipart) SetAllOfLocation(val OptLocation) {
+	s.AllOfLocation = val
+}
+
+// SetNullableAllOfLocation sets the value of NullableAllOfLocation.
+func (s *ReferencedAllOfNullableMultipart) SetNullableAllOfLocation(val OptNilLocation) {
+	s.NullableAllOfLocation = val
+}
+
+func (*ReferencedAllOfNullableMultipart) referencedAllOfNullableReq() {}
+
+// ReferencedAllOfNullableOK is response for ReferencedAllOfNullable operation.
+type ReferencedAllOfNullableOK struct{}
+
+type ReferencedAllOfNullableReqEmptyBody struct{}
+
+func (*ReferencedAllOfNullableReqEmptyBody) referencedAllOfNullableReq() {}
 
 // ReferencedAllofOK is response for ReferencedAllof operation.
 type ReferencedAllofOK struct{}
