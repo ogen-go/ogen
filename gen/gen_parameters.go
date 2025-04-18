@@ -179,10 +179,16 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		return nil, errors.Wrapf(err, "parameter name: %q", p.Name)
 	}
 
+	var tag ir.Tag
+	if p.Schema != nil {
+		tag.ExtraTags = p.Schema.ExtraTags
+	}
+
 	return &ir.Parameter{
 		Name: paramName,
 		Type: t,
 		Spec: p,
+		Tag:  tag,
 	}, nil
 }
 
