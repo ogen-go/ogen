@@ -187,7 +187,7 @@ func (g *Generator) responseToIR(
 	var unsupported []string
 	for ct, content := range contents {
 		t, e := content.Type, content.Encoding
-		if e.JSON() || t.IsStream() || isBinary(t.Schema) {
+		if e.JSON() || e.ProblemJSON() || t.IsStream() || isBinary(t.Schema) {
 			continue
 		}
 		delete(contents, ct)
