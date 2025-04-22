@@ -33,6 +33,10 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		return nil, errors.Wrap(err, "validate enum")
 	}
 
+	// Ryan: uncomment this in case generated enums conflict with other types.
+	// suffix this with Enum, so it's guaranteed to not conflict with other types (we assume in all of the OpenAPI schemas we have, there're no types with "Enum" as suffix).
+	// name += "Enum"
+
 	type namingStrategy int
 	const (
 		pascalName namingStrategy = iota

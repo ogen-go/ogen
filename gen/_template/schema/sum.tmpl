@@ -2,25 +2,25 @@
 {{- define "schema/sum" }}
 // {{ $.Name }} represents sum type.
 type {{ $.Name }} struct {
-	Type {{ $.Name }}Type // switch on this field
+	Type {{ $.Name }}TypeEnum // switch on this field
 	{{- range $s := $.SumOf }}
 		{{ $s.Name }} {{ $s.Go }}
 	{{- end }}
 }
 
-// {{ $.Name }}Type is oneOf type of {{ $.Name }}.
-type {{ $.Name }}Type string
+// {{ $.Name }}TypeEnum is oneOf type of {{ $.Name }}.
+type {{ $.Name }}TypeEnum string
 
-// Possible values for {{ $.Name }}Type.
+// Possible values for {{ $.Name }}TypeEnum.
 const (
 	{{- range $s := $.SumOf }}
 	{{- $m := $.SumSpec.PickMappingEntryFor $s }}
 	{{- if $m }}
 	{{- /* try to use mapping key if the entry for $s is defined */}}
-	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $m.Key }}
+	{{ $s.Name }}{{ $.Name }} {{ $.Name }}TypeEnum = {{ quote $m.Key }}
 	{{- else }}
 	{{- /* otherwise fallback to SumOf Type name */}}
-	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $s.Go }}
+	{{ $s.Name }}{{ $.Name }} {{ $.Name }}TypeEnum = {{ quote $s.Go }}
 	{{- end }}
 	{{- end }}
 )
