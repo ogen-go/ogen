@@ -5,6 +5,7 @@ WORKDIR /go/src/app
 COPY . .
 RUN go mod download
 RUN CGO_ENABLED=0 go build -o /go/bin/ogen ./cmd/ogen/main.go
+RUN CGO_ENABLED=0 go build -o /go/bin/jschemagen ./cmd/jschemagen/main.go
 
 FROM scratch
 # We need go in resulting image to run goimports.
@@ -13,4 +14,5 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 # Copy built binary.
 WORKDIR /
 COPY --from=builder /go/bin/ogen ./ogen
+COPY --from=builder /go/bin/jschemagen ./jschemagen
 ENTRYPOINT ["./ogen"]
