@@ -33,6 +33,30 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+var operationRolesSSOAuth = map[string][]string{
+	MarketBondsGetOperation:               []string{},
+	MarketCandlesGetOperation:             []string{},
+	MarketCurrenciesGetOperation:          []string{},
+	MarketEtfsGetOperation:                []string{},
+	MarketOrderbookGetOperation:           []string{},
+	MarketSearchByFigiGetOperation:        []string{},
+	MarketSearchByTickerGetOperation:      []string{},
+	MarketStocksGetOperation:              []string{},
+	OperationsGetOperation:                []string{},
+	OrdersCancelPostOperation:             []string{},
+	OrdersGetOperation:                    []string{},
+	OrdersLimitOrderPostOperation:         []string{},
+	OrdersMarketOrderPostOperation:        []string{},
+	PortfolioCurrenciesGetOperation:       []string{},
+	PortfolioGetOperation:                 []string{},
+	SandboxClearPostOperation:             []string{},
+	SandboxCurrenciesBalancePostOperation: []string{},
+	SandboxPositionsBalancePostOperation:  []string{},
+	SandboxRegisterPostOperation:          []string{},
+	SandboxRemovePostOperation:            []string{},
+	UserAccountsGetOperation:              []string{},
+}
+
 func (s *Server) securitySSOAuth(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t SSOAuth
 	token, ok := findAuthorization(req.Header, "Bearer")
@@ -40,6 +64,7 @@ func (s *Server) securitySSOAuth(ctx context.Context, operationName OperationNam
 		return ctx, false, nil
 	}
 	t.Token = token
+	t.Roles = operationRolesSSOAuth[operationName]
 	rctx, err := s.sec.HandleSSOAuth(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil

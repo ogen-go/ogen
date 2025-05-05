@@ -15,6 +15,7 @@ import (
 
 type APIKey struct {
 	APIKey string
+	Roles  []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -22,9 +23,19 @@ func (s *APIKey) GetAPIKey() string {
 	return s.APIKey
 }
 
+// GetRoles returns the value of Roles.
+func (s *APIKey) GetRoles() []string {
+	return s.Roles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *APIKey) SetAPIKey(val string) {
 	s.APIKey = val
+}
+
+// SetRoles sets the value of Roles.
+func (s *APIKey) SetRoles(val []string) {
+	s.Roles = val
 }
 
 // Ref: #/components/schemas/AnyTest

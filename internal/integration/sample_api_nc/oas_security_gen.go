@@ -33,6 +33,10 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+var operationRolesAPIKey = map[string][]string{
+	SecurityTestOperation: []string{},
+}
+
 func (s *Server) securityAPIKey(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t APIKey
 	const parameterName = "Api_key"
@@ -41,6 +45,7 @@ func (s *Server) securityAPIKey(ctx context.Context, operationName OperationName
 		return ctx, false, nil
 	}
 	t.APIKey = value
+	t.Roles = operationRolesAPIKey[operationName]
 	rctx, err := s.sec.HandleAPIKey(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
