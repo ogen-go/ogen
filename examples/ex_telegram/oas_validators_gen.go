@@ -145,6 +145,7 @@ func (s *AnswerCallbackQuery) Validate() error {
 					MaxLength:    200,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -211,6 +212,7 @@ func (s *AnswerInlineQuery) Validate() error {
 					MaxLength:    64,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -334,6 +336,7 @@ func (s *BotCommand) Validate() error {
 			MaxLength:    32,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Command)); err != nil {
@@ -353,6 +356,7 @@ func (s *BotCommand) Validate() error {
 			MaxLength:    256,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Description)); err != nil {
@@ -566,6 +570,7 @@ func (s *ChatLocation) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Address)); err != nil {
@@ -685,6 +690,7 @@ func (s *CopyMessage) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -790,6 +796,7 @@ func (s *CreateChatInviteLink) Validate() error {
 					MaxLength:    32,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -853,6 +860,7 @@ func (s *CreateNewStickerSet) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Name)); err != nil {
@@ -872,6 +880,7 @@ func (s *CreateNewStickerSet) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Title)); err != nil {
@@ -953,6 +962,7 @@ func (s *EditChatInviteLink) Validate() error {
 					MaxLength:    32,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -1018,6 +1028,7 @@ func (s *EditMessageCaption) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -1292,6 +1303,7 @@ func (s *EditMessageText) Validate() error {
 			MaxLength:    4096,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Text)); err != nil {
@@ -1424,6 +1436,7 @@ func (s *ForceReply) Validate() error {
 					MaxLength:    64,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -1490,6 +1503,7 @@ func (s *Game) Validate() error {
 					MaxLength:    4096,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -1649,6 +1663,7 @@ func (s *InlineKeyboardButton) Validate() error {
 					MaxLength:    64,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2009,6 +2024,7 @@ func (s *InlineQueryResultAudio) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2030,6 +2046,7 @@ func (s *InlineQueryResultAudio) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2154,6 +2171,7 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2175,6 +2193,7 @@ func (s *InlineQueryResultCachedAudio) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2272,6 +2291,7 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2293,6 +2313,7 @@ func (s *InlineQueryResultCachedDocument) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2390,6 +2411,7 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2411,6 +2433,7 @@ func (s *InlineQueryResultCachedGif) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2508,6 +2531,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2529,6 +2553,7 @@ func (s *InlineQueryResultCachedMpeg4Gif) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2626,6 +2651,7 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2647,6 +2673,7 @@ func (s *InlineQueryResultCachedPhoto) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2744,6 +2771,7 @@ func (s *InlineQueryResultCachedSticker) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2811,6 +2839,7 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2832,6 +2861,7 @@ func (s *InlineQueryResultCachedVideo) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -2929,6 +2959,7 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -2950,6 +2981,7 @@ func (s *InlineQueryResultCachedVoice) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -3049,6 +3081,7 @@ func (s *InlineQueryResultContact) Validate() error {
 					MaxLength:    2048,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -3175,6 +3208,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -3196,6 +3230,7 @@ func (s *InlineQueryResultDocument) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -3347,6 +3382,7 @@ func (s *InlineQueryResultGame) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -3396,6 +3432,7 @@ func (s *InlineQueryResultGif) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -3498,6 +3535,7 @@ func (s *InlineQueryResultGif) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -3818,6 +3856,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -3920,6 +3959,7 @@ func (s *InlineQueryResultMpeg4Gif) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -4017,6 +4057,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -4092,6 +4133,7 @@ func (s *InlineQueryResultPhoto) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -4313,6 +4355,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -4334,6 +4377,7 @@ func (s *InlineQueryResultVideo) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -4512,6 +4556,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 			MaxLength:    64,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.ID)); err != nil {
@@ -4533,6 +4578,7 @@ func (s *InlineQueryResultVoice) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -4659,6 +4705,7 @@ func (s *InputContactMessageContent) Validate() error {
 					MaxLength:    2048,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -4695,6 +4742,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 			MaxLength:    32,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Title)); err != nil {
@@ -4714,6 +4762,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 			MaxLength:    255,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Description)); err != nil {
@@ -4733,6 +4782,7 @@ func (s *InputInvoiceMessageContent) Validate() error {
 			MaxLength:    128,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Payload)); err != nil {
@@ -4996,6 +5046,7 @@ func (s *InputMediaAnimation) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -5140,6 +5191,7 @@ func (s *InputMediaAudio) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -5230,6 +5282,7 @@ func (s *InputMediaDocument) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -5293,6 +5346,7 @@ func (s *InputMediaPhoto) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -5356,6 +5410,7 @@ func (s *InputMediaVideo) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -5530,6 +5585,7 @@ func (s *InputTextMessageContent) Validate() error {
 			MaxLength:    4096,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.MessageText)); err != nil {
@@ -5812,6 +5868,7 @@ func (s *Message) Validate() error {
 					MaxLength:    4096,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -6014,6 +6071,7 @@ func (s *Message) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -6796,6 +6854,7 @@ func (s *Poll) Validate() error {
 			MaxLength:    300,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Question)); err != nil {
@@ -6856,6 +6915,7 @@ func (s *Poll) Validate() error {
 					MaxLength:    200,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -6940,6 +7000,7 @@ func (s *PollOption) Validate() error {
 			MaxLength:    100,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Text)); err != nil {
@@ -7012,6 +7073,7 @@ func (s *ReplyKeyboardMarkup) Validate() error {
 					MaxLength:    64,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -7392,6 +7454,7 @@ func (s *SendAnimation) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -7497,6 +7560,7 @@ func (s *SendAudio) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -7629,6 +7693,7 @@ func (s *SendContact) Validate() error {
 					MaxLength:    2048,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -7763,6 +7828,7 @@ func (s *SendDocument) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -7896,6 +7962,7 @@ func (s *SendInvoice) Validate() error {
 			MaxLength:    32,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Title)); err != nil {
@@ -7915,6 +7982,7 @@ func (s *SendInvoice) Validate() error {
 			MaxLength:    255,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Description)); err != nil {
@@ -7934,6 +8002,7 @@ func (s *SendInvoice) Validate() error {
 			MaxLength:    128,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Payload)); err != nil {
@@ -8290,6 +8359,7 @@ func (s *SendMessage) Validate() error {
 			MaxLength:    4096,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Text)); err != nil {
@@ -8390,6 +8460,7 @@ func (s *SendPhoto) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -8493,6 +8564,7 @@ func (s *SendPoll) Validate() error {
 			MaxLength:    300,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Question)); err != nil {
@@ -8525,6 +8597,7 @@ func (s *SendPoll) Validate() error {
 					MaxLength:    200,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -8841,6 +8914,7 @@ func (s *SendVideo) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9027,6 +9101,7 @@ func (s *SendVoice) Validate() error {
 					MaxLength:    1024,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9157,6 +9232,7 @@ func (s *SetChatAdministratorCustomTitle) Validate() error {
 			MaxLength:    16,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.CustomTitle)); err != nil {
@@ -9190,6 +9266,7 @@ func (s *SetChatDescription) Validate() error {
 					MaxLength:    255,
 					MaxLengthSet: true,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -9226,6 +9303,7 @@ func (s *SetChatTitle) Validate() error {
 			MaxLength:    255,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Title)); err != nil {
