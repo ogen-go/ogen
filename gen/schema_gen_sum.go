@@ -94,7 +94,7 @@ func ensureNoInfiniteRecursion(parent *jsonschema.Schema) error {
 				if _, ok := ctx[ref]; ok {
 					err := errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
 
-					pos, ok := s.Pointer.Position()
+					pos, ok := s.Position()
 					if !ok {
 						return err
 					}
