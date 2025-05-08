@@ -1,149 +1,133 @@
-linters-settings:
-  gosec:
-    config:
-      # Maximum allowed permissions mode file creation
-      # Default: "0600"
-      G306: "0644"
-    excludes:
-      - G115 # Annoying and have a lot of false-positive results.
-  gocyclo:
-    min-complexity: 15
-  dupl:
-    threshold: 120
-  goconst:
-    min-len: 2
-    min-occurrences: 3
-  misspell:
-    locale: US
-  lll:
-    line-length: 140
-  gocritic:
-    enabled-tags:
-      - diagnostic
-      - experimental
-      - opinionated
-      - performance
-      - style
-    disabled-checks:
-      - emptyStringTest # len(<string>) > 0 is fine and easier to read in some contexts
-      - hugeParam
-      - rangeValCopy
-      - exitAfterDefer
-      - octalLiteral
-      - httpNoBody
-      - unnecessaryBlock # for UUID encoder
-  goimports:
-    local-prefixes: github.com/ogen-go/ogen
-
+version: "2"
 linters:
   enable:
     - dogsled
-    - errcheck
     - goconst
     - gocritic
-    - revive
     - gosec
-    - govet
-    - ineffassign
     - lll
     - misspell
     - nakedret
-    - typecheck
+    - revive
     - unconvert
     - unparam
     - whitespace
-    - unused
+  settings:
+    dupl:
+      threshold: 120
+    goconst:
+      min-len: 2
+      min-occurrences: 3
+    gocritic:
+      disabled-checks:
+        - emptyStringTest
+        - hugeParam
+        - rangeValCopy
+        - exitAfterDefer
+        - octalLiteral
+        - httpNoBody
+        - unnecessaryBlock
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
+        - style
+    gocyclo:
+      min-complexity: 15
+    gosec:
+      excludes:
+        - G115
+      config:
+        G306: "0644"
+    lll:
+      line-length: 140
+    misspell:
+      locale: US
+  exclusions:
+    generated: lax
+    rules:
+      - linters:
+          - lll
+        source: //go:generate
+      - linters:
+          - lll
+        source: // See https://
+      - linters:
+          - dupl
+          - errcheck
+          - funlen
+          - gocognit
+          - goconst
+          - gocyclo
+          - gosec
+          - lll
+          - scopelint
+        path: _test\.go
+      - linters:
+          - unparam
+        path: _test\.go
+        text: .*\$\d?
+      - linters:
+          - govet
+        text: declaration of "(err|ctx|log)"
+      - linters:
+          - funlen
+          - gocognit
+          - goconst
+          - gocyclo
+        path: (cmd|tools)
+      - linters:
+          - golint
+          - revive
+        path: (conv|uri|gen|otelogen)
+        text: (should have comment.+or be unexported|comment on exported)
+      - linters:
+          - golint
+          - revive
+        path: (cmd|tools|internal)
+        text: should have (comment.+or be unexported|a package comment)
+      - linters:
+          - golint
+          - revive
+        text: (unused-parameter|if-return)
+      - linters:
+          - gocritic
+        text: ptrToRefParam
+        source: handleSchemaDepth
+      - path: (cmd|tools)
+        text: G(304|306|307)
+      - path: techempower
+        text: G114
+      - linters:
+          - gocritic
+        path: (http|uri)
+        text: sprintfQuotedString
+        source: form-data; name="%s"
+      - linters:
+          - gocritic
+        path: ogenregex[/\\]convert\.go
+        text: emptyFallthrough
+      - linters:
+          - goconst
+        text: string `(string|number|u?int\d{0,2}|float\d{2})`
+      - linters:
+          - goconst
+        text: string `(Unix|unix|date|time|ipv6|String|DateTime|Number)
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
     - goimports
-    # Do not enable:
-    # - wsl       (too opinionated about newlines)
-    # - godox     (todos are OK)
-    # - bodyclose (false positives on helper functions)
-    # - prealloc  (not worth it in scope of this project)
-    # - maligned  (same as prealloc)
-    # - funlen    (gocyclo is enough)
-    # - gochecknoglobals (we know when it is ok to use globals)
-    # - gochecknoinits (we know when it is ok to use inits)
-    # - dupl (validator/parser package are false positive)
-
-issues:
-  exclude-use-default: false
-  exclude-rules:
-    # Exclude go:generate from lll
-    - source: "//go:generate"
-      linters: [lll]
-
-    # Exclude links from lll
-    - source: "// See https://"
-      linters: [lll]
-
-    # Disable linters that are annoying in tests.
-    - path: _test\.go
-      linters:
-        - gocyclo
-        - errcheck
-        - dupl
-        - gosec
-        - funlen
-        - goconst
-        - gocognit
-        - scopelint
-        - lll
-    # Do not warn about unused closure parameters in test files.
-    - path: _test\.go
-      linters: [unparam]
-      text: .*\$\d?
-
-    # Ignore shadowing of err.
-    - linters: [govet]
-      text: 'declaration of "(err|ctx|log)"'
-
-    # Ignore linters in main packages.
-    - path: (cmd|tools)
-      linters: [goconst, funlen, gocognit, gocyclo]
-
-    # TODO(tdakkota): add comments?
-    - path: (conv|uri|gen|otelogen)
-      linters: [revive, golint]
-      text: "(should have comment.+or be unexported|comment on exported)"
-
-    # We don't need package comments for internal packages.
-    # We don't need comments for command packages.
-    - path: (cmd|tools|internal)
-      linters: [revive, golint]
-      text: "should have (comment.+or be unexported|a package comment)"
-
-    # Annoying and useless.
-    - linters: [revive, golint]
-      text: "(unused-parameter|if-return)"
-
-    - linters: [gocritic]
-      text: ptrToRefParam
-      source: handleSchemaDepth
-
-    # Intended in commands:
-    # G307: Deferring unsafe method "Close" on type "*os.File"
-    # G304: Potential file inclusion via variable
-    - path: (cmd|tools)
-      text: G(304|306|307)
-
-    # Nobody cares.
-    # G114: Use of net/http serve function that has no support for setting timeouts
-    - path: techempower
-      text: G114
-
-    # We are using quoting algorithm from mime/multipart package. False-positive.
-    - path: (http|uri)
-      source: form-data; name="%s"
-      linters: [gocritic]
-      text: sprintfQuotedString
-
-    # Keep empty fallthrough for better readability.
-    - path: ogenregex[/\\]convert\.go
-      linters: [gocritic]
-      text: emptyFallthrough
-
-    # Not supposed to be constant.
-    - linters: [goconst]
-      text: 'string `(string|number|u?int\d{0,2}|float\d{2})`'
-    - linters: [goconst]
-      text: "string `(Unix|unix|date|time|ipv6)"
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/ogen-go/ogen
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

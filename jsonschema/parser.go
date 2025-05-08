@@ -92,7 +92,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 	}
 
 	if enum := schema.Enum; len(enum) > 0 {
-		loc := schema.Common.Locator.Field("enum")
+		loc := schema.Common.Field("enum")
 		for i, a := range enum {
 			for j, b := range enum {
 				if i == j {
@@ -133,7 +133,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 
 	for key, val := range schema.Common.Extensions {
 		if err := func() error {
-			locator := schema.Common.Locator.Field(key)
+			locator := schema.Common.Field(key)
 
 			switch key {
 			case xOgenName:
@@ -230,7 +230,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		}
 		if *minVal > *maxVal {
 			msg := fmt.Sprintf("minVal%s (%d) is greater than maxVal%s (%d)", prop, *minVal, prop, *maxVal)
-			ptr := schema.Common.Locator.Pointer(p.file(ctx))
+			ptr := schema.Common.Pointer(p.file(ctx))
 
 			me := new(location.MultiError)
 			me.ReportPtr(ptr.Field("minVal"+prop), msg)
@@ -435,7 +435,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			} else {
 				additional = true
 				if schema.Items != nil {
-					ptr := schema.Common.Locator.Pointer(p.file(ctx))
+					ptr := schema.Common.Pointer(p.file(ctx))
 					me := new(location.MultiError)
 					me.ReportPtr(ptr.Field("additionalProperties"), "both additionalProperties and items fields are set")
 					me.ReportPtr(ptr.Field("items"), "")
@@ -451,7 +451,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		}
 
 		if pp := schema.PatternProperties; len(pp) > 0 {
-			ppLoc := schema.Common.Locator.Field("patternProperties")
+			ppLoc := schema.Common.Field("patternProperties")
 
 			patterns := make([]PatternProperty, len(pp))
 			for idx, prop := range pp {
@@ -475,7 +475,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			s.PatternProperties = patterns
 		}
 
-		propsLoc := schema.Common.Locator.Field("properties")
+		propsLoc := schema.Common.Field("properties")
 		for _, propSpec := range schema.Properties {
 			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
@@ -596,7 +596,7 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema, file location.File) *S
 		}
 	}
 
-	s.Pointer = schema.Common.Locator.Pointer(file)
+	s.Pointer = schema.Common.Pointer(file)
 	return s
 }
 

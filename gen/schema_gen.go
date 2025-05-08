@@ -354,7 +354,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 				slot = fieldSlot{
 					original:      fmt.Sprintf("property %q (overridden by extension as %q)", prop.Name, *n),
-					nameDefinedAt: prop.X.Pointer.Field("name"),
+					nameDefinedAt: prop.X.Field("name"),
 				}
 			} else {
 				propertyName := strings.TrimSpace(prop.Name)
@@ -406,7 +406,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				const key = "additionalProperties"
 				slot := fieldSlot{
 					original:      key,
-					nameDefinedAt: schema.Pointer.Key(key),
+					nameDefinedAt: schema.Key(key),
 				}
 				if err := addField(&ir.Field{
 					Name:   "AdditionalProps",
@@ -462,7 +462,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		if anyOf != nil {
 			slot := fieldSlot{
 				original:      "anyOf",
-				nameDefinedAt: schema.Pointer.Key("anyOf"),
+				nameDefinedAt: schema.Key("anyOf"),
 			}
 			if err := addField(&ir.Field{
 				Name:   "AnyOf",
@@ -475,7 +475,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		if oneOf != nil {
 			slot := fieldSlot{
 				original:      "oneOf",
-				nameDefinedAt: schema.Pointer.Key("oneOf"),
+				nameDefinedAt: schema.Key("oneOf"),
 			}
 			if err := addField(&ir.Field{
 				Name:   "OneOf",
@@ -654,7 +654,7 @@ func (g *schemaGen) checkDefaultType(s *jsonschema.Schema, val any) error {
 
 	if !ok {
 		err := errors.Errorf("expected schema type is %q, default value is %T", s.Type, val)
-		p := s.Pointer.Field("default")
+		p := s.Field("default")
 
 		pos, ok := p.Position()
 		if !ok {

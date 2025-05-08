@@ -157,7 +157,7 @@ func (g *schemaGen) validateEnumValues(s *jsonschema.Schema) error {
 			return err
 		}
 		return &location.Error{
-			File: s.Pointer.File(),
+			File: s.File(),
 			Pos:  pos,
 			Err:  err,
 		}
