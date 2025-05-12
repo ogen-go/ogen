@@ -218,7 +218,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		}
 		t, err := g.anyOf(sumName, schema, side)
 		if err != nil {
-			return nil, errors.Wrap(err, "anyOf")
+			return nil, errors.Wrap(errors.Wrap(err, "anyOf"), sumName)
 		}
 
 		if !side {
@@ -231,7 +231,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 	case len(schema.AllOf) > 0:
 		t, err := g.allOf(name, schema)
 		if err != nil {
-			return nil, errors.Wrap(err, "allOf")
+			return nil, errors.Wrap(errors.Wrap(err, "allOf"), name)
 		}
 		return t, nil
 	case len(schema.OneOf) > 0:
@@ -242,7 +242,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		}
 		t, err := g.oneOf(sumName, schema, side)
 		if err != nil {
-			return nil, errors.Wrap(err, "oneOf")
+			return nil, errors.Wrap(errors.Wrap(err, "oneOf"), sumName)
 		}
 
 		if !side {
@@ -260,9 +260,10 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			jsonschema.Boolean,
 			jsonschema.Null:
 		default:
-			return nil, &ErrNotImplemented{
-				Name: "non-primitive enum",
-			}
+			return nil, errors.Wrap(
+				&ErrNotImplemented{Name: "non-primitive enum"},
+				name,
+			)
 		}
 	}
 
