@@ -88,6 +88,16 @@ if err := d.Arr(func(d *jx.Decoder) error {
 		if err != nil {
 			 return err
 		}
+	{{- else if $t.IsExternal }}
+		b, err := d.Raw()
+		if err != nil {
+			return err
+		}
+		var v {{ $t.Go }}
+		if err := json.Unmarshal(b, &v); err != nil {
+			return err
+		}
+		{{ $.Var }} = v
 	{{- else if $j.Format }}
 		v, err := json.Decode{{ $j.Format }}(d)
 		{{ $.Var }} = v

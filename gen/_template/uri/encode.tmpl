@@ -5,6 +5,12 @@
 {{- if $t.IsPrimitive }}
 	{{ if $t.JSON.TimeFormat -}}
 		return e.EncodeValue({{ $var }}.Format({{ $t.JSON.TimeFormat }}))
+	{{- else if $t.IsExternal -}}
+		b, err := json.Marshal({{ $var }})
+		if err != nil {
+			return err
+		}
+		return e.EncodeValue(string(b))
 	{{- else -}}
 		return e.EncodeValue(conv.{{ $t.ToString }}({{ $var }}))
 	{{- end }}

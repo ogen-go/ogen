@@ -1,7 +1,9 @@
 package gen
 
 import (
+	"cmp"
 	"fmt"
+	"path"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -24,6 +26,7 @@ type schemaGen struct {
 	nameRef   func(ref jsonschema.Ref) (string, error)
 	fieldMut  func(*ir.Field) error
 	fail      func(err error) error
+	imports   map[string]string
 
 	depthLimit int
 	depthCount int
@@ -45,6 +48,7 @@ func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGe
 		fail: func(err error) error {
 			return err
 		},
+		imports:    map[string]string{},
 		depthLimit: defaultSchemaDepthLimit,
 		log:        zap.NewNop(),
 	}
@@ -264,6 +268,28 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				Name: "non-primitive enum",
 			}
 		}
+	}
+
+	if schema.XOgenType != "" {
+		t, err := ir.External(schema)
+		if err != nil {
+			return nil, errors.Wrap(err, "external type")
+		}
+
+		if pkg, ok := g.imports[path.Base(t.External.PackagePath)]; ok && pkg != t.External.PackagePath {
+			for i := 0; true; i++ {
+				importAlias := fmt.Sprintf("%s%d", path.Base(t.External.PackagePath), i)
+				if pkg, ok := g.imports[importAlias]; !ok || pkg == t.External.PackagePath {
+					t.External.ImportAlias = importAlias
+					t.Primitive = ir.PrimitiveType(importAlias + "." + t.External.GoName)
+					break
+				}
+			}
+		}
+
+		g.imports[cmp.Or(t.External.ImportAlias, path.Base(t.External.PackagePath))] = t.External.PackagePath
+
+		return g.regtype(name, t), nil
 	}
 
 	switch schema.Type {

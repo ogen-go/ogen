@@ -28,6 +28,9 @@
 {{ $t := $.Type }}{{ $j := $t.JSON }}{{- $val := print_go $.Default.Value }}
 {{- if $j.TimeFormat }}
 	val, _ := json.DecodeTimeFormat(jx.DecodeStr({{ quote $val }}), {{ $j.TimeFormat }})
+{{- else if $t.IsExternal }}
+	var val {{ $t.Go }}
+	_ = json.Unmarshal([]byte({{ $val }}), &val)
 {{- else if $j.Format }}
 	val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ quote $val }}))
 {{- else if $j.IsBase64 }}

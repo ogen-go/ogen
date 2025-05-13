@@ -1,6 +1,12 @@
 package ir
 
-import "github.com/ogen-go/ogen/jsonschema"
+import (
+	"fmt"
+	"path"
+	"strings"
+
+	"github.com/ogen-go/ogen/jsonschema"
+)
 
 func Primitive(typ PrimitiveType, schema *jsonschema.Schema) *Type {
 	return &Type{
@@ -72,4 +78,23 @@ func Stream(name string, schema *jsonschema.Schema) *Type {
 		Name:   name,
 		Schema: schema,
 	}
+}
+
+func External(schema *jsonschema.Schema) (*Type, error) {
+	i := strings.LastIndex(schema.XOgenType, ".")
+	if i < 0 || i == len(schema.XOgenType)-1 {
+		return nil, fmt.Errorf("'%s' is not a valid Go type (expected 'pkg/path.Type')", schema.XOgenType)
+	}
+	pkgPath := schema.XOgenType[:i]
+	typeName := schema.XOgenType[i+1:]
+
+	return &Type{
+		Kind:      KindPrimitive,
+		Primitive: PrimitiveType(path.Base(pkgPath) + "." + typeName),
+		Schema:    schema,
+		External: ExternalType{
+			PackagePath: pkgPath,
+			GoName:      typeName,
+		},
+	}, nil
 }

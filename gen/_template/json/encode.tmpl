@@ -114,6 +114,10 @@ if {{ $.Var }}.Set {
 	{{- else if $j.TimeFormat }}
 		{{- template "json/enc_field" $ }}
 		json.EncodeTimeFormat(e, {{ $.Var }}, {{ $j.TimeFormat }})
+	{{- else if $t.IsExternal -}}
+		{{- template "json/enc_field" $ }}
+		b, _ := json.Marshal({{ $.Var }})
+		e.Raw(b)
 	{{- else if $j.Format -}}
 		{{- template "json/enc_field" $ }}
 		json.Encode{{ $j.Format }}(e, {{ $.Var }})

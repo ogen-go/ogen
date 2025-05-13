@@ -45,6 +45,7 @@ type XProperty struct {
 // Schema is a JSON Schema.
 type Schema struct {
 	XOgenName string // Annotation to set type name.
+	XOgenType string // Annotation to set custom type.
 
 	Ref Ref // Whether schema is referenced.
 
