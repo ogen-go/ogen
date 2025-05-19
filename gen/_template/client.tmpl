@@ -29,6 +29,18 @@ type Client struct {
 
 var _ Operations = &Client{}
 
+const ndjsonContentType = "application/x-ndjson"
+
+func closeResponse(resp *http.Response) {
+	// caller is responsible for closing response body in case of ndjson
+	contentType := resp.Header.Get("Content-Type")
+	mediaType, _, err := mime.ParseMediaType(contentType)
+	if err != nil || strings.ToLower(mediaType) != ndjsonContentType {
+		// close response body if not ndjson (or error parsing content type)
+		resp.Body.Close()
+	}
+}
+
 {{- if $.PathsServerEnabled }}
 {{- if $.Error }}
 type errorHandler interface {
@@ -305,7 +317,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
-	defer resp.Body.Close()
+	defer closeResponse(resp)
 
 	stage = "DecodeResponse"
 	result, err := decode{{ $op.Name }}Response(resp)

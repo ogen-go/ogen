@@ -9,6 +9,8 @@ func (t ContentType) Mask() bool { return strings.ContainsRune(string(t), '*') }
 
 func (t ContentType) String() string { return string(t) }
 
+func (t ContentType) NDJSON() bool { return Encoding(t) == EncodingNDJSON }
+
 // Encoding of body.
 type Encoding string
 
@@ -23,6 +25,8 @@ const (
 	EncodingOctetStream Encoding = "application/octet-stream"
 	// EncodingTextPlain is Encoding for text.
 	EncodingTextPlain Encoding = "text/plain"
+	// EncodingNDJSON is Encoding for newline-delimited JSON.
+	EncodingNDJSON Encoding = "application/x-ndjson"
 )
 
 func (t Encoding) String() string { return string(t) }
