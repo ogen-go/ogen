@@ -139,6 +139,7 @@ func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
+func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
 
 func (t *Type) MustField(name string) *Field {
 	if t.IsAlias() {

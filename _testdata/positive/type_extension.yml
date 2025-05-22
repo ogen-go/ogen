@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: API
+  version: 0.1.0
+paths:
+  /optional:
+    get:
+      operationId: default
+      parameters:
+        - name: foo
+          in: query
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/types/foo/decimal.Decimal
+            default: "1.23"
+        - name: bar
+          in: query
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/types/bar/decimal.Decimal
+            default: "1.23"
+      responses:
+        '200':
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/types/foo/decimal.Decimal
+                    default: "1.23"
+                  bar:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/types/bar/decimal.Decimal
+                    default: "1.23"
+  /required:
+    get:
+      operationId: required
+      parameters:
+        - name: foo
+          in: query
+          required: true
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/types/foo/decimal.Decimal
+        - name: bar
+          in: query
+          required: true
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/types/bar/decimal.Decimal
+      responses:
+        '200':
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - foo
+                  - bar
+                properties:
+                  foo:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/types/foo/decimal.Decimal
+                  bar:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/types/bar/decimal.Decimal

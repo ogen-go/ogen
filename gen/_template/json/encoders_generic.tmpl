@@ -19,6 +19,9 @@ func (o {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder{{ if $g.Format }}, format
 	format(e, o.Value)
 {{- else if $g.JSON.TimeFormat }}
 	json.EncodeTimeFormat(e, o.Value, {{ $g.JSON.TimeFormat }})
+{{- else if $g.IsExternal }}
+	b, _ := json.Marshal(o.Value)
+	e.Raw(b)
 {{- else if $g.JSON.Format }}
 	json.Encode{{ $g.JSON.Format }}(e, o.Value)
 {{- else if $g.JSON.Fn }}
@@ -73,6 +76,16 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 	{{- else if $g.JSON.TimeFormat }}
 		v, err := json.DecodeTimeFormat(d, {{ $g.JSON.TimeFormat }})
 		if err != nil {
+			return err
+		}
+		o.Value = v
+	{{- else if $g.IsExternal }}
+		b, err := d.Raw()
+		if err != nil {
+			return err
+		}
+		var v {{ $g.Go }}
+		if err := json.Unmarshal(b, &v); err != nil {
 			return err
 		}
 		o.Value = v
