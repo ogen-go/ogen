@@ -1550,18 +1550,6 @@ func (s InlineDiscriminatorOneOfSum) Encode(e *jx.Encoder) {
 
 func (s InlineDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
 	switch s.Type {
-	case InlineOneOfBarInlineDiscriminatorOneOfSum:
-		e.FieldStart("kind")
-		e.Str("bar")
-		{
-			s := s.InlineOneOfBar
-			{
-				if s.Bar.Set {
-					e.FieldStart("bar")
-					s.Bar.Encode(e)
-				}
-			}
-		}
 	case InlineOneOfFooInlineDiscriminatorOneOfSum:
 		e.FieldStart("kind")
 		e.Str("foo")
@@ -1571,6 +1559,18 @@ func (s InlineDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
 				if s.Foo.Set {
 					e.FieldStart("foo")
 					s.Foo.Encode(e)
+				}
+			}
+		}
+	case InlineOneOfBarInlineDiscriminatorOneOfSum:
+		e.FieldStart("kind")
+		e.Str("bar")
+		{
+			s := s.InlineOneOfBar
+			{
+				if s.Bar.Set {
+					e.FieldStart("bar")
+					s.Bar.Encode(e)
 				}
 			}
 		}
@@ -1600,11 +1600,11 @@ func (s *InlineDiscriminatorOneOfSum) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "bar":
-					s.Type = InlineOneOfBarInlineDiscriminatorOneOfSum
-					found = true
 				case "foo":
 					s.Type = InlineOneOfFooInlineDiscriminatorOneOfSum
+					found = true
+				case "bar":
+					s.Type = InlineOneOfBarInlineDiscriminatorOneOfSum
 					found = true
 				default:
 					return errors.Errorf("unknown type %s", typ)
@@ -3880,18 +3880,6 @@ func (s MergeDiscriminatorOneOfSum) Encode(e *jx.Encoder) {
 
 func (s MergeDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
 	switch s.Type {
-	case InlineOneOfBarMergeDiscriminatorOneOfSum:
-		e.FieldStart("kind")
-		e.Str("bar")
-		{
-			s := s.InlineOneOfBar
-			{
-				if s.Bar.Set {
-					e.FieldStart("bar")
-					s.Bar.Encode(e)
-				}
-			}
-		}
 	case InlineOneOfFooMergeDiscriminatorOneOfSum:
 		e.FieldStart("kind")
 		e.Str("foo")
@@ -3901,6 +3889,18 @@ func (s MergeDiscriminatorOneOfSum) encodeFields(e *jx.Encoder) {
 				if s.Foo.Set {
 					e.FieldStart("foo")
 					s.Foo.Encode(e)
+				}
+			}
+		}
+	case InlineOneOfBarMergeDiscriminatorOneOfSum:
+		e.FieldStart("kind")
+		e.Str("bar")
+		{
+			s := s.InlineOneOfBar
+			{
+				if s.Bar.Set {
+					e.FieldStart("bar")
+					s.Bar.Encode(e)
 				}
 			}
 		}
@@ -3930,11 +3930,11 @@ func (s *MergeDiscriminatorOneOfSum) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "bar":
-					s.Type = InlineOneOfBarMergeDiscriminatorOneOfSum
-					found = true
 				case "foo":
 					s.Type = InlineOneOfFooMergeDiscriminatorOneOfSum
+					found = true
+				case "bar":
+					s.Type = InlineOneOfBarMergeDiscriminatorOneOfSum
 					found = true
 				default:
 					return errors.Errorf("unknown type %s", typ)
@@ -4988,6 +4988,18 @@ func (s OneOfMappingReference) Encode(e *jx.Encoder) {
 
 func (s OneOfMappingReference) encodeFields(e *jx.Encoder) {
 	switch s.Type {
+	case OneOfMappingReferenceAOneOfMappingReference:
+		e.FieldStart("infoType")
+		e.Str("simple")
+		{
+			s := s.OneOfMappingReferenceA
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+		}
 	case OneOfMappingReferenceBOneOfMappingReference:
 		e.FieldStart("infoType")
 		e.Str("extended")
@@ -5009,18 +5021,6 @@ func (s OneOfMappingReference) encodeFields(e *jx.Encoder) {
 				if s.Info.Set {
 					e.FieldStart("info")
 					s.Info.Encode(e)
-				}
-			}
-		}
-	case OneOfMappingReferenceAOneOfMappingReference:
-		e.FieldStart("infoType")
-		e.Str("simple")
-		{
-			s := s.OneOfMappingReferenceA
-			{
-				if s.Description.Set {
-					e.FieldStart("description")
-					s.Description.Encode(e)
 				}
 			}
 		}
@@ -5050,11 +5050,11 @@ func (s *OneOfMappingReference) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "extended":
-					s.Type = OneOfMappingReferenceBOneOfMappingReference
-					found = true
 				case "simple":
 					s.Type = OneOfMappingReferenceAOneOfMappingReference
+					found = true
+				case "extended":
+					s.Type = OneOfMappingReferenceBOneOfMappingReference
 					found = true
 				default:
 					return errors.Errorf("unknown type %s", typ)
