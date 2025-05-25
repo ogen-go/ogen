@@ -210,12 +210,13 @@ func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
 	switch s.Type {
 	{{- range $s := $t.SumOf }}
-		case {{ $s.Name }}{{ $t.Name }}:
-		{{- if $s.NeedValidation }}
-		{{- template "validate" elem $s (printf "s.%s" $s.Name) -}}
-		{{- else }}
-		return nil // no validation needed
-		{{- end }}
+		{{- $entries := $t.SumSpec.PickMappingEntriesFor $t $s }}
+		case {{ $entries.JoinConstNames }}:
+			{{- if $s.NeedValidation }}
+			{{- template "validate" elem $s (printf "s.%s" $s.Name) -}}
+			{{- else }}
+			return nil // no validation needed
+			{{- end }}
 	{{- end }}
 	default:
 		return errors.Errorf("invalid type %q", s.Type)

@@ -14,43 +14,82 @@ type {{ $.Name }}Type string
 // Possible values for {{ $.Name }}Type.
 const (
 	{{- range $s := $.SumOf }}
-	{{- $m := $.SumSpec.PickMappingEntryFor $s }}
-	{{- if $m }}
-	{{- /* try to use mapping key if the entry for $s is defined */}}
-	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $m.Key }}
-	{{- else }}
-	{{- /* otherwise fallback to SumOf Type name */}}
-	{{ $s.Name }}{{ $.Name }} {{ $.Name }}Type = {{ quote $s.Go }}
-	{{- end }}
+		{{- $entries := $.SumSpec.PickMappingEntriesFor $ $s }}
+		{{- range $e := $entries}}
+			{{ $e.Name }} {{ $.Name }}Type = {{ quote $e.Key }}
+		{{- end }}
 	{{- end }}
 )
 
 {{- range $s := $.SumOf }}
-// Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
-func (s {{ $.ReadOnlyReceiver }}) Is{{ $s.Name }}() bool { return s.Type == {{ $s.Name }}{{ $.Name }} }
+	{{- $entries := $.SumSpec.PickMappingEntriesFor $ $s }}
+	{{- if eq (len $entries) 1 }}
+		{{- range $e := $entries }}
+		// Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
+		func (s {{ $.ReadOnlyReceiver }}) Is{{ $s.Name }}() bool { return s.Type == {{ $e.Name }} }
+		{{- end }}
+	{{- else }}
+		// Is{{ $s.Name }} reports whether {{ $.Name }} is {{ $s.Go }}.
+		func (s {{ $.ReadOnlyReceiver }}) Is{{ $s.Name }}() bool {
+			switch s.Type {
+			case {{ $entries.JoinConstNames }}:
+				return true
+			default:
+				return false
+			}
+		}
+	{{- end }}
 {{- end }}
 
 {{- range $s := $.SumOf }}
-// Set{{ $s.Name }} sets {{ $.Name }} to {{ $s.Go }}.
-func (s *{{ $.Go }}) Set{{ $s.Name }}(v {{ $s.Go }}) {
-	s.Type = {{ $s.Name }}{{ $.Name }}
-	s.{{ $s.Name }} = v
-}
-
-// Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
-func (s {{ $.ReadOnlyReceiver }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
-	if !s.Is{{ $s.Name }}() {
-		return v, false
+	{{- $entries := $.SumSpec.PickMappingEntriesFor $ $s }}
+	{{- $isMulti := gt (len $entries) 1}}
+	// Set{{ $s.Name }} sets {{ $.Name }} to {{ $s.Go }}.
+	{{- if $isMulti }}
+	// panics if `t` is not associated with {{ $s.Name }}
+	{{- end }}
+	func (s *{{ $.Go }}) Set{{ $s.Name }}({{- if $isMulti }}t {{ $.Name }}Type, {{- end }}v {{ $s.Go }}) {
+		{{- if $isMulti }}
+		s.Type = t
+		{{- else }}
+			{{- range $e := $entries }}
+			s.Type = {{ $e.Name }}
+			{{- end }}
+		{{- end }}
+		s.{{ $s.Name }} = v
+		{{- if $isMulti }}
+		if !s.Is{{ $s.Name }}() {
+			panic(fmt.Errorf("invariant: %v is not {{ $s.Name }}", t))
+		}
+		{{- end }}
 	}
-	return s.{{ $s.Name }}, true
-}
 
-// New{{ $s.Name }}{{ $.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
-func New{{ $s.Name }}{{ $.Name }}(v {{ $s.Go }}) {{ $.Go }} {
-	var s {{ $.Name }}
-	s.Set{{ $s.Name }}(v)
-	return s
-}
+	// Get{{ $s.Name }} returns {{ $s.Go }} and true boolean if {{ $.Go }} is {{ $s.Go }}.
+	func (s {{ $.ReadOnlyReceiver }}) Get{{ $s.Name }}()(v {{ $s.Go }}, ok bool) {
+		if !s.Is{{ $s.Name }}() {
+			return v, false
+		}
+		return s.{{ $s.Name }}, true
+	}
+
+	{{- if $isMulti }}
+		{{- range $e := $entries }}
+		// New{{ $e.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
+		func New{{ $e.Name }}(v {{ $s.Go }}) {{ $.Go }} {
+			var s {{ $.Name }}
+			s.Set{{ $s.Name }}({{ $e.Name }}, v)
+			return s
+		}
+		{{- end }}
+	{{- else }}
+		{{- range $e := $entries }}
+		// New{{ $e.Name }} returns new {{ $.Go }} from {{ $s.Go }}.
+		func New{{ $e.Name }}(v {{ $s.Go }}) {{ $.Go }} {
+			var s {{ $.Name }}
+			s.Set{{ $s.Name }}(v)
+			return s
+		}
+		{{- end }}
+	{{- end }}
 {{- end }}
-
-{{ end }}
+{{ end }}{{- /* end define */}}

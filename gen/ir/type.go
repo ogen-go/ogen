@@ -29,6 +29,7 @@ const (
 type SumSpecMap struct {
 	Key  string
 	Type *Type
+	Name string
 }
 
 // SumSpec for KindSum.
@@ -48,7 +49,90 @@ type SumSpec struct {
 	TypeDiscriminator bool
 }
 
-// PickMappingEntryFor returns mapping entry for given type if exists.
+type ResolvedSumSpecMap struct {
+	Name string
+	Key  string
+}
+
+type PickedMappingEntries []*ResolvedSumSpecMap
+
+func (e PickedMappingEntries) JoinConstNames() string {
+	names := make([]string, len(e))
+	for i, entry := range e {
+		names[i] = entry.Name
+	}
+	return strings.Join(names, ", ")
+}
+
+// PickMappingEntriesFor returns all mapping entries for given type they exists.
+func (s SumSpec) PickMappingEntriesFor(t, sumOf *Type) PickedMappingEntries {
+	type tmpEntry struct {
+		isSingleEntry bool
+		typ           *Type
+		sumOf         *Type
+		sumSpec       *SumSpec
+		sumSpecMap    *SumSpecMap
+	}
+	buildEntry := func(e *tmpEntry) *ResolvedSumSpecMap {
+		var name []string
+		var value string
+		switch {
+		case e.sumSpecMap == nil || e.sumSpecMap.Key == e.sumOf.Go():
+			name = []string{e.sumOf.Name, e.typ.Name}
+			value = e.sumOf.Go()
+		case e.isSingleEntry:
+			name = []string{e.sumOf.Name, e.typ.Name}
+			value = e.sumSpecMap.Key
+		default:
+			name = []string{e.sumSpecMap.Name, e.typ.Name}
+			value = e.sumSpecMap.Key
+		}
+		return &ResolvedSumSpecMap{
+			Name: strings.Join(name, ""),
+			Key:  value,
+		}
+	}
+
+	defaultEntries := []*ResolvedSumSpecMap{buildEntry(&tmpEntry{
+		isSingleEntry: true,
+		typ:           t,
+		sumOf:         sumOf,
+		sumSpec:       &s,
+		sumSpecMap:    nil,
+	})}
+	if s.Discriminator == "" {
+		return defaultEntries
+	}
+
+	var tmpEntries []*tmpEntry
+	for _, m := range s.Mapping {
+		if m.Type == sumOf {
+			tmpEntries = append(tmpEntries, &tmpEntry{
+				typ:        t,
+				sumOf:      sumOf,
+				sumSpec:    &s,
+				sumSpecMap: &m,
+			})
+		}
+	}
+
+	switch len(tmpEntries) {
+	case 0:
+		return defaultEntries
+	case 1:
+		tmpEntries[0].isSingleEntry = true
+	}
+
+	entries := make([]*ResolvedSumSpecMap, len(tmpEntries))
+	for i, e := range tmpEntries {
+		entries[i] = buildEntry(e)
+	}
+	return entries
+}
+
+// Deprecated: use PickMappingEntriesFor instead.
+//
+// PickMappingEntryFor returns the first mapping entry for given type if exists.
 func (s SumSpec) PickMappingEntryFor(t *Type) *SumSpecMap {
 	if s.Discriminator == "" {
 		return nil

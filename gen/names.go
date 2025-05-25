@@ -3,8 +3,10 @@ package gen
 import (
 	"fmt"
 	"go/token"
+	"iter"
 	"net/url"
 	"path"
+	"slices"
 	"strconv"
 	"strings"
 	"unicode"
@@ -224,8 +226,13 @@ func firstLower(s string) string {
 	return string(out)
 }
 
-// enumVariantNameGen creates a name generator for enum values.
-func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string, error), error) {
+// valueMappingNameGen creates a name generator for either an enum or discriminator mapping
+func valueMappingNameGen(
+	mapType, name string,
+	values iter.Seq[any],
+	valuesLen int,
+	allowSpecial bool,
+) (func(v any, idx int) (string, error), error) {
 	type namingStrategy int
 	const (
 		pascalName namingStrategy = iota
@@ -235,8 +242,8 @@ func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string
 		_lastStrategy
 	)
 
-	vstrCache := make(map[int]string, len(values))
-	nameEnum := func(s namingStrategy, v any, idx int) (string, error) {
+	vstrCache := make(map[int]string, valuesLen)
+	nameGen := func(s namingStrategy, v any, idx int) (string, error) {
 		vstr, ok := vstrCache[idx]
 		if !ok {
 			vstr = fmt.Sprintf("%v", v)
@@ -279,7 +286,7 @@ func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string
 				//   - '-4'
 				firstRune, _ := utf8.DecodeRuneInString(v)
 				if firstRune == utf8.RuneError {
-					panic(fmt.Sprintf("invalid enum value: %q", v))
+					panic(fmt.Sprintf("invalid %s variant for %s: %q", mapType, name, v))
 				}
 
 				_, isFirstCharSpecial := namedChar[firstRune]
@@ -294,6 +301,10 @@ func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string
 
 nextStrategy:
 	for strategy := pascalName; strategy < _lastStrategy; strategy++ {
+		if !allowSpecial && strategy == pascalSpecialName {
+			continue nextStrategy
+		}
+
 		// Treat enum type name as duplicate to prevent collisions.
 		names := map[string]struct{}{
 			name: {},
@@ -301,7 +312,7 @@ nextStrategy:
 		idx := -1
 		for v := range values {
 			idx++
-			k, err := nameEnum(strategy, v, idx)
+			k, err := nameGen(strategy, v, idx)
 			if err != nil {
 				continue nextStrategy
 			}
@@ -314,8 +325,33 @@ nextStrategy:
 			continue nextStrategy
 		}
 		return func(v any, idx int) (string, error) {
-			return nameEnum(strategy, v, idx)
+			return nameGen(strategy, v, idx)
 		}, nil
 	}
-	return nil, errors.Errorf("unable to generate variant names for enum %q", name)
+	return nil, errors.Errorf("unable to generate %s variant names for %q", mapType, name)
+}
+
+// enumVariantNameGen creates a name generator for enum values.
+func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string, error), error) {
+	return valueMappingNameGen("enum", name, slices.Values(values), len(values), true)
+}
+
+// discriminatorMappingNameGen creates a name generator for discriminator mapping keys.
+func discriminatorMappingNameGen(name string, keys []string) (func(v any, idx int) (string, error), error) {
+	if len(keys) == 0 {
+		return nil, errors.New("empty discriminator keys")
+	}
+
+	// Create sequence that yields the mapping keys
+	seq := func(yield func(any) bool) {
+		for _, key := range keys {
+			// ensure user_id => UserId and not UserID
+			key := strings.ReplaceAll(key, "_", "+")
+			if !yield(key) {
+				return
+			}
+		}
+	}
+
+	return valueMappingNameGen("discriminator", name, seq, len(keys), false)
 }
