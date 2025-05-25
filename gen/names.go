@@ -1,11 +1,14 @@
 package gen
 
 import (
+	"fmt"
 	"go/token"
 	"net/url"
 	"path"
+	"strconv"
 	"strings"
 	"unicode"
+	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
@@ -219,4 +222,100 @@ func firstLower(s string) string {
 		out = append(out, c)
 	}
 	return string(out)
+}
+
+// enumVariantNameGen creates a name generator for enum values.
+func enumVariantNameGen(name string, values []any) (func(v any, idx int) (string, error), error) {
+	type namingStrategy int
+	const (
+		pascalName namingStrategy = iota
+		pascalSpecialName
+		cleanSuffix
+		indexSuffix
+		_lastStrategy
+	)
+
+	vstrCache := make(map[int]string, len(values))
+	nameEnum := func(s namingStrategy, v any, idx int) (string, error) {
+		vstr, ok := vstrCache[idx]
+		if !ok {
+			vstr = fmt.Sprintf("%v", v)
+			if vstr == "" {
+				vstr = "Empty"
+			}
+			vstrCache[idx] = vstr
+		}
+		switch s {
+		case pascalName:
+			return pascal(name, vstr)
+		case pascalSpecialName:
+			return pascalSpecial(name, vstr)
+		case cleanSuffix:
+			return name + "_" + cleanSpecial(vstr), nil
+		case indexSuffix:
+			return name + "_" + strconv.Itoa(idx), nil
+		default:
+			panic(unreachable(s))
+		}
+	}
+
+	isException := func(start namingStrategy) bool {
+		if start == pascalName {
+			// This code is called when vstrCache is fully populated, so it's ok.
+			for _, v := range vstrCache {
+				if v == "" {
+					continue
+				}
+
+				// Do not use pascal strategy for enum values starting with special characters.
+				//
+				// This rule is created to be able to distinguish
+				// between negative and positive numbers in this case:
+				//
+				// enum:
+				//   - '1'
+				//   - '-2'
+				//   - '3'
+				//   - '-4'
+				firstRune, _ := utf8.DecodeRuneInString(v)
+				if firstRune == utf8.RuneError {
+					panic(fmt.Sprintf("invalid enum value: %q", v))
+				}
+
+				_, isFirstCharSpecial := namedChar[firstRune]
+				if isFirstCharSpecial {
+					return true
+				}
+			}
+		}
+
+		return false
+	}
+
+nextStrategy:
+	for strategy := pascalName; strategy < _lastStrategy; strategy++ {
+		// Treat enum type name as duplicate to prevent collisions.
+		names := map[string]struct{}{
+			name: {},
+		}
+		idx := -1
+		for v := range values {
+			idx++
+			k, err := nameEnum(strategy, v, idx)
+			if err != nil {
+				continue nextStrategy
+			}
+			if _, ok := names[k]; ok {
+				continue nextStrategy
+			}
+			names[k] = struct{}{}
+		}
+		if isException(strategy) {
+			continue nextStrategy
+		}
+		return func(v any, idx int) (string, error) {
+			return nameEnum(strategy, v, idx)
+		}, nil
+	}
+	return nil, errors.Errorf("unable to generate variant names for enum %q", name)
 }
