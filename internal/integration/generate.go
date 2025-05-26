@@ -15,14 +15,15 @@ package integration
 
 // Tests
 //
-//go:generate go run ../../cmd/ogen -v --clean --target test_webhooks         ../../_testdata/positive/webhooks.json
-//go:generate go run ../../cmd/ogen -v --clean --target test_servers          ../../_testdata/positive/servers.json
-//go:generate go run ../../cmd/ogen -v --clean --target test_single_endpoint  ../../_testdata/positive/single_endpoint.json
-//go:generate go run ../../cmd/ogen -v --clean --target test_http_responses   ../../_testdata/positive/http_responses.json
-//go:generate go run ../../cmd/ogen -v --clean --target test_http_requests    ../../_testdata/positive/http_requests.json
-//go:generate go run ../../cmd/ogen -v --clean --target test_form             ../../_testdata/positive/form.json
-//go:generate go run ../../cmd/ogen -v --clean --target test_parameters       ../../_testdata/positive/parameters.json
-//go:generate go run ../../cmd/ogen -v --clean --target test_security         ../../_testdata/positive/security.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_webhooks              ../../_testdata/positive/webhooks.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_servers               ../../_testdata/positive/servers.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_single_endpoint       ../../_testdata/positive/single_endpoint.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_http_responses        ../../_testdata/positive/http_responses.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_http_responses_accept ../../_testdata/positive/http_responses_accept.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_http_requests         ../../_testdata/positive/http_requests.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_form                  ../../_testdata/positive/form.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_parameters            ../../_testdata/positive/parameters.json
+//go:generate go run ../../cmd/ogen -v --clean --target test_security              ../../_testdata/positive/security.json
 //
 //
 //go:generate go run ../../cmd/ogen -v --clean --target referenced_path_item ../../_testdata/positive/referenced_pathItem.json
