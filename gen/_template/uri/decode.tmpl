@@ -11,6 +11,9 @@
 
 	{{ if $t.JSON.TimeFormat -}}
 		c, err := time.Parse({{ $t.JSON.TimeFormat }}, val)
+	{{- else if $t.IsExternal -}}
+		var c {{ $t.Go }}
+		err = json.Unmarshal([]byte(val), &c)
 	{{- else -}}
 		c, err := conv.{{ $t.FromString }}(val)
 	{{- end }}
