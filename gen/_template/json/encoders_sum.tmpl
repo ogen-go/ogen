@@ -20,16 +20,29 @@ func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
 func (s {{ $.ReadOnlyReceiver }}) encodeFields(e *jx.Encoder) {
 	{{- if $d.Discriminator -}}
 		switch s.Type {
-		{{- range $m := $.SumSpec.Mapping }}
-		case {{ $m.Type.Name }}{{ $.Name }}:
-			e.FieldStart({{ quote $.SumSpec.Discriminator }})
-			e.Str({{ quote $m.Key }})
-			{{- $j := $m.Type.JSON.Except $.SumSpec.Discriminator }}
-			{{- if $j.AnyFields }}
-			{
-				s := s.{{ $m.Type.Name }}
-				{{- template "json/encode_struct_fields" $j }}
-			}
+		{{- range $s := $.SumOf }}
+			{{- $entries := $.SumSpec.PickMappingEntriesFor $ $s }}
+			case {{ $entries.JoinConstNames }}:
+				{{- if eq (len $entries) 1}}
+					{{- range $e := $entries }}
+						e.FieldStart({{ quote $.SumSpec.Discriminator }})
+						e.Str({{ quote $e.Key }})
+					{{- end }}
+				{{- else }}
+				switch s.Type {
+				{{- range $e := $entries }}
+				case {{ $e.Name }}:
+					e.FieldStart({{ quote $.SumSpec.Discriminator }})
+					e.Str({{ quote $e.Key }})
+				{{- end }}
+				}
+				{{- end }}
+				{{- $j := $s.JSON.Except $.SumSpec.Discriminator }}
+				{{- if $j.AnyFields }}
+				{
+					s := s.{{ $s.Name }}
+					{{- template "json/encode_struct_fields" $j }}
+				}
 			{{- end }}
 		{{- end }}
 		}
@@ -100,10 +113,13 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				{{- range $m:= $.SumSpec.Mapping }}
-				case {{ quote $m.Key }}:
-					s.Type = {{ $m.Type.Name }}{{ $.Name }}
-					found = true
+				{{- range $s := $.SumOf }}
+					{{- $entries := $.SumSpec.PickMappingEntriesFor $ $s }}
+					{{- range $e := $entries }}
+						case {{ quote $e.Key }}:
+							s.Type = {{ $e.Name }}
+							found = true
+					{{- end }}
 				{{- end }}
 				default:
 					return errors.Errorf("unknown type %s", typ)
@@ -138,7 +154,8 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	}
 	switch s.Type {
 	{{- range $s := $.SumOf }}
-	case {{ $s.Name }}{{ $.Name }}:
+	{{- $entries := $.SumSpec.PickMappingEntriesFor $ $s }}
+	case {{ $entries.JoinConstNames }}:
 		{{- template "json/dec" elem $s (printf "s.%s" $s.Name) }}
 	{{- end }}
 	default:

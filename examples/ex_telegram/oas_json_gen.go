@@ -1809,15 +1809,18 @@ func (s BotCommandScope) Encode(e *jx.Encoder) {
 
 func (s BotCommandScope) encodeFields(e *jx.Encoder) {
 	switch s.Type {
-	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+	case BotCommandScopeDefaultBotCommandScope:
 		e.FieldStart("type")
-		e.Str("all_chat_administrators")
-	case BotCommandScopeAllGroupChatsBotCommandScope:
-		e.FieldStart("type")
-		e.Str("all_group_chats")
+		e.Str("default")
 	case BotCommandScopeAllPrivateChatsBotCommandScope:
 		e.FieldStart("type")
 		e.Str("all_private_chats")
+	case BotCommandScopeAllGroupChatsBotCommandScope:
+		e.FieldStart("type")
+		e.Str("all_group_chats")
+	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		e.FieldStart("type")
+		e.Str("all_chat_administrators")
 	case BotCommandScopeChatBotCommandScope:
 		e.FieldStart("type")
 		e.Str("chat")
@@ -1852,9 +1855,6 @@ func (s BotCommandScope) encodeFields(e *jx.Encoder) {
 				e.Int64(s.UserID)
 			}
 		}
-	case BotCommandScopeDefaultBotCommandScope:
-		e.FieldStart("type")
-		e.Str("default")
 	}
 }
 
@@ -1881,14 +1881,17 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
-				case "all_chat_administrators":
-					s.Type = BotCommandScopeAllChatAdministratorsBotCommandScope
+				case "default":
+					s.Type = BotCommandScopeDefaultBotCommandScope
+					found = true
+				case "all_private_chats":
+					s.Type = BotCommandScopeAllPrivateChatsBotCommandScope
 					found = true
 				case "all_group_chats":
 					s.Type = BotCommandScopeAllGroupChatsBotCommandScope
 					found = true
-				case "all_private_chats":
-					s.Type = BotCommandScopeAllPrivateChatsBotCommandScope
+				case "all_chat_administrators":
+					s.Type = BotCommandScopeAllChatAdministratorsBotCommandScope
 					found = true
 				case "chat":
 					s.Type = BotCommandScopeChatBotCommandScope
@@ -1898,9 +1901,6 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 					found = true
 				case "chat_member":
 					s.Type = BotCommandScopeChatMemberBotCommandScope
-					found = true
-				case "default":
-					s.Type = BotCommandScopeDefaultBotCommandScope
 					found = true
 				default:
 					return errors.Errorf("unknown type %s", typ)
@@ -3878,6 +3878,26 @@ func (s ChatMember) Encode(e *jx.Encoder) {
 
 func (s ChatMember) encodeFields(e *jx.Encoder) {
 	switch s.Type {
+	case ChatMemberOwnerChatMember:
+		e.FieldStart("status")
+		e.Str("ChatMemberOwner")
+		{
+			s := s.ChatMemberOwner
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+			{
+				e.FieldStart("is_anonymous")
+				e.Bool(s.IsAnonymous)
+			}
+			{
+				if s.CustomTitle.Set {
+					e.FieldStart("custom_title")
+					s.CustomTitle.Encode(e)
+				}
+			}
+		}
 	case ChatMemberAdministratorChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberAdministrator")
@@ -3948,30 +3968,6 @@ func (s ChatMember) encodeFields(e *jx.Encoder) {
 				}
 			}
 		}
-	case ChatMemberBannedChatMember:
-		e.FieldStart("status")
-		e.Str("ChatMemberBanned")
-		{
-			s := s.ChatMemberBanned
-			{
-				e.FieldStart("user")
-				s.User.Encode(e)
-			}
-			{
-				e.FieldStart("until_date")
-				e.Int(s.UntilDate)
-			}
-		}
-	case ChatMemberLeftChatMember:
-		e.FieldStart("status")
-		e.Str("ChatMemberLeft")
-		{
-			s := s.ChatMemberLeft
-			{
-				e.FieldStart("user")
-				s.User.Encode(e)
-			}
-		}
 	case ChatMemberMemberChatMember:
 		e.FieldStart("status")
 		e.Str("ChatMemberMember")
@@ -3980,26 +3976,6 @@ func (s ChatMember) encodeFields(e *jx.Encoder) {
 			{
 				e.FieldStart("user")
 				s.User.Encode(e)
-			}
-		}
-	case ChatMemberOwnerChatMember:
-		e.FieldStart("status")
-		e.Str("ChatMemberOwner")
-		{
-			s := s.ChatMemberOwner
-			{
-				e.FieldStart("user")
-				s.User.Encode(e)
-			}
-			{
-				e.FieldStart("is_anonymous")
-				e.Bool(s.IsAnonymous)
-			}
-			{
-				if s.CustomTitle.Set {
-					e.FieldStart("custom_title")
-					s.CustomTitle.Encode(e)
-				}
 			}
 		}
 	case ChatMemberRestrictedChatMember:
@@ -4052,6 +4028,30 @@ func (s ChatMember) encodeFields(e *jx.Encoder) {
 				e.Int(s.UntilDate)
 			}
 		}
+	case ChatMemberLeftChatMember:
+		e.FieldStart("status")
+		e.Str("ChatMemberLeft")
+		{
+			s := s.ChatMemberLeft
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+		}
+	case ChatMemberBannedChatMember:
+		e.FieldStart("status")
+		e.Str("ChatMemberBanned")
+		{
+			s := s.ChatMemberBanned
+			{
+				e.FieldStart("user")
+				s.User.Encode(e)
+			}
+			{
+				e.FieldStart("until_date")
+				e.Int(s.UntilDate)
+			}
+		}
 	}
 }
 
@@ -4078,23 +4078,23 @@ func (s *ChatMember) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
+				case "ChatMemberOwner":
+					s.Type = ChatMemberOwnerChatMember
+					found = true
 				case "ChatMemberAdministrator":
 					s.Type = ChatMemberAdministratorChatMember
-					found = true
-				case "ChatMemberBanned":
-					s.Type = ChatMemberBannedChatMember
-					found = true
-				case "ChatMemberLeft":
-					s.Type = ChatMemberLeftChatMember
 					found = true
 				case "ChatMemberMember":
 					s.Type = ChatMemberMemberChatMember
 					found = true
-				case "ChatMemberOwner":
-					s.Type = ChatMemberOwnerChatMember
-					found = true
 				case "ChatMemberRestricted":
 					s.Type = ChatMemberRestrictedChatMember
+					found = true
+				case "ChatMemberLeft":
+					s.Type = ChatMemberLeftChatMember
+					found = true
+				case "ChatMemberBanned":
+					s.Type = ChatMemberBannedChatMember
 					found = true
 				default:
 					return errors.Errorf("unknown type %s", typ)
@@ -12080,6 +12080,416 @@ func (s InlineQueryResult) Encode(e *jx.Encoder) {
 
 func (s InlineQueryResult) encodeFields(e *jx.Encoder) {
 	switch s.Type {
+	case InlineQueryResultCachedAudioInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("InlineQueryResultCachedAudio")
+		{
+			s := s.InlineQueryResultCachedAudio
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("audio_file_id")
+				e.Str(s.AudioFileID)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
+	case InlineQueryResultCachedDocumentInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("InlineQueryResultCachedDocument")
+		{
+			s := s.InlineQueryResultCachedDocument
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				e.FieldStart("document_file_id")
+				e.Str(s.DocumentFileID)
+			}
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
+	case InlineQueryResultCachedGifInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("InlineQueryResultCachedGif")
+		{
+			s := s.InlineQueryResultCachedGif
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("gif_file_id")
+				e.Str(s.GIFFileID)
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
+	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("InlineQueryResultCachedMpeg4Gif")
+		{
+			s := s.InlineQueryResultCachedMpeg4Gif
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("mpeg4_file_id")
+				e.Str(s.Mpeg4FileID)
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
+	case InlineQueryResultCachedPhotoInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("InlineQueryResultCachedPhoto")
+		{
+			s := s.InlineQueryResultCachedPhoto
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("photo_file_id")
+				e.Str(s.PhotoFileID)
+			}
+			{
+				if s.Title.Set {
+					e.FieldStart("title")
+					s.Title.Encode(e)
+				}
+			}
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
+	case InlineQueryResultCachedStickerInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("sticker")
+		{
+			s := s.InlineQueryResultCachedSticker
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("sticker_file_id")
+				e.Str(s.StickerFileID)
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
+	case InlineQueryResultCachedVideoInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("InlineQueryResultCachedVideo")
+		{
+			s := s.InlineQueryResultCachedVideo
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("video_file_id")
+				e.Str(s.VideoFileID)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				if s.Description.Set {
+					e.FieldStart("description")
+					s.Description.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
+	case InlineQueryResultCachedVoiceInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("InlineQueryResultCachedVoice")
+		{
+			s := s.InlineQueryResultCachedVoice
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("voice_file_id")
+				e.Str(s.VoiceFileID)
+			}
+			{
+				e.FieldStart("title")
+				e.Str(s.Title)
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+			{
+				if s.InputMessageContent.Set {
+					e.FieldStart("input_message_content")
+					s.InputMessageContent.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultArticleInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("article")
@@ -12264,6 +12674,26 @@ func (s InlineQueryResult) encodeFields(e *jx.Encoder) {
 				}
 			}
 		}
+	case InlineQueryResultGameInlineQueryResult:
+		e.FieldStart("type")
+		e.Str("game")
+		{
+			s := s.InlineQueryResultGame
+			{
+				e.FieldStart("id")
+				e.Str(s.ID)
+			}
+			{
+				e.FieldStart("game_short_name")
+				e.Str(s.GameShortName)
+			}
+			{
+				if s.ReplyMarkup.Set {
+					e.FieldStart("reply_markup")
+					s.ReplyMarkup.Encode(e)
+				}
+			}
+		}
 	case InlineQueryResultDocumentInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("document")
@@ -12341,26 +12771,6 @@ func (s InlineQueryResult) encodeFields(e *jx.Encoder) {
 				if s.ThumbHeight.Set {
 					e.FieldStart("thumb_height")
 					s.ThumbHeight.Encode(e)
-				}
-			}
-		}
-	case InlineQueryResultGameInlineQueryResult:
-		e.FieldStart("type")
-		e.Str("game")
-		{
-			s := s.InlineQueryResultGame
-			{
-				e.FieldStart("id")
-				e.Str(s.ID)
-			}
-			{
-				e.FieldStart("game_short_name")
-				e.Str(s.GameShortName)
-			}
-			{
-				if s.ReplyMarkup.Set {
-					e.FieldStart("reply_markup")
-					s.ReplyMarkup.Encode(e)
 				}
 			}
 		}
@@ -12680,32 +13090,6 @@ func (s InlineQueryResult) encodeFields(e *jx.Encoder) {
 				}
 			}
 		}
-	case InlineQueryResultCachedStickerInlineQueryResult:
-		e.FieldStart("type")
-		e.Str("sticker")
-		{
-			s := s.InlineQueryResultCachedSticker
-			{
-				e.FieldStart("id")
-				e.Str(s.ID)
-			}
-			{
-				e.FieldStart("sticker_file_id")
-				e.Str(s.StickerFileID)
-			}
-			{
-				if s.ReplyMarkup.Set {
-					e.FieldStart("reply_markup")
-					s.ReplyMarkup.Encode(e)
-				}
-			}
-			{
-				if s.InputMessageContent.Set {
-					e.FieldStart("input_message_content")
-					s.InputMessageContent.Encode(e)
-				}
-			}
-		}
 	case InlineQueryResultVenueInlineQueryResult:
 		e.FieldStart("type")
 		e.Str("venue")
@@ -12954,6 +13338,30 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 					return err
 				}
 				switch typ {
+				case "InlineQueryResultCachedAudio":
+					s.Type = InlineQueryResultCachedAudioInlineQueryResult
+					found = true
+				case "InlineQueryResultCachedDocument":
+					s.Type = InlineQueryResultCachedDocumentInlineQueryResult
+					found = true
+				case "InlineQueryResultCachedGif":
+					s.Type = InlineQueryResultCachedGifInlineQueryResult
+					found = true
+				case "InlineQueryResultCachedMpeg4Gif":
+					s.Type = InlineQueryResultCachedMpeg4GifInlineQueryResult
+					found = true
+				case "InlineQueryResultCachedPhoto":
+					s.Type = InlineQueryResultCachedPhotoInlineQueryResult
+					found = true
+				case "sticker":
+					s.Type = InlineQueryResultCachedStickerInlineQueryResult
+					found = true
+				case "InlineQueryResultCachedVideo":
+					s.Type = InlineQueryResultCachedVideoInlineQueryResult
+					found = true
+				case "InlineQueryResultCachedVoice":
+					s.Type = InlineQueryResultCachedVoiceInlineQueryResult
+					found = true
 				case "article":
 					s.Type = InlineQueryResultArticleInlineQueryResult
 					found = true
@@ -12963,11 +13371,11 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 				case "contact":
 					s.Type = InlineQueryResultContactInlineQueryResult
 					found = true
-				case "document":
-					s.Type = InlineQueryResultDocumentInlineQueryResult
-					found = true
 				case "game":
 					s.Type = InlineQueryResultGameInlineQueryResult
+					found = true
+				case "document":
+					s.Type = InlineQueryResultDocumentInlineQueryResult
 					found = true
 				case "gif":
 					s.Type = InlineQueryResultGifInlineQueryResult
@@ -12980,9 +13388,6 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 					found = true
 				case "photo":
 					s.Type = InlineQueryResultPhotoInlineQueryResult
-					found = true
-				case "sticker":
-					s.Type = InlineQueryResultCachedStickerInlineQueryResult
 					found = true
 				case "venue":
 					s.Type = InlineQueryResultVenueInlineQueryResult
@@ -19384,6 +19789,50 @@ func (s InputMedia) encodeFields(e *jx.Encoder) {
 				}
 			}
 		}
+	case InputMediaDocumentInputMedia:
+		e.FieldStart("type")
+		e.Str("document")
+		{
+			s := s.InputMediaDocument
+			{
+				e.FieldStart("media")
+				e.Str(s.Media)
+			}
+			{
+				if s.Thumb.Set {
+					e.FieldStart("thumb")
+					s.Thumb.Encode(e)
+				}
+			}
+			{
+				if s.Caption.Set {
+					e.FieldStart("caption")
+					s.Caption.Encode(e)
+				}
+			}
+			{
+				if s.ParseMode.Set {
+					e.FieldStart("parse_mode")
+					s.ParseMode.Encode(e)
+				}
+			}
+			{
+				if s.CaptionEntities != nil {
+					e.FieldStart("caption_entities")
+					e.ArrStart()
+					for _, elem := range s.CaptionEntities {
+						elem.Encode(e)
+					}
+					e.ArrEnd()
+				}
+			}
+			{
+				if s.DisableContentTypeDetection.Set {
+					e.FieldStart("disable_content_type_detection")
+					s.DisableContentTypeDetection.Encode(e)
+				}
+			}
+		}
 	case InputMediaAudioInputMedia:
 		e.FieldStart("type")
 		e.Str("audio")
@@ -19437,50 +19886,6 @@ func (s InputMedia) encodeFields(e *jx.Encoder) {
 				if s.Title.Set {
 					e.FieldStart("title")
 					s.Title.Encode(e)
-				}
-			}
-		}
-	case InputMediaDocumentInputMedia:
-		e.FieldStart("type")
-		e.Str("document")
-		{
-			s := s.InputMediaDocument
-			{
-				e.FieldStart("media")
-				e.Str(s.Media)
-			}
-			{
-				if s.Thumb.Set {
-					e.FieldStart("thumb")
-					s.Thumb.Encode(e)
-				}
-			}
-			{
-				if s.Caption.Set {
-					e.FieldStart("caption")
-					s.Caption.Encode(e)
-				}
-			}
-			{
-				if s.ParseMode.Set {
-					e.FieldStart("parse_mode")
-					s.ParseMode.Encode(e)
-				}
-			}
-			{
-				if s.CaptionEntities != nil {
-					e.FieldStart("caption_entities")
-					e.ArrStart()
-					for _, elem := range s.CaptionEntities {
-						elem.Encode(e)
-					}
-					e.ArrEnd()
-				}
-			}
-			{
-				if s.DisableContentTypeDetection.Set {
-					e.FieldStart("disable_content_type_detection")
-					s.DisableContentTypeDetection.Encode(e)
 				}
 			}
 		}
@@ -19607,11 +20012,11 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 				case "animation":
 					s.Type = InputMediaAnimationInputMedia
 					found = true
-				case "audio":
-					s.Type = InputMediaAudioInputMedia
-					found = true
 				case "document":
 					s.Type = InputMediaDocumentInputMedia
+					found = true
+				case "audio":
+					s.Type = InputMediaAudioInputMedia
 					found = true
 				case "photo":
 					s.Type = InputMediaPhotoInputMedia
@@ -27123,46 +27528,6 @@ func (s PassportElementError) encodeFields(e *jx.Encoder) {
 				e.Str(s.Message)
 			}
 		}
-	case PassportElementErrorFilePassportElementError:
-		e.FieldStart("type")
-		e.Str("file")
-		{
-			s := s.PassportElementErrorFile
-			{
-				e.FieldStart("source")
-				e.Str(s.Source)
-			}
-			{
-				e.FieldStart("file_hash")
-				e.Str(s.FileHash)
-			}
-			{
-				e.FieldStart("message")
-				e.Str(s.Message)
-			}
-		}
-	case PassportElementErrorFilesPassportElementError:
-		e.FieldStart("type")
-		e.Str("files")
-		{
-			s := s.PassportElementErrorFiles
-			{
-				e.FieldStart("source")
-				e.Str(s.Source)
-			}
-			{
-				e.FieldStart("file_hashes")
-				e.ArrStart()
-				for _, elem := range s.FileHashes {
-					e.Str(elem)
-				}
-				e.ArrEnd()
-			}
-			{
-				e.FieldStart("message")
-				e.Str(s.Message)
-			}
-		}
 	case PassportElementErrorFrontSidePassportElementError:
 		e.FieldStart("type")
 		e.Str("front_side")
@@ -27211,6 +27576,46 @@ func (s PassportElementError) encodeFields(e *jx.Encoder) {
 			{
 				e.FieldStart("file_hash")
 				e.Str(s.FileHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
+	case PassportElementErrorFilePassportElementError:
+		e.FieldStart("type")
+		e.Str("file")
+		{
+			s := s.PassportElementErrorFile
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hash")
+				e.Str(s.FileHash)
+			}
+			{
+				e.FieldStart("message")
+				e.Str(s.Message)
+			}
+		}
+	case PassportElementErrorFilesPassportElementError:
+		e.FieldStart("type")
+		e.Str("files")
+		{
+			s := s.PassportElementErrorFiles
+			{
+				e.FieldStart("source")
+				e.Str(s.Source)
+			}
+			{
+				e.FieldStart("file_hashes")
+				e.ArrStart()
+				for _, elem := range s.FileHashes {
+					e.Str(elem)
+				}
+				e.ArrEnd()
 			}
 			{
 				e.FieldStart("message")
@@ -27304,12 +27709,6 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 				case "data":
 					s.Type = PassportElementErrorDataFieldPassportElementError
 					found = true
-				case "file":
-					s.Type = PassportElementErrorFilePassportElementError
-					found = true
-				case "files":
-					s.Type = PassportElementErrorFilesPassportElementError
-					found = true
 				case "front_side":
 					s.Type = PassportElementErrorFrontSidePassportElementError
 					found = true
@@ -27318,6 +27717,12 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 					found = true
 				case "selfie":
 					s.Type = PassportElementErrorSelfiePassportElementError
+					found = true
+				case "file":
+					s.Type = PassportElementErrorFilePassportElementError
+					found = true
+				case "files":
+					s.Type = PassportElementErrorFilesPassportElementError
 					found = true
 				case "translation_file":
 					s.Type = PassportElementErrorTranslationFilePassportElementError

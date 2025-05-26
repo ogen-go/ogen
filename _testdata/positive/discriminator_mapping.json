@@ -1,0 +1,316 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Discriminator Mapping Test",
+    "version": "v1.0.0"
+  },
+  "paths": {
+    "/pets": {
+      "get": {
+        "summary": "List pets",
+        "operationId": "listPets",
+        "responses": {
+          "200": {
+            "description": "List of pets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pet"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a pet",
+        "operationId": "createPet",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pet created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vehicles": {
+      "get": {
+        "summary": "List vehicles",
+        "operationId": "listVehicles",
+        "responses": {
+          "200": {
+            "description": "List of vehicles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vehicle"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications": {
+      "get": {
+        "summary": "List notifications",
+        "operationId": "listNotifications",
+        "responses": {
+          "200": {
+            "description": "List of notifications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Dog"
+          },
+          {
+            "$ref": "#/components/schemas/Cat"
+          },
+          {
+            "$ref": "#/components/schemas/Bird"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "petType",
+          "mapping": {
+            "dog": "#/components/schemas/Dog",
+            "canine": "#/components/schemas/Dog",
+            "cat": "#/components/schemas/Cat",
+            "feline": "#/components/schemas/Cat",
+            "bird": "#/components/schemas/Bird",
+            "avian": "#/components/schemas/Bird"
+          }
+        }
+      },
+      "Dog": {
+        "type": "object",
+        "required": ["petType", "name", "breed"],
+        "properties": {
+          "petType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "breed": {
+            "type": "string"
+          },
+          "barkLoudness": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        }
+      },
+      "Cat": {
+        "type": "object",
+        "required": ["petType", "name", "breed"],
+        "properties": {
+          "petType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "breed": {
+            "type": "string"
+          },
+          "meowVolume": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        }
+      },
+      "Bird": {
+        "type": "object",
+        "required": ["petType", "name", "species"],
+        "properties": {
+          "petType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "species": {
+            "type": "string"
+          },
+          "canTalk": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Vehicle": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Car"
+          },
+          {
+            "$ref": "#/components/schemas/Motorcycle"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "vehicleType"
+        }
+      },
+      "Car": {
+        "type": "object",
+        "required": ["vehicleType", "make", "model"],
+        "properties": {
+          "vehicleType": {
+            "type": "string"
+          },
+          "make": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "doors": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 5
+          }
+        }
+      },
+      "Motorcycle": {
+        "type": "object",
+        "required": ["vehicleType", "make", "model"],
+        "properties": {
+          "vehicleType": {
+            "type": "string"
+          },
+          "make": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "engineSize": {
+            "type": "number"
+          }
+        }
+      },
+      "Notification": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/EmailNotification"
+          },
+          {
+            "$ref": "#/components/schemas/SMSNotification"
+          },
+          {
+            "$ref": "#/components/schemas/PushNotification"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "notificationType",
+          "mapping": {
+            "email": "#/components/schemas/EmailNotification",
+            "mail": "#/components/schemas/EmailNotification",
+            "sms": "#/components/schemas/SMSNotification",
+            "text": "#/components/schemas/SMSNotification",
+            "push": "#/components/schemas/PushNotification",
+            "mobile": "#/components/schemas/PushNotification"
+          }
+        }
+      },
+      "EmailNotification": {
+        "type": "object",
+        "required": ["notificationType", "recipient", "subject"],
+        "properties": {
+          "notificationType": {
+            "type": "string"
+          },
+          "recipient": {
+            "type": "string",
+            "format": "email"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          }
+        }
+      },
+      "SMSNotification": {
+        "type": "object",
+        "required": ["notificationType", "phoneNumber", "message"],
+        "properties": {
+          "notificationType": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 160
+          }
+        }
+      },
+      "PushNotification": {
+        "type": "object",
+        "required": ["notificationType", "deviceId", "title"],
+        "properties": {
+          "notificationType": {
+            "type": "string"
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "badge": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}
