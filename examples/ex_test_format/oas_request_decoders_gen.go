@@ -26317,6 +26317,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request) (
 				MaxLength:    0,
 				MaxLengthSet: false,
 				Email:        true,
+				Byte:         false,
 				Hostname:     false,
 				Regex:        nil,
 			}).Validate(string(request)); err != nil {
@@ -26412,6 +26413,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        true,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        nil,
 					}).Validate(string(elem)); err != nil {
@@ -26532,6 +26534,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        true,
+								Byte:         false,
 								Hostname:     false,
 								Regex:        nil,
 							}).Validate(string(elem)); err != nil {
@@ -26635,6 +26638,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        true,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {
@@ -26735,6 +26739,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        true,
+								Byte:         false,
 								Hostname:     false,
 								Regex:        nil,
 							}).Validate(string(value)); err != nil {
@@ -26860,6 +26865,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 										MaxLength:    0,
 										MaxLengthSet: false,
 										Email:        true,
+										Byte:         false,
 										Hostname:     false,
 										Regex:        nil,
 									}).Validate(string(value)); err != nil {
@@ -28174,6 +28180,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request)
 				MaxLength:    0,
 				MaxLengthSet: false,
 				Email:        false,
+				Byte:         false,
 				Hostname:     true,
 				Regex:        nil,
 			}).Validate(string(request)); err != nil {
@@ -28269,6 +28276,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        false,
+						Byte:         false,
 						Hostname:     true,
 						Regex:        nil,
 					}).Validate(string(elem)); err != nil {
@@ -28389,6 +28397,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        false,
+								Byte:         false,
 								Hostname:     true,
 								Regex:        nil,
 							}).Validate(string(elem)); err != nil {
@@ -28492,6 +28501,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        false,
+						Byte:         false,
 						Hostname:     true,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {
@@ -28592,6 +28602,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        false,
+								Byte:         false,
 								Hostname:     true,
 								Regex:        nil,
 							}).Validate(string(value)); err != nil {
@@ -28717,6 +28728,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 										MaxLength:    0,
 										MaxLengthSet: false,
 										Email:        false,
+										Byte:         false,
 										Hostname:     true,
 										Regex:        nil,
 									}).Validate(string(value)); err != nil {
@@ -43752,6 +43764,7 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        true,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {
@@ -43852,6 +43865,7 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request) (
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        true,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        nil,
 					}).Validate(string(elem)); err != nil {
@@ -43972,6 +43986,7 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request) 
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        true,
+								Byte:         false,
 								Hostname:     false,
 								Regex:        nil,
 							}).Validate(string(elem)); err != nil {
@@ -44079,6 +44094,7 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        true,
+						Byte:         false,
 						Hostname:     false,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {
@@ -44179,6 +44195,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        true,
+								Byte:         false,
 								Hostname:     false,
 								Regex:        nil,
 							}).Validate(string(value)); err != nil {
@@ -44304,6 +44321,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 										MaxLength:    0,
 										MaxLengthSet: false,
 										Email:        true,
+										Byte:         false,
 										Hostname:     false,
 										Regex:        nil,
 									}).Validate(string(value)); err != nil {
@@ -45648,6 +45666,7 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        false,
+						Byte:         false,
 						Hostname:     true,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {
@@ -45748,6 +45767,7 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request) (
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        false,
+						Byte:         false,
 						Hostname:     true,
 						Regex:        nil,
 					}).Validate(string(elem)); err != nil {
@@ -45868,6 +45888,7 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        false,
+								Byte:         false,
 								Hostname:     true,
 								Regex:        nil,
 							}).Validate(string(elem)); err != nil {
@@ -45975,6 +45996,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request)
 						MaxLength:    0,
 						MaxLengthSet: false,
 						Email:        false,
+						Byte:         false,
 						Hostname:     true,
 						Regex:        nil,
 					}).Validate(string(value)); err != nil {
@@ -46075,6 +46097,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 								MaxLength:    0,
 								MaxLengthSet: false,
 								Email:        false,
+								Byte:         false,
 								Hostname:     true,
 								Regex:        nil,
 							}).Validate(string(value)); err != nil {
@@ -46200,6 +46223,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 										MaxLength:    0,
 										MaxLengthSet: false,
 										Email:        false,
+										Byte:         false,
 										Hostname:     true,
 										Regex:        nil,
 									}).Validate(string(value)); err != nil {
