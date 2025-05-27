@@ -27,6 +27,10 @@ func (s AcceptHeader) MarshalText() ([]byte, error) {
 
 // UnmarshalText implements encoding.TextUnmarshaler.
 func (s *AcceptHeader) UnmarshalText(data []byte) error {
+	// Early bail for empty values
+	if len(data) == 0 {
+		*s = nil
+	}
 	*s = strings.Split(string(data), ",")
 	for i, segment := range *s {
 		// Remove q-factor weighting
@@ -35,6 +39,12 @@ func (s *AcceptHeader) UnmarshalText(data []byte) error {
 		}
 		// Trim spaces to clean up leftovers from comma separation above (spaces are optional there)
 		(*s)[i] = strings.TrimSpace(segment)
+	}
+	// Remove empty segments
+	*s = slices.DeleteFunc(*s, func(segment string) bool { return len(segment) == 0 })
+	// Fold an empty slice into nil (by definition the same)
+	if len(*s) == 0 {
+		*s = nil
 	}
 	return nil
 }
@@ -50,7 +60,11 @@ func (s *AcceptHeader) DecodeURI(d uri.Decoder) error {
 	if err != nil {
 		return errors.Wrap(err, "decode accept header")
 	}
-	return s.UnmarshalText([]byte(val))
+	err = s.UnmarshalText([]byte(val))
+	if err != nil {
+		return errors.Wrap(err, "decode accept header")
+	}
+	return nil
 }
 
 func (s *AcceptHeader) EncodeURI(e uri.Encoder) error {
@@ -58,5 +72,9 @@ func (s *AcceptHeader) EncodeURI(e uri.Encoder) error {
 	if err != nil {
 		return errors.Wrap(err, "encode accept header")
 	}
-	return e.EncodeValue(string(val))
+	err = e.EncodeValue(string(val))
+	if err != nil {
+		return errors.Wrap(err, "encode accept header")
+	}
+	return nil
 }
