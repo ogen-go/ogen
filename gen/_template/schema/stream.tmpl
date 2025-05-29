@@ -1,7 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- define "schema/stream" }}
 type {{ $.Name }} struct {
-	Data io.Reader
+	Data io.ReadCloser
 }
 
 // Read reads data from the Data reader.
@@ -12,6 +12,14 @@ func (s {{ $.ReadOnlyReceiver }}) Read(p []byte) (n int, err error) {
 	    return 0, io.EOF
 	}
 	return s.Data.Read(p)
+}
+
+// Close closes the underlying reader.
+func (s {{ $.ReadOnlyReceiver }}) Close() error {
+if s.Data == nil {
+return nil
+}
+return s.Data.Close()
 }
 
 {{ end }}
