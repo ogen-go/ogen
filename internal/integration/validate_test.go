@@ -202,3 +202,154 @@ func TestValidateUniqueItems(t *testing.T) {
 		})
 	}
 }
+
+func TestArrayLengthValidation(t *testing.T) {
+	decodeValidate := func(input string, r *api.Issue1461) error {
+		if err := r.Decode(jx.DecodeStr(input)); err != nil {
+			return err
+		}
+		if err := r.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}
+
+	for i, tc := range []struct {
+		Input string
+		Error string
+	}{
+		// Required test cases
+		{
+			`{
+				"requiredTest": {}
+			}`,
+			`decode Issue1461: callback: decode field "requiredTest": invalid: banana (field required)`,
+		},
+		{
+			`{
+				"requiredTest": {"banana": []}
+			}`,
+			`invalid: requiredTest (invalid: banana (array: len 0 less than minimum 2))`,
+		},
+		{
+			`{
+				"requiredTest": {"banana": ["a"]}
+			}`,
+			`invalid: requiredTest (invalid: banana (array: len 1 less than minimum 2))`,
+		},
+		{
+			`{
+				"requiredTest": {"banana": ["a", "b"]}
+			}`,
+			``,
+		},
+
+		// Optional test cases
+		{
+			`{
+				"optionalTest": {}
+			}`,
+			``,
+		},
+		{
+			`{
+				"optionalTest": {"banana": []}
+			}`,
+			`invalid: optionalTest (invalid: banana (array: len 0 less than minimum 2))`,
+		},
+		{
+			`{
+				"optionalTest": {"banana": ["a"]}
+			}`,
+			`invalid: optionalTest (invalid: banana (array: len 1 less than minimum 2))`,
+		},
+		{
+			`{
+				"optionalTest": {"banana": ["a", "b"]}
+			}`,
+			``,
+		},
+
+		// Nullable test cases
+		{
+			`{
+				"nullableTest": {}
+			}`,
+			`decode Issue1461: callback: decode field "nullableTest": invalid: banana (field required)`,
+		},
+		{
+			`{
+				"nullableTest": {"banana": []}
+			}`,
+			`invalid: nullableTest (invalid: banana (array: len 0 less than minimum 2))`,
+		},
+		{
+			`{
+				"nullableTest": {"banana": ["a"]}
+			}`,
+			`invalid: nullableTest (invalid: banana (array: len 1 less than minimum 2))`,
+		},
+		{
+			`{
+				"nullableTest": {"banana": null}
+			}`,
+			``,
+		},
+		{
+			`{
+				"nullableTest": {"banana": ["a", "b"]}
+			}`,
+			``,
+		},
+
+		// Nullable optional test cases
+		{
+			`{
+				"nullableOptionalTest": {}
+			}`,
+			``,
+		},
+		{
+			`{
+				"nullableOptionalTest": {"banana": []}
+			}`,
+			`invalid: nullableOptionalTest (invalid: banana (array: len 0 less than minimum 2))`,
+		},
+		{
+			`{
+				"nullableOptionalTest": {"banana": ["a"]}
+			}`,
+			`invalid: nullableOptionalTest (invalid: banana (array: len 1 less than minimum 2))`,
+		},
+		{
+			`{
+				"nullableOptionalTest": {"banana": null}
+			}`,
+			``,
+		},
+		{
+			`{
+				"nullableOptionalTest": {"banana": ["a", "b"]}
+			}`,
+			``,
+		},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			defer func() {
+				if r := recover(); r != nil || t.Failed() {
+					t.Logf("Input:\n%s", tc.Input)
+				}
+			}()
+
+			m := api.Issue1461{}
+			err := decodeValidate(tc.Input, &m)
+
+			if e := tc.Error; e != "" {
+				require.EqualError(t, err, e)
+			} else {
+				require.NoError(t, err)
+			}
+		})
+	}
+}
