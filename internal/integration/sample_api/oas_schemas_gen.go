@@ -1228,6 +1228,110 @@ func (s *Issue1433) SetUniqueMinus4(val string) {
 	s.UniqueMinus4 = val
 }
 
+// Ref: #/components/schemas/Issue1461
+type Issue1461 struct {
+	RequiredTest         OptIssue1461RequiredTest         `json:"requiredTest"`
+	OptionalTest         OptIssue1461OptionalTest         `json:"optionalTest"`
+	NullableTest         OptIssue1461NullableTest         `json:"nullableTest"`
+	NullableOptionalTest OptIssue1461NullableOptionalTest `json:"nullableOptionalTest"`
+}
+
+// GetRequiredTest returns the value of RequiredTest.
+func (s *Issue1461) GetRequiredTest() OptIssue1461RequiredTest {
+	return s.RequiredTest
+}
+
+// GetOptionalTest returns the value of OptionalTest.
+func (s *Issue1461) GetOptionalTest() OptIssue1461OptionalTest {
+	return s.OptionalTest
+}
+
+// GetNullableTest returns the value of NullableTest.
+func (s *Issue1461) GetNullableTest() OptIssue1461NullableTest {
+	return s.NullableTest
+}
+
+// GetNullableOptionalTest returns the value of NullableOptionalTest.
+func (s *Issue1461) GetNullableOptionalTest() OptIssue1461NullableOptionalTest {
+	return s.NullableOptionalTest
+}
+
+// SetRequiredTest sets the value of RequiredTest.
+func (s *Issue1461) SetRequiredTest(val OptIssue1461RequiredTest) {
+	s.RequiredTest = val
+}
+
+// SetOptionalTest sets the value of OptionalTest.
+func (s *Issue1461) SetOptionalTest(val OptIssue1461OptionalTest) {
+	s.OptionalTest = val
+}
+
+// SetNullableTest sets the value of NullableTest.
+func (s *Issue1461) SetNullableTest(val OptIssue1461NullableTest) {
+	s.NullableTest = val
+}
+
+// SetNullableOptionalTest sets the value of NullableOptionalTest.
+func (s *Issue1461) SetNullableOptionalTest(val OptIssue1461NullableOptionalTest) {
+	s.NullableOptionalTest = val
+}
+
+type Issue1461NullableOptionalTest struct {
+	Banana OptNilStringArray `json:"banana"`
+}
+
+// GetBanana returns the value of Banana.
+func (s *Issue1461NullableOptionalTest) GetBanana() OptNilStringArray {
+	return s.Banana
+}
+
+// SetBanana sets the value of Banana.
+func (s *Issue1461NullableOptionalTest) SetBanana(val OptNilStringArray) {
+	s.Banana = val
+}
+
+type Issue1461NullableTest struct {
+	Banana []string `json:"banana"`
+}
+
+// GetBanana returns the value of Banana.
+func (s *Issue1461NullableTest) GetBanana() []string {
+	return s.Banana
+}
+
+// SetBanana sets the value of Banana.
+func (s *Issue1461NullableTest) SetBanana(val []string) {
+	s.Banana = val
+}
+
+type Issue1461OptionalTest struct {
+	Banana []string `json:"banana"`
+}
+
+// GetBanana returns the value of Banana.
+func (s *Issue1461OptionalTest) GetBanana() []string {
+	return s.Banana
+}
+
+// SetBanana sets the value of Banana.
+func (s *Issue1461OptionalTest) SetBanana(val []string) {
+	s.Banana = val
+}
+
+type Issue1461RequiredTest struct {
+	Banana []string `json:"banana"`
+}
+
+// GetBanana returns the value of Banana.
+func (s *Issue1461RequiredTest) GetBanana() []string {
+	return s.Banana
+}
+
+// SetBanana sets the value of Banana.
+func (s *Issue1461RequiredTest) SetBanana(val []string) {
+	s.Banana = val
+}
+
 // Ref: #/components/schemas/Issue943
 // Issue943 represents sum type.
 type Issue943 struct {
@@ -3800,6 +3904,190 @@ func (o OptIssue1310Properties) Get() (v *Issue1310Properties, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptIssue1310Properties) Or(d *Issue1310Properties) *Issue1310Properties {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIssue1461NullableOptionalTest returns new OptIssue1461NullableOptionalTest with value set to v.
+func NewOptIssue1461NullableOptionalTest(v Issue1461NullableOptionalTest) OptIssue1461NullableOptionalTest {
+	return OptIssue1461NullableOptionalTest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssue1461NullableOptionalTest is optional Issue1461NullableOptionalTest.
+type OptIssue1461NullableOptionalTest struct {
+	Value Issue1461NullableOptionalTest
+	Set   bool
+}
+
+// IsSet returns true if OptIssue1461NullableOptionalTest was set.
+func (o OptIssue1461NullableOptionalTest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssue1461NullableOptionalTest) Reset() {
+	var v Issue1461NullableOptionalTest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssue1461NullableOptionalTest) SetTo(v Issue1461NullableOptionalTest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssue1461NullableOptionalTest) Get() (v Issue1461NullableOptionalTest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssue1461NullableOptionalTest) Or(d Issue1461NullableOptionalTest) Issue1461NullableOptionalTest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIssue1461NullableTest returns new OptIssue1461NullableTest with value set to v.
+func NewOptIssue1461NullableTest(v Issue1461NullableTest) OptIssue1461NullableTest {
+	return OptIssue1461NullableTest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssue1461NullableTest is optional Issue1461NullableTest.
+type OptIssue1461NullableTest struct {
+	Value Issue1461NullableTest
+	Set   bool
+}
+
+// IsSet returns true if OptIssue1461NullableTest was set.
+func (o OptIssue1461NullableTest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssue1461NullableTest) Reset() {
+	var v Issue1461NullableTest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssue1461NullableTest) SetTo(v Issue1461NullableTest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssue1461NullableTest) Get() (v Issue1461NullableTest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssue1461NullableTest) Or(d Issue1461NullableTest) Issue1461NullableTest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIssue1461OptionalTest returns new OptIssue1461OptionalTest with value set to v.
+func NewOptIssue1461OptionalTest(v Issue1461OptionalTest) OptIssue1461OptionalTest {
+	return OptIssue1461OptionalTest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssue1461OptionalTest is optional Issue1461OptionalTest.
+type OptIssue1461OptionalTest struct {
+	Value Issue1461OptionalTest
+	Set   bool
+}
+
+// IsSet returns true if OptIssue1461OptionalTest was set.
+func (o OptIssue1461OptionalTest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssue1461OptionalTest) Reset() {
+	var v Issue1461OptionalTest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssue1461OptionalTest) SetTo(v Issue1461OptionalTest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssue1461OptionalTest) Get() (v Issue1461OptionalTest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssue1461OptionalTest) Or(d Issue1461OptionalTest) Issue1461OptionalTest {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptIssue1461RequiredTest returns new OptIssue1461RequiredTest with value set to v.
+func NewOptIssue1461RequiredTest(v Issue1461RequiredTest) OptIssue1461RequiredTest {
+	return OptIssue1461RequiredTest{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptIssue1461RequiredTest is optional Issue1461RequiredTest.
+type OptIssue1461RequiredTest struct {
+	Value Issue1461RequiredTest
+	Set   bool
+}
+
+// IsSet returns true if OptIssue1461RequiredTest was set.
+func (o OptIssue1461RequiredTest) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptIssue1461RequiredTest) Reset() {
+	var v Issue1461RequiredTest
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptIssue1461RequiredTest) SetTo(v Issue1461RequiredTest) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptIssue1461RequiredTest) Get() (v Issue1461RequiredTest, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptIssue1461RequiredTest) Or(d Issue1461RequiredTest) Issue1461RequiredTest {
 	if v, ok := o.Get(); ok {
 		return v
 	}

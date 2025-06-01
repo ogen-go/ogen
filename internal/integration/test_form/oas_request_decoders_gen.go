@@ -927,6 +927,9 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 					})
 				}
 				if err := func() error {
+					if request.Files == nil {
+						return nil // null
+					}
 					if err := (validate.Array{
 						MinLength:    0,
 						MinLengthSet: false,

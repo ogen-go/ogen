@@ -33,6 +33,7 @@ const (
 	TestFloatValidationOperation        OperationName = "TestFloatValidation"
 	TestInlineOneofOperation            OperationName = "TestInlineOneof"
 	TestIssue1310Operation              OperationName = "TestIssue1310"
+	TestIssue1461Operation              OperationName = "TestIssue1461"
 	TestNullableOneofsOperation         OperationName = "TestNullableOneofs"
 	TestTupleOperation                  OperationName = "TestTuple"
 	TestTupleNamedOperation             OperationName = "TestTupleNamed"

@@ -18131,6 +18131,9 @@ func (s Encodings) Validate() error {
 
 func (s Enum) Validate() error {
 	alias := ([]jx.Raw)(s)
+	if alias == nil {
+		return nil // optional
+	}
 	if err := (validate.Array{
 		MinLength:    1,
 		MinLengthSet: true,
@@ -19248,6 +19251,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.AllOf == nil {
+			return nil // optional
+		}
 		if err := (validate.Array{
 			MinLength:    1,
 			MinLengthSet: true,
@@ -19281,6 +19287,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.OneOf == nil {
+			return nil // optional
+		}
 		if err := (validate.Array{
 			MinLength:    1,
 			MinLengthSet: true,
@@ -19314,6 +19323,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.AnyOf == nil {
+			return nil // optional
+		}
 		if err := (validate.Array{
 			MinLength:    1,
 			MinLengthSet: true,
@@ -19610,6 +19622,9 @@ func (s *Spec) Validate() error {
 
 func (s StringArray) Validate() error {
 	alias := ([]string)(s)
+	if alias == nil {
+		return nil // optional
+	}
 	if err := (validate.Array{
 		MinLength:    1,
 		MinLengthSet: true,
