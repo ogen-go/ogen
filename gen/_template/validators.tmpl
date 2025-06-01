@@ -45,6 +45,11 @@
 	{{- if $va.Array.Set }}
 	{{- $validated = true }}
 		{{- $v := $va.Array }}
+		{{- if or $t.NilSemantic.Optional $t.NilSemantic.Null }}
+		if {{ $.Var }} == nil {
+			return nil // {{ $t.NilSemantic }}
+		}
+		{{- end }}
 		if err := (validate.Array{
 			MinLength:	{{ $v.MinLength }},
 			MinLengthSet: {{ $v.MinLengthSet }},
