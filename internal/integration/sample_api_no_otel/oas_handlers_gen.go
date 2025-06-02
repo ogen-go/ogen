@@ -2083,6 +2083,66 @@ func (s *Server) handleTestIssue1310Request(args [0]string, argsEscaped bool, w 
 	}
 }
 
+// handleTestIssue1461Request handles testIssue1461 operation.
+//
+// GET /testIssue1461
+func (s *Server) handleTestIssue1461Request(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	ctx := r.Context()
+
+	var (
+		err error
+	)
+
+	var response *Issue1461
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    TestIssue1461Operation,
+			OperationSummary: "",
+			OperationID:      "testIssue1461",
+			Body:             nil,
+			Params:           middleware.Parameters{},
+			Raw:              r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = *Issue1461
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.TestIssue1461(ctx)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.TestIssue1461(ctx)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestIssue1461Response(response, w); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
 // handleTestNullableOneofsRequest handles testNullableOneofs operation.
 //
 // GET /testNullableOneofs

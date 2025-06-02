@@ -465,6 +465,87 @@ func (s *Issue1433) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *Issue1461) SetFake() {
+	{
+		{
+			s.RequiredTest.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalTest.SetFake()
+		}
+	}
+	{
+		{
+			s.NullableTest.SetFake()
+		}
+	}
+	{
+		{
+			s.NullableOptionalTest.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue1461NullableOptionalTest) SetFake() {
+	{
+		{
+			s.Banana.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue1461NullableTest) SetFake() {
+	{
+		{
+			s.Banana = nil
+			for i := 0; i < 2; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Banana = append(s.Banana, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue1461OptionalTest) SetFake() {
+	{
+		{
+			s.Banana = nil
+			for i := 0; i < 2; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Banana = append(s.Banana, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *Issue1461RequiredTest) SetFake() {
+	{
+		{
+			s.Banana = nil
+			for i := 0; i < 2; i++ {
+				var elem string
+				{
+					elem = "string"
+				}
+				s.Banana = append(s.Banana, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *Issue943) SetFake() {
 	var variant Issue943Variant1
 
@@ -1088,6 +1169,42 @@ func (s *OptIssue1310Properties) SetFake() {
 	var elem *Issue1310Properties
 	{ // Keep pointer nil to prevent infinite recursion.
 		elem = nil
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIssue1461NullableOptionalTest) SetFake() {
+	var elem Issue1461NullableOptionalTest
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIssue1461NullableTest) SetFake() {
+	var elem Issue1461NullableTest
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIssue1461OptionalTest) SetFake() {
+	var elem Issue1461OptionalTest
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptIssue1461RequiredTest) SetFake() {
+	var elem Issue1461RequiredTest
+	{
+		elem.SetFake()
 	}
 	s.SetTo(elem)
 }

@@ -815,6 +815,23 @@
           }
         }
       }
+    },
+    "/testIssue1461": {
+      "get": {
+        "operationId": "testIssue1461",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Issue1461"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2009,6 +2026,67 @@
             "description": "Optional map of properties",
             "nullable": true,
             "type": "object"
+          }
+        }
+      },
+      "Issue1461": {
+        "type": "object",
+        "properties": {
+          "requiredTest": {
+            "type": "object",
+            "required": [
+              "banana"
+            ],
+            "properties": {
+              "banana": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "optionalTest": {
+            "type": "object",
+            "properties": {
+              "banana": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "nullableTest": {
+            "type": "object",
+            "required": [
+              "banana"
+            ],
+            "properties": {
+              "banana": {
+                "type": "array",
+                "nullable": true,
+                "minItems": 2,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "nullableOptionalTest": {
+            "type": "object",
+            "properties": {
+              "banana": {
+                "type": "array",
+                "nullable": true,
+                "minItems": 2,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }

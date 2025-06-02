@@ -46,6 +46,9 @@ func (s *TestMultipartUploadReq) Validate() error {
 
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Files == nil {
+			return nil // null
+		}
 		if err := (validate.Array{
 			MinLength:    0,
 			MinLengthSet: false,
