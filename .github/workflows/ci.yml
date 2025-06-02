@@ -125,3 +125,10 @@ jobs:
           -v ./_testdata/examples/petstore.yml:/petstore.yml \
           --rm \
           ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA /petstore.yml
+
+      - name: Check image certs
+        run: |
+          docker run \
+          --rm \
+          ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA \
+          https://raw.githubusercontent.com/ogen-go/ogen/refs/heads/main/_testdata/examples/petstore.yml
