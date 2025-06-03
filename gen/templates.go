@@ -3,6 +3,7 @@ package gen
 import (
 	"embed"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"sync"
@@ -208,6 +209,33 @@ func templateFunctions() template.FuncMap {
 		},
 		"isObjectParam":     isObjectParam,
 		"paramObjectFields": paramObjectFields,
+		"stripNonAlphaNumeric": func(s string) string {
+			// Remove all non-alphabetical characters.
+			// This is used to generate valid Go identifiers.
+
+			shouldCapitalize := true
+			scopeName := ""
+			for idx, chr := range s {
+				var reg *regexp.Regexp
+				if idx == 0 {
+					reg = regexp.MustCompile("[a-zA-Z]")
+				} else {
+					reg = regexp.MustCompile("[a-zA-Z0-9]")
+				}
+
+				if !reg.MatchString(string(chr)) {
+					shouldCapitalize = true
+				} else {
+					if shouldCapitalize {
+						scopeName += strings.ToUpper(string(chr))
+						shouldCapitalize = false
+					} else {
+						scopeName += string(chr)
+					}
+				}
+			}
+			return scopeName
+		},
 	}
 }
 

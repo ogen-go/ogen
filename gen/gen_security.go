@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/maps"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/bitset"
@@ -22,7 +23,7 @@ func (g *Generator) generateSecurityAPIKey(
 	}
 	s.Format = ir.APIKeySecurityFormat
 	s.ParameterName = security.Name
-	s.Scopes = map[string][]string{
+	s.OperationScopes = map[string][]string{
 		operationName: spec.Scopes,
 	}
 
@@ -58,8 +59,21 @@ func (g *Generator) generateSecurityOauth2(
 ) *ir.Security {
 	s.Format = ir.Oauth2SecurityFormat
 	s.Kind = ir.HeaderSecurity
-	s.Scopes = map[string][]string{
+	s.OperationScopes = map[string][]string{
 		operationName: spec.Scopes,
+	}
+
+	if spec.Security.Flows.AuthorizationCode != nil {
+		maps.Copy(s.ScopeDescriptions, spec.Security.Flows.AuthorizationCode.Scopes)
+	}
+	if spec.Security.Flows.ClientCredentials != nil {
+		maps.Copy(s.ScopeDescriptions, spec.Security.Flows.ClientCredentials.Scopes)
+	}
+	if spec.Security.Flows.Implicit != nil {
+		maps.Copy(s.ScopeDescriptions, spec.Security.Flows.Implicit.Scopes)
+	}
+	if spec.Security.Flows.Password != nil {
+		maps.Copy(s.ScopeDescriptions, spec.Security.Flows.Password.Scopes)
 	}
 
 	s.Type.Fields = append(s.Type.Fields,
@@ -82,7 +96,7 @@ func (g *Generator) generateSecurityHTTP(
 ) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
-	s.Scopes = map[string][]string{
+	s.OperationScopes = map[string][]string{
 		operationName: spec.Scopes,
 	}
 
@@ -119,9 +133,13 @@ func (g *Generator) generateSecurityHTTP(
 	return s, nil
 }
 
-func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec openapi.SecurityScheme) (r *ir.Security, rErr error) {
+func (g *Generator) generateSecurity(
+	ctx *genctx,
+	operationName string,
+	spec openapi.SecurityScheme,
+) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
-		sec.Scopes[operationName] = append(sec.Scopes[operationName], spec.Scopes...)
+		sec.OperationScopes[operationName] = append(sec.OperationScopes[operationName], spec.Scopes...)
 		return sec, nil
 	}
 	security := spec.Security
@@ -136,14 +154,15 @@ func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec ope
 		Name: typeName,
 	}
 	s := &ir.Security{
-		Type:        t,
-		Description: security.Description,
+		Type:              t,
+		Description:       security.Description,
+		ScopeDescriptions: map[string]string{},
 	}
 
 	// Do not create a type for custom security.
 	if security.XOgenCustomSecurity {
 		s.Format = ir.CustomSecurityFormat
-		s.Scopes = map[string][]string{
+		s.OperationScopes = map[string][]string{
 			operationName: spec.Scopes,
 		}
 		return s, nil

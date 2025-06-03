@@ -89,28 +89,28 @@ func TestGenerateSecurities(t *testing.T) {
 		{
 			Kind:   ir.HeaderSecurity,
 			Format: ir.Oauth2SecurityFormat,
-			Scopes: map[string][]string{
+			OperationScopes: map[string][]string{
 				"testOp": {"scope1", "scope2", "scope3"},
 			},
 		},
 		{
 			Kind:   ir.QuerySecurity,
 			Format: ir.APIKeySecurityFormat,
-			Scopes: map[string][]string{
+			OperationScopes: map[string][]string{
 				"testOp": {"scope4"},
 			},
 		},
 		{
 			Kind:   ir.HeaderSecurity,
 			Format: ir.BasicHTTPSecurityFormat,
-			Scopes: map[string][]string{
+			OperationScopes: map[string][]string{
 				"testOp": {"scope5"},
 			},
 		},
 		{
 			Kind:   ir.HeaderSecurity,
 			Format: ir.BearerSecurityFormat,
-			Scopes: map[string][]string{
+			OperationScopes: map[string][]string{
 				"testOp": {"scope6"},
 			},
 		},
@@ -130,7 +130,7 @@ func TestGenerateSecurities(t *testing.T) {
 
 		require.Equal(t, wantSec.Kind, sec.Kind)
 		require.Equal(t, wantSec.Format, sec.Format)
-		require.Contains(t, sec.Scopes, "testOp")
-		require.Equal(t, wantSec.Scopes["testOp"], sec.Scopes["testOp"])
+		require.Contains(t, sec.OperationScopes, "testOp")
+		require.Equal(t, wantSec.OperationScopes["testOp"], sec.OperationScopes["testOp"])
 	}
 }

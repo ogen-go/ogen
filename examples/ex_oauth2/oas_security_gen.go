@@ -33,18 +33,30 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+type ScopeName = string
+
+const (
+	ScopeNameAdmin ScopeName = "admin"
+	ScopeNameUser  ScopeName = "user"
+)
+
+var oauth2ScopesDescriptionOAuth2 = map[string]string{
+	ScopeNameAdmin: "Grants write access",
+	ScopeNameUser:  "Grants read access",
+}
+
 var oauth2ScopesOAuth2 = map[string][]string{
 	AddPetOperation: []string{
-		"admin",
+		ScopeNameAdmin,
 	},
 	DeletePetOperation: []string{
-		"admin",
+		ScopeNameAdmin,
 	},
 	FindPetByIDOperation: []string{
-		"user",
+		ScopeNameUser,
 	},
 	FindPetsOperation: []string{
-		"user",
+		ScopeNameUser,
 	},
 }
 
