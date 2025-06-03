@@ -45,6 +45,7 @@ type TemplateConfig struct {
 	RequestOptionsEnabled     bool
 	RequestValidationEnabled  bool
 	ResponseValidationEnabled bool
+	EditorsEnabled            bool
 
 	skipTestRegex *regexp.Regexp
 }
@@ -274,6 +275,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		RequestOptionsEnabled:     features.Has(ClientRequestOptions),
 		RequestValidationEnabled:  features.Has(ClientRequestValidation),
 		ResponseValidationEnabled: features.Has(ServerResponseValidation),
+		EditorsEnabled:            features.Has(ClientEditors),
 		// Unused for now.
 		skipTestRegex: nil,
 	}

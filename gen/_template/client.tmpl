@@ -163,6 +163,26 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 }
 {{- end }}
 
+{{- if $.EditorsEnabled }}
+func (c *Client) onRequest(ctx context.Context, req *http.Request) error {
+    for _, fn := range c.cfg.RequestEditors {
+        if err := fn(ctx, req); err != nil {
+            return err
+        }
+    }
+    return nil
+}
+
+func (c *Client) onResponse(ctx context.Context, resp *http.Response) error {
+	for _, fn := range c.cfg.ResponseEditors {
+        if err := fn(ctx, resp); err != nil {
+            return err
+        }
+	}
+	return nil
+}
+{{- end }}
+
 {{- range $op := $.Operations }}
 	{{ template "client/operation" op_elem $op $ }}
 {{- end }}
@@ -406,6 +426,12 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	}
 	{{- end }}
 
+    {{ if $cfg.EditorsEnabled -}}
+    if err := c.onRequest(ctx, r); err != nil {
+        return res, errors.Wrap(err, "client edit request")
+    }
+    {{- end }}
+
 	{{ if $cfg.RequestOptionsEnabled -}}
 	if err := reqCfg.onRequest(r); err != nil {
 		return res, errors.Wrap(err, "edit request")
@@ -422,6 +448,12 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
+
+    {{ if $cfg.EditorsEnabled -}}
+    if err := c.onResponse(ctx, resp); err != nil {
+        return res, errors.Wrap(err, "client edit response")
+    }
+    {{- end }}
 
 	{{ if $cfg.RequestOptionsEnabled -}}
 	if err := reqCfg.onResponse(resp); err != nil {
