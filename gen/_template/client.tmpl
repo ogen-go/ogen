@@ -421,6 +421,12 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
+
+	if resp.Header.Get("Content-Type") == "" {
+		resp.Header.Set("Content-Type", "application/json")
+		resp.Body = io.NopCloser(bytes.NewBufferString("{}")) // Ensure body is not nil
+	}
+
 	defer resp.Body.Close()
 
 	{{ if $cfg.RequestOptionsEnabled -}}
