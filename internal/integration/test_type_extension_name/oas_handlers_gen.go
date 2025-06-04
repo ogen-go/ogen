@@ -123,21 +123,13 @@ func (s *Server) handleOptionalRequest(args [0]string, argsEscaped bool, w http.
 			Body:             nil,
 			Params: middleware.Parameters{
 				{
-					Name: "date",
+					Name: "foo",
 					In:   "query",
-				}: params.Date,
+				}: params.Foo,
 				{
-					Name: "time",
+					Name: "bar",
 					In:   "query",
-				}: params.Time,
-				{
-					Name: "dateTime",
-					In:   "query",
-				}: params.DateTime,
-				{
-					Name: "alias",
-					In:   "query",
-				}: params.Alias,
+				}: params.Bar,
 			},
 			Raw: r,
 		}
@@ -271,21 +263,13 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 			Body:             nil,
 			Params: middleware.Parameters{
 				{
-					Name: "date",
+					Name: "foo",
 					In:   "query",
-				}: params.Date,
+				}: params.Foo,
 				{
-					Name: "time",
+					Name: "bar",
 					In:   "query",
-				}: params.Time,
-				{
-					Name: "dateTime",
-					In:   "query",
-				}: params.DateTime,
-				{
-					Name: "alias",
-					In:   "query",
-				}: params.Alias,
+				}: params.Bar,
 			},
 			Raw: r,
 		}

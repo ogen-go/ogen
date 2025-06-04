@@ -15,6 +15,8 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/_testdata/testtypes"
+	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
@@ -131,16 +133,16 @@ func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
-		// Encode "date" parameter.
+		// Encode "ogenString" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "date",
+			Name:    "ogenString",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.Date.Get(); ok {
-				return e.EncodeValue(val.Format("02/01/2006"))
+			if val, ok := params.OgenString.Get(); ok {
+				return e.EncodeValue(conv.StringNativeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -148,16 +150,16 @@ func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *
 		}
 	}
 	{
-		// Encode "time" parameter.
+		// Encode "ogenNumber" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "time",
+			Name:    "ogenNumber",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.Time.Get(); ok {
-				return e.EncodeValue(val.Format("3:04PM"))
+			if val, ok := params.OgenNumber.Get(); ok {
+				return e.EncodeValue(conv.NativeToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -165,16 +167,101 @@ func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *
 		}
 	}
 	{
-		// Encode "dateTime" parameter.
+		// Encode "jsonString" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "dateTime",
+			Name:    "jsonString",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if val, ok := params.DateTime.Get(); ok {
-				return e.EncodeValue(val.Format("2006-01-02T15:04:05.999999999Z07:00"))
+			if val, ok := params.JsonString.Get(); ok {
+				return e.EncodeValue(conv.StringJSONToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "jsonNumber" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "jsonNumber",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.JsonNumber.Get(); ok {
+				return e.EncodeValue(conv.JSONToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "textString" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "textString",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.TextString.Get(); ok {
+				return e.EncodeValue(conv.StringTextToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "textNumber" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "textNumber",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.TextNumber.Get(); ok {
+				return e.EncodeValue(conv.TextToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.String.Get(); ok {
+				return e.EncodeValue(conv.StringExternalToString(val))
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "number" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "number",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Number.Get(); ok {
+				return e.EncodeValue(conv.ExternalToString(val))
 			}
 			return nil
 		}); err != nil {
@@ -191,10 +278,36 @@ func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Alias.Get(); ok {
-				if unwrapped := time.Time(val); true {
-					return e.EncodeValue(unwrapped.Format("02/01/2006 3:04:05PM"))
+				if unwrapped := testtypes.StringOgen(val); true {
+					return e.EncodeValue(conv.StringNativeToString(unwrapped))
 				}
 				return nil
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if params.Array != nil {
+				return e.EncodeArray(func(e uri.Encoder) error {
+					for i, item := range params.Array {
+						if err := func() error {
+							return e.EncodeValue(conv.StringJSONToString(item))
+						}(); err != nil {
+							return errors.Wrapf(err, "[%d]", i)
+						}
+					}
+					return nil
+				})
 			}
 			return nil
 		}); err != nil {
@@ -276,43 +389,113 @@ func (c *Client) sendRequired(ctx context.Context, params RequiredParams) (res *
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
-		// Encode "date" parameter.
+		// Encode "ogenString" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "date",
+			Name:    "ogenString",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(params.Date.Format("02/01/2006"))
+			return e.EncodeValue(conv.StringNativeToString(params.OgenString))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
 	}
 	{
-		// Encode "time" parameter.
+		// Encode "ogenNumber" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "time",
+			Name:    "ogenNumber",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(params.Time.Format("3:04PM"))
+			return e.EncodeValue(conv.NativeToString(params.OgenNumber))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
 	}
 	{
-		// Encode "dateTime" parameter.
+		// Encode "jsonString" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "dateTime",
+			Name:    "jsonString",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(params.DateTime.Format("2006-01-02T15:04:05.999999999Z07:00"))
+			return e.EncodeValue(conv.StringJSONToString(params.JsonString))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "jsonNumber" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "jsonNumber",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.JSONToString(params.JsonNumber))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "textString" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "textString",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringTextToString(params.TextString))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "textNumber" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "textNumber",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.TextToString(params.TextNumber))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "string" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "string",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringExternalToString(params.String))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "number" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "number",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.ExternalToString(params.Number))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
@@ -326,10 +509,33 @@ func (c *Client) sendRequired(ctx context.Context, params RequiredParams) (res *
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			if unwrapped := time.Time(params.Alias); true {
-				return e.EncodeValue(unwrapped.Format("02/01/2006 3:04:05PM"))
+			if unwrapped := testtypes.StringOgen(params.Alias); true {
+				return e.EncodeValue(conv.StringNativeToString(unwrapped))
 			}
 			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.Array {
+					if err := func() error {
+						return e.EncodeValue(conv.StringJSONToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
