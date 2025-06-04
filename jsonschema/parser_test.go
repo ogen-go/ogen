@@ -389,6 +389,14 @@ func TestSchemaExtensions(t *testing.T) {
 			},
 			false,
 		},
+		{
+			`{"type": "string", "x-ogen-type": "github.com/google/uuid.UUID"}`,
+			&Schema{
+				Type:      String,
+				XOgenType: "github.com/google/uuid.UUID",
+			},
+			false,
+		},
 	}
 
 	for i, tt := range tests {
