@@ -5,7 +5,7 @@ info:
 paths:
   /optional:
     get:
-      operationId: default
+      operationId: optional
       parameters:
         - name: date
           in: query
@@ -28,6 +28,11 @@ paths:
             format: date-time
             x-ogen-time-format: 2006-01-02T15:04:05.999999999Z07:00
             default: 2001-03-04T01:23:45.123456789-07:00
+        - name: alias
+          in: query
+          schema:
+            $ref: '#/components/schemas/Alias'
+            default: 04/03/2001 01:23:45AM
       responses:
         '200':
           description: Test
@@ -51,6 +56,9 @@ paths:
                     format: date-time
                     x-ogen-time-format: 2006-01-02T15:04:05.999999999Z07:00
                     default: 2001-03-04T01:23:45.123456789-07:00
+                  alias:
+                    $ref: '#/components/schemas/Alias'
+                    default: 04/03/2001 01:23:45AM
   /required:
     get:
       operationId: required
@@ -76,6 +84,11 @@ paths:
             type: string
             format: date-time
             x-ogen-time-format: 2006-01-02T15:04:05.999999999Z07:00
+        - name: alias
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Alias'
       responses:
         '200':
           description: Test
@@ -87,6 +100,7 @@ paths:
                   - date
                   - time
                   - dateTime
+                  - alias
                 properties:
                   date:
                     type: string
@@ -100,3 +114,11 @@ paths:
                     type: string
                     format: date
                     x-ogen-time-format: 2006-01-02T15:04:05.999999999Z07:00
+                  alias:
+                    $ref: '#/components/schemas/Alias'
+components:
+  schemas:
+    Alias:
+      type: string
+      format: date-time
+      x-ogen-time-format: 02/01/2006 3:04:05PM

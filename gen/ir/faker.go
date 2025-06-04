@@ -45,7 +45,7 @@ func (t *Type) FakeValue() string {
 	case Null:
 		return "struct{}{}"
 	default:
-		panic(fmt.Sprintf("unexpected PrimitiveType: %d", p))
+		panic("unexpected PrimitiveType: " + p)
 	}
 }
 

@@ -3,7 +3,7 @@
 
 {{ $t := $.Type }}
 
-{{- if or ($t.IsPrimitive) ($t.IsEnum) ($t.IsAlias) -}}
+{{- if or $t.IsPrimitive $t.IsEnum -}}
 	{{- template "defaults/val" default_elem $t $.Var $.Default }}
 	{{ $.Var }} = val
 {{- else if $t.IsGeneric -}}{{ $val := $.Default }}
@@ -11,10 +11,16 @@
 		{{- if $t.GenericVariant.Nullable }}
 		{{ $.Var }}.Null = true
 		{{- end }}
+	{{- else if $t.GenericOf.IsAlias -}}
+		{{- template "defaults/val" default_elem $t.GenericOf.AliasTo $.Var $.Default }}
+		{{ $.Var }}.SetTo({{ $t.GenericOf.Go }}(val))
 	{{- else }}
 		{{- template "defaults/val" default_elem $t.GenericOf $.Var $.Default }}
 		{{ $.Var }}.SetTo(val)
 	{{- end }}
+{{- else if $t.IsAlias -}}
+	{{- template "defaults/val" default_elem $t.AliasTo $.Var $.Default }}
+	{{ $.Var }} = {{ $t.Go }}(val)
 {{- else if $t.IsPointer -}}
 	{{- template "defaults/val" default_elem $t.PointerTo $.Var $.Default }}
 	{{ $.Var }} = &val
@@ -28,8 +34,8 @@
 {{ $t := $.Type }}{{ $j := $t.JSON }}{{- $val := print_go $.Default.Value }}
 {{- if $j.TimeFormat }}
 	val, _ := json.DecodeTimeFormat(jx.DecodeStr({{ quote $val }}), {{ $j.TimeFormat }})
-{{- else if $j.Format }}
-	val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ quote $val }}))
+{{- else if $j.Decoder }}
+	val, _ := json.Decode{{ $j.Decoder }}(jx.DecodeStr({{ quote $val }}))
 {{- else if $j.IsBase64 }}
 	val, _ := jx.DecodeStr({{ quote $val }}).Base64()
 {{- else }}

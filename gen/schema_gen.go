@@ -1,7 +1,9 @@
 package gen
 
 import (
+	"cmp"
 	"fmt"
+	"path"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -24,6 +26,7 @@ type schemaGen struct {
 	nameRef   func(ref jsonschema.Ref) (string, error)
 	fieldMut  func(*ir.Field) error
 	fail      func(err error) error
+	imports   map[string]string
 
 	depthLimit int
 	depthCount int
@@ -45,6 +48,7 @@ func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGe
 		fail: func(err error) error {
 			return err
 		},
+		imports:    defaultImports(),
 		depthLimit: defaultSchemaDepthLimit,
 		log:        zap.NewNop(),
 	}
@@ -141,6 +145,37 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		if err != nil {
 			return nil, errors.Wrapf(err, "schema name: %q", ref)
 		}
+	}
+
+	if schema.XOgenType != "" {
+		t, err := ir.External(schema)
+		if err != nil {
+			return nil, errors.Wrap(err, "external type")
+		}
+
+		if pkgPath := t.External.PackagePath; pkgPath != "" {
+			if alias, ok := g.imports[pkgPath]; ok {
+				t.External.ImportAlias = alias
+			} else {
+				aliases := make(map[string]struct{}, len(g.imports))
+				for k, v := range g.imports {
+					aliases[cmp.Or(v, path.Base(k))] = struct{}{}
+				}
+				pkgName := path.Base(pkgPath)
+				if _, ok := aliases[pkgName]; ok {
+					for i := 2; true; i++ {
+						t.External.ImportAlias = fmt.Sprintf("%s%d", pkgName, i)
+						if _, ok := aliases[t.External.ImportAlias]; !ok {
+							break
+						}
+					}
+				}
+			}
+			t.Primitive = t.External.Primitive()
+			g.imports[pkgPath] = t.External.ImportAlias
+		}
+
+		return g.regtype(name, t), nil
 	}
 
 	if schema.DefaultSet {
