@@ -123,21 +123,53 @@ func (s *Server) handleOptionalRequest(args [0]string, argsEscaped bool, w http.
 			Body:             nil,
 			Params: middleware.Parameters{
 				{
-					Name: "date",
+					Name: "ogenString",
 					In:   "query",
-				}: params.Date,
+				}: params.OgenString,
 				{
-					Name: "time",
+					Name: "ogenNumber",
 					In:   "query",
-				}: params.Time,
+				}: params.OgenNumber,
 				{
-					Name: "dateTime",
+					Name: "jsonString",
 					In:   "query",
-				}: params.DateTime,
+				}: params.JsonString,
+				{
+					Name: "jsonNumber",
+					In:   "query",
+				}: params.JsonNumber,
+				{
+					Name: "textString",
+					In:   "query",
+				}: params.TextString,
+				{
+					Name: "textNumber",
+					In:   "query",
+				}: params.TextNumber,
+				{
+					Name: "string",
+					In:   "query",
+				}: params.String,
+				{
+					Name: "number",
+					In:   "query",
+				}: params.Number,
 				{
 					Name: "alias",
 					In:   "query",
 				}: params.Alias,
+				{
+					Name: "pointer",
+					In:   "query",
+				}: params.Pointer,
+				{
+					Name: "aliasPointer",
+					In:   "query",
+				}: params.AliasPointer,
+				{
+					Name: "array",
+					In:   "query",
+				}: params.Array,
 			},
 			Raw: r,
 		}
@@ -271,21 +303,53 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 			Body:             nil,
 			Params: middleware.Parameters{
 				{
-					Name: "date",
+					Name: "ogenString",
 					In:   "query",
-				}: params.Date,
+				}: params.OgenString,
 				{
-					Name: "time",
+					Name: "ogenNumber",
 					In:   "query",
-				}: params.Time,
+				}: params.OgenNumber,
 				{
-					Name: "dateTime",
+					Name: "jsonString",
 					In:   "query",
-				}: params.DateTime,
+				}: params.JsonString,
+				{
+					Name: "jsonNumber",
+					In:   "query",
+				}: params.JsonNumber,
+				{
+					Name: "textString",
+					In:   "query",
+				}: params.TextString,
+				{
+					Name: "textNumber",
+					In:   "query",
+				}: params.TextNumber,
+				{
+					Name: "string",
+					In:   "query",
+				}: params.String,
+				{
+					Name: "number",
+					In:   "query",
+				}: params.Number,
 				{
 					Name: "alias",
 					In:   "query",
 				}: params.Alias,
+				{
+					Name: "pointer",
+					In:   "query",
+				}: params.Pointer,
+				{
+					Name: "aliasPointer",
+					In:   "query",
+				}: params.AliasPointer,
+				{
+					Name: "array",
+					In:   "query",
+				}: params.Array,
 			},
 			Raw: r,
 		}
