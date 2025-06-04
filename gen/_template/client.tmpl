@@ -344,6 +344,9 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{- end }}
 
 	{{ if $otel }}stage = "EncodeRequest"{{ end }}
+	if c.cfg.UseRawPath {
+	    u.Opaque = fmt.Sprintf("//%s%s", u.Host, u.Path)
+	}
 	r, err := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u)
 	if err != nil {
 		return res, errors.Wrap(err, "create request")

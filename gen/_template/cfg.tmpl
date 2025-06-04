@@ -140,6 +140,8 @@ type clientConfig struct {
 	otelConfig
 	{{- end }}
 	Client ht.Client
+	// UseRawPath indicates whether to use raw path in request URL, without URL encoding.  Default to false (i.e., use encoding).
+	UseRawPath bool
 }
 
 // ClientOption is client config option.
@@ -243,6 +245,14 @@ func WithClient(client ht.Client) ClientOption {
 		}
 	})
 }
+
+// WithUseRawPath specifies whether to use raw path in request URL, without URL encoding.
+func WithUseRawPath(useRawPath bool) ClientOption {
+    return optionFunc[clientConfig](func(cfg *clientConfig) {
+        cfg.UseRawPath = useRawPath
+    })
+}
+
 {{- end }}
 
 {{- if $.AnyServerEnabled }}
