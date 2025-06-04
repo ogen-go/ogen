@@ -1,6 +1,13 @@
 package ir
 
-import "github.com/ogen-go/ogen/jsonschema"
+import (
+	"path"
+	"strings"
+
+	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/jsonschema"
+)
 
 func Primitive(typ PrimitiveType, schema *jsonschema.Schema) *Type {
 	return &Type{
@@ -72,4 +79,42 @@ func Stream(name string, schema *jsonschema.Schema) *Type {
 		Name:   name,
 		Schema: schema,
 	}
+}
+
+func External(schema *jsonschema.Schema) (*Type, error) {
+	// If schema.XOgenType has no slashes or dots, it is a builtin type.
+	if !strings.ContainsAny(schema.XOgenType, "/.") {
+		return &Type{
+			Kind:      KindPrimitive,
+			Primitive: PrimitiveType(schema.XOgenType),
+			Schema:    schema,
+			External: ExternalType{
+				GoName: schema.XOgenType,
+			},
+		}, nil
+	}
+
+	i := strings.LastIndex(schema.XOgenType, ".")
+	if i < 0 || i == len(schema.XOgenType)-1 {
+		return nil, errors.Errorf("%q is not a valid Go type (expected 'pkg/path.Type')", schema.XOgenType)
+	}
+	pkgPath := schema.XOgenType[:i]
+	typeName := schema.XOgenType[i+1:]
+
+	encode, decode, err := getExternalEncoding(pkgPath, typeName)
+	if err != nil {
+		return nil, errors.Wrapf(err, "get marshal kind for %q", schema.XOgenType)
+	}
+
+	return &Type{
+		Kind:      KindPrimitive,
+		Primitive: PrimitiveType(path.Base(pkgPath) + "." + typeName),
+		Schema:    schema,
+		External: ExternalType{
+			PackagePath: pkgPath,
+			GoName:      typeName,
+			Encode:      encode,
+			Decode:      decode,
+		},
+	}, nil
 }

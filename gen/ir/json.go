@@ -328,6 +328,28 @@ func (j JSON) TimeFormat() string {
 	return strconv.Quote(s.XOgenTimeFormat)
 }
 
+// Encoder returns format name for handling json encoding.
+//
+// Mostly used for encoding of string formats, like `json.EncodeUUID`, where
+// UUID is Encoder.
+func (j JSON) Encoder() string {
+	if j.t.IsExternal() {
+		return j.t.externalFormat(j.t.External.Encode)
+	}
+	return j.Format()
+}
+
+// Decoder returns format name for handling json decoding.
+//
+// Mostly used for decoding of string formats, like `json.DecodeUUID`, where
+// UUID is Decoder.
+func (j JSON) Decoder() string {
+	if j.t.IsExternal() {
+		return j.t.externalFormat(j.t.External.Decode) + "[" + j.t.Primitive.String() + "]"
+	}
+	return j.Format()
+}
+
 // Sum returns specification for parsing value as sum type.
 func (j JSON) Sum() SumJSON {
 	if j.t.SumSpec.Discriminator != "" {

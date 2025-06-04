@@ -49,7 +49,7 @@ if err := d.Arr(func(d *jx.Decoder) error {
 			return err
 		}
 	{{- else -}}
-		if err := {{ $.Var }}.Decode(d, json.Decode{{ $g.JSON.Format }}); err != nil {
+		if err := {{ $.Var }}.Decode(d, json.Decode{{ $g.JSON.Decoder }}); err != nil {
 			return err
 		}
 	{{- end }}
@@ -88,8 +88,8 @@ if err := d.Arr(func(d *jx.Decoder) error {
 		if err != nil {
 			 return err
 		}
-	{{- else if $j.Format }}
-		v, err := json.Decode{{ $j.Format }}(d)
+	{{- else if $j.Decoder }}
+		v, err := json.Decode{{ $j.Decoder }}(d)
 		{{ $.Var }} = v
 		if err != nil {
 			 return err

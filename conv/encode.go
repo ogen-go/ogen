@@ -1,13 +1,19 @@
 package conv
 
 import (
+	"encoding"
+	stdjson "encoding/json"
 	"net"
 	"net/netip"
 	"net/url"
 	"strconv"
 	"time"
+	"unsafe"
 
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+
+	"github.com/ogen-go/ogen/json"
 )
 
 func IntToString(v int) string     { return strconv.Itoa(v) }
@@ -28,7 +34,9 @@ func Float64ToString(v float64) string { return strconv.FormatFloat(v, 'f', 10, 
 func BoolToString(v bool) string { return strconv.FormatBool(v) }
 
 func StringToString(v string) string { return v }
-func BytesToString(v []byte) string  { return string(v) }
+func BytesToString(v []byte) string {
+	return unsafe.String(unsafe.SliceData(v), len(v)) //nolint:gosec // Unsafe conversion is intended for performance.
+}
 
 func TimeToString(v time.Time) string     { return v.Format(timeLayout) }
 func DateToString(v time.Time) string     { return v.Format(dateLayout) }
@@ -63,6 +71,61 @@ func StringUint64ToString(v uint64) string { return strconv.FormatUint(v, 10) }
 
 func StringFloat32ToString(v float32) string { return strconv.FormatFloat(float64(v), 'g', 10, 32) }
 func StringFloat64ToString(v float64) string { return strconv.FormatFloat(v, 'g', 10, 64) }
+
+type (
+	marshaler[T any] interface {
+		json.Marshaler
+		*T
+	}
+	textMarshaler[T any] interface {
+		encoding.TextMarshaler
+		*T
+	}
+	jsonMarshaler[T any] interface {
+		stdjson.Marshaler
+		*T
+	}
+)
+
+func NativeToString[T any, P marshaler[T]](v T) string {
+	e := &jx.Encoder{}
+	P(&v).Encode(e)
+	return BytesToString(e.Bytes())
+}
+
+func StringNativeToString[T any, P marshaler[T]](v T) string {
+	s, _ := strconv.Unquote(NativeToString[T, P](v))
+	return s
+}
+
+func TextToString[T any, P textMarshaler[T]](v T) string {
+	b, _ := P(&v).MarshalText()
+	return BytesToString(b)
+}
+
+func StringTextToString[T any, P textMarshaler[T]](v T) string {
+	return TextToString[T, P](v)
+}
+
+func JSONToString[T any, P jsonMarshaler[T]](v T) string {
+	b, _ := P(&v).MarshalJSON()
+	return BytesToString(b)
+}
+
+func StringJSONToString[T any, P jsonMarshaler[T]](v T) string {
+	s, _ := strconv.Unquote(JSONToString[T, P](v))
+	return s
+}
+
+func ExternalToString[T any](v T) string {
+	b, _ := stdjson.Marshal(v)
+	return BytesToString(b)
+}
+
+func StringExternalToString[T any](v T) string {
+	s, _ := strconv.Unquote(ExternalToString(v))
+	return s
+}
 
 func encodeArray[T any](vs []T, encode func(T) string) []string {
 	strs := make([]string, len(vs))
