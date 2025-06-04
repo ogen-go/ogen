@@ -31,5 +31,6 @@ import (
 
 // Partially supported:
 //
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config _config/k8s.yml    --target ex_k8s    ../_testdata/examples/k8s.json
-//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config _config/github.yml --target ex_github ../_testdata/examples/api.github.com.json
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config _config/k8s.yml                 --target ex_k8s                        ../_testdata/examples/k8s.json
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config _config/github.yml              --target ex_github                     ../_testdata/examples/api.github.com.json
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen -v --clean --config _config/with_client_editors.yml --target ex_oauth2_with_client_editors ../_testdata/examples/oauth2-scopes-and-or.yml

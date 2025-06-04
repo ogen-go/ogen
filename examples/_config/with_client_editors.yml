@@ -1,0 +1,5 @@
+generator:
+  features:
+    enable:
+      - "debug/example_tests"
+      - "client/editors"
