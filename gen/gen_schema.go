@@ -71,6 +71,7 @@ func (g *Generator) generateSchema(
 	gen.log = g.log.Named("schemagen")
 	gen.fail = g.fail
 	gen.depthLimit = g.parseOpts.SchemaDepthLimit
+	gen.imports = g.imports
 
 	t, err := gen.generate(name, schema, optional)
 	if err != nil {
@@ -185,6 +186,7 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	if err := w.Generate("jsonschema", opts.FileName, TemplateConfig{
 		Package: opts.PkgName,
 		Types:   ctx.local.types,
+		Imports: gen.imports,
 	}); err != nil {
 		return errors.Wrap(err, "write")
 	}

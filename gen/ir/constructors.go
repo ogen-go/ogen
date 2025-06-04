@@ -1,6 +1,12 @@
 package ir
 
-import "github.com/ogen-go/ogen/jsonschema"
+import (
+	"strings"
+
+	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/jsonschema"
+)
 
 func Primitive(typ PrimitiveType, schema *jsonschema.Schema) *Type {
 	return &Type{
@@ -72,4 +78,30 @@ func Stream(name string, schema *jsonschema.Schema) *Type {
 		Name:   name,
 		Schema: schema,
 	}
+}
+
+func External(schema *jsonschema.Schema) (*Type, error) {
+	// If schema.XOgenType has no slashes or dots, it is a builtin type.
+	if !strings.ContainsAny(schema.XOgenType, "/.") {
+		return &Type{
+			Kind:      KindPrimitive,
+			Primitive: PrimitiveType(schema.XOgenType),
+			Schema:    schema,
+			External: ExternalType{
+				TypeName: schema.XOgenType,
+			},
+		}, nil
+	}
+
+	externalType, err := getExternalType(schema.XOgenType)
+	if err != nil {
+		return nil, errors.Wrapf(err, "get external type for %q", schema.XOgenType)
+	}
+
+	return &Type{
+		Kind:      KindPrimitive,
+		Primitive: externalType.Primitive(),
+		Schema:    schema,
+		External:  externalType,
+	}, nil
 }
