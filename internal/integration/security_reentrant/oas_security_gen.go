@@ -21,7 +21,7 @@ type SecurityHandler interface {
 	// HandleCookieKey handles cookieKey security.
 	HandleCookieKey(ctx context.Context, operationName OperationName, t CookieKey) (context.Context, error)
 	// HandleCustom handles custom security.
-	HandleCustom(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, error)
+	HandleCustom(ctx context.Context, operationName OperationName, t Custom) (context.Context, error)
 	// HandleHeaderKey handles headerKey security.
 	HandleHeaderKey(ctx context.Context, operationName OperationName, t HeaderKey) (context.Context, error)
 	// HandleQueryKey handles queryKey security.
@@ -122,7 +122,9 @@ var operationRolesCustom = map[string][]string{
 }
 
 func (s *Server) securityCustom(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
-	t := req
+	var t Custom
+	t.Request = req
+	t.Roles = operationRolesCustom[operationName]
 	rctx, err := s.sec.HandleCustom(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
