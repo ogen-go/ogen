@@ -121,6 +121,10 @@ var (
 		"client/request/validation",
 		`Enables validation of client requests`,
 	}
+	ClientEditors = Feature{
+		"client/editors",
+		`Enables editors function options for client`,
+	}
 	ServerResponseValidation = Feature{
 		"server/response/validation",
 		`Enables validation of server responses`,
@@ -158,6 +162,7 @@ var AllFeatures = []Feature{
 	ClientSecurityReentrant,
 	ClientRequestOptions,
 	ClientRequestValidation,
+	ClientEditors,
 	ServerResponseValidation,
 	OgenOtel,
 	OgenUnimplemented,
