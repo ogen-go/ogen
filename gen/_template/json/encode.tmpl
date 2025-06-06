@@ -31,7 +31,7 @@ if {{ $.Var }}.Set {
 	{{ if $g.JSON.TimeFormat -}}
 		{{ $.Var }}.Encode(e, json.NewTimeEncoder({{ $g.JSON.TimeFormat }}))
 	{{- else -}}
-		{{ $.Var }}.Encode(e, json.Encode{{ $g.JSON.Format }})
+		{{ $.Var }}.Encode(e, json.Encode{{ $g.JSON.Encoder }})
 	{{- end }}
 {{- else }}
 	{{ $.Var }}.Encode(e)
@@ -114,9 +114,9 @@ if {{ $.Var }}.Set {
 	{{- else if $j.TimeFormat }}
 		{{- template "json/enc_field" $ }}
 		json.EncodeTimeFormat(e, {{ $.Var }}, {{ $j.TimeFormat }})
-	{{- else if $j.Format -}}
+	{{- else if $j.Encoder -}}
 		{{- template "json/enc_field" $ }}
-		json.Encode{{ $j.Format }}(e, {{ $.Var }})
+		json.Encode{{ $j.Encoder }}(e, {{ $.Var }})
 	{{- else if $j.Fn -}}
 		{{- template "json/enc_field" $ }}
 		e.{{ $j.Fn }}({{ $.Var }})

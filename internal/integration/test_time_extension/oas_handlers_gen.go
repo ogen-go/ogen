@@ -30,20 +30,20 @@ func (c *codeRecorder) WriteHeader(status int) {
 	c.ResponseWriter.WriteHeader(status)
 }
 
-// handleDefaultRequest handles default operation.
+// handleOptionalRequest handles optional operation.
 //
 // GET /optional
-func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+func (s *Server) handleOptionalRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
 	statusWriter := &codeRecorder{ResponseWriter: w}
 	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("default"),
+		otelogen.OperationID("optional"),
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/optional"),
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), DefaultOperation,
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -98,11 +98,11 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: DefaultOperation,
-			ID:   "default",
+			Name: OptionalOperation,
+			ID:   "optional",
 		}
 	)
-	params, err := decodeDefaultParams(args, argsEscaped, r)
+	params, err := decodeOptionalParams(args, argsEscaped, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
 			OperationContext: opErrContext,
@@ -113,13 +113,13 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 		return
 	}
 
-	var response *DefaultOK
+	var response *OptionalOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    DefaultOperation,
+			OperationName:    OptionalOperation,
 			OperationSummary: "",
-			OperationID:      "default",
+			OperationID:      "optional",
 			Body:             nil,
 			Params: middleware.Parameters{
 				{
@@ -134,14 +134,18 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 					Name: "dateTime",
 					In:   "query",
 				}: params.DateTime,
+				{
+					Name: "alias",
+					In:   "query",
+				}: params.Alias,
 			},
 			Raw: r,
 		}
 
 		type (
 			Request  = struct{}
-			Params   = DefaultParams
-			Response = *DefaultOK
+			Params   = OptionalParams
+			Response = *OptionalOK
 		)
 		response, err = middleware.HookMiddleware[
 			Request,
@@ -150,14 +154,14 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 		](
 			m,
 			mreq,
-			unpackDefaultParams,
+			unpackOptionalParams,
 			func(ctx context.Context, request Request, params Params) (response Response, err error) {
-				response, err = s.h.Default(ctx, params)
+				response, err = s.h.Optional(ctx, params)
 				return response, err
 			},
 		)
 	} else {
-		response, err = s.h.Default(ctx, params)
+		response, err = s.h.Optional(ctx, params)
 	}
 	if err != nil {
 		defer recordError("Internal", err)
@@ -165,7 +169,7 @@ func (s *Server) handleDefaultRequest(args [0]string, argsEscaped bool, w http.R
 		return
 	}
 
-	if err := encodeDefaultResponse(response, w, span); err != nil {
+	if err := encodeOptionalResponse(response, w, span); err != nil {
 		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
@@ -278,6 +282,10 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 					Name: "dateTime",
 					In:   "query",
 				}: params.DateTime,
+				{
+					Name: "alias",
+					In:   "query",
+				}: params.Alias,
 			},
 			Raw: r,
 		}
