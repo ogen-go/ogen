@@ -64,6 +64,9 @@ func TestCompile(t *testing.T) {
 		{`\s`, goRegexp{}, false},
 		{`\S`, goRegexp{}, false},
 		{`[\s]`, goRegexp{}, false},
+		// Unicode character class escape ,\p{...}/\P{...}, in ECMA-262
+		{`\p{L}`, goRegexp{}, false},
+		{`\P{N}`, goRegexp{}, false},
 
 		// Use regexp2.
 		{`^(?!examples/)`, regexp2Regexp{}, false},
