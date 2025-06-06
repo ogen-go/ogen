@@ -375,6 +375,26 @@ func (p *parser) scanEscape(inClass bool) {
 		p.writeString("[^" + whitespaceChars + "]")
 		p.read()
 		return
+	case 'p', 'P':
+		p.writeByte('\\')
+		p.pass()
+		if p.chr != '{' {
+			p.error(false, "re2: Invalid \\p/\\P format")
+			return
+		}
+		p.pass()
+		if p.chr == '}' {
+			p.error(false, "re2: Empty {} is not allowed")
+			return
+		}
+		for {
+			p.pass()
+			if p.chr == '}' {
+				break
+			}
+		}
+		p.pass()
+		return
 	default:
 		// $ is an identifier character, so we have to have
 		// a special case for it here
