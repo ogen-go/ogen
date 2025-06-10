@@ -34,17 +34,44 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 
 {{ range $s := $.Securities }}
 
+{{ if gt (len $s.ScopeDescriptions) 0 }}
+
+type ScopeName = string
+
+const (
+{{- range $scopeName, $scopeDescription := $s.ScopeDescriptions }}
+    ScopeName{{ stripNonAlphaNumeric $scopeName }} ScopeName = {{ quote $scopeName }}
+{{- end }}
+)
+
+{{if $s.Format.IsOAuth2Security}}
+var oauth2ScopesDescription{{ $s.Type.Name }} = map[string]string {
+{{- range $scopeName, $scopeDescription := $s.ScopeDescriptions }}
+    ScopeName{{ stripNonAlphaNumeric $scopeName }}: {{ quote $scopeDescription }},
+{{- end }}
+}
+{{- end }}
+
+{{- end }}
+
 {{if $s.Format.IsOAuth2Security}}
 var oauth2Scopes{{ $s.Type.Name }} = map[string][]string {
-{{- else}}
+{{- range $operationName, $scopes := $s.OperationScopes }}
+    {{ $operationName }}Operation: []string{
+    {{- range $scopeName := $scopes }}
+        ScopeName{{ stripNonAlphaNumeric $scopeName }},
+    {{- end }}
+},
+{{- end }}
+{{- else }}
 var operationRoles{{ $s.Type.Name }} = map[string][]string {
-{{- end}}
-{{- range $operationName, $scopes := $s.Scopes }}
+{{- range $operationName, $scopes := $s.OperationScopes }}
 	{{ $operationName }}Operation: []string{
-		{{- range $scope := $scopes }}
-			{{ quote $scope }},
-		{{- end}}
+		{{- range $scopeName := $scopes }}
+			{{ quote $scopeName }},
+		{{- end }}
 	},
+{{- end }}
 {{- end }}
 }
 

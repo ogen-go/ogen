@@ -33,11 +33,25 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
+type ScopeName = string
+
+const (
+	ScopeNameScope1 ScopeName = "scope1"
+	ScopeNameScope2 ScopeName = "scope2"
+	ScopeNameScope3 ScopeName = "scope3"
+)
+
+var oauth2ScopesDescriptionOauth2Alt = map[string]string{
+	ScopeNameScope1: "Grants scope1 access",
+	ScopeNameScope2: "Grants scope2 access",
+	ScopeNameScope3: "Grants scope3 access",
+}
+
 var oauth2ScopesOauth2Alt = map[string][]string{
 	TesttestOperation: []string{
-		"scope1",
-		"scope2",
-		"scope3",
+		ScopeNameScope1,
+		ScopeNameScope2,
+		ScopeNameScope3,
 	},
 }
 
