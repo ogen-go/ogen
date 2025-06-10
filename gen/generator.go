@@ -76,10 +76,11 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		external = jsonschema.NewExternalResolver(opts.Parser.Remote)
 	}
 	api, err := parser.Parse(spec, parser.Settings{
-		External:   external,
-		File:       opts.Parser.File,
-		RootURL:    opts.Parser.RootURL,
-		InferTypes: opts.Parser.InferSchemaType,
+		External:              external,
+		File:                  opts.Parser.File,
+		RootURL:               opts.Parser.RootURL,
+		InferTypes:            opts.Parser.InferSchemaType,
+		AuthenticationSchemes: opts.Parser.AuthenticationSchemes,
 	})
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}
