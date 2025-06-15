@@ -79,7 +79,31 @@ func (t Type) uriFormat() string {
 	return t.EncodeFn()
 }
 
+func (t Type) externalFormat(e ExternalEncoding) string {
+	typePrefix := func(f string) string {
+		switch t.Schema.Type {
+		case jsonschema.String:
+			return "String" + f
+		default:
+			return f
+		}
+	}
+	switch {
+	case e.Has(ExternalNative):
+		return typePrefix("Native")
+	case e.Has(ExternalJSON):
+		return typePrefix("JSON")
+	case e.Has(ExternalText):
+		return typePrefix("Text")
+	default:
+		return typePrefix("External")
+	}
+}
+
 func (t Type) ToString() string {
+	if t.IsExternal() {
+		return t.externalFormat(t.External.Encode) + "ToString"
+	}
 	encodeFn := t.uriFormat()
 	if encodeFn == "" {
 		panic(fmt.Sprintf("unexpected %+v", t))
@@ -88,6 +112,9 @@ func (t Type) ToString() string {
 }
 
 func (t Type) FromString() string {
+	if t.IsExternal() {
+		return "To" + t.externalFormat(t.External.Encode) + "[" + t.Primitive.String() + "]"
+	}
 	encodeFn := t.uriFormat()
 	if encodeFn == "" {
 		panic(fmt.Sprintf("unexpected %+v", t))
@@ -139,6 +166,7 @@ func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
+func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
 
 func (t *Type) MustField(name string) *Field {
 	if t.IsAlias() {
