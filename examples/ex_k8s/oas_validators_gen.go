@@ -5406,3 +5406,19 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Validate() e
 	}
 	return nil
 }
+
+func (s *PatchCoreV1NamespacedConfigMapCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1ConfigMap)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedConfigMapOK) Validate() error {
+	alias := (*IoK8sAPICoreV1ConfigMap)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}

@@ -105,7 +105,7 @@ func encode{{ $op.Name }}Request(
 		ht.SetBody(r, body, contentType)
 	{{- end }}
 	return nil
-{{- else if $encoding.JSON }}
+{{- else if or $encoding.JSON $encoding.ProblemJSON }}
 	{{- if $.JSONStreaming }}
 		body := ht.CreateBodyWriter(func(w io.Writer) (rerr error) {
 			e := jx.NewStreamingEncoder(w, -1)
