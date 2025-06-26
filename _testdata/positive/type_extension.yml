@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: API
+  version: 0.1.0
+paths:
+  /optional:
+    get:
+      operationId: optional
+      parameters:
+        - name: ogenString
+          in: query
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringOgen
+            default: '10'
+        - name: ogenNumber
+          in: query
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen
+            default: 20
+        - name: jsonString
+          in: query
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+            default: '30'
+        - name: jsonNumber
+          in: query
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberJSON
+            default: 40
+        - name: textString
+          in: query
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+            default: '50'
+        - name: textNumber
+          in: query
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+            default: 60
+        - name: string
+          in: query
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.String
+            default: '70'
+        - name: number
+          in: query
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Number
+            default: 80
+        - name: alias
+          in: query
+          schema:
+            $ref: '#/components/schemas/Alias'
+            default: '90'
+        - name: pointer
+          in: query
+          schema:
+            type: number
+            x-ogen-type: '*github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen'
+            x-ogen-name: Pointer
+            default: 100
+        - name: aliasPointer
+          in: query
+          schema:
+            $ref: '#/components/schemas/AliasPointer'
+            default: '110'
+        - name: array
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+      responses:
+        '200':
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ogenString:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringOgen
+                    default: '10'
+                  ogenNumber:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen
+                    default: 20
+                  jsonString:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+                    default: '30'
+                  jsonNumber:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberJSON
+                    default: 40
+                  textString:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+                    default: '50'
+                  textNumber:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+                    default: 60
+                  string:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.String
+                    default: '70'
+                  number:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Number
+                    default: 80
+                  alias:
+                    $ref: '#/components/schemas/Alias'
+                    default: '90'
+                  pointer:
+                    type: number
+                    x-ogen-type: '*github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen'
+                    x-ogen-name: Pointer
+                    default: 100
+                  aliasPointer:
+                    $ref: '#/components/schemas/AliasPointer'
+                    default: '110'
+                  builtin:
+                    type: object
+                    properties:
+                      key1:
+                        type: string
+                      key2:
+                        type: number
+                    x-ogen-type: any
+                  array:
+                    type: array
+                    items:
+                      type: string
+                      x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+                  map:
+                    type: object
+                    additionalProperties:
+                      type: string
+                      x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+
+  /required:
+    get:
+      operationId: required
+      parameters:
+        - name: ogenString
+          in: query
+          required: true
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringOgen
+        - name: ogenNumber
+          in: query
+          required: true
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen
+        - name: jsonString
+          in: query
+          required: true
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+        - name: jsonNumber
+          in: query
+          required: true
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberJSON
+        - name: textString
+          in: query
+          required: true
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+        - name: textNumber
+          in: query
+          required: true
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+        - name: string
+          in: query
+          required: true
+          schema:
+            type: string
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.String
+        - name: number
+          in: query
+          required: true
+          schema:
+            type: number
+            x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Number
+        - name: alias
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Alias'
+        - name: pointer
+          in: query
+          required: true
+          schema:
+            type: number
+            x-ogen-type: '*github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen'
+            x-ogen-name: Pointer
+        - name: aliasPointer
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/AliasPointer'
+        - name: array
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+              x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+      responses:
+        '200':
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - ogenString
+                  - ogenNumber
+                  - jsonString
+                  - jsonNumber
+                  - textString
+                  - textNumber
+                  - string
+                  - number
+                  - alias
+                  - pointer
+                  - aliasPointer
+                  - builtin
+                  - array
+                  - map
+                properties:
+                  ogenString:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringOgen
+                  ogenNumber:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen
+                  jsonString:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+                  jsonNumber:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.NumberJSON
+                  textString:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+                  textNumber:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Text
+                  string:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.String
+                  number:
+                    type: number
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.Number
+                  alias:
+                    $ref: '#/components/schemas/Alias'
+                  pointer:
+                    type: number
+                    x-ogen-type: '*github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen'
+                    x-ogen-name: Pointer
+                  aliasPointer:
+                    $ref: '#/components/schemas/AliasPointer'
+                  builtin:
+                    type: object
+                    properties:
+                      key1:
+                        type: string
+                      key2:
+                        type: number
+                    x-ogen-type: any
+                  array:
+                    type: array
+                    items:
+                      type: string
+                      x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+                  map:
+                    type: object
+                    additionalProperties:
+                      type: string
+                      x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringJSON
+
+components:
+  schemas:
+    Alias:
+      type: string
+      x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes.StringOgen
+    AliasPointer:
+      type: string
+      x-ogen-type: '*github.com/ogen-go/ogen/_testdata/testtypes.StringOgen'
