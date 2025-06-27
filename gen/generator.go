@@ -71,6 +71,9 @@ func expandSpec(api *openapi.API, p string) (err error) {
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	opts.setDefaults()
 
+	// Set the comment line limit for pretty documentation.
+	ir.SetLineLimit(opts.Generator.CommentLineLimit)
+
 	var external jsonschema.ExternalResolver
 	if opts.Parser.AllowRemote {
 		external = jsonschema.NewExternalResolver(opts.Parser.Remote)

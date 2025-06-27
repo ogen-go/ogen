@@ -161,6 +161,9 @@ type GenerateOptions struct {
 	IgnoreNotImplemented []string `json:"ignore_not_implemented" yaml:"ignore_not_implemented"`
 	// NotImplementedHook is hook for ErrNotImplemented errors.
 	NotImplementedHook func(name string, err error) `json:"-" yaml:"-"`
+	// CommentLineLimit sets the maximum width of a comment line before it is
+	// wrapped.  -1 disables line wrapping altogether.
+	CommentLineLimit int `json:"comment_line_limit" yaml:"comment_line_limit"`
 
 	// ConvenientErrors control Convenient Errors feature.
 	//
