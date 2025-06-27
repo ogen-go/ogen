@@ -119,6 +119,12 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 			{{- end }}
 
 			var response {{ $type.Go }}
+            if resp.Request.Method == http.MethodHead && len(buf) == 0 {
+                return {{ if $ptr }}&{{ end }}{{ $originalType.Name }}{
+                    StatusCode: resp.StatusCode,
+                    Response:   response,
+                }, nil
+            }
 			if err := func() error {
 				{{- template "json/dec" elem $type "response" }}
 				if err := d.Skip(); err != io.EOF {
