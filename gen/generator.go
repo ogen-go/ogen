@@ -73,6 +73,8 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 
 	// Set the comment line limit for pretty documentation.
 	ir.SetLineLimit(opts.Generator.CommentLineLimit)
+	// Set whether to use pretty documentation.
+	ir.SetPrettyDoc(opts.Generator.CommentPrettyDoc)
 
 	var external jsonschema.ExternalResolver
 	if opts.Parser.AllowRemote {
