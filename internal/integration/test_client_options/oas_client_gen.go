@@ -131,6 +131,7 @@ func (c *Client) sendFoo(ctx context.Context, params FooParams, requestOptions .
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

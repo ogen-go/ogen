@@ -97,6 +97,7 @@ func (c *Client) sendTesttest(ctx context.Context, request *TesttestReq) (res Te
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/testtest"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
