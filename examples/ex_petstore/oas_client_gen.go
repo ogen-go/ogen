@@ -111,6 +111,7 @@ func (c *Client) sendCreatePets(ctx context.Context) (res *CreatePetsCreated, er
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -183,6 +184,7 @@ func (c *Client) sendListPets(ctx context.Context, params ListPetsParams) (res *
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -276,6 +278,7 @@ func (c *Client) sendShowPetById(ctx context.Context, params ShowPetByIdParams) 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/pets/{petId}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

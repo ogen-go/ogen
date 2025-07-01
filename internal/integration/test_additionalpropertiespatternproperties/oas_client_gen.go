@@ -90,6 +90,7 @@ func (c *Client) sendAlive(ctx context.Context, params AliveParams) (res *AliveO
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/alive"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

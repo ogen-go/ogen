@@ -104,6 +104,7 @@ func (c *Client) sendDataCreate(ctx context.Context, request OptData) (res *Data
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/data"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -179,6 +180,7 @@ func (c *Client) sendDataGet(ctx context.Context) (res *Data, err error) {
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/data"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

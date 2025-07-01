@@ -294,6 +294,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{{- else }}
 		var otelAttrs []attribute.KeyValue
 		{{- end }}
+		otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 		// Run stopwatch.
 		startTime := time.Now()

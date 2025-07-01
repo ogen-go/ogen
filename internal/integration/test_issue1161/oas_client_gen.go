@@ -97,6 +97,7 @@ func (c *Client) sendFooBarBazGet(ctx context.Context) (res string, err error) {
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo/bar/baz"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -166,6 +167,7 @@ func (c *Client) sendFooBarQuxGet(ctx context.Context) (res string, err error) {
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo/bar/qux"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -235,6 +237,7 @@ func (c *Client) sendFooParamXyzGet(ctx context.Context, params FooParamXyzGetPa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/foo/{param}/xyz"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

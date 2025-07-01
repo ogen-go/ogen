@@ -94,6 +94,7 @@ func (c *Client) sendProbeLiveness(ctx context.Context) (res *ProbeLivenessOK, e
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/healthz"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

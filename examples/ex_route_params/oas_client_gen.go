@@ -107,6 +107,7 @@ func (c *Client) sendDataGet(ctx context.Context, params DataGetParams) (res str
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}/{key}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -216,6 +217,7 @@ func (c *Client) sendDataGetAny(ctx context.Context) (res string, err error) {
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -288,6 +290,7 @@ func (c *Client) sendDataGetID(ctx context.Context, params DataGetIDParams) (res
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/name/{id}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

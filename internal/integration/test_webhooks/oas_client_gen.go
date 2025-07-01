@@ -95,6 +95,7 @@ func (c *Client) sendPublishEvent(ctx context.Context, request OptEvent) (res *E
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/event"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -181,6 +182,7 @@ func (c *WebhookClient) sendStatusWebhook(ctx context.Context, targetURL string)
 		otelogen.OperationID("statusWebhook"),
 		otelogen.WebhookName("status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -248,6 +250,7 @@ func (c *WebhookClient) sendUpdateDelete(ctx context.Context, targetURL string) 
 	otelAttrs := []attribute.KeyValue{
 		otelogen.WebhookName("update"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -316,6 +319,7 @@ func (c *WebhookClient) sendUpdateWebhook(ctx context.Context, targetURL string,
 		otelogen.OperationID("updateWebhook"),
 		otelogen.WebhookName("update"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

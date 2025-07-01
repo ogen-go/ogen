@@ -110,6 +110,7 @@ func (c *Client) sendAllRequestBodies(ctx context.Context, request AllRequestBod
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/allRequestBodies"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -183,6 +184,7 @@ func (c *Client) sendAllRequestBodiesOptional(ctx context.Context, request AllRe
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/allRequestBodiesOptional"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -256,6 +258,7 @@ func (c *Client) sendBase64Request(ctx context.Context, request Base64RequestReq
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/base64Request"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -329,6 +332,7 @@ func (c *Client) sendMaskContentType(ctx context.Context, request *MaskContentTy
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/maskContentType"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -402,6 +406,7 @@ func (c *Client) sendMaskContentTypeOptional(ctx context.Context, request *MaskC
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/maskContentTypeOptional"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -475,6 +480,7 @@ func (c *Client) sendStreamJSON(ctx context.Context, request []float64) (res flo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/streamJSON"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

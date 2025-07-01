@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 
@@ -40,6 +41,7 @@ type otelConfig struct {
 	Tracer         trace.Tracer
 	MeterProvider  metric.MeterProvider
 	Meter          metric.Meter
+	Attributes     []attribute.KeyValue
 }
 
 func (cfg *otelConfig) initOTEL() {
@@ -220,6 +222,13 @@ func WithMeterProvider(provider metric.MeterProvider) Option {
 		if provider != nil {
 			cfg.MeterProvider = provider
 		}
+	})
+}
+
+// WithAttributes specifies default otel attributes.
+func WithAttributes(attributes ...attribute.KeyValue) Option {
+	return otelOptionFunc(func(cfg *otelConfig) {
+		cfg.Attributes = attributes
 	})
 }
 
