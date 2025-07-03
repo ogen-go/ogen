@@ -1,4 +1,10 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- define "schema/alias" }}
-type {{ $.Name }} {{ $.AliasTo.Go }}
+{{- if eq $.AliasTo.Kind "struct" }}
+type {{ $.Name }} struct {
+  {{ $.AliasTo.Go }}
+}
+{{ else }}
+type {{ $.Name }} = {{ $.AliasTo.Go }}
+{{- end }}
 {{ end }}
