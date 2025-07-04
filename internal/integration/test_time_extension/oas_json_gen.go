@@ -9,105 +9,79 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
 )
 
-// Encode implements json.Marshaler.
-func (s *DefaultOK) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
+// Encode encodes Alias as json.
+func (s Alias) Encode(e *jx.Encoder) {
+	unwrapped := time.Time(s)
+
+	json.EncodeTimeFormat(e, unwrapped, "02/01/2006 3:04:05PM")
 }
 
-// encodeFields encodes fields.
-func (s *DefaultOK) encodeFields(e *jx.Encoder) {
-	{
-		if s.Date.Set {
-			e.FieldStart("date")
-			s.Date.Encode(e, json.NewTimeEncoder("02/01/2006"))
-		}
-	}
-	{
-		if s.Time.Set {
-			e.FieldStart("time")
-			s.Time.Encode(e, json.NewTimeEncoder("3:04PM"))
-		}
-	}
-	{
-		if s.DateTime.Set {
-			e.FieldStart("dateTime")
-			s.DateTime.Encode(e, json.NewTimeEncoder("2006-01-02T15:04:05.999999999Z07:00"))
-		}
-	}
-}
-
-var jsonFieldsNameOfDefaultOK = [3]string{
-	0: "date",
-	1: "time",
-	2: "dateTime",
-}
-
-// Decode decodes DefaultOK from json.
-func (s *DefaultOK) Decode(d *jx.Decoder) error {
+// Decode decodes Alias from json.
+func (s *Alias) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefaultOK to nil")
+		return errors.New("invalid: unable to decode Alias to nil")
 	}
-	s.setDefaults()
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "date":
-			if err := func() error {
-				s.Date.Reset()
-				if err := s.Date.Decode(d, json.NewTimeDecoder("02/01/2006")); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"date\"")
-			}
-		case "time":
-			if err := func() error {
-				s.Time.Reset()
-				if err := s.Time.Decode(d, json.NewTimeDecoder("3:04PM")); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"time\"")
-			}
-		case "dateTime":
-			if err := func() error {
-				s.DateTime.Reset()
-				if err := s.DateTime.Decode(d, json.NewTimeDecoder("2006-01-02T15:04:05.999999999Z07:00")); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"dateTime\"")
-			}
-		default:
-			return d.Skip()
+	var unwrapped time.Time
+	if err := func() error {
+		v, err := json.DecodeTimeFormat(d, "02/01/2006 3:04:05PM")
+		unwrapped = v
+		if err != nil {
+			return err
 		}
 		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefaultOK")
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
 	}
-
+	*s = Alias(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s *DefaultOK) MarshalJSON() ([]byte, error) {
+func (s Alias) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefaultOK) UnmarshalJSON(data []byte) error {
+func (s *Alias) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Alias as json.
+func (o OptAlias) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Alias from json.
+func (o *OptAlias) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptAlias to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptAlias) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptAlias) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -218,6 +192,121 @@ func (s *OptTime) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s *OptionalOK) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *OptionalOK) encodeFields(e *jx.Encoder) {
+	{
+		if s.Date.Set {
+			e.FieldStart("date")
+			s.Date.Encode(e, json.NewTimeEncoder("02/01/2006"))
+		}
+	}
+	{
+		if s.Time.Set {
+			e.FieldStart("time")
+			s.Time.Encode(e, json.NewTimeEncoder("3:04PM"))
+		}
+	}
+	{
+		if s.DateTime.Set {
+			e.FieldStart("dateTime")
+			s.DateTime.Encode(e, json.NewTimeEncoder("2006-01-02T15:04:05.999999999Z07:00"))
+		}
+	}
+	{
+		if s.Alias.Set {
+			e.FieldStart("alias")
+			s.Alias.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfOptionalOK = [4]string{
+	0: "date",
+	1: "time",
+	2: "dateTime",
+	3: "alias",
+}
+
+// Decode decodes OptionalOK from json.
+func (s *OptionalOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OptionalOK to nil")
+	}
+	s.setDefaults()
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "date":
+			if err := func() error {
+				s.Date.Reset()
+				if err := s.Date.Decode(d, json.NewTimeDecoder("02/01/2006")); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"date\"")
+			}
+		case "time":
+			if err := func() error {
+				s.Time.Reset()
+				if err := s.Time.Decode(d, json.NewTimeDecoder("3:04PM")); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"time\"")
+			}
+		case "dateTime":
+			if err := func() error {
+				s.DateTime.Reset()
+				if err := s.DateTime.Decode(d, json.NewTimeDecoder("2006-01-02T15:04:05.999999999Z07:00")); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"dateTime\"")
+			}
+		case "alias":
+			if err := func() error {
+				s.Alias.Reset()
+				if err := s.Alias.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"alias\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode OptionalOK")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *OptionalOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptionalOK) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *RequiredOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -238,12 +327,17 @@ func (s *RequiredOK) encodeFields(e *jx.Encoder) {
 		e.FieldStart("dateTime")
 		json.EncodeTimeFormat(e, s.DateTime, "2006-01-02T15:04:05.999999999Z07:00")
 	}
+	{
+		e.FieldStart("alias")
+		s.Alias.Encode(e)
+	}
 }
 
-var jsonFieldsNameOfRequiredOK = [3]string{
+var jsonFieldsNameOfRequiredOK = [4]string{
 	0: "date",
 	1: "time",
 	2: "dateTime",
+	3: "alias",
 }
 
 // Decode decodes RequiredOK from json.
@@ -252,6 +346,7 @@ func (s *RequiredOK) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode RequiredOK to nil")
 	}
 	var requiredBitSet [1]uint8
+	s.setDefaults()
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -291,6 +386,16 @@ func (s *RequiredOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"dateTime\"")
 			}
+		case "alias":
+			requiredBitSet[0] |= 1 << 3
+			if err := func() error {
+				if err := s.Alias.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"alias\"")
+			}
 		default:
 			return d.Skip()
 		}
@@ -301,7 +406,7 @@ func (s *RequiredOK) Decode(d *jx.Decoder) error {
 	// Validate required fields.
 	var failures []validate.FieldError
 	for i, mask := range [1]uint8{
-		0b00000111,
+		0b00001111,
 	} {
 		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
 			// Mask only required fields and check equality to mask using XOR.

@@ -7,7 +7,6 @@ import (
 	"strconv"
 
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"

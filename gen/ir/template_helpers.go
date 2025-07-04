@@ -79,7 +79,32 @@ func (t Type) uriFormat() string {
 	return t.EncodeFn()
 }
 
+// externalType defines what available interface to use for encoding/decoding.
+func (t Type) externalType(e ExternalEncoding) ExternalEncoding {
+	switch {
+	case e.Has(ExternalNative):
+		return ExternalNative
+	case e.Has(ExternalJSON):
+		return ExternalJSON
+	case e.Has(ExternalText):
+		return ExternalText
+	case e.Has(ExternalBinary) && t.Schema.Type == jsonschema.String &&
+		(t.Schema.Format == "byte" || t.Schema.Format == "base64"):
+		return ExternalBinary
+	default:
+		return 0
+	}
+}
+
 func (t Type) ToString() string {
+	if t.IsExternal() {
+		external := t.externalType(t.External.Encode)
+		var prefix string
+		if t.Schema.Type == jsonschema.String && external != ExternalText && external != ExternalBinary {
+			prefix = "String"
+		}
+		return prefix + external.String() + "ToString"
+	}
 	encodeFn := t.uriFormat()
 	if encodeFn == "" {
 		panic(fmt.Sprintf("unexpected %+v", t))
@@ -88,6 +113,14 @@ func (t Type) ToString() string {
 }
 
 func (t Type) FromString() string {
+	if t.IsExternal() {
+		external := t.externalType(t.External.Decode)
+		var prefix string
+		if t.Schema.Type == jsonschema.String && external != ExternalText && external != ExternalBinary {
+			prefix = "String"
+		}
+		return "To" + prefix + external.String() + "[" + t.Primitive.String() + "]"
+	}
 	encodeFn := t.uriFormat()
 	if encodeFn == "" {
 		panic(fmt.Sprintf("unexpected %+v", t))
@@ -139,6 +172,7 @@ func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
 func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
+func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
 
 func (t *Type) MustField(name string) *Field {
 	if t.IsAlias() {
