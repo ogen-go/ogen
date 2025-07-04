@@ -1,6 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- define "json/encoders_alias" }}
 {{- $a := $.AliasTo }}
+{{- if ne $a.Kind "struct" }}
 // Encode encodes {{ $.Name }} as json.
 func (s {{ $.ReadOnlyReceiver }}) Encode(e *jx.Encoder) {
 	{{- if $a.DoPassByPointer }}
@@ -33,4 +34,5 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+{{ end }}
 {{ end }}
