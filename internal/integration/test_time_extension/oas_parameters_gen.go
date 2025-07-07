@@ -7,21 +7,21 @@ import (
 	"time"
 
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 )
 
-// DefaultParams is parameters of default operation.
-type DefaultParams struct {
+// OptionalParams is parameters of optional operation.
+type OptionalParams struct {
 	Date     OptDate
 	Time     OptTime
 	DateTime OptDateTime
+	Alias    OptAlias
 }
 
-func unpackDefaultParams(packed middleware.Parameters) (params DefaultParams) {
+func unpackOptionalParams(packed middleware.Parameters) (params OptionalParams) {
 	{
 		key := middleware.ParameterKey{
 			Name: "date",
@@ -49,10 +49,19 @@ func unpackDefaultParams(packed middleware.Parameters) (params DefaultParams) {
 			params.DateTime = v.(OptDateTime)
 		}
 	}
+	{
+		key := middleware.ParameterKey{
+			Name: "alias",
+			In:   "query",
+		}
+		if v, ok := packed[key]; ok {
+			params.Alias = v.(OptAlias)
+		}
+	}
 	return params
 }
 
-func decodeDefaultParams(args [0]string, argsEscaped bool, r *http.Request) (params DefaultParams, _ error) {
+func decodeOptionalParams(args [0]string, argsEscaped bool, r *http.Request) (params OptionalParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: date.
 	{
@@ -192,6 +201,59 @@ func decodeDefaultParams(args [0]string, argsEscaped bool, r *http.Request) (par
 			Err:  err,
 		}
 	}
+	// Set default value for query: alias.
+	{
+		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"04/03/2001 01:23:45AM\""), "02/01/2006 3:04:05PM")
+		params.Alias.SetTo(Alias(val))
+	}
+	// Decode query: alias.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "alias",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotAliasVal Alias
+				if err := func() error {
+					var paramsDotAliasValVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := time.Parse("02/01/2006 3:04:05PM", val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotAliasValVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					paramsDotAliasVal = Alias(paramsDotAliasValVal)
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Alias.SetTo(paramsDotAliasVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "alias",
+			In:   "query",
+			Err:  err,
+		}
+	}
 	return params, nil
 }
 
@@ -200,6 +262,7 @@ type RequiredParams struct {
 	Date     time.Time
 	Time     time.Time
 	DateTime time.Time
+	Alias    Alias
 }
 
 func unpackRequiredParams(packed middleware.Parameters) (params RequiredParams) {
@@ -223,6 +286,13 @@ func unpackRequiredParams(packed middleware.Parameters) (params RequiredParams) 
 			In:   "query",
 		}
 		params.DateTime = packed[key].(time.Time)
+	}
+	{
+		key := middleware.ParameterKey{
+			Name: "alias",
+			In:   "query",
+		}
+		params.Alias = packed[key].(Alias)
 	}
 	return params
 }
@@ -333,6 +403,54 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
 			Name: "dateTime",
+			In:   "query",
+			Err:  err,
+		}
+	}
+	// Set default value for query: alias.
+	{
+		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"04/03/2001 01:23:45AM\""), "02/01/2006 3:04:05PM")
+		params.Alias = Alias(val)
+	}
+	// Decode query: alias.
+	if err := func() error {
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "alias",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotAliasVal time.Time
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := time.Parse("02/01/2006 3:04:05PM", val)
+					if err != nil {
+						return err
+					}
+
+					paramsDotAliasVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Alias = Alias(paramsDotAliasVal)
+				return nil
+			}); err != nil {
+				return err
+			}
+		} else {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return params, &ogenerrors.DecodeParamError{
+			Name: "alias",
 			In:   "query",
 			Err:  err,
 		}
