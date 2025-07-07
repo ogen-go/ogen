@@ -61,6 +61,29 @@ func TestHostname(t *testing.T) {
 	}
 }
 
+func TestByte(t *testing.T) {
+	v := String{Byte: true}
+	v.SetMinLength(2)
+	v.SetMaxLength(5)
+	require.True(t, v.Set())
+
+	for _, b := range [][]byte{
+		[]byte("12"),
+		[]byte("abcde"),
+		[]byte("α"), // equals []byte{0xCE, 0xB1}
+	} {
+		require.NoError(t, v.Validate(string(b)))
+	}
+	for _, b := range [][]byte{
+		[]byte("1"),
+		[]byte("abcdef"),
+		[]byte(""),
+		[]byte("αβγ"), // equals []byte{0xCE, 0xB1, 0xCE, 0xB2, 0xCE, 0xB3}
+	} {
+		require.Error(t, v.Validate(string(b)), "%q should be invalid", b)
+	}
+}
+
 func TestRegex(t *testing.T) {
 	v := String{Regex: ogenregex.MustCompile(`^\d$`)}
 	require.True(t, v.Set())
