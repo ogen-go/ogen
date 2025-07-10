@@ -4,12 +4,11 @@ package api
 
 import (
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/json"
 )
 
 // setDefaults set default value of fields.
-func (s *DefaultOK) setDefaults() {
+func (s *OptionalOK) setDefaults() {
 	{
 		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"04/03/2001\""), "02/01/2006")
 		s.Date.SetTo(val)
@@ -21,5 +20,17 @@ func (s *DefaultOK) setDefaults() {
 	{
 		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"2001-03-04T01:23:45.123456789-07:00\""), "2006-01-02T15:04:05.999999999Z07:00")
 		s.DateTime.SetTo(val)
+	}
+	{
+		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"04/03/2001 01:23:45AM\""), "02/01/2006 3:04:05PM")
+		s.Alias.SetTo(Alias(val))
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *RequiredOK) setDefaults() {
+	{
+		val, _ := json.DecodeTimeFormat(jx.DecodeStr("\"04/03/2001 01:23:45AM\""), "02/01/2006 3:04:05PM")
+		s.Alias = Alias(val)
 	}
 }

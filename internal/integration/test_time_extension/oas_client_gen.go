@@ -9,15 +9,14 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
-
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
 )
 
 func trimTrailingSlashes(u *url.URL) {
@@ -27,10 +26,10 @@ func trimTrailingSlashes(u *url.URL) {
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
-	// Default invokes default operation.
+	// Optional invokes optional operation.
 	//
 	// GET /optional
-	Default(ctx context.Context, params DefaultParams) (*DefaultOK, error)
+	Optional(ctx context.Context, params OptionalParams) (*OptionalOK, error)
 	// Required invokes required operation.
 	//
 	// GET /required
@@ -80,17 +79,17 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 	return u
 }
 
-// Default invokes default operation.
+// Optional invokes optional operation.
 //
 // GET /optional
-func (c *Client) Default(ctx context.Context, params DefaultParams) (*DefaultOK, error) {
-	res, err := c.sendDefault(ctx, params)
+func (c *Client) Optional(ctx context.Context, params OptionalParams) (*OptionalOK, error) {
+	res, err := c.sendOptional(ctx, params)
 	return res, err
 }
 
-func (c *Client) sendDefault(ctx context.Context, params DefaultParams) (res *DefaultOK, err error) {
+func (c *Client) sendOptional(ctx context.Context, params OptionalParams) (res *OptionalOK, err error) {
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("default"),
+		otelogen.OperationID("optional"),
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/optional"),
 	}
@@ -108,7 +107,7 @@ func (c *Client) sendDefault(ctx context.Context, params DefaultParams) (res *De
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, DefaultOperation,
+	ctx, span := c.cfg.Tracer.Start(ctx, OptionalOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -182,6 +181,26 @@ func (c *Client) sendDefault(ctx context.Context, params DefaultParams) (res *De
 			return res, errors.Wrap(err, "encode query")
 		}
 	}
+	{
+		// Encode "alias" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "alias",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := params.Alias.Get(); ok {
+				if unwrapped := time.Time(val); true {
+					return e.EncodeValue(unwrapped.Format("02/01/2006 3:04:05PM"))
+				}
+				return nil
+			}
+			return nil
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
@@ -198,7 +217,7 @@ func (c *Client) sendDefault(ctx context.Context, params DefaultParams) (res *De
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDefaultResponse(resp)
+	result, err := decodeOptionalResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -295,6 +314,23 @@ func (c *Client) sendRequired(ctx context.Context, params RequiredParams) (res *
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(params.DateTime.Format("2006-01-02T15:04:05.999999999Z07:00"))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "alias" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "alias",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if unwrapped := time.Time(params.Alias); true {
+				return e.EncodeValue(unwrapped.Format("02/01/2006 3:04:05PM"))
+			}
+			return nil
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}

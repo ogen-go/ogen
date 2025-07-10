@@ -35,6 +35,7 @@ type TemplateConfig struct {
 	Securities        map[string]*ir.Security
 	Router            Router
 	WebhookRouter     WebhookRouter
+	Imports           map[string]string
 
 	PathsClientEnabled        bool
 	PathsServerEnabled        bool
@@ -266,6 +267,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Securities:                g.securities,
 		Router:                    g.router,
 		WebhookRouter:             g.webhookRouter,
+		Imports:                   g.imports,
 		PathsClientEnabled:        features.Has(PathsClient),
 		PathsServerEnabled:        features.Has(PathsServer),
 		WebhookClientEnabled:      features.Has(WebhooksClient) && len(g.webhooks) > 0,
