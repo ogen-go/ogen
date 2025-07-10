@@ -9,7 +9,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -5890,16 +5889,16 @@ func (s *XMLPattern0) init() XMLPattern0 {
 // setDefaults set default value of fields.
 func (s *Schema) setDefaults() {
 	{
-		val := ExclusiveMaximum(false)
-		s.ExclusiveMaximum.SetTo(val)
+		val := bool(false)
+		s.ExclusiveMaximum.SetTo(ExclusiveMaximum(val))
 	}
 	{
-		val := ExclusiveMinimum(false)
-		s.ExclusiveMinimum.SetTo(val)
+		val := bool(false)
+		s.ExclusiveMinimum.SetTo(ExclusiveMinimum(val))
 	}
 	{
-		val := UniqueItems(false)
-		s.UniqueItems.SetTo(val)
+		val := bool(false)
+		s.UniqueItems.SetTo(UniqueItems(val))
 	}
 }
 

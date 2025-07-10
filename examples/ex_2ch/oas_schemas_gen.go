@@ -4,7 +4,6 @@ package api
 
 import (
 	"github.com/go-faster/errors"
-
 	ht "github.com/ogen-go/ogen/http"
 )
 

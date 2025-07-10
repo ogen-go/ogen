@@ -9,7 +9,7 @@ func (s {{ $.ReadOnlyReceiver }}) MarshalJSON() ([]byte, error) {
 		{{ if $g.JSON.TimeFormat -}}
 			s.Encode(&e, json.NewTimeEncoder({{ $g.JSON.TimeFormat }}))
 		{{- else -}}
-			s.Encode(&e, json.Encode{{ $g.JSON.Format }})
+			s.Encode(&e, json.Encode{{ $g.JSON.Encoder }})
 		{{- end }}
 	{{- else }}
 	s.Encode(&e)
@@ -28,7 +28,7 @@ func (s *{{ $.Name }}) UnmarshalJSON(data []byte) error {
 		{{ if $g.JSON.TimeFormat -}}
 			return s.Decode(d, json.NewTimeDecoder({{ $g.JSON.TimeFormat }}))
 		{{- else -}}
-			return s.Decode(d, json.Decode{{ $g.JSON.Format }})
+			return s.Decode(d, json.Decode{{ $g.JSON.Decoder }})
 		{{- end }}
 	{{- else }}
 	return s.Decode(d)
