@@ -5,6 +5,6 @@ type {{ $.Name }} struct {
   {{ $.AliasTo.Go }}
 }
 {{ else }}
-type {{ $.Name }} = {{ $.AliasTo.Go }}
+type {{ $.Name }} {{ $.AliasTo.Go }}
 {{- end }}
 {{ end }}
