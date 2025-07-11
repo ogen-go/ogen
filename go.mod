@@ -14,6 +14,7 @@ require (
 	github.com/go-faster/yaml v0.4.6
 	github.com/google/uuid v1.6.0
 	github.com/mattn/go-isatty v0.0.20
+	github.com/shopspring/decimal v1.4.0
 	github.com/stretchr/testify v1.10.0
 	github.com/valyala/fasthttp v1.63.0
 	go.opentelemetry.io/otel v1.37.0

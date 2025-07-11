@@ -13,6 +13,7 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 
 	"github.com/ogen-go/ogen/json"
 )
@@ -31,6 +32,8 @@ func Uint64ToString(v uint64) string { return strconv.FormatUint(v, 10) }
 
 func Float32ToString(v float32) string { return strconv.FormatFloat(float64(v), 'f', 10, 64) }
 func Float64ToString(v float64) string { return strconv.FormatFloat(v, 'f', 10, 64) }
+
+func DecimalToString(v decimal.Decimal) string { return v.String() }
 
 func BoolToString(v bool) string { return strconv.FormatBool(v) }
 
@@ -72,6 +75,8 @@ func StringUint64ToString(v uint64) string { return strconv.FormatUint(v, 10) }
 
 func StringFloat32ToString(v float32) string { return strconv.FormatFloat(float64(v), 'g', 10, 32) }
 func StringFloat64ToString(v float64) string { return strconv.FormatFloat(v, 'g', 10, 64) }
+
+func StringDecimalToString(v decimal.Decimal) string { return v.String() }
 
 type (
 	marshaler[T any] interface {

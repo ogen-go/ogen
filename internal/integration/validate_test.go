@@ -167,6 +167,54 @@ func TestValidateFloat(t *testing.T) {
 	}
 }
 
+func TestValidateDecimal(t *testing.T) {
+	for i, tc := range []struct {
+		Input string
+		Error bool
+	}{
+		{
+			`{"minmax": 1.0, "multipleOf": 5.0}`,
+			true,
+		},
+		{
+			`{"minmax": 1.4, "multipleOf": 5.0}`,
+			true,
+		},
+		{
+			`{"minmax": 2.7, "multipleOf": 5.0}`,
+			true,
+		},
+		{
+			`{"minmax": 2.0, "multipleOf": 5.0}`,
+			false,
+		},
+		{
+			`{"minmax": 2.0, "multipleOf": 15.0}`,
+			false,
+		},
+		{
+			`{"minmax": 2.0, "multipleOf": 0.1}`,
+			true,
+		},
+		{
+			`{"minmax": 2.0, "multipleOf": 10.1}`,
+			true,
+		},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			m := api.TestDecimalValidation{}
+			require.NoError(t, m.Decode(jx.DecodeStr(tc.Input)))
+
+			checker := require.NoError
+			if tc.Error {
+				checker = require.Error
+			}
+			checker(t, m.Validate())
+		})
+	}
+}
+
 func TestValidateUniqueItems(t *testing.T) {
 	for i, tc := range []struct {
 		Input string
