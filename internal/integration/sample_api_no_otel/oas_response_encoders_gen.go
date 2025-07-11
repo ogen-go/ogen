@@ -497,6 +497,12 @@ func encodeStringIntMapGetResponse(response *StringIntMap, w http.ResponseWriter
 	return nil
 }
 
+func encodeTestDecimalValidationResponse(response *TestDecimalValidationOK, w http.ResponseWriter) error {
+	w.WriteHeader(200)
+
+	return nil
+}
+
 func encodeTestFloatValidationResponse(response *TestFloatValidationOK, w http.ResponseWriter) error {
 	w.WriteHeader(200)
 

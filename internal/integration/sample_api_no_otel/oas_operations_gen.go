@@ -30,6 +30,7 @@ const (
 	RecursiveMapGetOperation            OperationName = "RecursiveMapGet"
 	SecurityTestOperation               OperationName = "SecurityTest"
 	StringIntMapGetOperation            OperationName = "StringIntMapGet"
+	TestDecimalValidationOperation      OperationName = "TestDecimalValidation"
 	TestFloatValidationOperation        OperationName = "TestFloatValidation"
 	TestInlineOneofOperation            OperationName = "TestInlineOneof"
 	TestIssue1310Operation              OperationName = "TestIssue1310"
