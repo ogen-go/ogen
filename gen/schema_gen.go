@@ -602,30 +602,19 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			if err := t.Validators.SetInt(schema); err != nil {
 				return nil, errors.Wrap(err, "int validator")
 			}
-			if t.Validators.Int.Set() {
-				switch t.Primitive {
-				case ir.Int,
-					ir.Int8,
-					ir.Int16,
-					ir.Int32,
-					ir.Int64,
-					ir.Uint,
-					ir.Uint8,
-					ir.Uint16,
-					ir.Uint32,
-					ir.Uint64:
-				default:
-					g.log.Warn("Int validator cannot be applied to generated type and will be ignored", fields...)
-				}
+			if t.Validators.Int.Set() && !t.IsInteger() {
+				g.log.Warn("Int validator cannot be applied to generated type and will be ignored", fields...)
 			}
 		case jsonschema.Number:
-			if err := t.Validators.SetFloat(schema); err != nil {
-				return nil, errors.Wrap(err, "float validator")
-			}
-			if t.Validators.Float.Set() {
-				switch t.Primitive {
-				case ir.Float32, ir.Float64:
-				default:
+			if t.IsDecimal() {
+				if err := t.Validators.SetDecimal(schema); err != nil {
+					return nil, errors.Wrap(err, "decimal validator")
+				}
+			} else {
+				if err := t.Validators.SetFloat(schema); err != nil {
+					return nil, errors.Wrap(err, "float validator")
+				}
+				if t.Validators.Float.Set() && !t.IsFloat() {
 					g.log.Warn("Float validator cannot be applied to generated type and will be ignored", fields...)
 				}
 			}

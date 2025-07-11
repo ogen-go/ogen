@@ -95,7 +95,7 @@
 			Hostname:       {{ $v.Hostname }},
 			{{- if $v.Regex }}
 			Regex:          regexMap[{{ quote $v.Regex }}],
-            {{- else }}
+			{{- else }}
 			Regex:          nil,
 			{{- end }}
 		}).Validate(string({{ $.Var }})); err != nil {
@@ -120,8 +120,8 @@
 		}
 	{{- end }}
 
-    {{- if $t.IsFloat }}
-    	{{- $validated = true }}
+	{{- if $t.IsFloat }}
+		{{- $validated = true }}
 		{{- $v := $va.Float }}
 		if err := (validate.Float{ {{ if $v.Set }}
 			MinSet:       {{ $v.MinSet }},
@@ -133,13 +133,34 @@
 			MultipleOfSet:{{ $v.MultipleOfSet }},
 			{{- if $v.MultipleOf }}
 			MultipleOf: ratMap[{{ quote $v.MultipleOf.RatString }}],
-            {{- else }}
+			{{- else }}
 			MultipleOf: nil,
 			{{- end }}
 		{{ end }} }).Validate{{- if $t.IsStringifiedFloat -}}Stringified{{- end }}(float64({{ $.Var }})); err != nil {
 			return errors.Wrap(err, "float")
 		}
-    {{- end }}
+	{{- end }}
+
+	{{- if $t.IsDecimal }}
+		{{- $validated = true }}
+		{{- $v := $va.Decimal }}
+		if err := (validate.Decimal{ {{ if $v.Set }}
+			MinSet:       {{ $v.MinSet }},
+			Min:          decimal.RequireFromString({{ quote $v.Min.String }}),
+			MaxSet:       {{ $v.MaxSet }},
+			Max:          decimal.RequireFromString({{ quote $v.Max.String }}),
+			MinExclusive: {{ $v.MinExclusive }},
+			MaxExclusive: {{ $v.MaxExclusive }},
+			MultipleOfSet:{{ $v.MultipleOfSet }},
+			{{- if $v.MultipleOfSet }}
+			MultipleOf: decimal.RequireFromString({{ quote $v.MultipleOf.String }}),
+			{{- else }}
+			MultipleOf: decimal.Zero,
+			{{- end }}
+		{{ end }} }).Validate({{ $.Var }}); err != nil {
+			return errors.Wrap(err, "decimal")
+		}
+	{{- end }}
 {{- end }}
 
 {{- if gt (len $va.Ogen) 0 }}
@@ -167,9 +188,9 @@
 {{- if $t.NeedValidation }}{{/*Need validation*/}}
 {{ if $t.IsStruct }}{{/*If struct*/}}
 func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
-    if s == nil {
-        return validate.ErrNilPointer
-    }
+	if s == nil {
+		return validate.ErrNilPointer
+	}
 
 	var failures []validate.FieldError
 	{{- if gt (len $t.Validators.Ogen) 0 }}

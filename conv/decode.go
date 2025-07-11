@@ -14,6 +14,7 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 
 	"github.com/ogen-go/ogen/json"
 )
@@ -72,6 +73,10 @@ func ToFloat32(s string) (float32, error) {
 
 func ToFloat64(s string) (float64, error) {
 	return strconv.ParseFloat(s, 64)
+}
+
+func ToDecimal(s string) (decimal.Decimal, error) {
+	return decimal.NewFromString(s)
 }
 
 func ToString(s string) (string, error) {
@@ -208,6 +213,10 @@ func ToStringFloat32(s string) (float32, error) {
 
 func ToStringFloat64(s string) (float64, error) {
 	return strconv.ParseFloat(s, 64)
+}
+
+func ToStringDecimal(s string) (decimal.Decimal, error) {
+	return decimal.NewFromString(s)
 }
 
 type (
