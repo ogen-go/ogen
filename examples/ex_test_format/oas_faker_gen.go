@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 )
 
 // SetFake set fake values.
@@ -38,6 +39,11 @@ func (s *NilDate) SetFake() {
 
 // SetFake set fake values.
 func (s *NilDateTime) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilDecimal) SetFake() {
 	s.Null = true
 }
 
@@ -103,6 +109,11 @@ func (s *NilInt8) SetFake() {
 
 // SetFake set fake values.
 func (s *NilString) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringDecimal) SetFake() {
 	s.Null = true
 }
 
@@ -274,6 +285,15 @@ func (s *OptDateTime) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptDecimal) SetFake() {
+	var elem decimal.Decimal
+	{
+		elem = decimal.Zero
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptDuration) SetFake() {
 	var elem time.Duration
 	{
@@ -406,6 +426,12 @@ func (s *OptNilDateTime) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptNilDecimal) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
 func (s *OptNilDuration) SetFake() {
 	s.Null = true
 	s.Set = true
@@ -479,6 +505,12 @@ func (s *OptNilInt8) SetFake() {
 
 // SetFake set fake values.
 func (s *OptNilString) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringDecimal) SetFake() {
 	s.Null = true
 	s.Set = true
 }
@@ -665,6 +697,15 @@ func (s *OptString) SetFake() {
 	var elem string
 	{
 		elem = "string"
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringDecimal) SetFake() {
+	var elem decimal.Decimal
+	{
+		elem = decimal.Zero
 	}
 	s.SetTo(elem)
 }
@@ -1171,6 +1212,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.RequiredArrayNumberDecimal = append(s.RequiredArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -1286,6 +1339,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.RequiredArrayStringDecimal = append(s.RequiredArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -1993,6 +2058,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDecimal = append(s.RequiredDoubleArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
@@ -2178,6 +2262,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDecimal = append(s.RequiredDoubleArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -2800,6 +2903,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredNumberDecimal = decimal.Zero
+		}
+	}
+	{
+		{
 			s.RequiredNumberDouble = float64(0)
 		}
 	}
@@ -2846,6 +2954,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringDateMinusTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDecimal = decimal.Zero
 		}
 	}
 	{
@@ -3223,6 +3336,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.OptionalArrayNumberDecimal = append(s.OptionalArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -3338,6 +3463,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.OptionalArrayStringDecimal = append(s.OptionalArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -4045,6 +4182,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDecimal = append(s.OptionalDoubleArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
@@ -4230,6 +4386,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDecimal = append(s.OptionalDoubleArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -4852,6 +5027,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalNumberDecimal.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalNumberDouble.SetFake()
 		}
 	}
@@ -4898,6 +5078,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringDateMinusTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDecimal.SetFake()
 		}
 	}
 	{
@@ -5283,6 +5468,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.RequiredArrayNumberDecimal = append(s.RequiredArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -5398,6 +5595,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.RequiredArrayStringDecimal = append(s.RequiredArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -6105,6 +6314,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDecimal = append(s.RequiredDoubleArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
@@ -6290,6 +6518,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDecimal = append(s.RequiredDoubleArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -6912,6 +7159,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredNumberDecimal = decimal.Zero
+		}
+	}
+	{
+		{
 			s.RequiredNumberDouble = float64(0)
 		}
 	}
@@ -6958,6 +7210,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringDateMinusTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDecimal = decimal.Zero
 		}
 	}
 	{
@@ -7335,6 +7592,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.OptionalArrayNumberDecimal = append(s.OptionalArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -7450,6 +7719,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.OptionalArrayStringDecimal = append(s.OptionalArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -8157,6 +8438,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDecimal = append(s.OptionalDoubleArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
@@ -8342,6 +8642,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDecimal = append(s.OptionalDoubleArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -8964,6 +9283,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalNumberDecimal.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalNumberDouble.SetFake()
 		}
 	}
@@ -9010,6 +9334,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringDateMinusTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDecimal.SetFake()
 		}
 	}
 	{
@@ -9395,6 +9724,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.RequiredArrayNumberDecimal = append(s.RequiredArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -9510,6 +9851,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = time.Now()
 				}
 				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.RequiredArrayStringDecimal = append(s.RequiredArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -10217,6 +10570,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDecimal = append(s.RequiredDoubleArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
@@ -10402,6 +10774,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDecimal = append(s.RequiredDoubleArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -11024,6 +11415,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredNumberDecimal = decimal.Zero
+		}
+	}
+	{
+		{
 			s.RequiredNumberDouble = float64(0)
 		}
 	}
@@ -11070,6 +11466,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredStringDateMinusTime = time.Now()
+		}
+	}
+	{
+		{
+			s.RequiredStringDecimal = decimal.Zero
 		}
 	}
 	{
@@ -11447,6 +11848,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.OptionalArrayNumberDecimal = append(s.OptionalArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -11562,6 +11975,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = time.Now()
 				}
 				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem decimal.Decimal
+				{
+					elem = decimal.Zero
+				}
+				s.OptionalArrayStringDecimal = append(s.OptionalArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -12269,6 +12694,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayNumberDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDecimal = append(s.OptionalDoubleArrayNumberDecimal, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
@@ -12454,6 +12898,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringDecimal = nil
+			for i := 0; i < 0; i++ {
+				var elem []decimal.Decimal
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem decimal.Decimal
+						{
+							elemElem = decimal.Zero
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDecimal = append(s.OptionalDoubleArrayStringDecimal, elem)
 			}
 		}
 	}
@@ -13076,6 +13539,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalNumberDecimal.SetFake()
+		}
+	}
+	{
+		{
 			s.OptionalNumberDouble.SetFake()
 		}
 	}
@@ -13122,6 +13590,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringDateMinusTime.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringDecimal.SetFake()
 		}
 	}
 	{

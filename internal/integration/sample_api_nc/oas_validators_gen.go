@@ -7,6 +7,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/ogen-go/ogen/validate"
+	"github.com/shopspring/decimal"
 )
 
 func (s *ArrayTest) Validate() error {
@@ -1151,6 +1152,58 @@ func (s StringStringMap) Validate() error {
 		}
 	}
 
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+
+func (s *TestDecimalValidation) Validate() error {
+	if s == nil {
+		return validate.ErrNilPointer
+	}
+
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := (validate.Decimal{
+			MinSet:        true,
+			Min:           decimal.RequireFromString("1.5"),
+			MaxSet:        true,
+			Max:           decimal.RequireFromString("2"),
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    decimal.Zero,
+		}).Validate(s.Minmax); err != nil {
+			return errors.Wrap(err, "decimal")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "minmax",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if err := (validate.Decimal{
+			MinSet:        false,
+			Min:           decimal.RequireFromString("0"),
+			MaxSet:        false,
+			Max:           decimal.RequireFromString("0"),
+			MinExclusive:  false,
+			MaxExclusive:  false,
+			MultipleOfSet: true,
+			MultipleOf:    decimal.RequireFromString("5"),
+		}).Validate(s.MultipleOf); err != nil {
+			return errors.Wrap(err, "decimal")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "multipleOf",
+			Error: err,
+		})
+	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}

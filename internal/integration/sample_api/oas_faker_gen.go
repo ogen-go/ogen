@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 )
 
 // SetFake set fake values.
@@ -1734,6 +1735,20 @@ func (s *StringStringMap) SetFake() {
 	)
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *TestDecimalValidation) SetFake() {
+	{
+		{
+			s.Minmax = decimal.Zero
+		}
+	}
+	{
+		{
+			s.MultipleOf = decimal.Zero
+		}
 	}
 }
 

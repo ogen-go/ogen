@@ -14,6 +14,7 @@ import (
 	"github.com/google/uuid"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/shopspring/decimal"
 )
 
 func encodeTestQueryParameterRequest(
@@ -2315,6 +2316,134 @@ func encodeTestRequestNumberArrayArrayRequest(
 				e.ArrStart()
 				for _, elem := range elem {
 					e.Float64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestNumberDecimalRequest(
+	req OptDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := new(jx.Encoder)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestNumberDecimalArrayRequest(
+	req []decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeDecimal(e, elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestNumberDecimalArrayArrayRequest(
+	req [][]decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDecimal(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestNumberDecimalNullableRequest(
+	req OptNilDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := new(jx.Encoder)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestNumberDecimalNullableArrayRequest(
+	req []NilDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestNumberDecimalNullableArrayArrayRequest(
+	req [][]NilDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -4842,6 +4971,114 @@ func encodeTestRequestRequiredNumberArrayArrayRequest(
 	return nil
 }
 
+func encodeTestRequestRequiredNumberDecimalRequest(
+	req decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		json.EncodeDecimal(e, req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredNumberDecimalArrayRequest(
+	req []decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeDecimal(e, elem)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredNumberDecimalArrayArrayRequest(
+	req [][]decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDecimal(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredNumberDecimalNullableRequest(
+	req NilDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredNumberDecimalNullableArrayRequest(
+	req []NilDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredNumberDecimalNullableArrayArrayRequest(
+	req [][]NilDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
 func encodeTestRequestRequiredNumberDoubleRequest(
 	req float64,
 	r *http.Request,
@@ -5912,6 +6149,114 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(
 			e.ArrStart()
 			for _, elem := range elem {
 				elem.Encode(e, json.EncodeDateTime)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredStringDecimalRequest(
+	req decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		json.EncodeStringDecimal(e, req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredStringDecimalArrayRequest(
+	req []decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringDecimal(e, elem)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredStringDecimalArrayArrayRequest(
+	req [][]decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringDecimal(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredStringDecimalNullableRequest(
+	req NilStringDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredStringDecimalNullableArrayRequest(
+	req []NilStringDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestRequiredStringDecimalNullableArrayArrayRequest(
+	req [][]NilStringDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -9681,6 +10026,134 @@ func encodeTestRequestStringDateTimeNullableArrayArrayRequest(
 				e.ArrStart()
 				for _, elem := range elem {
 					elem.Encode(e, json.EncodeDateTime)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestStringDecimalRequest(
+	req OptStringDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := new(jx.Encoder)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestStringDecimalArrayRequest(
+	req []decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				json.EncodeStringDecimal(e, elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestStringDecimalArrayArrayRequest(
+	req [][]decimal.Decimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringDecimal(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestStringDecimalNullableRequest(
+	req OptNilStringDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := new(jx.Encoder)
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestStringDecimalNullableArrayRequest(
+	req []NilStringDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestRequestStringDecimalNullableArrayArrayRequest(
+	req [][]NilStringDecimal,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					elem.Encode(e)
 				}
 				e.ArrEnd()
 			}
@@ -14852,6 +15325,90 @@ func encodeTestResponseNumberArrayArrayRequest(
 	return nil
 }
 
+func encodeTestResponseNumberDecimalRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseNumberDecimalArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseNumberDecimalArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseNumberDecimalNullableRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseNumberDecimalNullableArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseNumberDecimalNullableArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
 func encodeTestResponseNumberDoubleRequest(
 	req string,
 	r *http.Request,
@@ -15679,6 +16236,90 @@ func encodeTestResponseStringDateTimeNullableArrayRequest(
 }
 
 func encodeTestResponseStringDateTimeNullableArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseStringDecimalRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseStringDecimalArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseStringDecimalArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseStringDecimalNullableRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseStringDecimalNullableArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := new(jx.Encoder)
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+
+func encodeTestResponseStringDecimalNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {
