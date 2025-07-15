@@ -42,6 +42,8 @@ func (t *Type) FakeValue() string {
 		return `url.URL{Scheme:"https", Host:"github.com", Path:"/ogen-go/ogen"}`
 	case Bool:
 		return "true"
+	case Decimal:
+		return "decimal.Zero"
 	case Null:
 		return "struct{}{}"
 	default:

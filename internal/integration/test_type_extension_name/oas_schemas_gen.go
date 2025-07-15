@@ -3,21 +3,21 @@
 package api
 
 import (
-	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
-	"github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
+	decimal3 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
+	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
 )
 
 // NewOptDecimal returns new OptDecimal with value set to v.
-func NewOptDecimal(v decimal.Decimal) OptDecimal {
+func NewOptDecimal(v decimal2.Decimal) OptDecimal {
 	return OptDecimal{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDecimal is optional decimal.Decimal.
+// OptDecimal is optional decimal2.Decimal.
 type OptDecimal struct {
-	Value decimal.Decimal
+	Value decimal2.Decimal
 	Set   bool
 }
 
@@ -26,19 +26,19 @@ func (o OptDecimal) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptDecimal) Reset() {
-	var v decimal.Decimal
+	var v decimal2.Decimal
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDecimal) SetTo(v decimal.Decimal) {
+func (o *OptDecimal) SetTo(v decimal2.Decimal) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDecimal) Get() (v decimal.Decimal, ok bool) {
+func (o OptDecimal) Get() (v decimal2.Decimal, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -46,7 +46,7 @@ func (o OptDecimal) Get() (v decimal.Decimal, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDecimal) Or(d decimal.Decimal) decimal.Decimal {
+func (o OptDecimal) Or(d decimal2.Decimal) decimal2.Decimal {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -54,16 +54,16 @@ func (o OptDecimal) Or(d decimal.Decimal) decimal.Decimal {
 }
 
 // NewOptDecimal2 returns new OptDecimal2 with value set to v.
-func NewOptDecimal2(v decimal2.Decimal) OptDecimal2 {
+func NewOptDecimal2(v decimal3.Decimal) OptDecimal2 {
 	return OptDecimal2{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDecimal2 is optional decimal2.Decimal.
+// OptDecimal2 is optional decimal3.Decimal.
 type OptDecimal2 struct {
-	Value decimal2.Decimal
+	Value decimal3.Decimal
 	Set   bool
 }
 
@@ -72,19 +72,19 @@ func (o OptDecimal2) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptDecimal2) Reset() {
-	var v decimal2.Decimal
+	var v decimal3.Decimal
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDecimal2) SetTo(v decimal2.Decimal) {
+func (o *OptDecimal2) SetTo(v decimal3.Decimal) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDecimal2) Get() (v decimal2.Decimal, ok bool) {
+func (o OptDecimal2) Get() (v decimal3.Decimal, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -92,7 +92,7 @@ func (o OptDecimal2) Get() (v decimal2.Decimal, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDecimal2) Or(d decimal2.Decimal) decimal2.Decimal {
+func (o OptDecimal2) Or(d decimal3.Decimal) decimal3.Decimal {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -125,26 +125,26 @@ func (s *OptionalOK) SetBar(val OptDecimal2) {
 }
 
 type RequiredOK struct {
-	Foo decimal.Decimal  `json:"foo"`
-	Bar decimal2.Decimal `json:"bar"`
+	Foo decimal2.Decimal `json:"foo"`
+	Bar decimal3.Decimal `json:"bar"`
 }
 
 // GetFoo returns the value of Foo.
-func (s *RequiredOK) GetFoo() decimal.Decimal {
+func (s *RequiredOK) GetFoo() decimal2.Decimal {
 	return s.Foo
 }
 
 // GetBar returns the value of Bar.
-func (s *RequiredOK) GetBar() decimal2.Decimal {
+func (s *RequiredOK) GetBar() decimal3.Decimal {
 	return s.Bar
 }
 
 // SetFoo sets the value of Foo.
-func (s *RequiredOK) SetFoo(val decimal.Decimal) {
+func (s *RequiredOK) SetFoo(val decimal2.Decimal) {
 	s.Foo = val
 }
 
 // SetBar sets the value of Bar.
-func (s *RequiredOK) SetBar(val decimal2.Decimal) {
+func (s *RequiredOK) SetBar(val decimal3.Decimal) {
 	s.Bar = val
 }

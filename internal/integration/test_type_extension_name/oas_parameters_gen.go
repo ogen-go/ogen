@@ -6,8 +6,8 @@ import (
 	"net/http"
 
 	"github.com/go-faster/jx"
-	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
-	"github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
+	decimal3 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
+	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/middleware"
@@ -47,7 +47,7 @@ func decodeOptionalParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: foo.
 	{
-		val, _ := json.DecodeExternal[decimal.Decimal](jx.DecodeStr("\"1.23\""))
+		val, _ := json.DecodeExternal[decimal2.Decimal](jx.DecodeStr("\"1.23\""))
 		params.Foo.SetTo(val)
 	}
 	// Decode query: foo.
@@ -60,14 +60,14 @@ func decodeOptionalParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotFooVal decimal.Decimal
+				var paramsDotFooVal decimal2.Decimal
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToStringExternal[decimal.Decimal](val)
+					c, err := conv.ToStringExternal[decimal2.Decimal](val)
 					if err != nil {
 						return err
 					}
@@ -93,7 +93,7 @@ func decodeOptionalParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 	}
 	// Set default value for query: bar.
 	{
-		val, _ := json.DecodeExternal[decimal2.Decimal](jx.DecodeStr("1.23"))
+		val, _ := json.DecodeExternal[decimal3.Decimal](jx.DecodeStr("1.23"))
 		params.Bar.SetTo(val)
 	}
 	// Decode query: bar.
@@ -106,14 +106,14 @@ func decodeOptionalParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				var paramsDotBarVal decimal2.Decimal
+				var paramsDotBarVal decimal3.Decimal
 				if err := func() error {
 					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToExternal[decimal2.Decimal](val)
+					c, err := conv.ToExternal[decimal3.Decimal](val)
 					if err != nil {
 						return err
 					}
@@ -142,8 +142,8 @@ func decodeOptionalParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 
 // RequiredParams is parameters of required operation.
 type RequiredParams struct {
-	Foo decimal.Decimal
-	Bar decimal2.Decimal
+	Foo decimal2.Decimal
+	Bar decimal3.Decimal
 }
 
 func unpackRequiredParams(packed middleware.Parameters) (params RequiredParams) {
@@ -152,14 +152,14 @@ func unpackRequiredParams(packed middleware.Parameters) (params RequiredParams) 
 			Name: "foo",
 			In:   "query",
 		}
-		params.Foo = packed[key].(decimal.Decimal)
+		params.Foo = packed[key].(decimal2.Decimal)
 	}
 	{
 		key := middleware.ParameterKey{
 			Name: "bar",
 			In:   "query",
 		}
-		params.Bar = packed[key].(decimal2.Decimal)
+		params.Bar = packed[key].(decimal3.Decimal)
 	}
 	return params
 }
@@ -181,7 +181,7 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 					return err
 				}
 
-				c, err := conv.ToStringExternal[decimal.Decimal](val)
+				c, err := conv.ToStringExternal[decimal2.Decimal](val)
 				if err != nil {
 					return err
 				}
@@ -217,7 +217,7 @@ func decodeRequiredParams(args [0]string, argsEscaped bool, r *http.Request) (pa
 					return err
 				}
 
-				c, err := conv.ToExternal[decimal2.Decimal](val)
+				c, err := conv.ToExternal[decimal3.Decimal](val)
 				if err != nil {
 					return err
 				}

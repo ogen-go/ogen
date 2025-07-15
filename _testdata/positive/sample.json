@@ -504,6 +504,26 @@
         }
       }
     },
+    "/testDecimalValidation": {
+      "post": {
+        "operationId": "testDecimalValidation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TestDecimalValidation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
     "/oneofBug": {
       "post": {
         "operationId": "oneofBug",
@@ -1652,6 +1672,26 @@
           },
           "multipleOf": {
             "type": "number",
+            "multipleOf": 5.0
+          }
+        }
+      },
+      "TestDecimalValidation": {
+        "type": "object",
+        "required": [
+          "minmax",
+          "multipleOf"
+        ],
+        "properties": {
+          "minmax": {
+            "type": "number",
+            "format": "decimal",
+            "minimum": 1.5,
+            "maximum": 2.0
+          },
+          "multipleOf": {
+            "type": "number",
+            "format": "decimal",
             "multipleOf": 5.0
           }
         }

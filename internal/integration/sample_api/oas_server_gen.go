@@ -128,6 +128,10 @@ type Handler interface {
 	//
 	// GET /stringIntMap
 	StringIntMapGet(ctx context.Context) (*StringIntMap, error)
+	// TestDecimalValidation implements testDecimalValidation operation.
+	//
+	// POST /testDecimalValidation
+	TestDecimalValidation(ctx context.Context, req *TestDecimalValidation) error
 	// TestFloatValidation implements testFloatValidation operation.
 	//
 	// POST /testFloatValidation

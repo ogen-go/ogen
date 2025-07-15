@@ -691,6 +691,26 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
+				case 'D': // Prefix: "DecimalValidation"
+
+					if l := len("DecimalValidation"); len(elem) >= l && elem[0:l] == "DecimalValidation" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleTestDecimalValidationRequest([0]string{}, elemIsEscaped, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
+
+						return
+					}
+
 				case 'F': // Prefix: "FloatValidation"
 
 					if l := len("FloatValidation"); len(elem) >= l && elem[0:l] == "FloatValidation" {
@@ -1696,6 +1716,30 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
+				case 'D': // Prefix: "DecimalValidation"
+
+					if l := len("DecimalValidation"); len(elem) >= l && elem[0:l] == "DecimalValidation" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch method {
+						case "POST":
+							r.name = TestDecimalValidationOperation
+							r.summary = ""
+							r.operationID = "testDecimalValidation"
+							r.pathPattern = "/testDecimalValidation"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+
 				case 'F': // Prefix: "FloatValidation"
 
 					if l := len("FloatValidation"); len(elem) >= l && elem[0:l] == "FloatValidation" {
