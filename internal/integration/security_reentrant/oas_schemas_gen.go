@@ -2,6 +2,10 @@
 
 package api
 
+import (
+	"net/http"
+)
+
 type BasicAuth struct {
 	Username string
 	Password string
@@ -85,6 +89,31 @@ func (s *CookieKey) SetAPIKey(val string) {
 
 // SetRoles sets the value of Roles.
 func (s *CookieKey) SetRoles(val []string) {
+	s.Roles = val
+}
+
+type Custom struct {
+	Request *http.Request
+	Roles   []string
+}
+
+// GetRequest returns the value of Request.
+func (s *Custom) GetRequest() *http.Request {
+	return s.Request
+}
+
+// GetRoles returns the value of Roles.
+func (s *Custom) GetRoles() []string {
+	return s.Roles
+}
+
+// SetRequest sets the value of Request.
+func (s *Custom) SetRequest(val *http.Request) {
+	s.Request = val
+}
+
+// SetRoles sets the value of Roles.
+func (s *Custom) SetRoles(val []string) {
 	s.Roles = val
 }
 

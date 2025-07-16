@@ -50,11 +50,12 @@ type parser struct {
 	// Used to detect duplicates.
 	operationIDs map[string]location.Pointer
 
-	external   jsonschema.ExternalResolver
-	rootURL    *url.URL
-	schemas    map[string]resolver
-	depthLimit int
-	rootFile   location.File // optional, used for error messages
+	external              jsonschema.ExternalResolver
+	rootURL               *url.URL
+	schemas               map[string]resolver
+	depthLimit            int
+	authenticationSchemes []string
+	rootFile              location.File // optional, used for error messages
 
 	schemaParser *jsonschema.Parser
 }
@@ -96,8 +97,9 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 				file: s.File,
 			},
 		},
-		depthLimit: s.DepthLimit,
-		rootFile:   s.File,
+		depthLimit:            s.DepthLimit,
+		authenticationSchemes: s.AuthenticationSchemes,
+		rootFile:              s.File,
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
 			External: s.External,
 			Resolver: componentsResolver{
