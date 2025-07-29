@@ -119,6 +119,33 @@ func (g *Generator) generateSecurityHTTP(
 	return s, nil
 }
 
+func (g *Generator) generateCustomSecurity(
+	s *ir.Security,
+	operationName string,
+	spec openapi.SecurityScheme,
+) *ir.Security {
+	s.Format = ir.CustomSecurityFormat
+	s.Scopes = map[string][]string{
+		operationName: spec.Scopes,
+	}
+
+	s.Type.Fields = append(s.Type.Fields,
+		&ir.Field{
+			Name: "Request",
+			Type: ir.Pointer(&ir.Type{
+				Kind: ir.KindStruct,
+				Name: "http.Request",
+			}, ir.NilInvalid),
+		},
+		&ir.Field{
+			Name: "Roles",
+			Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
+		},
+	)
+
+	return s
+}
+
 func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec openapi.SecurityScheme) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
 		sec.Scopes[operationName] = append(sec.Scopes[operationName], spec.Scopes...)
@@ -140,15 +167,6 @@ func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec ope
 		Description: security.Description,
 	}
 
-	// Do not create a type for custom security.
-	if security.XOgenCustomSecurity {
-		s.Format = ir.CustomSecurityFormat
-		s.Scopes = map[string][]string{
-			operationName: spec.Scopes,
-		}
-		return s, nil
-	}
-
 	defer func() {
 		if rErr == nil {
 			if err := ctx.saveType(t); err != nil {
@@ -156,6 +174,10 @@ func (g *Generator) generateSecurity(ctx *genctx, operationName string, spec ope
 			}
 		}
 	}()
+
+	if security.XOgenCustomSecurity {
+		return g.generateCustomSecurity(s, operationName, spec), nil
+	}
 
 	switch typ := security.Type; typ {
 	case "apiKey":
