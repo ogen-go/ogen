@@ -2650,100 +2650,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									}
 
-								case 'd': // Prefix: "double"
+								case 'd': // Prefix: "d"
 
-									if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch r.Method {
-										case "POST":
-											s.handleTestRequestNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
-										default:
-											s.notAllowed(w, r, "POST")
-										}
-
-										return
+										break
 									}
 									switch elem[0] {
-									case '_': // Prefix: "_"
+									case 'e': // Prefix: "ecimal"
 
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestNumberDecimalRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
 										}
 										switch elem[0] {
-										case 'a': // Prefix: "array"
+										case '_': // Prefix: "_"
 
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "POST":
-														s.handleTestRequestNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-
-											}
-
-										case 'n': // Prefix: "nullable"
-
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
 												break
 											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
+											case 'a': // Prefix: "array"
 
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -2752,7 +2704,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														s.handleTestRequestNumberDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -2772,12 +2724,212 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															s.handleTestRequestNumberDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
 
 														return
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestNumberDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestNumberDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestNumberDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 'o': // Prefix: "ouble"
+
+										if l := len("ouble"); len(elem) >= l && elem[0:l] == "ouble" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
 													}
 
 												}
@@ -5842,100 +5994,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 										}
 
-									case 'd': // Prefix: "double"
+									case 'd': // Prefix: "d"
 
-										if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+										if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
+											break
 										}
 										switch elem[0] {
-										case '_': // Prefix: "_"
+										case 'e': // Prefix: "ecimal"
 
-											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												break
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredNumberDecimalRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
 											}
 											switch elem[0] {
-											case 'a': // Prefix: "array"
+											case '_': // Prefix: "_"
 
-												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													switch r.Method {
-													case "POST":
-														s.handleTestRequestRequiredNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_array"
-
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf node.
-														switch r.Method {
-														case "POST":
-															s.handleTestRequestRequiredNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-
-												}
-
-											case 'n': // Prefix: "nullable"
-
-												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-													elem = elem[l:]
-												} else {
 													break
 												}
-
-												if len(elem) == 0 {
-													switch r.Method {
-													case "POST":
-														s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
 												switch elem[0] {
-												case '_': // Prefix: "_array"
+												case 'a': // Prefix: "array"
 
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 														elem = elem[l:]
 													} else {
 														break
@@ -5944,7 +6048,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															s.handleTestRequestRequiredNumberDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -5964,12 +6068,212 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																s.handleTestRequestRequiredNumberDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
 
 															return
+														}
+
+													}
+
+												case 'n': // Prefix: "nullable"
+
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredNumberDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredNumberDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredNumberDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+
+														}
+
+													}
+
+												}
+
+											}
+
+										case 'o': // Prefix: "ouble"
+
+											if l := len("ouble"); len(elem) >= l && elem[0:l] == "ouble" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
+													}
+
+												case 'n': // Prefix: "nullable"
+
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+
 														}
 
 													}
@@ -7249,6 +7553,144 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															switch r.Method {
 															case "POST":
 																s.handleTestRequestRequiredStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 'e': // Prefix: "ecimal"
+
+										if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredStringDecimalRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredStringDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredStringDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredStringDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -12055,6 +12497,144 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														switch r.Method {
 														case "POST":
 															s.handleTestRequestStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 'e': // Prefix: "ecimal"
+
+									if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestStringDecimalRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestStringDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestStringDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestStringDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -18646,100 +19226,52 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 									}
 
-								case 'd': // Prefix: "double"
+								case 'd': // Prefix: "d"
 
-									if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch r.Method {
-										case "POST":
-											s.handleTestResponseNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
-										default:
-											s.notAllowed(w, r, "POST")
-										}
-
-										return
+										break
 									}
 									switch elem[0] {
-									case '_': // Prefix: "_"
+									case 'e': // Prefix: "ecimal"
 
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseNumberDecimalRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
 										}
 										switch elem[0] {
-										case 'a': // Prefix: "array"
+										case '_': // Prefix: "_"
 
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestResponseNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "POST":
-														s.handleTestResponseNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-
-											}
-
-										case 'n': // Prefix: "nullable"
-
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
 												break
 											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestResponseNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
+											case 'a': // Prefix: "array"
 
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -18748,7 +19280,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														s.handleTestResponseNumberDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -18768,12 +19300,212 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															s.handleTestResponseNumberDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
 
 														return
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseNumberDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseNumberDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseNumberDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 'o': // Prefix: "ouble"
+
+										if l := len("ouble"); len(elem) >= l && elem[0:l] == "ouble" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestResponseNumberDoubleRequest([0]string{}, elemIsEscaped, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseNumberDoubleArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseNumberDoubleArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseNumberDoubleNullableRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseNumberDoubleNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseNumberDoubleNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+
 													}
 
 												}
@@ -20053,6 +20785,144 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														switch r.Method {
 														case "POST":
 															s.handleTestResponseStringDateNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 'e': // Prefix: "ecimal"
+
+									if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseStringDecimalRequest([0]string{}, elemIsEscaped, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringDecimalArrayRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringDecimalArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseStringDecimalNullableRequest([0]string{}, elemIsEscaped, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseStringDecimalNullableArrayRequest([0]string{}, elemIsEscaped, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseStringDecimalNullableArrayArrayRequest([0]string{}, elemIsEscaped, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -27208,116 +28078,56 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 									}
 
-								case 'd': // Prefix: "double"
+								case 'd': // Prefix: "d"
 
-									if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch method {
-										case "POST":
-											r.name = TestRequestNumberDoubleOperation
-											r.summary = ""
-											r.operationID = "test_request_number_double"
-											r.pathPattern = "/test_request_number_double"
-											r.args = args
-											r.count = 0
-											return r, true
-										default:
-											return
-										}
+										break
 									}
 									switch elem[0] {
-									case '_': // Prefix: "_"
+									case 'e': // Prefix: "ecimal"
 
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch method {
+											case "POST":
+												r.name = TestRequestNumberDecimalOperation
+												r.summary = ""
+												r.operationID = "test_request_number_decimal"
+												r.pathPattern = "/test_request_number_decimal"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
-										case 'a': // Prefix: "array"
+										case '_': // Prefix: "_"
 
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = TestRequestNumberDoubleArrayOperation
-													r.summary = ""
-													r.operationID = "test_request_number_double_array"
-													r.pathPattern = "/test_request_number_double_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch method {
-													case "POST":
-														r.name = TestRequestNumberDoubleArrayArrayOperation
-														r.summary = ""
-														r.operationID = "test_request_number_double_array_array"
-														r.pathPattern = "/test_request_number_double_array_array"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
-
-											}
-
-										case 'n': // Prefix: "nullable"
-
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
 												break
 											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = TestRequestNumberDoubleNullableOperation
-													r.summary = ""
-													r.operationID = "test_request_number_double_nullable"
-													r.pathPattern = "/test_request_number_double_nullable"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
+											case 'a': // Prefix: "array"
 
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -27326,10 +28136,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = TestRequestNumberDoubleNullableArrayOperation
+														r.name = TestRequestNumberDecimalArrayOperation
 														r.summary = ""
-														r.operationID = "test_request_number_double_nullable_array"
-														r.pathPattern = "/test_request_number_double_nullable_array"
+														r.operationID = "test_request_number_decimal_array"
+														r.pathPattern = "/test_request_number_decimal_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -27350,16 +28160,252 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "POST":
-															r.name = TestRequestNumberDoubleNullableArrayArrayOperation
+															r.name = TestRequestNumberDecimalArrayArrayOperation
 															r.summary = ""
-															r.operationID = "test_request_number_double_nullable_array_array"
-															r.pathPattern = "/test_request_number_double_nullable_array_array"
+															r.operationID = "test_request_number_decimal_array_array"
+															r.pathPattern = "/test_request_number_decimal_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
 														default:
 															return
 														}
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestNumberDecimalNullableOperation
+														r.summary = ""
+														r.operationID = "test_request_number_decimal_nullable"
+														r.pathPattern = "/test_request_number_decimal_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestNumberDecimalNullableArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_number_decimal_nullable_array"
+															r.pathPattern = "/test_request_number_decimal_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestRequestNumberDecimalNullableArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_number_decimal_nullable_array_array"
+																r.pathPattern = "/test_request_number_decimal_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 'o': // Prefix: "ouble"
+
+										if l := len("ouble"); len(elem) >= l && elem[0:l] == "ouble" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = TestRequestNumberDoubleOperation
+												r.summary = ""
+												r.operationID = "test_request_number_double"
+												r.pathPattern = "/test_request_number_double"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestNumberDoubleArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_number_double_array"
+														r.pathPattern = "/test_request_number_double_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestRequestNumberDoubleArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_number_double_array_array"
+															r.pathPattern = "/test_request_number_double_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestNumberDoubleNullableOperation
+														r.summary = ""
+														r.operationID = "test_request_number_double_nullable"
+														r.pathPattern = "/test_request_number_double_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestNumberDoubleNullableArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_number_double_nullable_array"
+															r.pathPattern = "/test_request_number_double_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestRequestNumberDoubleNullableArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_number_double_nullable_array_array"
+																r.pathPattern = "/test_request_number_double_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
 													}
 
 												}
@@ -30940,116 +31986,56 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 										}
 
-									case 'd': // Prefix: "double"
+									case 'd': // Prefix: "d"
 
-										if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+										if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = TestRequestRequiredNumberDoubleOperation
-												r.summary = ""
-												r.operationID = "test_request_required_number_double"
-												r.pathPattern = "/test_request_required_number_double"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
+											break
 										}
 										switch elem[0] {
-										case '_': // Prefix: "_"
+										case 'e': // Prefix: "ecimal"
 
-											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												break
+												switch method {
+												case "POST":
+													r.name = TestRequestRequiredNumberDecimalOperation
+													r.summary = ""
+													r.operationID = "test_request_required_number_decimal"
+													r.pathPattern = "/test_request_required_number_decimal"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
 											}
 											switch elem[0] {
-											case 'a': // Prefix: "array"
+											case '_': // Prefix: "_"
 
-												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 													elem = elem[l:]
 												} else {
 													break
 												}
 
 												if len(elem) == 0 {
-													switch method {
-													case "POST":
-														r.name = TestRequestRequiredNumberDoubleArrayOperation
-														r.summary = ""
-														r.operationID = "test_request_required_number_double_array"
-														r.pathPattern = "/test_request_required_number_double_array"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_array"
-
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf node.
-														switch method {
-														case "POST":
-															r.name = TestRequestRequiredNumberDoubleArrayArrayOperation
-															r.summary = ""
-															r.operationID = "test_request_required_number_double_array_array"
-															r.pathPattern = "/test_request_required_number_double_array_array"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-
-												}
-
-											case 'n': // Prefix: "nullable"
-
-												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-													elem = elem[l:]
-												} else {
 													break
 												}
-
-												if len(elem) == 0 {
-													switch method {
-													case "POST":
-														r.name = TestRequestRequiredNumberDoubleNullableOperation
-														r.summary = ""
-														r.operationID = "test_request_required_number_double_nullable"
-														r.pathPattern = "/test_request_required_number_double_nullable"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
 												switch elem[0] {
-												case '_': // Prefix: "_array"
+												case 'a': // Prefix: "array"
 
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 														elem = elem[l:]
 													} else {
 														break
@@ -31058,10 +32044,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = TestRequestRequiredNumberDoubleNullableArrayOperation
+															r.name = TestRequestRequiredNumberDecimalArrayOperation
 															r.summary = ""
-															r.operationID = "test_request_required_number_double_nullable_array"
-															r.pathPattern = "/test_request_required_number_double_nullable_array"
+															r.operationID = "test_request_required_number_decimal_array"
+															r.pathPattern = "/test_request_required_number_decimal_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -31082,16 +32068,252 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															// Leaf node.
 															switch method {
 															case "POST":
-																r.name = TestRequestRequiredNumberDoubleNullableArrayArrayOperation
+																r.name = TestRequestRequiredNumberDecimalArrayArrayOperation
 																r.summary = ""
-																r.operationID = "test_request_required_number_double_nullable_array_array"
-																r.pathPattern = "/test_request_required_number_double_nullable_array_array"
+																r.operationID = "test_request_required_number_decimal_array_array"
+																r.pathPattern = "/test_request_required_number_decimal_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
 															default:
 																return
 															}
+														}
+
+													}
+
+												case 'n': // Prefix: "nullable"
+
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredNumberDecimalNullableOperation
+															r.summary = ""
+															r.operationID = "test_request_required_number_decimal_nullable"
+															r.pathPattern = "/test_request_required_number_decimal_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = TestRequestRequiredNumberDecimalNullableArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_required_number_decimal_nullable_array"
+																r.pathPattern = "/test_request_required_number_decimal_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch method {
+																case "POST":
+																	r.name = TestRequestRequiredNumberDecimalNullableArrayArrayOperation
+																	r.summary = ""
+																	r.operationID = "test_request_required_number_decimal_nullable_array_array"
+																	r.pathPattern = "/test_request_required_number_decimal_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+
+														}
+
+													}
+
+												}
+
+											}
+
+										case 'o': // Prefix: "ouble"
+
+											if l := len("ouble"); len(elem) >= l && elem[0:l] == "ouble" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestRequestRequiredNumberDoubleOperation
+													r.summary = ""
+													r.operationID = "test_request_required_number_double"
+													r.pathPattern = "/test_request_required_number_double"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredNumberDoubleArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_required_number_double_array"
+															r.pathPattern = "/test_request_required_number_double_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestRequestRequiredNumberDoubleArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_required_number_double_array_array"
+																r.pathPattern = "/test_request_required_number_double_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
+													}
+
+												case 'n': // Prefix: "nullable"
+
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredNumberDoubleNullableOperation
+															r.summary = ""
+															r.operationID = "test_request_required_number_double_nullable"
+															r.pathPattern = "/test_request_required_number_double_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = TestRequestRequiredNumberDoubleNullableArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_required_number_double_nullable_array"
+																r.pathPattern = "/test_request_required_number_double_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch method {
+																case "POST":
+																	r.name = TestRequestRequiredNumberDoubleNullableArrayArrayOperation
+																	r.summary = ""
+																	r.operationID = "test_request_required_number_double_nullable_array_array"
+																	r.pathPattern = "/test_request_required_number_double_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+
 														}
 
 													}
@@ -32586,6 +33808,168 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 																r.summary = ""
 																r.operationID = "test_request_required_string_date_nullable_array_array"
 																r.pathPattern = "/test_request_required_string_date_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 'e': // Prefix: "ecimal"
+
+										if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = TestRequestRequiredStringDecimalOperation
+												r.summary = ""
+												r.operationID = "test_request_required_string_decimal"
+												r.pathPattern = "/test_request_required_string_decimal"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestRequiredStringDecimalArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_required_string_decimal_array"
+														r.pathPattern = "/test_request_required_string_decimal_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredStringDecimalArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_required_string_decimal_array_array"
+															r.pathPattern = "/test_request_required_string_decimal_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestRequiredStringDecimalNullableOperation
+														r.summary = ""
+														r.operationID = "test_request_required_string_decimal_nullable"
+														r.pathPattern = "/test_request_required_string_decimal_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestRequestRequiredStringDecimalNullableArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_required_string_decimal_nullable_array"
+															r.pathPattern = "/test_request_required_string_decimal_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestRequestRequiredStringDecimalNullableArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_request_required_string_decimal_nullable_array_array"
+																r.pathPattern = "/test_request_required_string_decimal_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -38208,6 +39592,168 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.summary = ""
 															r.operationID = "test_request_string_date_nullable_array_array"
 															r.pathPattern = "/test_request_string_date_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 'e': // Prefix: "ecimal"
+
+									if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = TestRequestStringDecimalOperation
+											r.summary = ""
+											r.operationID = "test_request_string_decimal"
+											r.pathPattern = "/test_request_string_decimal"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestRequestStringDecimalArrayOperation
+													r.summary = ""
+													r.operationID = "test_request_string_decimal_array"
+													r.pathPattern = "/test_request_string_decimal_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch method {
+													case "POST":
+														r.name = TestRequestStringDecimalArrayArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_string_decimal_array_array"
+														r.pathPattern = "/test_request_string_decimal_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestRequestStringDecimalNullableOperation
+													r.summary = ""
+													r.operationID = "test_request_string_decimal_nullable"
+													r.pathPattern = "/test_request_string_decimal_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestRequestStringDecimalNullableArrayOperation
+														r.summary = ""
+														r.operationID = "test_request_string_decimal_nullable_array"
+														r.pathPattern = "/test_request_string_decimal_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestRequestStringDecimalNullableArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_request_string_decimal_nullable_array_array"
+															r.pathPattern = "/test_request_string_decimal_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -45916,116 +47462,56 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 
 									}
 
-								case 'd': // Prefix: "double"
+								case 'd': // Prefix: "d"
 
-									if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									if l := len("d"); len(elem) >= l && elem[0:l] == "d" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch method {
-										case "POST":
-											r.name = TestResponseNumberDoubleOperation
-											r.summary = ""
-											r.operationID = "test_response_number_double"
-											r.pathPattern = "/test_response_number_double"
-											r.args = args
-											r.count = 0
-											return r, true
-										default:
-											return
-										}
+										break
 									}
 									switch elem[0] {
-									case '_': // Prefix: "_"
+									case 'e': // Prefix: "ecimal"
 
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch method {
+											case "POST":
+												r.name = TestResponseNumberDecimalOperation
+												r.summary = ""
+												r.operationID = "test_response_number_decimal"
+												r.pathPattern = "/test_response_number_decimal"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
-										case 'a': // Prefix: "array"
+										case '_': // Prefix: "_"
 
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = TestResponseNumberDoubleArrayOperation
-													r.summary = ""
-													r.operationID = "test_response_number_double_array"
-													r.pathPattern = "/test_response_number_double_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch method {
-													case "POST":
-														r.name = TestResponseNumberDoubleArrayArrayOperation
-														r.summary = ""
-														r.operationID = "test_response_number_double_array_array"
-														r.pathPattern = "/test_response_number_double_array_array"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
-
-											}
-
-										case 'n': // Prefix: "nullable"
-
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
 												break
 											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = TestResponseNumberDoubleNullableOperation
-													r.summary = ""
-													r.operationID = "test_response_number_double_nullable"
-													r.pathPattern = "/test_response_number_double_nullable"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
+											case 'a': // Prefix: "array"
 
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -46034,10 +47520,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = TestResponseNumberDoubleNullableArrayOperation
+														r.name = TestResponseNumberDecimalArrayOperation
 														r.summary = ""
-														r.operationID = "test_response_number_double_nullable_array"
-														r.pathPattern = "/test_response_number_double_nullable_array"
+														r.operationID = "test_response_number_decimal_array"
+														r.pathPattern = "/test_response_number_decimal_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -46058,16 +47544,252 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														// Leaf node.
 														switch method {
 														case "POST":
-															r.name = TestResponseNumberDoubleNullableArrayArrayOperation
+															r.name = TestResponseNumberDecimalArrayArrayOperation
 															r.summary = ""
-															r.operationID = "test_response_number_double_nullable_array_array"
-															r.pathPattern = "/test_response_number_double_nullable_array_array"
+															r.operationID = "test_response_number_decimal_array_array"
+															r.pathPattern = "/test_response_number_decimal_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
 														default:
 															return
 														}
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestResponseNumberDecimalNullableOperation
+														r.summary = ""
+														r.operationID = "test_response_number_decimal_nullable"
+														r.pathPattern = "/test_response_number_decimal_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestResponseNumberDecimalNullableArrayOperation
+															r.summary = ""
+															r.operationID = "test_response_number_decimal_nullable_array"
+															r.pathPattern = "/test_response_number_decimal_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestResponseNumberDecimalNullableArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_response_number_decimal_nullable_array_array"
+																r.pathPattern = "/test_response_number_decimal_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
+													}
+
+												}
+
+											}
+
+										}
+
+									case 'o': // Prefix: "ouble"
+
+										if l := len("ouble"); len(elem) >= l && elem[0:l] == "ouble" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = TestResponseNumberDoubleOperation
+												r.summary = ""
+												r.operationID = "test_response_number_double"
+												r.pathPattern = "/test_response_number_double"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestResponseNumberDoubleArrayOperation
+														r.summary = ""
+														r.operationID = "test_response_number_double_array"
+														r.pathPattern = "/test_response_number_double_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestResponseNumberDoubleArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_response_number_double_array_array"
+															r.pathPattern = "/test_response_number_double_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											case 'n': // Prefix: "nullable"
+
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestResponseNumberDoubleNullableOperation
+														r.summary = ""
+														r.operationID = "test_response_number_double_nullable"
+														r.pathPattern = "/test_response_number_double_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = TestResponseNumberDoubleNullableArrayOperation
+															r.summary = ""
+															r.operationID = "test_response_number_double_nullable_array"
+															r.pathPattern = "/test_response_number_double_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch method {
+															case "POST":
+																r.name = TestResponseNumberDoubleNullableArrayArrayOperation
+																r.summary = ""
+																r.operationID = "test_response_number_double_nullable_array_array"
+																r.pathPattern = "/test_response_number_double_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+
 													}
 
 												}
@@ -47562,6 +49284,168 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 															r.summary = ""
 															r.operationID = "test_response_string_date_nullable_array_array"
 															r.pathPattern = "/test_response_string_date_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+
+												}
+
+											}
+
+										}
+
+									}
+
+								case 'e': // Prefix: "ecimal"
+
+									if l := len("ecimal"); len(elem) >= l && elem[0:l] == "ecimal" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = TestResponseStringDecimalOperation
+											r.summary = ""
+											r.operationID = "test_response_string_decimal"
+											r.pathPattern = "/test_response_string_decimal"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestResponseStringDecimalArrayOperation
+													r.summary = ""
+													r.operationID = "test_response_string_decimal_array"
+													r.pathPattern = "/test_response_string_decimal_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch method {
+													case "POST":
+														r.name = TestResponseStringDecimalArrayArrayOperation
+														r.summary = ""
+														r.operationID = "test_response_string_decimal_array_array"
+														r.pathPattern = "/test_response_string_decimal_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+
+											}
+
+										case 'n': // Prefix: "nullable"
+
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = TestResponseStringDecimalNullableOperation
+													r.summary = ""
+													r.operationID = "test_response_string_decimal_nullable"
+													r.pathPattern = "/test_response_string_decimal_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = TestResponseStringDecimalNullableArrayOperation
+														r.summary = ""
+														r.operationID = "test_response_string_decimal_nullable_array"
+														r.pathPattern = "/test_response_string_decimal_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch method {
+														case "POST":
+															r.name = TestResponseStringDecimalNullableArrayArrayOperation
+															r.summary = ""
+															r.operationID = "test_response_string_decimal_nullable_array_array"
+															r.pathPattern = "/test_response_string_decimal_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true

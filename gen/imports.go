@@ -28,6 +28,7 @@ func defaultImports() map[string]string {
 		"github.com/go-faster/errors":              "",
 		"github.com/go-faster/jx":                  "",
 		"github.com/google/uuid":                   "",
+		"github.com/shopspring/decimal":            "",
 		"go.opentelemetry.io/otel":                 "",
 		"go.opentelemetry.io/otel/attribute":       "",
 		"go.opentelemetry.io/otel/codes":           "",

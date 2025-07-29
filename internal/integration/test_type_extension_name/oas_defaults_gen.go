@@ -4,19 +4,19 @@ package api
 
 import (
 	"github.com/go-faster/jx"
-	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
-	"github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
+	decimal3 "github.com/ogen-go/ogen/_testdata/testtypes/bar/decimal"
+	decimal2 "github.com/ogen-go/ogen/_testdata/testtypes/foo/decimal"
 	"github.com/ogen-go/ogen/json"
 )
 
 // setDefaults set default value of fields.
 func (s *OptionalOK) setDefaults() {
 	{
-		val, _ := json.DecodeExternal[decimal.Decimal](jx.DecodeStr("\"1.23\""))
+		val, _ := json.DecodeExternal[decimal2.Decimal](jx.DecodeStr("\"1.23\""))
 		s.Foo.SetTo(val)
 	}
 	{
-		val, _ := json.DecodeExternal[decimal2.Decimal](jx.DecodeStr("1.23"))
+		val, _ := json.DecodeExternal[decimal3.Decimal](jx.DecodeStr("1.23"))
 		s.Bar.SetTo(val)
 	}
 }

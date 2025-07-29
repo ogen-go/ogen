@@ -283,6 +283,12 @@ func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema, side bool) (*i
 							return nil, errors.Wrap(err, "float validator")
 						}
 					}
+				case v.IsDecimal():
+					if !v.Validators.Decimal.Set() {
+						if err := v.Validators.SetDecimal(schema); err != nil {
+							return nil, errors.Wrap(err, "decimal validator")
+						}
+					}
 				case !v.Validators.String.Set():
 					if err := v.Validators.SetString(schema); err != nil {
 						return nil, errors.Wrap(err, "string validator")
