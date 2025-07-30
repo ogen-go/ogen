@@ -211,6 +211,7 @@ const (
 	ListStorageV1beta1NamespacedCSIStorageCapacityOperation                     OperationName = "ListStorageV1beta1NamespacedCSIStorageCapacity"
 	LogFileHandlerOperation                                                     OperationName = "LogFileHandler"
 	LogFileListHandlerOperation                                                 OperationName = "LogFileListHandler"
+	PatchCoreV1NamespacedConfigMapOperation                                     OperationName = "PatchCoreV1NamespacedConfigMap"
 	ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation            OperationName = "ReadAdmissionregistrationV1MutatingWebhookConfiguration"
 	ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation          OperationName = "ReadAdmissionregistrationV1ValidatingWebhookConfiguration"
 	ReadApiextensionsV1CustomResourceDefinitionOperation                        OperationName = "ReadApiextensionsV1CustomResourceDefinition"
