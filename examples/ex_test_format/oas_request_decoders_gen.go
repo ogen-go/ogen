@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"mime"
@@ -50,9 +51,15 @@ func (s *Server) decodeTestQueryParameterRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -118,9 +125,15 @@ func (s *Server) decodeTestRequestAnyRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -186,9 +199,15 @@ func (s *Server) decodeTestRequestBooleanRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -253,9 +272,15 @@ func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -329,9 +354,15 @@ func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -435,9 +466,15 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -502,9 +539,15 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -576,9 +619,15 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -680,9 +729,15 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -749,9 +804,15 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -831,9 +892,15 @@ func (s *Server) decodeTestRequestIntegerRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -898,9 +965,15 @@ func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -974,9 +1047,15 @@ func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1080,9 +1159,15 @@ func (s *Server) decodeTestRequestIntegerInt16Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1147,9 +1232,15 @@ func (s *Server) decodeTestRequestIntegerInt16ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1223,9 +1314,15 @@ func (s *Server) decodeTestRequestIntegerInt16ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1329,9 +1426,15 @@ func (s *Server) decodeTestRequestIntegerInt16NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1396,9 +1499,15 @@ func (s *Server) decodeTestRequestIntegerInt16NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1470,9 +1579,15 @@ func (s *Server) decodeTestRequestIntegerInt16NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1574,9 +1689,15 @@ func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1641,9 +1762,15 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1717,9 +1844,15 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1823,9 +1956,15 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1890,9 +2029,15 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -1964,9 +2109,15 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2068,9 +2219,15 @@ func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2135,9 +2292,15 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2211,9 +2374,15 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2317,9 +2486,15 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2384,9 +2559,15 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2458,9 +2639,15 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2562,9 +2749,15 @@ func (s *Server) decodeTestRequestIntegerInt8Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2629,9 +2822,15 @@ func (s *Server) decodeTestRequestIntegerInt8ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2705,9 +2904,15 @@ func (s *Server) decodeTestRequestIntegerInt8ArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2811,9 +3016,15 @@ func (s *Server) decodeTestRequestIntegerInt8NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2878,9 +3089,15 @@ func (s *Server) decodeTestRequestIntegerInt8NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -2952,9 +3169,15 @@ func (s *Server) decodeTestRequestIntegerInt8NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3056,9 +3279,15 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3123,9 +3352,15 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3197,9 +3432,15 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3301,9 +3542,15 @@ func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3368,9 +3615,15 @@ func (s *Server) decodeTestRequestIntegerUint16Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3435,9 +3688,15 @@ func (s *Server) decodeTestRequestIntegerUint16ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3511,9 +3770,15 @@ func (s *Server) decodeTestRequestIntegerUint16ArrayArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3617,9 +3882,15 @@ func (s *Server) decodeTestRequestIntegerUint16NullableRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3684,9 +3955,15 @@ func (s *Server) decodeTestRequestIntegerUint16NullableArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3758,9 +4035,15 @@ func (s *Server) decodeTestRequestIntegerUint16NullableArrayArrayRequest(r *http
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3862,9 +4145,15 @@ func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -3929,9 +4218,15 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4005,9 +4300,15 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4111,9 +4412,15 @@ func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4178,9 +4485,15 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4252,9 +4565,15 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4356,9 +4675,15 @@ func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4423,9 +4748,15 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4499,9 +4830,15 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4605,9 +4942,15 @@ func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4672,9 +5015,15 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4746,9 +5095,15 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4850,9 +5205,15 @@ func (s *Server) decodeTestRequestIntegerUint8Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4917,9 +5278,15 @@ func (s *Server) decodeTestRequestIntegerUint8ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -4993,9 +5360,15 @@ func (s *Server) decodeTestRequestIntegerUint8ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5099,9 +5472,15 @@ func (s *Server) decodeTestRequestIntegerUint8NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5166,9 +5545,15 @@ func (s *Server) decodeTestRequestIntegerUint8NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5240,9 +5625,15 @@ func (s *Server) decodeTestRequestIntegerUint8NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5344,9 +5735,15 @@ func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5420,9 +5817,15 @@ func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5526,9 +5929,15 @@ func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5593,9 +6002,15 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5667,9 +6082,15 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5771,9 +6192,15 @@ func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5838,9 +6265,15 @@ func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -5914,9 +6347,15 @@ func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6020,9 +6459,15 @@ func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6087,9 +6532,15 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6163,9 +6614,15 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6269,9 +6726,15 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6336,9 +6799,15 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6410,9 +6879,15 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *h
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6514,9 +6989,15 @@ func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6581,9 +7062,15 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6657,9 +7144,15 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6763,9 +7256,15 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6830,9 +7329,15 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -6904,9 +7409,15 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *h
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7008,9 +7519,15 @@ func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7075,9 +7592,15 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7151,9 +7674,15 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7257,9 +7786,15 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7324,9 +7859,15 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7398,9 +7939,15 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *ht
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7502,9 +8049,15 @@ func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7569,9 +8122,15 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7643,9 +8202,15 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7747,9 +8312,15 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7814,9 +8385,15 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7890,9 +8467,15 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -7996,9 +8579,15 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8063,9 +8652,15 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8137,9 +8732,15 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8241,9 +8842,15 @@ func (s *Server) decodeTestRequestNullRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8308,9 +8915,15 @@ func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8382,9 +8995,15 @@ func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8486,9 +9105,15 @@ func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8553,9 +9178,15 @@ func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8627,9 +9258,15 @@ func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8731,9 +9368,15 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8813,9 +9456,15 @@ func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -8911,9 +9560,15 @@ func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9034,9 +9689,15 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9116,9 +9777,15 @@ func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9214,9 +9881,15 @@ func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9337,9 +10010,15 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9419,9 +10098,15 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9522,9 +10207,15 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9650,9 +10341,15 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9732,9 +10429,15 @@ func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9830,9 +10533,15 @@ func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -9953,9 +10662,15 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10035,9 +10750,15 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10138,9 +10859,15 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10266,9 +10993,15 @@ func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10333,9 +11066,15 @@ func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10409,9 +11148,15 @@ func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10515,9 +11260,15 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10582,9 +11333,15 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10656,9 +11413,15 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10760,9 +11523,15 @@ func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10827,9 +11596,15 @@ func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -10903,9 +11678,15 @@ func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -11009,9 +11790,15 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -11076,9 +11863,15 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -11150,9 +11943,15 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -11254,9 +12053,15 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -11336,9 +12141,15 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -11439,9 +12250,15 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -11564,9 +12381,15 @@ func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -11629,9 +12452,15 @@ func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -11694,9 +12523,15 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -11775,9 +12610,15 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -11881,9 +12722,15 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -11944,9 +12791,15 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12023,9 +12876,15 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12127,9 +12986,15 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12190,9 +13055,15 @@ func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12261,9 +13132,15 @@ func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12326,9 +13203,15 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12407,9 +13290,15 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12513,9 +13402,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt16Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12578,9 +13473,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt16ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12659,9 +13560,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt16ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12765,9 +13672,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt16NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12828,9 +13741,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt16NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -12907,9 +13826,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt16NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13011,9 +13936,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13076,9 +14007,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13157,9 +14094,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13263,9 +14206,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13326,9 +14275,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13405,9 +14360,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13509,9 +14470,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13574,9 +14541,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13655,9 +14628,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13761,9 +14740,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13824,9 +14809,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -13903,9 +14894,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14007,9 +15004,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14072,9 +15075,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt8ArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14153,9 +15162,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt8ArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14259,9 +15274,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt8NullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14322,9 +15343,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt8NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14401,9 +15428,15 @@ func (s *Server) decodeTestRequestRequiredIntegerInt8NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14505,9 +15538,15 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14568,9 +15607,15 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14647,9 +15692,15 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14751,9 +15802,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14816,9 +15873,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint16Request(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14881,9 +15944,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint16ArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -14962,9 +16031,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint16ArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15068,9 +16143,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint16NullableRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15131,9 +16212,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint16NullableArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15210,9 +16297,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint16NullableArrayArrayRequest
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15314,9 +16407,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15379,9 +16478,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15460,9 +16565,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15566,9 +16677,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15629,9 +16746,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15708,9 +16831,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15812,9 +16941,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15877,9 +17012,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -15958,9 +17099,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16064,9 +17211,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16127,9 +17280,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16206,9 +17365,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16310,9 +17475,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16375,9 +17546,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint8ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16456,9 +17633,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint8ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16562,9 +17745,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint8NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16625,9 +17814,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint8NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16704,9 +17899,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUint8NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16808,9 +18009,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16889,9 +18096,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -16995,9 +18208,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17058,9 +18277,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17137,9 +18362,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17241,9 +18472,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17306,9 +18543,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17387,9 +18630,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17493,9 +18742,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17558,9 +18813,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17639,9 +18900,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17745,9 +19012,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17808,9 +19081,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17887,9 +19166,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -17991,9 +19276,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18056,9 +19347,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18137,9 +19434,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18243,9 +19546,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18306,9 +19615,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18385,9 +19700,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18489,9 +19810,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18554,9 +19881,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18635,9 +19968,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18741,9 +20080,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18804,9 +20149,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18883,9 +20234,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -18987,9 +20344,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19050,9 +20413,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19129,9 +20498,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19233,9 +20608,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19298,9 +20679,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19379,9 +20766,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19485,9 +20878,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19548,9 +20947,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19627,9 +21032,15 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19731,9 +21142,15 @@ func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19794,9 +21211,15 @@ func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19873,9 +21296,15 @@ func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -19977,9 +21406,15 @@ func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20040,9 +21475,15 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20119,9 +21560,15 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20223,9 +21670,15 @@ func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20296,9 +21749,15 @@ func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20394,9 +21853,15 @@ func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20517,9 +21982,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20590,9 +22061,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20688,9 +22165,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20811,9 +22294,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20889,9 +22378,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -20992,9 +22487,15 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21120,9 +22621,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21193,9 +22700,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21291,9 +22804,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21414,9 +22933,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21492,9 +23017,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21595,9 +23126,15 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21723,9 +23260,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21788,9 +23331,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21869,9 +23418,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -21975,9 +23530,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22038,9 +23599,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22117,9 +23684,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22221,9 +23794,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22286,9 +23865,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22367,9 +23952,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22473,9 +24064,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22536,9 +24133,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22615,9 +24218,15 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22719,9 +24328,15 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22797,9 +24412,15 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -22900,9 +24521,15 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23028,9 +24655,15 @@ func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23093,9 +24726,15 @@ func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23174,9 +24813,15 @@ func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23280,9 +24925,15 @@ func (s *Server) decodeTestRequestRequiredStringBase64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23345,9 +24996,15 @@ func (s *Server) decodeTestRequestRequiredStringBase64ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23426,9 +25083,15 @@ func (s *Server) decodeTestRequestRequiredStringBase64ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23532,9 +25195,15 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23597,9 +25266,15 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23678,9 +25353,15 @@ func (s *Server) decodeTestRequestRequiredStringBase64NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23784,9 +25465,15 @@ func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23849,9 +25536,15 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -23930,9 +25623,15 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24036,9 +25735,15 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24099,9 +25804,15 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24178,9 +25889,15 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24282,9 +25999,15 @@ func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24347,9 +26070,15 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24428,9 +26157,15 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24534,9 +26269,15 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24599,9 +26340,15 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24680,9 +26427,15 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24786,9 +26539,15 @@ func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24851,9 +26610,15 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -24932,9 +26697,15 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25038,9 +26809,15 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25101,9 +26878,15 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25180,9 +26963,15 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25284,9 +27073,15 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25349,9 +27144,15 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25430,9 +27231,15 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25536,9 +27343,15 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25599,9 +27412,15 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25678,9 +27497,15 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25782,9 +27607,15 @@ func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25847,9 +27678,15 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -25928,9 +27765,15 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26034,9 +27877,15 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26097,9 +27946,15 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26176,9 +28031,15 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26280,9 +28141,15 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26361,9 +28228,15 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26467,9 +28340,15 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26598,9 +28477,15 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26684,9 +28569,15 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26795,9 +28686,15 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -26931,9 +28828,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat32Request(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27004,9 +28907,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat32ArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27102,9 +29011,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat32ArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27225,9 +29140,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27303,9 +29224,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27406,9 +29333,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat32NullableArrayArrayRequest
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27534,9 +29467,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat64Request(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27607,9 +29546,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat64ArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27705,9 +29650,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat64ArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27828,9 +29779,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -27906,9 +29863,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28009,9 +29972,15 @@ func (s *Server) decodeTestRequestRequiredStringFloat64NullableArrayArrayRequest
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28137,9 +30106,15 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28218,9 +30193,15 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28324,9 +30305,15 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28455,9 +30442,15 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28541,9 +30534,15 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28652,9 +30651,15 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28788,9 +30793,15 @@ func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28853,9 +30864,15 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -28934,9 +30951,15 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29040,9 +31063,15 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29103,9 +31132,15 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29182,9 +31217,15 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29286,9 +31327,15 @@ func (s *Server) decodeTestRequestRequiredStringIntRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29351,9 +31398,15 @@ func (s *Server) decodeTestRequestRequiredStringInt16Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29416,9 +31469,15 @@ func (s *Server) decodeTestRequestRequiredStringInt16ArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29497,9 +31556,15 @@ func (s *Server) decodeTestRequestRequiredStringInt16ArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29603,9 +31668,15 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29666,9 +31737,15 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29745,9 +31822,15 @@ func (s *Server) decodeTestRequestRequiredStringInt16NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29849,9 +31932,15 @@ func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29914,9 +32003,15 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -29995,9 +32090,15 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30101,9 +32202,15 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30164,9 +32271,15 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30243,9 +32356,15 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30347,9 +32466,15 @@ func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30412,9 +32537,15 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30493,9 +32624,15 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30599,9 +32736,15 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30662,9 +32805,15 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30741,9 +32890,15 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30845,9 +33000,15 @@ func (s *Server) decodeTestRequestRequiredStringInt8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30910,9 +33071,15 @@ func (s *Server) decodeTestRequestRequiredStringInt8ArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -30991,9 +33158,15 @@ func (s *Server) decodeTestRequestRequiredStringInt8ArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31097,9 +33270,15 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31160,9 +33339,15 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31239,9 +33424,15 @@ func (s *Server) decodeTestRequestRequiredStringInt8NullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31343,9 +33534,15 @@ func (s *Server) decodeTestRequestRequiredStringIntArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31424,9 +33621,15 @@ func (s *Server) decodeTestRequestRequiredStringIntArrayArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31530,9 +33733,15 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31593,9 +33802,15 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31672,9 +33887,15 @@ func (s *Server) decodeTestRequestRequiredStringIntNullableArrayArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31776,9 +33997,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31841,9 +34068,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -31922,9 +34155,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32028,9 +34267,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32091,9 +34336,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32170,9 +34421,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32274,9 +34531,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32339,9 +34602,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32420,9 +34689,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32526,9 +34801,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32589,9 +34870,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32668,9 +34955,15 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32772,9 +35065,15 @@ func (s *Server) decodeTestRequestRequiredStringMACRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32837,9 +35136,15 @@ func (s *Server) decodeTestRequestRequiredStringMACArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -32918,9 +35223,15 @@ func (s *Server) decodeTestRequestRequiredStringMACArrayArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33024,9 +35335,15 @@ func (s *Server) decodeTestRequestRequiredStringMACNullableRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33087,9 +35404,15 @@ func (s *Server) decodeTestRequestRequiredStringMACNullableArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33166,9 +35489,15 @@ func (s *Server) decodeTestRequestRequiredStringMACNullableArrayArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33270,9 +35599,15 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33333,9 +35668,15 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33412,9 +35753,15 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33516,9 +35863,15 @@ func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33581,9 +35934,15 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33662,9 +36021,15 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33768,9 +36133,15 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33831,9 +36202,15 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -33910,9 +36287,15 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34014,9 +36397,15 @@ func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34079,9 +36468,15 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34160,9 +36555,15 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34266,9 +36667,15 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34329,9 +36736,15 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34408,9 +36821,15 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34512,9 +36931,15 @@ func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34577,9 +37002,15 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34658,9 +37089,15 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34764,9 +37201,15 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34827,9 +37270,15 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -34906,9 +37355,15 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35010,9 +37465,15 @@ func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35075,9 +37536,15 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35156,9 +37623,15 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35262,9 +37735,15 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35325,9 +37804,15 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35404,9 +37889,15 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35508,9 +37999,15 @@ func (s *Server) decodeTestRequestRequiredStringUintRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35573,9 +38070,15 @@ func (s *Server) decodeTestRequestRequiredStringUint16Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35638,9 +38141,15 @@ func (s *Server) decodeTestRequestRequiredStringUint16ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35719,9 +38228,15 @@ func (s *Server) decodeTestRequestRequiredStringUint16ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35825,9 +38340,15 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35888,9 +38409,15 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -35967,9 +38494,15 @@ func (s *Server) decodeTestRequestRequiredStringUint16NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36071,9 +38604,15 @@ func (s *Server) decodeTestRequestRequiredStringUint32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36136,9 +38675,15 @@ func (s *Server) decodeTestRequestRequiredStringUint32ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36217,9 +38762,15 @@ func (s *Server) decodeTestRequestRequiredStringUint32ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36323,9 +38874,15 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36386,9 +38943,15 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36465,9 +39028,15 @@ func (s *Server) decodeTestRequestRequiredStringUint32NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36569,9 +39138,15 @@ func (s *Server) decodeTestRequestRequiredStringUint64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36634,9 +39209,15 @@ func (s *Server) decodeTestRequestRequiredStringUint64ArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36715,9 +39296,15 @@ func (s *Server) decodeTestRequestRequiredStringUint64ArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36821,9 +39408,15 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36884,9 +39477,15 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -36963,9 +39562,15 @@ func (s *Server) decodeTestRequestRequiredStringUint64NullableArrayArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37067,9 +39672,15 @@ func (s *Server) decodeTestRequestRequiredStringUint8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37132,9 +39743,15 @@ func (s *Server) decodeTestRequestRequiredStringUint8ArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37213,9 +39830,15 @@ func (s *Server) decodeTestRequestRequiredStringUint8ArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37319,9 +39942,15 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37382,9 +40011,15 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37461,9 +40096,15 @@ func (s *Server) decodeTestRequestRequiredStringUint8NullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37565,9 +40206,15 @@ func (s *Server) decodeTestRequestRequiredStringUintArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37646,9 +40293,15 @@ func (s *Server) decodeTestRequestRequiredStringUintArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37752,9 +40405,15 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37815,9 +40474,15 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37894,9 +40559,15 @@ func (s *Server) decodeTestRequestRequiredStringUintNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -37998,9 +40669,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38063,9 +40740,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38144,9 +40827,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38250,9 +40939,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38315,9 +41010,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38396,9 +41097,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38502,9 +41209,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38565,9 +41278,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38644,9 +41363,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38748,9 +41473,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38813,9 +41544,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -38894,9 +41631,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39000,9 +41743,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39063,9 +41812,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39142,9 +41897,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39246,9 +42007,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39311,9 +42078,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39392,9 +42165,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39498,9 +42277,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39561,9 +42346,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39640,9 +42431,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39744,9 +42541,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39807,9 +42610,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39886,9 +42695,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -39990,9 +42805,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -40055,9 +42876,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -40136,9 +42963,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -40242,9 +43075,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -40305,9 +43144,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -40384,9 +43229,15 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -40491,9 +43342,15 @@ func (s *Server) decodeTestRequestStringRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -40558,9 +43415,15 @@ func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -40634,9 +43497,15 @@ func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -40740,9 +43609,15 @@ func (s *Server) decodeTestRequestStringBase64Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -40808,9 +43683,15 @@ func (s *Server) decodeTestRequestStringBase64ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -40884,9 +43765,15 @@ func (s *Server) decodeTestRequestStringBase64ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -40990,9 +43877,15 @@ func (s *Server) decodeTestRequestStringBase64NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41057,9 +43950,15 @@ func (s *Server) decodeTestRequestStringBase64NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41133,9 +44032,15 @@ func (s *Server) decodeTestRequestStringBase64NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41239,9 +44144,15 @@ func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41306,9 +44217,15 @@ func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41382,9 +44299,15 @@ func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41488,9 +44411,15 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41555,9 +44484,15 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41629,9 +44564,15 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41733,9 +44674,15 @@ func (s *Server) decodeTestRequestStringByteRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41801,9 +44748,15 @@ func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41877,9 +44830,15 @@ func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -41983,9 +44942,15 @@ func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42050,9 +45015,15 @@ func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42126,9 +45097,15 @@ func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42232,9 +45209,15 @@ func (s *Server) decodeTestRequestStringDateRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42299,9 +45282,15 @@ func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42375,9 +45364,15 @@ func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42481,9 +45476,15 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42548,9 +45549,15 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42622,9 +45629,15 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42726,9 +45739,15 @@ func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42793,9 +45812,15 @@ func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42869,9 +45894,15 @@ func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -42975,9 +46006,15 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43042,9 +46079,15 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43116,9 +46159,15 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43220,9 +46269,15 @@ func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43287,9 +46342,15 @@ func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43363,9 +46424,15 @@ func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43469,9 +46536,15 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43536,9 +46609,15 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43610,9 +46689,15 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43714,9 +46799,15 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43804,9 +46895,15 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -43910,9 +47007,15 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44041,9 +47144,15 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44131,9 +47240,15 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44242,9 +47357,15 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44378,9 +47499,15 @@ func (s *Server) decodeTestRequestStringFloat32Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44460,9 +47587,15 @@ func (s *Server) decodeTestRequestStringFloat32ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44558,9 +47691,15 @@ func (s *Server) decodeTestRequestStringFloat32ArrayArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44681,9 +47820,15 @@ func (s *Server) decodeTestRequestStringFloat32NullableRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44763,9 +47908,15 @@ func (s *Server) decodeTestRequestStringFloat32NullableArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44866,9 +48017,15 @@ func (s *Server) decodeTestRequestStringFloat32NullableArrayArrayRequest(r *http
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -44994,9 +48151,15 @@ func (s *Server) decodeTestRequestStringFloat64Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45076,9 +48239,15 @@ func (s *Server) decodeTestRequestStringFloat64ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45174,9 +48343,15 @@ func (s *Server) decodeTestRequestStringFloat64ArrayArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45297,9 +48472,15 @@ func (s *Server) decodeTestRequestStringFloat64NullableRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45379,9 +48560,15 @@ func (s *Server) decodeTestRequestStringFloat64NullableArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45482,9 +48669,15 @@ func (s *Server) decodeTestRequestStringFloat64NullableArrayArrayRequest(r *http
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45610,9 +48803,15 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45700,9 +48899,15 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45806,9 +49011,15 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -45937,9 +49148,15 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46027,9 +49244,15 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46138,9 +49361,15 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46274,9 +49503,15 @@ func (s *Server) decodeTestRequestStringIPRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46341,9 +49576,15 @@ func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46417,9 +49658,15 @@ func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46523,9 +49770,15 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46590,9 +49843,15 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46664,9 +49923,15 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46768,9 +50033,15 @@ func (s *Server) decodeTestRequestStringIntRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46835,9 +50106,15 @@ func (s *Server) decodeTestRequestStringInt16Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46902,9 +50179,15 @@ func (s *Server) decodeTestRequestStringInt16ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -46978,9 +50261,15 @@ func (s *Server) decodeTestRequestStringInt16ArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47084,9 +50373,15 @@ func (s *Server) decodeTestRequestStringInt16NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47151,9 +50446,15 @@ func (s *Server) decodeTestRequestStringInt16NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47225,9 +50526,15 @@ func (s *Server) decodeTestRequestStringInt16NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47329,9 +50636,15 @@ func (s *Server) decodeTestRequestStringInt32Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47396,9 +50709,15 @@ func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47472,9 +50791,15 @@ func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47578,9 +50903,15 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47645,9 +50976,15 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47719,9 +51056,15 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47823,9 +51166,15 @@ func (s *Server) decodeTestRequestStringInt64Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47890,9 +51239,15 @@ func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -47966,9 +51321,15 @@ func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48072,9 +51433,15 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48139,9 +51506,15 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48213,9 +51586,15 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48317,9 +51696,15 @@ func (s *Server) decodeTestRequestStringInt8Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48384,9 +51769,15 @@ func (s *Server) decodeTestRequestStringInt8ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48460,9 +51851,15 @@ func (s *Server) decodeTestRequestStringInt8ArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48566,9 +51963,15 @@ func (s *Server) decodeTestRequestStringInt8NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48633,9 +52036,15 @@ func (s *Server) decodeTestRequestStringInt8NullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48707,9 +52116,15 @@ func (s *Server) decodeTestRequestStringInt8NullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48811,9 +52226,15 @@ func (s *Server) decodeTestRequestStringIntArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48887,9 +52308,15 @@ func (s *Server) decodeTestRequestStringIntArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -48993,9 +52420,15 @@ func (s *Server) decodeTestRequestStringIntNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49060,9 +52493,15 @@ func (s *Server) decodeTestRequestStringIntNullableArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49134,9 +52573,15 @@ func (s *Server) decodeTestRequestStringIntNullableArrayArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49238,9 +52683,15 @@ func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49305,9 +52756,15 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49381,9 +52838,15 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49487,9 +52950,15 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49554,9 +53023,15 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49628,9 +53103,15 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49732,9 +53213,15 @@ func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49799,9 +53286,15 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49875,9 +53368,15 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -49981,9 +53480,15 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50048,9 +53553,15 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50122,9 +53633,15 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50226,9 +53743,15 @@ func (s *Server) decodeTestRequestStringMACRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50293,9 +53816,15 @@ func (s *Server) decodeTestRequestStringMACArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50369,9 +53898,15 @@ func (s *Server) decodeTestRequestStringMACArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50475,9 +54010,15 @@ func (s *Server) decodeTestRequestStringMACNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50542,9 +54083,15 @@ func (s *Server) decodeTestRequestStringMACNullableArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50616,9 +54163,15 @@ func (s *Server) decodeTestRequestStringMACNullableArrayArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50720,9 +54273,15 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50787,9 +54346,15 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50861,9 +54426,15 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -50965,9 +54536,15 @@ func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51032,9 +54609,15 @@ func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51108,9 +54691,15 @@ func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51214,9 +54803,15 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51281,9 +54876,15 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51355,9 +54956,15 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51459,9 +55066,15 @@ func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51526,9 +55139,15 @@ func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51602,9 +55221,15 @@ func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51708,9 +55333,15 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51775,9 +55406,15 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51849,9 +55486,15 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -51953,9 +55596,15 @@ func (s *Server) decodeTestRequestStringURIRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52020,9 +55669,15 @@ func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52096,9 +55751,15 @@ func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52202,9 +55863,15 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52269,9 +55936,15 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52343,9 +56016,15 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52447,9 +56126,15 @@ func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52514,9 +56199,15 @@ func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52590,9 +56281,15 @@ func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52696,9 +56393,15 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52763,9 +56466,15 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52837,9 +56546,15 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -52941,9 +56656,15 @@ func (s *Server) decodeTestRequestStringUintRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53008,9 +56729,15 @@ func (s *Server) decodeTestRequestStringUint16Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53075,9 +56802,15 @@ func (s *Server) decodeTestRequestStringUint16ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53151,9 +56884,15 @@ func (s *Server) decodeTestRequestStringUint16ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53257,9 +56996,15 @@ func (s *Server) decodeTestRequestStringUint16NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53324,9 +57069,15 @@ func (s *Server) decodeTestRequestStringUint16NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53398,9 +57149,15 @@ func (s *Server) decodeTestRequestStringUint16NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53502,9 +57259,15 @@ func (s *Server) decodeTestRequestStringUint32Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53569,9 +57332,15 @@ func (s *Server) decodeTestRequestStringUint32ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53645,9 +57414,15 @@ func (s *Server) decodeTestRequestStringUint32ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53751,9 +57526,15 @@ func (s *Server) decodeTestRequestStringUint32NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53818,9 +57599,15 @@ func (s *Server) decodeTestRequestStringUint32NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53892,9 +57679,15 @@ func (s *Server) decodeTestRequestStringUint32NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -53996,9 +57789,15 @@ func (s *Server) decodeTestRequestStringUint64Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54063,9 +57862,15 @@ func (s *Server) decodeTestRequestStringUint64ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54139,9 +57944,15 @@ func (s *Server) decodeTestRequestStringUint64ArrayArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54245,9 +58056,15 @@ func (s *Server) decodeTestRequestStringUint64NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54312,9 +58129,15 @@ func (s *Server) decodeTestRequestStringUint64NullableArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54386,9 +58209,15 @@ func (s *Server) decodeTestRequestStringUint64NullableArrayArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54490,9 +58319,15 @@ func (s *Server) decodeTestRequestStringUint8Request(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54557,9 +58392,15 @@ func (s *Server) decodeTestRequestStringUint8ArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54633,9 +58474,15 @@ func (s *Server) decodeTestRequestStringUint8ArrayArrayRequest(r *http.Request) 
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54739,9 +58586,15 @@ func (s *Server) decodeTestRequestStringUint8NullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54806,9 +58659,15 @@ func (s *Server) decodeTestRequestStringUint8NullableArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54880,9 +58739,15 @@ func (s *Server) decodeTestRequestStringUint8NullableArrayArrayRequest(r *http.R
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -54984,9 +58849,15 @@ func (s *Server) decodeTestRequestStringUintArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55060,9 +58931,15 @@ func (s *Server) decodeTestRequestStringUintArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55166,9 +59043,15 @@ func (s *Server) decodeTestRequestStringUintNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55233,9 +59116,15 @@ func (s *Server) decodeTestRequestStringUintNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55307,9 +59196,15 @@ func (s *Server) decodeTestRequestStringUintNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55411,9 +59306,15 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55478,9 +59379,15 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55554,9 +59461,15 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55660,9 +59573,15 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55727,9 +59646,15 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55803,9 +59728,15 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55909,9 +59840,15 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -55976,9 +59913,15 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56050,9 +59993,15 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56154,9 +60103,15 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56221,9 +60176,15 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56297,9 +60258,15 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56403,9 +60370,15 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56470,9 +60443,15 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56544,9 +60523,15 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56648,9 +60633,15 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56715,9 +60706,15 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56791,9 +60788,15 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56897,9 +60900,15 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -56964,9 +60973,15 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57038,9 +61053,15 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57142,9 +61163,15 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57209,9 +61236,15 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57283,9 +61316,15 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57387,9 +61426,15 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57454,9 +61499,15 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request)
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57530,9 +61581,15 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57636,9 +61693,15 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57703,9 +61766,15 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57777,9 +61846,15 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -57878,9 +61953,15 @@ func (s *Server) decodeTestResponseAnyRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -57943,9 +62024,15 @@ func (s *Server) decodeTestResponseBooleanRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58008,9 +62095,15 @@ func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58073,9 +62166,15 @@ func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58138,9 +62237,15 @@ func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58203,9 +62308,15 @@ func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58268,9 +62379,15 @@ func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58333,9 +62450,15 @@ func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58398,9 +62521,15 @@ func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58463,9 +62592,15 @@ func (s *Server) decodeTestResponseIntegerRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58528,9 +62663,15 @@ func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58593,9 +62734,15 @@ func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58658,9 +62805,15 @@ func (s *Server) decodeTestResponseIntegerInt16Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58723,9 +62876,15 @@ func (s *Server) decodeTestResponseIntegerInt16ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58788,9 +62947,15 @@ func (s *Server) decodeTestResponseIntegerInt16ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58853,9 +63018,15 @@ func (s *Server) decodeTestResponseIntegerInt16NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58918,9 +63089,15 @@ func (s *Server) decodeTestResponseIntegerInt16NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -58983,9 +63160,15 @@ func (s *Server) decodeTestResponseIntegerInt16NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59048,9 +63231,15 @@ func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59113,9 +63302,15 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59178,9 +63373,15 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59243,9 +63444,15 @@ func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59308,9 +63515,15 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59373,9 +63586,15 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59438,9 +63657,15 @@ func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59503,9 +63728,15 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59568,9 +63799,15 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59633,9 +63870,15 @@ func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59698,9 +63941,15 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59763,9 +64012,15 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59828,9 +64083,15 @@ func (s *Server) decodeTestResponseIntegerInt8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59893,9 +64154,15 @@ func (s *Server) decodeTestResponseIntegerInt8ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -59958,9 +64225,15 @@ func (s *Server) decodeTestResponseIntegerInt8ArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60023,9 +64296,15 @@ func (s *Server) decodeTestResponseIntegerInt8NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60088,9 +64367,15 @@ func (s *Server) decodeTestResponseIntegerInt8NullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60153,9 +64438,15 @@ func (s *Server) decodeTestResponseIntegerInt8NullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60218,9 +64509,15 @@ func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60283,9 +64580,15 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60348,9 +64651,15 @@ func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60413,9 +64722,15 @@ func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60478,9 +64793,15 @@ func (s *Server) decodeTestResponseIntegerUint16Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60543,9 +64864,15 @@ func (s *Server) decodeTestResponseIntegerUint16ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60608,9 +64935,15 @@ func (s *Server) decodeTestResponseIntegerUint16ArrayArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60673,9 +65006,15 @@ func (s *Server) decodeTestResponseIntegerUint16NullableRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60738,9 +65077,15 @@ func (s *Server) decodeTestResponseIntegerUint16NullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60803,9 +65148,15 @@ func (s *Server) decodeTestResponseIntegerUint16NullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60868,9 +65219,15 @@ func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60933,9 +65290,15 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -60998,9 +65361,15 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61063,9 +65432,15 @@ func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61128,9 +65503,15 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61193,9 +65574,15 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61258,9 +65645,15 @@ func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61323,9 +65716,15 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61388,9 +65787,15 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61453,9 +65858,15 @@ func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61518,9 +65929,15 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61583,9 +66000,15 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61648,9 +66071,15 @@ func (s *Server) decodeTestResponseIntegerUint8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61713,9 +66142,15 @@ func (s *Server) decodeTestResponseIntegerUint8ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61778,9 +66213,15 @@ func (s *Server) decodeTestResponseIntegerUint8ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61843,9 +66284,15 @@ func (s *Server) decodeTestResponseIntegerUint8NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61908,9 +66355,15 @@ func (s *Server) decodeTestResponseIntegerUint8NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -61973,9 +66426,15 @@ func (s *Server) decodeTestResponseIntegerUint8NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62038,9 +66497,15 @@ func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62103,9 +66568,15 @@ func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62168,9 +66639,15 @@ func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62233,9 +66710,15 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62298,9 +66781,15 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62363,9 +66852,15 @@ func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62428,9 +66923,15 @@ func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62493,9 +66994,15 @@ func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62558,9 +67065,15 @@ func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62623,9 +67136,15 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62688,9 +67207,15 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62753,9 +67278,15 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62818,9 +67349,15 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62883,9 +67420,15 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -62948,9 +67491,15 @@ func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63013,9 +67562,15 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63078,9 +67633,15 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63143,9 +67704,15 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63208,9 +67775,15 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63273,9 +67846,15 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63338,9 +67917,15 @@ func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63403,9 +67988,15 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63468,9 +68059,15 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63533,9 +68130,15 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63598,9 +68201,15 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63663,9 +68272,15 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63728,9 +68343,15 @@ func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63793,9 +68414,15 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63858,9 +68485,15 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63923,9 +68556,15 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -63988,9 +68627,15 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64053,9 +68698,15 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64118,9 +68769,15 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64183,9 +68840,15 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64248,9 +68911,15 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64313,9 +68982,15 @@ func (s *Server) decodeTestResponseNullRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64378,9 +69053,15 @@ func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64443,9 +69124,15 @@ func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64508,9 +69195,15 @@ func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64573,9 +69266,15 @@ func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64638,9 +69337,15 @@ func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64703,9 +69408,15 @@ func (s *Server) decodeTestResponseNumberRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64768,9 +69479,15 @@ func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64833,9 +69550,15 @@ func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64898,9 +69621,15 @@ func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -64963,9 +69692,15 @@ func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65028,9 +69763,15 @@ func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65093,9 +69834,15 @@ func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65158,9 +69905,15 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65223,9 +69976,15 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65288,9 +70047,15 @@ func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65353,9 +70118,15 @@ func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65418,9 +70189,15 @@ func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65483,9 +70260,15 @@ func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65548,9 +70331,15 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65613,9 +70402,15 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65678,9 +70473,15 @@ func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65743,9 +70544,15 @@ func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65808,9 +70615,15 @@ func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65873,9 +70686,15 @@ func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -65938,9 +70757,15 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66003,9 +70828,15 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66068,9 +70899,15 @@ func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66133,9 +70970,15 @@ func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66198,9 +71041,15 @@ func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66263,9 +71112,15 @@ func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66328,9 +71183,15 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66393,9 +71254,15 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66458,9 +71325,15 @@ func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66523,9 +71396,15 @@ func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66588,9 +71467,15 @@ func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66653,9 +71538,15 @@ func (s *Server) decodeTestResponseStringRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66718,9 +71609,15 @@ func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66783,9 +71680,15 @@ func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66848,9 +71751,15 @@ func (s *Server) decodeTestResponseStringBase64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66913,9 +71822,15 @@ func (s *Server) decodeTestResponseStringBase64ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -66978,9 +71893,15 @@ func (s *Server) decodeTestResponseStringBase64ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67043,9 +71964,15 @@ func (s *Server) decodeTestResponseStringBase64NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67108,9 +72035,15 @@ func (s *Server) decodeTestResponseStringBase64NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67173,9 +72106,15 @@ func (s *Server) decodeTestResponseStringBase64NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67238,9 +72177,15 @@ func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67303,9 +72248,15 @@ func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67368,9 +72319,15 @@ func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67433,9 +72390,15 @@ func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67498,9 +72461,15 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67563,9 +72532,15 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67628,9 +72603,15 @@ func (s *Server) decodeTestResponseStringByteRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67693,9 +72674,15 @@ func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67758,9 +72745,15 @@ func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67823,9 +72816,15 @@ func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67888,9 +72887,15 @@ func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -67953,9 +72958,15 @@ func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68018,9 +73029,15 @@ func (s *Server) decodeTestResponseStringDateRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68083,9 +73100,15 @@ func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68148,9 +73171,15 @@ func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68213,9 +73242,15 @@ func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68278,9 +73313,15 @@ func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68343,9 +73384,15 @@ func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68408,9 +73455,15 @@ func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68473,9 +73526,15 @@ func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68538,9 +73597,15 @@ func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68603,9 +73668,15 @@ func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68668,9 +73739,15 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68733,9 +73810,15 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68798,9 +73881,15 @@ func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68863,9 +73952,15 @@ func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68928,9 +74023,15 @@ func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -68993,9 +74094,15 @@ func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69058,9 +74165,15 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69123,9 +74236,15 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69188,9 +74307,15 @@ func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69253,9 +74378,15 @@ func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69318,9 +74449,15 @@ func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69383,9 +74520,15 @@ func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69448,9 +74591,15 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69513,9 +74662,15 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69578,9 +74733,15 @@ func (s *Server) decodeTestResponseStringFloat32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69643,9 +74804,15 @@ func (s *Server) decodeTestResponseStringFloat32ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69708,9 +74875,15 @@ func (s *Server) decodeTestResponseStringFloat32ArrayArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69773,9 +74946,15 @@ func (s *Server) decodeTestResponseStringFloat32NullableRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69838,9 +75017,15 @@ func (s *Server) decodeTestResponseStringFloat32NullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69903,9 +75088,15 @@ func (s *Server) decodeTestResponseStringFloat32NullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -69968,9 +75159,15 @@ func (s *Server) decodeTestResponseStringFloat64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70033,9 +75230,15 @@ func (s *Server) decodeTestResponseStringFloat64ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70098,9 +75301,15 @@ func (s *Server) decodeTestResponseStringFloat64ArrayArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70163,9 +75372,15 @@ func (s *Server) decodeTestResponseStringFloat64NullableRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70228,9 +75443,15 @@ func (s *Server) decodeTestResponseStringFloat64NullableArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70293,9 +75514,15 @@ func (s *Server) decodeTestResponseStringFloat64NullableArrayArrayRequest(r *htt
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70358,9 +75585,15 @@ func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70423,9 +75656,15 @@ func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70488,9 +75727,15 @@ func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70553,9 +75798,15 @@ func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70618,9 +75869,15 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70683,9 +75940,15 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70748,9 +76011,15 @@ func (s *Server) decodeTestResponseStringIPRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70813,9 +76082,15 @@ func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70878,9 +76153,15 @@ func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -70943,9 +76224,15 @@ func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71008,9 +76295,15 @@ func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71073,9 +76366,15 @@ func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Req
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71138,9 +76437,15 @@ func (s *Server) decodeTestResponseStringIntRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71203,9 +76508,15 @@ func (s *Server) decodeTestResponseStringInt16Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71268,9 +76579,15 @@ func (s *Server) decodeTestResponseStringInt16ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71333,9 +76650,15 @@ func (s *Server) decodeTestResponseStringInt16ArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71398,9 +76721,15 @@ func (s *Server) decodeTestResponseStringInt16NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71463,9 +76792,15 @@ func (s *Server) decodeTestResponseStringInt16NullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71528,9 +76863,15 @@ func (s *Server) decodeTestResponseStringInt16NullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71593,9 +76934,15 @@ func (s *Server) decodeTestResponseStringInt32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71658,9 +77005,15 @@ func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71723,9 +77076,15 @@ func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71788,9 +77147,15 @@ func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71853,9 +77218,15 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71918,9 +77289,15 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -71983,9 +77360,15 @@ func (s *Server) decodeTestResponseStringInt64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72048,9 +77431,15 @@ func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72113,9 +77502,15 @@ func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72178,9 +77573,15 @@ func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72243,9 +77644,15 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72308,9 +77715,15 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72373,9 +77786,15 @@ func (s *Server) decodeTestResponseStringInt8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72438,9 +77857,15 @@ func (s *Server) decodeTestResponseStringInt8ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72503,9 +77928,15 @@ func (s *Server) decodeTestResponseStringInt8ArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72568,9 +77999,15 @@ func (s *Server) decodeTestResponseStringInt8NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72633,9 +78070,15 @@ func (s *Server) decodeTestResponseStringInt8NullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72698,9 +78141,15 @@ func (s *Server) decodeTestResponseStringInt8NullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72763,9 +78212,15 @@ func (s *Server) decodeTestResponseStringIntArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72828,9 +78283,15 @@ func (s *Server) decodeTestResponseStringIntArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72893,9 +78354,15 @@ func (s *Server) decodeTestResponseStringIntNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -72958,9 +78425,15 @@ func (s *Server) decodeTestResponseStringIntNullableArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73023,9 +78496,15 @@ func (s *Server) decodeTestResponseStringIntNullableArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73088,9 +78567,15 @@ func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73153,9 +78638,15 @@ func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73218,9 +78709,15 @@ func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73283,9 +78780,15 @@ func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73348,9 +78851,15 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73413,9 +78922,15 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73478,9 +78993,15 @@ func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73543,9 +79064,15 @@ func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73608,9 +79135,15 @@ func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73673,9 +79206,15 @@ func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73738,9 +79277,15 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73803,9 +79348,15 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73868,9 +79419,15 @@ func (s *Server) decodeTestResponseStringMACRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73933,9 +79490,15 @@ func (s *Server) decodeTestResponseStringMACArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -73998,9 +79561,15 @@ func (s *Server) decodeTestResponseStringMACArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74063,9 +79632,15 @@ func (s *Server) decodeTestResponseStringMACNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74128,9 +79703,15 @@ func (s *Server) decodeTestResponseStringMACNullableArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74193,9 +79774,15 @@ func (s *Server) decodeTestResponseStringMACNullableArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74258,9 +79845,15 @@ func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74323,9 +79916,15 @@ func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74388,9 +79987,15 @@ func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74453,9 +80058,15 @@ func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74518,9 +80129,15 @@ func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74583,9 +80200,15 @@ func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74648,9 +80271,15 @@ func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74713,9 +80342,15 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74778,9 +80413,15 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74843,9 +80484,15 @@ func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74908,9 +80555,15 @@ func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -74973,9 +80626,15 @@ func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75038,9 +80697,15 @@ func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75103,9 +80768,15 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75168,9 +80839,15 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75233,9 +80910,15 @@ func (s *Server) decodeTestResponseStringURIRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75298,9 +80981,15 @@ func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75363,9 +81052,15 @@ func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75428,9 +81123,15 @@ func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75493,9 +81194,15 @@ func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75558,9 +81265,15 @@ func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75623,9 +81336,15 @@ func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75688,9 +81407,15 @@ func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75753,9 +81478,15 @@ func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75818,9 +81549,15 @@ func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75883,9 +81620,15 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -75948,9 +81691,15 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76013,9 +81762,15 @@ func (s *Server) decodeTestResponseStringUintRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76078,9 +81833,15 @@ func (s *Server) decodeTestResponseStringUint16Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76143,9 +81904,15 @@ func (s *Server) decodeTestResponseStringUint16ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76208,9 +81975,15 @@ func (s *Server) decodeTestResponseStringUint16ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76273,9 +82046,15 @@ func (s *Server) decodeTestResponseStringUint16NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76338,9 +82117,15 @@ func (s *Server) decodeTestResponseStringUint16NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76403,9 +82188,15 @@ func (s *Server) decodeTestResponseStringUint16NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76468,9 +82259,15 @@ func (s *Server) decodeTestResponseStringUint32Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76533,9 +82330,15 @@ func (s *Server) decodeTestResponseStringUint32ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76598,9 +82401,15 @@ func (s *Server) decodeTestResponseStringUint32ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76663,9 +82472,15 @@ func (s *Server) decodeTestResponseStringUint32NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76728,9 +82543,15 @@ func (s *Server) decodeTestResponseStringUint32NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76793,9 +82614,15 @@ func (s *Server) decodeTestResponseStringUint32NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76858,9 +82685,15 @@ func (s *Server) decodeTestResponseStringUint64Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76923,9 +82756,15 @@ func (s *Server) decodeTestResponseStringUint64ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -76988,9 +82827,15 @@ func (s *Server) decodeTestResponseStringUint64ArrayArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77053,9 +82898,15 @@ func (s *Server) decodeTestResponseStringUint64NullableRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77118,9 +82969,15 @@ func (s *Server) decodeTestResponseStringUint64NullableArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77183,9 +83040,15 @@ func (s *Server) decodeTestResponseStringUint64NullableArrayArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77248,9 +83111,15 @@ func (s *Server) decodeTestResponseStringUint8Request(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77313,9 +83182,15 @@ func (s *Server) decodeTestResponseStringUint8ArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77378,9 +83253,15 @@ func (s *Server) decodeTestResponseStringUint8ArrayArrayRequest(r *http.Request)
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77443,9 +83324,15 @@ func (s *Server) decodeTestResponseStringUint8NullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77508,9 +83395,15 @@ func (s *Server) decodeTestResponseStringUint8NullableArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77573,9 +83466,15 @@ func (s *Server) decodeTestResponseStringUint8NullableArrayArrayRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77638,9 +83537,15 @@ func (s *Server) decodeTestResponseStringUintArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77703,9 +83608,15 @@ func (s *Server) decodeTestResponseStringUintArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77768,9 +83679,15 @@ func (s *Server) decodeTestResponseStringUintNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77833,9 +83750,15 @@ func (s *Server) decodeTestResponseStringUintNullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77898,9 +83821,15 @@ func (s *Server) decodeTestResponseStringUintNullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -77963,9 +83892,15 @@ func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78028,9 +83963,15 @@ func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78093,9 +84034,15 @@ func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78158,9 +84105,15 @@ func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78223,9 +84176,15 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78288,9 +84247,15 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78353,9 +84318,15 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78418,9 +84389,15 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78483,9 +84460,15 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78548,9 +84531,15 @@ func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78613,9 +84602,15 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request) 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78678,9 +84673,15 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78743,9 +84744,15 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78808,9 +84815,15 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78873,9 +84886,15 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *h
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -78938,9 +84957,15 @@ func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79003,9 +85028,15 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79068,9 +85099,15 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Reque
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79133,9 +85170,15 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79198,9 +85241,15 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79263,9 +85312,15 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79328,9 +85383,15 @@ func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79393,9 +85454,15 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Reques
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79458,9 +85525,15 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.R
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79523,9 +85596,15 @@ func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79588,9 +85667,15 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79653,9 +85738,15 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Re
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79718,9 +85809,15 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79783,9 +85880,15 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -79848,9 +85951,15 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
