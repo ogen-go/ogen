@@ -34,6 +34,11 @@ type OperationGroup struct {
 	Operations []*Operation
 }
 
+type MediaType struct {
+	Name  string      // Generated constant name
+	Value ContentType // Actual media type, e.g. application/xml
+}
+
 // OTELAttribute represents OpenTelemetry attribute defined by otelogen package.
 type OTELAttribute struct {
 	// Key is a name of the attribute constructor in otelogen package.
