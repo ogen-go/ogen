@@ -103,7 +103,9 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "dataCreate",
 		}
 	)
-	request, close, err := s.decodeDataCreateRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDataCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -127,6 +129,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "dataCreate",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -249,6 +252,8 @@ func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.R
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *Data
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -257,6 +262,7 @@ func (s *Server) handleDataGetRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "",
 			OperationID:      "dataGet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
