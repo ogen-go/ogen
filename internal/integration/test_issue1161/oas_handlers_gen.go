@@ -96,6 +96,8 @@ func (s *Server) handleFooBarBazGetRequest(args [0]string, argsEscaped bool, w h
 		err error
 	)
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -104,6 +106,7 @@ func (s *Server) handleFooBarBazGetRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -212,6 +215,8 @@ func (s *Server) handleFooBarQuxGetRequest(args [0]string, argsEscaped bool, w h
 		err error
 	)
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -220,6 +225,7 @@ func (s *Server) handleFooBarQuxGetRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -342,6 +348,8 @@ func (s *Server) handleFooParamXyzGetRequest(args [1]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -350,6 +358,7 @@ func (s *Server) handleFooParamXyzGetRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "param",

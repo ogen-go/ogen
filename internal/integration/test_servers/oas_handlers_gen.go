@@ -99,6 +99,8 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -107,6 +109,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "probeLiveness",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
