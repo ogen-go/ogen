@@ -93,12 +93,13 @@ func (s SecurityFormat) IsCustomSecurity() bool {
 }
 
 type Security struct {
-	Kind          SecurityKind
-	Format        SecurityFormat
-	ParameterName string
-	Description   string
-	Type          *Type
-	Scopes        map[string][]string
+	Kind              SecurityKind
+	Format            SecurityFormat
+	ParameterName     string
+	Description       string
+	Type              *Type
+	ScopeDescriptions map[string]string
+	OperationScopes   map[string][]string
 }
 
 func (s *Security) GoDoc() []string {
