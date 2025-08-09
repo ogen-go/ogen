@@ -1,0 +1,48 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "oneOf single test",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/test-oneof-single": {
+      "get": {
+        "operationId": "testOneOfSingle",
+        "description": "Test oneOf with single reference",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ObjB"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ObjA": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "ObjB": {
+        "type": "object",
+        "readOnly": true,
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ObjA"
+          }
+        ]
+      }
+    }
+  }
+}
