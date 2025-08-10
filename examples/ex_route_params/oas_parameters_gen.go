@@ -142,6 +142,7 @@ func decodeDataGetParams(args [2]string, argsEscaped bool, r *http.Request) (par
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(params.Key)); err != nil {

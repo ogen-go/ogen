@@ -63,6 +63,7 @@ func (s *Data) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        true,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Email)); err != nil {
@@ -82,6 +83,7 @@ func (s *Data) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     true,
 			Regex:        nil,
 		}).Validate(string(s.Hostname)); err != nil {
@@ -101,6 +103,7 @@ func (s *Data) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        regexMap["^\\d-\\d$"],
 		}).Validate(string(s.Format)); err != nil {
@@ -170,6 +173,7 @@ func (s *DefaultTest) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        true,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -196,6 +200,7 @@ func (s *DefaultTest) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     true,
 					Regex:        nil,
 				}).Validate(string(value)); err != nil {
@@ -222,6 +227,7 @@ func (s *DefaultTest) Validate() error {
 					MaxLength:    0,
 					MaxLengthSet: false,
 					Email:        false,
+					Byte:         false,
 					Hostname:     false,
 					Regex:        regexMap["^\\d-\\d$"],
 				}).Validate(string(value)); err != nil {
@@ -775,6 +781,7 @@ func (s *Pet) Validate() error {
 			MaxLength:    24,
 			MaxLengthSet: true,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        nil,
 		}).Validate(string(s.Name)); err != nil {
@@ -948,6 +955,7 @@ func (s *Pet) Validate() error {
 							MaxLength:    255,
 							MaxLengthSet: true,
 							Email:        false,
+							Byte:         false,
 							Hostname:     false,
 							Regex:        nil,
 						}).Validate(string(elem)); err != nil {
@@ -1061,6 +1069,7 @@ func (s PetName) Validate() error {
 		MaxLength:    0,
 		MaxLengthSet: false,
 		Email:        false,
+		Byte:         false,
 		Hostname:     false,
 		Regex:        nil,
 	}).Validate(string(alias)); err != nil {
@@ -1115,6 +1124,7 @@ func (s StringMap) Validate() error {
 				MaxLength:    0,
 				MaxLengthSet: false,
 				Email:        false,
+				Byte:         false,
 				Hostname:     false,
 				Regex:        nil,
 			}).Validate(string(elem)); err != nil {
@@ -1378,6 +1388,7 @@ func (s ValidationStringMap) Validate() error {
 				MaxLength:    0,
 				MaxLengthSet: false,
 				Email:        false,
+				Byte:         false,
 				Hostname:     false,
 				Regex:        nil,
 			}).Validate(string(elem)); err != nil {
