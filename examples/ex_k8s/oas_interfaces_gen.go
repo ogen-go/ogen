@@ -813,6 +813,10 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityRes interface {
 	listStorageV1beta1NamespacedCSIStorageCapacityRes()
 }
 
+type PatchCoreV1NamespacedConfigMapRes interface {
+	patchCoreV1NamespacedConfigMapRes()
+}
+
 type ReadAdmissionregistrationV1MutatingWebhookConfigurationRes interface {
 	readAdmissionregistrationV1MutatingWebhookConfigurationRes()
 }
