@@ -15,7 +15,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/mattn/go-isatty v0.0.20
 	github.com/stretchr/testify v1.10.0
-	github.com/valyala/fasthttp v1.63.0
+	github.com/valyala/fasthttp v1.65.0
 	go.opentelemetry.io/otel v1.37.0
 	go.opentelemetry.io/otel/metric v1.37.0
 	go.opentelemetry.io/otel/sdk v1.37.0
