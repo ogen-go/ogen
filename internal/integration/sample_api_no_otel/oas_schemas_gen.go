@@ -11,6 +11,7 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+	"github.com/shopspring/decimal"
 )
 
 type APIKey struct {
@@ -5912,6 +5913,35 @@ func (s *StringStringMap) init() StringStringMap {
 	}
 	return m
 }
+
+// Ref: #/components/schemas/TestDecimalValidation
+type TestDecimalValidation struct {
+	Minmax     decimal.Decimal `json:"minmax"`
+	MultipleOf decimal.Decimal `json:"multipleOf"`
+}
+
+// GetMinmax returns the value of Minmax.
+func (s *TestDecimalValidation) GetMinmax() decimal.Decimal {
+	return s.Minmax
+}
+
+// GetMultipleOf returns the value of MultipleOf.
+func (s *TestDecimalValidation) GetMultipleOf() decimal.Decimal {
+	return s.MultipleOf
+}
+
+// SetMinmax sets the value of Minmax.
+func (s *TestDecimalValidation) SetMinmax(val decimal.Decimal) {
+	s.Minmax = val
+}
+
+// SetMultipleOf sets the value of MultipleOf.
+func (s *TestDecimalValidation) SetMultipleOf(val decimal.Decimal) {
+	s.MultipleOf = val
+}
+
+// TestDecimalValidationOK is response for TestDecimalValidation operation.
+type TestDecimalValidationOK struct{}
 
 // Ref: #/components/schemas/TestFloatValidation
 type TestFloatValidation struct {

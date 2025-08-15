@@ -21,7 +21,7 @@ func (t *Type) EncodeFn() string {
 		Float32, Float64,
 		String, Bool:
 		return naming.Capitalize(t.Primitive.String())
-	case UUID, Time, MAC, IP, Duration, URL:
+	case UUID, Time, MAC, IP, Duration, URL, Decimal:
 		return naming.AfterDot(t.Primitive.String())
 	default:
 		return ""
@@ -61,7 +61,8 @@ func (t Type) uriFormat() string {
 			"uint8",
 			"uint16",
 			"uint32",
-			"uint64":
+			"uint64",
+			"decimal":
 			if s.Type != jsonschema.String {
 				break
 			}
@@ -149,6 +150,10 @@ func (t *Type) IsFloat() bool {
 	}
 }
 
+func (t *Type) IsDecimal() bool {
+	return t.Primitive == Decimal
+}
+
 func (t *Type) IsStringifiedFloat() bool {
 	s := t.Schema
 	return t.IsFloat() &&
@@ -173,7 +178,7 @@ func (t *Type) IsInterface() bool { return t.Is(KindInterface) }
 func (t *Type) IsSum() bool       { return t.Is(KindSum) }
 func (t *Type) IsAny() bool       { return t.Is(KindAny) }
 func (t *Type) IsStream() bool    { return t.Is(KindStream) }
-func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() }
+func (t *Type) IsNumeric() bool   { return t.IsInteger() || t.IsFloat() || t.IsDecimal() }
 func (t *Type) IsExternal() bool  { return t.Schema != nil && t.Schema.XOgenType != "" }
 
 func (t *Type) MustField(name string) *Field {

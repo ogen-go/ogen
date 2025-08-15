@@ -969,6 +969,18 @@ func TestStringStringMap_EncodeDecode(t *testing.T) {
 	typ2 = make(StringStringMap)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestTestDecimalValidation_EncodeDecode(t *testing.T) {
+	var typ TestDecimalValidation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TestDecimalValidation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestTestFloatValidation_EncodeDecode(t *testing.T) {
 	var typ TestFloatValidation
 	typ.SetFake()
