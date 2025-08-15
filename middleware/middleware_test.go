@@ -38,6 +38,14 @@ func TestChainMiddlewares(t *testing.T) {
 			req.Context = context.WithValue(req.Context, testKey{}, "baz")
 			return next(req)
 		},
+		func(req Request, next Next) (Response, error) {
+			s := req.Body.([]string)
+			s = append(s, "fourth")
+			req.Body = s
+
+			req.RawBody = []byte("qux")
+			return next(req)
+		},
 	)
 	a := require.New(t)
 
@@ -50,7 +58,7 @@ func TestChainMiddlewares(t *testing.T) {
 			},
 		}
 		resp, err := chain(req, func(req Request) (Response, error) {
-			a.Equal([]string{"first", "second", "third"}, req.Body)
+			a.Equal([]string{"first", "second", "third", "fourth"}, req.Body)
 			a.Equal("bar", func() any {
 				v, ok := req.Params.Query("second")
 				a.True(ok)
@@ -62,6 +70,7 @@ func TestChainMiddlewares(t *testing.T) {
 				a.True(ok)
 				return v
 			}())
+			a.Equal([]byte("qux"), req.RawBody)
 
 			{
 				_, ok := req.Params.Header("call")

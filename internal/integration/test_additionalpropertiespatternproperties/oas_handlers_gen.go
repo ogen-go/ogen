@@ -112,6 +112,8 @@ func (s *Server) handleAliveRequest(args [0]string, argsEscaped bool, w http.Res
 		return
 	}
 
+	var rawBody []byte
+
 	var response *AliveOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -120,6 +122,7 @@ func (s *Server) handleAliveRequest(args [0]string, argsEscaped bool, w http.Res
 			OperationSummary: "",
 			OperationID:      "alive",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "flexData",
