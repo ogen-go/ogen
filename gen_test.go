@@ -155,6 +155,9 @@ func TestGenerate(t *testing.T) {
 				"application/merge-patch+json":           ir.EncodingJSON,
 				"application/strategic-merge-patch+json": ir.EncodingJSON,
 			},
+			"problemjson.yml": {
+				"application/problem+json": ir.EncodingProblemJSON,
+			},
 		},
 		map[string][]string{
 			"autorest/additionalProperties.json": {},
@@ -176,6 +179,7 @@ func TestGenerate(t *testing.T) {
 				"unsupported content types",
 			},
 			"petstore-expanded.yml": {},
+			"problemjson.yml":       {},
 			"redoc/discriminator.json": {
 				"unsupported content types",
 			},
