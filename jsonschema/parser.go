@@ -22,6 +22,7 @@ const (
 	xOgenProperties = "x-ogen-properties"
 	xOgenTimeFormat = "x-ogen-time-format"
 	xOapiExtraTags  = "x-oapi-codegen-extra-tags"
+	xOgenValidatePrefix = "x-ogen-validate-"
 )
 
 // Parser parses JSON schemas.
@@ -187,6 +188,22 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 			case xOapiExtraTags:
 				if err := val.Decode(&s.ExtraTags); err != nil {
 					return err
+				}
+
+			default:
+				// Handle x-ogen-validate- extensions
+				if strings.HasPrefix(key, xOgenValidatePrefix) {
+					validatorName := strings.TrimPrefix(key, xOgenValidatePrefix)
+					if validatorName != "" {
+						var params string
+						if err := val.Decode(&params); err != nil {
+							return err
+						}
+						if s.XOgenValidators == nil {
+							s.XOgenValidators = make(map[string]string)
+						}
+						s.XOgenValidators[validatorName] = params
+					}
 				}
 			}
 			return nil

@@ -137,6 +137,15 @@
     {{- end }}
 {{- end }}
 
+{{- if gt (len $va.Custom) 0 }}
+	{{- $validated = true }}
+	{{- range $name, $params := $va.Custom }}
+	if err := validate.ValidateWith({{ quote $name }}, {{ $.Var }}, {{ quote $params }}); err != nil {
+		return errors.Wrap(err, {{ quote $name }})
+	}
+	{{- end }}
+{{- end }}
+
 {{- if not $validated }}
 	{{ errorf "validation expected %s" $t }}
 {{- end }}
@@ -158,6 +167,22 @@ func (s {{ $t.ReadOnlyReceiver }}) Validate() error {
     }
 
 	var failures []validate.FieldError
+	{{- if gt (len $t.Validators.Custom) 0 }}
+	// Object-level pluggable validation
+	{{- range $name, $params := $t.Validators.Custom }}
+	if err := func() error {
+		if err := validate.ValidateWith({{ quote $name }}, s, {{ quote $params }}); err != nil {
+			return errors.Wrap(err, {{ quote $name }})
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "object",
+			Error: err,
+		})
+	}
+	{{- end }}
+	{{- end }}
 	{{- range $f := $t.Fields }}{{/*Range fields*/}}
 	{{- if $f.Type.NeedValidation }}
 		if err := func() error {

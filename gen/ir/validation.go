@@ -2,6 +2,7 @@ package ir
 
 import (
 	"fmt"
+	"maps"
 	"math/big"
 	"slices"
 
@@ -14,11 +15,12 @@ import (
 )
 
 type Validators struct {
-	String validate.String
-	Int    validate.Int
-	Float  validate.Float
-	Array  validate.Array
-	Object validate.Object
+	String  validate.String
+	Int     validate.Int
+	Float   validate.Float
+	Array   validate.Array
+	Object  validate.Object
+	Custom  map[string]string // Map of validator name to parameters
 }
 
 func (v *Validators) SetString(schema *jsonschema.Schema) (err error) {
@@ -124,6 +126,16 @@ func (v *Validators) SetObject(schema *jsonschema.Schema) {
 	}
 }
 
+func (v *Validators) SetCustom(schema *jsonschema.Schema) {
+	if len(schema.XOgenValidators) == 0 {
+		return
+	}
+	if v.Custom == nil {
+		v.Custom = make(map[string]string, len(schema.XOgenValidators))
+	}
+	maps.Copy(v.Custom, schema.XOgenValidators)
+}
+
 func (t *Type) NeedValidation() bool {
 	return t.needValidation(&walkpath{})
 }
@@ -154,6 +166,9 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 				return true
 			}
 		}
+		if len(t.Validators.Custom) > 0 {
+			return true
+		}
 		return false
 	case KindEnum:
 		return true
@@ -177,13 +192,22 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 		if t.Validators.Array.Set() {
 			return true
 		}
+		if len(t.Validators.Custom) > 0 {
+			return true
+		}
 		return t.Item.needValidation(path)
 	case KindStruct:
+		if len(t.Validators.Custom) > 0 {
+			return true
+		}
 		return slices.ContainsFunc(t.Fields, func(f *Field) bool {
 			return f.Type.needValidation(path)
 		})
 	case KindMap:
 		if t.Validators.Object.Set() {
+			return true
+		}
+		if len(t.Validators.Custom) > 0 {
 			return true
 		}
 		return t.Item.needValidation(path)

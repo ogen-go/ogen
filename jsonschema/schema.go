@@ -105,6 +105,9 @@ type Schema struct {
 
 	XOgenTimeFormat string // Time format for time.Time.
 
+	// Pluggable validation using x-ogen-validate- extensions.
+	XOgenValidators map[string]string // Map of validator name to parameters.
+
 	location.Pointer `json:"-" yaml:"-"`
 }
 

@@ -1,0 +1,138 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CEL Validation Test API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/user": {
+      "post": {
+        "operationId": "createUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "operationId": "createProduct",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "x-ogen-validate-cel": "has(value.name) && has(value.age) && has(value.email) && (value.age < 21 ? size(value.name) > 5 : true)",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-ogen-validate-cel": "size(value) > 2 && size(value) < 50",
+            "x-ogen-validate-custom": "test-string-validator"
+          },
+          "age": {
+            "type": "integer",
+            "x-ogen-validate-cel": "value >= 18 && value <= 120"
+          },
+          "email": {
+            "type": "string",
+            "x-ogen-validate-cel": "value.contains('@') && value.contains('.')"
+          }
+        },
+        "required": ["name", "age", "email"]
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-ogen-validate-cel": "size(value) >= 3 && size(value) <= 100"
+          },
+          "price": {
+            "type": "number",
+            "x-ogen-validate-cel": "value > 0.0 && value < 10000.0"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-ogen-validate-cel": "size(value) > 0"
+            },
+            "x-ogen-validate-cel": "size(value) > 0 && size(value) <= 10"
+          }
+        },
+        "required": ["name", "price", "categories"]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["message"]
+      }
+    }
+  }
+}

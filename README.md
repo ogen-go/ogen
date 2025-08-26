@@ -34,7 +34,7 @@ docker run --rm \
 
 - No reflection or `interface{}`
   - The json encoding is code-generated, optimized and uses [go-faster/jx](https://github.com/go-faster/jx) for speed and overcoming `encoding/json` limitations
-  - Validation is code-generated according to spec
+  - Validation is code-generated according to spec with pluggable custom validators
 - Code-generated static radix router
 - No more boilerplate
   - Structures are generated from OpenAPI v3 specification
@@ -333,6 +333,59 @@ type Handler interface {
     // All un-grouped operations will be on this interface
 }
 ```
+
+### Pluggable validation
+
+Ogen supports pluggable custom validation through `x-ogen-validate-` extensions.
+This allows you to register custom validator functions and apply them to any field or object in your OpenAPI schema.
+
+```yaml
+components:
+  schemas:
+    User:
+      type: object
+      x-ogen-validate-cel: "has(value.name) && has(value.age)"
+      properties:
+        name:
+          type: string
+          x-ogen-validate-cel: "size(value) > 2 && size(value) < 50"
+          x-ogen-validate-custom: "forbidden-words"
+        email:
+          type: string
+          x-ogen-validate-regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+```
+
+Register custom validators at runtime:
+
+```go
+import "github.com/ogen-go/ogen/validate"
+
+// Register a custom validator
+err := validate.RegisterValidator("custom", func(value interface{}, params string) error {
+    if params == "forbidden-words" {
+        if str, ok := value.(string); ok {
+            if strings.Contains(str, "forbidden") {
+                return fmt.Errorf("contains forbidden word")
+            }
+        }
+    }
+    return nil
+})
+
+// Register a regex validator
+err = validate.RegisterValidator("regex", func(value interface{}, params string) error {
+    if str, ok := value.(string); ok {
+        matched, _ := regexp.MatchString(params, str)
+        if !matched {
+            return fmt.Errorf("does not match pattern: %s", params)
+        }
+    }
+    return nil
+})
+```
+
+Multiple validators can be applied to the same field, and validation occurs during request/response processing.
+The system is purely pluggable - no built-in validators are included, giving you complete control over validation logic.
 
 ## JSON
 

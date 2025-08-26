@@ -293,6 +293,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			DenyAdditionalProps: denyAdditionalProps,
 		})
 		s.Validators.SetObject(schema)
+		s.Validators.SetCustom(schema)
 
 		type fieldSlot struct {
 			// Stores spec name of the field.
@@ -521,6 +522,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			NilSemantic: ir.NilInvalid,
 		}
 		array.Validators.SetArray(schema)
+		array.Validators.SetCustom(schema)
 
 		ret := g.regtype(name, array)
 		if item := schema.Item; item != nil {
@@ -590,6 +592,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				}
 			}
 		}
+		t.Validators.SetCustom(schema)
 
 		return g.regtype(name, t), nil
 	case jsonschema.Empty:
