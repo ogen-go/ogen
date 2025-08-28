@@ -103,7 +103,9 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, argsEscaped bool, w
 			ID:   "createSnapshot",
 		}
 	)
-	request, close, err := s.decodeCreateSnapshotRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateSnapshotRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -127,6 +129,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "Creates a full or diff snapshot. Post-boot only.",
 			OperationID:      "createSnapshot",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -252,7 +255,9 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, argsEscaped bool,
 			ID:   "createSyncAction",
 		}
 	)
-	request, close, err := s.decodeCreateSyncActionRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateSyncActionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -276,6 +281,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "Creates a synchronous action.",
 			OperationID:      "createSyncAction",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -398,6 +404,8 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, argsEscaped 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response DescribeBalloonConfigRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -406,6 +414,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, argsEscaped 
 			OperationSummary: "Returns the current balloon device configuration.",
 			OperationID:      "describeBalloonConfig",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -528,6 +537,8 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, argsEscaped b
 		err error
 	)
 
+	var rawBody []byte
+
 	var response DescribeBalloonStatsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -536,6 +547,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, argsEscaped b
 			OperationSummary: "Returns the latest balloon device statistics, only if enabled pre-boot.",
 			OperationID:      "describeBalloonStats",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -658,6 +670,8 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, argsEscaped bool,
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *InstanceInfo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -666,6 +680,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "Returns general information about an instance.",
 			OperationID:      "describeInstance",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -788,6 +803,8 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, argsEscaped bool
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *FullVmConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -796,6 +813,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, argsEscaped bool
 			OperationSummary: "Gets the full VM configuration.",
 			OperationID:      "getExportVmConfig",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -920,6 +938,8 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, argsEscape
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *MachineConfiguration
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -928,6 +948,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, argsEscape
 			OperationSummary: "Gets the machine configuration of the VM.",
 			OperationID:      "getMachineConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1054,7 +1075,9 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w h
 			ID:   "loadSnapshot",
 		}
 	)
-	request, close, err := s.decodeLoadSnapshotRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeLoadSnapshotRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1078,6 +1101,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "Loads a snapshot. Pre-boot only.",
 			OperationID:      "loadSnapshot",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1202,7 +1226,9 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w 
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodeMmdsConfigPutRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeMmdsConfigPutRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1226,6 +1252,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "Set MMDS configuration. Pre-boot only.",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1347,6 +1374,8 @@ func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.R
 		err error
 	)
 
+	var rawBody []byte
+
 	var response MmdsGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1355,6 +1384,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "Get the MMDS data store.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1479,7 +1509,9 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodeMmdsPatchRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeMmdsPatchRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1503,6 +1535,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "Updates the MMDS data store.",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1627,7 +1660,9 @@ func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.R
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodeMmdsPutRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeMmdsPutRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1651,6 +1686,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "Creates a MMDS (Microvm Metadata Service) data store.",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1777,7 +1813,9 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, argsEscaped bool, w h
 			ID:   "patchBalloon",
 		}
 	)
-	request, close, err := s.decodePatchBalloonRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchBalloonRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1801,6 +1839,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "Updates a balloon device.",
 			OperationID:      "patchBalloon",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1927,7 +1966,9 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, argsEsca
 			ID:   "patchBalloonStatsInterval",
 		}
 	)
-	request, close, err := s.decodePatchBalloonStatsIntervalRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchBalloonStatsIntervalRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1951,6 +1992,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, argsEsca
 			OperationSummary: "Updates a balloon device statistics polling interval.",
 			OperationID:      "patchBalloonStatsInterval",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2087,7 +2129,9 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePatchGuestDriveByIDRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchGuestDriveByIDRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2111,6 +2155,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, argsEscaped bo
 			OperationSummary: "Updates the properties of a drive. Post-boot only.",
 			OperationID:      "patchGuestDriveByID",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "drive_id",
@@ -2251,7 +2296,9 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, arg
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePatchGuestNetworkInterfaceByIDRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchGuestNetworkInterfaceByIDRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2275,6 +2322,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, arg
 			OperationSummary: "Updates the rate limiters applied to a network interface. Post-boot only.",
 			OperationID:      "patchGuestNetworkInterfaceByID",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "iface_id",
@@ -2406,7 +2454,9 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, argsEsca
 			ID:   "patchMachineConfiguration",
 		}
 	)
-	request, close, err := s.decodePatchMachineConfigurationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchMachineConfigurationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2430,6 +2480,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, argsEsca
 			OperationSummary: "Partially updates the Machine Configuration of the VM. Pre-boot only.",
 			OperationID:      "patchMachineConfiguration",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2555,7 +2606,9 @@ func (s *Server) handlePatchVmRequest(args [0]string, argsEscaped bool, w http.R
 			ID:   "patchVm",
 		}
 	)
-	request, close, err := s.decodePatchVmRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchVmRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2579,6 +2632,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "Updates the microVM state.",
 			OperationID:      "patchVm",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2705,7 +2759,9 @@ func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "putBalloon",
 		}
 	)
-	request, close, err := s.decodePutBalloonRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutBalloonRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2729,6 +2785,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "Creates or updates a balloon device.",
 			OperationID:      "putBalloon",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2855,7 +2912,9 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped boo
 			ID:   "putGuestBootSource",
 		}
 	)
-	request, close, err := s.decodePutGuestBootSourceRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutGuestBootSourceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2879,6 +2938,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, argsEscaped boo
 			OperationSummary: "Creates or updates the boot source. Pre-boot only.",
 			OperationID:      "putGuestBootSource",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3015,7 +3075,9 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePutGuestDriveByIDRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutGuestDriveByIDRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3039,6 +3101,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, argsEscaped bool
 			OperationSummary: "Creates or updates a drive. Pre-boot only.",
 			OperationID:      "putGuestDriveByID",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "drive_id",
@@ -3179,7 +3242,9 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsE
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePutGuestNetworkInterfaceByIDRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutGuestNetworkInterfaceByIDRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3203,6 +3268,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, argsE
 			OperationSummary: "Creates a network interface. Pre-boot only.",
 			OperationID:      "putGuestNetworkInterfaceByID",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "iface_id",
@@ -3334,7 +3400,9 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, argsEscaped bool, w 
 			ID:   "putGuestVsock",
 		}
 	)
-	request, close, err := s.decodePutGuestVsockRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutGuestVsockRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3358,6 +3426,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "Creates/updates a vsock device. Pre-boot only.",
 			OperationID:      "putGuestVsock",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3483,7 +3552,9 @@ func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http
 			ID:   "putLogger",
 		}
 	)
-	request, close, err := s.decodePutLoggerRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutLoggerRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3507,6 +3578,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "Initializes the logger by specifying a named pipe or a file for the logs output.",
 			OperationID:      "putLogger",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3635,7 +3707,9 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscape
 			ID:   "putMachineConfiguration",
 		}
 	)
-	request, close, err := s.decodePutMachineConfigurationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutMachineConfigurationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3659,6 +3733,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, argsEscape
 			OperationSummary: "Updates the Machine Configuration of the VM. Pre-boot only.",
 			OperationID:      "putMachineConfiguration",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3784,7 +3859,9 @@ func (s *Server) handlePutMetricsRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "putMetrics",
 		}
 	)
-	request, close, err := s.decodePutMetricsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePutMetricsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3808,6 +3885,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "Initializes the metrics system by specifying a named pipe or a file for the metrics output.",
 			OperationID:      "putMetrics",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
