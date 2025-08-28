@@ -6,6 +6,22 @@ parser:
   allow_remote: true
   # is maximum depth of schema generation. Default is 1000.
   depth_limit: 1000
+  # allowed authentication schemes. See https://swagger.io/specification/#security-scheme-object.
+  authentication_schemes:
+    - 'basic'
+    - 'bearer'
+    - 'concealed'
+    - 'digest'
+    - 'dpop'
+    - 'gnap'
+    - 'hoba'
+    - 'mutual'
+    - 'negotiate'
+    - 'oauth'
+    - 'privatetoken'
+    - 'scram-sha-1'
+    - 'scram-sha-256'
+    - 'vapid'
 
 # sets generator options.
 generator:
