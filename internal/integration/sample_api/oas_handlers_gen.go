@@ -114,6 +114,8 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 		return
 	}
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -122,6 +124,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "dataGetFormat",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -265,7 +268,9 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeDefaultTestRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDefaultTestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -289,6 +294,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "defaultTest",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "default",
@@ -405,6 +411,8 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *ErrorStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -413,6 +421,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "errorGet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -538,6 +547,8 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 		return
 	}
 
+	var rawBody []byte
+
 	var response FoobarGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -546,6 +557,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "foobarGet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "inlinedParam",
@@ -669,7 +681,9 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "foobarPost",
 		}
 	)
-	request, close, err := s.decodeFoobarPostRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeFoobarPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -693,6 +707,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "foobarPost",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -801,6 +816,8 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *FoobarPutDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -809,6 +826,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -918,6 +936,8 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *NoAdditionalPropertiesTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -926,6 +946,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "noAdditionalPropertiesTest",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1035,6 +1056,8 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *NilIntStatusCode
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1043,6 +1066,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "nullableDefaultResponse",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1155,7 +1179,9 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 			ID:   "oneofBug",
 		}
 	)
-	request, close, err := s.decodeOneofBugRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeOneofBugRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1179,6 +1205,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "oneofBug",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1287,6 +1314,8 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 		err error
 	)
 
+	var rawBody []byte
+
 	var response PatternRecursiveMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1295,6 +1324,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1409,7 +1439,9 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 			ID:   "petCreate",
 		}
 	)
-	request, close, err := s.decodePetCreateRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePetCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1433,6 +1465,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "petCreate",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1558,6 +1591,8 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 		return
 	}
 
+	var rawBody []byte
+
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1566,6 +1601,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "petFriendsNamesByID",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1696,6 +1732,8 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 		return
 	}
 
+	var rawBody []byte
+
 	var response PetGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1704,6 +1742,7 @@ func (s *Server) handlePetGetRequest(args [0]string, argsEscaped bool, w http.Re
 			OperationSummary: "",
 			OperationID:      "petGet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "petID",
@@ -1846,6 +1885,8 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 		return
 	}
 
+	var rawBody []byte
+
 	var response PetGetAvatarByIDRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1854,6 +1895,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "petGetAvatarByID",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "petID",
@@ -1984,6 +2026,8 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 		return
 	}
 
+	var rawBody []byte
+
 	var response PetGetAvatarByNameRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1992,6 +2036,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "petGetAvatarByName",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -2122,6 +2167,8 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2130,6 +2177,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "petGetByName",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -2260,6 +2308,8 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 		return
 	}
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2268,6 +2318,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "petNameByID",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -2384,7 +2435,9 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodePetUpdateNameAliasPostRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePetUpdateNameAliasPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2408,6 +2461,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2519,7 +2573,9 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodePetUpdateNamePostRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePetUpdateNamePostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2543,6 +2599,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2667,7 +2724,9 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePetUploadAvatarByIDRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePetUploadAvatarByIDRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2691,6 +2750,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "petUploadAvatarByID",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "petID",
@@ -2804,6 +2864,8 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 		err error
 	)
 
+	var rawBody []byte
+
 	var response RecursiveArray
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2812,6 +2874,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2920,6 +2983,8 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *RecursiveMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2928,6 +2993,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3085,6 +3151,8 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 		}
 	}
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3093,6 +3161,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "securityTest",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3201,6 +3270,8 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *StringIntMap
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3209,6 +3280,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3321,7 +3393,9 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 			ID:   "testFloatValidation",
 		}
 	)
-	request, close, err := s.decodeTestFloatValidationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestFloatValidationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3345,6 +3419,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "testFloatValidation",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3454,6 +3529,8 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *TestInlineOneOf
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3462,6 +3539,7 @@ func (s *Server) handleTestInlineOneofRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "testInlineOneof",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3571,6 +3649,8 @@ func (s *Server) handleTestIssue1310Request(args [0]string, argsEscaped bool, w 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *Issue1310
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3579,6 +3659,7 @@ func (s *Server) handleTestIssue1310Request(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "testIssue1310",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3688,6 +3769,8 @@ func (s *Server) handleTestIssue1461Request(args [0]string, argsEscaped bool, w 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *Issue1461
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3696,6 +3779,7 @@ func (s *Server) handleTestIssue1461Request(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "testIssue1461",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3805,6 +3889,8 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 		err error
 	)
 
+	var rawBody []byte
+
 	var response TestNullableOneofsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3813,6 +3899,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "testNullableOneofs",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3922,6 +4009,8 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *TupleTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3930,6 +4019,7 @@ func (s *Server) handleTestTupleRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "testTuple",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4039,6 +4129,8 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *TupleNamedTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4047,6 +4139,7 @@ func (s *Server) handleTestTupleNamedRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "testTupleNamed",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4156,6 +4249,8 @@ func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *UniqueItemsTest
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4164,6 +4259,7 @@ func (s *Server) handleTestUniqueItemsRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "testUniqueItems",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

@@ -148,7 +148,9 @@ func (s *Server) handleTesttestRequest(args [0]string, argsEscaped bool, w http.
 			return
 		}
 	}
-	request, close, err := s.decodeTesttestRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTesttestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -172,6 +174,7 @@ func (s *Server) handleTesttestRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "testtest",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

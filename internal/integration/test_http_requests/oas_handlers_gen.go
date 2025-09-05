@@ -101,7 +101,9 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 			ID:   "allRequestBodies",
 		}
 	)
-	request, close, err := s.decodeAllRequestBodiesRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAllRequestBodiesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -125,6 +127,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "allRequestBodies",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -237,7 +240,9 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 			ID:   "allRequestBodiesOptional",
 		}
 	)
-	request, close, err := s.decodeAllRequestBodiesOptionalRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAllRequestBodiesOptionalRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -261,6 +266,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "allRequestBodiesOptional",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -373,7 +379,9 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 			ID:   "base64Request",
 		}
 	)
-	request, close, err := s.decodeBase64RequestRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeBase64RequestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -397,6 +405,7 @@ func (s *Server) handleBase64RequestRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "base64Request",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -509,7 +518,9 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 			ID:   "maskContentType",
 		}
 	)
-	request, close, err := s.decodeMaskContentTypeRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeMaskContentTypeRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -533,6 +544,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "maskContentType",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -645,7 +657,9 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 			ID:   "maskContentTypeOptional",
 		}
 	)
-	request, close, err := s.decodeMaskContentTypeOptionalRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeMaskContentTypeOptionalRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -669,6 +683,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "maskContentTypeOptional",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -781,7 +796,9 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "streamJSON",
 		}
 	)
-	request, close, err := s.decodeStreamJSONRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeStreamJSONRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -805,6 +822,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "streamJSON",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
