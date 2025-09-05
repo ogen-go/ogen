@@ -54,6 +54,7 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 					Encoding:      content.Encoding,
 					Type:          t,
 					JSONStreaming: content.JSONStreaming,
+					RawResponse:   content.RawResponse,
 				}
 				if err := ctx.saveType(t); err != nil {
 					return nil, errors.Wrap(err, "save alias type")

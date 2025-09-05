@@ -15,6 +15,7 @@ type ResponseInfo struct {
 	WithStatusCode bool
 	WithHeaders    bool
 	JSONStreaming  bool
+	RawResponse    bool
 	OpenTelemetry  bool
 	Headers        map[string]*Parameter
 }
@@ -68,6 +69,7 @@ func (op *Operation) ListResponseTypes(otel bool) []ResponseInfo {
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
 				JSONStreaming:  media.JSONStreaming,
+				RawResponse:    media.RawResponse,
 				OpenTelemetry:  otel,
 				Headers:        resp.Headers,
 			})
@@ -98,6 +100,7 @@ func (op *Operation) ListResponseTypes(otel bool) []ResponseInfo {
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
 				JSONStreaming:  media.JSONStreaming,
+				RawResponse:    media.RawResponse,
 				OpenTelemetry:  otel,
 				Headers:        resp.Headers,
 			})
@@ -123,6 +126,7 @@ func (op *Operation) ListResponseTypes(otel bool) []ResponseInfo {
 				WithStatusCode: def.WithStatusCode,
 				WithHeaders:    def.WithHeaders,
 				JSONStreaming:  media.JSONStreaming,
+				RawResponse:    media.RawResponse,
 				OpenTelemetry:  otel,
 				Headers:        def.Headers,
 			})
