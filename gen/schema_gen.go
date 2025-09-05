@@ -161,7 +161,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				for k, v := range g.imports {
 					aliases[cmp.Or(v, path.Base(k))] = struct{}{}
 				}
-				pkgName := path.Base(pkgPath)
+				pkgName := t.External.PackageName
 				if _, ok := aliases[pkgName]; ok {
 					for i := 2; true; i++ {
 						t.External.ImportAlias = fmt.Sprintf("%s%d", pkgName, i)
