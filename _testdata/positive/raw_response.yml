@@ -1,0 +1,50 @@
+openapi: 3.0.3
+info:
+  title: Raw Response Test API
+  version: 0.1.0
+paths:
+  /raw-data:
+    get:
+      operationId: getRawData
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              x-ogen-raw-response: true
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /mixed-data:
+    get:
+      operationId: getMixedData
+      responses:
+        "200":
+          description: Success with multiple content types
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+            application/octet-stream:
+              x-ogen-raw-response: true
+              schema:
+                type: string
+                format: binary
+  /normal-data:
+    get:
+      operationId: getNormalData
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string

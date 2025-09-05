@@ -319,6 +319,7 @@ func (g *Generator) generateContents(
 					Encoding:      encoding,
 					Type:          t,
 					JSONStreaming: media.XOgenJSONStreaming,
+					RawResponse:   media.XOgenRawResponse,
 				}
 				return nil
 
@@ -329,8 +330,10 @@ func (g *Generator) generateContents(
 				}
 
 				result[ir.ContentType(parsedContentType)] = ir.Media{
-					Encoding: encoding,
-					Type:     t,
+					Encoding:      encoding,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
+					RawResponse:   media.XOgenRawResponse,
 				}
 				return nil
 
@@ -341,8 +344,10 @@ func (g *Generator) generateContents(
 				}
 
 				result[ir.ContentType(parsedContentType)] = ir.Media{
-					Encoding: encoding,
-					Type:     t,
+					Encoding:      encoding,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
+					RawResponse:   media.XOgenRawResponse,
 				}
 				return nil
 			default:
@@ -356,10 +361,25 @@ func (g *Generator) generateContents(
 						encoding = ir.EncodingOctetStream
 					}
 					result[ir.ContentType(parsedContentType)] = ir.Media{
-						Encoding: encoding,
-						Type:     t,
+						Encoding:      encoding,
+						Type:          t,
+						JSONStreaming: media.XOgenJSONStreaming,
+						RawResponse:   media.XOgenRawResponse,
 					}
 					return ctx.saveType(t)
+				} else if media.XOgenRawResponse {
+					t, err := g.generateSchema(ctx, typeName, media.Schema, optional, nil)
+					if err != nil {
+						return errors.Wrap(err, "generate schema")
+					}
+
+					result[ir.ContentType(parsedContentType)] = ir.Media{
+						Encoding:      encoding,
+						Type:          t,
+						JSONStreaming: media.XOgenJSONStreaming,
+						RawResponse:   media.XOgenRawResponse,
+					}
+					return nil
 				}
 
 				g.log.Info(`Content type is unsupported, set "format" to "binary" to use io.Reader`,
@@ -400,6 +420,7 @@ func (g *Generator) generateContents(
 				Type:          t,
 				Encoding:      m.Encoding,
 				JSONStreaming: m.JSONStreaming,
+				RawResponse:   m.RawResponse,
 			}
 		}
 	}

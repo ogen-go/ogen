@@ -45,4 +45,6 @@ type Media struct {
 
 	// JSONStreaming indicates that the JSON media should be streamed.
 	JSONStreaming bool
+	// RawResponse indicates that the raw HTTP response should be returned.
+	RawResponse bool
 }

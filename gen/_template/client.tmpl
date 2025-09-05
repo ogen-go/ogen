@@ -448,7 +448,9 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
+	{{- if not $op.HasRawResponse }}
 	defer resp.Body.Close()
+	{{- end }}
 
     {{ if $cfg.EditorsEnabled -}}
     if err := c.onResponse(ctx, resp); err != nil {

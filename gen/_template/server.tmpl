@@ -10,11 +10,13 @@ type Handler interface {
 	{{ $group.Name }}Handler
 {{- end}}
 {{- range $op := $.DefaultOperations }}
+	{{- if not $op.HasRawResponse }}
 	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 	//
 	{{- template "godoc_def" $op.GoDoc }}
 	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
+	{{- end }}
 {{- end }}
 {{- if $.Error }}
 	// NewError creates {{ $.ErrorGoType }} from error returned by handler.
@@ -23,6 +25,27 @@ type Handler interface {
 	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
 {{- end }}
 }
+
+{{- $hasRawOps := false }}
+{{- range $op := $.DefaultOperations }}
+	{{- if $op.HasRawResponse }}
+		{{- $hasRawOps = true }}
+	{{- end }}
+{{- end }}
+{{- if $hasRawOps }}
+// RawHandler handles raw response operations described by OpenAPI v3 specification.
+type RawHandler interface {
+{{- range $op := $.DefaultOperations }}
+	{{- if $op.HasRawResponse }}
+	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
+	//
+	{{- template "godoc_def" $op.GoDoc }}
+	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params{{ end }}, w http.ResponseWriter) error
+	{{- end }}
+{{- end }}
+}
+{{- end }}
 
 {{- range $group := $.OperationGroups }}
 // {{ $group.Name }}Handler handles operations described by OpenAPI v3 specification.
@@ -34,7 +57,11 @@ type {{ $group.Name }}Handler interface {
 	//
 	{{- template "godoc_def" $op.GoDoc }}
 	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
+	{{- if $op.HasRawResponse }}
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params{{ end }}, w http.ResponseWriter) error
+	{{- else }}
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
+	{{- end }}
 {{- end }}
 }
 
@@ -44,6 +71,9 @@ type {{ $group.Name }}Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
+	{{- if $hasRawOps }}
+	rh  RawHandler
+	{{- end }}
 	{{- if $.Securities }}
 	sec SecurityHandler
 	{{- end }}
@@ -51,13 +81,16 @@ type Server struct {
 }
 
 // NewServer creates new Server.
-func NewServer(h Handler, {{- if $.Securities }}sec SecurityHandler,{{- end }}opts ...ServerOption) (*Server, error) {
+func NewServer(h Handler, {{- if $hasRawOps }}rh RawHandler,{{- end }}{{- if $.Securities }}sec SecurityHandler,{{- end }}opts ...ServerOption) (*Server, error) {
 	s, err := newServerConfig(opts...).baseServer()
 	if err != nil {
 		return nil, err
 	}
 	return &Server{
 		h: h,
+		{{- if $hasRawOps }}
+		rh: rh,
+		{{- end }}
 		{{- if $.Securities }}
 		sec: sec,
 		{{- end }}
@@ -74,7 +107,11 @@ type WebhookHandler interface {
 	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 	//
     {{- template "godoc_op" $op }}
+	{{- if $op.HasRawResponse }}
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params{{ end }}, w http.ResponseWriter) error
+	{{- else }}
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
+	{{- end }}
 {{- end }}
 }
 
