@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"mime"
 	"net/http"
@@ -43,9 +44,15 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -117,9 +124,15 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -196,9 +209,15 @@ func (s *Server) decodeOneofBugRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
@@ -270,9 +289,15 @@ func (s *Server) decodePetCreateRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -352,9 +377,15 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -434,9 +465,15 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 			return req, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, nil
@@ -558,9 +595,15 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
 			return req, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 			return req, close, validate.ErrBodyRequired
