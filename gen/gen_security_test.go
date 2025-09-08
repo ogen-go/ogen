@@ -83,6 +83,19 @@ func TestGenerateSecurities(t *testing.T) {
 				},
 			},
 		},
+		{
+			Schemes: []openapi.SecurityScheme{
+				{
+					Name:   "customTest",
+					Scopes: []string{"scope7"},
+					Security: openapi.Security{
+						Type:                "http",
+						Scheme:              "myCustomScheme",
+						XOgenCustomSecurity: true,
+					},
+				},
+			},
+		},
 	}
 
 	wantSecurities := []*ir.Security{
@@ -112,6 +125,13 @@ func TestGenerateSecurities(t *testing.T) {
 			Format: ir.BearerSecurityFormat,
 			Scopes: map[string][]string{
 				"testOp": {"scope6"},
+			},
+		},
+		{
+			Kind:   "",
+			Format: ir.CustomSecurityFormat,
+			Scopes: map[string][]string{
+				"testOp": {"scope7"},
 			},
 		},
 	}
