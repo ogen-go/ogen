@@ -21,6 +21,7 @@ import (
 
 func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 	req AllRequestBodiesReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -41,22 +42,23 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request AllRequestBodiesApplicationJSON
@@ -74,20 +76,20 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "application/octet-stream":
 		reader := r.Body
 		request := AllRequestBodiesReqApplicationOctetStream{Data: reader}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		form, err := ht.ParseForm(r)
 		if err != nil {
-			return req, close, errors.Wrap(err, "parse form")
+			return req, rawBody, close, errors.Wrap(err, "parse form")
 		}
 
 		var request AllRequestBodiesApplicationXWwwFormUrlencoded
@@ -115,10 +117,10 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 						unwrapped.Name = c
 						return nil
 					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"name\"")
+						return req, rawBody, close, errors.Wrap(err, "decode \"name\"")
 					}
 				} else {
-					return req, close, errors.Wrap(err, "query")
+					return req, rawBody, close, errors.Wrap(err, "query")
 				}
 			}
 			{
@@ -149,19 +151,19 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 						unwrapped.Age.SetTo(unwrappedDotAgeVal)
 						return nil
 					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"age\"")
+						return req, rawBody, close, errors.Wrap(err, "decode \"age\"")
 					}
 				}
 			}
 			request = AllRequestBodiesApplicationXWwwFormUrlencoded(unwrapped)
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
+			return req, rawBody, close, errors.Wrap(err, "parse multipart form")
 		}
 		// Remove all temporary files created by ParseMultipartForm when the request is done.
 		//
@@ -195,10 +197,10 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 					request.Name = c
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"name\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"name\"")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -229,22 +231,23 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 					request.Age.SetTo(requestDotAgeVal)
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"age\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"age\"")
 				}
 			}
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "text/plain":
 		reader := r.Body
 		request := AllRequestBodiesReqTextPlain{Data: reader}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 	req AllRequestBodiesOptionalReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -265,26 +268,27 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 	}()
 	req = &AllRequestBodiesOptionalReqEmptyBody{}
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
-		return req, close, nil
+		return req, rawBody, close, nil
 	}
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		if len(buf) == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request AllRequestBodiesOptionalApplicationJSON
@@ -302,20 +306,20 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "application/octet-stream":
 		reader := r.Body
 		request := AllRequestBodiesOptionalReqApplicationOctetStream{Data: reader}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 		form, err := ht.ParseForm(r)
 		if err != nil {
-			return req, close, errors.Wrap(err, "parse form")
+			return req, rawBody, close, errors.Wrap(err, "parse form")
 		}
 
 		var request AllRequestBodiesOptionalApplicationXWwwFormUrlencoded
@@ -343,10 +347,10 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 						unwrapped.Name = c
 						return nil
 					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"name\"")
+						return req, rawBody, close, errors.Wrap(err, "decode \"name\"")
 					}
 				} else {
-					return req, close, errors.Wrap(err, "query")
+					return req, rawBody, close, errors.Wrap(err, "query")
 				}
 			}
 			{
@@ -377,19 +381,19 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 						unwrapped.Age.SetTo(unwrappedDotAgeVal)
 						return nil
 					}); err != nil {
-						return req, close, errors.Wrap(err, "decode \"age\"")
+						return req, rawBody, close, errors.Wrap(err, "decode \"age\"")
 					}
 				}
 			}
 			request = AllRequestBodiesOptionalApplicationXWwwFormUrlencoded(unwrapped)
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
+			return req, rawBody, close, errors.Wrap(err, "parse multipart form")
 		}
 		// Remove all temporary files created by ParseMultipartForm when the request is done.
 		//
@@ -423,10 +427,10 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 					request.Name = c
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"name\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"name\"")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -457,22 +461,23 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 					request.Age.SetTo(requestDotAgeVal)
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"age\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"age\"")
 				}
 			}
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "text/plain":
 		reader := r.Body
 		request := AllRequestBodiesOptionalReqTextPlain{Data: reader}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeBase64RequestRequest(r *http.Request) (
 	req Base64RequestReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -493,20 +498,21 @@ func (s *Server) decodeBase64RequestRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "text/plain":
 		reader := base64.NewDecoder(base64.StdEncoding, r.Body)
 		request := Base64RequestReq{Data: reader}
-		return request, close, nil
+		return request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeMaskContentTypeRequest(r *http.Request) (
 	req *MaskContentTypeReqWithContentType,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -527,7 +533,7 @@ func (s *Server) decodeMaskContentTypeRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ht.MatchContentType("application/*", ct):
@@ -537,14 +543,15 @@ func (s *Server) decodeMaskContentTypeRequest(r *http.Request) (
 			ContentType: ct,
 			Content:     request,
 		}
-		return &wrapped, close, nil
+		return &wrapped, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
 	req *MaskContentTypeOptionalReqWithContentType,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -564,11 +571,11 @@ func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
 		}
 	}()
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
-		return req, close, nil
+		return req, rawBody, close, nil
 	}
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ht.MatchContentType("application/*", ct):
@@ -578,14 +585,15 @@ func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
 			ContentType: ct,
 			Content:     request,
 		}
-		return &wrapped, close, nil
+		return &wrapped, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeStreamJSONRequest(r *http.Request) (
 	req []float64,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -606,12 +614,12 @@ func (s *Server) decodeStreamJSONRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		d := jx.Decode(r.Body, -1)
 
@@ -635,7 +643,7 @@ func (s *Server) decodeStreamJSONRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if request == nil {
@@ -660,10 +668,10 @@ func (s *Server) decodeStreamJSONRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
