@@ -58,6 +58,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 		renameTo      string
 		encoding      ir.Encoding
 		JSONStreaming bool
+		RawResponse   bool
 		typ           *ir.Type
 
 		replaceNoc bool
@@ -131,6 +132,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 							renameTo:      lname,
 							encoding:      lmedia.Encoding,
 							JSONStreaming: lmedia.JSONStreaming,
+							RawResponse:   lmedia.RawResponse,
 							typ:           ltype,
 							replaceCT:     lct,
 							response:      lresp,
@@ -138,6 +140,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 							renameTo:      rname,
 							encoding:      rmedia.Encoding,
 							JSONStreaming: rmedia.JSONStreaming,
+							RawResponse:   rmedia.RawResponse,
 							typ:           rtype,
 							replaceCT:     rct,
 							response:      rresp,
@@ -166,6 +169,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 			Encoding:      candidate.encoding,
 			Type:          alias,
 			JSONStreaming: candidate.JSONStreaming,
+			RawResponse:   candidate.RawResponse,
 		}
 	}
 
@@ -219,6 +223,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 		ctype         ir.ContentType
 		encoding      ir.Encoding
 		JSONStreaming bool
+		RawResponse   bool
 		t             *ir.Type
 	}
 	var (
@@ -250,12 +255,14 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 					ctype:         lcontent,
 					encoding:      lmedia.Encoding,
 					JSONStreaming: lmedia.JSONStreaming,
+					RawResponse:   lmedia.RawResponse,
 					t:             ltype,
 				}, candidate{
 					renameTo:      rname,
 					ctype:         rcontent,
 					encoding:      rmedia.Encoding,
 					JSONStreaming: rmedia.JSONStreaming,
+					RawResponse:   rmedia.RawResponse,
 					t:             rtype,
 				})
 			}
@@ -275,6 +282,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 			Encoding:      candidate.encoding,
 			Type:          alias,
 			JSONStreaming: candidate.JSONStreaming,
+			RawResponse:   candidate.RawResponse,
 		}
 	}
 
