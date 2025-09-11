@@ -24,9 +24,24 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 	if !t.Is(ir.KindPrimitive) {
 		return nil, errors.Wrapf(&ErrNotImplemented{"complex enum type"}, "type %s", t.String())
 	}
-	if f := schema.Format; f != "" && !t.IsNumeric() {
-		return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)
+
+	// We accept 2 types of enums: ints and strings. However, for formatted
+	// string enums, we don't want to allow time/date/date-time formats as they
+	// require special handling
+	if f := schema.Format; f != "" {
+		if !t.IsNumeric() && t.Schema.Type != jsonschema.String {
+			return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)
+		}
+
+		// Reject time-related formats for string enums until we properly handle them
+		if t.Schema.Type == jsonschema.String {
+			switch f {
+			case "date", "time", "date-time":
+				return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)
+			}
+		}
 	}
+
 	if err := g.validateEnumValues(schema); err != nil {
 		return nil, errors.Wrap(err, "validate enum")
 	}
