@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: API
+  version: 0.1.0
+paths:
+  /test:
+    get:
+      operationId: test
+      responses:
+        "200":
+          description: Test
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - test
+                properties:
+                  test:
+                    type: string
+                    x-ogen-type: github.com/ogen-go/ogen/_testdata/testtypes/baz/v2.Test
