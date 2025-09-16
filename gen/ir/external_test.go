@@ -18,6 +18,7 @@ func TestGetExternalEncoding(t *testing.T) {
 			input: "time.Time",
 			want: ExternalType{
 				PackagePath: "time",
+				PackageName: "time",
 				TypeName:    "Time",
 				Encode:      ExternalJSON | ExternalText | ExternalBinary,
 				Decode:      ExternalJSON | ExternalText | ExternalBinary,
@@ -27,6 +28,7 @@ func TestGetExternalEncoding(t *testing.T) {
 			input: "*time.Time",
 			want: ExternalType{
 				PackagePath: "time",
+				PackageName: "time",
 				TypeName:    "Time",
 				Encode:      ExternalJSON | ExternalText | ExternalBinary,
 				Decode:      ExternalJSON | ExternalText | ExternalBinary,
@@ -37,6 +39,7 @@ func TestGetExternalEncoding(t *testing.T) {
 			input: "github.com/ogen-go/ogen/_testdata/testtypes.NumberOgen",
 			want: ExternalType{
 				PackagePath: "github.com/ogen-go/ogen/_testdata/testtypes",
+				PackageName: "testtypes",
 				TypeName:    "NumberOgen",
 				Encode:      ExternalNative,
 				Decode:      ExternalNative,
@@ -46,6 +49,7 @@ func TestGetExternalEncoding(t *testing.T) {
 			input: "*(github.com/ogen-go/ogen/_testdata/testtypes).NumberOgen",
 			want: ExternalType{
 				PackagePath: "github.com/ogen-go/ogen/_testdata/testtypes",
+				PackageName: "testtypes",
 				TypeName:    "NumberOgen",
 				Encode:      ExternalNative,
 				Decode:      ExternalNative,
@@ -54,7 +58,11 @@ func TestGetExternalEncoding(t *testing.T) {
 		},
 		{
 			input: "net.IPMask",
-			want:  ExternalType{PackagePath: "net", TypeName: "IPMask"},
+			want: ExternalType{
+				PackagePath: "net",
+				PackageName: "net",
+				TypeName:    "IPMask",
+			},
 		},
 		{
 			input:   "foo/bar.Baz",
