@@ -217,7 +217,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
-			origElem := elem
+			{{ if $r.ParamChildren -}} origElem := elem {{- end }}
 			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
@@ -225,7 +225,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			}
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
 
-			elem = origElem
+			{{ if $r.ParamChildren -}} elem = origElem {{- end }}
 		{{- end }}
 		}
 	{{- end }}
@@ -248,7 +248,11 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			elem = elem[idx:]
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
 			{{- else }}
-			// Leaf parameter
+			// Leaf parameter, slashes are prohibited
+			idx := strings.IndexByte(elem, '/')
+			if (idx >= 0) {
+				break
+			}
 			args[{{ $.ParameterIndex }}] = elem
 			elem = ""
 			{{ template "route_edge" router_elem $c $.ParameterIndex }}
@@ -266,7 +270,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 	{{- range $route := $r.Routes }}
 	case {{ quote $route.Method }}:
 		{{- $op := $route.Operation }}
-		r.name = {{ quote $op.Name }}
+		r.name = {{ $op.Name }}Operation
 		r.summary = {{ quote $op.Summary }}
 		r.operationID = {{ quote $op.Spec.OperationID }}
 		r.pathPattern = {{ quote $route.Path }}
@@ -302,7 +306,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 		switch elem[0] {
 		{{- range $c := $child }}
 		case {{ quote $c.Head }}: // Prefix: {{ quote $c.Prefix }}
-			origElem := elem
+			{{ if $r.ParamChildren -}} origElem := elem {{- end }}
 			if l := len({{ quote $c.Prefix }}); len(elem) >= l && elem[0:l] == {{ quote $c.Prefix }} {
 				elem = elem[l:]
 			} else {
@@ -310,7 +314,7 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			}
 			{{ template "find_edge" router_elem $c $.ParameterIndex }}
 
-			elem = origElem
+			{{ if $r.ParamChildren -}} elem = origElem {{- end }}
 		{{- end }}
 		}
 	{{- end }}
@@ -333,7 +337,11 @@ func (s *WebhookServer) Handler(webhookName string) http.Handler {
 			elem = elem[idx:]
 			{{ template "find_edge" router_elem $c $.ParameterIndex }}
 			{{- else }}
-			// Leaf parameter
+			// Leaf parameter, slashes are prohibited
+			idx := strings.IndexByte(elem, '/')
+			if (idx >= 0) {
+				break
+			}
 			args[{{ $.ParameterIndex }}] = elem
 			elem = ""
 			{{ template "find_edge" router_elem $c $.ParameterIndex }}

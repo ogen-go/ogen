@@ -8,22 +8,33 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
+
+type codeRecorder struct {
+	http.ResponseWriter
+	status int
+}
+
+func (c *codeRecorder) WriteHeader(status int) {
+	c.status = status
+	c.ResponseWriter.WriteHeader(status)
+}
 
 // handleCustomSecurityRequest handles customSecurity operation.
 //
 // GET /customSecurity
 func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("customSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
@@ -31,7 +42,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "CustomSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), CustomSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -45,24 +56,48 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		attrOpt := metric.WithAttributeSet(labeler.AttributeSet())
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
 
 		// Increment request counter.
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, metric.WithAttributeSet(labeler.AttributeSet()))
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "CustomSecurity",
+			Name: CustomSecurityOperation,
 			ID:   "customSecurity",
 		}
 	)
@@ -70,7 +105,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityCustom(ctx, "CustomSecurity", r)
+			sctx, ok, err := s.securityCustom(ctx, CustomSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -115,7 +150,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "CustomSecurity",
+			OperationName:    CustomSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "customSecurity",
 			Body:             nil,
@@ -163,6 +198,8 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 //
 // GET /disjointSecurity
 func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("disjointSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
@@ -170,7 +207,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "DisjointSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), DisjointSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -184,24 +221,48 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		attrOpt := metric.WithAttributeSet(labeler.AttributeSet())
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
 
 		// Increment request counter.
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, metric.WithAttributeSet(labeler.AttributeSet()))
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "DisjointSecurity",
+			Name: DisjointSecurityOperation,
 			ID:   "disjointSecurity",
 		}
 	)
@@ -209,7 +270,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBasicAuth(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityBasicAuth(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -226,7 +287,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityQueryKey(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityQueryKey(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -243,7 +304,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityCookieKey(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityCookieKey(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -260,7 +321,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityHeaderKey(ctx, "DisjointSecurity", r)
+			sctx, ok, err := s.securityHeaderKey(ctx, DisjointSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -306,7 +367,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "DisjointSecurity",
+			OperationName:    DisjointSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "disjointSecurity",
 			Body:             nil,
@@ -354,6 +415,8 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 //
 // GET /intersectSecurity
 func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
@@ -361,7 +424,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "IntersectSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), IntersectSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -375,24 +438,48 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		attrOpt := metric.WithAttributeSet(labeler.AttributeSet())
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
 
 		// Increment request counter.
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, metric.WithAttributeSet(labeler.AttributeSet()))
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "IntersectSecurity",
+			Name: IntersectSecurityOperation,
 			ID:   "intersectSecurity",
 		}
 	)
@@ -400,7 +487,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityBasicAuth(ctx, "IntersectSecurity", r)
+			sctx, ok, err := s.securityBasicAuth(ctx, IntersectSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -417,7 +504,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			}
 		}
 		{
-			sctx, ok, err := s.securityHeaderKey(ctx, "IntersectSecurity", r)
+			sctx, ok, err := s.securityHeaderKey(ctx, IntersectSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -434,7 +521,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			}
 		}
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, "IntersectSecurity", r)
+			sctx, ok, err := s.securityBearerToken(ctx, IntersectSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -480,7 +567,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "IntersectSecurity",
+			OperationName:    IntersectSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "intersectSecurity",
 			Body:             nil,
@@ -528,6 +615,8 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 //
 // GET /optionalSecurity
 func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("optionalSecurity"),
 		semconv.HTTPRequestMethodKey.String("GET"),
@@ -535,7 +624,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 	}
 
 	// Start a span for this request.
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OptionalSecurity",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), OptionalSecurityOperation,
 		trace.WithAttributes(otelAttrs...),
 		serverSpanKind,
 	)
@@ -549,24 +638,48 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 	startTime := time.Now()
 	defer func() {
 		elapsedDuration := time.Since(startTime)
-		attrOpt := metric.WithAttributeSet(labeler.AttributeSet())
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
 
 		// Increment request counter.
 		s.requests.Add(ctx, 1, attrOpt)
 
 		// Use floating point division here for higher precision (instead of Millisecond method).
-		s.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), attrOpt)
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
 	}()
 
 	var (
 		recordError = func(stage string, err error) {
 			span.RecordError(err)
-			span.SetStatus(codes.Error, stage)
-			s.errors.Add(ctx, 1, metric.WithAttributeSet(labeler.AttributeSet()))
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
 		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
-			Name: "OptionalSecurity",
+			Name: OptionalSecurityOperation,
 			ID:   "optionalSecurity",
 		}
 	)
@@ -574,7 +687,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 		type bitset = [1]uint8
 		var satisfied bitset
 		{
-			sctx, ok, err := s.securityQueryKey(ctx, "OptionalSecurity", r)
+			sctx, ok, err := s.securityQueryKey(ctx, OptionalSecurityOperation, r)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -620,7 +733,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
-			OperationName:    "OptionalSecurity",
+			OperationName:    OptionalSecurityOperation,
 			OperationSummary: "",
 			OperationID:      "optionalSecurity",
 			Body:             nil,

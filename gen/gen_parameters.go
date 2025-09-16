@@ -179,10 +179,16 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 		return nil, errors.Wrapf(err, "parameter name: %q", p.Name)
 	}
 
+	var tag ir.Tag
+	if p.Schema != nil {
+		tag.ExtraTags = p.Schema.ExtraTags
+	}
+
 	return &ir.Parameter{
 		Name: paramName,
 		Type: t,
 		Spec: p,
+		Tag:  tag,
 	}, nil
 }
 
@@ -228,7 +234,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		// return nil
 		return &ErrNotImplemented{"sum type parameter"}
 	case ir.KindMap:
-		return &ErrNotImplemented{"object with additionalProperties"}
+		return nil
 	case ir.KindAny:
 		return &ErrNotImplemented{"any type parameter"}
 	default:

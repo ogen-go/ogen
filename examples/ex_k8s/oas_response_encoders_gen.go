@@ -8,11 +8,10 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/trace"
 )
 
 func encodeConnectCoreV1DeleteNamespacedPodProxyResponse(response ConnectCoreV1DeleteNamespacedPodProxyRes, w http.ResponseWriter, span trace.Span) error {
@@ -38,6 +37,9 @@ func encodeConnectCoreV1DeleteNamespacedPodProxyResponse(response ConnectCoreV1D
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -78,6 +80,9 @@ func encodeConnectCoreV1DeleteNamespacedPodProxyWithPathResponse(response Connec
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -118,6 +123,9 @@ func encodeConnectCoreV1DeleteNamespacedServiceProxyResponse(response ConnectCor
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -158,6 +166,9 @@ func encodeConnectCoreV1DeleteNamespacedServiceProxyWithPathResponse(response Co
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -198,6 +209,9 @@ func encodeConnectCoreV1DeleteNodeProxyResponse(response ConnectCoreV1DeleteNode
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -238,6 +252,9 @@ func encodeConnectCoreV1DeleteNodeProxyWithPathResponse(response ConnectCoreV1De
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -278,6 +295,9 @@ func encodeConnectCoreV1GetNamespacedPodAttachResponse(response ConnectCoreV1Get
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -318,6 +338,9 @@ func encodeConnectCoreV1GetNamespacedPodExecResponse(response ConnectCoreV1GetNa
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -358,6 +381,9 @@ func encodeConnectCoreV1GetNamespacedPodPortforwardResponse(response ConnectCore
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -398,6 +424,9 @@ func encodeConnectCoreV1GetNamespacedPodProxyResponse(response ConnectCoreV1GetN
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -438,6 +467,9 @@ func encodeConnectCoreV1GetNamespacedPodProxyWithPathResponse(response ConnectCo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -478,6 +510,9 @@ func encodeConnectCoreV1GetNamespacedServiceProxyResponse(response ConnectCoreV1
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -518,6 +553,9 @@ func encodeConnectCoreV1GetNamespacedServiceProxyWithPathResponse(response Conne
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -558,6 +596,9 @@ func encodeConnectCoreV1GetNodeProxyResponse(response ConnectCoreV1GetNodeProxyR
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -598,6 +639,9 @@ func encodeConnectCoreV1GetNodeProxyWithPathResponse(response ConnectCoreV1GetNo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -638,6 +682,9 @@ func encodeConnectCoreV1HeadNamespacedPodProxyResponse(response ConnectCoreV1Hea
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -678,6 +725,9 @@ func encodeConnectCoreV1HeadNamespacedPodProxyWithPathResponse(response ConnectC
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -718,6 +768,9 @@ func encodeConnectCoreV1HeadNamespacedServiceProxyResponse(response ConnectCoreV
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -758,6 +811,9 @@ func encodeConnectCoreV1HeadNamespacedServiceProxyWithPathResponse(response Conn
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -798,6 +854,9 @@ func encodeConnectCoreV1HeadNodeProxyResponse(response ConnectCoreV1HeadNodeProx
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -838,6 +897,9 @@ func encodeConnectCoreV1HeadNodeProxyWithPathResponse(response ConnectCoreV1Head
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -878,6 +940,9 @@ func encodeConnectCoreV1OptionsNamespacedPodProxyResponse(response ConnectCoreV1
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -918,6 +983,9 @@ func encodeConnectCoreV1OptionsNamespacedPodProxyWithPathResponse(response Conne
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -958,6 +1026,9 @@ func encodeConnectCoreV1OptionsNamespacedServiceProxyResponse(response ConnectCo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -998,6 +1069,9 @@ func encodeConnectCoreV1OptionsNamespacedServiceProxyWithPathResponse(response C
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1038,6 +1112,9 @@ func encodeConnectCoreV1OptionsNodeProxyResponse(response ConnectCoreV1OptionsNo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1078,6 +1155,9 @@ func encodeConnectCoreV1OptionsNodeProxyWithPathResponse(response ConnectCoreV1O
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1118,6 +1198,9 @@ func encodeConnectCoreV1PatchNamespacedPodProxyResponse(response ConnectCoreV1Pa
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1158,6 +1241,9 @@ func encodeConnectCoreV1PatchNamespacedPodProxyWithPathResponse(response Connect
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1198,6 +1284,9 @@ func encodeConnectCoreV1PatchNamespacedServiceProxyResponse(response ConnectCore
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1238,6 +1327,9 @@ func encodeConnectCoreV1PatchNamespacedServiceProxyWithPathResponse(response Con
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1278,6 +1370,9 @@ func encodeConnectCoreV1PatchNodeProxyResponse(response ConnectCoreV1PatchNodePr
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1318,6 +1413,9 @@ func encodeConnectCoreV1PatchNodeProxyWithPathResponse(response ConnectCoreV1Pat
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1358,6 +1456,9 @@ func encodeConnectCoreV1PostNamespacedPodAttachResponse(response ConnectCoreV1Po
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1398,6 +1499,9 @@ func encodeConnectCoreV1PostNamespacedPodExecResponse(response ConnectCoreV1Post
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1438,6 +1542,9 @@ func encodeConnectCoreV1PostNamespacedPodPortforwardResponse(response ConnectCor
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1478,6 +1585,9 @@ func encodeConnectCoreV1PostNamespacedPodProxyResponse(response ConnectCoreV1Pos
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1518,6 +1628,9 @@ func encodeConnectCoreV1PostNamespacedPodProxyWithPathResponse(response ConnectC
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1558,6 +1671,9 @@ func encodeConnectCoreV1PostNamespacedServiceProxyResponse(response ConnectCoreV
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1598,6 +1714,9 @@ func encodeConnectCoreV1PostNamespacedServiceProxyWithPathResponse(response Conn
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1638,6 +1757,9 @@ func encodeConnectCoreV1PostNodeProxyResponse(response ConnectCoreV1PostNodeProx
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1678,6 +1800,9 @@ func encodeConnectCoreV1PostNodeProxyWithPathResponse(response ConnectCoreV1Post
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1718,6 +1843,9 @@ func encodeConnectCoreV1PutNamespacedPodProxyResponse(response ConnectCoreV1PutN
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1758,6 +1886,9 @@ func encodeConnectCoreV1PutNamespacedPodProxyWithPathResponse(response ConnectCo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1798,6 +1929,9 @@ func encodeConnectCoreV1PutNamespacedServiceProxyResponse(response ConnectCoreV1
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1838,6 +1972,9 @@ func encodeConnectCoreV1PutNamespacedServiceProxyWithPathResponse(response Conne
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1878,6 +2015,9 @@ func encodeConnectCoreV1PutNodeProxyResponse(response ConnectCoreV1PutNodeProxyR
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1918,6 +2058,9 @@ func encodeConnectCoreV1PutNodeProxyWithPathResponse(response ConnectCoreV1PutNo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3295,6 +3438,9 @@ func encodeGetServiceAccountIssuerOpenIDKeysetResponse(response GetServiceAccoun
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7169,6 +7315,9 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7181,6 +7330,9 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7193,6 +7345,9 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}

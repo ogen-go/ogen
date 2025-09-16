@@ -8,10 +8,9 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	ht "github.com/ogen-go/ogen/http"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
-
-	ht "github.com/ogen-go/ogen/http"
 )
 
 func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span trace.Span) error {
@@ -350,6 +349,9 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -400,6 +402,9 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -632,6 +637,42 @@ func encodeTestFloatValidationResponse(response *TestFloatValidationOK, w http.R
 }
 
 func encodeTestInlineOneofResponse(response *TestInlineOneOf, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	e := new(jx.Encoder)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeTestIssue1310Response(response *Issue1310, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+
+	e := new(jx.Encoder)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeTestIssue1461Response(response *Issue1461, w http.ResponseWriter, span trace.Span) error {
+	if err := func() error {
+		if err := response.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "validate")
+	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

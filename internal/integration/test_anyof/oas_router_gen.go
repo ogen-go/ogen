@@ -49,7 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -61,7 +61,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'i': // Prefix: "integerNumber"
-				origElem := elem
+
 				if l := len("integerNumber"); len(elem) >= l && elem[0:l] == "integerNumber" {
 					elem = elem[l:]
 				} else {
@@ -80,9 +80,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'j': // Prefix: "jaegerAnyOf"
-				origElem := elem
+
 				if l := len("jaegerAnyOf"); len(elem) >= l && elem[0:l] == "jaegerAnyOf" {
 					elem = elem[l:]
 				} else {
@@ -101,9 +100,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			case 'o': // Prefix: "oneUUID"
-				origElem := elem
+
 				if l := len("oneUUID"); len(elem) >= l && elem[0:l] == "oneUUID" {
 					elem = elem[l:]
 				} else {
@@ -122,10 +120,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -207,7 +203,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -219,7 +215,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case 'i': // Prefix: "integerNumber"
-				origElem := elem
+
 				if l := len("integerNumber"); len(elem) >= l && elem[0:l] == "integerNumber" {
 					elem = elem[l:]
 				} else {
@@ -230,7 +226,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "IntegerNumber"
+						r.name = IntegerNumberOperation
 						r.summary = ""
 						r.operationID = "integerNumber"
 						r.pathPattern = "/integerNumber"
@@ -242,9 +238,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'j': // Prefix: "jaegerAnyOf"
-				origElem := elem
+
 				if l := len("jaegerAnyOf"); len(elem) >= l && elem[0:l] == "jaegerAnyOf" {
 					elem = elem[l:]
 				} else {
@@ -255,7 +250,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "JaegerAnyOf"
+						r.name = JaegerAnyOfOperation
 						r.summary = ""
 						r.operationID = "jaegerAnyOf"
 						r.pathPattern = "/jaegerAnyOf"
@@ -267,9 +262,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			case 'o': // Prefix: "oneUUID"
-				origElem := elem
+
 				if l := len("oneUUID"); len(elem) >= l && elem[0:l] == "oneUUID" {
 					elem = elem[l:]
 				} else {
@@ -280,7 +274,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "OneUUID"
+						r.name = OneUUIDOperation
 						r.summary = ""
 						r.operationID = "oneUUID"
 						r.pathPattern = "/oneUUID"
@@ -292,10 +286,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false

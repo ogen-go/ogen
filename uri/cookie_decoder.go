@@ -3,6 +3,8 @@ package uri
 import (
 	"net/http"
 
+	"github.com/ogen-go/ogen/validate"
+
 	"github.com/go-faster/errors"
 )
 
@@ -24,7 +26,14 @@ type CookieParameterDecodingConfig struct {
 func (d *CookieDecoder) HasParam(cfg CookieParameterDecodingConfig) error {
 	_, err := d.req.Cookie(cfg.Name)
 	if errors.Is(err, http.ErrNoCookie) {
-		return errors.Errorf("cookie parameter %q not set", cfg.Name)
+		return &validate.Error{
+			Fields: []validate.FieldError{
+				{
+					Name:  cfg.Name,
+					Error: validate.ErrFieldRequired,
+				},
+			},
+		}
 	}
 	return err
 }

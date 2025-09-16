@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"go/token"
 	"math/big"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
-	"golang.org/x/exp/slices"
 
 	ogenjson "github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/jsonpointer"
@@ -20,6 +20,8 @@ import (
 const (
 	xOgenName       = "x-ogen-name"
 	xOgenProperties = "x-ogen-properties"
+	xOgenType       = "x-ogen-type"
+	xOgenTimeFormat = "x-ogen-time-format"
 	xOapiExtraTags  = "x-oapi-codegen-extra-tags"
 )
 
@@ -91,7 +93,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 	}
 
 	if enum := schema.Enum; len(enum) > 0 {
-		loc := schema.Common.Locator.Field("enum")
+		loc := schema.Common.Field("enum")
 		for i, a := range enum {
 			for j, b := range enum {
 				if i == j {
@@ -132,7 +134,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 
 	for key, val := range schema.Common.Extensions {
 		if err := func() error {
-			locator := schema.Common.Locator.Field(key)
+			locator := schema.Common.Field(key)
 
 			switch key {
 			case xOgenName:
@@ -178,6 +180,16 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 					s.Properties[idx].X = x
 				}
 
+			case xOgenType:
+				if err := val.Decode(&s.XOgenType); err != nil {
+					return err
+				}
+
+			case xOgenTimeFormat:
+				if err := val.Decode(&s.XOgenTimeFormat); err != nil {
+					return err
+				}
+
 			case xOapiExtraTags:
 				if err := val.Decode(&s.ExtraTags); err != nil {
 					return err
@@ -218,17 +230,17 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return p.wrapField(field, p.file(ctx), schema.Common.Locator, err)
 	}
 
-	validateMinMax := func(prop string, min, max *uint64) (rerr error) {
-		if min == nil || max == nil {
+	validateMinMax := func(prop string, minVal *uint64, maxVal *uint64) (rerr error) {
+		if minVal == nil || maxVal == nil {
 			return nil
 		}
-		if *min > *max {
-			msg := fmt.Sprintf("min%s (%d) is greater than max%s (%d)", prop, *min, prop, *max)
-			ptr := schema.Common.Locator.Pointer(p.file(ctx))
+		if *minVal > *maxVal {
+			msg := fmt.Sprintf("minVal%s (%d) is greater than maxVal%s (%d)", prop, *minVal, prop, *maxVal)
+			ptr := schema.Common.Pointer(p.file(ctx))
 
 			me := new(location.MultiError)
-			me.ReportPtr(ptr.Field("min"+prop), msg)
-			me.ReportPtr(ptr.Field("max"+prop), "")
+			me.ReportPtr(ptr.Field("minVal"+prop), msg)
+			me.ReportPtr(ptr.Field("maxVal"+prop), "")
 			return me
 		}
 		return nil
@@ -429,7 +441,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			} else {
 				additional = true
 				if schema.Items != nil {
-					ptr := schema.Common.Locator.Pointer(p.file(ctx))
+					ptr := schema.Common.Pointer(p.file(ctx))
 					me := new(location.MultiError)
 					me.ReportPtr(ptr.Field("additionalProperties"), "both additionalProperties and items fields are set")
 					me.ReportPtr(ptr.Field("items"), "")
@@ -445,7 +457,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		}
 
 		if pp := schema.PatternProperties; len(pp) > 0 {
-			ppLoc := schema.Common.Locator.Field("patternProperties")
+			ppLoc := schema.Common.Field("patternProperties")
 
 			patterns := make([]PatternProperty, len(pp))
 			for idx, prop := range pp {
@@ -469,7 +481,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			s.PatternProperties = patterns
 		}
 
-		propsLoc := schema.Common.Locator.Field("properties")
+		propsLoc := schema.Common.Field("properties")
 		for _, propSpec := range schema.Properties {
 			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
@@ -590,7 +602,7 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema, file location.File) *S
 		}
 	}
 
-	s.Pointer = schema.Common.Locator.Pointer(file)
+	s.Pointer = schema.Common.Pointer(file)
 	return s
 }
 

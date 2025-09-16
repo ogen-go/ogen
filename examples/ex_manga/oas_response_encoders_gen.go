@@ -8,11 +8,10 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/trace"
 )
 
 func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trace.Span) error {
@@ -64,6 +63,9 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -104,6 +106,9 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -144,6 +149,9 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 		span.SetStatus(codes.Ok, http.StatusText(200))
 
 		writer := w
+		if closer, ok := response.Response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response.Response); err != nil {
 			return errors.Wrap(err, "write")
 		}

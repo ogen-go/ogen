@@ -1,9 +1,9 @@
 package ir
 
 import (
+	"slices"
+	"strconv"
 	"strings"
-
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/bitset"
 	"github.com/ogen-go/ogen/internal/naming"
@@ -317,6 +317,47 @@ func (j JSON) Fn() string {
 // IsBase64 whether field has base64 encoding.
 func (j JSON) IsBase64() bool {
 	return j.t.Primitive == ByteSlice
+}
+
+// TimeFormat returns time format for json encoding and decoding.
+func (j JSON) TimeFormat() string {
+	s := j.t.Schema
+	if s == nil || s.XOgenTimeFormat == "" {
+		return ""
+	}
+	return strconv.Quote(s.XOgenTimeFormat)
+}
+
+// Encoder returns format name for handling json encoding.
+//
+// Mostly used for encoding of string formats, like `json.EncodeUUID`, where
+// UUID is Encoder.
+func (j JSON) Encoder() string {
+	if j.t.IsExternal() {
+		external := j.t.externalType(j.t.External.Encode, ExternalJSON)
+		var prefix string
+		if j.t.Schema.Type == jsonschema.String && external == ExternalText {
+			prefix = "String"
+		}
+		return prefix + external.String()
+	}
+	return j.Format()
+}
+
+// Decoder returns format name for handling json decoding.
+//
+// Mostly used for decoding of string formats, like `json.DecodeUUID`, where
+// UUID is Decoder.
+func (j JSON) Decoder() string {
+	if j.t.IsExternal() {
+		external := j.t.externalType(j.t.External.Decode, ExternalJSON)
+		var prefix string
+		if j.t.Schema.Type == jsonschema.String && external == ExternalText {
+			prefix = "String"
+		}
+		return prefix + external.String() + "[" + j.t.Primitive.String() + "]"
+	}
+	return j.Format()
 }
 
 // Sum returns specification for parsing value as sum type.

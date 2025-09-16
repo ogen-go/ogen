@@ -1,7 +1,7 @@
 package ir
 
 import (
-	"golang.org/x/exp/slices"
+	"slices"
 
 	"github.com/ogen-go/ogen/openapi"
 )

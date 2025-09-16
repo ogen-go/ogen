@@ -50,10 +50,7 @@ func TestRemoteLocation(t *testing.T) {
 		iterErr = err
 		locErr  *LocationError
 	)
-	for {
-		if !errors.As(iterErr, &locErr) {
-			break
-		}
+	for errors.As(iterErr, &locErr) {
 		iterErr = locErr.Err
 	}
 	t.Log(locErr)

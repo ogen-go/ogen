@@ -1,0 +1,17 @@
+{{ define "operations" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ template "header" $ }}
+
+// OperationName is the ogen operation name
+type OperationName = string
+
+const (
+	{{- range $op := $.Operations }}
+	{{ $op.Name }}Operation OperationName = {{ quote $op.Name }}
+	{{- end }}
+	{{- range $op := $.Webhooks }}
+	{{ $op.Name }}Operation OperationName = {{ quote $op.Name }}
+	{{- end }}
+)
+
+{{ end }}

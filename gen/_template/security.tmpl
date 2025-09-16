@@ -10,9 +10,9 @@ type SecurityHandler interface {
 	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
 	{{- template "godoc" $s.GoDoc }}
 	{{- if $s.Format.IsCustomSecurity }}
-	Handle{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, error)
+	Handle{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, error)
 	{{- else }}
-	Handle{{ $s.Type.Name }}(ctx context.Context, operationName string, t {{ $s.Type.Name }}) (context.Context, error)
+	Handle{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, t {{ $s.Type.Name }}) (context.Context, error)
 	{{- end }}
 {{- end }}
 }
@@ -33,10 +33,14 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 }
 
 {{ range $s := $.Securities }}
-{{- if $s.Format.IsOAuth2Security }}
-var oauth2Scopes = map[string][]string {
+
+{{if $s.Format.IsOAuth2Security}}
+var oauth2Scopes{{ $s.Type.Name }} = map[string][]string {
+{{- else}}
+var operationRoles{{ $s.Type.Name }} = map[string][]string {
+{{- end}}
 {{- range $operationName, $scopes := $s.Scopes }}
-	{{ quote $operationName }}: []string{
+	{{ $operationName }}Operation: []string{
 		{{- range $scope := $scopes }}
 			{{ quote $scope }},
 		{{- end}}
@@ -44,8 +48,7 @@ var oauth2Scopes = map[string][]string {
 {{- end }}
 }
 
-{{- end }}
-func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	{{- if $s.Format.IsAPIKeySecurity }}
 		var t {{ $s.Type.Name }}
         const parameterName = {{ quote $s.ParameterName }}
@@ -74,6 +77,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
             {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 		{{- end }}
 		t.APIKey = value
+        t.Roles = operationRoles{{ $s.Type.Name }}[operationName]
     {{- else if $s.Format.IsBasicHTTPSecurity }}
 		var t {{ $s.Type.Name }}
 		if _, ok := findAuthorization(req.Header, "Basic"); !ok {
@@ -85,6 +89,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 		}
 		t.Username = username
 		t.Password = password
+        t.Roles = operationRoles{{ $s.Type.Name }}[operationName]
 	{{- else if $s.Format.IsBearerSecurity }}
 		var t {{ $s.Type.Name }}
 		token, ok := findAuthorization(req.Header, "Bearer")
@@ -92,6 +97,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 			return ctx, false, nil
 		}
 		t.Token = token
+        t.Roles = operationRoles{{ $s.Type.Name }}[operationName]
 	{{- else if $s.Format.IsOAuth2Security }}
 		var t {{ $s.Type.Name }}
 		token, ok := findAuthorization(req.Header, "Bearer")
@@ -99,7 +105,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName s
 			return ctx, false, nil
 		}
 		t.Token = token
-		t.Scopes = oauth2Scopes[operationName]
+		t.Scopes = oauth2Scopes{{ $s.Type.Name }}[operationName]
 	{{- else if $s.Format.IsCustomSecurity }}
 		t := req
 	{{- else }}
@@ -124,22 +130,22 @@ type SecuritySource interface {
 	{{- template "godoc" $s.GoDoc }}
 	{{- if $s.Format.IsCustomSecurity }}
 		{{- if $.SecurityReentrantEnabled }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request, client *Client) error
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request, client *Client) error
 		{{- else }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) error
 		{{- end }}
 	{{- else }}
 		{{- if $.SecurityReentrantEnabled }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName string, client *Client) ({{ $s.Type.Name }}, error)
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, client *Client) ({{ $s.Type.Name }}, error)
 		{{- else }}
-		{{ $s.Type.Name }}(ctx context.Context, operationName string) ({{ $s.Type.Name }}, error)
+		{{ $s.Type.Name }}(ctx context.Context, operationName OperationName) ({{ $s.Type.Name }}, error)
 		{{- end }}
 	{{- end }}
 {{- end }}
 }
 
 {{- range $s := $.Securities }}
-func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) error {
 	{{- if $s.Format.IsCustomSecurity }}
 		{{- if $.SecurityReentrantEnabled }}
 		if err := s.sec.{{ $s.Type.Name }}(ctx, operationName, req, s); err != nil {

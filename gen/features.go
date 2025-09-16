@@ -2,10 +2,10 @@ package gen
 
 import (
 	"fmt"
+	"slices"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
-	"golang.org/x/exp/slices"
 )
 
 // Feature is an ogen feature.
@@ -113,9 +113,17 @@ var (
 		"client/security/reentrant",
 		`Enables client usage in security source implementations`,
 	}
+	ClientRequestOptions = Feature{
+		"client/request/options",
+		`Enables function options for client requests`,
+	}
 	ClientRequestValidation = Feature{
 		"client/request/validation",
 		`Enables validation of client requests`,
+	}
+	ClientEditors = Feature{
+		"client/editors",
+		`Enables editors function options for client`,
 	}
 	ServerResponseValidation = Feature{
 		"server/response/validation",
@@ -152,7 +160,9 @@ var AllFeatures = []Feature{
 	WebhooksClient,
 	WebhooksServer,
 	ClientSecurityReentrant,
+	ClientRequestOptions,
 	ClientRequestValidation,
+	ClientEditors,
 	ServerResponseValidation,
 	OgenOtel,
 	OgenUnimplemented,

@@ -8,14 +8,13 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleOAuth2 handles oauth2 security.
-	HandleOAuth2(ctx context.Context, operationName string, t OAuth2) (context.Context, error)
+	HandleOAuth2(ctx context.Context, operationName OperationName, t OAuth2) (context.Context, error)
 }
 
 func findAuthorization(h http.Header, prefix string) (string, bool) {
@@ -33,29 +32,29 @@ func findAuthorization(h http.Header, prefix string) (string, bool) {
 	return "", false
 }
 
-var oauth2Scopes = map[string][]string{
-	"AddPet": []string{
+var oauth2ScopesOAuth2 = map[string][]string{
+	AddPetOperation: []string{
 		"admin",
 	},
-	"DeletePet": []string{
+	DeletePetOperation: []string{
 		"admin",
 	},
-	"FindPetByID": []string{
+	FindPetByIDOperation: []string{
 		"user",
 	},
-	"FindPets": []string{
+	FindPetsOperation: []string{
 		"user",
 	},
 }
 
-func (s *Server) securityOAuth2(ctx context.Context, operationName string, req *http.Request) (context.Context, bool, error) {
+func (s *Server) securityOAuth2(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
 	var t OAuth2
 	token, ok := findAuthorization(req.Header, "Bearer")
 	if !ok {
 		return ctx, false, nil
 	}
 	t.Token = token
-	t.Scopes = oauth2Scopes[operationName]
+	t.Scopes = oauth2ScopesOAuth2[operationName]
 	rctx, err := s.sec.HandleOAuth2(ctx, operationName, t)
 	if errors.Is(err, ogenerrors.ErrSkipServerSecurity) {
 		return nil, false, nil
@@ -68,10 +67,10 @@ func (s *Server) securityOAuth2(ctx context.Context, operationName string, req *
 // SecuritySource is provider of security values (tokens, passwords, etc.).
 type SecuritySource interface {
 	// OAuth2 provides oauth2 security value.
-	OAuth2(ctx context.Context, operationName string) (OAuth2, error)
+	OAuth2(ctx context.Context, operationName OperationName) (OAuth2, error)
 }
 
-func (s *Client) securityOAuth2(ctx context.Context, operationName string, req *http.Request) error {
+func (s *Client) securityOAuth2(ctx context.Context, operationName OperationName, req *http.Request) error {
 	t, err := s.sec.OAuth2(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, "security source \"OAuth2\"")

@@ -9,6 +9,7 @@ import (
 
 type BearerToken struct {
 	APIKey string
+	Roles  []string
 }
 
 // GetAPIKey returns the value of APIKey.
@@ -16,9 +17,19 @@ func (s *BearerToken) GetAPIKey() string {
 	return s.APIKey
 }
 
+// GetRoles returns the value of Roles.
+func (s *BearerToken) GetRoles() []string {
+	return s.Roles
+}
+
 // SetAPIKey sets the value of APIKey.
 func (s *BearerToken) SetAPIKey(val string) {
 	s.APIKey = val
+}
+
+// SetRoles sets the value of Roles.
+func (s *BearerToken) SetRoles(val []string) {
+	s.Roles = val
 }
 
 type ConnectCoreV1DeleteNamespacedPodProxyOK struct {

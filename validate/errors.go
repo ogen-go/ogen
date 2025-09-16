@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/ogen-go/ogen/ogenregex"
+
 	"github.com/go-faster/errors"
 )
 
-// ErrFieldRequired reports that field is required, but not found.
+// ErrFieldRequired reports that a field is required, but not found.
 var ErrFieldRequired = errors.New("field required")
 
 // Error represents validation error.
@@ -102,9 +104,11 @@ func (e *MaxLengthError) Error() string {
 }
 
 // NoRegexMatchError reports that value have no regexp match.
-type NoRegexMatchError struct{}
+type NoRegexMatchError struct {
+	Pattern ogenregex.Regexp
+}
 
 // MaxLengthError implements error.
-func (*NoRegexMatchError) Error() string {
-	return "no regex match"
+func (e *NoRegexMatchError) Error() string {
+	return fmt.Sprintf("no regex match: %s", e.Pattern.String())
 }

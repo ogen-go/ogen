@@ -1,6 +1,6 @@
 package ir
 
-import "golang.org/x/exp/slices"
+import "slices"
 
 func (t *Type) HasFeature(feature string) bool {
 	return slices.Contains(t.Features, feature)

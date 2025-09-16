@@ -2,6 +2,71 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ template "header" $ }}
 
+{{- if $.RequestOptionsEnabled }}
+type requestConfig struct {
+	Client ht.Client
+	ServerURL *url.URL
+	EditRequest func(req *http.Request) error
+	EditResponse func(resp *http.Response) error
+}
+
+func (cfg *requestConfig) setDefaults(c baseClient) {
+	if cfg.Client == nil {
+		cfg.Client = c.cfg.Client
+	}
+}
+
+func (cfg *requestConfig) onRequest(req *http.Request) error {
+	if fn := cfg.EditRequest; fn != nil {
+		return fn(req)
+	}
+	return nil
+}
+
+func (cfg *requestConfig) onResponse(resp *http.Response) error {
+	if fn := cfg.EditResponse; fn != nil {
+		return fn(resp)
+	}
+	return nil
+}
+
+// RequestOption defines options for request.
+type RequestOption func(cfg *requestConfig)
+
+// WithRequestClient sets client for request.
+func WithRequestClient(client ht.Client) RequestOption {
+	return func(cfg *requestConfig) {
+		cfg.Client = client
+	}
+}
+
+// WithServerURL sets client for request.
+func WithServerURL(u *url.URL) RequestOption {
+	return func(cfg *requestConfig) {
+		cfg.ServerURL = u
+	}
+}
+
+// WithEditRequest sets function to edit request.
+func WithEditRequest(fn func(req *http.Request) error) RequestOption {
+	return func(cfg *requestConfig) {
+		cfg.EditRequest = fn
+	}
+}
+
+// WithEditResponse sets function to edit response.
+func WithEditResponse(fn func(resp *http.Response) error) RequestOption {
+	return func(cfg *requestConfig) {
+		cfg.EditResponse = fn
+	}
+}
+{{- end }}
+
+func trimTrailingSlashes(u *url.URL) {
+    u.Path = strings.TrimRight(u.Path, "/")
+    u.RawPath = strings.TrimRight(u.RawPath, "/")
+}
+
 {{- if $.PathsClientEnabled }}
 
 // Invoker invokes operations described by OpenAPI v3 specification.
@@ -16,7 +81,8 @@ type Invoker interface {
 	{{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
-	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}
+	{{- if $.RequestOptionsEnabled }}, options ...RequestOption{{ end }}) {{ $op.Responses.ResultTuple "" "" }}
 {{- end }}
 }
 
@@ -32,7 +98,8 @@ type {{ $group.Name }}Invoker interface {
 	{{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
-	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}
+	{{- if $.RequestOptionsEnabled }}, options ...RequestOption {{ end }}) {{ $op.Responses.ResultTuple "" "" }}
 {{- end }}
 }
 {{- end }}
@@ -46,7 +113,7 @@ type Client struct {
 	baseClient
 }
 
-{{- if $.PathsServerEnabled }}
+{{- if and $.PathsServerEnabled (not $.RequestOptionsEnabled) }}
 {{- if $.Error }}
 type errorHandler interface {
 	NewError(ctx context.Context, err error) {{ $.ErrorGoType }}
@@ -57,11 +124,6 @@ var _ Handler = struct{
 	*Client
 }{}
 {{- end }}
-
-func trimTrailingSlashes(u *url.URL) {
-	u.Path = strings.TrimRight(u.Path, "/")
-	u.RawPath = strings.TrimRight(u.RawPath, "/")
-}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...ClientOption) (*Client, error) {
@@ -84,6 +146,7 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 	}, nil
 }
 
+{{- if not $.RequestOptionsEnabled }}
 type serverURLKey struct{}
 
 // WithServerURL sets context key to override server URL.
@@ -98,6 +161,27 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 	}
 	return u
 }
+{{- end }}
+
+{{- if $.EditorsEnabled }}
+func (c *Client) onRequest(ctx context.Context, req *http.Request) error {
+    for _, fn := range c.cfg.RequestEditors {
+        if err := fn(ctx, req); err != nil {
+            return err
+        }
+    }
+    return nil
+}
+
+func (c *Client) onResponse(ctx context.Context, resp *http.Response) error {
+	for _, fn := range c.cfg.ResponseEditors {
+        if err := fn(ctx, resp); err != nil {
+            return err
+        }
+	}
+	return nil
+}
+{{- end }}
 
 {{- range $op := $.Operations }}
 	{{ template "client/operation" op_elem $op $ }}
@@ -124,7 +208,7 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 }
 
 {{- range $op := $ops }}
-    {{ template "client/operation" op_elem $op $ }}
+	{{ template "client/operation" op_elem $op $ }}
 {{- end }}
 
 {{- end }}
@@ -142,11 +226,13 @@ func NewWebhookClient(opts ...ClientOption) (*WebhookClient, error) {
 func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
-	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "" "" }} {
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}
+	{{- if $cfg.RequestOptionsEnabled }}, options ...RequestOption {{ end }}) {{ $op.Responses.ResultTuple "" "" }} {
 	{{ if $op.Responses.DoPass }}res{{ else }}_{{ end }}, err := c.send{{ $op.Name }}(ctx
 		{{- if $op.WebhookInfo }},targetURL{{ end -}}
 		{{- if $op.Request }},request{{ end -}}
 		{{- if $op.Params }},params{{ end -}}
+		{{- if $cfg.RequestOptionsEnabled }},options...{{ end -}}
 	)
 	return {{ if $op.Responses.DoPass }}res,{{ end }} err
 }
@@ -154,7 +240,8 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx cont
 func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx context.Context
 	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.GoType }}{{ end }}
-	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
+	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}
+	{{- if $cfg.RequestOptionsEnabled }}, requestOptions ...RequestOption {{ end }}) (res {{ $op.Responses.GoType }}, err error) {
 
 	{{- if and $op.Request $cfg.RequestValidationEnabled }}{{/* Request validation */}}
 		{{- if $op.Request.Type.IsInterface }}
@@ -207,20 +294,21 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{{- else }}
 		var otelAttrs []attribute.KeyValue
 		{{- end }}
+		otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 		// Run stopwatch.
 		startTime := time.Now()
 		defer func() {
 			// Use floating point division here for higher precision (instead of Millisecond method).
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+			c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 		}()
 
 		// Increment request counter.
 		c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 		// Start a span for this request.
-		ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
+		ctx, span := c.cfg.Tracer.Start(ctx, {{ $op.Name }}Operation,
 			{{- if $hasOTELAttrs }}
 			trace.WithAttributes(otelAttrs...),
 			{{- end }}
@@ -238,14 +326,36 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		}()
 	{{- end }}
 
+	{{ if $cfg.RequestOptionsEnabled -}}
+	var reqCfg requestConfig
+	reqCfg.setDefaults(c.baseClient)
+	for _, o := range requestOptions {
+		o(&reqCfg)
+	}
+	{{- end }}
+
 	{{ if $otel }}stage = "BuildURL"{{ end }}
 	{{- if $op.WebhookInfo }}
-	u, err := url.Parse(targetURL)
-	if err != nil {
-		return res, errors.Wrap(err, "parse target URL")
-	}
-	trimTrailingSlashes(u)
+		u, err := url.Parse(targetURL)
+		if err != nil {
+			return res, errors.Wrap(err, "parse target URL")
+		}
+		{{- if $cfg.RequestOptionsEnabled }}
+		if override := reqCfg.ServerURL; override != nil {
+			u = uri.Clone(override)
+		}
+		{{- end }}
+		trimTrailingSlashes(u)
 	{{- else }}
+		{{- if $cfg.RequestOptionsEnabled }}
+		u := c.serverURL
+		if override := reqCfg.ServerURL; override != nil {
+			u = override
+		}
+		u = uri.Clone(u)
+		{{- else }}
+		u := uri.Clone(c.requestURL(ctx))
+		{{- end }}
 		{{- template "encode_path_parameters" $op }}
 	{{- end }}
 
@@ -273,7 +383,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	{{ if $op.HasCookieParams }}
 		{{ if $otel }}stage = "EncodeCookieParams"{{ end }}
 		{{- template "encode_cookie_parameters" $op }}
-    {{- end }}
+	{{- end }}
 
 	{{- with $securities := $op.Security.Securities }}
 	{
@@ -283,7 +393,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 		{
 			{{- $securityName := $s.Type.Name }}
 			{{ if $otel }}stage = {{ printf "Security:%s" $securityName | quote }}{{ end }}
-			switch err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); {
+			switch err := c.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r); {
 			case err == nil: // if NO error
 				satisfied[{{ div $idx 8 }}] |= 1 << {{ mod $idx 8 }}
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -299,7 +409,7 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 			for _, requirement := range []bitset{
 				{{- range $req := $op.Security.Requirements }}
 				{
-                	{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end -}}
+					{{- range $mask := $req }}{{ printf "%#08b" $mask }},{{ end -}}
 				},
 				{{- end }}
 			} {
@@ -317,12 +427,40 @@ func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) send{{ $op.Name }}(ctx 
 	}
 	{{- end }}
 
+    {{ if $cfg.EditorsEnabled -}}
+    if err := c.onRequest(ctx, r); err != nil {
+        return res, errors.Wrap(err, "client edit request")
+    }
+    {{- end }}
+
+	{{ if $cfg.RequestOptionsEnabled -}}
+	if err := reqCfg.onRequest(r); err != nil {
+		return res, errors.Wrap(err, "edit request")
+	}
+	{{- end }}
+
 	{{ if $otel }}stage = "SendRequest"{{ end }}
+	{{- if $cfg.RequestOptionsEnabled }}
+	resp, err := reqCfg.Client.Do(r)
+	{{- else }}
 	resp, err := c.cfg.Client.Do(r)
+	{{- end }}
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
+
+    {{ if $cfg.EditorsEnabled -}}
+    if err := c.onResponse(ctx, resp); err != nil {
+        return res, errors.Wrap(err, "client edit response")
+    }
+    {{- end }}
+
+	{{ if $cfg.RequestOptionsEnabled -}}
+	if err := reqCfg.onResponse(resp); err != nil {
+		return res, errors.Wrap(err, "edit response")
+	}
+	{{- end }}
 
 	{{ if $otel }}stage = "DecodeResponse"{{ end }}
 	result, err := decode{{ $op.Name }}Response(resp)

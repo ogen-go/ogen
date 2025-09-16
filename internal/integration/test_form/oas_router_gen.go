@@ -49,7 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -61,7 +61,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case 'o': // Prefix: "only"
-				origElem := elem
+
 				if l := len("only"); len(elem) >= l && elem[0:l] == "only" {
 					elem = elem[l:]
 				} else {
@@ -73,7 +73,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'F': // Prefix: "Form"
-					origElem := elem
+
 					if l := len("Form"); len(elem) >= l && elem[0:l] == "Form" {
 						elem = elem[l:]
 					} else {
@@ -92,9 +92,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				case 'M': // Prefix: "MultipartF"
-					origElem := elem
+
 					if l := len("MultipartF"); len(elem) >= l && elem[0:l] == "MultipartF" {
 						elem = elem[l:]
 					} else {
@@ -106,7 +105,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "ile"
-						origElem := elem
+
 						if l := len("ile"); len(elem) >= l && elem[0:l] == "ile" {
 							elem = elem[l:]
 						} else {
@@ -125,9 +124,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-						elem = origElem
 					case 'o': // Prefix: "orm"
-						origElem := elem
+
 						if l := len("orm"); len(elem) >= l && elem[0:l] == "orm" {
 							elem = elem[l:]
 						} else {
@@ -146,15 +144,12 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			case 't': // Prefix: "test"
-				origElem := elem
+
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
 				} else {
@@ -166,7 +161,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 				switch elem[0] {
 				case 'F': // Prefix: "FormURLEncoded"
-					origElem := elem
+
 					if l := len("FormURLEncoded"); len(elem) >= l && elem[0:l] == "FormURLEncoded" {
 						elem = elem[l:]
 					} else {
@@ -185,9 +180,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				case 'M': // Prefix: "Multipart"
-					origElem := elem
+
 					if l := len("Multipart"); len(elem) >= l && elem[0:l] == "Multipart" {
 						elem = elem[l:]
 					} else {
@@ -206,7 +200,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'U': // Prefix: "Upload"
-						origElem := elem
+
 						if l := len("Upload"); len(elem) >= l && elem[0:l] == "Upload" {
 							elem = elem[l:]
 						} else {
@@ -225,12 +219,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				case 'R': // Prefix: "ReuseForm"
-					origElem := elem
+
 					if l := len("ReuseForm"); len(elem) >= l && elem[0:l] == "ReuseForm" {
 						elem = elem[l:]
 					} else {
@@ -242,7 +234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 					switch elem[0] {
 					case 'O': // Prefix: "OptionalSchema"
-						origElem := elem
+
 						if l := len("OptionalSchema"); len(elem) >= l && elem[0:l] == "OptionalSchema" {
 							elem = elem[l:]
 						} else {
@@ -261,9 +253,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-						elem = origElem
 					case 'S': // Prefix: "Schema"
-						origElem := elem
+
 						if l := len("Schema"); len(elem) >= l && elem[0:l] == "Schema" {
 							elem = elem[l:]
 						} else {
@@ -282,12 +273,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				case 'S': // Prefix: "ShareFormSchema"
-					origElem := elem
+
 					if l := len("ShareFormSchema"); len(elem) >= l && elem[0:l] == "ShareFormSchema" {
 						elem = elem[l:]
 					} else {
@@ -306,13 +295,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -394,7 +380,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/"
-			origElem := elem
+
 			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
@@ -406,7 +392,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case 'o': // Prefix: "only"
-				origElem := elem
+
 				if l := len("only"); len(elem) >= l && elem[0:l] == "only" {
 					elem = elem[l:]
 				} else {
@@ -418,7 +404,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'F': // Prefix: "Form"
-					origElem := elem
+
 					if l := len("Form"); len(elem) >= l && elem[0:l] == "Form" {
 						elem = elem[l:]
 					} else {
@@ -429,7 +415,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "OnlyForm"
+							r.name = OnlyFormOperation
 							r.summary = ""
 							r.operationID = "onlyForm"
 							r.pathPattern = "/onlyForm"
@@ -441,9 +427,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				case 'M': // Prefix: "MultipartF"
-					origElem := elem
+
 					if l := len("MultipartF"); len(elem) >= l && elem[0:l] == "MultipartF" {
 						elem = elem[l:]
 					} else {
@@ -455,7 +440,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "ile"
-						origElem := elem
+
 						if l := len("ile"); len(elem) >= l && elem[0:l] == "ile" {
 							elem = elem[l:]
 						} else {
@@ -466,7 +451,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "OnlyMultipartFile"
+								r.name = OnlyMultipartFileOperation
 								r.summary = ""
 								r.operationID = "onlyMultipartFile"
 								r.pathPattern = "/onlyMultipartFile"
@@ -478,9 +463,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-						elem = origElem
 					case 'o': // Prefix: "orm"
-						origElem := elem
+
 						if l := len("orm"); len(elem) >= l && elem[0:l] == "orm" {
 							elem = elem[l:]
 						} else {
@@ -491,7 +475,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "OnlyMultipartForm"
+								r.name = OnlyMultipartFormOperation
 								r.summary = ""
 								r.operationID = "onlyMultipartForm"
 								r.pathPattern = "/onlyMultipartForm"
@@ -503,15 +487,12 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			case 't': // Prefix: "test"
-				origElem := elem
+
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
 				} else {
@@ -523,7 +504,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 				switch elem[0] {
 				case 'F': // Prefix: "FormURLEncoded"
-					origElem := elem
+
 					if l := len("FormURLEncoded"); len(elem) >= l && elem[0:l] == "FormURLEncoded" {
 						elem = elem[l:]
 					} else {
@@ -534,7 +515,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "TestFormURLEncoded"
+							r.name = TestFormURLEncodedOperation
 							r.summary = ""
 							r.operationID = "testFormURLEncoded"
 							r.pathPattern = "/testFormURLEncoded"
@@ -546,9 +527,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				case 'M': // Prefix: "Multipart"
-					origElem := elem
+
 					if l := len("Multipart"); len(elem) >= l && elem[0:l] == "Multipart" {
 						elem = elem[l:]
 					} else {
@@ -558,7 +538,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					if len(elem) == 0 {
 						switch method {
 						case "POST":
-							r.name = "TestMultipart"
+							r.name = TestMultipartOperation
 							r.summary = ""
 							r.operationID = "testMultipart"
 							r.pathPattern = "/testMultipart"
@@ -571,7 +551,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 					switch elem[0] {
 					case 'U': // Prefix: "Upload"
-						origElem := elem
+
 						if l := len("Upload"); len(elem) >= l && elem[0:l] == "Upload" {
 							elem = elem[l:]
 						} else {
@@ -582,7 +562,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "TestMultipartUpload"
+								r.name = TestMultipartUploadOperation
 								r.summary = ""
 								r.operationID = "testMultipartUpload"
 								r.pathPattern = "/testMultipartUpload"
@@ -594,12 +574,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				case 'R': // Prefix: "ReuseForm"
-					origElem := elem
+
 					if l := len("ReuseForm"); len(elem) >= l && elem[0:l] == "ReuseForm" {
 						elem = elem[l:]
 					} else {
@@ -611,7 +589,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 					switch elem[0] {
 					case 'O': // Prefix: "OptionalSchema"
-						origElem := elem
+
 						if l := len("OptionalSchema"); len(elem) >= l && elem[0:l] == "OptionalSchema" {
 							elem = elem[l:]
 						} else {
@@ -622,7 +600,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "TestReuseFormOptionalSchema"
+								r.name = TestReuseFormOptionalSchemaOperation
 								r.summary = ""
 								r.operationID = "testReuseFormOptionalSchema"
 								r.pathPattern = "/testReuseFormOptionalSchema"
@@ -634,9 +612,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-						elem = origElem
 					case 'S': // Prefix: "Schema"
-						origElem := elem
+
 						if l := len("Schema"); len(elem) >= l && elem[0:l] == "Schema" {
 							elem = elem[l:]
 						} else {
@@ -647,7 +624,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							// Leaf node.
 							switch method {
 							case "POST":
-								r.name = "TestReuseFormSchema"
+								r.name = TestReuseFormSchemaOperation
 								r.summary = ""
 								r.operationID = "testReuseFormSchema"
 								r.pathPattern = "/testReuseFormSchema"
@@ -659,12 +636,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-						elem = origElem
 					}
 
-					elem = origElem
 				case 'S': // Prefix: "ShareFormSchema"
-					origElem := elem
+
 					if l := len("ShareFormSchema"); len(elem) >= l && elem[0:l] == "ShareFormSchema" {
 						elem = elem[l:]
 					} else {
@@ -675,7 +650,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						// Leaf node.
 						switch method {
 						case "POST":
-							r.name = "TestShareFormSchema"
+							r.name = TestShareFormSchemaOperation
 							r.summary = ""
 							r.operationID = "testShareFormSchema"
 							r.pathPattern = "/testShareFormSchema"
@@ -687,13 +662,10 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 						}
 					}
 
-					elem = origElem
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false

@@ -32,16 +32,16 @@ jobs:
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ inputs.repository }}
           ref: ${{ inputs.ref }}
           token: ${{ steps.generate-token.outputs.token }}
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
-          go-version: "1.21"
+          go-version: "oldstable"
           cache: false
 
       - name: Get Go environment

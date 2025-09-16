@@ -140,12 +140,22 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 		return nil, errors.Wrap(err, "parse webhooks")
 	}
 
+	tags := make([]openapi.Tag, len(spec.Tags))
+	for i, tag := range spec.Tags {
+		tags[i] = openapi.Tag{
+			Name:        tag.Name,
+			Description: tag.Description,
+		}
+	}
+
 	return &openapi.API{
+		Tags:       tags,
 		Version:    p.version,
 		Servers:    servers,
 		Operations: p.operations,
 		Webhooks:   webhooks,
 		Components: components,
+		Info:       fromOgenInfo(p.spec.Info),
 	}, nil
 }
 

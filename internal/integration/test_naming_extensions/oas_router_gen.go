@@ -49,7 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/healthz"
-			origElem := elem
+
 			if l := len("/healthz"); len(elem) >= l && elem[0:l] == "/healthz" {
 				elem = elem[l:]
 			} else {
@@ -68,7 +68,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -150,7 +149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/healthz"
-			origElem := elem
+
 			if l := len("/healthz"); len(elem) >= l && elem[0:l] == "/healthz" {
 				elem = elem[l:]
 			} else {
@@ -161,7 +160,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				// Leaf node.
 				switch method {
 				case "GET":
-					r.name = "HealthzGet"
+					r.name = HealthzGetOperation
 					r.summary = ""
 					r.operationID = ""
 					r.pathPattern = "/healthz"
@@ -173,7 +172,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false

@@ -47,7 +47,7 @@ func (t String) checkHostname(v string) error {
 		if r == '.' {
 			continue
 		}
-		if !(r >= 'a' && r <= 'z' || r >= '0' && r <= '9' || r == '-' || r >= 'A' && r <= 'Z') {
+		if (r < 'a' || r > 'z') && (r < '0' || r > '9') && r != '-' && (r < 'A' || r > 'Z') {
 			if unicode.IsSpace(r) {
 				return errors.Errorf("space character (%U)", r)
 			}
@@ -124,7 +124,9 @@ func (t String) Validate(v string) error {
 			return errors.Wrap(err, "execute regex")
 		}
 		if !match {
-			return &NoRegexMatchError{}
+			return &NoRegexMatchError{
+				Pattern: r,
+			}
 		}
 	}
 	return nil

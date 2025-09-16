@@ -2,13 +2,12 @@ package gen
 
 import (
 	"fmt"
-	"strconv"
-	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/location"
 )
 
 func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type, error) {
@@ -28,107 +27,20 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 	if f := schema.Format; f != "" && !t.IsNumeric() {
 		return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)
 	}
-
-	type namingStrategy int
-	const (
-		pascalName namingStrategy = iota
-		pascalSpecialName
-		cleanSuffix
-		indexSuffix
-		_lastStrategy
-	)
-
-	vstrCache := make(map[int]string, len(schema.Enum))
-	nameEnum := func(s namingStrategy, idx int, v any) (string, error) {
-		vstr, ok := vstrCache[idx]
-		if !ok {
-			vstr = fmt.Sprintf("%v", v)
-			if vstr == "" {
-				vstr = "Empty"
-			}
-			vstrCache[idx] = vstr
-		}
-
-		switch s {
-		case pascalName:
-			return pascal(name, vstr)
-		case pascalSpecialName:
-			return pascalSpecial(name, vstr)
-		case cleanSuffix:
-			return name + "_" + cleanSpecial(vstr), nil
-		case indexSuffix:
-			return name + "_" + strconv.Itoa(idx), nil
-		default:
-			panic(unreachable(s))
-		}
+	if err := g.validateEnumValues(schema); err != nil {
+		return nil, errors.Wrap(err, "validate enum")
 	}
 
-	isException := func(start namingStrategy) bool {
-		if start == pascalName {
-			// This code is called when vstrCache is fully populated, so it's ok.
-			for _, v := range vstrCache {
-				if v == "" {
-					continue
-				}
-
-				// Do not use pascal strategy for enum values starting with special characters.
-				//
-				// This rule is created to be able to distinguish
-				// between negative and positive numbers in this case:
-				//
-				// enum:
-				//   - '1'
-				//   - '-2'
-				//   - '3'
-				//   - '-4'
-				firstRune, _ := utf8.DecodeRuneInString(v)
-				if firstRune == utf8.RuneError {
-					panic(fmt.Sprintf("invalid enum value: %q", v))
-				}
-
-				_, isFirstCharSpecial := namedChar[firstRune]
-				if isFirstCharSpecial {
-					return true
-				}
-			}
-		}
-
-		return false
-	}
-
-	chosenStrategy, err := func() (namingStrategy, error) {
-	nextStrategy:
-		for strategy := pascalName; strategy < _lastStrategy; strategy++ {
-			// Treat enum type name as duplicate to prevent collisions.
-			names := map[string]struct{}{
-				name: {},
-			}
-			for idx, v := range schema.Enum {
-				k, err := nameEnum(strategy, idx, v)
-				if err != nil {
-					continue nextStrategy
-				}
-				if _, ok := names[k]; ok {
-					continue nextStrategy
-				}
-				names[k] = struct{}{}
-			}
-			if isException(strategy) {
-				continue nextStrategy
-			}
-			return strategy, nil
-		}
-		return 0, errors.Errorf("unable to generate variant names for enum %q", name)
-	}()
+	nameGen, err := enumVariantNameGen(name, schema.Enum)
 	if err != nil {
 		return nil, errors.Wrap(err, "choose strategy")
 	}
 
 	var variants []*ir.EnumVariant
 	for idx, v := range schema.Enum {
-		variantName, err := nameEnum(chosenStrategy, idx, v)
+		variantName, err := nameGen(v, idx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "variant %q [%d]", vstrCache[idx], idx)
+			return nil, errors.Wrapf(err, "variant %q [%d]", fmt.Sprintf("%v", v), idx)
 		}
 
 		variants = append(variants, &ir.EnumVariant{
@@ -144,6 +56,64 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		EnumVariants: variants,
 		Schema:       schema,
 	}, nil
+}
+
+func (g *schemaGen) validateEnumValues(s *jsonschema.Schema) error {
+	reportErr := func(idx int, err error) error {
+		pos, ok := s.Pointer.Field("enum").Index(idx).Position()
+		if !ok {
+			return err
+		}
+		return &location.Error{
+			File: s.File(),
+			Pos:  pos,
+			Err:  err,
+		}
+	}
+
+	switch typ := s.Type; typ {
+	case jsonschema.Object, jsonschema.Array, jsonschema.Empty:
+		return &ErrNotImplemented{Name: "non-primitive enum"}
+	case jsonschema.Integer:
+		for idx, val := range s.Enum {
+			if _, ok := val.(int64); !ok {
+				return reportErr(idx, errors.Errorf("enum value should be an integer, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.Number:
+		for idx, val := range s.Enum {
+			switch val.(type) {
+			case int64, float64:
+			default:
+				return reportErr(idx, errors.Errorf("enum value should be a number, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.String:
+		for idx, val := range s.Enum {
+			if _, ok := val.(string); !ok {
+				return reportErr(idx, errors.Errorf("enum value should be a string, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.Boolean:
+		for idx, val := range s.Enum {
+			if _, ok := val.(bool); !ok {
+				return reportErr(idx, errors.Errorf("enum value should be a boolean, got %T", val))
+			}
+		}
+		return nil
+	case jsonschema.Null:
+		for idx, val := range s.Enum {
+			if val != nil {
+				return reportErr(idx, errors.Errorf("enum value should be a null, got %T", val))
+			}
+		}
+		return nil
+	default:
+		panic(fmt.Sprintf("unexpected schema type %q", typ))
+	}
 }
 
 func (g *schemaGen) parseSimple(schema *jsonschema.Schema) *ir.Type {

@@ -219,6 +219,20 @@ func (UnimplementedHandler) TestInlineOneof(ctx context.Context) (r *TestInlineO
 	return r, ht.ErrNotImplemented
 }
 
+// TestIssue1310 implements testIssue1310 operation.
+//
+// GET /testIssue1310
+func (UnimplementedHandler) TestIssue1310(ctx context.Context) (r *Issue1310, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestIssue1461 implements testIssue1461 operation.
+//
+// GET /testIssue1461
+func (UnimplementedHandler) TestIssue1461(ctx context.Context) (r *Issue1461, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestNullableOneofs implements testNullableOneofs operation.
 //
 // GET /testNullableOneofs

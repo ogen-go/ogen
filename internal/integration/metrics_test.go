@@ -46,8 +46,11 @@ func (h metricsTestHandler) APIKey(ctx context.Context, operationName string) (a
 }
 
 var _ api.Handler = metricsTestHandler{}
-var _ api.SecurityHandler = metricsTestHandler{}
-var _ api.SecuritySource = metricsTestHandler{}
+
+var (
+	_ api.SecurityHandler = metricsTestHandler{}
+	_ api.SecuritySource  = metricsTestHandler{}
+)
 
 func labelerMiddleware(req middleware.Request, next middleware.Next) (middleware.Response, error) {
 	labeler, _ := api.LabelerFromContext(req.Context)
@@ -115,6 +118,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("oas.operation", "petNameByID"),
 									attribute.String("http.request.method", "GET"),
 									attribute.String("http.route", "/pet/name/{id}"),
+									attribute.Int("http.response.status_code", 200),
 								),
 							},
 						},
@@ -133,6 +137,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("oas.operation", "petNameByID"),
 									attribute.String("http.request.method", "GET"),
 									attribute.String("http.route", "/pet/name/{id}"),
+									attribute.Int("http.response.status_code", 200),
 								),
 							},
 						},
@@ -162,6 +167,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("oas.operation", "petGetByName"),
 									attribute.String("http.request.method", "GET"),
 									attribute.String("http.route", "/pet/{name}"),
+									attribute.Int("http.response.status_code", 500),
 								),
 							},
 						},
@@ -180,6 +186,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("oas.operation", "petGetByName"),
 									attribute.String("http.request.method", "GET"),
 									attribute.String("http.route", "/pet/{name}"),
+									attribute.Int("http.response.status_code", 500),
 								),
 							},
 						},
@@ -197,6 +204,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("oas.operation", "petGetByName"),
 									attribute.String("http.request.method", "GET"),
 									attribute.String("http.route", "/pet/{name}"),
+									attribute.Int("http.response.status_code", 500),
 								),
 							},
 						},
@@ -229,6 +237,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.request.method", "GET"),
 									attribute.String("http.route", "/pet/name/{id}"),
 									attribute.Int("pet_id", 1),
+									attribute.Int("http.response.status_code", 200),
 								),
 							},
 						},
@@ -248,6 +257,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.request.method", "GET"),
 									attribute.String("http.route", "/pet/name/{id}"),
 									attribute.Int("pet_id", 1),
+									attribute.Int("http.response.status_code", 200),
 								),
 							},
 						},
@@ -281,6 +291,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.route", "/pet/{name}"),
 									attribute.String("pet_name", "Fluffy"),
 									attribute.String("error.type", "timeout"),
+									attribute.Int("http.response.status_code", 500),
 								),
 							},
 						},
@@ -301,6 +312,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.route", "/pet/{name}"),
 									attribute.String("pet_name", "Fluffy"),
 									attribute.String("error.type", "timeout"),
+									attribute.Int("http.response.status_code", 500),
 								),
 							},
 						},
@@ -320,6 +332,7 @@ func TestServerMetrics(t *testing.T) {
 									attribute.String("http.route", "/pet/{name}"),
 									attribute.String("pet_name", "Fluffy"),
 									attribute.String("error.type", "timeout"),
+									attribute.Int("http.response.status_code", 500),
 								),
 							},
 						},

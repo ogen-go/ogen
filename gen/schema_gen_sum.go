@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"path"
 	"reflect"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
@@ -94,7 +94,7 @@ func ensureNoInfiniteRecursion(parent *jsonschema.Schema) error {
 				if _, ok := ctx[ref]; ok {
 					err := errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
 
-					pos, ok := s.Pointer.Position()
+					pos, ok := s.Position()
 					if !ok {
 						return err
 					}
@@ -174,6 +174,73 @@ func schemaName(k jsonschema.Ref) (string, bool) {
 	return path.Base(after), true
 }
 
+// handleExplicitDiscriminator processes explicit discriminator mappings for both oneOf and anyOf.
+// Returns true if discriminator was handled, false if no discriminator present.
+func (g *schemaGen) handleExplicitDiscriminator(sum *ir.Type, schema *jsonschema.Schema, variants []*jsonschema.Schema) (bool, error) {
+	d := schema.Discriminator
+	if d == nil {
+		return false, nil
+	}
+
+	propName := d.PropertyName
+
+	// Build mappings and collect keys
+	var mappingKeys []string
+	for k, v := range d.Mapping {
+		var found bool
+		for i, s := range sum.SumOf {
+			if !s.Is(ir.KindStruct, ir.KindMap) {
+				return false, errors.Wrapf(&ErrNotImplemented{"unsupported sum type variant"}, "%q", s.Kind)
+			}
+			vschema := s.Schema
+			if vschema == nil {
+				vschema = variants[i]
+			}
+
+			if vschema.Ref == v.Ref {
+				found = true
+				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
+					Key:  k,
+					Type: s,
+				})
+				mappingKeys = append(mappingKeys, k)
+				break
+			}
+		}
+		if !found {
+			return false, errors.Errorf("mapping %q: variant %q not found", k, v.Ref)
+		}
+	}
+
+	// Only proceed if we have explicit mappings
+	if len(mappingKeys) == 0 {
+		return false, nil
+	}
+
+	// Set discriminator only if we have mappings
+	sum.SumSpec.Discriminator = propName
+
+	// Generate names using the helper
+	nameGen, err := discriminatorMappingNameGen(sum.Name, mappingKeys)
+	if err != nil {
+		return true, err
+	}
+
+	// Generate Go variable name for each mapping Key
+	for idx, m := range sum.SumSpec.Mapping {
+		name, err := nameGen(m.Key, idx)
+		if err != nil {
+			return true, errors.Wrapf(err, "variant %q", m.Key)
+		}
+		sum.SumSpec.Mapping[idx].Name = name
+	}
+
+	slices.SortStableFunc(sum.SumSpec.Mapping, func(a, b ir.SumSpecMap) int {
+		return strings.Compare(a.Key, b.Key)
+	})
+	return true, nil
+}
+
 func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema, side bool) (*ir.Type, error) {
 	if err := ensureNoInfiniteRecursion(schema); err != nil {
 		return nil, err
@@ -233,6 +300,12 @@ func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema, side bool) (*i
 		}
 		return sum, nil
 	}
+
+	// Check for explicit discriminator
+	if handled, err := g.handleExplicitDiscriminator(sum, schema, schema.AnyOf); handled {
+		return sum, err
+	}
+
 	return nil, &ErrNotImplemented{"complex anyOf"}
 }
 
@@ -259,79 +332,79 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 	}
 
 	// 1st case: explicit discriminator.
-	if d := schema.Discriminator; d != nil {
-		propName := schema.Discriminator.PropertyName
-		sum.SumSpec.Discriminator = propName
-		for k, v := range schema.Discriminator.Mapping {
-			// Explicit mapping.
-			var found bool
-			for i, s := range sum.SumOf {
-				if !s.Is(ir.KindStruct, ir.KindMap) {
-					return nil, errors.Wrapf(&ErrNotImplemented{"unsupported sum type variant"}, "%q", s.Kind)
-				}
-				vschema := s.Schema
-				if vschema == nil {
-					vschema = schema.OneOf[i]
+	if handled, err := g.handleExplicitDiscriminator(sum, schema, schema.OneOf); handled {
+		return sum, err
+	}
+
+	// 2nd case: implicit mapping based on schema references (only if discriminator present but no explicit mappings).
+	if schema.Discriminator != nil && len(sum.SumSpec.Mapping) == 0 {
+		// Implicit mapping, defaults to type name.
+		keys := map[string]struct{}{}
+		var mappingKeys []string
+		for i, s := range sum.SumOf {
+			var ref jsonschema.Ref
+			if s.Schema != nil {
+				ref = s.Schema.Ref
+			} else {
+				ref = schema.OneOf[i].Ref
+			}
+
+			key, err := func() (string, error) {
+				// Spec says (https://spec.openapis.org/oas/v3.1.0#discriminator-object):
+				//
+				// 	The expectation now is that a property with name petType MUST be present in the response payload,
+				// 	and the value will correspond to the name of a schema defined in the OAS document
+				//
+				// What is name of a schema? Is it the last part of the pointer?
+				// What if pointer part of reference is empty, like `User.json#`?
+				//
+				// As always, OpenAPI is not clear enough.
+				key, ok := schemaName(ref)
+				if !ok {
+					return "", errors.Wrap(
+						&ErrNotImplemented{"complicated reference"},
+						"unable to extract schema name",
+					)
 				}
 
-				if vschema.Ref == v.Ref {
-					found = true
-					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-						Key:  k,
-						Type: s,
-					})
+				if _, ok := keys[key]; ok {
+					return "", errors.Wrapf(
+						&ErrNotImplemented{"duplicate mapping key"},
+						"key %q", key,
+					)
 				}
+				keys[key] = struct{}{}
+				return key, nil
+			}()
+			if err != nil {
+				return nil, errors.Wrapf(err, "mapping %q", ref)
 			}
-			if !found {
-				return nil, errors.Errorf("discriminator: unable to map %q to %q", k, v.Ref)
-			}
+
+			sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
+				Key:  key,
+				Type: s,
+				// Name will be set below
+			})
+			mappingKeys = append(mappingKeys, key)
 		}
-		if len(sum.SumSpec.Mapping) == 0 {
-			// Implicit mapping, defaults to type name.
-			keys := map[string]struct{}{}
-			for i, s := range sum.SumOf {
-				var ref jsonschema.Ref
-				if s.Schema != nil {
-					ref = s.Schema.Ref
-				} else {
-					ref = schema.OneOf[i].Ref
-				}
 
-				key, err := func() (string, error) {
-					// Spec says (https://spec.openapis.org/oas/v3.1.0#discriminator-object):
-					//
-					// 	The expectation now is that a property with name petType MUST be present in the response payload,
-					// 	and the value will correspond to the name of a schema defined in the OAS document
-					//
-					// What is name of a schema? Is it the last part of the pointer?
-					// What if pointer part of reference is empty, like `User.json#`?
-					//
-					// As always, OpenAPI is not clear enough.
-					key, ok := schemaName(ref)
-					if !ok {
-						return "", errors.Wrap(
-							&ErrNotImplemented{"complicated reference"},
-							"unable to extract schema name",
-						)
-					}
+		// Generate names using the helper (only if we have mappings)
+		if len(mappingKeys) > 0 {
+			// Set discriminator only if we have mappings
+			sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
 
-					if _, ok := keys[key]; ok {
-						return "", errors.Wrapf(
-							&ErrNotImplemented{"duplicate mapping key"},
-							"key %q", key,
-						)
-					}
-					keys[key] = struct{}{}
-					return key, nil
-				}()
+			nameGen, err := discriminatorMappingNameGen(sum.Name, mappingKeys)
+			if err != nil {
+				return nil, err
+			}
+
+			// Apply generated names to mappings
+			for idx, m := range sum.SumSpec.Mapping {
+				name, err := nameGen(m.Key, idx)
 				if err != nil {
-					return nil, errors.Wrapf(err, "mapping %q", ref)
+					return nil, errors.Wrapf(err, "variant %q", m.Key)
 				}
-
-				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
-					Key:  key,
-					Type: s,
-				})
+				sum.SumSpec.Mapping[idx].Name = name
 			}
 		}
 		slices.SortStableFunc(sum.SumSpec.Mapping, func(a, b ir.SumSpecMap) int {
@@ -340,13 +413,13 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		return sum, nil
 	}
 
-	// 2nd case: distinguish by serialization type.
+	// 3rd case: distinguish by serialization type.
 	if canUseTypeDiscriminator(sum.SumOf, true) {
 		sum.SumSpec.TypeDiscriminator = true
 		return sum, nil
 	}
 
-	// 3rd case: distinguish by unique fields.
+	// 4th case: distinguish by unique fields.
 
 	// Determine unique fields for each SumOf variant.
 	uniq := map[string]map[string]struct{}{}
@@ -487,6 +560,14 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
 	if err := ensureNoInfiniteRecursion(schema); err != nil {
 		return nil, err
+	}
+
+	// If there is only one schema in allOf, avoid merging to keep the reference.
+	if len(schema.AllOf) == 1 {
+		s := schema.AllOf[0]
+		if s != nil {
+			return g.generate(name, s, false)
+		}
 	}
 
 	mergedSchema, err := mergeNSchemes(schema.AllOf)
@@ -836,6 +917,12 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		case s1.AdditionalProperties == nil && s2.AdditionalProperties != nil:
 			r.AdditionalProperties = s2.AdditionalProperties
 			r.Item = s2.Item
+		case reflect.DeepEqual(s1.AdditionalProperties, s2.AdditionalProperties):
+			r.AdditionalProperties = s1.AdditionalProperties
+			r.Item, err = mergeSchemes(s1.Item, s2.Item)
+			if err != nil {
+				return nil, errors.Wrap(err, "merge additionalProperties schema")
+			}
 		case s1.AdditionalProperties != nil && s2.AdditionalProperties != nil:
 			return nil, &ErrNotImplemented{Name: "allOf additionalProperties merging"}
 		}

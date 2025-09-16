@@ -8,7 +8,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
@@ -92,7 +91,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -128,7 +127,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -164,7 +163,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -200,7 +199,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -236,7 +235,7 @@ func decodeComplicatedParameterNameGetParams(args [0]string, argsEscaped bool, r
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -328,7 +327,7 @@ func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Req
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -425,7 +424,7 @@ func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Req
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -468,7 +467,7 @@ func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Req
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -483,7 +482,7 @@ func decodeContentParametersParams(args [1]string, argsEscaped bool, r *http.Req
 
 // CookieParameterParams is parameters of cookieParameter operation.
 type CookieParameterParams struct {
-	Value string
+	Value string `customTag:"test"`
 }
 
 func unpackCookieParameterParams(packed middleware.Parameters) (params CookieParameterParams) {
@@ -523,7 +522,7 @@ func decodeCookieParameterParams(args [0]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -538,7 +537,7 @@ func decodeCookieParameterParams(args [0]string, argsEscaped bool, r *http.Reque
 
 // HeaderParameterParams is parameters of headerParameter operation.
 type HeaderParameterParams struct {
-	XValue string
+	XValue string `customTag:"test"`
 }
 
 func unpackHeaderParameterParams(packed middleware.Parameters) (params HeaderParameterParams) {
@@ -578,7 +577,7 @@ func decodeHeaderParameterParams(args [0]string, argsEscaped bool, r *http.Reque
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -593,7 +592,7 @@ func decodeHeaderParameterParams(args [0]string, argsEscaped bool, r *http.Reque
 
 // ObjectCookieParameterParams is parameters of objectCookieParameter operation.
 type ObjectCookieParameterParams struct {
-	Value OneLevelObject
+	Value OneLevelObject `customTag:"test"`
 }
 
 func unpackObjectCookieParameterParams(packed middleware.Parameters) (params ObjectCookieParameterParams) {
@@ -622,7 +621,7 @@ func decodeObjectCookieParameterParams(args [0]string, argsEscaped bool, r *http
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -637,8 +636,8 @@ func decodeObjectCookieParameterParams(args [0]string, argsEscaped bool, r *http
 
 // ObjectQueryParameterParams is parameters of objectQueryParameter operation.
 type ObjectQueryParameterParams struct {
-	FormObject OptOneLevelObject
-	DeepObject OptOneLevelObject
+	FormObject OptOneLevelObject `customTag:"test"`
+	DeepObject OptOneLevelObject `customTag:"test"`
 }
 
 func unpackObjectQueryParameterParams(packed middleware.Parameters) (params ObjectQueryParameterParams) {
@@ -732,8 +731,8 @@ func decodeObjectQueryParameterParams(args [0]string, argsEscaped bool, r *http.
 
 // OptionalArrayParameterParams is parameters of optionalArrayParameter operation.
 type OptionalArrayParameterParams struct {
-	Query  []string
-	Header []string
+	Query  []string `customTag:"test"`
+	Header []string `customTag:"test"`
 }
 
 func unpackOptionalArrayParameterParams(packed middleware.Parameters) (params OptionalArrayParameterParams) {
@@ -850,7 +849,7 @@ func decodeOptionalArrayParameterParams(args [0]string, argsEscaped bool, r *htt
 
 // PathParameterParams is parameters of pathParameter operation.
 type PathParameterParams struct {
-	Value string
+	Value string `customTag:"test"`
 }
 
 func unpackPathParameterParams(packed middleware.Parameters) (params PathParameterParams) {
@@ -1010,7 +1009,7 @@ func decodeSameNameParams(args [1]string, argsEscaped bool, r *http.Request) (pa
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -1076,7 +1075,7 @@ func decodeSimilarNamesParams(args [0]string, argsEscaped bool, r *http.Request)
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {
@@ -1110,7 +1109,7 @@ func decodeSimilarNamesParams(args [0]string, argsEscaped bool, r *http.Request)
 				return err
 			}
 		} else {
-			return validate.ErrFieldRequired
+			return err
 		}
 		return nil
 	}(); err != nil {

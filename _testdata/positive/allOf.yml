@@ -168,6 +168,21 @@ paths:
       responses:
         '200':
           description: ok
+  "/referencedAllOfNullable":
+    post:
+      operationId: referencedAllOfNullable
+      description: referenced allOf, but requestBody contains nullable refs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ReferencedAllOfNullable"
+          multipart/form-data:
+            schema:
+              "$ref": "#/components/schemas/ReferencedAllOfNullable"
+      responses:
+        '200':
+          description: ok
 components:
   schemas:
     Robot:
@@ -203,3 +218,17 @@ components:
           format: uuid
         location:
           "$ref": "#/components/schemas/Location"
+    ReferencedAllOfNullable:
+      type: object
+      properties:
+        location:
+          "$ref": "#/components/schemas/Location"
+        allOfLocation:
+          type: object
+          allOf:
+            - "$ref": "#/components/schemas/Location"
+        nullableAllOfLocation:
+          type: object
+          nullable: true
+          allOf:
+            - "$ref": "#/components/schemas/Location"

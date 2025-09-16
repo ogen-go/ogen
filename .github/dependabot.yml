@@ -8,6 +8,9 @@ updates:
       opentelemetry:
         patterns:
           - "go.opentelemetry.io/*"
+      golang:
+        patterns:
+          - "golang.org/x/*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

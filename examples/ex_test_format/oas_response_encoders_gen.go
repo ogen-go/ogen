@@ -12,10 +12,9 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
+	"github.com/ogen-go/ogen/json"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
-
-	"github.com/ogen-go/ogen/json"
 )
 
 func encodeTestQueryParameterResponse(response *Error, w http.ResponseWriter, span trace.Span) error {

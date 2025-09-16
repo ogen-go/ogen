@@ -50,7 +50,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/pets"
-			origElem := elem
+
 			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
 				elem = elem[l:]
 			} else {
@@ -71,7 +71,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 			switch elem[0] {
 			case '/': // Prefix: "/"
-				origElem := elem
+
 				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 					elem = elem[l:]
 				} else {
@@ -79,7 +79,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				// Param: "petId"
-				// Leaf parameter
+				// Leaf parameter, slashes are prohibited
+				idx := strings.IndexByte(elem, '/')
+				if idx >= 0 {
+					break
+				}
 				args[0] = elem
 				elem = ""
 
@@ -97,10 +101,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -182,7 +184,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/pets"
-			origElem := elem
+
 			if l := len("/pets"); len(elem) >= l && elem[0:l] == "/pets" {
 				elem = elem[l:]
 			} else {
@@ -192,7 +194,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			if len(elem) == 0 {
 				switch method {
 				case "GET":
-					r.name = "ListPets"
+					r.name = ListPetsOperation
 					r.summary = "List all pets"
 					r.operationID = "listPets"
 					r.pathPattern = "/pets"
@@ -200,7 +202,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					r.count = 0
 					return r, true
 				case "POST":
-					r.name = "CreatePets"
+					r.name = CreatePetsOperation
 					r.summary = "Create a pet"
 					r.operationID = "createPets"
 					r.pathPattern = "/pets"
@@ -213,7 +215,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 			}
 			switch elem[0] {
 			case '/': // Prefix: "/"
-				origElem := elem
+
 				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 					elem = elem[l:]
 				} else {
@@ -221,7 +223,11 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 
 				// Param: "petId"
-				// Leaf parameter
+				// Leaf parameter, slashes are prohibited
+				idx := strings.IndexByte(elem, '/')
+				if idx >= 0 {
+					break
+				}
 				args[0] = elem
 				elem = ""
 
@@ -229,7 +235,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					// Leaf node.
 					switch method {
 					case "GET":
-						r.name = "ShowPetById"
+						r.name = ShowPetByIdOperation
 						r.summary = "Info for a specific pet"
 						r.operationID = "showPetById"
 						r.pathPattern = "/pets/{petId}"
@@ -241,10 +247,8 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 					}
 				}
 
-				elem = origElem
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false

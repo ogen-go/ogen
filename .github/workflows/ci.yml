@@ -27,12 +27,12 @@ jobs:
             flags: "-race"
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
-          go-version: "1.21"
+          go-version: "oldstable"
           cache: false
 
       - name: Get Go environment
@@ -81,12 +81,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
-          go-version: "1.21"
+          go-version: "oldstable"
           cache: false
 
       - name: Get Go environment
@@ -107,3 +107,28 @@ jobs:
 
       - name: Run tests
         run: cd examples && go test ./...
+
+  ensure-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Build image
+        run: |
+          docker build . \
+          --tag ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA
+
+      - name: Check image
+        run: |
+          docker run \
+          -v ./_testdata/examples/petstore.yml:/petstore.yml \
+          --rm \
+          ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA /petstore.yml
+
+      - name: Check image certs
+        run: |
+          docker run \
+          --rm \
+          ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA \
+          https://raw.githubusercontent.com/ogen-go/ogen/refs/heads/main/_testdata/examples/petstore.yml

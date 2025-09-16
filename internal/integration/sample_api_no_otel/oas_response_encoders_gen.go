@@ -8,7 +8,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	ht "github.com/ogen-go/ogen/http"
 )
 
@@ -270,6 +269,9 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		w.WriteHeader(200)
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -313,6 +315,9 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 		w.WriteHeader(200)
 
 		writer := w
+		if closer, ok := response.Data.(io.Closer); ok {
+			defer closer.Close()
+		}
 		if _, err := io.Copy(writer, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -499,6 +504,32 @@ func encodeTestFloatValidationResponse(response *TestFloatValidationOK, w http.R
 }
 
 func encodeTestInlineOneofResponse(response *TestInlineOneOf, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(200)
+
+	e := new(jx.Encoder)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeTestIssue1310Response(response *Issue1310, w http.ResponseWriter) error {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.WriteHeader(200)
+
+	e := new(jx.Encoder)
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func encodeTestIssue1461Response(response *Issue1461, w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(200)
 

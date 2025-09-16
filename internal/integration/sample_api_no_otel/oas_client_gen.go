@@ -8,12 +8,16 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/uri"
 )
+
+func trimTrailingSlashes(u *url.URL) {
+	u.Path = strings.TrimRight(u.Path, "/")
+	u.RawPath = strings.TrimRight(u.RawPath, "/")
+}
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
@@ -145,6 +149,14 @@ type Invoker interface {
 	//
 	// GET /testInlineOneof
 	TestInlineOneof(ctx context.Context) (*TestInlineOneOf, error)
+	// TestIssue1310 invokes testIssue1310 operation.
+	//
+	// GET /testIssue1310
+	TestIssue1310(ctx context.Context) (*Issue1310, error)
+	// TestIssue1461 invokes testIssue1461 operation.
+	//
+	// GET /testIssue1461
+	TestIssue1461(ctx context.Context) (*Issue1461, error)
 	// TestNullableOneofs invokes testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs
@@ -173,11 +185,6 @@ type Client struct {
 var _ Handler = struct {
 	*Client
 }{}
-
-func trimTrailingSlashes(u *url.URL) {
-	u.Path = strings.TrimRight(u.Path, "/")
-	u.RawPath = strings.TrimRight(u.RawPath, "/")
-}
 
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, sec SecuritySource, opts ...ClientOption) (*Client, error) {
@@ -1356,7 +1363,7 @@ func (c *Client) sendSecurityTest(ctx context.Context) (res string, err error) {
 		var satisfied bitset
 		{
 
-			switch err := c.securityAPIKey(ctx, "SecurityTest", r); {
+			switch err := c.securityAPIKey(ctx, SecurityTestOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -1496,6 +1503,74 @@ func (c *Client) sendTestInlineOneof(ctx context.Context) (res *TestInlineOneOf,
 	defer resp.Body.Close()
 
 	result, err := decodeTestInlineOneofResponse(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestIssue1310 invokes testIssue1310 operation.
+//
+// GET /testIssue1310
+func (c *Client) TestIssue1310(ctx context.Context) (*Issue1310, error) {
+	res, err := c.sendTestIssue1310(ctx)
+	return res, err
+}
+
+func (c *Client) sendTestIssue1310(ctx context.Context) (res *Issue1310, err error) {
+
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/testIssue1310"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestIssue1310Response(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestIssue1461 invokes testIssue1461 operation.
+//
+// GET /testIssue1461
+func (c *Client) TestIssue1461(ctx context.Context) (*Issue1461, error) {
+	res, err := c.sendTestIssue1461(ctx)
+	return res, err
+}
+
+func (c *Client) sendTestIssue1461(ctx context.Context) (res *Issue1461, err error) {
+
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/testIssue1461"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestIssue1461Response(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

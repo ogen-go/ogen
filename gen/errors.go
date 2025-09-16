@@ -2,12 +2,13 @@ package gen
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
-	"github.com/ogen-go/ogen/gen/ir"
 	"go.uber.org/zap"
-	"golang.org/x/exp/slices"
+
+	"github.com/ogen-go/ogen/gen/ir"
 )
 
 type unimplementedError interface {

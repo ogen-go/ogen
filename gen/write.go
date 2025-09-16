@@ -8,11 +8,11 @@ import (
 	"regexp"
 	"runtime"
 	"runtime/pprof"
+	"slices"
 	"sync"
 	"text/template"
 
 	"github.com/go-faster/errors"
-	"golang.org/x/exp/slices"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/tools/imports"
 
@@ -35,6 +35,7 @@ type TemplateConfig struct {
 	Securities        map[string]*ir.Security
 	Router            Router
 	WebhookRouter     WebhookRouter
+	Imports           map[string]string
 
 	PathsClientEnabled        bool
 	PathsServerEnabled        bool
@@ -42,8 +43,10 @@ type TemplateConfig struct {
 	WebhookServerEnabled      bool
 	OpenTelemetryEnabled      bool
 	SecurityReentrantEnabled  bool
+	RequestOptionsEnabled     bool
 	RequestValidationEnabled  bool
 	ResponseValidationEnabled bool
+	EditorsEnabled            bool
 
 	skipTestRegex *regexp.Regexp
 }
@@ -264,14 +267,17 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Securities:                g.securities,
 		Router:                    g.router,
 		WebhookRouter:             g.webhookRouter,
+		Imports:                   g.imports,
 		PathsClientEnabled:        features.Has(PathsClient),
 		PathsServerEnabled:        features.Has(PathsServer),
 		WebhookClientEnabled:      features.Has(WebhooksClient) && len(g.webhooks) > 0,
 		WebhookServerEnabled:      features.Has(WebhooksServer) && len(g.webhooks) > 0,
 		OpenTelemetryEnabled:      features.Has(OgenOtel),
 		SecurityReentrantEnabled:  features.Has(ClientSecurityReentrant),
+		RequestOptionsEnabled:     features.Has(ClientRequestOptions),
 		RequestValidationEnabled:  features.Has(ClientRequestValidation),
 		ResponseValidationEnabled: features.Has(ServerResponseValidation),
+		EditorsEnabled:            features.Has(ClientEditors),
 		// Unused for now.
 		skipTestRegex: nil,
 	}
@@ -332,6 +338,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"faker", features.Has(DebugExampleTests)},
 		{"unimplemented", features.Has(OgenUnimplemented) && genServer},
 		{"labeler", features.Has(OgenOtel) && genServer},
+		{"operations", (genClient || genServer)},
 	} {
 		t := t
 		if !t.enabled {
@@ -382,6 +389,6 @@ func (g *Generator) hasParams() bool {
 
 func (g *Generator) hasURIObjectParams() bool {
 	return g.hasAnyType(func(t *ir.Type) bool {
-		return t.IsStruct() && t.HasFeature("uri")
+		return (t.IsStruct() || t.IsMap()) && t.HasFeature("uri")
 	})
 }

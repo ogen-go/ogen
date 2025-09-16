@@ -10,7 +10,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/ogenerrors"
@@ -116,7 +115,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImage
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -179,7 +178,7 @@ func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, _ err
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {
@@ -242,7 +241,7 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbn
 							return err
 						}
 					} else {
-						return validate.ErrFieldRequired
+						return err
 					}
 					return nil
 				}(); err != nil {

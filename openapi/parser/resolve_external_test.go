@@ -278,6 +278,7 @@ func TestExternalReference(t *testing.T) {
 			Minor: 1,
 			Patch: 0,
 		},
+		Tags: []openapi.Tag{},
 		Operations: []*openapi.Operation{
 			{
 				OperationID: "testGet",

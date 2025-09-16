@@ -3,7 +3,11 @@
 {{- $t := $.Type }}
 {{- $var := $.Var }}
 {{- if $t.IsPrimitive }}
-	return e.EncodeValue(conv.{{ $t.ToString }}({{ $var }}))
+	{{ if $t.JSON.TimeFormat -}}
+		return e.EncodeValue({{ $var }}.Format({{ $t.JSON.TimeFormat }}))
+	{{- else -}}
+		return e.EncodeValue(conv.{{ $t.ToString }}({{ $var }}))
+	{{- end }}
 {{- else if $t.IsEnum }}
 	return e.EncodeValue(conv.{{ $t.ToString }}({{ $t.Primitive.String }}({{ $var }})))
 {{- else if $t.IsArray  }}
@@ -33,6 +37,8 @@
 	}
 	return nil
 {{- else if $t.IsStruct }}
+	return {{ $var }}.EncodeURI(e)
+{{- else if $t.IsMap }}
 	return {{ $var }}.EncodeURI(e)
 {{- else }}
 	{{ errorf "unexpected kind %s" $t.Kind }}

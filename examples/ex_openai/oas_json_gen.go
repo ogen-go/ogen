@@ -8,7 +8,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -8225,6 +8224,7 @@ func (o *OptCreateAnswerRequestLogitBias) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptCreateAnswerRequestLogitBias to nil")
 	}
 	o.Set = true
+	o.Value = new(CreateAnswerRequestLogitBias)
 	if err := o.Value.Decode(d); err != nil {
 		return err
 	}
@@ -8258,6 +8258,7 @@ func (o *OptCreateChatCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptCreateChatCompletionRequestLogitBias to nil")
 	}
 	o.Set = true
+	o.Value = new(CreateChatCompletionRequestLogitBias)
 	if err := o.Value.Decode(d); err != nil {
 		return err
 	}
@@ -8324,6 +8325,7 @@ func (o *OptCreateClassificationRequestLogitBias) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptCreateClassificationRequestLogitBias to nil")
 	}
 	o.Set = true
+	o.Value = new(CreateClassificationRequestLogitBias)
 	if err := o.Value.Decode(d); err != nil {
 		return err
 	}
@@ -8357,6 +8359,7 @@ func (o *OptCreateCompletionRequestLogitBias) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptCreateCompletionRequestLogitBias to nil")
 	}
 	o.Set = true
+	o.Value = new(CreateCompletionRequestLogitBias)
 	if err := o.Value.Decode(d); err != nil {
 		return err
 	}

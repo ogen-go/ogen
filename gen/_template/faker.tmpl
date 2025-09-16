@@ -2,7 +2,7 @@
 {{ template "header" $ }}
 
 {{- range $_, $s := $.Types }}{{- if $s.HasFeature "json" }}
-    {{ template "faker/fakers" $s }}
+	{{ template "faker/fakers" $s }}
 {{- end }}{{- end }}
 
 {{- end }}

@@ -3,12 +3,12 @@ package location
 import (
 	"fmt"
 	"io"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/yaml"
 	"go.uber.org/multierr"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/xmaps"
 )

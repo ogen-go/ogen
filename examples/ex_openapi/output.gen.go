@@ -9,7 +9,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -5890,16 +5889,16 @@ func (s *XMLPattern0) init() XMLPattern0 {
 // setDefaults set default value of fields.
 func (s *Schema) setDefaults() {
 	{
-		val := ExclusiveMaximum(false)
-		s.ExclusiveMaximum.SetTo(val)
+		val := bool(false)
+		s.ExclusiveMaximum.SetTo(ExclusiveMaximum(val))
 	}
 	{
-		val := ExclusiveMinimum(false)
-		s.ExclusiveMinimum.SetTo(val)
+		val := bool(false)
+		s.ExclusiveMinimum.SetTo(ExclusiveMinimum(val))
 	}
 	{
-		val := UniqueItems(false)
-		s.UniqueItems.SetTo(val)
+		val := bool(false)
+		s.UniqueItems.SetTo(UniqueItems(val))
 	}
 }
 
@@ -18131,6 +18130,9 @@ func (s Encodings) Validate() error {
 
 func (s Enum) Validate() error {
 	alias := ([]jx.Raw)(s)
+	if alias == nil {
+		return nil // optional
+	}
 	if err := (validate.Array{
 		MinLength:    1,
 		MinLengthSet: true,
@@ -19248,6 +19250,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.AllOf == nil {
+			return nil // optional
+		}
 		if err := (validate.Array{
 			MinLength:    1,
 			MinLengthSet: true,
@@ -19281,6 +19286,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.OneOf == nil {
+			return nil // optional
+		}
 		if err := (validate.Array{
 			MinLength:    1,
 			MinLengthSet: true,
@@ -19314,6 +19322,9 @@ func (s *Schema) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.AnyOf == nil {
+			return nil // optional
+		}
 		if err := (validate.Array{
 			MinLength:    1,
 			MinLengthSet: true,
@@ -19610,6 +19621,9 @@ func (s *Spec) Validate() error {
 
 func (s StringArray) Validate() error {
 	alias := ([]string)(s)
+	if alias == nil {
+		return nil // optional
+	}
 	if err := (validate.Array{
 		MinLength:    1,
 		MinLengthSet: true,

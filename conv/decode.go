@@ -1,14 +1,21 @@
 package conv
 
 import (
+	"encoding"
+	"encoding/base64"
+	stdjson "encoding/json"
 	"net"
 	"net/netip"
 	"net/url"
+	"slices"
 	"strconv"
 	"time"
+	"unsafe"
 
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"golang.org/x/exp/slices"
+
+	"github.com/ogen-go/ogen/json"
 )
 
 func ToInt(s string) (int, error) {
@@ -201,6 +208,76 @@ func ToStringFloat32(s string) (float32, error) {
 
 func ToStringFloat64(s string) (float64, error) {
 	return strconv.ParseFloat(s, 64)
+}
+
+type (
+	ogenUnmarshaler[T any] interface {
+		json.Unmarshaler
+		*T
+	}
+	textUnmarshaler[T any] interface {
+		encoding.TextUnmarshaler
+		*T
+	}
+	binaryUnmarshaler[T any] interface {
+		encoding.BinaryUnmarshaler
+		*T
+	}
+	jsonUnmarshaler[T any] interface {
+		stdjson.Unmarshaler
+		*T
+	}
+)
+
+// toBytes converts a string to a byte slice with zero allocation.
+func toBytes(s string) []byte {
+	return unsafe.Slice(unsafe.StringData(s), len(s)) //nolint:gosec // Unsafe conversion is intended for performance.
+}
+
+func ToNative[T any, P ogenUnmarshaler[T]](s string) (T, error) {
+	var v T
+	err := P(&v).Decode(jx.DecodeBytes(toBytes(s)))
+	return v, err
+}
+
+func ToStringNative[T any, P ogenUnmarshaler[T]](s string) (T, error) {
+	return ToNative[T, P](strconv.Quote(s))
+}
+
+func ToText[T any, P textUnmarshaler[T]](s string) (T, error) {
+	var v T
+	err := P(&v).UnmarshalText(toBytes(s))
+	return v, err
+}
+
+func ToBinary[T any, P binaryUnmarshaler[T]](s string) (T, error) {
+	var v T
+	data, err := base64.URLEncoding.DecodeString(s)
+	if err != nil {
+		return v, err
+	}
+	err = P(&v).UnmarshalBinary(data)
+	return v, err
+}
+
+func ToJSON[T any, P jsonUnmarshaler[T]](s string) (T, error) {
+	var v T
+	err := P(&v).UnmarshalJSON(toBytes(s))
+	return v, err
+}
+
+func ToStringJSON[T any, P jsonUnmarshaler[T]](s string) (T, error) {
+	return ToJSON[T, P](strconv.Quote(s))
+}
+
+func ToExternal[T any](s string) (T, error) {
+	var v T
+	err := stdjson.Unmarshal(toBytes(s), &v)
+	return v, err
+}
+
+func ToStringExternal[T any](s string) (T, error) {
+	return ToExternal[T](strconv.Quote(s))
 }
 
 func decodeArray[T any](a []string, decode func(string) (T, error)) ([]T, error) {

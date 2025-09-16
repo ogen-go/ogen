@@ -7,20 +7,20 @@ import (
 	"math/big"
 	"net/http"
 
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/trace"
-
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/otelogen"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/trace"
 )
 
 var regexMap = map[string]ogenregex.Regexp{
-	"^\\d-\\d$":                      ogenregex.MustCompile("^\\d-\\d$"),
-	"^variant3_[^\r\n\u2028\u2029]*": ogenregex.MustCompile("^variant3_[^\r\n\u2028\u2029]*"),
-	"foo[^\r\n\u2028\u2029]*":        ogenregex.MustCompile("foo[^\r\n\u2028\u2029]*"),
-	"string_[^\r\n\u2028\u2029]*":    ogenregex.MustCompile("string_[^\r\n\u2028\u2029]*"),
+	"^\\d-\\d$":    ogenregex.MustCompile("^\\d-\\d$"),
+	"^variant3_.*": ogenregex.MustCompile("^variant3_.*"),
+	"foo.*":        ogenregex.MustCompile("foo.*"),
+	"string_.*":    ogenregex.MustCompile("string_.*"),
 }
 var ratMap = map[string]*big.Rat{
 	"10": func() *big.Rat {
@@ -53,6 +53,7 @@ type otelConfig struct {
 	Tracer         trace.Tracer
 	MeterProvider  metric.MeterProvider
 	Meter          metric.Meter
+	Attributes     []attribute.KeyValue
 }
 
 func (cfg *otelConfig) initOTEL() {
@@ -148,6 +149,13 @@ func WithMeterProvider(provider metric.MeterProvider) Option {
 		if provider != nil {
 			cfg.MeterProvider = provider
 		}
+	})
+}
+
+// WithAttributes specifies default otel attributes.
+func WithAttributes(attributes ...attribute.KeyValue) Option {
+	return otelOptionFunc(func(cfg *otelConfig) {
+		cfg.Attributes = attributes
 	})
 }
 

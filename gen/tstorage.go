@@ -2,6 +2,7 @@ package gen
 
 import (
 	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 )
@@ -60,7 +61,7 @@ func (s *tstorage) saveType(t *ir.Type) error {
 	}
 
 	if confT, ok := s.types[t.Name]; ok {
-		if t.IsGeneric() {
+		if t.IsGeneric() && t.GenericOf.External == confT.GenericOf.External {
 			// HACK:
 			// Currently generator can overwrite same generic type
 			// multiple times during IR generation.

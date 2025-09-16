@@ -169,7 +169,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows, file location.File) (r openapi.OAuth
 			TokenURL:         flow.TokenURL,
 			RefreshURL:       flow.RefreshURL,
 			Scopes:           maps.Clone(flow.Scopes),
-			Pointer:          flow.Common.Locator.Pointer(file),
+			Pointer:          flow.Common.Pointer(file),
 		}
 	}
 
@@ -178,7 +178,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows, file location.File) (r openapi.OAuth
 		Password:          cloneFlow(flows.Password),
 		ClientCredentials: cloneFlow(flows.ClientCredentials),
 		AuthorizationCode: cloneFlow(flows.AuthorizationCode),
-		Pointer:           flows.Common.Locator.Pointer(file),
+		Pointer:           flows.Common.Pointer(file),
 	}
 }
 

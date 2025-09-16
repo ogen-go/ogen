@@ -47,6 +47,18 @@ func TestObjectsWithConflictingPropertiesReq_EncodeDecode(t *testing.T) {
 	var typ2 ObjectsWithConflictingPropertiesReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestReferencedAllOfNullable_EncodeDecode(t *testing.T) {
+	var typ ReferencedAllOfNullable
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReferencedAllOfNullable
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestRobot_EncodeDecode(t *testing.T) {
 	var typ Robot
 	typ.SetFake()

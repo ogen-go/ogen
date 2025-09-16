@@ -49,7 +49,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/event"
-			origElem := elem
+
 			if l := len("/event"); len(elem) >= l && elem[0:l] == "/event" {
 				elem = elem[l:]
 			} else {
@@ -68,7 +68,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 
-			elem = origElem
 		}
 	}
 	s.notFound(w, r)
@@ -150,7 +149,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 		}
 		switch elem[0] {
 		case '/': // Prefix: "/event"
-			origElem := elem
+
 			if l := len("/event"); len(elem) >= l && elem[0:l] == "/event" {
 				elem = elem[l:]
 			} else {
@@ -161,7 +160,7 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				// Leaf node.
 				switch method {
 				case "POST":
-					r.name = "PublishEvent"
+					r.name = PublishEventOperation
 					r.summary = ""
 					r.operationID = "publishEvent"
 					r.pathPattern = "/event"
@@ -173,7 +172,6 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 				}
 			}
 
-			elem = origElem
 		}
 	}
 	return r, false

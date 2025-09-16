@@ -11,7 +11,7 @@
         "security": [
           {},
           {
-            "queryKey": []
+            "queryKey": ["admin"]
           }
         ],
         "responses": {

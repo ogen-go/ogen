@@ -4,12 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/url"
+	"slices"
 	"strings"
 	"testing"
 
 	"github.com/go-faster/yaml"
 	"github.com/stretchr/testify/require"
-	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -257,6 +257,7 @@ func TestComplicatedReference(t *testing.T) {
 			testGet,
 			testPost,
 		},
+		Tags: []openapi.Tag{},
 		Components: &openapi.Components{
 			Schemas:       map[string]*jsonschema.Schema{},
 			Responses:     map[string]*openapi.Response{},

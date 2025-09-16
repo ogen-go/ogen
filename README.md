@@ -14,7 +14,7 @@ OpenAPI v3 Code Generator for Go.
 # Install
 
 ```console
-go get -d github.com/ogen-go/ogen
+go install -v github.com/ogen-go/ogen/cmd/ogen@latest
 ```
 
 # Usage
@@ -289,7 +289,7 @@ requestBody:
 
 ### Operation groups
 
-Optionally, operations can be grouped so a handler interface will be generated for each group of operations. 
+Optionally, operations can be grouped so a handler interface will be generated for each group of operations.
 This is useful for organizing operations for large APIs.
 
 The group for operations on a path or individual operations can be specified by `x-ogen-operation-group`, for example:
@@ -382,4 +382,3 @@ func (s *Error) Decode(d *jx.Decoder) error {
 - [Sample project](https://github.com/ogen-go/example)
 - [Security policy](https://github.com/ogen-go/ogen/blob/-/SECURITY.md)
 - [Telegram chat `@ogen_dev`](https://t.me/ogen_dev)
-- [Roadmap](https://github.com/ogen-go/ogen/blob/-/ROADMAP.md)

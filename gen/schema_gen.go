@@ -1,7 +1,9 @@
 package gen
 
 import (
+	"cmp"
 	"fmt"
+	"path"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -24,6 +26,7 @@ type schemaGen struct {
 	nameRef   func(ref jsonschema.Ref) (string, error)
 	fieldMut  func(*ir.Field) error
 	fail      func(err error) error
+	imports   map[string]string
 
 	depthLimit int
 	depthCount int
@@ -45,6 +48,7 @@ func newSchemaGen(lookupRef func(ref jsonschema.Ref) (*ir.Type, bool)) *schemaGe
 		fail: func(err error) error {
 			return err
 		},
+		imports:    defaultImports(),
 		depthLimit: defaultSchemaDepthLimit,
 		log:        zap.NewNop(),
 	}
@@ -141,6 +145,37 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		if err != nil {
 			return nil, errors.Wrapf(err, "schema name: %q", ref)
 		}
+	}
+
+	if schema.XOgenType != "" {
+		t, err := ir.External(schema)
+		if err != nil {
+			return nil, errors.Wrap(err, "external type")
+		}
+
+		if pkgPath := t.External.PackagePath; pkgPath != "" {
+			if alias, ok := g.imports[pkgPath]; ok {
+				t.External.ImportAlias = alias
+			} else {
+				aliases := make(map[string]struct{}, len(g.imports))
+				for k, v := range g.imports {
+					aliases[cmp.Or(v, path.Base(k))] = struct{}{}
+				}
+				pkgName := path.Base(pkgPath)
+				if _, ok := aliases[pkgName]; ok {
+					for i := 2; true; i++ {
+						t.External.ImportAlias = fmt.Sprintf("%s%d", pkgName, i)
+						if _, ok := aliases[t.External.ImportAlias]; !ok {
+							break
+						}
+					}
+				}
+			}
+			t.Primitive = t.External.Primitive()
+			g.imports[pkgPath] = t.External.ImportAlias
+		}
+
+		return g.regtype(name, t), nil
 	}
 
 	if schema.DefaultSet {
@@ -252,6 +287,18 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			return nil, err
 		}
 		oneOf = t
+	case len(schema.Enum) > 0:
+		switch schema.Type {
+		case jsonschema.String,
+			jsonschema.Integer,
+			jsonschema.Number,
+			jsonschema.Boolean,
+			jsonschema.Null:
+		default:
+			return nil, &ErrNotImplemented{
+				Name: "non-primitive enum",
+			}
+		}
 	}
 
 	switch schema.Type {
@@ -342,7 +389,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 
 				slot = fieldSlot{
 					original:      fmt.Sprintf("property %q (overridden by extension as %q)", prop.Name, *n),
-					nameDefinedAt: prop.X.Pointer.Field("name"),
+					nameDefinedAt: prop.X.Field("name"),
 				}
 			} else {
 				propertyName := strings.TrimSpace(prop.Name)
@@ -394,7 +441,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 				const key = "additionalProperties"
 				slot := fieldSlot{
 					original:      key,
-					nameDefinedAt: schema.Pointer.Key(key),
+					nameDefinedAt: schema.Key(key),
 				}
 				if err := addField(&ir.Field{
 					Name:   "AdditionalProps",
@@ -450,7 +497,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		if anyOf != nil {
 			slot := fieldSlot{
 				original:      "anyOf",
-				nameDefinedAt: schema.Pointer.Key("anyOf"),
+				nameDefinedAt: schema.Key("anyOf"),
 			}
 			if err := addField(&ir.Field{
 				Name:   "AnyOf",
@@ -463,7 +510,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		if oneOf != nil {
 			slot := fieldSlot{
 				original:      "oneOf",
-				nameDefinedAt: schema.Pointer.Key("oneOf"),
+				nameDefinedAt: schema.Key("oneOf"),
 			}
 			if err := addField(&ir.Field{
 				Name:   "OneOf",
@@ -642,7 +689,7 @@ func (g *schemaGen) checkDefaultType(s *jsonschema.Schema, val any) error {
 
 	if !ok {
 		err := errors.Errorf("expected schema type is %q, default value is %T", s.Type, val)
-		p := s.Pointer.Field("default")
+		p := s.Field("default")
 
 		pos, ok := p.Position()
 		if !ok {

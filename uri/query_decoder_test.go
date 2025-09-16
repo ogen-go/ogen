@@ -25,7 +25,7 @@ func TestQueryDecoder_HasParam(t *testing.T) {
 					{"foo", true},
 				},
 			},
-			WantErr: "query parameter \"object[foo]\" not set",
+			WantErr: "invalid: object[foo] (field required)",
 		},
 		{
 			Input: url.Values{},
@@ -64,7 +64,7 @@ func TestQueryDecoder_HasParam(t *testing.T) {
 					{"foo", true},
 				},
 			},
-			WantErr: "query parameter \"foo\" not set",
+			WantErr: "invalid: foo (field required)",
 		},
 		{
 			Input: url.Values{},

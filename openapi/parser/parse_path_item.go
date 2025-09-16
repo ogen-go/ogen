@@ -113,6 +113,7 @@ func (p *parser) parseOp(
 	}()
 
 	op := &openapi.Operation{
+		Tags:                spec.Tags,
 		OperationID:         spec.OperationID,
 		Summary:             spec.Summary,
 		Description:         spec.Description,

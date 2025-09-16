@@ -4,7 +4,6 @@ package api
 
 import (
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -46,6 +45,9 @@ func (s *TestMultipartUploadReq) Validate() error {
 
 	var failures []validate.FieldError
 	if err := func() error {
+		if s.Files == nil {
+			return nil // null
+		}
 		if err := (validate.Array{
 			MinLength:    0,
 			MinLengthSet: false,

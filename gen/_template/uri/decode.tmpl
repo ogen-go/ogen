@@ -9,7 +9,11 @@
 		return err
 	}
 
-	c, err := conv.{{ $t.FromString }}(val)
+	{{ if $t.JSON.TimeFormat -}}
+		c, err := time.Parse({{ $t.JSON.TimeFormat }}, val)
+	{{- else -}}
+		c, err := conv.{{ $t.FromString }}(val)
+	{{- end }}
 	if err != nil {
 		return err
 	}
@@ -68,6 +72,8 @@
 	{{ $var }} = &{{ $tmpVar }}
 	return nil
 {{- else if $t.IsStruct }}
+	return {{ $var }}.DecodeURI(d)
+{{- else if $t.IsMap }}
 	return {{ $var }}.DecodeURI(d)
 {{- else }}
     {{ errorf "unexpected kind" $t.Kind }}

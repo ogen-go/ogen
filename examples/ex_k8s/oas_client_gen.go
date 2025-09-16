@@ -9,18 +9,22 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
+
+func trimTrailingSlashes(u *url.URL) {
+	u.Path = strings.TrimRight(u.Path, "/")
+	u.RawPath = strings.TrimRight(u.RawPath, "/")
+}
 
 // Invoker invokes operations described by OpenAPI v3 specification.
 type Invoker interface {
@@ -2968,11 +2972,6 @@ var _ Handler = struct {
 	*Client
 }{}
 
-func trimTrailingSlashes(u *url.URL) {
-	u.Path = strings.TrimRight(u.Path, "/")
-	u.RawPath = strings.TrimRight(u.RawPath, "/")
-}
-
 // NewClient initializes new Client defined by OAS.
 func NewClient(serverURL string, sec SecuritySource, opts ...ClientOption) (*Client, error) {
 	u, err := url.Parse(serverURL)
@@ -3023,20 +3022,21 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1DeleteNamespacedPodProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1DeleteNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -3127,7 +3127,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxy(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedPodProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -3187,20 +3187,21 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1DeleteNamespacedPodProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -3309,7 +3310,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedPodProxyWithPath(ctx context.C
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedPodProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedPodProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -3369,20 +3370,21 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1DeleteNamespacedServiceProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1DeleteNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -3473,7 +3475,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxy(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedServiceProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -3533,20 +3535,21 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1DeleteNamespacedServiceProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -3655,7 +3658,7 @@ func (c *Client) sendConnectCoreV1DeleteNamespacedServiceProxyWithPath(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNamespacedServiceProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1DeleteNamespacedServiceProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -3715,20 +3718,21 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1DeleteNodeProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1DeleteNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -3800,7 +3804,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxy(ctx context.Context, params Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1DeleteNodeProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -3860,20 +3864,21 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("DELETE"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1DeleteNodeProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1DeleteNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -3963,7 +3968,7 @@ func (c *Client) sendConnectCoreV1DeleteNodeProxyWithPath(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1DeleteNodeProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1DeleteNodeProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -4023,20 +4028,21 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNamespacedPodAttach",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNamespacedPodAttachOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -4195,7 +4201,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodAttach(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodAttach", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodAttachOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -4255,20 +4261,21 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNamespacedPodExec",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNamespacedPodExecOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -4444,7 +4451,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodExec(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodExec", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodExecOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -4504,20 +4511,21 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNamespacedPodPortforward",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNamespacedPodPortforwardOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -4608,7 +4616,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodPortforward(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodPortforward", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodPortforwardOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -4668,20 +4676,21 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNamespacedPodProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -4772,7 +4781,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxy(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -4832,20 +4841,21 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNamespacedPodProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -4954,7 +4964,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedPodProxyWithPath(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedPodProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNamespacedPodProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -5014,20 +5024,21 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNamespacedServiceProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -5118,7 +5129,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxy(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNamespacedServiceProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -5178,20 +5189,21 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNamespacedServiceProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -5300,7 +5312,7 @@ func (c *Client) sendConnectCoreV1GetNamespacedServiceProxyWithPath(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNamespacedServiceProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNamespacedServiceProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -5360,20 +5372,21 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNodeProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -5445,7 +5458,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxy(ctx context.Context, params Conne
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNodeProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -5505,20 +5518,21 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1GetNodeProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1GetNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -5608,7 +5622,7 @@ func (c *Client) sendConnectCoreV1GetNodeProxyWithPath(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1GetNodeProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1GetNodeProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -5668,20 +5682,21 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1HeadNamespacedPodProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1HeadNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -5772,7 +5787,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxy(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedPodProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -5832,20 +5847,21 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1HeadNamespacedPodProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1HeadNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -5954,7 +5970,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedPodProxyWithPath(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedPodProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedPodProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -6014,20 +6030,21 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1HeadNamespacedServiceProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1HeadNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6118,7 +6135,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxy(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedServiceProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -6178,20 +6195,21 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		semconv.HTTPRequestMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1HeadNamespacedServiceProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6300,7 +6318,7 @@ func (c *Client) sendConnectCoreV1HeadNamespacedServiceProxyWithPath(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNamespacedServiceProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1HeadNamespacedServiceProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -6360,20 +6378,21 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 		semconv.HTTPRequestMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1HeadNodeProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1HeadNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6445,7 +6464,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxy(ctx context.Context, params Conn
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1HeadNodeProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -6505,20 +6524,21 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("HEAD"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1HeadNodeProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1HeadNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6608,7 +6628,7 @@ func (c *Client) sendConnectCoreV1HeadNodeProxyWithPath(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1HeadNodeProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1HeadNodeProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -6668,20 +6688,21 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1OptionsNamespacedPodProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1OptionsNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6772,7 +6793,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxy(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedPodProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -6832,20 +6853,21 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1OptionsNamespacedPodProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -6954,7 +6976,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedPodProxyWithPath(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedPodProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedPodProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -7014,20 +7036,21 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1OptionsNamespacedServiceProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1OptionsNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7118,7 +7141,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxy(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedServiceProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -7178,20 +7201,21 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1OptionsNamespacedServiceProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7300,7 +7324,7 @@ func (c *Client) sendConnectCoreV1OptionsNamespacedServiceProxyWithPath(ctx cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNamespacedServiceProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1OptionsNamespacedServiceProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -7360,20 +7384,21 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1OptionsNodeProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1OptionsNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7445,7 +7470,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxy(ctx context.Context, params C
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1OptionsNodeProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -7505,20 +7530,21 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("OPTIONS"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1OptionsNodeProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1OptionsNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7608,7 +7634,7 @@ func (c *Client) sendConnectCoreV1OptionsNodeProxyWithPath(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1OptionsNodeProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1OptionsNodeProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -7668,20 +7694,21 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PatchNamespacedPodProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PatchNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7772,7 +7799,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxy(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedPodProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -7832,20 +7859,21 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PatchNamespacedPodProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PatchNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -7954,7 +7982,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedPodProxyWithPath(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedPodProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedPodProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -8014,20 +8042,21 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PatchNamespacedServiceProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PatchNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8118,7 +8147,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxy(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedServiceProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -8178,20 +8207,21 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PatchNamespacedServiceProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8300,7 +8330,7 @@ func (c *Client) sendConnectCoreV1PatchNamespacedServiceProxyWithPath(ctx contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNamespacedServiceProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PatchNamespacedServiceProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -8360,20 +8390,21 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PatchNodeProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PatchNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8445,7 +8476,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxy(ctx context.Context, params Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PatchNodeProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -8505,20 +8536,21 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("PATCH"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PatchNodeProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PatchNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8608,7 +8640,7 @@ func (c *Client) sendConnectCoreV1PatchNodeProxyWithPath(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PatchNodeProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PatchNodeProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -8668,20 +8700,21 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/attach"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNamespacedPodAttach",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNamespacedPodAttachOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -8840,7 +8873,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodAttach(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodAttach", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodAttachOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -8900,20 +8933,21 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/exec"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNamespacedPodExec",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNamespacedPodExecOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9089,7 +9123,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodExec(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodExec", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodExecOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -9149,20 +9183,21 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/portforward"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNamespacedPodPortforward",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNamespacedPodPortforwardOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9253,7 +9288,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodPortforward(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodPortforward", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodPortforwardOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -9313,20 +9348,21 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNamespacedPodProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9417,7 +9453,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxy(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -9477,20 +9513,21 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNamespacedPodProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9599,7 +9636,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedPodProxyWithPath(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedPodProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNamespacedPodProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -9659,20 +9696,21 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNamespacedServiceProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9763,7 +9801,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxy(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNamespacedServiceProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -9823,20 +9861,21 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNamespacedServiceProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -9945,7 +9984,7 @@ func (c *Client) sendConnectCoreV1PostNamespacedServiceProxyWithPath(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNamespacedServiceProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNamespacedServiceProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -10005,20 +10044,21 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNodeProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10090,7 +10130,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxy(ctx context.Context, params Conn
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNodeProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -10150,20 +10190,21 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PostNodeProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PostNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10253,7 +10294,7 @@ func (c *Client) sendConnectCoreV1PostNodeProxyWithPath(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PostNodeProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PostNodeProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -10313,20 +10354,21 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PutNamespacedPodProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PutNamespacedPodProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10417,7 +10459,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxy(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PutNamespacedPodProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -10477,20 +10519,21 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PutNamespacedPodProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PutNamespacedPodProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10599,7 +10642,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedPodProxyWithPath(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedPodProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PutNamespacedPodProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -10659,20 +10702,21 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PutNamespacedServiceProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PutNamespacedServiceProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10763,7 +10807,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxy(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PutNamespacedServiceProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -10823,20 +10867,21 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PutNamespacedServiceProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PutNamespacedServiceProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -10945,7 +10990,7 @@ func (c *Client) sendConnectCoreV1PutNamespacedServiceProxyWithPath(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNamespacedServiceProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PutNamespacedServiceProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11005,20 +11050,21 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PutNodeProxy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PutNodeProxyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11090,7 +11136,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxy(ctx context.Context, params Conne
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxy", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PutNodeProxyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11150,20 +11196,21 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("PUT"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/proxy/{path}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ConnectCoreV1PutNodeProxyWithPath",
+	ctx, span := c.cfg.Tracer.Start(ctx, ConnectCoreV1PutNodeProxyWithPathOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11253,7 +11300,7 @@ func (c *Client) sendConnectCoreV1PutNodeProxyWithPath(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ConnectCoreV1PutNodeProxyWithPath", r); {
+			switch err := c.securityBearerToken(ctx, ConnectCoreV1PutNodeProxyWithPathOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11313,20 +11360,21 @@ func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAPIVersions",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAPIVersionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11358,7 +11406,7 @@ func (c *Client) sendGetAPIVersions(ctx context.Context) (res GetAPIVersionsRes,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAPIVersions", r); {
+			switch err := c.securityBearerToken(ctx, GetAPIVersionsOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11418,20 +11466,21 @@ func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAdmissionregistrationAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAdmissionregistrationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11463,7 +11512,7 @@ func (c *Client) sendGetAdmissionregistrationAPIGroup(ctx context.Context) (res 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetAdmissionregistrationAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11523,20 +11572,21 @@ func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context)
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAdmissionregistrationV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAdmissionregistrationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11568,7 +11618,7 @@ func (c *Client) sendGetAdmissionregistrationV1APIResources(ctx context.Context)
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetAdmissionregistrationV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11628,20 +11678,21 @@ func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiextensionsAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetApiextensionsAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11673,7 +11724,7 @@ func (c *Client) sendGetApiextensionsAPIGroup(ctx context.Context) (res GetApiex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetApiextensionsAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11733,20 +11784,21 @@ func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res Ge
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiextensionsV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetApiextensionsV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11778,7 +11830,7 @@ func (c *Client) sendGetApiextensionsV1APIResources(ctx context.Context) (res Ge
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetApiextensionsV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11838,20 +11890,21 @@ func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApi
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiregistrationAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetApiregistrationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11883,7 +11936,7 @@ func (c *Client) sendGetApiregistrationAPIGroup(ctx context.Context) (res GetApi
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetApiregistrationAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -11943,20 +11996,21 @@ func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiregistrationV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetApiregistrationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -11988,7 +12042,7 @@ func (c *Client) sendGetApiregistrationV1APIResources(ctx context.Context) (res 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetApiregistrationV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12048,20 +12102,21 @@ func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRe
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAppsAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAppsAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12093,7 +12148,7 @@ func (c *Client) sendGetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRe
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAppsAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetAppsAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12153,20 +12208,21 @@ func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1AP
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAppsV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAppsV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12198,7 +12254,7 @@ func (c *Client) sendGetAppsV1APIResources(ctx context.Context) (res GetAppsV1AP
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAppsV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetAppsV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12258,20 +12314,21 @@ func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuth
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthenticationAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAuthenticationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12303,7 +12360,7 @@ func (c *Client) sendGetAuthenticationAPIGroup(ctx context.Context) (res GetAuth
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetAuthenticationAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12363,20 +12420,21 @@ func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res G
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authentication.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthenticationV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAuthenticationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12408,7 +12466,7 @@ func (c *Client) sendGetAuthenticationV1APIResources(ctx context.Context) (res G
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetAuthenticationV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12468,20 +12526,21 @@ func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAutho
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthorizationAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAuthorizationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12513,7 +12572,7 @@ func (c *Client) sendGetAuthorizationAPIGroup(ctx context.Context) (res GetAutho
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetAuthorizationAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12573,20 +12632,21 @@ func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res Ge
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/authorization.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthorizationV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAuthorizationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12618,7 +12678,7 @@ func (c *Client) sendGetAuthorizationV1APIResources(ctx context.Context) (res Ge
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetAuthorizationV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12678,20 +12738,21 @@ func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutosca
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAutoscalingAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12723,7 +12784,7 @@ func (c *Client) sendGetAutoscalingAPIGroup(ctx context.Context) (res GetAutosca
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetAutoscalingAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12783,20 +12844,21 @@ func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetA
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAutoscalingV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12828,7 +12890,7 @@ func (c *Client) sendGetAutoscalingV1APIResources(ctx context.Context) (res GetA
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetAutoscalingV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12888,20 +12950,21 @@ func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingV2beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAutoscalingV2beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -12933,7 +12996,7 @@ func (c *Client) sendGetAutoscalingV2beta1APIResources(ctx context.Context) (res
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetAutoscalingV2beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -12993,20 +13056,21 @@ func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingV2beta2APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetAutoscalingV2beta2APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13038,7 +13102,7 @@ func (c *Client) sendGetAutoscalingV2beta2APIResources(ctx context.Context) (res
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetAutoscalingV2beta2APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13098,20 +13162,21 @@ func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroup
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetBatchAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetBatchAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13143,7 +13208,7 @@ func (c *Client) sendGetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroup
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetBatchAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetBatchAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13203,20 +13268,21 @@ func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetBatchV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetBatchV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13248,7 +13314,7 @@ func (c *Client) sendGetBatchV1APIResources(ctx context.Context) (res GetBatchV1
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetBatchV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetBatchV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13308,20 +13374,21 @@ func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetBatchV1beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetBatchV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13353,7 +13420,7 @@ func (c *Client) sendGetBatchV1beta1APIResources(ctx context.Context) (res GetBa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetBatchV1beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13413,20 +13480,21 @@ func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertif
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetCertificatesAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetCertificatesAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13458,7 +13526,7 @@ func (c *Client) sendGetCertificatesAPIGroup(ctx context.Context) (res GetCertif
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetCertificatesAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetCertificatesAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13518,20 +13586,21 @@ func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res Get
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetCertificatesV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetCertificatesV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13563,7 +13632,7 @@ func (c *Client) sendGetCertificatesV1APIResources(ctx context.Context) (res Get
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetCertificatesV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetCertificatesV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13623,20 +13692,21 @@ func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/version/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetCodeVersion",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetCodeVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13668,7 +13738,7 @@ func (c *Client) sendGetCodeVersion(ctx context.Context) (res GetCodeVersionRes,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetCodeVersion", r); {
+			switch err := c.securityBearerToken(ctx, GetCodeVersionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13728,20 +13798,21 @@ func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordi
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoordinationAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetCoordinationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13773,7 +13844,7 @@ func (c *Client) sendGetCoordinationAPIGroup(ctx context.Context) (res GetCoordi
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetCoordinationAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetCoordinationAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13833,20 +13904,21 @@ func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res Get
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoordinationV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetCoordinationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13878,7 +13950,7 @@ func (c *Client) sendGetCoordinationV1APIResources(ctx context.Context) (res Get
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetCoordinationV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetCoordinationV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -13938,20 +14010,21 @@ func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVers
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoreAPIVersions",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetCoreAPIVersionsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -13983,7 +14056,7 @@ func (c *Client) sendGetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVers
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetCoreAPIVersions", r); {
+			switch err := c.securityBearerToken(ctx, GetCoreAPIVersionsOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14043,20 +14116,21 @@ func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1AP
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoreV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetCoreV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14088,7 +14162,7 @@ func (c *Client) sendGetCoreV1APIResources(ctx context.Context) (res GetCoreV1AP
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetCoreV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetCoreV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14148,20 +14222,21 @@ func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscovery
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetDiscoveryAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetDiscoveryAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14193,7 +14268,7 @@ func (c *Client) sendGetDiscoveryAPIGroup(ctx context.Context) (res GetDiscovery
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetDiscoveryAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14253,20 +14328,21 @@ func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDis
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetDiscoveryV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetDiscoveryV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14298,7 +14374,7 @@ func (c *Client) sendGetDiscoveryV1APIResources(ctx context.Context) (res GetDis
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetDiscoveryV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14358,20 +14434,21 @@ func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res G
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetDiscoveryV1beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetDiscoveryV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14403,7 +14480,7 @@ func (c *Client) sendGetDiscoveryV1beta1APIResources(ctx context.Context) (res G
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetDiscoveryV1beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14463,20 +14540,21 @@ func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGro
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetEventsAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetEventsAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14508,7 +14586,7 @@ func (c *Client) sendGetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGro
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetEventsAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetEventsAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14568,20 +14646,21 @@ func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEvents
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetEventsV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetEventsV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14613,7 +14692,7 @@ func (c *Client) sendGetEventsV1APIResources(ctx context.Context) (res GetEvents
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetEventsV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetEventsV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14673,20 +14752,21 @@ func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetE
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetEventsV1beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetEventsV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14718,7 +14798,7 @@ func (c *Client) sendGetEventsV1beta1APIResources(ctx context.Context) (res GetE
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetEventsV1beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14778,20 +14858,21 @@ func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res G
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetFlowcontrolApiserverAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetFlowcontrolApiserverAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14823,7 +14904,7 @@ func (c *Client) sendGetFlowcontrolApiserverAPIGroup(ctx context.Context) (res G
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetFlowcontrolApiserverAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14883,20 +14964,21 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetFlowcontrolApiserverV1beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetFlowcontrolApiserverV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -14928,7 +15010,7 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta1APIResources(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetFlowcontrolApiserverV1beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -14988,20 +15070,21 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetFlowcontrolApiserverV1beta2APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetFlowcontrolApiserverV1beta2APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15033,7 +15116,7 @@ func (c *Client) sendGetFlowcontrolApiserverV1beta2APIResources(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetFlowcontrolApiserverV1beta2APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15093,20 +15176,21 @@ func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetI
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetInternalApiserverAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetInternalApiserverAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15138,7 +15222,7 @@ func (c *Client) sendGetInternalApiserverAPIGroup(ctx context.Context) (res GetI
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetInternalApiserverAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15198,20 +15282,21 @@ func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetInternalApiserverV1alpha1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetInternalApiserverV1alpha1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15243,7 +15328,7 @@ func (c *Client) sendGetInternalApiserverV1alpha1APIResources(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetInternalApiserverV1alpha1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15303,20 +15388,21 @@ func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworki
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetNetworkingAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetNetworkingAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15348,7 +15434,7 @@ func (c *Client) sendGetNetworkingAPIGroup(ctx context.Context) (res GetNetworki
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetNetworkingAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetNetworkingAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15408,20 +15494,21 @@ func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNe
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetNetworkingV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetNetworkingV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15453,7 +15540,7 @@ func (c *Client) sendGetNetworkingV1APIResources(ctx context.Context) (res GetNe
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetNetworkingV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetNetworkingV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15513,20 +15600,21 @@ func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRe
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetNodeAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15558,7 +15646,7 @@ func (c *Client) sendGetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRe
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetNodeAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetNodeAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15618,20 +15706,21 @@ func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1AP
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetNodeV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15663,7 +15752,7 @@ func (c *Client) sendGetNodeV1APIResources(ctx context.Context) (res GetNodeV1AP
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetNodeV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetNodeV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15723,20 +15812,21 @@ func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeV1alpha1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetNodeV1alpha1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15768,7 +15858,7 @@ func (c *Client) sendGetNodeV1alpha1APIResources(ctx context.Context) (res GetNo
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetNodeV1alpha1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15828,20 +15918,21 @@ func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNod
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeV1beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetNodeV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15873,7 +15964,7 @@ func (c *Client) sendGetNodeV1beta1APIResources(ctx context.Context) (res GetNod
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetNodeV1beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -15933,20 +16024,21 @@ func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGro
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetPolicyAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetPolicyAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -15978,7 +16070,7 @@ func (c *Client) sendGetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGro
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetPolicyAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetPolicyAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16038,20 +16130,21 @@ func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicy
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetPolicyV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetPolicyV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16083,7 +16176,7 @@ func (c *Client) sendGetPolicyV1APIResources(ctx context.Context) (res GetPolicy
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetPolicyV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetPolicyV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16143,20 +16236,21 @@ func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetP
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetPolicyV1beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetPolicyV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16188,7 +16282,7 @@ func (c *Client) sendGetPolicyV1beta1APIResources(ctx context.Context) (res GetP
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetPolicyV1beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16248,20 +16342,21 @@ func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetR
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetRbacAuthorizationAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetRbacAuthorizationAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16293,7 +16388,7 @@ func (c *Client) sendGetRbacAuthorizationAPIGroup(ctx context.Context) (res GetR
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetRbacAuthorizationAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16353,20 +16448,21 @@ func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (re
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetRbacAuthorizationV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetRbacAuthorizationV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16398,7 +16494,7 @@ func (c *Client) sendGetRbacAuthorizationV1APIResources(ctx context.Context) (re
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetRbacAuthorizationV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16458,20 +16554,21 @@ func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetScheduli
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetSchedulingAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetSchedulingAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16503,7 +16600,7 @@ func (c *Client) sendGetSchedulingAPIGroup(ctx context.Context) (res GetScheduli
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetSchedulingAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetSchedulingAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16563,20 +16660,21 @@ func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetSchedulingV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetSchedulingV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16608,7 +16706,7 @@ func (c *Client) sendGetSchedulingV1APIResources(ctx context.Context) (res GetSc
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetSchedulingV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetSchedulingV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16668,20 +16766,21 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/.well-known/openid-configuration/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetServiceAccountIssuerOpenIDConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetServiceAccountIssuerOpenIDConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16713,7 +16812,7 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDConfiguration(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, GetServiceAccountIssuerOpenIDConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16773,20 +16872,21 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/openid/v1/jwks/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetServiceAccountIssuerOpenIDKeyset",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetServiceAccountIssuerOpenIDKeysetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16818,7 +16918,7 @@ func (c *Client) sendGetServiceAccountIssuerOpenIDKeyset(ctx context.Context) (r
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDKeyset", r); {
+			switch err := c.securityBearerToken(ctx, GetServiceAccountIssuerOpenIDKeysetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16878,20 +16978,21 @@ func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIG
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageAPIGroup",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetStorageAPIGroupOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -16923,7 +17024,7 @@ func (c *Client) sendGetStorageAPIGroup(ctx context.Context) (res GetStorageAPIG
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetStorageAPIGroup", r); {
+			switch err := c.securityBearerToken(ctx, GetStorageAPIGroupOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -16983,20 +17084,21 @@ func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStora
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageV1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetStorageV1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17028,7 +17130,7 @@ func (c *Client) sendGetStorageV1APIResources(ctx context.Context) (res GetStora
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetStorageV1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetStorageV1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -17088,20 +17190,21 @@ func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res Ge
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageV1alpha1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetStorageV1alpha1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17133,7 +17236,7 @@ func (c *Client) sendGetStorageV1alpha1APIResources(ctx context.Context) (res Ge
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetStorageV1alpha1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -17193,20 +17296,21 @@ func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res Get
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageV1beta1APIResources",
+	ctx, span := c.cfg.Tracer.Start(ctx, GetStorageV1beta1APIResourcesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17238,7 +17342,7 @@ func (c *Client) sendGetStorageV1beta1APIResources(ctx context.Context) (res Get
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r); {
+			switch err := c.securityBearerToken(ctx, GetStorageV1beta1APIResourcesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -17298,20 +17402,21 @@ func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17517,7 +17622,7 @@ func (c *Client) sendListAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ListAdmissionregistrationV1MutatingWebhookConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -17577,20 +17682,21 @@ func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -17796,7 +17902,7 @@ func (c *Client) sendListAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ListAdmissionregistrationV1ValidatingWebhookConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -17856,20 +17962,21 @@ func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListApiextensionsV1CustomResourceDefinition",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListApiextensionsV1CustomResourceDefinitionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18075,7 +18182,7 @@ func (c *Client) sendListApiextensionsV1CustomResourceDefinition(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r); {
+			switch err := c.securityBearerToken(ctx, ListApiextensionsV1CustomResourceDefinitionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -18135,20 +18242,21 @@ func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListApiregistrationV1APIService",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListApiregistrationV1APIServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18354,7 +18462,7 @@ func (c *Client) sendListApiregistrationV1APIService(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListApiregistrationV1APIService", r); {
+			switch err := c.securityBearerToken(ctx, ListApiregistrationV1APIServiceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -18414,20 +18522,21 @@ func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/controllerrevisions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1ControllerRevisionForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1ControllerRevisionForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18633,7 +18742,7 @@ func (c *Client) sendListAppsV1ControllerRevisionForAllNamespaces(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1ControllerRevisionForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -18693,20 +18802,21 @@ func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/daemonsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1DaemonSetForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1DaemonSetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -18912,7 +19022,7 @@ func (c *Client) sendListAppsV1DaemonSetForAllNamespaces(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1DaemonSetForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -18972,20 +19082,21 @@ func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/deployments"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1DeploymentForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1DeploymentForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19191,7 +19302,7 @@ func (c *Client) sendListAppsV1DeploymentForAllNamespaces(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1DeploymentForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -19251,20 +19362,21 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedControllerRevision",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1NamespacedControllerRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19489,7 +19601,7 @@ func (c *Client) sendListAppsV1NamespacedControllerRevision(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1NamespacedControllerRevisionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -19549,20 +19661,21 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedDaemonSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1NamespacedDaemonSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -19787,7 +19900,7 @@ func (c *Client) sendListAppsV1NamespacedDaemonSet(ctx context.Context, params L
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1NamespacedDaemonSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -19847,20 +19960,21 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedDeployment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1NamespacedDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20085,7 +20199,7 @@ func (c *Client) sendListAppsV1NamespacedDeployment(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1NamespacedDeploymentOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -20145,20 +20259,21 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedReplicaSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1NamespacedReplicaSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20383,7 +20498,7 @@ func (c *Client) sendListAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1NamespacedReplicaSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -20443,20 +20558,21 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedStatefulSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1NamespacedStatefulSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20681,7 +20797,7 @@ func (c *Client) sendListAppsV1NamespacedStatefulSet(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1NamespacedStatefulSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -20741,20 +20857,21 @@ func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/replicasets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1ReplicaSetForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1ReplicaSetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -20960,7 +21077,7 @@ func (c *Client) sendListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1ReplicaSetForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -21020,20 +21137,21 @@ func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/statefulsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1StatefulSetForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAppsV1StatefulSetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21239,7 +21357,7 @@ func (c *Client) sendListAppsV1StatefulSetForAllNamespaces(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAppsV1StatefulSetForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -21299,20 +21417,21 @@ func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ct
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21518,7 +21637,7 @@ func (c *Client) sendListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ct
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -21578,20 +21697,21 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -21816,7 +21936,7 @@ func (c *Client) sendListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, ListAutoscalingV1NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -21876,20 +21996,21 @@ func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespac
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22095,7 +22216,7 @@ func (c *Client) sendListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespac
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -22155,20 +22276,21 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22393,7 +22515,7 @@ func (c *Client) sendListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -22453,20 +22575,21 @@ func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespac
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22672,7 +22795,7 @@ func (c *Client) sendListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespac
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -22732,20 +22855,21 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -22970,7 +23094,7 @@ func (c *Client) sendListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -23030,20 +23154,21 @@ func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1CronJobForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListBatchV1CronJobForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23249,7 +23374,7 @@ func (c *Client) sendListBatchV1CronJobForAllNamespaces(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListBatchV1CronJobForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -23309,20 +23434,21 @@ func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/jobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1JobForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListBatchV1JobForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23528,7 +23654,7 @@ func (c *Client) sendListBatchV1JobForAllNamespaces(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListBatchV1JobForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -23588,20 +23714,21 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1NamespacedCronJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListBatchV1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -23826,7 +23953,7 @@ func (c *Client) sendListBatchV1NamespacedCronJob(ctx context.Context, params Li
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r); {
+			switch err := c.securityBearerToken(ctx, ListBatchV1NamespacedCronJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -23886,20 +24013,21 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1NamespacedJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListBatchV1NamespacedJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24124,7 +24252,7 @@ func (c *Client) sendListBatchV1NamespacedJob(ctx context.Context, params ListBa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r); {
+			switch err := c.securityBearerToken(ctx, ListBatchV1NamespacedJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -24184,20 +24312,21 @@ func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1beta1CronJobForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListBatchV1beta1CronJobForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24403,7 +24532,7 @@ func (c *Client) sendListBatchV1beta1CronJobForAllNamespaces(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListBatchV1beta1CronJobForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -24463,20 +24592,21 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1beta1NamespacedCronJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListBatchV1beta1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24701,7 +24831,7 @@ func (c *Client) sendListBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r); {
+			switch err := c.securityBearerToken(ctx, ListBatchV1beta1NamespacedCronJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -24761,20 +24891,21 @@ func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCertificatesV1CertificateSigningRequest",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCertificatesV1CertificateSigningRequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -24980,7 +25111,7 @@ func (c *Client) sendListCertificatesV1CertificateSigningRequest(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r); {
+			switch err := c.securityBearerToken(ctx, ListCertificatesV1CertificateSigningRequestOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -25040,20 +25171,21 @@ func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/leases"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoordinationV1LeaseForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoordinationV1LeaseForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25259,7 +25391,7 @@ func (c *Client) sendListCoordinationV1LeaseForAllNamespaces(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoordinationV1LeaseForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -25319,20 +25451,21 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoordinationV1NamespacedLease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoordinationV1NamespacedLeaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25557,7 +25690,7 @@ func (c *Client) sendListCoordinationV1NamespacedLease(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r); {
+			switch err := c.securityBearerToken(ctx, ListCoordinationV1NamespacedLeaseOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -25617,20 +25750,21 @@ func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListC
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/componentstatuses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ComponentStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1ComponentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -25836,7 +25970,7 @@ func (c *Client) sendListCoreV1ComponentStatus(ctx context.Context, params ListC
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1ComponentStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -25896,20 +26030,21 @@ func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/configmaps"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ConfigMapForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1ConfigMapForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26115,7 +26250,7 @@ func (c *Client) sendListCoreV1ConfigMapForAllNamespaces(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1ConfigMapForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -26175,20 +26310,21 @@ func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/endpoints"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1EndpointsForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1EndpointsForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26394,7 +26530,7 @@ func (c *Client) sendListCoreV1EndpointsForAllNamespaces(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1EndpointsForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -26454,20 +26590,21 @@ func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1EventForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1EventForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26673,7 +26810,7 @@ func (c *Client) sendListCoreV1EventForAllNamespaces(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1EventForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -26733,20 +26870,21 @@ func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/limitranges"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1LimitRangeForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1LimitRangeForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -26952,7 +27090,7 @@ func (c *Client) sendListCoreV1LimitRangeForAllNamespaces(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1LimitRangeForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -27012,20 +27150,21 @@ func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1N
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1Namespace",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespaceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27231,7 +27370,7 @@ func (c *Client) sendListCoreV1Namespace(ctx context.Context, params ListCoreV1N
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1Namespace", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespaceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -27291,20 +27430,21 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedConfigMap",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedConfigMapOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27529,7 +27669,7 @@ func (c *Client) sendListCoreV1NamespacedConfigMap(ctx context.Context, params L
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedConfigMapOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -27589,20 +27729,21 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedEndpoints",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedEndpointsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -27827,7 +27968,7 @@ func (c *Client) sendListCoreV1NamespacedEndpoints(ctx context.Context, params L
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedEndpointsOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -27887,20 +28028,21 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28125,7 +28267,7 @@ func (c *Client) sendListCoreV1NamespacedEvent(ctx context.Context, params ListC
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -28185,20 +28327,21 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedLimitRange",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedLimitRangeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28423,7 +28566,7 @@ func (c *Client) sendListCoreV1NamespacedLimitRange(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedLimitRangeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -28483,20 +28626,21 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedPersistentVolumeClaim",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedPersistentVolumeClaimOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -28721,7 +28865,7 @@ func (c *Client) sendListCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedPersistentVolumeClaimOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -28781,20 +28925,21 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedPod",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedPodOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29019,7 +29164,7 @@ func (c *Client) sendListCoreV1NamespacedPod(ctx context.Context, params ListCor
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedPodOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -29079,20 +29224,21 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedPodTemplate",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedPodTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29317,7 +29463,7 @@ func (c *Client) sendListCoreV1NamespacedPodTemplate(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedPodTemplateOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -29377,20 +29523,21 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedReplicationController",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedReplicationControllerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29615,7 +29762,7 @@ func (c *Client) sendListCoreV1NamespacedReplicationController(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedReplicationControllerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -29675,20 +29822,21 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedResourceQuota",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedResourceQuotaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -29913,7 +30061,7 @@ func (c *Client) sendListCoreV1NamespacedResourceQuota(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedResourceQuotaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -29973,20 +30121,21 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30211,7 +30360,7 @@ func (c *Client) sendListCoreV1NamespacedSecret(ctx context.Context, params List
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedSecretOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -30271,20 +30420,21 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedService",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30509,7 +30659,7 @@ func (c *Client) sendListCoreV1NamespacedService(ctx context.Context, params Lis
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedService", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedServiceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -30569,20 +30719,21 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedServiceAccount",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NamespacedServiceAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -30807,7 +30958,7 @@ func (c *Client) sendListCoreV1NamespacedServiceAccount(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NamespacedServiceAccountOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -30867,20 +31018,21 @@ func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodePa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1Node",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1NodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31086,7 +31238,7 @@ func (c *Client) sendListCoreV1Node(ctx context.Context, params ListCoreV1NodePa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1Node", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1NodeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -31146,20 +31298,21 @@ func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params List
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PersistentVolume",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1PersistentVolumeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31365,7 +31518,7 @@ func (c *Client) sendListCoreV1PersistentVolume(ctx context.Context, params List
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1PersistentVolumeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -31425,20 +31578,21 @@ func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumeclaims"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1PersistentVolumeClaimForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31644,7 +31798,7 @@ func (c *Client) sendListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1PersistentVolumeClaimForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -31704,20 +31858,21 @@ func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params L
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/pods"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PodForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1PodForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -31923,7 +32078,7 @@ func (c *Client) sendListCoreV1PodForAllNamespaces(ctx context.Context, params L
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1PodForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -31983,20 +32138,21 @@ func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/podtemplates"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PodTemplateForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1PodTemplateForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32202,7 +32358,7 @@ func (c *Client) sendListCoreV1PodTemplateForAllNamespaces(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1PodTemplateForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -32262,20 +32418,21 @@ func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/replicationcontrollers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ReplicationControllerForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1ReplicationControllerForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32481,7 +32638,7 @@ func (c *Client) sendListCoreV1ReplicationControllerForAllNamespaces(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1ReplicationControllerForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -32541,20 +32698,21 @@ func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/resourcequotas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ResourceQuotaForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1ResourceQuotaForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -32760,7 +32918,7 @@ func (c *Client) sendListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1ResourceQuotaForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -32820,20 +32978,21 @@ func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/secrets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1SecretForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1SecretForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33039,7 +33198,7 @@ func (c *Client) sendListCoreV1SecretForAllNamespaces(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1SecretForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -33099,20 +33258,21 @@ func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/serviceaccounts"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ServiceAccountForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1ServiceAccountForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33318,7 +33478,7 @@ func (c *Client) sendListCoreV1ServiceAccountForAllNamespaces(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1ServiceAccountForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -33378,20 +33538,21 @@ func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/services"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ServiceForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListCoreV1ServiceForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33597,7 +33758,7 @@ func (c *Client) sendListCoreV1ServiceForAllNamespaces(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListCoreV1ServiceForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -33657,20 +33818,21 @@ func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListDiscoveryV1EndpointSliceForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -33876,7 +34038,7 @@ func (c *Client) sendListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListDiscoveryV1EndpointSliceForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -33936,20 +34098,21 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1NamespacedEndpointSlice",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListDiscoveryV1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34174,7 +34337,7 @@ func (c *Client) sendListDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r); {
+			switch err := c.securityBearerToken(ctx, ListDiscoveryV1NamespacedEndpointSliceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -34234,20 +34397,21 @@ func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34453,7 +34617,7 @@ func (c *Client) sendListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListDiscoveryV1beta1EndpointSliceForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -34513,20 +34677,21 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListDiscoveryV1beta1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -34751,7 +34916,7 @@ func (c *Client) sendListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r); {
+			switch err := c.securityBearerToken(ctx, ListDiscoveryV1beta1NamespacedEndpointSliceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -34811,20 +34976,21 @@ func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1EventForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListEventsV1EventForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35030,7 +35196,7 @@ func (c *Client) sendListEventsV1EventForAllNamespaces(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListEventsV1EventForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -35090,20 +35256,21 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListEventsV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35328,7 +35495,7 @@ func (c *Client) sendListEventsV1NamespacedEvent(ctx context.Context, params Lis
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, ListEventsV1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -35388,20 +35555,21 @@ func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1beta1EventForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListEventsV1beta1EventForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35607,7 +35775,7 @@ func (c *Client) sendListEventsV1beta1EventForAllNamespaces(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListEventsV1beta1EventForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -35667,20 +35835,21 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1beta1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListEventsV1beta1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -35905,7 +36074,7 @@ func (c *Client) sendListEventsV1beta1NamespacedEvent(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, ListEventsV1beta1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -35965,20 +36134,21 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListFlowcontrolApiserverV1beta1FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36184,7 +36354,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r); {
+			switch err := c.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta1FlowSchemaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -36244,20 +36414,21 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36463,7 +36634,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -36523,20 +36694,21 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListFlowcontrolApiserverV1beta2FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -36742,7 +36914,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r); {
+			switch err := c.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta2FlowSchemaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -36802,20 +36974,21 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37021,7 +37194,7 @@ func (c *Client) sendListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -37081,20 +37254,21 @@ func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListInternalApiserverV1alpha1StorageVersion",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListInternalApiserverV1alpha1StorageVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37300,7 +37474,7 @@ func (c *Client) sendListInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r); {
+			switch err := c.securityBearerToken(ctx, ListInternalApiserverV1alpha1StorageVersionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -37360,20 +37534,21 @@ func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params Li
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1IngressClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNetworkingV1IngressClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37579,7 +37754,7 @@ func (c *Client) sendListNetworkingV1IngressClass(ctx context.Context, params Li
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r); {
+			switch err := c.securityBearerToken(ctx, ListNetworkingV1IngressClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -37639,20 +37814,21 @@ func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingresses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1IngressForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNetworkingV1IngressForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -37858,7 +38034,7 @@ func (c *Client) sendListNetworkingV1IngressForAllNamespaces(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListNetworkingV1IngressForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -37918,20 +38094,21 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1NamespacedIngress",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNetworkingV1NamespacedIngressOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38156,7 +38333,7 @@ func (c *Client) sendListNetworkingV1NamespacedIngress(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r); {
+			switch err := c.securityBearerToken(ctx, ListNetworkingV1NamespacedIngressOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -38216,20 +38393,21 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1NamespacedNetworkPolicy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNetworkingV1NamespacedNetworkPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38454,7 +38632,7 @@ func (c *Client) sendListNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r); {
+			switch err := c.securityBearerToken(ctx, ListNetworkingV1NamespacedNetworkPolicyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -38514,20 +38692,21 @@ func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.C
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/networkpolicies"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNetworkingV1NetworkPolicyForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -38733,7 +38912,7 @@ func (c *Client) sendListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.C
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListNetworkingV1NetworkPolicyForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -38793,20 +38972,21 @@ func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNode
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNodeV1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNodeV1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39012,7 +39192,7 @@ func (c *Client) sendListNodeV1RuntimeClass(ctx context.Context, params ListNode
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, ListNodeV1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -39072,20 +39252,21 @@ func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params Li
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNodeV1alpha1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNodeV1alpha1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39291,7 +39472,7 @@ func (c *Client) sendListNodeV1alpha1RuntimeClass(ctx context.Context, params Li
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, ListNodeV1alpha1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -39351,20 +39532,21 @@ func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params Lis
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListNodeV1beta1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListNodeV1beta1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39570,7 +39752,7 @@ func (c *Client) sendListNodeV1beta1RuntimeClass(ctx context.Context, params Lis
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, ListNodeV1beta1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -39630,20 +39812,21 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1NamespacedPodDisruptionBudget",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListPolicyV1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -39868,7 +40051,7 @@ func (c *Client) sendListPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r); {
+			switch err := c.securityBearerToken(ctx, ListPolicyV1NamespacedPodDisruptionBudgetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -39928,20 +40111,21 @@ func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40147,7 +40331,7 @@ func (c *Client) sendListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListPolicyV1PodDisruptionBudgetForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -40207,20 +40391,21 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40445,7 +40630,7 @@ func (c *Client) sendListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r); {
+			switch err := c.securityBearerToken(ctx, ListPolicyV1beta1NamespacedPodDisruptionBudgetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -40505,20 +40690,21 @@ func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -40724,7 +40910,7 @@ func (c *Client) sendListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -40784,20 +40970,21 @@ func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1beta1PodSecurityPolicy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListPolicyV1beta1PodSecurityPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41003,7 +41190,7 @@ func (c *Client) sendListPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r); {
+			switch err := c.securityBearerToken(ctx, ListPolicyV1beta1PodSecurityPolicyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -41063,20 +41250,21 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1ClusterRole",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListRbacAuthorizationV1ClusterRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41282,7 +41470,7 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r); {
+			switch err := c.securityBearerToken(ctx, ListRbacAuthorizationV1ClusterRoleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -41342,20 +41530,21 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1ClusterRoleBinding",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListRbacAuthorizationV1ClusterRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41561,7 +41750,7 @@ func (c *Client) sendListRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r); {
+			switch err := c.securityBearerToken(ctx, ListRbacAuthorizationV1ClusterRoleBindingOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -41621,20 +41810,21 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1NamespacedRole",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListRbacAuthorizationV1NamespacedRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -41859,7 +42049,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r); {
+			switch err := c.securityBearerToken(ctx, ListRbacAuthorizationV1NamespacedRoleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -41919,20 +42109,21 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListRbacAuthorizationV1NamespacedRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42157,7 +42348,7 @@ func (c *Client) sendListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r); {
+			switch err := c.securityBearerToken(ctx, ListRbacAuthorizationV1NamespacedRoleBindingOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -42217,20 +42408,21 @@ func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/rolebindings"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42436,7 +42628,7 @@ func (c *Client) sendListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListRbacAuthorizationV1RoleBindingForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -42496,20 +42688,21 @@ func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/roles"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListRbacAuthorizationV1RoleForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42715,7 +42908,7 @@ func (c *Client) sendListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListRbacAuthorizationV1RoleForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -42775,20 +42968,21 @@ func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params L
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListSchedulingV1PriorityClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListSchedulingV1PriorityClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -42994,7 +43188,7 @@ func (c *Client) sendListSchedulingV1PriorityClass(ctx context.Context, params L
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r); {
+			switch err := c.securityBearerToken(ctx, ListSchedulingV1PriorityClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -43054,20 +43248,21 @@ func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStor
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1CSIDriver",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1CSIDriverOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43273,7 +43468,7 @@ func (c *Client) sendListStorageV1CSIDriver(ctx context.Context, params ListStor
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1CSIDriver", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1CSIDriverOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -43333,20 +43528,21 @@ func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorag
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1CSINode",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1CSINodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43552,7 +43748,7 @@ func (c *Client) sendListStorageV1CSINode(ctx context.Context, params ListStorag
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1CSINode", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1CSINodeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -43612,20 +43808,21 @@ func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListS
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1StorageClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1StorageClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -43831,7 +44028,7 @@ func (c *Client) sendListStorageV1StorageClass(ctx context.Context, params ListS
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1StorageClass", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1StorageClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -43891,20 +44088,21 @@ func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params L
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1VolumeAttachment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1VolumeAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44110,7 +44308,7 @@ func (c *Client) sendListStorageV1VolumeAttachment(ctx context.Context, params L
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1VolumeAttachmentOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -44170,20 +44368,21 @@ func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44389,7 +44588,7 @@ func (c *Client) sendListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1alpha1CSIStorageCapacityForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -44449,20 +44648,21 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44687,7 +44887,7 @@ func (c *Client) sendListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1alpha1NamespacedCSIStorageCapacityOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -44747,20 +44947,21 @@ func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -44966,7 +45167,7 @@ func (c *Client) sendListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1beta1CSIStorageCapacityForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -45026,20 +45227,21 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity",
+	ctx, span := c.cfg.Tracer.Start(ctx, ListStorageV1beta1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45264,7 +45466,7 @@ func (c *Client) sendListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r); {
+			switch err := c.securityBearerToken(ctx, ListStorageV1beta1NamespacedCSIStorageCapacityOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -45322,20 +45524,21 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/logs/{logpath}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "LogFileHandler",
+	ctx, span := c.cfg.Tracer.Start(ctx, LogFileHandlerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45385,7 +45588,7 @@ func (c *Client) sendLogFileHandler(ctx context.Context, params LogFileHandlerPa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "LogFileHandler", r); {
+			switch err := c.securityBearerToken(ctx, LogFileHandlerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -45443,20 +45646,21 @@ func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/logs/"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "LogFileListHandler",
+	ctx, span := c.cfg.Tracer.Start(ctx, LogFileListHandlerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45488,7 +45692,7 @@ func (c *Client) sendLogFileListHandler(ctx context.Context) (res *LogFileListHa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "LogFileListHandler", r); {
+			switch err := c.securityBearerToken(ctx, LogFileListHandlerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -45548,20 +45752,21 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45632,7 +45837,7 @@ func (c *Client) sendReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -45692,20 +45897,21 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45776,7 +45982,7 @@ func (c *Client) sendReadAdmissionregistrationV1ValidatingWebhookConfiguration(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -45836,20 +46042,21 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiextensionsV1CustomResourceDefinition",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadApiextensionsV1CustomResourceDefinitionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -45920,7 +46127,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinition(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r); {
+			switch err := c.securityBearerToken(ctx, ReadApiextensionsV1CustomResourceDefinitionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -45980,20 +46187,21 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadApiextensionsV1CustomResourceDefinitionStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46065,7 +46273,7 @@ func (c *Client) sendReadApiextensionsV1CustomResourceDefinitionStatus(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadApiextensionsV1CustomResourceDefinitionStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -46125,20 +46333,21 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiregistrationV1APIService",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadApiregistrationV1APIServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46209,7 +46418,7 @@ func (c *Client) sendReadApiregistrationV1APIService(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r); {
+			switch err := c.securityBearerToken(ctx, ReadApiregistrationV1APIServiceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -46269,20 +46478,21 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiregistrationV1APIServiceStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadApiregistrationV1APIServiceStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46354,7 +46564,7 @@ func (c *Client) sendReadApiregistrationV1APIServiceStatus(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadApiregistrationV1APIServiceStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -46414,20 +46624,21 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedControllerRevision",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedControllerRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46517,7 +46728,7 @@ func (c *Client) sendReadAppsV1NamespacedControllerRevision(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedControllerRevisionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -46577,20 +46788,21 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDaemonSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedDaemonSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46680,7 +46892,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSet(ctx context.Context, params R
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedDaemonSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -46740,20 +46952,21 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDaemonSetStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedDaemonSetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -46844,7 +47057,7 @@ func (c *Client) sendReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedDaemonSetStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -46904,20 +47117,21 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDeployment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47007,7 +47221,7 @@ func (c *Client) sendReadAppsV1NamespacedDeployment(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedDeploymentOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -47067,20 +47281,21 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDeploymentScale",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedDeploymentScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47171,7 +47386,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentScale(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedDeploymentScaleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -47231,20 +47446,21 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDeploymentStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedDeploymentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47335,7 +47551,7 @@ func (c *Client) sendReadAppsV1NamespacedDeploymentStatus(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedDeploymentStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -47395,20 +47611,21 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedReplicaSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedReplicaSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47498,7 +47715,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSet(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedReplicaSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -47558,20 +47775,21 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedReplicaSetScale",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedReplicaSetScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47662,7 +47880,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetScale(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedReplicaSetScaleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -47722,20 +47940,21 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedReplicaSetStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedReplicaSetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47826,7 +48045,7 @@ func (c *Client) sendReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedReplicaSetStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -47886,20 +48105,21 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedStatefulSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedStatefulSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -47989,7 +48209,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSet(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedStatefulSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -48049,20 +48269,21 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedStatefulSetScale",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedStatefulSetScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48153,7 +48374,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetScale(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedStatefulSetScaleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -48213,20 +48434,21 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedStatefulSetStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAppsV1NamespacedStatefulSetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48317,7 +48539,7 @@ func (c *Client) sendReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadAppsV1NamespacedStatefulSetStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -48377,20 +48599,21 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48480,7 +48703,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -48540,20 +48763,21 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48644,7 +48868,7 @@ func (c *Client) sendReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ct
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -48704,20 +48928,21 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48807,7 +49032,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -48867,20 +49092,21 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -48971,7 +49197,7 @@ func (c *Client) sendReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStat
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -49031,20 +49257,21 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49134,7 +49361,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -49194,20 +49421,21 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49298,7 +49526,7 @@ func (c *Client) sendReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStat
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -49358,20 +49586,21 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedCronJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadBatchV1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49461,7 +49690,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJob(ctx context.Context, params Re
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r); {
+			switch err := c.securityBearerToken(ctx, ReadBatchV1NamespacedCronJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -49521,20 +49750,21 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedCronJobStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadBatchV1NamespacedCronJobStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49625,7 +49855,7 @@ func (c *Client) sendReadBatchV1NamespacedCronJobStatus(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadBatchV1NamespacedCronJobStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -49685,20 +49915,21 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadBatchV1NamespacedJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49788,7 +50019,7 @@ func (c *Client) sendReadBatchV1NamespacedJob(ctx context.Context, params ReadBa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r); {
+			switch err := c.securityBearerToken(ctx, ReadBatchV1NamespacedJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -49848,20 +50079,21 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedJobStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadBatchV1NamespacedJobStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -49952,7 +50184,7 @@ func (c *Client) sendReadBatchV1NamespacedJobStatus(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadBatchV1NamespacedJobStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -50012,20 +50244,21 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1beta1NamespacedCronJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadBatchV1beta1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50115,7 +50348,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJob(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r); {
+			switch err := c.securityBearerToken(ctx, ReadBatchV1beta1NamespacedCronJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -50175,20 +50408,21 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1beta1NamespacedCronJobStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadBatchV1beta1NamespacedCronJobStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50279,7 +50513,7 @@ func (c *Client) sendReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadBatchV1beta1NamespacedCronJobStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -50339,20 +50573,21 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCertificatesV1CertificateSigningRequest",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCertificatesV1CertificateSigningRequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50423,7 +50658,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequest(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r); {
+			switch err := c.securityBearerToken(ctx, ReadCertificatesV1CertificateSigningRequestOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -50483,20 +50718,21 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCertificatesV1CertificateSigningRequestApproval",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCertificatesV1CertificateSigningRequestApprovalOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50568,7 +50804,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestApproval(ctx con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r); {
+			switch err := c.securityBearerToken(ctx, ReadCertificatesV1CertificateSigningRequestApprovalOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -50628,20 +50864,21 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCertificatesV1CertificateSigningRequestStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCertificatesV1CertificateSigningRequestStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50713,7 +50950,7 @@ func (c *Client) sendReadCertificatesV1CertificateSigningRequestStatus(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCertificatesV1CertificateSigningRequestStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -50773,20 +51010,21 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoordinationV1NamespacedLease",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoordinationV1NamespacedLeaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -50876,7 +51114,7 @@ func (c *Client) sendReadCoordinationV1NamespacedLease(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoordinationV1NamespacedLeaseOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -50936,20 +51174,21 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/componentstatuses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1ComponentStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1ComponentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51020,7 +51259,7 @@ func (c *Client) sendReadCoreV1ComponentStatus(ctx context.Context, params ReadC
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1ComponentStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -51080,20 +51319,21 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1Namespace",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespaceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51164,7 +51404,7 @@ func (c *Client) sendReadCoreV1Namespace(ctx context.Context, params ReadCoreV1N
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1Namespace", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespaceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -51224,20 +51464,21 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespaceStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespaceStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51309,7 +51550,7 @@ func (c *Client) sendReadCoreV1NamespaceStatus(ctx context.Context, params ReadC
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespaceStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -51369,20 +51610,21 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedConfigMap",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedConfigMapOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51472,7 +51714,7 @@ func (c *Client) sendReadCoreV1NamespacedConfigMap(ctx context.Context, params R
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedConfigMapOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -51532,20 +51774,21 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/endpoints/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedEndpoints",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedEndpointsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51635,7 +51878,7 @@ func (c *Client) sendReadCoreV1NamespacedEndpoints(ctx context.Context, params R
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedEndpointsOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -51695,20 +51938,21 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/events/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51798,7 +52042,7 @@ func (c *Client) sendReadCoreV1NamespacedEvent(ctx context.Context, params ReadC
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -51858,20 +52102,21 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/limitranges/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedLimitRange",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedLimitRangeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -51961,7 +52206,7 @@ func (c *Client) sendReadCoreV1NamespacedLimitRange(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedLimitRangeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -52021,20 +52266,21 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedPersistentVolumeClaimOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52124,7 +52370,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedPersistentVolumeClaimOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -52184,20 +52430,21 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52288,7 +52535,7 @@ func (c *Client) sendReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedPersistentVolumeClaimStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -52348,20 +52595,21 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPod",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedPodOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52451,7 +52699,7 @@ func (c *Client) sendReadCoreV1NamespacedPod(ctx context.Context, params ReadCor
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedPodOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -52511,20 +52759,21 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedPodEphemeralcontainersOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52615,7 +52864,7 @@ func (c *Client) sendReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedPodEphemeralcontainersOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -52675,20 +52924,21 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/log"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodLog",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedPodLogOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -52915,7 +53165,7 @@ func (c *Client) sendReadCoreV1NamespacedPodLog(ctx context.Context, params Read
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedPodLogOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -52975,20 +53225,21 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/pods/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedPodStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53079,7 +53330,7 @@ func (c *Client) sendReadCoreV1NamespacedPodStatus(ctx context.Context, params R
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedPodStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -53139,20 +53390,21 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/podtemplates/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodTemplate",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedPodTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53242,7 +53494,7 @@ func (c *Client) sendReadCoreV1NamespacedPodTemplate(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedPodTemplateOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -53302,20 +53554,21 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedReplicationController",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedReplicationControllerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53405,7 +53658,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationController(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedReplicationControllerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -53465,20 +53718,21 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedReplicationControllerScale",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedReplicationControllerScaleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53569,7 +53823,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerScale(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedReplicationControllerScaleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -53629,20 +53883,21 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedReplicationControllerStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedReplicationControllerStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53733,7 +53988,7 @@ func (c *Client) sendReadCoreV1NamespacedReplicationControllerStatus(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedReplicationControllerStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -53793,20 +54048,21 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedResourceQuota",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedResourceQuotaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -53896,7 +54152,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuota(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedResourceQuotaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -53956,20 +54212,21 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedResourceQuotaStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedResourceQuotaStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54060,7 +54317,7 @@ func (c *Client) sendReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedResourceQuotaStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -54120,20 +54377,21 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/secrets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54223,7 +54481,7 @@ func (c *Client) sendReadCoreV1NamespacedSecret(ctx context.Context, params Read
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedSecretOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -54283,20 +54541,21 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedService",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54386,7 +54645,7 @@ func (c *Client) sendReadCoreV1NamespacedService(ctx context.Context, params Rea
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedServiceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -54446,20 +54705,21 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedServiceAccount",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedServiceAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54549,7 +54809,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceAccount(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedServiceAccountOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -54609,20 +54869,21 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/services/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedServiceStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NamespacedServiceStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54713,7 +54974,7 @@ func (c *Client) sendReadCoreV1NamespacedServiceStatus(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NamespacedServiceStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -54773,20 +55034,21 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1Node",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -54857,7 +55119,7 @@ func (c *Client) sendReadCoreV1Node(ctx context.Context, params ReadCoreV1NodePa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1Node", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NodeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -54917,20 +55179,21 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/nodes/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NodeStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1NodeStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55002,7 +55265,7 @@ func (c *Client) sendReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1NodeStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -55062,20 +55325,21 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1PersistentVolume",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1PersistentVolumeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55146,7 +55410,7 @@ func (c *Client) sendReadCoreV1PersistentVolume(ctx context.Context, params Read
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1PersistentVolumeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -55206,20 +55470,21 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/persistentvolumes/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1PersistentVolumeStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadCoreV1PersistentVolumeStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55291,7 +55556,7 @@ func (c *Client) sendReadCoreV1PersistentVolumeStatus(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadCoreV1PersistentVolumeStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -55351,20 +55616,21 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadDiscoveryV1NamespacedEndpointSlice",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadDiscoveryV1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55454,7 +55720,7 @@ func (c *Client) sendReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r); {
+			switch err := c.securityBearerToken(ctx, ReadDiscoveryV1NamespacedEndpointSliceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -55514,20 +55780,21 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadDiscoveryV1beta1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55617,7 +55884,7 @@ func (c *Client) sendReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r); {
+			switch err := c.securityBearerToken(ctx, ReadDiscoveryV1beta1NamespacedEndpointSliceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -55677,20 +55944,21 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadEventsV1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadEventsV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55780,7 +56048,7 @@ func (c *Client) sendReadEventsV1NamespacedEvent(ctx context.Context, params Rea
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, ReadEventsV1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -55840,20 +56108,21 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadEventsV1beta1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadEventsV1beta1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -55943,7 +56212,7 @@ func (c *Client) sendReadEventsV1beta1NamespacedEvent(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, ReadEventsV1beta1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -56003,20 +56272,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta1FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56087,7 +56357,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1FlowSchemaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -56147,20 +56417,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56232,7 +56503,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1FlowSchemaStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -56292,20 +56563,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56376,7 +56648,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -56436,20 +56708,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56521,7 +56794,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationSt
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -56581,20 +56854,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta2FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56665,7 +56939,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2FlowSchemaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -56725,20 +56999,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56810,7 +57085,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2FlowSchemaStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -56870,20 +57145,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -56954,7 +57230,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -57014,20 +57290,21 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57099,7 +57376,7 @@ func (c *Client) sendReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationSt
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -57159,20 +57436,21 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadInternalApiserverV1alpha1StorageVersion",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadInternalApiserverV1alpha1StorageVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57243,7 +57521,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersion(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r); {
+			switch err := c.securityBearerToken(ctx, ReadInternalApiserverV1alpha1StorageVersionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -57303,20 +57581,21 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadInternalApiserverV1alpha1StorageVersionStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57388,7 +57667,7 @@ func (c *Client) sendReadInternalApiserverV1alpha1StorageVersionStatus(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadInternalApiserverV1alpha1StorageVersionStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -57448,20 +57727,21 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/ingressclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1IngressClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadNetworkingV1IngressClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57532,7 +57812,7 @@ func (c *Client) sendReadNetworkingV1IngressClass(ctx context.Context, params Re
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r); {
+			switch err := c.securityBearerToken(ctx, ReadNetworkingV1IngressClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -57592,20 +57872,21 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1NamespacedIngress",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadNetworkingV1NamespacedIngressOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57695,7 +57976,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngress(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r); {
+			switch err := c.securityBearerToken(ctx, ReadNetworkingV1NamespacedIngressOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -57755,20 +58036,21 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1NamespacedIngressStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadNetworkingV1NamespacedIngressStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -57859,7 +58141,7 @@ func (c *Client) sendReadNetworkingV1NamespacedIngressStatus(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadNetworkingV1NamespacedIngressStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -57919,20 +58201,21 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1NamespacedNetworkPolicy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadNetworkingV1NamespacedNetworkPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58022,7 +58305,7 @@ func (c *Client) sendReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r); {
+			switch err := c.securityBearerToken(ctx, ReadNetworkingV1NamespacedNetworkPolicyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -58082,20 +58365,21 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/runtimeclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNodeV1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadNodeV1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58166,7 +58450,7 @@ func (c *Client) sendReadNodeV1RuntimeClass(ctx context.Context, params ReadNode
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, ReadNodeV1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -58226,20 +58510,21 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNodeV1alpha1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadNodeV1alpha1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58310,7 +58595,7 @@ func (c *Client) sendReadNodeV1alpha1RuntimeClass(ctx context.Context, params Re
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, ReadNodeV1alpha1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -58370,20 +58655,21 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNodeV1beta1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadNodeV1beta1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58454,7 +58740,7 @@ func (c *Client) sendReadNodeV1beta1RuntimeClass(ctx context.Context, params Rea
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, ReadNodeV1beta1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -58514,20 +58800,21 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadPolicyV1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58617,7 +58904,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r); {
+			switch err := c.securityBearerToken(ctx, ReadPolicyV1NamespacedPodDisruptionBudgetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -58677,20 +58964,21 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58781,7 +59069,7 @@ func (c *Client) sendReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadPolicyV1NamespacedPodDisruptionBudgetStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -58841,20 +59129,21 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -58944,7 +59233,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r); {
+			switch err := c.securityBearerToken(ctx, ReadPolicyV1beta1NamespacedPodDisruptionBudgetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -59004,20 +59293,21 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59108,7 +59398,7 @@ func (c *Client) sendReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -59168,20 +59458,21 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/podsecuritypolicies/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1beta1PodSecurityPolicy",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadPolicyV1beta1PodSecurityPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59252,7 +59543,7 @@ func (c *Client) sendReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r); {
+			switch err := c.securityBearerToken(ctx, ReadPolicyV1beta1PodSecurityPolicyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -59312,20 +59603,21 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1ClusterRole",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadRbacAuthorizationV1ClusterRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59396,7 +59688,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRole(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r); {
+			switch err := c.securityBearerToken(ctx, ReadRbacAuthorizationV1ClusterRoleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -59456,20 +59748,21 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadRbacAuthorizationV1ClusterRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59540,7 +59833,7 @@ func (c *Client) sendReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r); {
+			switch err := c.securityBearerToken(ctx, ReadRbacAuthorizationV1ClusterRoleBindingOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -59600,20 +59893,21 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1NamespacedRole",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadRbacAuthorizationV1NamespacedRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59703,7 +59997,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRole(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r); {
+			switch err := c.securityBearerToken(ctx, ReadRbacAuthorizationV1NamespacedRoleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -59763,20 +60057,21 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadRbacAuthorizationV1NamespacedRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -59866,7 +60161,7 @@ func (c *Client) sendReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r); {
+			switch err := c.securityBearerToken(ctx, ReadRbacAuthorizationV1NamespacedRoleBindingOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -59926,20 +60221,21 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadSchedulingV1PriorityClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadSchedulingV1PriorityClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60010,7 +60306,7 @@ func (c *Client) sendReadSchedulingV1PriorityClass(ctx context.Context, params R
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r); {
+			switch err := c.securityBearerToken(ctx, ReadSchedulingV1PriorityClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -60070,20 +60366,21 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csidrivers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1CSIDriver",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadStorageV1CSIDriverOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60154,7 +60451,7 @@ func (c *Client) sendReadStorageV1CSIDriver(ctx context.Context, params ReadStor
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r); {
+			switch err := c.securityBearerToken(ctx, ReadStorageV1CSIDriverOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -60214,20 +60511,21 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/csinodes/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1CSINode",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadStorageV1CSINodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60298,7 +60596,7 @@ func (c *Client) sendReadStorageV1CSINode(ctx context.Context, params ReadStorag
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadStorageV1CSINode", r); {
+			switch err := c.securityBearerToken(ctx, ReadStorageV1CSINodeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -60358,20 +60656,21 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/storageclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1StorageClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadStorageV1StorageClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60442,7 +60741,7 @@ func (c *Client) sendReadStorageV1StorageClass(ctx context.Context, params ReadS
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadStorageV1StorageClass", r); {
+			switch err := c.securityBearerToken(ctx, ReadStorageV1StorageClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -60502,20 +60801,21 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1VolumeAttachment",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadStorageV1VolumeAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60586,7 +60886,7 @@ func (c *Client) sendReadStorageV1VolumeAttachment(ctx context.Context, params R
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r); {
+			switch err := c.securityBearerToken(ctx, ReadStorageV1VolumeAttachmentOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -60646,20 +60946,21 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1VolumeAttachmentStatus",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadStorageV1VolumeAttachmentStatusOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60731,7 +61032,7 @@ func (c *Client) sendReadStorageV1VolumeAttachmentStatus(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r); {
+			switch err := c.securityBearerToken(ctx, ReadStorageV1VolumeAttachmentStatusOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -60791,20 +61092,21 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -60894,7 +61196,7 @@ func (c *Client) sendReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r); {
+			switch err := c.securityBearerToken(ctx, ReadStorageV1alpha1NamespacedCSIStorageCapacityOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -60954,20 +61256,21 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity",
+	ctx, span := c.cfg.Tracer.Start(ctx, ReadStorageV1beta1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61057,7 +61360,7 @@ func (c *Client) sendReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r); {
+			switch err := c.securityBearerToken(ctx, ReadStorageV1beta1NamespacedCSIStorageCapacityOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -61119,20 +61422,21 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61356,7 +61660,7 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfiguration(ct
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, WatchAdmissionregistrationV1MutatingWebhookConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -61417,20 +61721,21 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationLis
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61636,7 +61941,7 @@ func (c *Client) sendWatchAdmissionregistrationV1MutatingWebhookConfigurationLis
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAdmissionregistrationV1MutatingWebhookConfigurationListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -61698,20 +62003,21 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -61935,7 +62241,7 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfiguration(
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, WatchAdmissionregistrationV1ValidatingWebhookConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -61996,20 +62302,21 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationL
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62215,7 +62522,7 @@ func (c *Client) sendWatchAdmissionregistrationV1ValidatingWebhookConfigurationL
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -62276,20 +62583,21 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiextensionsV1CustomResourceDefinition",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchApiextensionsV1CustomResourceDefinitionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62513,7 +62821,7 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinition(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r); {
+			switch err := c.securityBearerToken(ctx, WatchApiextensionsV1CustomResourceDefinitionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -62574,20 +62882,21 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiextensionsV1CustomResourceDefinitionList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchApiextensionsV1CustomResourceDefinitionListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -62793,7 +63102,7 @@ func (c *Client) sendWatchApiextensionsV1CustomResourceDefinitionList(ctx contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r); {
+			switch err := c.securityBearerToken(ctx, WatchApiextensionsV1CustomResourceDefinitionListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -62854,20 +63163,21 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiregistrationV1APIService",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchApiregistrationV1APIServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63091,7 +63401,7 @@ func (c *Client) sendWatchApiregistrationV1APIService(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r); {
+			switch err := c.securityBearerToken(ctx, WatchApiregistrationV1APIServiceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -63152,20 +63462,21 @@ func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apiregistration.k8s.io/v1/watch/apiservices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiregistrationV1APIServiceList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchApiregistrationV1APIServiceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63371,7 +63682,7 @@ func (c *Client) sendWatchApiregistrationV1APIServiceList(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r); {
+			switch err := c.securityBearerToken(ctx, WatchApiregistrationV1APIServiceListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -63432,20 +63743,21 @@ func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/controllerrevisions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1ControllerRevisionListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63651,7 +63963,7 @@ func (c *Client) sendWatchAppsV1ControllerRevisionListForAllNamespaces(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1ControllerRevisionListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -63712,20 +64024,21 @@ func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/daemonsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1DaemonSetListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1DaemonSetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -63931,7 +64244,7 @@ func (c *Client) sendWatchAppsV1DaemonSetListForAllNamespaces(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1DaemonSetListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -63992,20 +64305,21 @@ func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/deployments"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1DeploymentListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1DeploymentListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64211,7 +64525,7 @@ func (c *Client) sendWatchAppsV1DeploymentListForAllNamespaces(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1DeploymentListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -64272,20 +64586,21 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedControllerRevision",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedControllerRevisionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64528,7 +64843,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevision(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedControllerRevisionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -64589,20 +64904,21 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedControllerRevisionList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedControllerRevisionListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -64827,7 +65143,7 @@ func (c *Client) sendWatchAppsV1NamespacedControllerRevisionList(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedControllerRevisionListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -64888,20 +65204,21 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDaemonSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedDaemonSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65144,7 +65461,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSet(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedDaemonSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -65205,20 +65522,21 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDaemonSetList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedDaemonSetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65443,7 +65761,7 @@ func (c *Client) sendWatchAppsV1NamespacedDaemonSetList(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedDaemonSetListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -65504,20 +65822,21 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDeployment",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedDeploymentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -65760,7 +66079,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeployment(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedDeploymentOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -65821,20 +66140,21 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/deployments"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDeploymentList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedDeploymentListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66059,7 +66379,7 @@ func (c *Client) sendWatchAppsV1NamespacedDeploymentList(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedDeploymentListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -66120,20 +66440,21 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedReplicaSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedReplicaSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66376,7 +66697,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSet(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedReplicaSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -66437,20 +66758,21 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedReplicaSetList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedReplicaSetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66675,7 +66997,7 @@ func (c *Client) sendWatchAppsV1NamespacedReplicaSetList(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedReplicaSetListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -66736,20 +67058,21 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedStatefulSet",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedStatefulSetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -66992,7 +67315,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSet(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedStatefulSetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -67053,20 +67376,21 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedStatefulSetList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1NamespacedStatefulSetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67291,7 +67615,7 @@ func (c *Client) sendWatchAppsV1NamespacedStatefulSetList(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1NamespacedStatefulSetListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -67352,20 +67676,21 @@ func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/replicasets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1ReplicaSetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67571,7 +67896,7 @@ func (c *Client) sendWatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1ReplicaSetListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -67632,20 +67957,21 @@ func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/apps/v1/watch/statefulsets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1StatefulSetListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAppsV1StatefulSetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -67851,7 +68177,7 @@ func (c *Client) sendWatchAppsV1StatefulSetListForAllNamespaces(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAppsV1StatefulSetListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -67912,20 +68238,21 @@ func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespac
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68131,7 +68458,7 @@ func (c *Client) sendWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespac
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -68192,20 +68519,21 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68448,7 +68776,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -68509,20 +68837,21 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -68747,7 +69076,7 @@ func (c *Client) sendWatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -68808,20 +69137,21 @@ func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNam
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69027,7 +69357,7 @@ func (c *Client) sendWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNam
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -69088,20 +69418,21 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69344,7 +69675,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ct
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -69405,20 +69736,21 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69643,7 +69975,7 @@ func (c *Client) sendWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerLis
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -69704,20 +70036,21 @@ func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNam
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -69923,7 +70256,7 @@ func (c *Client) sendWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNam
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -69984,20 +70317,21 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70240,7 +70574,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ct
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -70301,20 +70635,21 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70539,7 +70874,7 @@ func (c *Client) sendWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerLis
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r); {
+			switch err := c.securityBearerToken(ctx, WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -70600,20 +70935,21 @@ func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1CronJobListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1CronJobListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -70819,7 +71155,7 @@ func (c *Client) sendWatchBatchV1CronJobListForAllNamespaces(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1CronJobListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -70880,20 +71216,21 @@ func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/jobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1JobListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1JobListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71099,7 +71436,7 @@ func (c *Client) sendWatchBatchV1JobListForAllNamespaces(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1JobListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -71160,20 +71497,21 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedCronJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71416,7 +71754,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJob(ctx context.Context, params W
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1NamespacedCronJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -71477,20 +71815,21 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedCronJobList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1NamespacedCronJobListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -71715,7 +72054,7 @@ func (c *Client) sendWatchBatchV1NamespacedCronJobList(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1NamespacedCronJobListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -71776,20 +72115,21 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1NamespacedJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72032,7 +72372,7 @@ func (c *Client) sendWatchBatchV1NamespacedJob(ctx context.Context, params Watch
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1NamespacedJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -72093,20 +72433,21 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1/watch/namespaces/{namespace}/jobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedJobList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1NamespacedJobListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72331,7 +72672,7 @@ func (c *Client) sendWatchBatchV1NamespacedJobList(ctx context.Context, params W
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1NamespacedJobListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -72392,20 +72733,21 @@ func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1beta1CronJobListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72611,7 +72953,7 @@ func (c *Client) sendWatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1beta1CronJobListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -72672,20 +73014,21 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1beta1NamespacedCronJob",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1beta1NamespacedCronJobOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -72928,7 +73271,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJob(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1beta1NamespacedCronJobOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -72989,20 +73332,21 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1beta1NamespacedCronJobList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchBatchV1beta1NamespacedCronJobListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73227,7 +73571,7 @@ func (c *Client) sendWatchBatchV1beta1NamespacedCronJobList(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r); {
+			switch err := c.securityBearerToken(ctx, WatchBatchV1beta1NamespacedCronJobListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -73289,20 +73633,21 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCertificatesV1CertificateSigningRequest",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCertificatesV1CertificateSigningRequestOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73526,7 +73871,7 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequest(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r); {
+			switch err := c.securityBearerToken(ctx, WatchCertificatesV1CertificateSigningRequestOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -73587,20 +73932,21 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCertificatesV1CertificateSigningRequestList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCertificatesV1CertificateSigningRequestListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -73806,7 +74152,7 @@ func (c *Client) sendWatchCertificatesV1CertificateSigningRequestList(ctx contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCertificatesV1CertificateSigningRequestListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -73867,20 +74213,21 @@ func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/leases"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoordinationV1LeaseListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoordinationV1LeaseListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74086,7 +74433,7 @@ func (c *Client) sendWatchCoordinationV1LeaseListForAllNamespaces(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoordinationV1LeaseListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -74147,20 +74494,21 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoordinationV1NamespacedLease",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoordinationV1NamespacedLeaseOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74403,7 +74751,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLease(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoordinationV1NamespacedLeaseOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -74464,20 +74812,21 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoordinationV1NamespacedLeaseList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoordinationV1NamespacedLeaseListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74702,7 +75051,7 @@ func (c *Client) sendWatchCoordinationV1NamespacedLeaseList(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoordinationV1NamespacedLeaseListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -74763,20 +75112,21 @@ func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/configmaps"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ConfigMapListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1ConfigMapListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -74982,7 +75332,7 @@ func (c *Client) sendWatchCoreV1ConfigMapListForAllNamespaces(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1ConfigMapListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -75043,20 +75393,21 @@ func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/endpoints"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1EndpointsListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1EndpointsListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75262,7 +75613,7 @@ func (c *Client) sendWatchCoreV1EndpointsListForAllNamespaces(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1EndpointsListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -75323,20 +75674,21 @@ func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1EventListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1EventListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75542,7 +75894,7 @@ func (c *Client) sendWatchCoreV1EventListForAllNamespaces(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1EventListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -75603,20 +75955,21 @@ func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/limitranges"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1LimitRangeListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1LimitRangeListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -75822,7 +76175,7 @@ func (c *Client) sendWatchCoreV1LimitRangeListForAllNamespaces(ctx context.Conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1LimitRangeListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -75883,20 +76236,21 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1Namespace",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespaceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76120,7 +76474,7 @@ func (c *Client) sendWatchCoreV1Namespace(ctx context.Context, params WatchCoreV
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1Namespace", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespaceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -76181,20 +76535,21 @@ func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchC
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespaceList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespaceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76400,7 +76755,7 @@ func (c *Client) sendWatchCoreV1NamespaceList(ctx context.Context, params WatchC
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespaceListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -76461,20 +76816,21 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedConfigMap",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedConfigMapOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -76717,7 +77073,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMap(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedConfigMapOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -76778,20 +77134,21 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/configmaps"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedConfigMapList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedConfigMapListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77016,7 +77373,7 @@ func (c *Client) sendWatchCoreV1NamespacedConfigMapList(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedConfigMapListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -77077,20 +77434,21 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEndpoints",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedEndpointsOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77333,7 +77691,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpoints(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedEndpointsOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -77394,20 +77752,21 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/endpoints"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEndpointsList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedEndpointsListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77632,7 +77991,7 @@ func (c *Client) sendWatchCoreV1NamespacedEndpointsList(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedEndpointsListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -77693,20 +78052,21 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -77949,7 +78309,7 @@ func (c *Client) sendWatchCoreV1NamespacedEvent(ctx context.Context, params Watc
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -78010,20 +78370,21 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEventList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedEventListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78248,7 +78609,7 @@ func (c *Client) sendWatchCoreV1NamespacedEventList(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedEventListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -78309,20 +78670,21 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedLimitRange",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedLimitRangeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78565,7 +78927,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRange(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedLimitRangeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -78626,20 +78988,21 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/limitranges"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedLimitRangeList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedLimitRangeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -78864,7 +79227,7 @@ func (c *Client) sendWatchCoreV1NamespacedLimitRangeList(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedLimitRangeListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -78925,20 +79288,21 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedPersistentVolumeClaimOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79181,7 +79545,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedPersistentVolumeClaimOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -79242,20 +79606,21 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedPersistentVolumeClaimListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79480,7 +79845,7 @@ func (c *Client) sendWatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedPersistentVolumeClaimListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -79541,20 +79906,21 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPod",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedPodOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -79797,7 +80163,7 @@ func (c *Client) sendWatchCoreV1NamespacedPod(ctx context.Context, params WatchC
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedPodOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -79858,20 +80224,21 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/pods"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPodList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedPodListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80096,7 +80463,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodList(ctx context.Context, params Wa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedPodListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -80157,20 +80524,21 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPodTemplate",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedPodTemplateOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80413,7 +80781,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplate(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedPodTemplateOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -80474,20 +80842,21 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/podtemplates"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPodTemplateList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedPodTemplateListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -80712,7 +81081,7 @@ func (c *Client) sendWatchCoreV1NamespacedPodTemplateList(ctx context.Context, p
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedPodTemplateListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -80773,20 +81142,21 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedReplicationController",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedReplicationControllerOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81029,7 +81399,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationController(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedReplicationControllerOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -81090,20 +81460,21 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedReplicationControllerList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedReplicationControllerListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81328,7 +81699,7 @@ func (c *Client) sendWatchCoreV1NamespacedReplicationControllerList(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedReplicationControllerListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -81389,20 +81760,21 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedResourceQuota",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedResourceQuotaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81645,7 +82017,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuota(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedResourceQuotaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -81706,20 +82078,21 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/resourcequotas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedResourceQuotaList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedResourceQuotaListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -81944,7 +82317,7 @@ func (c *Client) sendWatchCoreV1NamespacedResourceQuotaList(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedResourceQuotaListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -82005,20 +82378,21 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedSecret",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedSecretOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82261,7 +82635,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecret(ctx context.Context, params Wat
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedSecretOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -82322,20 +82696,21 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/secrets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedSecretList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedSecretListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82560,7 +82935,7 @@ func (c *Client) sendWatchCoreV1NamespacedSecretList(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedSecretListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -82621,20 +82996,21 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedService",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedServiceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -82877,7 +83253,7 @@ func (c *Client) sendWatchCoreV1NamespacedService(ctx context.Context, params Wa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedServiceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -82938,20 +83314,21 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedServiceAccount",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedServiceAccountOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83194,7 +83571,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccount(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedServiceAccountOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -83255,20 +83632,21 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/serviceaccounts"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedServiceAccountList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedServiceAccountListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83493,7 +83871,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceAccountList(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedServiceAccountListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -83554,20 +83932,21 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/namespaces/{namespace}/services"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedServiceList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NamespacedServiceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -83792,7 +84171,7 @@ func (c *Client) sendWatchCoreV1NamespacedServiceList(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NamespacedServiceListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -83853,20 +84232,21 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/nodes/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1Node",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84090,7 +84470,7 @@ func (c *Client) sendWatchCoreV1Node(ctx context.Context, params WatchCoreV1Node
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1Node", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NodeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -84151,20 +84531,21 @@ func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/nodes"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NodeList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1NodeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84370,7 +84751,7 @@ func (c *Client) sendWatchCoreV1NodeList(ctx context.Context, params WatchCoreV1
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1NodeList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1NodeListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -84431,20 +84812,21 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PersistentVolume",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1PersistentVolumeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84668,7 +85050,7 @@ func (c *Client) sendWatchCoreV1PersistentVolume(ctx context.Context, params Wat
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1PersistentVolumeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -84729,20 +85111,21 @@ func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumeclaims"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -84948,7 +85331,7 @@ func (c *Client) sendWatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1PersistentVolumeClaimListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -85009,20 +85392,21 @@ func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/persistentvolumes"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PersistentVolumeList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1PersistentVolumeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85228,7 +85612,7 @@ func (c *Client) sendWatchCoreV1PersistentVolumeList(ctx context.Context, params
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1PersistentVolumeListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -85289,20 +85673,21 @@ func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/pods"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PodListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1PodListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85508,7 +85893,7 @@ func (c *Client) sendWatchCoreV1PodListForAllNamespaces(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1PodListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -85569,20 +85954,21 @@ func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/podtemplates"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PodTemplateListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1PodTemplateListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -85788,7 +86174,7 @@ func (c *Client) sendWatchCoreV1PodTemplateListForAllNamespaces(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1PodTemplateListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -85849,20 +86235,21 @@ func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/replicationcontrollers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1ReplicationControllerListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86068,7 +86455,7 @@ func (c *Client) sendWatchCoreV1ReplicationControllerListForAllNamespaces(ctx co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1ReplicationControllerListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -86129,20 +86516,21 @@ func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/resourcequotas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1ResourceQuotaListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86348,7 +86736,7 @@ func (c *Client) sendWatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1ResourceQuotaListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -86409,20 +86797,21 @@ func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/secrets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1SecretListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1SecretListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86628,7 +87017,7 @@ func (c *Client) sendWatchCoreV1SecretListForAllNamespaces(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1SecretListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -86689,20 +87078,21 @@ func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.C
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/serviceaccounts"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1ServiceAccountListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -86908,7 +87298,7 @@ func (c *Client) sendWatchCoreV1ServiceAccountListForAllNamespaces(ctx context.C
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1ServiceAccountListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -86969,20 +87359,21 @@ func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/api/v1/watch/services"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ServiceListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchCoreV1ServiceListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87188,7 +87579,7 @@ func (c *Client) sendWatchCoreV1ServiceListForAllNamespaces(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchCoreV1ServiceListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -87249,20 +87640,21 @@ func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87468,7 +87860,7 @@ func (c *Client) sendWatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchDiscoveryV1EndpointSliceListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -87529,20 +87921,21 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1NamespacedEndpointSlice",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchDiscoveryV1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -87785,7 +88178,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r); {
+			switch err := c.securityBearerToken(ctx, WatchDiscoveryV1NamespacedEndpointSliceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -87846,20 +88239,21 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchDiscoveryV1NamespacedEndpointSliceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88084,7 +88478,7 @@ func (c *Client) sendWatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r); {
+			switch err := c.securityBearerToken(ctx, WatchDiscoveryV1NamespacedEndpointSliceListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -88145,20 +88539,21 @@ func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88364,7 +88759,7 @@ func (c *Client) sendWatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -88425,20 +88820,21 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchDiscoveryV1beta1NamespacedEndpointSliceOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88681,7 +89077,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r); {
+			switch err := c.securityBearerToken(ctx, WatchDiscoveryV1beta1NamespacedEndpointSliceOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -88742,20 +89138,21 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -88980,7 +89377,7 @@ func (c *Client) sendWatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r); {
+			switch err := c.securityBearerToken(ctx, WatchDiscoveryV1beta1NamespacedEndpointSliceListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -89041,20 +89438,21 @@ func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1EventListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchEventsV1EventListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89260,7 +89658,7 @@ func (c *Client) sendWatchEventsV1EventListForAllNamespaces(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchEventsV1EventListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -89321,20 +89719,21 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchEventsV1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89577,7 +89976,7 @@ func (c *Client) sendWatchEventsV1NamespacedEvent(ctx context.Context, params Wa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, WatchEventsV1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -89638,20 +90037,21 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1NamespacedEventList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchEventsV1NamespacedEventListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -89876,7 +90276,7 @@ func (c *Client) sendWatchEventsV1NamespacedEventList(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r); {
+			switch err := c.securityBearerToken(ctx, WatchEventsV1NamespacedEventListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -89937,20 +90337,21 @@ func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1beta1EventListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchEventsV1beta1EventListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90156,7 +90557,7 @@ func (c *Client) sendWatchEventsV1beta1EventListForAllNamespaces(ctx context.Con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchEventsV1beta1EventListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -90217,20 +90618,21 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1beta1NamespacedEvent",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchEventsV1beta1NamespacedEventOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90473,7 +90875,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEvent(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r); {
+			switch err := c.securityBearerToken(ctx, WatchEventsV1beta1NamespacedEventOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -90534,20 +90936,21 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1beta1NamespacedEventList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchEventsV1beta1NamespacedEventListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -90772,7 +91175,7 @@ func (c *Client) sendWatchEventsV1beta1NamespacedEventList(ctx context.Context, 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r); {
+			switch err := c.securityBearerToken(ctx, WatchEventsV1beta1NamespacedEventListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -90833,20 +91236,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta1FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91070,7 +91474,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1FlowSchemaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -91131,20 +91535,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91350,7 +91755,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1FlowSchemaListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -91412,20 +91817,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91649,7 +92055,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -91710,20 +92116,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationL
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -91929,7 +92336,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationL
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -91990,20 +92397,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta2FlowSchemaOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92227,7 +92635,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2FlowSchemaOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -92288,20 +92696,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92507,7 +92916,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2FlowSchemaListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -92569,20 +92978,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -92806,7 +93216,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -92867,20 +93277,21 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationL
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93086,7 +93497,7 @@ func (c *Client) sendWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationL
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r); {
+			switch err := c.securityBearerToken(ctx, WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -93147,20 +93558,21 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchInternalApiserverV1alpha1StorageVersion",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchInternalApiserverV1alpha1StorageVersionOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93384,7 +93796,7 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersion(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r); {
+			switch err := c.securityBearerToken(ctx, WatchInternalApiserverV1alpha1StorageVersionOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -93445,20 +93857,21 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchInternalApiserverV1alpha1StorageVersionList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchInternalApiserverV1alpha1StorageVersionListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93664,7 +94077,7 @@ func (c *Client) sendWatchInternalApiserverV1alpha1StorageVersionList(ctx contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r); {
+			switch err := c.securityBearerToken(ctx, WatchInternalApiserverV1alpha1StorageVersionListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -93725,20 +94138,21 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1IngressClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1IngressClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -93962,7 +94376,7 @@ func (c *Client) sendWatchNetworkingV1IngressClass(ctx context.Context, params W
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1IngressClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -94023,20 +94437,21 @@ func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingressclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1IngressClassList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1IngressClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94242,7 +94657,7 @@ func (c *Client) sendWatchNetworkingV1IngressClassList(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1IngressClassListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -94303,20 +94718,21 @@ func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/ingresses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1IngressListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1IngressListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94522,7 +94938,7 @@ func (c *Client) sendWatchNetworkingV1IngressListForAllNamespaces(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1IngressListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -94583,20 +94999,21 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedIngress",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1NamespacedIngressOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -94839,7 +95256,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngress(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1NamespacedIngressOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -94900,20 +95317,21 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedIngressList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1NamespacedIngressListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95138,7 +95556,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedIngressList(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1NamespacedIngressListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -95199,20 +95617,21 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedNetworkPolicy",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1NamespacedNetworkPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95455,7 +95874,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicy(ctx context.Contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1NamespacedNetworkPolicyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -95516,20 +95935,21 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1NamespacedNetworkPolicyListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -95754,7 +96174,7 @@ func (c *Client) sendWatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1NamespacedNetworkPolicyListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -95815,20 +96235,21 @@ func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/networking.k8s.io/v1/watch/networkpolicies"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96034,7 +96455,7 @@ func (c *Client) sendWatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchNetworkingV1NetworkPolicyListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -96095,20 +96516,21 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNodeV1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96332,7 +96754,7 @@ func (c *Client) sendWatchNodeV1RuntimeClass(ctx context.Context, params WatchNo
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, WatchNodeV1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -96393,20 +96815,21 @@ func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params Wat
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1/watch/runtimeclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1RuntimeClassList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNodeV1RuntimeClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96612,7 +97035,7 @@ func (c *Client) sendWatchNodeV1RuntimeClassList(ctx context.Context, params Wat
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r); {
+			switch err := c.securityBearerToken(ctx, WatchNodeV1RuntimeClassListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -96673,20 +97096,21 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1alpha1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNodeV1alpha1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -96910,7 +97334,7 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClass(ctx context.Context, params W
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, WatchNodeV1alpha1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -96971,20 +97395,21 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, para
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1alpha1RuntimeClassList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNodeV1alpha1RuntimeClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97190,7 +97615,7 @@ func (c *Client) sendWatchNodeV1alpha1RuntimeClassList(ctx context.Context, para
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r); {
+			switch err := c.securityBearerToken(ctx, WatchNodeV1alpha1RuntimeClassListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -97251,20 +97676,21 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1beta1RuntimeClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNodeV1beta1RuntimeClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97488,7 +97914,7 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClass(ctx context.Context, params Wa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r); {
+			switch err := c.securityBearerToken(ctx, WatchNodeV1beta1RuntimeClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -97549,20 +97975,21 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, param
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1beta1RuntimeClassList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchNodeV1beta1RuntimeClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -97768,7 +98195,7 @@ func (c *Client) sendWatchNodeV1beta1RuntimeClassList(ctx context.Context, param
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r); {
+			switch err := c.securityBearerToken(ctx, WatchNodeV1beta1RuntimeClassListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -97829,20 +98256,21 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98085,7 +98513,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1NamespacedPodDisruptionBudgetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -98146,20 +98574,21 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1NamespacedPodDisruptionBudgetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98384,7 +98813,7 @@ func (c *Client) sendWatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1NamespacedPodDisruptionBudgetListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -98445,20 +98874,21 @@ func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1/watch/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98664,7 +99094,7 @@ func (c *Client) sendWatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -98725,20 +99155,21 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -98981,7 +99412,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1beta1NamespacedPodDisruptionBudgetOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -99042,20 +99473,21 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99280,7 +99712,7 @@ func (c *Client) sendWatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1beta1NamespacedPodDisruptionBudgetListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -99341,20 +99773,21 @@ func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/poddisruptionbudgets"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99560,7 +99993,7 @@ func (c *Client) sendWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -99621,20 +100054,21 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1PodSecurityPolicy",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1beta1PodSecurityPolicyOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -99858,7 +100292,7 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1beta1PodSecurityPolicyOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -99919,20 +100353,21 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/policy/v1beta1/watch/podsecuritypolicies"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1PodSecurityPolicyList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchPolicyV1beta1PodSecurityPolicyListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100138,7 +100573,7 @@ func (c *Client) sendWatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r); {
+			switch err := c.securityBearerToken(ctx, WatchPolicyV1beta1PodSecurityPolicyListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -100199,20 +100634,21 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRole",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1ClusterRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100436,7 +100872,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRole(ctx context.Context, pa
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -100497,20 +100933,21 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1ClusterRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -100734,7 +101171,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleBindingOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -100795,20 +101232,21 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1ClusterRoleBindingListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101014,7 +101452,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleBindingListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -101075,20 +101513,21 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRoleList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1ClusterRoleListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101294,7 +101733,7 @@ func (c *Client) sendWatchRbacAuthorizationV1ClusterRoleList(ctx context.Context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1ClusterRoleListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -101355,20 +101794,21 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRole",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1NamespacedRoleOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101611,7 +102051,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRole(ctx context.Context,
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -101672,20 +102112,21 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1NamespacedRoleBindingOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -101928,7 +102369,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.C
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleBindingOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -101989,20 +102430,21 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1NamespacedRoleBindingListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -102227,7 +102669,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleBindingList(ctx conte
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleBindingListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -102288,20 +102730,21 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRoleList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1NamespacedRoleListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -102526,7 +102969,7 @@ func (c *Client) sendWatchRbacAuthorizationV1NamespacedRoleList(ctx context.Cont
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1NamespacedRoleListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -102587,20 +103030,21 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -102806,7 +103250,7 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1RoleBindingListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -102867,20 +103311,21 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/rbac.authorization.k8s.io/v1/watch/roles"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchRbacAuthorizationV1RoleListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -103086,7 +103531,7 @@ func (c *Client) sendWatchRbacAuthorizationV1RoleListForAllNamespaces(ctx contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchRbacAuthorizationV1RoleListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -103147,20 +103592,21 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchSchedulingV1PriorityClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchSchedulingV1PriorityClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -103384,7 +103830,7 @@ func (c *Client) sendWatchSchedulingV1PriorityClass(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r); {
+			switch err := c.securityBearerToken(ctx, WatchSchedulingV1PriorityClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -103445,20 +103891,21 @@ func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/scheduling.k8s.io/v1/watch/priorityclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchSchedulingV1PriorityClassList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchSchedulingV1PriorityClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -103664,7 +104111,7 @@ func (c *Client) sendWatchSchedulingV1PriorityClassList(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r); {
+			switch err := c.securityBearerToken(ctx, WatchSchedulingV1PriorityClassListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -103725,20 +104172,21 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSIDriver",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1CSIDriverOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -103962,7 +104410,7 @@ func (c *Client) sendWatchStorageV1CSIDriver(ctx context.Context, params WatchSt
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1CSIDriverOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -104023,20 +104471,21 @@ func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params Wat
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csidrivers"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSIDriverList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1CSIDriverListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -104242,7 +104691,7 @@ func (c *Client) sendWatchStorageV1CSIDriverList(ctx context.Context, params Wat
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1CSIDriverListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -104303,20 +104752,21 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSINode",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1CSINodeOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -104540,7 +104990,7 @@ func (c *Client) sendWatchStorageV1CSINode(ctx context.Context, params WatchStor
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSINode", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1CSINodeOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -104601,20 +105051,21 @@ func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params Watch
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/csinodes"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSINodeList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1CSINodeListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -104820,7 +105271,7 @@ func (c *Client) sendWatchStorageV1CSINodeList(ctx context.Context, params Watch
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1CSINodeListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -104881,20 +105332,21 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1StorageClass",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1StorageClassOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -105118,7 +105570,7 @@ func (c *Client) sendWatchStorageV1StorageClass(ctx context.Context, params Watc
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1StorageClass", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1StorageClassOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -105179,20 +105631,21 @@ func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/storageclasses"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1StorageClassList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1StorageClassListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -105398,7 +105851,7 @@ func (c *Client) sendWatchStorageV1StorageClassList(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1StorageClassListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -105459,20 +105912,21 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1VolumeAttachment",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1VolumeAttachmentOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -105696,7 +106150,7 @@ func (c *Client) sendWatchStorageV1VolumeAttachment(ctx context.Context, params 
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1VolumeAttachmentOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -105757,20 +106211,21 @@ func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, par
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1/watch/volumeattachments"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1VolumeAttachmentList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1VolumeAttachmentListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -105976,7 +106431,7 @@ func (c *Client) sendWatchStorageV1VolumeAttachmentList(ctx context.Context, par
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1VolumeAttachmentListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -106037,20 +106492,21 @@ func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -106256,7 +106712,7 @@ func (c *Client) sendWatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -106317,20 +106773,21 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -106573,7 +107030,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx contex
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1alpha1NamespacedCSIStorageCapacityOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -106634,20 +107091,21 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -106872,7 +107330,7 @@ func (c *Client) sendWatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx co
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1alpha1NamespacedCSIStorageCapacityListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -106933,20 +107391,21 @@ func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(c
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -107152,7 +107611,7 @@ func (c *Client) sendWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(c
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -107213,20 +107672,21 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1beta1NamespacedCSIStorageCapacityOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -107469,7 +107929,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1beta1NamespacedCSIStorageCapacityOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):
@@ -107530,20 +107990,21 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 		semconv.HTTPRequestMethodKey.String("GET"),
 		semconv.HTTPRouteKey.String("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
 	defer func() {
 		// Use floating point division here for higher precision (instead of Millisecond method).
 		elapsedDuration := time.Since(startTime)
-		c.duration.Record(ctx, float64(float64(elapsedDuration)/float64(time.Millisecond)), metric.WithAttributes(otelAttrs...))
+		c.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), metric.WithAttributes(otelAttrs...))
 	}()
 
 	// Increment request counter.
 	c.requests.Add(ctx, 1, metric.WithAttributes(otelAttrs...))
 
 	// Start a span for this request.
-	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
+	ctx, span := c.cfg.Tracer.Start(ctx, WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation,
 		trace.WithAttributes(otelAttrs...),
 		clientSpanKind,
 	)
@@ -107768,7 +108229,7 @@ func (c *Client) sendWatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx con
 		var satisfied bitset
 		{
 			stage = "Security:BearerToken"
-			switch err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r); {
+			switch err := c.securityBearerToken(ctx, WatchStorageV1beta1NamespacedCSIStorageCapacityListOperation, r); {
 			case err == nil: // if NO error
 				satisfied[0] |= 1 << 0
 			case errors.Is(err, ogenerrors.ErrSkipClientSecurity):

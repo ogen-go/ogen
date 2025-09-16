@@ -537,10 +537,10 @@ func (o *NilInt) SetTo(v int) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilInt) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilInt) SetToNull() {
 	o.Null = true
 	var v int
@@ -584,10 +584,10 @@ func (o *NilString) SetTo(v string) {
 	o.Value = v
 }
 
-// IsSet returns true if value is Null.
+// IsNull returns true if value is Null.
 func (o NilString) IsNull() bool { return o.Null }
 
-// SetNull sets value to null.
+// SetToNull sets value to null.
 func (o *NilString) SetToNull() {
 	o.Null = true
 	var v string

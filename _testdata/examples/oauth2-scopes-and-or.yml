@@ -1,0 +1,56 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: OAuth Test
+paths:
+  /testtest:
+    post:
+      operationId: testtest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+      responses:
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - oauth2Alt:
+          - scope1
+          - scope2
+      - oauth2Alt:
+          - scope3
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  securitySchemes:
+    oauth2Alt:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            scope1: Grants scope1 access
+            scope2: Grants scope2 access
+            scope3: Grants scope3 access

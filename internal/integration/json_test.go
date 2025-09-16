@@ -184,6 +184,21 @@ func TestJSONGenerics(t *testing.T) {
 			})
 		}
 	})
+	t.Run("Issue1310", func(t *testing.T) {
+		t.Parallel()
+
+		val := api.Issue1310{
+			Title:      api.NewOptString("Bad Request"),
+			Details:    api.NewOptString("This is an example error"),
+			Properties: api.NewOptIssue1310Properties(&api.Issue1310Properties{}),
+		}
+		encoded := encodeObject(&val)
+
+		var decoded api.Issue1310
+		decodeObject(t, encoded, &decoded)
+		require.Equal(t, val, decoded)
+		require.JSONEq(t, string(encoded), string(encodeObject(&decoded)))
+	})
 }
 
 func TestJSONArray(t *testing.T) {

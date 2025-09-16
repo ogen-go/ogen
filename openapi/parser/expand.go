@@ -38,11 +38,16 @@ func (e *expander) Spec(api *openapi.API) (spec *ogen.Spec, err error) {
 	e.components = spec.Components
 
 	spec.OpenAPI = api.Version.String()
-	// FIXME(tdakkota): store actual information
-	spec.Info = ogen.Info{
-		Title:   "Expanded spec",
-		Version: "v0.1.0",
+
+	tags := make([]ogen.Tag, len(api.Tags))
+	for i, tag := range api.Tags {
+		tags[i] = ogen.Tag{
+			Name:        tag.Name,
+			Description: tag.Description,
+		}
 	}
+	spec.Tags = tags
+	spec.Info = fromOpenapiInfo(api.Info)
 
 	if servers := api.Servers; len(servers) > 0 {
 		expanded := make([]ogen.Server, len(servers))
@@ -263,6 +268,7 @@ func (e *expander) OAuthFlow(flow *openapi.OAuthFlow) (expanded *ogen.OAuthFlow,
 func (e *expander) Operation(op *openapi.Operation) (expanded *ogen.Operation, err error) {
 	expanded = new(ogen.Operation)
 
+	expanded.Tags = op.Tags
 	expanded.OperationID = op.OperationID
 	expanded.Summary = op.Summary
 	expanded.Description = op.Description

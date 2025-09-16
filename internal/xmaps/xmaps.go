@@ -2,9 +2,10 @@
 package xmaps
 
 import (
+	"slices"
+
 	"golang.org/x/exp/constraints"
 	"golang.org/x/exp/maps"
-	"golang.org/x/exp/slices"
 )
 
 // SortedKeys returns a sorted slice of keys in the map.

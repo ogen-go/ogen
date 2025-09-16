@@ -270,7 +270,7 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 		},
 	}
 	wrap := func(field string, err error) error {
-		return p.wrapField(field, file, param.Pointer.Locator, err)
+		return p.wrapField(field, file, param.Locator, err)
 	}
 
 	styles, ok := table[param.In]
@@ -293,7 +293,7 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 		if s == nil {
 			return nil
 		}
-		locator := s.Pointer.Locator
+		locator := s.Locator
 
 		switch s.Type {
 		case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
@@ -334,7 +334,7 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 				continue
 			}
 			if err := check(s); err != nil {
-				return p.wrapLocation(file, s.Pointer.Locator, err)
+				return p.wrapLocation(file, s.Locator, err)
 			}
 		}
 		return nil
