@@ -17,15 +17,15 @@ paths:
           in: query
           style: deepObject
           schema:
-              type: object
-              properties:
-                hello_world:
-                  type: string
-              patternProperties:
-                "^pat-.*":
-                  type: string
-              additionalProperties:
+            type: object
+            properties:
+              hello_world:
                 type: string
+            patternProperties:
+              "^pat-.*":
+                type: string
+            additionalProperties:
+              type: string
       responses:
         "200":
           description: ok
