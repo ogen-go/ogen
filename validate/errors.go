@@ -2,6 +2,7 @@ package validate
 
 import (
 	"fmt"
+	"net/http"
 	"strings"
 
 	"github.com/ogen-go/ogen/ogenregex"
@@ -64,8 +65,18 @@ func InvalidContentType(contentType string) error {
 // UnexpectedStatusCodeError reports that client got unexpected status code.
 type UnexpectedStatusCodeError struct {
 	StatusCode int
+	Payload    *http.Response
 }
 
+// UnexpectedStatusCodeWithResponse creates new UnexpectedStatusCode.
+func UnexpectedStatusCodeWithResponse(response *http.Response) error {
+	return &UnexpectedStatusCodeError{
+		StatusCode: response.StatusCode,
+		Payload:    response,
+	}
+}
+
+// (Remains here for backwards compatibility)
 // UnexpectedStatusCode creates new UnexpectedStatusCode.
 func UnexpectedStatusCode(statusCode int) error {
 	return &UnexpectedStatusCodeError{
