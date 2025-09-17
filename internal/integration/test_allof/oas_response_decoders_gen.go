@@ -14,7 +14,7 @@ func decodeNullableStringsResponse(resp *http.Response) (res *NullableStringsOK,
 		// Code 200.
 		return &NullableStringsOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response) (res *ObjectsWithConflictingArrayPropertyOK, _ error) {
@@ -23,7 +23,7 @@ func decodeObjectsWithConflictingArrayPropertyResponse(resp *http.Response) (res
 		// Code 200.
 		return &ObjectsWithConflictingArrayPropertyOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response) (res *ObjectsWithConflictingPropertiesOK, _ error) {
@@ -32,7 +32,7 @@ func decodeObjectsWithConflictingPropertiesResponse(resp *http.Response) (res *O
 		// Code 200.
 		return &ObjectsWithConflictingPropertiesOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeReferencedAllOfNullableResponse(resp *http.Response) (res *ReferencedAllOfNullableOK, _ error) {
@@ -41,7 +41,7 @@ func decodeReferencedAllOfNullableResponse(resp *http.Response) (res *Referenced
 		// Code 200.
 		return &ReferencedAllOfNullableOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeReferencedAllofResponse(resp *http.Response) (res *ReferencedAllofOK, _ error) {
@@ -50,7 +50,7 @@ func decodeReferencedAllofResponse(resp *http.Response) (res *ReferencedAllofOK,
 		// Code 200.
 		return &ReferencedAllofOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeReferencedAllofOptionalResponse(resp *http.Response) (res *ReferencedAllofOptionalOK, _ error) {
@@ -59,7 +59,7 @@ func decodeReferencedAllofOptionalResponse(resp *http.Response) (res *Referenced
 		// Code 200.
 		return &ReferencedAllofOptionalOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSimpleIntegerResponse(resp *http.Response) (res *SimpleIntegerOK, _ error) {
@@ -68,7 +68,7 @@ func decodeSimpleIntegerResponse(resp *http.Response) (res *SimpleIntegerOK, _ e
 		// Code 200.
 		return &SimpleIntegerOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSimpleObjectsResponse(resp *http.Response) (res *SimpleObjectsOK, _ error) {
@@ -77,7 +77,7 @@ func decodeSimpleObjectsResponse(resp *http.Response) (res *SimpleObjectsOK, _ e
 		// Code 200.
 		return &SimpleObjectsOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeStringsNotypeResponse(resp *http.Response) (res *StringsNotypeOK, _ error) {
@@ -86,5 +86,5 @@ func decodeStringsNotypeResponse(resp *http.Response) (res *StringsNotypeOK, _ e
 		// Code 200.
 		return &StringsNotypeOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

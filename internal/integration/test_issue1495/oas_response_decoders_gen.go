@@ -51,5 +51,5 @@ func decodeTestResponse(resp *http.Response) (res *TestOK, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

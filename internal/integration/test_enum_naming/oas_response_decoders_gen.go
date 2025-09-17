@@ -60,5 +60,5 @@ func decodeProbeLivenessResponse(resp *http.Response) (res *ProbeLivenessOK, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

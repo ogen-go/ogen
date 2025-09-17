@@ -19,7 +19,7 @@ func decodeComplicatedParameterNameGetResponse(resp *http.Response) (res *Compli
 		// Code 200.
 		return &ComplicatedParameterNameGetOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeContentParametersResponse(resp *http.Response) (res *ContentParameters, _ error) {
@@ -69,7 +69,7 @@ func decodeContentParametersResponse(resp *http.Response) (res *ContentParameter
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCookieParameterResponse(resp *http.Response) (res *Value, _ error) {
@@ -110,7 +110,7 @@ func decodeCookieParameterResponse(resp *http.Response) (res *Value, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeHeaderParameterResponse(resp *http.Response) (res *Value, _ error) {
@@ -151,7 +151,7 @@ func decodeHeaderParameterResponse(resp *http.Response) (res *Value, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObject, _ error) {
@@ -192,7 +192,7 @@ func decodeObjectCookieParameterResponse(resp *http.Response) (res *OneLevelObje
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryParameterOK, _ error) {
@@ -233,7 +233,7 @@ func decodeObjectQueryParameterResponse(resp *http.Response) (res *ObjectQueryPa
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOptionalArrayParameterResponse(resp *http.Response) (res string, _ error) {
@@ -276,7 +276,7 @@ func decodeOptionalArrayParameterResponse(resp *http.Response) (res string, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePathParameterResponse(resp *http.Response) (res *Value, _ error) {
@@ -317,7 +317,7 @@ func decodePathParameterResponse(resp *http.Response) (res *Value, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSameNameResponse(resp *http.Response) (res *SameNameOK, _ error) {
@@ -326,7 +326,7 @@ func decodeSameNameResponse(resp *http.Response) (res *SameNameOK, _ error) {
 		// Code 200.
 		return &SameNameOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSimilarNamesResponse(resp *http.Response) (res *SimilarNamesOK, _ error) {
@@ -335,5 +335,5 @@ func decodeSimilarNamesResponse(resp *http.Response) (res *SimilarNamesOK, _ err
 		// Code 200.
 		return &SimilarNamesOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

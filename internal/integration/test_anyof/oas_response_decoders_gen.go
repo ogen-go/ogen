@@ -60,7 +60,7 @@ func decodeIntegerNumberResponse(resp *http.Response) (res *IntegerNumber, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, _ error) {
@@ -110,7 +110,7 @@ func decodeJaegerAnyOfResponse(resp *http.Response) (res *JaegerAnyOf, _ error) 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, _ error) {
@@ -160,5 +160,5 @@ func decodeOneUUIDResponse(resp *http.Response) (res *OneUUID, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
