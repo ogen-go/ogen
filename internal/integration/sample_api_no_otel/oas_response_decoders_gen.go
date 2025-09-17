@@ -54,7 +54,7 @@ func decodeDataGetFormatResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDefaultTestResponse(resp *http.Response) (res int32, _ error) {
@@ -97,7 +97,7 @@ func decodeDefaultTestResponse(resp *http.Response) (res int32, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeErrorGetResponse(resp *http.Response) (res *ErrorStatusCode, _ error) {
@@ -196,7 +196,7 @@ func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, _ error) {
 		// Code 404.
 		return &NotFound{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, _ error) {
@@ -345,7 +345,7 @@ func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res *NoAddit
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeNullableDefaultResponseResponse(resp *http.Response) (res *NilIntStatusCode, _ error) {
@@ -400,7 +400,7 @@ func decodeOneofBugResponse(resp *http.Response) (res *OneofBugOK, _ error) {
 		// Code 200.
 		return &OneofBugOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePatternRecursiveMapGetResponse(resp *http.Response) (res PatternRecursiveMap, _ error) {
@@ -441,7 +441,7 @@ func decodePatternRecursiveMapGetResponse(resp *http.Response) (res PatternRecur
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePetCreateResponse(resp *http.Response) (res *Pet, _ error) {
@@ -491,7 +491,7 @@ func decodePetCreateResponse(resp *http.Response) (res *Pet, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, _ error) {
@@ -551,7 +551,7 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePetGetResponse(resp *http.Response) (res PetGetRes, _ error) {
@@ -833,7 +833,7 @@ func decodePetGetByNameResponse(resp *http.Response) (res *Pet, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePetNameByIDResponse(resp *http.Response) (res string, _ error) {
@@ -876,7 +876,7 @@ func decodePetNameByIDResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res *PetUpdateNameAliasPostDef, _ error) {
@@ -1006,7 +1006,7 @@ func decodeRecursiveArrayGetResponse(resp *http.Response) (res RecursiveArray, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeRecursiveMapGetResponse(resp *http.Response) (res *RecursiveMap, _ error) {
@@ -1047,7 +1047,7 @@ func decodeRecursiveMapGetResponse(resp *http.Response) (res *RecursiveMap, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSecurityTestResponse(resp *http.Response) (res string, _ error) {
@@ -1090,7 +1090,7 @@ func decodeSecurityTestResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, _ error) {
@@ -1131,7 +1131,7 @@ func decodeStringIntMapGetResponse(resp *http.Response) (res *StringIntMap, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestFloatValidationResponse(resp *http.Response) (res *TestFloatValidationOK, _ error) {
@@ -1140,7 +1140,7 @@ func decodeTestFloatValidationResponse(resp *http.Response) (res *TestFloatValid
 		// Code 200.
 		return &TestFloatValidationOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestInlineOneofResponse(resp *http.Response) (res *TestInlineOneOf, _ error) {
@@ -1181,7 +1181,7 @@ func decodeTestInlineOneofResponse(resp *http.Response) (res *TestInlineOneOf, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestIssue1310Response(resp *http.Response) (res *Issue1310, _ error) {
@@ -1222,7 +1222,7 @@ func decodeTestIssue1310Response(resp *http.Response) (res *Issue1310, _ error) 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestIssue1461Response(resp *http.Response) (res *Issue1461, _ error) {
@@ -1272,7 +1272,7 @@ func decodeTestIssue1461Response(resp *http.Response) (res *Issue1461, _ error) 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneofsRes, _ error) {
@@ -1410,7 +1410,7 @@ func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneo
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestTupleResponse(resp *http.Response) (res *TupleTest, _ error) {
@@ -1460,7 +1460,7 @@ func decodeTestTupleResponse(resp *http.Response) (res *TupleTest, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestTupleNamedResponse(resp *http.Response) (res *TupleNamedTest, _ error) {
@@ -1510,7 +1510,7 @@ func decodeTestTupleNamedResponse(resp *http.Response) (res *TupleNamedTest, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestUniqueItemsResponse(resp *http.Response) (res *UniqueItemsTest, _ error) {
@@ -1560,5 +1560,5 @@ func decodeTestUniqueItemsResponse(resp *http.Response) (res *UniqueItemsTest, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

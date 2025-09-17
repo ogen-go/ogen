@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeFooGetResponse(resp *http.Response) (res string, _ error) {
+func decodeTestResponse(resp *http.Response) (res *TestOK, _ error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -29,11 +29,9 @@ func decodeFooGetResponse(resp *http.Response) (res string, _ error) {
 			}
 			d := jx.DecodeBytes(buf)
 
-			var response string
+			var response TestOK
 			if err := func() error {
-				v, err := d.Str()
-				response = string(v)
-				if err != nil {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				if err := d.Skip(); err != io.EOF {
@@ -48,7 +46,7 @@ func decodeFooGetResponse(resp *http.Response) (res string, _ error) {
 				}
 				return res, err
 			}
-			return response, nil
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
