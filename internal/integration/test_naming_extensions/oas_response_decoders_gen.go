@@ -51,5 +51,5 @@ func decodeHealthzGetResponse(resp *http.Response) (res *Person, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

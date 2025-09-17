@@ -53,7 +53,7 @@ func decodeFooBarBazGetResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeFooBarQuxGetResponse(resp *http.Response) (res string, _ error) {
@@ -96,7 +96,7 @@ func decodeFooBarQuxGetResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeFooParamXyzGetResponse(resp *http.Response) (res string, _ error) {
@@ -139,5 +139,5 @@ func decodeFooParamXyzGetResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
