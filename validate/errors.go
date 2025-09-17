@@ -76,7 +76,9 @@ func UnexpectedStatusCodeWithResponse(response *http.Response) error {
 	}
 }
 
-// (Remains here for backwards compatibility)
+// Deprecated: client codes generated a while ago used this function.
+// Kept here solely for backward compatibility to them.
+//
 // UnexpectedStatusCode creates new UnexpectedStatusCode.
 func UnexpectedStatusCode(statusCode int) error {
 	return &UnexpectedStatusCodeError{
