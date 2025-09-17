@@ -97,6 +97,8 @@ func (s *Server) handleTestRequest(args [0]string, argsEscaped bool, w http.Resp
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *TestOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -105,6 +107,7 @@ func (s *Server) handleTestRequest(args [0]string, argsEscaped bool, w http.Resp
 			OperationSummary: "",
 			OperationID:      "test",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
