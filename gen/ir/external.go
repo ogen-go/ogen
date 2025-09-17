@@ -1,8 +1,10 @@
 package ir
 
 import (
+	"cmp"
 	"go/types"
-	"path"
+	"maps"
+	"slices"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -12,6 +14,7 @@ import (
 // ExternalType represents an external type.
 type ExternalType struct {
 	PackagePath string
+	PackageName string
 	ImportAlias string
 	TypeName    string
 	Encode      ExternalEncoding
@@ -22,10 +25,7 @@ type ExternalType struct {
 // String returns the string representation of the ExternalType.
 func (e ExternalType) Primitive() PrimitiveType {
 	var sb strings.Builder
-	pkg := e.ImportAlias
-	if pkg == "" && e.PackagePath != "" {
-		pkg = path.Base(e.PackagePath)
-	}
+	pkg := cmp.Or(e.ImportAlias, e.PackageName)
 	if pkg != "" {
 		sb.WriteString(pkg)
 		sb.WriteByte('.')
@@ -85,13 +85,14 @@ func getExternalType(input string) (ExternalType, error) {
 		return ExternalType{}, err
 	}
 
-	encode, decode, err := getExternalEncoding(pkgPath, typeName)
+	pkgName, encode, decode, err := loadExternal(pkgPath, typeName)
 	if err != nil {
 		return ExternalType{}, err
 	}
 
 	return ExternalType{
 		PackagePath: pkgPath,
+		PackageName: pkgName,
 		TypeName:    typeName,
 		IsPointer:   isPointer,
 		Encode:      encode,
@@ -156,17 +157,18 @@ var decoders = map[[2]string]ExternalEncoding{
 	{"encoding", "BinaryUnmarshaler"}:               ExternalBinary,
 }
 
-func getExternalEncoding(pkgPath, typeName string) (encode, decode ExternalEncoding, _ error) {
-	pkgPaths := []string{pkgPath}
+func loadExternal(pkgPath, typeName string) (pkgName string, encode, decode ExternalEncoding, _ error) {
+	pkgPaths := map[string]struct{}{pkgPath: {}}
 	for _, m := range [2]map[[2]string]ExternalEncoding{encoders, decoders} {
 		for k := range m {
-			pkgPaths = append(pkgPaths, k[0])
+			pkgPaths[k[0]] = struct{}{}
 		}
 	}
 
-	pkgs, err := packages.Load(&packages.Config{Mode: packages.NeedTypes}, pkgPaths...)
+	cfg := &packages.Config{Mode: packages.NeedTypes | packages.NeedName}
+	pkgs, err := packages.Load(cfg, slices.Collect(maps.Keys(pkgPaths))...)
 	if err != nil || len(pkgs) == 0 {
-		return -1, -1, errors.Wrap(err, "failed to load packages")
+		return "", -1, -1, errors.Wrap(err, "failed to load packages")
 	}
 
 	getType := func(pkgs []*packages.Package, pkgPath, typeName string) *types.Named {
@@ -190,7 +192,7 @@ func getExternalEncoding(pkgPath, typeName string) (encode, decode ExternalEncod
 
 	typ := getType(pkgs, pkgPath, typeName)
 	if typ == nil {
-		return -1, -1, errors.New("type not found")
+		return "", -1, -1, errors.New("type not found")
 	}
 	ptr := types.NewPointer(typ)
 
@@ -207,5 +209,5 @@ func getExternalEncoding(pkgPath, typeName string) (encode, decode ExternalEncod
 		}
 	}
 
-	return encode, decode, nil
+	return typ.Obj().Pkg().Name(), encode, decode, nil
 }
