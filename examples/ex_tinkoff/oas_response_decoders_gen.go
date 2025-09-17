@@ -95,7 +95,7 @@ func decodeMarketBondsGetResponse(resp *http.Response) (res MarketBondsGetRes, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRes, _ error) {
@@ -180,7 +180,7 @@ func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRe
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrenciesGetRes, _ error) {
@@ -265,7 +265,7 @@ func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrencie
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, _ error) {
@@ -350,7 +350,7 @@ func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookGetRes, _ error) {
@@ -435,7 +435,7 @@ func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookG
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchByFigiGetRes, _ error) {
@@ -520,7 +520,7 @@ func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchB
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearchByTickerGetRes, _ error) {
@@ -605,7 +605,7 @@ func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearc
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes, _ error) {
@@ -690,7 +690,7 @@ func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes,
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, _ error) {
@@ -775,7 +775,7 @@ func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRes, _ error) {
@@ -851,7 +851,7 @@ func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRe
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, _ error) {
@@ -936,7 +936,7 @@ func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrderPostRes, _ error) {
@@ -1021,7 +1021,7 @@ func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrd
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketOrderPostRes, _ error) {
@@ -1106,7 +1106,7 @@ func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketO
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCurrenciesGetRes, _ error) {
@@ -1191,7 +1191,7 @@ func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCur
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, _ error) {
@@ -1276,7 +1276,7 @@ func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRes, _ error) {
@@ -1352,7 +1352,7 @@ func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRe
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res SandboxCurrenciesBalancePostRes, _ error) {
@@ -1428,7 +1428,7 @@ func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res Sandbo
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res SandboxPositionsBalancePostRes, _ error) {
@@ -1504,7 +1504,7 @@ func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res Sandbox
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegisterPostRes, _ error) {
@@ -1589,7 +1589,7 @@ func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegister
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePostRes, _ error) {
@@ -1665,7 +1665,7 @@ func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePost
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeUserAccountsGetResponse(resp *http.Response) (res UserAccountsGetRes, _ error) {
@@ -1750,5 +1750,5 @@ func decodeUserAccountsGetResponse(resp *http.Response) (res UserAccountsGetRes,
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
