@@ -314,6 +314,10 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema, side bool) (*i
 		return nil, err
 	}
 
+	if handled, result, err := g.handleNullableOneOf(name, schema, side); handled {
+		return result, err
+	}
+
 	var regSchema *jsonschema.Schema
 	if !side {
 		regSchema = schema
@@ -1051,4 +1055,36 @@ func mergeEnums(s1, s2 *jsonschema.Schema) ([]any, error) {
 		return nil, &ErrNotImplemented{Name: "allOf enum merging"}
 	}
 	return result, nil
+}
+
+// oneOf with null option should make a nullable type.
+// - when there are only 2 options: nullable + <schema> = nullable <schema>
+// - when there are more, nothing is changed
+func (g *schemaGen) handleNullableOneOf(name string, schema *jsonschema.Schema, side bool) (handled bool, result *ir.Type, err error) {
+	// Only handle oneOf with at least 2 variants
+	if len(schema.OneOf) != 2 {
+		return false, nil, nil
+	}
+
+	var nullSchema, nonNullSchema *jsonschema.Schema
+
+	for _, s := range schema.OneOf {
+		if s != nil {
+			if s.Type == jsonschema.Null {
+				nullSchema = s
+			} else {
+				nonNullSchema = s
+			}
+		}
+	}
+
+	// if we didn't find nullable alternative, just continue
+	if nullSchema == nil {
+		return false, nil, nil
+	}
+
+	// otherwise, mark the other schema as nullable and generate it
+	nonNullSchema.Nullable = true
+	result, err = g.generate(name, nonNullSchema, side)
+	return true, result, err
 }
