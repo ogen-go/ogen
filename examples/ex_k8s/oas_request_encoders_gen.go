@@ -14,7 +14,7 @@ func encodePatchCoreV1NamespacedConfigMapRequest(
 	req *IoK8sApimachineryPkgApisMetaV1Patch,
 	r *http.Request,
 ) error {
-	const contentType = "application/problem+json"
+	const contentType = "application/json"
 	e := new(jx.Encoder)
 	{
 		req.Encode(e)

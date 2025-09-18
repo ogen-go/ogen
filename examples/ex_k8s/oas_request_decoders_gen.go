@@ -40,7 +40,7 @@ func (s *Server) decodePatchCoreV1NamespacedConfigMapRequest(r *http.Request) (
 		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
-	case ct == "application/problem+json":
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, rawBody, close, validate.ErrBodyRequired
 		}

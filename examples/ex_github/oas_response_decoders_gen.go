@@ -23376,7 +23376,7 @@ func decodeMetaRootResponse(resp *http.Response) (res *MetaRootOK, _ error) {
 			return res, errors.Wrap(err, "parse media type")
 		}
 		switch {
-		case ct == "application/problem+json":
+		case ct == "application/json":
 			buf, err := io.ReadAll(resp.Body)
 			if err != nil {
 				return res, err
