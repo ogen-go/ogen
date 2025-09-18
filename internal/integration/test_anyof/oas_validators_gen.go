@@ -80,6 +80,7 @@ func (s JaegerAnyOfSizeLimit) Validate() error {
 			MaxLength:    0,
 			MaxLengthSet: false,
 			Email:        false,
+			Byte:         false,
 			Hostname:     false,
 			Regex:        regexMap["^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"],
 		}).Validate(string(s.String)); err != nil {
