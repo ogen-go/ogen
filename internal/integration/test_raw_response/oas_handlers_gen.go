@@ -96,6 +96,8 @@ func (s *Server) handleGetMixedDataRequest(args [0]string, argsEscaped bool, w h
 		}
 		err error
 	)
+
+	var rawBody []byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -103,6 +105,7 @@ func (s *Server) handleGetMixedDataRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "getMixedData",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -204,6 +207,8 @@ func (s *Server) handleGetNormalDataRequest(args [0]string, argsEscaped bool, w 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *GetNormalDataOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -212,6 +217,7 @@ func (s *Server) handleGetNormalDataRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "getNormalData",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -320,6 +326,8 @@ func (s *Server) handleGetRawDataRequest(args [0]string, argsEscaped bool, w htt
 		}
 		err error
 	)
+
+	var rawBody []byte
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
 			Context:          ctx,
@@ -327,6 +335,7 @@ func (s *Server) handleGetRawDataRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "getRawData",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

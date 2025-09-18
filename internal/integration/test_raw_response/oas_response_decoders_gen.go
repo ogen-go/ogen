@@ -56,7 +56,7 @@ func decodeGetMixedDataResponse(resp *http.Response) (res GetMixedDataRes, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeGetNormalDataResponse(resp *http.Response) (res *GetNormalDataOK, _ error) {
@@ -97,7 +97,7 @@ func decodeGetNormalDataResponse(resp *http.Response) (res *GetNormalDataOK, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeGetRawDataResponse(resp *http.Response) (res GetRawDataRes, _ error) {
@@ -118,5 +118,5 @@ func decodeGetRawDataResponse(resp *http.Response) (res GetRawDataRes, _ error) 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
