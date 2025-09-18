@@ -97,6 +97,8 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *IntegerNumber
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -105,6 +107,7 @@ func (s *Server) handleIntegerNumberRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "integerNumber",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -214,6 +217,8 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w ht
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *JaegerAnyOf
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -222,6 +227,7 @@ func (s *Server) handleJaegerAnyOfRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "jaegerAnyOf",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -331,6 +337,8 @@ func (s *Server) handleOneUUIDRequest(args [0]string, argsEscaped bool, w http.R
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *OneUUID
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -339,6 +347,7 @@ func (s *Server) handleOneUUIDRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "",
 			OperationID:      "oneUUID",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

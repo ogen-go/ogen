@@ -207,8 +207,9 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 	}
 	{{- end }}
 
+    var rawBody []byte
 	{{- if $op.Request }}
-	request, close, err := s.decode{{ $op.Name }}Request(r)
+	request, rawBody, close, err := s.decode{{ $op.Name }}Request(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -236,6 +237,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 			OperationSummary: {{ quote $op.Summary }},
 			OperationID: {{ quote $op.Spec.OperationID }},
 			Body: {{- if $op.Request }}request{{- else }}nil{{- end }},
+			RawBody: rawBody,
 			Params: middleware.Parameters{
 				{{- range $param := $op.Params }}
 				{
