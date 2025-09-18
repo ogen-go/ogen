@@ -53,7 +53,7 @@ func decodeDataGetResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDataGetAnyResponse(resp *http.Response) (res string, _ error) {
@@ -96,7 +96,7 @@ func decodeDataGetAnyResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDataGetIDResponse(resp *http.Response) (res string, _ error) {
@@ -139,5 +139,5 @@ func decodeDataGetIDResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

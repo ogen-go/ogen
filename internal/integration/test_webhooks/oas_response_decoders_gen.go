@@ -134,7 +134,7 @@ func decodeStatusWebhookResponse(resp *http.Response) (res *StatusWebhookOK, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeUpdateDeleteResponse(resp *http.Response) (res UpdateDeleteRes, _ error) {

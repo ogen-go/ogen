@@ -194,12 +194,24 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		}
 	}
 
+	var rawResponse bool
+	{
+		const extensionName = "x-ogen-raw-response"
+		if ex, ok := m.Common.Extensions[extensionName]; ok {
+			if err := ex.Decode(&rawResponse); err != nil {
+				err := errors.Wrap(err, "unmarshal value")
+				return nil, p.wrapField(extensionName, p.file(ctx), locator, err)
+			}
+		}
+	}
+
 	return &openapi.MediaType{
 		Schema:             s,
 		Example:            json.RawMessage(m.Example),
 		Examples:           examples,
 		Encoding:           encodings,
 		XOgenJSONStreaming: streaming,
+		XOgenRawResponse:   rawResponse,
 		Pointer:            locator.Pointer(p.file(ctx)),
 	}, nil
 }

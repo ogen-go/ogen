@@ -19,6 +19,7 @@ import (
 
 func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 	req NilString,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -39,28 +40,29 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request NilString
@@ -78,7 +80,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if value, ok := request.Get(); ok {
@@ -101,16 +103,17 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Request) (
 	req *ObjectsWithConflictingArrayPropertyReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -131,28 +134,29 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request ObjectsWithConflictingArrayPropertyReq
@@ -170,7 +174,7 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -178,16 +182,17 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) (
 	req *ObjectsWithConflictingPropertiesReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -208,28 +213,29 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) 
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request ObjectsWithConflictingPropertiesReq
@@ -247,7 +253,7 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) 
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -255,16 +261,17 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) 
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 	req ReferencedAllOfNullableReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -285,32 +292,33 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 	}()
 	req = &ReferencedAllOfNullableReqEmptyBody{}
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
-		return req, close, nil
+		return req, rawBody, close, nil
 	}
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request ReferencedAllOfNullable
@@ -328,7 +336,7 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -336,15 +344,15 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
+			return req, rawBody, close, errors.Wrap(err, "parse multipart form")
 		}
 		// Remove all temporary files created by ParseMultipartForm when the request is done.
 		//
@@ -380,7 +388,7 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 					}
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"location\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"location\"")
 				}
 				if err := func() error {
 					if value, ok := request.Location.Get(); ok {
@@ -395,7 +403,7 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 					}
 					return nil
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 			}
 		}
@@ -422,7 +430,7 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 					}
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"allOfLocation\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"allOfLocation\"")
 				}
 				if err := func() error {
 					if value, ok := request.AllOfLocation.Get(); ok {
@@ -437,7 +445,7 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 					}
 					return nil
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 			}
 		}
@@ -464,7 +472,7 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 					}
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"nullableAllOfLocation\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"nullableAllOfLocation\"")
 				}
 				if err := func() error {
 					if value, ok := request.NullableAllOfLocation.Get(); ok {
@@ -479,18 +487,19 @@ func (s *Server) decodeReferencedAllOfNullableRequest(r *http.Request) (
 					}
 					return nil
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 			}
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 	req ReferencedAllofReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -511,28 +520,29 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request Robot
@@ -550,7 +560,7 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -558,15 +568,15 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
+			return req, rawBody, close, errors.Wrap(err, "parse multipart form")
 		}
 		// Remove all temporary files created by ParseMultipartForm when the request is done.
 		//
@@ -600,7 +610,7 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 					request.State = RobotMultipartState(c)
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"state\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"state\"")
 				}
 				if err := func() error {
 					if err := request.State.Validate(); err != nil {
@@ -608,10 +618,10 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 					}
 					return nil
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -635,10 +645,10 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 					request.ID = c
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"id\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"id\"")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -663,7 +673,7 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 					}
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"location\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"location\"")
 				}
 				if err := func() error {
 					if err := request.Location.Validate(); err != nil {
@@ -671,20 +681,21 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 					}
 					return nil
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 	req ReferencedAllofOptionalReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -705,32 +716,33 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 	}()
 	req = &ReferencedAllofOptionalReqEmptyBody{}
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
-		return req, close, nil
+		return req, rawBody, close, nil
 	}
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request Robot
@@ -748,7 +760,7 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -756,15 +768,15 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
-			return req, close, nil
+			return req, rawBody, close, nil
 		}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
+			return req, rawBody, close, errors.Wrap(err, "parse multipart form")
 		}
 		// Remove all temporary files created by ParseMultipartForm when the request is done.
 		//
@@ -798,7 +810,7 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 					request.State = RobotMultipartState(c)
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"state\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"state\"")
 				}
 				if err := func() error {
 					if err := request.State.Validate(); err != nil {
@@ -806,10 +818,10 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 					}
 					return nil
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -833,10 +845,10 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 					request.ID = c
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"id\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"id\"")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
 		{
@@ -861,7 +873,7 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 					}
 					return nil
 				}); err != nil {
-					return req, close, errors.Wrap(err, "decode \"location\"")
+					return req, rawBody, close, errors.Wrap(err, "decode \"location\"")
 				}
 				if err := func() error {
 					if err := request.Location.Validate(); err != nil {
@@ -869,20 +881,21 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 					}
 					return nil
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 			} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			}
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 	req int,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -903,28 +916,29 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request int
@@ -944,7 +958,7 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if err := (validate.Int{
@@ -961,16 +975,17 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 	req *SimpleObjectsReq,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -991,28 +1006,29 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request SimpleObjectsReq
@@ -1030,16 +1046,17 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
-		return &request, close, nil
+		return &request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 
 func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 	req NilString,
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -1060,28 +1077,29 @@ func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 	}()
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 	case ct == "application/json":
 		if r.ContentLength == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 		buf, err := io.ReadAll(r.Body)
 		defer func() {
 			_ = r.Body.Close()
 		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
 
 		// Reset the body to allow for downstream reading.
 		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		}
 
+		rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 
 		var request NilString
@@ -1099,7 +1117,7 @@ func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 				Body:        buf,
 				Err:         err,
 			}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		if err := func() error {
 			if value, ok := request.Get(); ok {
@@ -1122,10 +1140,10 @@ func (s *Server) decodeStringsNotypeRequest(r *http.Request) (
 			}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
-		return request, close, nil
+		return request, rawBody, close, nil
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }

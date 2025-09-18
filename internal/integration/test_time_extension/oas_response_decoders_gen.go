@@ -51,7 +51,7 @@ func decodeOptionalResponse(resp *http.Response) (res *OptionalOK, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeRequiredResponse(resp *http.Response) (res *RequiredOK, _ error) {
@@ -92,5 +92,5 @@ func decodeRequiredResponse(resp *http.Response) (res *RequiredOK, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

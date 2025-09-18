@@ -95,6 +95,8 @@ func (s *Server) handleHealthzGetRequest(args [0]string, argsEscaped bool, w htt
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *Person
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -103,6 +105,7 @@ func (s *Server) handleHealthzGetRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
