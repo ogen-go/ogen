@@ -11325,7 +11325,7 @@ func decodePatchCoreV1NamespacedConfigMapResponse(resp *http.Response) (res Patc
 		// Code 401.
 		return &PatchCoreV1NamespacedConfigMapUnauthorized{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp *http.Response) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, _ error) {

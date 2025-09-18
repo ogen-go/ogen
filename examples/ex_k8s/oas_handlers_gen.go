@@ -41292,7 +41292,7 @@ func (s *Server) handlePatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -41364,7 +41364,9 @@ func (s *Server) handlePatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePatchCoreV1NamespacedConfigMapRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchCoreV1NamespacedConfigMapRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -41388,6 +41390,7 @@ func (s *Server) handlePatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "patchCoreV1NamespacedConfigMap",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "dryRun",
