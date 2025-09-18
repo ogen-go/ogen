@@ -68,6 +68,9 @@ type ParseOptions struct {
 	Remote RemoteOptions `json:"-" yaml:"-"`
 	// SchemaDepthLimit is maximum depth of schema generation. Default is 1000.
 	SchemaDepthLimit int `json:"depth_limit" yaml:"depth_limit"`
+	// AuthenticationSchemes is the list of allowed HTTP Authorization schemes in a Security Scheme Object.
+	// Default is the list defined in https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml.
+	AuthenticationSchemes []string `json:"authentication_schemes" yaml:"authentication_schemes"`
 	// File is the file that is being parsed.
 	//
 	// Used for error messages.
