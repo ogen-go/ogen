@@ -101,7 +101,9 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, argsEscaped bool, 
 			ID:   "addStickerToSet",
 		}
 	)
-	request, close, err := s.decodeAddStickerToSetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAddStickerToSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -125,6 +127,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "addStickerToSet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -248,7 +251,9 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, argsEscaped bo
 			ID:   "answerCallbackQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerCallbackQueryRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAnswerCallbackQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -272,6 +277,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "answerCallbackQuery",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -395,7 +401,9 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, argsEscaped bool
 			ID:   "answerInlineQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerInlineQueryRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAnswerInlineQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -419,6 +427,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "answerInlineQuery",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -542,7 +551,9 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, argsEscaped
 			ID:   "answerPreCheckoutQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerPreCheckoutQueryRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAnswerPreCheckoutQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -566,6 +577,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "answerPreCheckoutQuery",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -689,7 +701,9 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, argsEscaped bo
 			ID:   "answerShippingQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerShippingQueryRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAnswerShippingQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -713,6 +727,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "answerShippingQuery",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -836,7 +851,9 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, argsEscaped bool
 			ID:   "answerWebAppQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerWebAppQueryRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeAnswerWebAppQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -860,6 +877,7 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "answerWebAppQuery",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -983,7 +1001,9 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, argsEscaped
 			ID:   "approveChatJoinRequest",
 		}
 	)
-	request, close, err := s.decodeApproveChatJoinRequestRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeApproveChatJoinRequestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1007,6 +1027,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "approveChatJoinRequest",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1130,7 +1151,9 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, argsEscaped bool, w 
 			ID:   "banChatMember",
 		}
 	)
-	request, close, err := s.decodeBanChatMemberRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeBanChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1154,6 +1177,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "banChatMember",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1277,7 +1301,9 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, argsEscaped bool
 			ID:   "banChatSenderChat",
 		}
 	)
-	request, close, err := s.decodeBanChatSenderChatRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeBanChatSenderChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1301,6 +1327,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "banChatSenderChat",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1421,6 +1448,8 @@ func (s *Server) handleCloseRequest(args [0]string, argsEscaped bool, w http.Res
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1429,6 +1458,7 @@ func (s *Server) handleCloseRequest(args [0]string, argsEscaped bool, w http.Res
 			OperationSummary: "",
 			OperationID:      "close",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1552,7 +1582,9 @@ func (s *Server) handleCopyMessageRequest(args [0]string, argsEscaped bool, w ht
 			ID:   "copyMessage",
 		}
 	)
-	request, close, err := s.decodeCopyMessageRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCopyMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1576,6 +1608,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "copyMessage",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1699,7 +1732,9 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, argsEscaped b
 			ID:   "createChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeCreateChatInviteLinkRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1723,6 +1758,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "createChatInviteLink",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1846,7 +1882,9 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, argsEscaped bo
 			ID:   "createNewStickerSet",
 		}
 	)
-	request, close, err := s.decodeCreateNewStickerSetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateNewStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1870,6 +1908,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "createNewStickerSet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1993,7 +2032,9 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, argsEscaped
 			ID:   "declineChatJoinRequest",
 		}
 	)
-	request, close, err := s.decodeDeclineChatJoinRequestRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDeclineChatJoinRequestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2017,6 +2058,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "declineChatJoinRequest",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2140,7 +2182,9 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, argsEscaped bool, 
 			ID:   "deleteChatPhoto",
 		}
 	)
-	request, close, err := s.decodeDeleteChatPhotoRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDeleteChatPhotoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2164,6 +2208,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "deleteChatPhoto",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2287,7 +2332,9 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, argsEscaped b
 			ID:   "deleteChatStickerSet",
 		}
 	)
-	request, close, err := s.decodeDeleteChatStickerSetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDeleteChatStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2311,6 +2358,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "deleteChatStickerSet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2434,7 +2482,9 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, argsEscaped bool, w 
 			ID:   "deleteMessage",
 		}
 	)
-	request, close, err := s.decodeDeleteMessageRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDeleteMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2458,6 +2508,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "deleteMessage",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2581,7 +2632,9 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, argsEscaped bool,
 			ID:   "deleteMyCommands",
 		}
 	)
-	request, close, err := s.decodeDeleteMyCommandsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDeleteMyCommandsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2605,6 +2658,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "deleteMyCommands",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2728,7 +2782,9 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, argsEscaped b
 			ID:   "deleteStickerFromSet",
 		}
 	)
-	request, close, err := s.decodeDeleteStickerFromSetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDeleteStickerFromSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2752,6 +2808,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "deleteStickerFromSet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2875,7 +2932,9 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, argsEscaped bool, w 
 			ID:   "deleteWebhook",
 		}
 	)
-	request, close, err := s.decodeDeleteWebhookRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeDeleteWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2899,6 +2958,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "deleteWebhook",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3022,7 +3082,9 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, argsEscaped boo
 			ID:   "editChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeEditChatInviteLinkRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeEditChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3046,6 +3108,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "editChatInviteLink",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3169,7 +3232,9 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, argsEscaped boo
 			ID:   "editMessageCaption",
 		}
 	)
-	request, close, err := s.decodeEditMessageCaptionRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeEditMessageCaptionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3193,6 +3258,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "editMessageCaption",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3316,7 +3382,9 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, argsEscape
 			ID:   "editMessageLiveLocation",
 		}
 	)
-	request, close, err := s.decodeEditMessageLiveLocationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeEditMessageLiveLocationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3340,6 +3408,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "editMessageLiveLocation",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3463,7 +3532,9 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, argsEscaped bool,
 			ID:   "editMessageMedia",
 		}
 	)
-	request, close, err := s.decodeEditMessageMediaRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeEditMessageMediaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3487,6 +3558,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "editMessageMedia",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3610,7 +3682,9 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, argsEscaped
 			ID:   "editMessageReplyMarkup",
 		}
 	)
-	request, close, err := s.decodeEditMessageReplyMarkupRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeEditMessageReplyMarkupRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3634,6 +3708,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "editMessageReplyMarkup",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3757,7 +3832,9 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, argsEscaped bool, 
 			ID:   "editMessageText",
 		}
 	)
-	request, close, err := s.decodeEditMessageTextRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeEditMessageTextRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3781,6 +3858,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "editMessageText",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3904,7 +3982,9 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, argsEscaped b
 			ID:   "exportChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeExportChatInviteLinkRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeExportChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3928,6 +4008,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "exportChatInviteLink",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4051,7 +4132,9 @@ func (s *Server) handleForwardMessageRequest(args [0]string, argsEscaped bool, w
 			ID:   "forwardMessage",
 		}
 	)
-	request, close, err := s.decodeForwardMessageRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeForwardMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4075,6 +4158,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "forwardMessage",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4198,7 +4282,9 @@ func (s *Server) handleGetChatRequest(args [0]string, argsEscaped bool, w http.R
 			ID:   "getChat",
 		}
 	)
-	request, close, err := s.decodeGetChatRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4222,6 +4308,7 @@ func (s *Server) handleGetChatRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "",
 			OperationID:      "getChat",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4345,7 +4432,9 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, argsEscaped 
 			ID:   "getChatAdministrators",
 		}
 	)
-	request, close, err := s.decodeGetChatAdministratorsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetChatAdministratorsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4369,6 +4458,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "getChatAdministrators",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4492,7 +4582,9 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, argsEscaped bool, w 
 			ID:   "getChatMember",
 		}
 	)
-	request, close, err := s.decodeGetChatMemberRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4516,6 +4608,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "getChatMember",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4639,7 +4732,9 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, argsEscaped boo
 			ID:   "getChatMemberCount",
 		}
 	)
-	request, close, err := s.decodeGetChatMemberCountRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetChatMemberCountRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4663,6 +4758,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "getChatMemberCount",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4786,7 +4882,9 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, argsEscaped bool
 			ID:   "getChatMenuButton",
 		}
 	)
-	request, close, err := s.decodeGetChatMenuButtonRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetChatMenuButtonRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4810,6 +4908,7 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "getChatMenuButton",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -4933,7 +5032,9 @@ func (s *Server) handleGetFileRequest(args [0]string, argsEscaped bool, w http.R
 			ID:   "getFile",
 		}
 	)
-	request, close, err := s.decodeGetFileRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4957,6 +5058,7 @@ func (s *Server) handleGetFileRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "",
 			OperationID:      "getFile",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -5080,7 +5182,9 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, argsEscaped bool
 			ID:   "getGameHighScores",
 		}
 	)
-	request, close, err := s.decodeGetGameHighScoresRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetGameHighScoresRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5104,6 +5208,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "getGameHighScores",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -5224,6 +5329,8 @@ func (s *Server) handleGetMeRequest(args [0]string, argsEscaped bool, w http.Res
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *ResultUser
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -5232,6 +5339,7 @@ func (s *Server) handleGetMeRequest(args [0]string, argsEscaped bool, w http.Res
 			OperationSummary: "",
 			OperationID:      "getMe",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -5355,7 +5463,9 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, argsEscaped bool, w 
 			ID:   "getMyCommands",
 		}
 	)
-	request, close, err := s.decodeGetMyCommandsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetMyCommandsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5379,6 +5489,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "getMyCommands",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -5502,7 +5613,9 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, ar
 			ID:   "getMyDefaultAdministratorRights",
 		}
 	)
-	request, close, err := s.decodeGetMyDefaultAdministratorRightsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetMyDefaultAdministratorRightsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5526,6 +5639,7 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "getMyDefaultAdministratorRights",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -5649,7 +5763,9 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, argsEscaped bool, w 
 			ID:   "getStickerSet",
 		}
 	)
-	request, close, err := s.decodeGetStickerSetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5673,6 +5789,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "getStickerSet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -5796,7 +5913,9 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "getUpdates",
 		}
 	)
-	request, close, err := s.decodeGetUpdatesRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetUpdatesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5820,6 +5939,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "getUpdates",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -5943,7 +6063,9 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, argsEscaped b
 			ID:   "getUserProfilePhotos",
 		}
 	)
-	request, close, err := s.decodeGetUserProfilePhotosRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeGetUserProfilePhotosRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5967,6 +6089,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "getUserProfilePhotos",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -6087,6 +6210,8 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, argsEscaped bool, w
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *ResultWebhookInfo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -6095,6 +6220,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "getWebhookInfo",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -6218,7 +6344,9 @@ func (s *Server) handleLeaveChatRequest(args [0]string, argsEscaped bool, w http
 			ID:   "leaveChat",
 		}
 	)
-	request, close, err := s.decodeLeaveChatRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeLeaveChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6242,6 +6370,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "leaveChat",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -6362,6 +6491,8 @@ func (s *Server) handleLogOutRequest(args [0]string, argsEscaped bool, w http.Re
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *Result
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -6370,6 +6501,7 @@ func (s *Server) handleLogOutRequest(args [0]string, argsEscaped bool, w http.Re
 			OperationSummary: "",
 			OperationID:      "logOut",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -6493,7 +6625,9 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, argsEscaped bool, w
 			ID:   "pinChatMessage",
 		}
 	)
-	request, close, err := s.decodePinChatMessageRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePinChatMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6517,6 +6651,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "pinChatMessage",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -6640,7 +6775,9 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, argsEscaped bool
 			ID:   "promoteChatMember",
 		}
 	)
-	request, close, err := s.decodePromoteChatMemberRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePromoteChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6664,6 +6801,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "promoteChatMember",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -6787,7 +6925,9 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, argsEscaped boo
 			ID:   "restrictChatMember",
 		}
 	)
-	request, close, err := s.decodeRestrictChatMemberRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeRestrictChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6811,6 +6951,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "restrictChatMember",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -6934,7 +7075,9 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, argsEscaped b
 			ID:   "revokeChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeRevokeChatInviteLinkRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeRevokeChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6958,6 +7101,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "revokeChatInviteLink",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -7081,7 +7225,9 @@ func (s *Server) handleSendAnimationRequest(args [0]string, argsEscaped bool, w 
 			ID:   "sendAnimation",
 		}
 	)
-	request, close, err := s.decodeSendAnimationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendAnimationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7105,6 +7251,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "sendAnimation",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -7228,7 +7375,9 @@ func (s *Server) handleSendAudioRequest(args [0]string, argsEscaped bool, w http
 			ID:   "sendAudio",
 		}
 	)
-	request, close, err := s.decodeSendAudioRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendAudioRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7252,6 +7401,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "sendAudio",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -7375,7 +7525,9 @@ func (s *Server) handleSendChatActionRequest(args [0]string, argsEscaped bool, w
 			ID:   "sendChatAction",
 		}
 	)
-	request, close, err := s.decodeSendChatActionRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendChatActionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7399,6 +7551,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "sendChatAction",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -7522,7 +7675,9 @@ func (s *Server) handleSendContactRequest(args [0]string, argsEscaped bool, w ht
 			ID:   "sendContact",
 		}
 	)
-	request, close, err := s.decodeSendContactRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendContactRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7546,6 +7701,7 @@ func (s *Server) handleSendContactRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "sendContact",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -7669,7 +7825,9 @@ func (s *Server) handleSendDiceRequest(args [0]string, argsEscaped bool, w http.
 			ID:   "sendDice",
 		}
 	)
-	request, close, err := s.decodeSendDiceRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendDiceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7693,6 +7851,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "sendDice",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -7816,7 +7975,9 @@ func (s *Server) handleSendDocumentRequest(args [0]string, argsEscaped bool, w h
 			ID:   "sendDocument",
 		}
 	)
-	request, close, err := s.decodeSendDocumentRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendDocumentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7840,6 +8001,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "sendDocument",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -7963,7 +8125,9 @@ func (s *Server) handleSendGameRequest(args [0]string, argsEscaped bool, w http.
 			ID:   "sendGame",
 		}
 	)
-	request, close, err := s.decodeSendGameRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendGameRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7987,6 +8151,7 @@ func (s *Server) handleSendGameRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "sendGame",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -8110,7 +8275,9 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, argsEscaped bool, w ht
 			ID:   "sendInvoice",
 		}
 	)
-	request, close, err := s.decodeSendInvoiceRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendInvoiceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8134,6 +8301,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "sendInvoice",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -8257,7 +8425,9 @@ func (s *Server) handleSendLocationRequest(args [0]string, argsEscaped bool, w h
 			ID:   "sendLocation",
 		}
 	)
-	request, close, err := s.decodeSendLocationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendLocationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8281,6 +8451,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "sendLocation",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -8404,7 +8575,9 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, argsEscaped bool, w
 			ID:   "sendMediaGroup",
 		}
 	)
-	request, close, err := s.decodeSendMediaGroupRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendMediaGroupRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8428,6 +8601,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "sendMediaGroup",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -8551,7 +8725,9 @@ func (s *Server) handleSendMessageRequest(args [0]string, argsEscaped bool, w ht
 			ID:   "sendMessage",
 		}
 	)
-	request, close, err := s.decodeSendMessageRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8575,6 +8751,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "sendMessage",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -8698,7 +8875,9 @@ func (s *Server) handleSendPhotoRequest(args [0]string, argsEscaped bool, w http
 			ID:   "sendPhoto",
 		}
 	)
-	request, close, err := s.decodeSendPhotoRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendPhotoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8722,6 +8901,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "sendPhoto",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -8845,7 +9025,9 @@ func (s *Server) handleSendPollRequest(args [0]string, argsEscaped bool, w http.
 			ID:   "sendPoll",
 		}
 	)
-	request, close, err := s.decodeSendPollRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendPollRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8869,6 +9051,7 @@ func (s *Server) handleSendPollRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "sendPoll",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -8992,7 +9175,9 @@ func (s *Server) handleSendStickerRequest(args [0]string, argsEscaped bool, w ht
 			ID:   "sendSticker",
 		}
 	)
-	request, close, err := s.decodeSendStickerRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendStickerRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9016,6 +9201,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "sendSticker",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9139,7 +9325,9 @@ func (s *Server) handleSendVenueRequest(args [0]string, argsEscaped bool, w http
 			ID:   "sendVenue",
 		}
 	)
-	request, close, err := s.decodeSendVenueRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendVenueRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9163,6 +9351,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "sendVenue",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9286,7 +9475,9 @@ func (s *Server) handleSendVideoRequest(args [0]string, argsEscaped bool, w http
 			ID:   "sendVideo",
 		}
 	)
-	request, close, err := s.decodeSendVideoRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendVideoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9310,6 +9501,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "sendVideo",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9433,7 +9625,9 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, argsEscaped bool, w 
 			ID:   "sendVideoNote",
 		}
 	)
-	request, close, err := s.decodeSendVideoNoteRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendVideoNoteRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9457,6 +9651,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "sendVideoNote",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9580,7 +9775,9 @@ func (s *Server) handleSendVoiceRequest(args [0]string, argsEscaped bool, w http
 			ID:   "sendVoice",
 		}
 	)
-	request, close, err := s.decodeSendVoiceRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSendVoiceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9604,6 +9801,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "",
 			OperationID:      "sendVoice",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9727,7 +9925,9 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, ar
 			ID:   "setChatAdministratorCustomTitle",
 		}
 	)
-	request, close, err := s.decodeSetChatAdministratorCustomTitleRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetChatAdministratorCustomTitleRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9751,6 +9951,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "setChatAdministratorCustomTitle",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9874,7 +10075,9 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, argsEscaped boo
 			ID:   "setChatDescription",
 		}
 	)
-	request, close, err := s.decodeSetChatDescriptionRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetChatDescriptionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9898,6 +10101,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "setChatDescription",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10021,7 +10225,9 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, argsEscaped bool
 			ID:   "setChatMenuButton",
 		}
 	)
-	request, close, err := s.decodeSetChatMenuButtonRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetChatMenuButtonRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10045,6 +10251,7 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "setChatMenuButton",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10168,7 +10375,9 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, argsEscaped boo
 			ID:   "setChatPermissions",
 		}
 	)
-	request, close, err := s.decodeSetChatPermissionsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetChatPermissionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10192,6 +10401,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "setChatPermissions",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10315,7 +10525,9 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, argsEscaped bool, w h
 			ID:   "setChatPhoto",
 		}
 	)
-	request, close, err := s.decodeSetChatPhotoRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetChatPhotoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10339,6 +10551,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "setChatPhoto",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10462,7 +10675,9 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, argsEscaped bool
 			ID:   "setChatStickerSet",
 		}
 	)
-	request, close, err := s.decodeSetChatStickerSetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetChatStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10486,6 +10701,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "setChatStickerSet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10609,7 +10825,9 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, argsEscaped bool, w h
 			ID:   "setChatTitle",
 		}
 	)
-	request, close, err := s.decodeSetChatTitleRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetChatTitleRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10633,6 +10851,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "setChatTitle",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10756,7 +10975,9 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, argsEscaped bool, w h
 			ID:   "setGameScore",
 		}
 	)
-	request, close, err := s.decodeSetGameScoreRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetGameScoreRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10780,6 +11001,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "",
 			OperationID:      "setGameScore",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10903,7 +11125,9 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, argsEscaped bool, w 
 			ID:   "setMyCommands",
 		}
 	)
-	request, close, err := s.decodeSetMyCommandsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetMyCommandsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10927,6 +11151,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "setMyCommands",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11050,7 +11275,9 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, ar
 			ID:   "setMyDefaultAdministratorRights",
 		}
 	)
-	request, close, err := s.decodeSetMyDefaultAdministratorRightsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetMyDefaultAdministratorRightsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11074,6 +11301,7 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "setMyDefaultAdministratorRights",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11197,7 +11425,9 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, argsEscaped 
 			ID:   "setPassportDataErrors",
 		}
 	)
-	request, close, err := s.decodeSetPassportDataErrorsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetPassportDataErrorsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11221,6 +11451,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "setPassportDataErrors",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11344,7 +11575,9 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, argsEscape
 			ID:   "setStickerPositionInSet",
 		}
 	)
-	request, close, err := s.decodeSetStickerPositionInSetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetStickerPositionInSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11368,6 +11601,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "setStickerPositionInSet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11491,7 +11725,9 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, argsEscaped boo
 			ID:   "setStickerSetThumb",
 		}
 	)
-	request, close, err := s.decodeSetStickerSetThumbRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetStickerSetThumbRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11515,6 +11751,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "setStickerSetThumb",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11638,7 +11875,9 @@ func (s *Server) handleSetWebhookRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "setWebhook",
 		}
 	)
-	request, close, err := s.decodeSetWebhookRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSetWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11662,6 +11901,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "setWebhook",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11785,7 +12025,9 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, argsEscape
 			ID:   "stopMessageLiveLocation",
 		}
 	)
-	request, close, err := s.decodeStopMessageLiveLocationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeStopMessageLiveLocationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11809,6 +12051,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "stopMessageLiveLocation",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11932,7 +12175,9 @@ func (s *Server) handleStopPollRequest(args [0]string, argsEscaped bool, w http.
 			ID:   "stopPoll",
 		}
 	)
-	request, close, err := s.decodeStopPollRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeStopPollRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11956,6 +12201,7 @@ func (s *Server) handleStopPollRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "stopPoll",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12079,7 +12325,9 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, argsEscaped bool, 
 			ID:   "unbanChatMember",
 		}
 	)
-	request, close, err := s.decodeUnbanChatMemberRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUnbanChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -12103,6 +12351,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "unbanChatMember",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12226,7 +12475,9 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, argsEscaped bo
 			ID:   "unbanChatSenderChat",
 		}
 	)
-	request, close, err := s.decodeUnbanChatSenderChatRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUnbanChatSenderChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -12250,6 +12501,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "unbanChatSenderChat",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12373,7 +12625,9 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, argsEscaped b
 			ID:   "unpinAllChatMessages",
 		}
 	)
-	request, close, err := s.decodeUnpinAllChatMessagesRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUnpinAllChatMessagesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -12397,6 +12651,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "unpinAllChatMessages",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12520,7 +12775,9 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, argsEscaped bool,
 			ID:   "unpinChatMessage",
 		}
 	)
-	request, close, err := s.decodeUnpinChatMessageRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUnpinChatMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -12544,6 +12801,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "unpinChatMessage",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12667,7 +12925,9 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, argsEscaped bool
 			ID:   "uploadStickerFile",
 		}
 	)
-	request, close, err := s.decodeUploadStickerFileRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUploadStickerFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -12691,6 +12951,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "uploadStickerFile",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

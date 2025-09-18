@@ -103,7 +103,9 @@ func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, 
 			ID:   "nullableStrings",
 		}
 	)
-	request, close, err := s.decodeNullableStringsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeNullableStringsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -127,6 +129,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "nullableStrings",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -241,7 +244,9 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			ID:   "objectsWithConflictingArrayProperty",
 		}
 	)
-	request, close, err := s.decodeObjectsWithConflictingArrayPropertyRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeObjectsWithConflictingArrayPropertyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -265,6 +270,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			OperationSummary: "",
 			OperationID:      "objectsWithConflictingArrayProperty",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -379,7 +385,9 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, a
 			ID:   "objectsWithConflictingProperties",
 		}
 	)
-	request, close, err := s.decodeObjectsWithConflictingPropertiesRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeObjectsWithConflictingPropertiesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -403,6 +411,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, a
 			OperationSummary: "",
 			OperationID:      "objectsWithConflictingProperties",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -517,7 +526,9 @@ func (s *Server) handleReferencedAllOfNullableRequest(args [0]string, argsEscape
 			ID:   "referencedAllOfNullable",
 		}
 	)
-	request, close, err := s.decodeReferencedAllOfNullableRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeReferencedAllOfNullableRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -541,6 +552,7 @@ func (s *Server) handleReferencedAllOfNullableRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "referencedAllOfNullable",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -655,7 +667,9 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, 
 			ID:   "referencedAllof",
 		}
 	)
-	request, close, err := s.decodeReferencedAllofRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeReferencedAllofRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -679,6 +693,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "referencedAllof",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -793,7 +808,9 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscape
 			ID:   "referencedAllofOptional",
 		}
 	)
-	request, close, err := s.decodeReferencedAllofOptionalRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeReferencedAllofOptionalRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -817,6 +834,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "referencedAllofOptional",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -931,7 +949,9 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w 
 			ID:   "simpleInteger",
 		}
 	)
-	request, close, err := s.decodeSimpleIntegerRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSimpleIntegerRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -955,6 +975,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "simpleInteger",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1069,7 +1090,9 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w 
 			ID:   "simpleObjects",
 		}
 	)
-	request, close, err := s.decodeSimpleObjectsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeSimpleObjectsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1093,6 +1116,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "simpleObjects",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1205,7 +1229,9 @@ func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w 
 			ID:   "stringsNotype",
 		}
 	)
-	request, close, err := s.decodeStringsNotypeRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeStringsNotypeRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1229,6 +1255,7 @@ func (s *Server) handleStringsNotypeRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "stringsNotype",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

@@ -103,7 +103,9 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 			ID:   "createPet",
 		}
 	)
-	request, close, err := s.decodeCreatePetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreatePetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -127,6 +129,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "Create a new Pet",
 			OperationID:      "createPet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -251,7 +254,9 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeCreatePetCategoriesRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreatePetCategoriesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -275,6 +280,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, argsEscaped bo
 			OperationSummary: "Create a new Category and attach it to the Pet",
 			OperationID:      "createPetCategories",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -404,7 +410,9 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeCreatePetFriendsRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreatePetFriendsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -428,6 +436,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, argsEscaped bool,
 			OperationSummary: "Create a new Pet and attach it to the Pet",
 			OperationID:      "createPetFriends",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -557,7 +566,9 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeCreatePetOwnerRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreatePetOwnerRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -581,6 +592,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "Create a new User and attach it to the Pet",
 			OperationID:      "createPetOwner",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -711,6 +723,8 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 		return
 	}
 
+	var rawBody []byte
+
 	var response DeletePetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -719,6 +733,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, argsEscaped bool, w http
 			OperationSummary: "Deletes a Pet by ID",
 			OperationID:      "deletePet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -849,6 +864,8 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response DeletePetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -857,6 +874,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "Delete the attached Owner",
 			OperationID:      "deletePetOwner",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -987,6 +1005,8 @@ func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.R
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -995,6 +1015,7 @@ func (s *Server) handleListPetRequest(args [0]string, argsEscaped bool, w http.R
 			OperationSummary: "List Pets",
 			OperationID:      "listPet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "page",
@@ -1129,6 +1150,8 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPetCategoriesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1137,6 +1160,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, argsEscaped bool
 			OperationSummary: "List attached Categories",
 			OperationID:      "listPetCategories",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1275,6 +1299,8 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPetFriendsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1283,6 +1309,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "List attached Friends",
 			OperationID:      "listPetFriends",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1421,6 +1448,8 @@ func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.R
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadPetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1429,6 +1458,7 @@ func (s *Server) handleReadPetRequest(args [1]string, argsEscaped bool, w http.R
 			OperationSummary: "Find a Pet by ID",
 			OperationID:      "readPet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1559,6 +1589,8 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w h
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadPetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1567,6 +1599,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, argsEscaped bool, w h
 			OperationSummary: "Find the attached User",
 			OperationID:      "readPetOwner",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -1696,7 +1729,9 @@ func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeUpdatePetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUpdatePetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1720,6 +1755,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, argsEscaped bool, w http
 			OperationSummary: "Updates a Pet",
 			OperationID:      "updatePet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
