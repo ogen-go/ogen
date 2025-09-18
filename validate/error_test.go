@@ -1,6 +1,7 @@
 package validate
 
 import (
+	"net/http"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -40,6 +41,16 @@ func TestInvalidContentType(t *testing.T) {
 func TestUnexpectedStatusCode(t *testing.T) {
 	a := require.New(t)
 	err := UnexpectedStatusCode(500)
+	var ctErr *UnexpectedStatusCodeError
+	a.EqualError(err, "unexpected status code: 500")
+	a.ErrorAs(err, &ctErr)
+	a.Equal(500, ctErr.StatusCode)
+}
+
+func TestUnexpectedStatusCodeWithResponse(t *testing.T) {
+	a := require.New(t)
+	resp := http.Response{StatusCode: 500}
+	err := UnexpectedStatusCodeWithResponse(&resp)
 	var ctErr *UnexpectedStatusCodeError
 	a.EqualError(err, "unexpected status code: 500")
 	a.ErrorAs(err, &ctErr)

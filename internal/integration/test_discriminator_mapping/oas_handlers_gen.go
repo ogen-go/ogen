@@ -8,16 +8,15 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
 
 type codeRecorder struct {
@@ -86,7 +85,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -104,7 +103,9 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 			ID:   "createPet",
 		}
 	)
-	request, close, err := s.decodeCreatePetRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreatePetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -128,6 +129,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "Create a pet",
 			OperationID:      "createPet",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -224,7 +226,7 @@ func (s *Server) handleListNotificationsRequest(args [0]string, argsEscaped bool
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -239,6 +241,8 @@ func (s *Server) handleListNotificationsRequest(args [0]string, argsEscaped bool
 		err error
 	)
 
+	var rawBody []byte
+
 	var response []Notification
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -247,6 +251,7 @@ func (s *Server) handleListNotificationsRequest(args [0]string, argsEscaped bool
 			OperationSummary: "List notifications",
 			OperationID:      "listNotifications",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -343,7 +348,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -358,6 +363,8 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 		err error
 	)
 
+	var rawBody []byte
+
 	var response []Pet
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -366,6 +373,7 @@ func (s *Server) handleListPetsRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "List pets",
 			OperationID:      "listPets",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -462,7 +470,7 @@ func (s *Server) handleListVehiclesRequest(args [0]string, argsEscaped bool, w h
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -477,6 +485,8 @@ func (s *Server) handleListVehiclesRequest(args [0]string, argsEscaped bool, w h
 		err error
 	)
 
+	var rawBody []byte
+
 	var response []Vehicle
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -485,6 +495,7 @@ func (s *Server) handleListVehiclesRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "List vehicles",
 			OperationID:      "listVehicles",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

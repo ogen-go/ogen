@@ -168,6 +168,7 @@ type Type struct {
 	MapPattern          ogenregex.Regexp    // only for map
 	DenyAdditionalProps bool                // only for map and struct
 	AllowedProps        map[string]struct{} // only for map and struct
+	External            ExternalType        // only for custom type
 	Validators          Validators
 	Tuple               bool // only for struct
 	// Features contains a set of features the type must implement.
@@ -237,7 +238,7 @@ func (t *Type) Format() bool {
 	if t == nil {
 		return false
 	}
-	return t.Primitive == Time
+	return t.Primitive == Time || t.IsExternal()
 }
 
 func (t *Type) Is(vs ...Kind) bool {
@@ -273,6 +274,12 @@ func (t *Type) NamePostfix() string {
 	case KindPrimitive:
 		if t.Primitive == Null {
 			return "Null"
+		}
+		if t.IsExternal() && t.Schema.XOgenName != "" {
+			// If type is external and has XOgenName, use it as name postfix.
+			// This is to be able to work around name conflicts where multiple
+			// packages have a type with the same name.
+			return t.Schema.XOgenName
 		}
 		s := t.Schema
 		typePrefix := func(f string) string {

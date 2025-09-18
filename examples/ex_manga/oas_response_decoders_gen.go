@@ -10,7 +10,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/ogenerrors"
@@ -68,7 +67,7 @@ func decodeGetBookResponse(resp *http.Response) (res GetBookRes, _ error) {
 		// Code 403.
 		return &GetBookForbidden{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImageRes, _ error) {
@@ -131,7 +130,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImage
 		// Code 403.
 		return &GetPageCoverImageForbidden{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, _ error) {
@@ -194,7 +193,7 @@ func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, _ err
 		// Code 403.
 		return &GetPageImageForbidden{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbnailImageRes, _ error) {
@@ -257,7 +256,7 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbn
 		// Code 403.
 		return &GetPageThumbnailImageForbidden{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSearchResponse(resp *http.Response) (res SearchRes, _ error) {
@@ -310,7 +309,7 @@ func decodeSearchResponse(resp *http.Response) (res SearchRes, _ error) {
 		// Code 403.
 		return &SearchForbidden{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, _ error) {
@@ -363,5 +362,5 @@ func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, _ e
 		// Code 403.
 		return &SearchByTagIDForbidden{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

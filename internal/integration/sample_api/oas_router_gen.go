@@ -743,24 +743,58 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 
-					case 's': // Prefix: "ssue1310"
+					case 's': // Prefix: "ssue1"
 
-						if l := len("ssue1310"); len(elem) >= l && elem[0:l] == "ssue1310" {
+						if l := len("ssue1"); len(elem) >= l && elem[0:l] == "ssue1" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							// Leaf node.
-							switch r.Method {
-							case "GET":
-								s.handleTestIssue1310Request([0]string{}, elemIsEscaped, w, r)
-							default:
-								s.notAllowed(w, r, "GET")
+							break
+						}
+						switch elem[0] {
+						case '3': // Prefix: "310"
+
+							if l := len("310"); len(elem) >= l && elem[0:l] == "310" {
+								elem = elem[l:]
+							} else {
+								break
 							}
 
-							return
+							if len(elem) == 0 {
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handleTestIssue1310Request([0]string{}, elemIsEscaped, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
+
+								return
+							}
+
+						case '4': // Prefix: "461"
+
+							if l := len("461"); len(elem) >= l && elem[0:l] == "461" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf node.
+								switch r.Method {
+								case "GET":
+									s.handleTestIssue1461Request([0]string{}, elemIsEscaped, w, r)
+								default:
+									s.notAllowed(w, r, "GET")
+								}
+
+								return
+							}
+
 						}
 
 					}
@@ -1722,28 +1756,66 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 							}
 						}
 
-					case 's': // Prefix: "ssue1310"
+					case 's': // Prefix: "ssue1"
 
-						if l := len("ssue1310"); len(elem) >= l && elem[0:l] == "ssue1310" {
+						if l := len("ssue1"); len(elem) >= l && elem[0:l] == "ssue1" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							// Leaf node.
-							switch method {
-							case "GET":
-								r.name = TestIssue1310Operation
-								r.summary = ""
-								r.operationID = "testIssue1310"
-								r.pathPattern = "/testIssue1310"
-								r.args = args
-								r.count = 0
-								return r, true
-							default:
-								return
+							break
+						}
+						switch elem[0] {
+						case '3': // Prefix: "310"
+
+							if l := len("310"); len(elem) >= l && elem[0:l] == "310" {
+								elem = elem[l:]
+							} else {
+								break
 							}
+
+							if len(elem) == 0 {
+								// Leaf node.
+								switch method {
+								case "GET":
+									r.name = TestIssue1310Operation
+									r.summary = ""
+									r.operationID = "testIssue1310"
+									r.pathPattern = "/testIssue1310"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
+							}
+
+						case '4': // Prefix: "461"
+
+							if l := len("461"); len(elem) >= l && elem[0:l] == "461" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								// Leaf node.
+								switch method {
+								case "GET":
+									r.name = TestIssue1461Operation
+									r.summary = ""
+									r.operationID = "testIssue1461"
+									r.pathPattern = "/testIssue1461"
+									r.args = args
+									r.count = 0
+									return r, true
+								default:
+									return
+								}
+							}
+
 						}
 
 					}

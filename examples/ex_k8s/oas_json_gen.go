@@ -9,7 +9,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -74941,6 +74940,50 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) UnmarshalJSON(data []byte
 }
 
 // Encode implements json.Marshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1Patch) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s *IoK8sApimachineryPkgApisMetaV1Patch) encodeFields(e *jx.Encoder) {
+}
+
+var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1Patch = [0]string{}
+
+// Decode decodes IoK8sApimachineryPkgApisMetaV1Patch from json.
+func (s *IoK8sApimachineryPkgApisMetaV1Patch) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1Patch to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return d.Skip()
+		}
+	}); err != nil {
+		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1Patch")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1Patch) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1Patch) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -86029,6 +86072,82 @@ func (s OptString) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedConfigMapCreated as json.
+func (s *PatchCoreV1NamespacedConfigMapCreated) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ConfigMap)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedConfigMapCreated from json.
+func (s *PatchCoreV1NamespacedConfigMapCreated) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedConfigMapCreated to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ConfigMap
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedConfigMapCreated(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedConfigMapCreated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedConfigMapCreated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PatchCoreV1NamespacedConfigMapOK as json.
+func (s *PatchCoreV1NamespacedConfigMapOK) Encode(e *jx.Encoder) {
+	unwrapped := (*IoK8sAPICoreV1ConfigMap)(s)
+
+	unwrapped.Encode(e)
+}
+
+// Decode decodes PatchCoreV1NamespacedConfigMapOK from json.
+func (s *PatchCoreV1NamespacedConfigMapOK) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatchCoreV1NamespacedConfigMapOK to nil")
+	}
+	var unwrapped IoK8sAPICoreV1ConfigMap
+	if err := func() error {
+		if err := unwrapped.Decode(d); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = PatchCoreV1NamespacedConfigMapOK(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s *PatchCoreV1NamespacedConfigMapOK) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatchCoreV1NamespacedConfigMapOK) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

@@ -36,6 +36,7 @@ type Generator struct {
 	errType           *ir.Response
 	webhookRouter     WebhookRouter
 	router            Router
+	imports           map[string]string
 
 	log *zap.Logger
 }
@@ -77,10 +78,11 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		external = jsonschema.NewExternalResolver(opts.Parser.Remote)
 	}
 	api, err := parser.Parse(spec, parser.Settings{
-		External:   external,
-		File:       opts.Parser.File,
-		RootURL:    opts.Parser.RootURL,
-		InferTypes: opts.Parser.InferSchemaType,
+		External:              external,
+		File:                  opts.Parser.File,
+		RootURL:               opts.Parser.RootURL,
+		InferTypes:            opts.Parser.InferSchemaType,
+		AuthenticationSchemes: opts.Parser.AuthenticationSchemes,
 	})
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}
@@ -105,6 +107,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		errType:       nil,
 		webhookRouter: WebhookRouter{},
 		router:        Router{},
+		imports:       defaultImports(),
 		log:           opts.Logger,
 	}
 

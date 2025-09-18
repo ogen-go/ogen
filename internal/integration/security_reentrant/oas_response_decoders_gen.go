@@ -14,7 +14,7 @@ func decodeCustomSecurityResponse(resp *http.Response) (res *CustomSecurityOK, _
 		// Code 200.
 		return &CustomSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityOK, _ error) {
@@ -23,7 +23,7 @@ func decodeDisjointSecurityResponse(resp *http.Response) (res *DisjointSecurityO
 		// Code 200.
 		return &DisjointSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurityOK, _ error) {
@@ -32,7 +32,7 @@ func decodeIntersectSecurityResponse(resp *http.Response) (res *IntersectSecurit
 		// Code 200.
 		return &IntersectSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityOK, _ error) {
@@ -41,5 +41,5 @@ func decodeOptionalSecurityResponse(resp *http.Response) (res *OptionalSecurityO
 		// Code 200.
 		return &OptionalSecurityOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

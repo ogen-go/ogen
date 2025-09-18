@@ -57,7 +57,9 @@ func encodeErrorResponse(response {{ $.ErrorGoType }}, w http.ResponseWriter, {{
 {{- $otel := $cfg.OpenTelemetryEnabled }}
 func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.ResponseWriter, {{ if $otel }}span trace.Span{{ end }}) error {
 	{{- $types := $op.ListResponseTypes $otel }}
-	{{- if eq (len $types) 1 }}
+	{{- $hasRawResponse := false }}
+	{{- range $info := $types }}{{- if $info.RawResponse }}{{- $hasRawResponse = true }}{{- end }}{{- end }}
+	{{- if and (eq (len $types) 1) (not $hasRawResponse) }}
 		{{- range $info := $types }}
 			{{- if and $info.Type.NeedValidation $cfg.ResponseValidationEnabled }}
 			if err := func() error {
@@ -71,15 +73,17 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 	{{- else }}
 		switch response := response.(type) {
 		{{- range $info := $types }}
+		{{- if not $info.RawResponse }}
 			case *{{ $info.Type.Name }}:
-			{{- if and $info.Type.NeedValidation $cfg.ResponseValidationEnabled }}
-			if err := func() error {
-				{{- template "validate" elem $info.Type "response" }}
-			}(); err != nil {
-				return errors.Wrap(err, "validate")
-			}
+				{{- if and $info.Type.NeedValidation $cfg.ResponseValidationEnabled }}
+				if err := func() error {
+					{{- template "validate" elem $info.Type "response" }}
+				}(); err != nil {
+					return errors.Wrap(err, "validate")
+				}
+				{{- end }}
+				{{- template "respond" $info }}
 			{{- end }}
-			{{- template "respond" $info }}
 		{{- end }}
 		default:
 			return errors.Errorf("unexpected response type: %T", response)
@@ -160,7 +164,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.GoType }}, w http.Re
 		{{- $var = "response.Response" }}
 	{{- end }}
 
-	{{- if $.Encoding.JSON }}
+	{{- if or $.Encoding.JSON $.Encoding.ProblemJSON }}
 		{{- if $.JSONStreaming }}
 		e := jx.NewStreamingEncoder(w, -1)
 		{{- template "json/enc" elem $type $var }}

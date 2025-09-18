@@ -96,6 +96,39 @@ func (op Operation) GoDoc() []string {
 	return prettyDoc(doc, notice)
 }
 
+// HasRawResponse returns true if the operation has any response content types
+// marked with x-ogen-raw-response: true.
+func (op Operation) HasRawResponse() bool {
+	if op.Responses == nil {
+		return false
+	}
+
+	checkResponse := func(resp *Response) bool {
+		if resp == nil {
+			return false
+		}
+		for _, media := range resp.Contents {
+			if media.RawResponse {
+				return true
+			}
+		}
+		return false
+	}
+
+	// Check all responses
+	for _, resp := range op.Responses.StatusCode {
+		if checkResponse(resp) {
+			return true
+		}
+	}
+	for _, resp := range op.Responses.Pattern {
+		if checkResponse(resp) {
+			return true
+		}
+	}
+	return checkResponse(op.Responses.Default)
+}
+
 type PathPart struct {
 	Raw   string
 	Param *Parameter

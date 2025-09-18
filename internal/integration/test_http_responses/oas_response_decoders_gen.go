@@ -10,7 +10,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/ogenerrors"
@@ -75,7 +74,7 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res *A
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders, _ error) {
@@ -377,7 +376,7 @@ func decodeHeaders200Response(resp *http.Response) (res *Headers200OK, _ error) 
 		}
 		return &wrapper, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes, _ error) {
@@ -641,7 +640,7 @@ func decodeHeadersJSONResponse(resp *http.Response) (res *HeadersJSONOK, _ error
 		}
 		return &wrapper, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, _ error) {
@@ -691,7 +690,7 @@ func decodeHeadersPatternResponse(resp *http.Response) (res *HeadersPattern4XX, 
 		}
 		return res, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatternCodeRes, _ error) {
@@ -780,7 +779,7 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 		}
 		return res, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGenericResponsesRes, _ error) {
@@ -856,7 +855,7 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res OctetStreamBinaryStringSchemaOK, _ error) {
@@ -881,7 +880,7 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res Octet
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamEmptySchemaOK, _ error) {
@@ -906,7 +905,7 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamE
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK, _ error) {
@@ -986,7 +985,7 @@ func decodeOptionalHeadersResponse(resp *http.Response) (res *OptionalHeadersOK,
 		}
 		return &wrapper, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, _ error) {
@@ -1062,7 +1061,7 @@ func decodeStreamJSONResponse(resp *http.Response) (res StreamJSONRes, _ error) 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPlainBinaryStringSchemaOK, _ error) {
@@ -1087,5 +1086,5 @@ func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPla
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

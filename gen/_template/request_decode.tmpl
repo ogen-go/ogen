@@ -20,6 +20,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
 func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Request(r *http.Request) (
 	req {{ $op.Request.GoType }},
+	rawBody []byte,
 	close func() error,
 	rerr error,
 ) {
@@ -44,12 +45,12 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 	{{- end }}
 	{{- if not $op.Request.Spec.Required }}
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
-		return req, close, nil
+		return req, rawBody, close, nil
 	}
 	{{- end }}
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
-		return req, close, errors.Wrap(err, "parse media type")
+		return req, rawBody, close, errors.Wrap(err, "parse media type")
 	}
 	switch {
 {{- range $contentType, $media := $op.Request.Contents }}
@@ -69,12 +70,12 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		reader := r.Body
 		{{- end }}
 		request := {{ $t.Go }}{Data: reader}
-	{{- else if $e.JSON }}
+	{{- else if or $e.JSON $e.ProblemJSON}}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
-			return req, close, nil
+			return req, rawBody, close, nil
 		{{- else }}
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		{{- end }}
 		}
 
@@ -82,18 +83,25 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 		d := jx.Decode(r.Body, -1)
         {{- else }}
 		buf, err := io.ReadAll(r.Body)
+		defer func() {
+			_ = r.Body.Close()
+		}()
 		if err != nil {
-			return req, close, err
+			return req, rawBody, close, err
 		}
+
+		// Reset the body to allow for downstream reading.
+		r.Body = io.NopCloser(bytes.NewBuffer(buf))
 
 		if len(buf) == 0 {
 		{{- if not $op.Request.Spec.Required }}
-			return req, close, nil
+			return req, rawBody, close, nil
 		{{- else }}
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		{{- end }}
 		}
 
+        rawBody = append(rawBody, buf...)
 		d := jx.DecodeBytes(buf)
 		{{- end }}
 
@@ -112,32 +120,32 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 				Err: err,
 			}
 			{{- end }}
-			return req, close, err
+			return req, rawBody, close, err
 		}
 		{{- if $t.NeedValidation }}
 		if err := func() error {
 			{{- template "validate" elem $t "request" }}
 		}(); err != nil {
-			return req, close, errors.Wrap(err, "validate")
+			return req, rawBody, close, errors.Wrap(err, "validate")
 		}
 		{{- end }}
     {{- else if or $e.FormURLEncoded $e.MultipartForm }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
-			return req, close, nil
+			return req, rawBody, close, nil
 		{{- else }}
-			return req, close, validate.ErrBodyRequired
+			return req, rawBody, close, validate.ErrBodyRequired
 		{{- end }}
 		}
 
 		{{- if $e.FormURLEncoded }}
 		form, err := ht.ParseForm(r)
 		if err != nil {
-			return req, close, errors.Wrap(err, "parse form")
+			return req, rawBody, close, errors.Wrap(err, "parse form")
 		}
 		{{- else }}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
-			return req, close, errors.Wrap(err, "parse multipart form")
+			return req, rawBody, close, errors.Wrap(err, "parse multipart form")
 		}
 		// Remove all temporary files created by ParseMultipartForm when the request is done.
 		//
@@ -156,17 +164,17 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 	{{- end }}
 
     {{- if not $contentType.Mask }}
-	return {{ if $op.Request.DoTakePtr }}&{{ end }}request, close, nil
+	return {{ if $op.Request.DoTakePtr }}&{{ end }}request, rawBody, close, nil
 	{{- else }}
 	wrapped := {{ $media.Type.Go }}{
 		ContentType: ct,
 		Content: request,
 	}
-	return {{ if $op.Request.DoTakePtr }}&{{ end }}wrapped, close, nil
+	return {{ if $op.Request.DoTakePtr }}&{{ end }}wrapped, rawBody, close, nil
 	{{- end }}
 {{- end }}
 	default:
-		return req, close, validate.InvalidContentType(ct)
+		return req, rawBody, close, validate.InvalidContentType(ct)
 	}
 }
 {{ end }}
@@ -217,13 +225,13 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 
 		for k := range form {
 			if !defined(k) {
-				return req, close, errors.Errorf("unexpected field %q", k)
+				return req, rawBody, close, errors.Errorf("unexpected field %q", k)
 			}
 		}
 		{{- with $t.FileParameters }}
 		for k := range r.MultipartForm.File {
 			if !defined(k) {
-				return req, close, errors.Errorf("unexpected field %q", k)
+				return req, rawBody, close, errors.Errorf("unexpected field %q", k)
 			}
 		}
 		{{- end }}
@@ -261,18 +269,18 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 						{{- template "uri/decode" $el }}
 					{{- end }}
 				}); err != nil {
-					return req, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
+					return req, rawBody, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
 				}
 
 				{{- if $p.Type.NeedValidation }}
 				if err := func() error {
 					{{- template "validate" $el }}
 				}(); err != nil {
-					return req, close, errors.Wrap(err, "validate")
+					return req, rawBody, close, errors.Wrap(err, "validate")
 				}
 				{{- end }}
 			} {{- if $p.Spec.Required }} else {
-				return req, close, errors.Wrap(err, "query")
+				return req, rawBody, close, errors.Wrap(err, "query")
 			} {{- end }}
 		}
 		{{- end }}
@@ -345,7 +353,7 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Req
 			{{- end }}
 			return nil
 		}(); err != nil {
-			return req, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
+			return req, rawBody, close, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
 		}
 	}
     {{- end }}

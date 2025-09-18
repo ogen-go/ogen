@@ -13,16 +13,15 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
 
 func trimTrailingSlashes(u *url.URL) {
@@ -4163,6 +4162,7 @@ func (c *Client) sendTestQueryParameter(ctx context.Context, request string, par
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_query_parameter"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6275,6 +6275,7 @@ func (c *Client) sendTestRequestAny(ctx context.Context, request jx.Raw) (res *E
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_Any"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6348,6 +6349,7 @@ func (c *Client) sendTestRequestBoolean(ctx context.Context, request OptBool) (r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6421,6 +6423,7 @@ func (c *Client) sendTestRequestBooleanArray(ctx context.Context, request []bool
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6494,6 +6497,7 @@ func (c *Client) sendTestRequestBooleanArrayArray(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6567,6 +6571,7 @@ func (c *Client) sendTestRequestBooleanNullable(ctx context.Context, request Opt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6640,6 +6645,7 @@ func (c *Client) sendTestRequestBooleanNullableArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6713,6 +6719,7 @@ func (c *Client) sendTestRequestBooleanNullableArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_boolean_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6786,6 +6793,7 @@ func (c *Client) sendTestRequestEmptyStruct(ctx context.Context, request *TestRe
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_EmptyStruct"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6859,6 +6867,7 @@ func (c *Client) sendTestRequestFormatTest(ctx context.Context, request OptTestR
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_FormatTest"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -6932,6 +6941,7 @@ func (c *Client) sendTestRequestInteger(ctx context.Context, request OptInt) (re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7005,6 +7015,7 @@ func (c *Client) sendTestRequestIntegerArray(ctx context.Context, request []int)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7078,6 +7089,7 @@ func (c *Client) sendTestRequestIntegerArrayArray(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7151,6 +7163,7 @@ func (c *Client) sendTestRequestIntegerInt16(ctx context.Context, request OptInt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7224,6 +7237,7 @@ func (c *Client) sendTestRequestIntegerInt16Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7297,6 +7311,7 @@ func (c *Client) sendTestRequestIntegerInt16ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7370,6 +7385,7 @@ func (c *Client) sendTestRequestIntegerInt16Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7443,6 +7459,7 @@ func (c *Client) sendTestRequestIntegerInt16NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7516,6 +7533,7 @@ func (c *Client) sendTestRequestIntegerInt16NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7589,6 +7607,7 @@ func (c *Client) sendTestRequestIntegerInt32(ctx context.Context, request OptInt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7662,6 +7681,7 @@ func (c *Client) sendTestRequestIntegerInt32Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7735,6 +7755,7 @@ func (c *Client) sendTestRequestIntegerInt32ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7808,6 +7829,7 @@ func (c *Client) sendTestRequestIntegerInt32Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7881,6 +7903,7 @@ func (c *Client) sendTestRequestIntegerInt32NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -7954,6 +7977,7 @@ func (c *Client) sendTestRequestIntegerInt32NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8027,6 +8051,7 @@ func (c *Client) sendTestRequestIntegerInt64(ctx context.Context, request OptInt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8100,6 +8125,7 @@ func (c *Client) sendTestRequestIntegerInt64Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8173,6 +8199,7 @@ func (c *Client) sendTestRequestIntegerInt64ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8246,6 +8273,7 @@ func (c *Client) sendTestRequestIntegerInt64Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8319,6 +8347,7 @@ func (c *Client) sendTestRequestIntegerInt64NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8392,6 +8421,7 @@ func (c *Client) sendTestRequestIntegerInt64NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8465,6 +8495,7 @@ func (c *Client) sendTestRequestIntegerInt8(ctx context.Context, request OptInt8
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8538,6 +8569,7 @@ func (c *Client) sendTestRequestIntegerInt8Array(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8611,6 +8643,7 @@ func (c *Client) sendTestRequestIntegerInt8ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8684,6 +8717,7 @@ func (c *Client) sendTestRequestIntegerInt8Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8757,6 +8791,7 @@ func (c *Client) sendTestRequestIntegerInt8NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8830,6 +8865,7 @@ func (c *Client) sendTestRequestIntegerInt8NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_int8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8903,6 +8939,7 @@ func (c *Client) sendTestRequestIntegerNullable(ctx context.Context, request Opt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -8976,6 +9013,7 @@ func (c *Client) sendTestRequestIntegerNullableArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9049,6 +9087,7 @@ func (c *Client) sendTestRequestIntegerNullableArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9122,6 +9161,7 @@ func (c *Client) sendTestRequestIntegerUint(ctx context.Context, request OptUint
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9195,6 +9235,7 @@ func (c *Client) sendTestRequestIntegerUint16(ctx context.Context, request OptUi
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9268,6 +9309,7 @@ func (c *Client) sendTestRequestIntegerUint16Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9341,6 +9383,7 @@ func (c *Client) sendTestRequestIntegerUint16ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9414,6 +9457,7 @@ func (c *Client) sendTestRequestIntegerUint16Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9487,6 +9531,7 @@ func (c *Client) sendTestRequestIntegerUint16NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9560,6 +9605,7 @@ func (c *Client) sendTestRequestIntegerUint16NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9633,6 +9679,7 @@ func (c *Client) sendTestRequestIntegerUint32(ctx context.Context, request OptUi
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9706,6 +9753,7 @@ func (c *Client) sendTestRequestIntegerUint32Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9779,6 +9827,7 @@ func (c *Client) sendTestRequestIntegerUint32ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9852,6 +9901,7 @@ func (c *Client) sendTestRequestIntegerUint32Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9925,6 +9975,7 @@ func (c *Client) sendTestRequestIntegerUint32NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -9998,6 +10049,7 @@ func (c *Client) sendTestRequestIntegerUint32NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10071,6 +10123,7 @@ func (c *Client) sendTestRequestIntegerUint64(ctx context.Context, request OptUi
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10144,6 +10197,7 @@ func (c *Client) sendTestRequestIntegerUint64Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10217,6 +10271,7 @@ func (c *Client) sendTestRequestIntegerUint64ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10290,6 +10345,7 @@ func (c *Client) sendTestRequestIntegerUint64Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10363,6 +10419,7 @@ func (c *Client) sendTestRequestIntegerUint64NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10436,6 +10493,7 @@ func (c *Client) sendTestRequestIntegerUint64NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10509,6 +10567,7 @@ func (c *Client) sendTestRequestIntegerUint8(ctx context.Context, request OptUin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10582,6 +10641,7 @@ func (c *Client) sendTestRequestIntegerUint8Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10655,6 +10715,7 @@ func (c *Client) sendTestRequestIntegerUint8ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10728,6 +10789,7 @@ func (c *Client) sendTestRequestIntegerUint8Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10801,6 +10863,7 @@ func (c *Client) sendTestRequestIntegerUint8NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10874,6 +10937,7 @@ func (c *Client) sendTestRequestIntegerUint8NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -10947,6 +11011,7 @@ func (c *Client) sendTestRequestIntegerUintArray(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11020,6 +11085,7 @@ func (c *Client) sendTestRequestIntegerUintArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11093,6 +11159,7 @@ func (c *Client) sendTestRequestIntegerUintNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11166,6 +11233,7 @@ func (c *Client) sendTestRequestIntegerUintNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11239,6 +11307,7 @@ func (c *Client) sendTestRequestIntegerUintNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_uint_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11312,6 +11381,7 @@ func (c *Client) sendTestRequestIntegerUnix(ctx context.Context, request OptUnix
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11385,6 +11455,7 @@ func (c *Client) sendTestRequestIntegerUnixArray(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11458,6 +11529,7 @@ func (c *Client) sendTestRequestIntegerUnixArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11531,6 +11603,7 @@ func (c *Client) sendTestRequestIntegerUnixMicro(ctx context.Context, request Op
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11604,6 +11677,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11677,6 +11751,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11750,6 +11825,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullable(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11823,6 +11899,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11896,6 +11973,7 @@ func (c *Client) sendTestRequestIntegerUnixMicroNullableArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-micro_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -11969,6 +12047,7 @@ func (c *Client) sendTestRequestIntegerUnixMilli(ctx context.Context, request Op
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12042,6 +12121,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12115,6 +12195,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12188,6 +12269,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullable(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12261,6 +12343,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12334,6 +12417,7 @@ func (c *Client) sendTestRequestIntegerUnixMilliNullableArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-milli_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12407,6 +12491,7 @@ func (c *Client) sendTestRequestIntegerUnixNano(ctx context.Context, request Opt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12480,6 +12565,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12553,6 +12639,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12626,6 +12713,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12699,6 +12787,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12772,6 +12861,7 @@ func (c *Client) sendTestRequestIntegerUnixNanoNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-nano_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12845,6 +12935,7 @@ func (c *Client) sendTestRequestIntegerUnixNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12918,6 +13009,7 @@ func (c *Client) sendTestRequestIntegerUnixNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -12991,6 +13083,7 @@ func (c *Client) sendTestRequestIntegerUnixNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13064,6 +13157,7 @@ func (c *Client) sendTestRequestIntegerUnixSeconds(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13137,6 +13231,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13210,6 +13305,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13283,6 +13379,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13356,6 +13453,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13429,6 +13527,7 @@ func (c *Client) sendTestRequestIntegerUnixSecondsNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_integer_unix-seconds_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13502,6 +13601,7 @@ func (c *Client) sendTestRequestNull(ctx context.Context, request OptNull) (res 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13575,6 +13675,7 @@ func (c *Client) sendTestRequestNullArray(ctx context.Context, request []struct{
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13648,6 +13749,7 @@ func (c *Client) sendTestRequestNullArrayArray(ctx context.Context, request [][]
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13721,6 +13823,7 @@ func (c *Client) sendTestRequestNullNullable(ctx context.Context, request OptNul
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13794,6 +13897,7 @@ func (c *Client) sendTestRequestNullNullableArray(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13867,6 +13971,7 @@ func (c *Client) sendTestRequestNullNullableArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_null_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -13940,6 +14045,7 @@ func (c *Client) sendTestRequestNumber(ctx context.Context, request OptFloat64) 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14013,6 +14119,7 @@ func (c *Client) sendTestRequestNumberArray(ctx context.Context, request []float
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14086,6 +14193,7 @@ func (c *Client) sendTestRequestNumberArrayArray(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14159,6 +14267,7 @@ func (c *Client) sendTestRequestNumberDouble(ctx context.Context, request OptFlo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14232,6 +14341,7 @@ func (c *Client) sendTestRequestNumberDoubleArray(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14305,6 +14415,7 @@ func (c *Client) sendTestRequestNumberDoubleArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14378,6 +14489,7 @@ func (c *Client) sendTestRequestNumberDoubleNullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14451,6 +14563,7 @@ func (c *Client) sendTestRequestNumberDoubleNullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14524,6 +14637,7 @@ func (c *Client) sendTestRequestNumberDoubleNullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_double_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14597,6 +14711,7 @@ func (c *Client) sendTestRequestNumberFloat(ctx context.Context, request OptFloa
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14670,6 +14785,7 @@ func (c *Client) sendTestRequestNumberFloatArray(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14743,6 +14859,7 @@ func (c *Client) sendTestRequestNumberFloatArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14816,6 +14933,7 @@ func (c *Client) sendTestRequestNumberFloatNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14889,6 +15007,7 @@ func (c *Client) sendTestRequestNumberFloatNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -14962,6 +15081,7 @@ func (c *Client) sendTestRequestNumberFloatNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_float_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15035,6 +15155,7 @@ func (c *Client) sendTestRequestNumberInt32(ctx context.Context, request OptInt3
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15108,6 +15229,7 @@ func (c *Client) sendTestRequestNumberInt32Array(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15181,6 +15303,7 @@ func (c *Client) sendTestRequestNumberInt32ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15254,6 +15377,7 @@ func (c *Client) sendTestRequestNumberInt32Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15327,6 +15451,7 @@ func (c *Client) sendTestRequestNumberInt32NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15400,6 +15525,7 @@ func (c *Client) sendTestRequestNumberInt32NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15473,6 +15599,7 @@ func (c *Client) sendTestRequestNumberInt64(ctx context.Context, request OptInt6
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15546,6 +15673,7 @@ func (c *Client) sendTestRequestNumberInt64Array(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15619,6 +15747,7 @@ func (c *Client) sendTestRequestNumberInt64ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15692,6 +15821,7 @@ func (c *Client) sendTestRequestNumberInt64Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15765,6 +15895,7 @@ func (c *Client) sendTestRequestNumberInt64NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15838,6 +15969,7 @@ func (c *Client) sendTestRequestNumberInt64NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15911,6 +16043,7 @@ func (c *Client) sendTestRequestNumberNullable(ctx context.Context, request OptN
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -15984,6 +16117,7 @@ func (c *Client) sendTestRequestNumberNullableArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16057,6 +16191,7 @@ func (c *Client) sendTestRequestNumberNullableArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_number_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16130,6 +16265,7 @@ func (c *Client) sendTestRequestRequiredAny(ctx context.Context, request jx.Raw)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_Any"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16203,6 +16339,7 @@ func (c *Client) sendTestRequestRequiredBoolean(ctx context.Context, request boo
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16276,6 +16413,7 @@ func (c *Client) sendTestRequestRequiredBooleanArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16349,6 +16487,7 @@ func (c *Client) sendTestRequestRequiredBooleanArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16422,6 +16561,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16495,6 +16635,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16568,6 +16709,7 @@ func (c *Client) sendTestRequestRequiredBooleanNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_boolean_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16641,6 +16783,7 @@ func (c *Client) sendTestRequestRequiredEmptyStruct(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_EmptyStruct"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16714,6 +16857,7 @@ func (c *Client) sendTestRequestRequiredFormatTest(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_FormatTest"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16787,6 +16931,7 @@ func (c *Client) sendTestRequestRequiredInteger(ctx context.Context, request int
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16860,6 +17005,7 @@ func (c *Client) sendTestRequestRequiredIntegerArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -16933,6 +17079,7 @@ func (c *Client) sendTestRequestRequiredIntegerArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17006,6 +17153,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17079,6 +17227,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17152,6 +17301,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17225,6 +17375,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17298,6 +17449,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17371,6 +17523,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt16NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17444,6 +17597,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17517,6 +17671,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17590,6 +17745,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17663,6 +17819,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17736,6 +17893,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17809,6 +17967,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt32NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17882,6 +18041,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -17955,6 +18115,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18028,6 +18189,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18101,6 +18263,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18174,6 +18337,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18247,6 +18411,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt64NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18320,6 +18485,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18393,6 +18559,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8Array(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18466,6 +18633,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8ArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18539,6 +18707,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8Nullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18612,6 +18781,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8NullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18685,6 +18855,7 @@ func (c *Client) sendTestRequestRequiredIntegerInt8NullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_int8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18758,6 +18929,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18831,6 +19003,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18904,6 +19077,7 @@ func (c *Client) sendTestRequestRequiredIntegerNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -18977,6 +19151,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19050,6 +19225,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19123,6 +19299,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16Array(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19196,6 +19373,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16ArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19269,6 +19447,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16Nullable(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19342,6 +19521,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16NullableArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19415,6 +19595,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint16NullableArrayArray(ctx cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19488,6 +19669,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19561,6 +19743,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Array(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19634,6 +19817,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32ArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19707,6 +19891,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32Nullable(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19780,6 +19965,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19853,6 +20039,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint32NullableArrayArray(ctx cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19926,6 +20113,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -19999,6 +20187,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Array(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20072,6 +20261,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64ArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20145,6 +20335,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64Nullable(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20218,6 +20409,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20291,6 +20483,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint64NullableArrayArray(ctx cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20364,6 +20557,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20437,6 +20631,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20510,6 +20705,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20583,6 +20779,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20656,6 +20853,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20729,6 +20927,7 @@ func (c *Client) sendTestRequestRequiredIntegerUint8NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20802,6 +21001,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20875,6 +21075,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -20948,6 +21149,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21021,6 +21223,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21094,6 +21297,7 @@ func (c *Client) sendTestRequestRequiredIntegerUintNullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_uint_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21167,6 +21371,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnix(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21240,6 +21445,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21313,6 +21519,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21386,6 +21593,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicro(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21459,6 +21667,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21532,6 +21741,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21605,6 +21815,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullable(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21678,6 +21889,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21751,6 +21963,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx c
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-micro_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21824,6 +22037,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilli(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21897,6 +22111,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -21970,6 +22185,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22043,6 +22259,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullable(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22116,6 +22333,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22189,6 +22407,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx c
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-milli_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22262,6 +22481,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNano(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22335,6 +22555,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22408,6 +22629,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22481,6 +22703,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullable(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22554,6 +22777,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22627,6 +22851,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-nano_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22700,6 +22925,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22773,6 +22999,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22846,6 +23073,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixNullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22919,6 +23147,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSeconds(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -22992,6 +23221,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23065,6 +23295,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23138,6 +23369,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullable(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23211,6 +23443,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArray(ctx cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23284,6 +23517,7 @@ func (c *Client) sendTestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_integer_unix-seconds_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23357,6 +23591,7 @@ func (c *Client) sendTestRequestRequiredNull(ctx context.Context, request struct
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23430,6 +23665,7 @@ func (c *Client) sendTestRequestRequiredNullArray(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23503,6 +23739,7 @@ func (c *Client) sendTestRequestRequiredNullArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23576,6 +23813,7 @@ func (c *Client) sendTestRequestRequiredNullNullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23649,6 +23887,7 @@ func (c *Client) sendTestRequestRequiredNullNullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23722,6 +23961,7 @@ func (c *Client) sendTestRequestRequiredNullNullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_null_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23795,6 +24035,7 @@ func (c *Client) sendTestRequestRequiredNumber(ctx context.Context, request floa
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23868,6 +24109,7 @@ func (c *Client) sendTestRequestRequiredNumberArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -23941,6 +24183,7 @@ func (c *Client) sendTestRequestRequiredNumberArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24014,6 +24257,7 @@ func (c *Client) sendTestRequestRequiredNumberDouble(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24087,6 +24331,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24160,6 +24405,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24233,6 +24479,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24306,6 +24553,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24379,6 +24627,7 @@ func (c *Client) sendTestRequestRequiredNumberDoubleNullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_double_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24452,6 +24701,7 @@ func (c *Client) sendTestRequestRequiredNumberFloat(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24525,6 +24775,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24598,6 +24849,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24671,6 +24923,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24744,6 +24997,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24817,6 +25071,7 @@ func (c *Client) sendTestRequestRequiredNumberFloatNullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_float_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24890,6 +25145,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -24963,6 +25219,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32Array(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25036,6 +25293,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32ArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25109,6 +25367,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32Nullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25182,6 +25441,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25255,6 +25515,7 @@ func (c *Client) sendTestRequestRequiredNumberInt32NullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25328,6 +25589,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25401,6 +25663,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64Array(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25474,6 +25737,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64ArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25547,6 +25811,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64Nullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25620,6 +25885,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25693,6 +25959,7 @@ func (c *Client) sendTestRequestRequiredNumberInt64NullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25766,6 +26033,7 @@ func (c *Client) sendTestRequestRequiredNumberNullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25839,6 +26107,7 @@ func (c *Client) sendTestRequestRequiredNumberNullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25912,6 +26181,7 @@ func (c *Client) sendTestRequestRequiredNumberNullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_number_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -25985,6 +26255,7 @@ func (c *Client) sendTestRequestRequiredString(ctx context.Context, request stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26058,6 +26329,7 @@ func (c *Client) sendTestRequestRequiredStringArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26131,6 +26403,7 @@ func (c *Client) sendTestRequestRequiredStringArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26204,6 +26477,7 @@ func (c *Client) sendTestRequestRequiredStringBase64(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26277,6 +26551,7 @@ func (c *Client) sendTestRequestRequiredStringBase64Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26350,6 +26625,7 @@ func (c *Client) sendTestRequestRequiredStringBase64ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26423,6 +26699,7 @@ func (c *Client) sendTestRequestRequiredStringBase64Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26496,6 +26773,7 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26569,6 +26847,7 @@ func (c *Client) sendTestRequestRequiredStringBase64NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_base64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26642,6 +26921,7 @@ func (c *Client) sendTestRequestRequiredStringBinary(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26715,6 +26995,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26788,6 +27069,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26861,6 +27143,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -26934,6 +27217,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27007,6 +27291,7 @@ func (c *Client) sendTestRequestRequiredStringBinaryNullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_binary_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27080,6 +27365,7 @@ func (c *Client) sendTestRequestRequiredStringByte(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27153,6 +27439,7 @@ func (c *Client) sendTestRequestRequiredStringByteArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27226,6 +27513,7 @@ func (c *Client) sendTestRequestRequiredStringByteArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27299,6 +27587,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27372,6 +27661,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27445,6 +27735,7 @@ func (c *Client) sendTestRequestRequiredStringByteNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_byte_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27518,6 +27809,7 @@ func (c *Client) sendTestRequestRequiredStringDate(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27591,6 +27883,7 @@ func (c *Client) sendTestRequestRequiredStringDateArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27664,6 +27957,7 @@ func (c *Client) sendTestRequestRequiredStringDateArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27737,6 +28031,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27810,6 +28105,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27883,6 +28179,7 @@ func (c *Client) sendTestRequestRequiredStringDateNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -27956,6 +28253,7 @@ func (c *Client) sendTestRequestRequiredStringDateTime(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28029,6 +28327,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28102,6 +28401,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28175,6 +28475,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullable(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28248,6 +28549,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28321,6 +28623,7 @@ func (c *Client) sendTestRequestRequiredStringDateTimeNullableArrayArray(ctx con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_date-time_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28394,6 +28697,7 @@ func (c *Client) sendTestRequestRequiredStringDuration(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28467,6 +28771,7 @@ func (c *Client) sendTestRequestRequiredStringDurationArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28540,6 +28845,7 @@ func (c *Client) sendTestRequestRequiredStringDurationArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28613,6 +28919,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullable(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28686,6 +28993,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28759,6 +29067,7 @@ func (c *Client) sendTestRequestRequiredStringDurationNullableArrayArray(ctx con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_duration_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28832,6 +29141,7 @@ func (c *Client) sendTestRequestRequiredStringEmail(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28905,6 +29215,7 @@ func (c *Client) sendTestRequestRequiredStringEmailArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -28978,6 +29289,7 @@ func (c *Client) sendTestRequestRequiredStringEmailArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29051,6 +29363,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29124,6 +29437,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29197,6 +29511,7 @@ func (c *Client) sendTestRequestRequiredStringEmailNullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_email_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29270,6 +29585,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29343,6 +29659,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32Array(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29416,6 +29733,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32ArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29489,6 +29807,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32Nullable(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29562,6 +29881,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32NullableArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29635,6 +29955,7 @@ func (c *Client) sendTestRequestRequiredStringFloat32NullableArrayArray(ctx cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29708,6 +30029,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29781,6 +30103,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64Array(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29854,6 +30177,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64ArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -29927,6 +30251,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64Nullable(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30000,6 +30325,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64NullableArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30073,6 +30399,7 @@ func (c *Client) sendTestRequestRequiredStringFloat64NullableArrayArray(ctx cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_float64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30146,6 +30473,7 @@ func (c *Client) sendTestRequestRequiredStringHostname(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30219,6 +30547,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30292,6 +30621,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30365,6 +30695,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullable(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30438,6 +30769,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30511,6 +30843,7 @@ func (c *Client) sendTestRequestRequiredStringHostnameNullableArrayArray(ctx con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_hostname_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30584,6 +30917,7 @@ func (c *Client) sendTestRequestRequiredStringIP(ctx context.Context, request ne
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30657,6 +30991,7 @@ func (c *Client) sendTestRequestRequiredStringIPArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30730,6 +31065,7 @@ func (c *Client) sendTestRequestRequiredStringIPArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30803,6 +31139,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullable(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30876,6 +31213,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -30949,6 +31287,7 @@ func (c *Client) sendTestRequestRequiredStringIPNullableArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ip_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31022,6 +31361,7 @@ func (c *Client) sendTestRequestRequiredStringInt(ctx context.Context, request i
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31095,6 +31435,7 @@ func (c *Client) sendTestRequestRequiredStringInt16(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31168,6 +31509,7 @@ func (c *Client) sendTestRequestRequiredStringInt16Array(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31241,6 +31583,7 @@ func (c *Client) sendTestRequestRequiredStringInt16ArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31314,6 +31657,7 @@ func (c *Client) sendTestRequestRequiredStringInt16Nullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31387,6 +31731,7 @@ func (c *Client) sendTestRequestRequiredStringInt16NullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31460,6 +31805,7 @@ func (c *Client) sendTestRequestRequiredStringInt16NullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31533,6 +31879,7 @@ func (c *Client) sendTestRequestRequiredStringInt32(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31606,6 +31953,7 @@ func (c *Client) sendTestRequestRequiredStringInt32Array(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31679,6 +32027,7 @@ func (c *Client) sendTestRequestRequiredStringInt32ArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31752,6 +32101,7 @@ func (c *Client) sendTestRequestRequiredStringInt32Nullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31825,6 +32175,7 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31898,6 +32249,7 @@ func (c *Client) sendTestRequestRequiredStringInt32NullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -31971,6 +32323,7 @@ func (c *Client) sendTestRequestRequiredStringInt64(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32044,6 +32397,7 @@ func (c *Client) sendTestRequestRequiredStringInt64Array(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32117,6 +32471,7 @@ func (c *Client) sendTestRequestRequiredStringInt64ArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32190,6 +32545,7 @@ func (c *Client) sendTestRequestRequiredStringInt64Nullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32263,6 +32619,7 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32336,6 +32693,7 @@ func (c *Client) sendTestRequestRequiredStringInt64NullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32409,6 +32767,7 @@ func (c *Client) sendTestRequestRequiredStringInt8(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32482,6 +32841,7 @@ func (c *Client) sendTestRequestRequiredStringInt8Array(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32555,6 +32915,7 @@ func (c *Client) sendTestRequestRequiredStringInt8ArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32628,6 +32989,7 @@ func (c *Client) sendTestRequestRequiredStringInt8Nullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32701,6 +33063,7 @@ func (c *Client) sendTestRequestRequiredStringInt8NullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32774,6 +33137,7 @@ func (c *Client) sendTestRequestRequiredStringInt8NullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32847,6 +33211,7 @@ func (c *Client) sendTestRequestRequiredStringIntArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32920,6 +33285,7 @@ func (c *Client) sendTestRequestRequiredStringIntArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -32993,6 +33359,7 @@ func (c *Client) sendTestRequestRequiredStringIntNullable(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33066,6 +33433,7 @@ func (c *Client) sendTestRequestRequiredStringIntNullableArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33139,6 +33507,7 @@ func (c *Client) sendTestRequestRequiredStringIntNullableArrayArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_int_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33212,6 +33581,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33285,6 +33655,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4Array(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33358,6 +33729,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4ArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33431,6 +33803,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4Nullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33504,6 +33877,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33577,6 +33951,7 @@ func (c *Client) sendTestRequestRequiredStringIpv4NullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv4_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33650,6 +34025,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33723,6 +34099,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6Array(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33796,6 +34173,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6ArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33869,6 +34247,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6Nullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -33942,6 +34321,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34015,6 +34395,7 @@ func (c *Client) sendTestRequestRequiredStringIpv6NullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_ipv6_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34088,6 +34469,7 @@ func (c *Client) sendTestRequestRequiredStringMAC(ctx context.Context, request n
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34161,6 +34543,7 @@ func (c *Client) sendTestRequestRequiredStringMACArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34234,6 +34617,7 @@ func (c *Client) sendTestRequestRequiredStringMACArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34307,6 +34691,7 @@ func (c *Client) sendTestRequestRequiredStringMACNullable(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34380,6 +34765,7 @@ func (c *Client) sendTestRequestRequiredStringMACNullableArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34453,6 +34839,7 @@ func (c *Client) sendTestRequestRequiredStringMACNullableArrayArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_mac_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34526,6 +34913,7 @@ func (c *Client) sendTestRequestRequiredStringNullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34599,6 +34987,7 @@ func (c *Client) sendTestRequestRequiredStringNullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34672,6 +35061,7 @@ func (c *Client) sendTestRequestRequiredStringNullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34745,6 +35135,7 @@ func (c *Client) sendTestRequestRequiredStringPassword(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34818,6 +35209,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34891,6 +35283,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -34964,6 +35357,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullable(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35037,6 +35431,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35110,6 +35505,7 @@ func (c *Client) sendTestRequestRequiredStringPasswordNullableArrayArray(ctx con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_password_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35183,6 +35579,7 @@ func (c *Client) sendTestRequestRequiredStringTime(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35256,6 +35653,7 @@ func (c *Client) sendTestRequestRequiredStringTimeArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35329,6 +35727,7 @@ func (c *Client) sendTestRequestRequiredStringTimeArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35402,6 +35801,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35475,6 +35875,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35548,6 +35949,7 @@ func (c *Client) sendTestRequestRequiredStringTimeNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_time_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35621,6 +36023,7 @@ func (c *Client) sendTestRequestRequiredStringURI(ctx context.Context, request u
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35694,6 +36097,7 @@ func (c *Client) sendTestRequestRequiredStringURIArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35767,6 +36171,7 @@ func (c *Client) sendTestRequestRequiredStringURIArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35840,6 +36245,7 @@ func (c *Client) sendTestRequestRequiredStringURINullable(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35913,6 +36319,7 @@ func (c *Client) sendTestRequestRequiredStringURINullableArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -35986,6 +36393,7 @@ func (c *Client) sendTestRequestRequiredStringURINullableArrayArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uri_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36059,6 +36467,7 @@ func (c *Client) sendTestRequestRequiredStringUUID(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36132,6 +36541,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36205,6 +36615,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36278,6 +36689,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36351,6 +36763,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36424,6 +36837,7 @@ func (c *Client) sendTestRequestRequiredStringUUIDNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uuid_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36497,6 +36911,7 @@ func (c *Client) sendTestRequestRequiredStringUint(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36570,6 +36985,7 @@ func (c *Client) sendTestRequestRequiredStringUint16(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36643,6 +37059,7 @@ func (c *Client) sendTestRequestRequiredStringUint16Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36716,6 +37133,7 @@ func (c *Client) sendTestRequestRequiredStringUint16ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36789,6 +37207,7 @@ func (c *Client) sendTestRequestRequiredStringUint16Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36862,6 +37281,7 @@ func (c *Client) sendTestRequestRequiredStringUint16NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -36935,6 +37355,7 @@ func (c *Client) sendTestRequestRequiredStringUint16NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37008,6 +37429,7 @@ func (c *Client) sendTestRequestRequiredStringUint32(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37081,6 +37503,7 @@ func (c *Client) sendTestRequestRequiredStringUint32Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37154,6 +37577,7 @@ func (c *Client) sendTestRequestRequiredStringUint32ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37227,6 +37651,7 @@ func (c *Client) sendTestRequestRequiredStringUint32Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37300,6 +37725,7 @@ func (c *Client) sendTestRequestRequiredStringUint32NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37373,6 +37799,7 @@ func (c *Client) sendTestRequestRequiredStringUint32NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37446,6 +37873,7 @@ func (c *Client) sendTestRequestRequiredStringUint64(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37519,6 +37947,7 @@ func (c *Client) sendTestRequestRequiredStringUint64Array(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37592,6 +38021,7 @@ func (c *Client) sendTestRequestRequiredStringUint64ArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37665,6 +38095,7 @@ func (c *Client) sendTestRequestRequiredStringUint64Nullable(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37738,6 +38169,7 @@ func (c *Client) sendTestRequestRequiredStringUint64NullableArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37811,6 +38243,7 @@ func (c *Client) sendTestRequestRequiredStringUint64NullableArrayArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37884,6 +38317,7 @@ func (c *Client) sendTestRequestRequiredStringUint8(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -37957,6 +38391,7 @@ func (c *Client) sendTestRequestRequiredStringUint8Array(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38030,6 +38465,7 @@ func (c *Client) sendTestRequestRequiredStringUint8ArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38103,6 +38539,7 @@ func (c *Client) sendTestRequestRequiredStringUint8Nullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38176,6 +38613,7 @@ func (c *Client) sendTestRequestRequiredStringUint8NullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38249,6 +38687,7 @@ func (c *Client) sendTestRequestRequiredStringUint8NullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38322,6 +38761,7 @@ func (c *Client) sendTestRequestRequiredStringUintArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38395,6 +38835,7 @@ func (c *Client) sendTestRequestRequiredStringUintArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38468,6 +38909,7 @@ func (c *Client) sendTestRequestRequiredStringUintNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38541,6 +38983,7 @@ func (c *Client) sendTestRequestRequiredStringUintNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38614,6 +39057,7 @@ func (c *Client) sendTestRequestRequiredStringUintNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_uint_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38687,6 +39131,7 @@ func (c *Client) sendTestRequestRequiredStringUnix(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38760,6 +39205,7 @@ func (c *Client) sendTestRequestRequiredStringUnixArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38833,6 +39279,7 @@ func (c *Client) sendTestRequestRequiredStringUnixArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38906,6 +39353,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicro(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -38979,6 +39427,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39052,6 +39501,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39125,6 +39575,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullable(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39198,6 +39649,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39271,6 +39723,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMicroNullableArrayArray(ctx co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-micro_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39344,6 +39797,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilli(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39417,6 +39871,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39490,6 +39945,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39563,6 +40019,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullable(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39636,6 +40093,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39709,6 +40167,7 @@ func (c *Client) sendTestRequestRequiredStringUnixMilliNullableArrayArray(ctx co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-milli_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39782,6 +40241,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNano(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39855,6 +40315,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -39928,6 +40389,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40001,6 +40463,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullable(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40074,6 +40537,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40147,6 +40611,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNanoNullableArrayArray(ctx con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-nano_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40220,6 +40685,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40293,6 +40759,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40366,6 +40833,7 @@ func (c *Client) sendTestRequestRequiredStringUnixNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40439,6 +40907,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSeconds(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40512,6 +40981,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40585,6 +41055,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsArrayArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40658,6 +41129,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullable(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40731,6 +41203,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArray(ctx conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40804,6 +41277,7 @@ func (c *Client) sendTestRequestRequiredStringUnixSecondsNullableArrayArray(ctx 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_required_string_unix-seconds_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40877,6 +41351,7 @@ func (c *Client) sendTestRequestString(ctx context.Context, request OptString) (
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -40950,6 +41425,7 @@ func (c *Client) sendTestRequestStringArray(ctx context.Context, request []strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41023,6 +41499,7 @@ func (c *Client) sendTestRequestStringArrayArray(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41096,6 +41573,7 @@ func (c *Client) sendTestRequestStringBase64(ctx context.Context, request []byte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41169,6 +41647,7 @@ func (c *Client) sendTestRequestStringBase64Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41242,6 +41721,7 @@ func (c *Client) sendTestRequestStringBase64ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41315,6 +41795,7 @@ func (c *Client) sendTestRequestStringBase64Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41388,6 +41869,7 @@ func (c *Client) sendTestRequestStringBase64NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41461,6 +41943,7 @@ func (c *Client) sendTestRequestStringBase64NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_base64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41534,6 +42017,7 @@ func (c *Client) sendTestRequestStringBinary(ctx context.Context, request OptStr
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41607,6 +42091,7 @@ func (c *Client) sendTestRequestStringBinaryArray(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41680,6 +42165,7 @@ func (c *Client) sendTestRequestStringBinaryArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41753,6 +42239,7 @@ func (c *Client) sendTestRequestStringBinaryNullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41826,6 +42313,7 @@ func (c *Client) sendTestRequestStringBinaryNullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41899,6 +42387,7 @@ func (c *Client) sendTestRequestStringBinaryNullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_binary_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -41972,6 +42461,7 @@ func (c *Client) sendTestRequestStringByte(ctx context.Context, request []byte) 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42045,6 +42535,7 @@ func (c *Client) sendTestRequestStringByteArray(ctx context.Context, request [][
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42118,6 +42609,7 @@ func (c *Client) sendTestRequestStringByteArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42191,6 +42683,7 @@ func (c *Client) sendTestRequestStringByteNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42264,6 +42757,7 @@ func (c *Client) sendTestRequestStringByteNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42337,6 +42831,7 @@ func (c *Client) sendTestRequestStringByteNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_byte_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42410,6 +42905,7 @@ func (c *Client) sendTestRequestStringDate(ctx context.Context, request OptDate)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42483,6 +42979,7 @@ func (c *Client) sendTestRequestStringDateArray(ctx context.Context, request []t
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42556,6 +43053,7 @@ func (c *Client) sendTestRequestStringDateArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42629,6 +43127,7 @@ func (c *Client) sendTestRequestStringDateNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42702,6 +43201,7 @@ func (c *Client) sendTestRequestStringDateNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42775,6 +43275,7 @@ func (c *Client) sendTestRequestStringDateNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42848,6 +43349,7 @@ func (c *Client) sendTestRequestStringDateTime(ctx context.Context, request OptD
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42921,6 +43423,7 @@ func (c *Client) sendTestRequestStringDateTimeArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -42994,6 +43497,7 @@ func (c *Client) sendTestRequestStringDateTimeArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43067,6 +43571,7 @@ func (c *Client) sendTestRequestStringDateTimeNullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43140,6 +43645,7 @@ func (c *Client) sendTestRequestStringDateTimeNullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43213,6 +43719,7 @@ func (c *Client) sendTestRequestStringDateTimeNullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_date-time_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43286,6 +43793,7 @@ func (c *Client) sendTestRequestStringDuration(ctx context.Context, request OptD
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43359,6 +43867,7 @@ func (c *Client) sendTestRequestStringDurationArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43432,6 +43941,7 @@ func (c *Client) sendTestRequestStringDurationArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43505,6 +44015,7 @@ func (c *Client) sendTestRequestStringDurationNullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43578,6 +44089,7 @@ func (c *Client) sendTestRequestStringDurationNullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43651,6 +44163,7 @@ func (c *Client) sendTestRequestStringDurationNullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_duration_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43724,6 +44237,7 @@ func (c *Client) sendTestRequestStringEmail(ctx context.Context, request OptStri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43797,6 +44311,7 @@ func (c *Client) sendTestRequestStringEmailArray(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43870,6 +44385,7 @@ func (c *Client) sendTestRequestStringEmailArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -43943,6 +44459,7 @@ func (c *Client) sendTestRequestStringEmailNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44016,6 +44533,7 @@ func (c *Client) sendTestRequestStringEmailNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44089,6 +44607,7 @@ func (c *Client) sendTestRequestStringEmailNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_email_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44162,6 +44681,7 @@ func (c *Client) sendTestRequestStringFloat32(ctx context.Context, request OptSt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44235,6 +44755,7 @@ func (c *Client) sendTestRequestStringFloat32Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44308,6 +44829,7 @@ func (c *Client) sendTestRequestStringFloat32ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44381,6 +44903,7 @@ func (c *Client) sendTestRequestStringFloat32Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44454,6 +44977,7 @@ func (c *Client) sendTestRequestStringFloat32NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44527,6 +45051,7 @@ func (c *Client) sendTestRequestStringFloat32NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44600,6 +45125,7 @@ func (c *Client) sendTestRequestStringFloat64(ctx context.Context, request OptSt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44673,6 +45199,7 @@ func (c *Client) sendTestRequestStringFloat64Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44746,6 +45273,7 @@ func (c *Client) sendTestRequestStringFloat64ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44819,6 +45347,7 @@ func (c *Client) sendTestRequestStringFloat64Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44892,6 +45421,7 @@ func (c *Client) sendTestRequestStringFloat64NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -44965,6 +45495,7 @@ func (c *Client) sendTestRequestStringFloat64NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_float64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45038,6 +45569,7 @@ func (c *Client) sendTestRequestStringHostname(ctx context.Context, request OptS
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45111,6 +45643,7 @@ func (c *Client) sendTestRequestStringHostnameArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45184,6 +45717,7 @@ func (c *Client) sendTestRequestStringHostnameArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45257,6 +45791,7 @@ func (c *Client) sendTestRequestStringHostnameNullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45330,6 +45865,7 @@ func (c *Client) sendTestRequestStringHostnameNullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45403,6 +45939,7 @@ func (c *Client) sendTestRequestStringHostnameNullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_hostname_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45476,6 +46013,7 @@ func (c *Client) sendTestRequestStringIP(ctx context.Context, request OptIP) (re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45549,6 +46087,7 @@ func (c *Client) sendTestRequestStringIPArray(ctx context.Context, request []net
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45622,6 +46161,7 @@ func (c *Client) sendTestRequestStringIPArrayArray(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45695,6 +46235,7 @@ func (c *Client) sendTestRequestStringIPNullable(ctx context.Context, request Op
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45768,6 +46309,7 @@ func (c *Client) sendTestRequestStringIPNullableArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45841,6 +46383,7 @@ func (c *Client) sendTestRequestStringIPNullableArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ip_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45914,6 +46457,7 @@ func (c *Client) sendTestRequestStringInt(ctx context.Context, request OptString
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -45987,6 +46531,7 @@ func (c *Client) sendTestRequestStringInt16(ctx context.Context, request OptStri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46060,6 +46605,7 @@ func (c *Client) sendTestRequestStringInt16Array(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46133,6 +46679,7 @@ func (c *Client) sendTestRequestStringInt16ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46206,6 +46753,7 @@ func (c *Client) sendTestRequestStringInt16Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46279,6 +46827,7 @@ func (c *Client) sendTestRequestStringInt16NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46352,6 +46901,7 @@ func (c *Client) sendTestRequestStringInt16NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46425,6 +46975,7 @@ func (c *Client) sendTestRequestStringInt32(ctx context.Context, request OptStri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46498,6 +47049,7 @@ func (c *Client) sendTestRequestStringInt32Array(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46571,6 +47123,7 @@ func (c *Client) sendTestRequestStringInt32ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46644,6 +47197,7 @@ func (c *Client) sendTestRequestStringInt32Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46717,6 +47271,7 @@ func (c *Client) sendTestRequestStringInt32NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46790,6 +47345,7 @@ func (c *Client) sendTestRequestStringInt32NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46863,6 +47419,7 @@ func (c *Client) sendTestRequestStringInt64(ctx context.Context, request OptStri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -46936,6 +47493,7 @@ func (c *Client) sendTestRequestStringInt64Array(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47009,6 +47567,7 @@ func (c *Client) sendTestRequestStringInt64ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47082,6 +47641,7 @@ func (c *Client) sendTestRequestStringInt64Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47155,6 +47715,7 @@ func (c *Client) sendTestRequestStringInt64NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47228,6 +47789,7 @@ func (c *Client) sendTestRequestStringInt64NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47301,6 +47863,7 @@ func (c *Client) sendTestRequestStringInt8(ctx context.Context, request OptStrin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47374,6 +47937,7 @@ func (c *Client) sendTestRequestStringInt8Array(ctx context.Context, request []i
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47447,6 +48011,7 @@ func (c *Client) sendTestRequestStringInt8ArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47520,6 +48085,7 @@ func (c *Client) sendTestRequestStringInt8Nullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47593,6 +48159,7 @@ func (c *Client) sendTestRequestStringInt8NullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47666,6 +48233,7 @@ func (c *Client) sendTestRequestStringInt8NullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47739,6 +48307,7 @@ func (c *Client) sendTestRequestStringIntArray(ctx context.Context, request []in
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47812,6 +48381,7 @@ func (c *Client) sendTestRequestStringIntArrayArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47885,6 +48455,7 @@ func (c *Client) sendTestRequestStringIntNullable(ctx context.Context, request O
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -47958,6 +48529,7 @@ func (c *Client) sendTestRequestStringIntNullableArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48031,6 +48603,7 @@ func (c *Client) sendTestRequestStringIntNullableArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_int_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48104,6 +48677,7 @@ func (c *Client) sendTestRequestStringIpv4(ctx context.Context, request OptIPv4)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48177,6 +48751,7 @@ func (c *Client) sendTestRequestStringIpv4Array(ctx context.Context, request []n
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48250,6 +48825,7 @@ func (c *Client) sendTestRequestStringIpv4ArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48323,6 +48899,7 @@ func (c *Client) sendTestRequestStringIpv4Nullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48396,6 +48973,7 @@ func (c *Client) sendTestRequestStringIpv4NullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48469,6 +49047,7 @@ func (c *Client) sendTestRequestStringIpv4NullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv4_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48542,6 +49121,7 @@ func (c *Client) sendTestRequestStringIpv6(ctx context.Context, request OptIPv6)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48615,6 +49195,7 @@ func (c *Client) sendTestRequestStringIpv6Array(ctx context.Context, request []n
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48688,6 +49269,7 @@ func (c *Client) sendTestRequestStringIpv6ArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48761,6 +49343,7 @@ func (c *Client) sendTestRequestStringIpv6Nullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48834,6 +49417,7 @@ func (c *Client) sendTestRequestStringIpv6NullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48907,6 +49491,7 @@ func (c *Client) sendTestRequestStringIpv6NullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_ipv6_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -48980,6 +49565,7 @@ func (c *Client) sendTestRequestStringMAC(ctx context.Context, request OptHardwa
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49053,6 +49639,7 @@ func (c *Client) sendTestRequestStringMACArray(ctx context.Context, request []ne
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49126,6 +49713,7 @@ func (c *Client) sendTestRequestStringMACArrayArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49199,6 +49787,7 @@ func (c *Client) sendTestRequestStringMACNullable(ctx context.Context, request O
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49272,6 +49861,7 @@ func (c *Client) sendTestRequestStringMACNullableArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49345,6 +49935,7 @@ func (c *Client) sendTestRequestStringMACNullableArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_mac_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49418,6 +50009,7 @@ func (c *Client) sendTestRequestStringNullable(ctx context.Context, request OptN
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49491,6 +50083,7 @@ func (c *Client) sendTestRequestStringNullableArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49564,6 +50157,7 @@ func (c *Client) sendTestRequestStringNullableArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49637,6 +50231,7 @@ func (c *Client) sendTestRequestStringPassword(ctx context.Context, request OptS
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49710,6 +50305,7 @@ func (c *Client) sendTestRequestStringPasswordArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49783,6 +50379,7 @@ func (c *Client) sendTestRequestStringPasswordArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49856,6 +50453,7 @@ func (c *Client) sendTestRequestStringPasswordNullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -49929,6 +50527,7 @@ func (c *Client) sendTestRequestStringPasswordNullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50002,6 +50601,7 @@ func (c *Client) sendTestRequestStringPasswordNullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_password_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50075,6 +50675,7 @@ func (c *Client) sendTestRequestStringTime(ctx context.Context, request OptTime)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50148,6 +50749,7 @@ func (c *Client) sendTestRequestStringTimeArray(ctx context.Context, request []t
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50221,6 +50823,7 @@ func (c *Client) sendTestRequestStringTimeArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50294,6 +50897,7 @@ func (c *Client) sendTestRequestStringTimeNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50367,6 +50971,7 @@ func (c *Client) sendTestRequestStringTimeNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50440,6 +51045,7 @@ func (c *Client) sendTestRequestStringTimeNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_time_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50513,6 +51119,7 @@ func (c *Client) sendTestRequestStringURI(ctx context.Context, request OptURI) (
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50586,6 +51193,7 @@ func (c *Client) sendTestRequestStringURIArray(ctx context.Context, request []ur
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50659,6 +51267,7 @@ func (c *Client) sendTestRequestStringURIArrayArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50732,6 +51341,7 @@ func (c *Client) sendTestRequestStringURINullable(ctx context.Context, request O
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50805,6 +51415,7 @@ func (c *Client) sendTestRequestStringURINullableArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50878,6 +51489,7 @@ func (c *Client) sendTestRequestStringURINullableArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uri_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -50951,6 +51563,7 @@ func (c *Client) sendTestRequestStringUUID(ctx context.Context, request OptUUID)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51024,6 +51637,7 @@ func (c *Client) sendTestRequestStringUUIDArray(ctx context.Context, request []u
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51097,6 +51711,7 @@ func (c *Client) sendTestRequestStringUUIDArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51170,6 +51785,7 @@ func (c *Client) sendTestRequestStringUUIDNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51243,6 +51859,7 @@ func (c *Client) sendTestRequestStringUUIDNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51316,6 +51933,7 @@ func (c *Client) sendTestRequestStringUUIDNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uuid_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51389,6 +52007,7 @@ func (c *Client) sendTestRequestStringUint(ctx context.Context, request OptStrin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51462,6 +52081,7 @@ func (c *Client) sendTestRequestStringUint16(ctx context.Context, request OptStr
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51535,6 +52155,7 @@ func (c *Client) sendTestRequestStringUint16Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51608,6 +52229,7 @@ func (c *Client) sendTestRequestStringUint16ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51681,6 +52303,7 @@ func (c *Client) sendTestRequestStringUint16Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51754,6 +52377,7 @@ func (c *Client) sendTestRequestStringUint16NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51827,6 +52451,7 @@ func (c *Client) sendTestRequestStringUint16NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51900,6 +52525,7 @@ func (c *Client) sendTestRequestStringUint32(ctx context.Context, request OptStr
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -51973,6 +52599,7 @@ func (c *Client) sendTestRequestStringUint32Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52046,6 +52673,7 @@ func (c *Client) sendTestRequestStringUint32ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52119,6 +52747,7 @@ func (c *Client) sendTestRequestStringUint32Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52192,6 +52821,7 @@ func (c *Client) sendTestRequestStringUint32NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52265,6 +52895,7 @@ func (c *Client) sendTestRequestStringUint32NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52338,6 +52969,7 @@ func (c *Client) sendTestRequestStringUint64(ctx context.Context, request OptStr
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52411,6 +53043,7 @@ func (c *Client) sendTestRequestStringUint64Array(ctx context.Context, request [
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52484,6 +53117,7 @@ func (c *Client) sendTestRequestStringUint64ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52557,6 +53191,7 @@ func (c *Client) sendTestRequestStringUint64Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52630,6 +53265,7 @@ func (c *Client) sendTestRequestStringUint64NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52703,6 +53339,7 @@ func (c *Client) sendTestRequestStringUint64NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52776,6 +53413,7 @@ func (c *Client) sendTestRequestStringUint8(ctx context.Context, request OptStri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52849,6 +53487,7 @@ func (c *Client) sendTestRequestStringUint8Array(ctx context.Context, request []
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52922,6 +53561,7 @@ func (c *Client) sendTestRequestStringUint8ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -52995,6 +53635,7 @@ func (c *Client) sendTestRequestStringUint8Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53068,6 +53709,7 @@ func (c *Client) sendTestRequestStringUint8NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53141,6 +53783,7 @@ func (c *Client) sendTestRequestStringUint8NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53214,6 +53857,7 @@ func (c *Client) sendTestRequestStringUintArray(ctx context.Context, request []u
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53287,6 +53931,7 @@ func (c *Client) sendTestRequestStringUintArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53360,6 +54005,7 @@ func (c *Client) sendTestRequestStringUintNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53433,6 +54079,7 @@ func (c *Client) sendTestRequestStringUintNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53506,6 +54153,7 @@ func (c *Client) sendTestRequestStringUintNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_uint_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53579,6 +54227,7 @@ func (c *Client) sendTestRequestStringUnix(ctx context.Context, request OptStrin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53652,6 +54301,7 @@ func (c *Client) sendTestRequestStringUnixArray(ctx context.Context, request []t
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53725,6 +54375,7 @@ func (c *Client) sendTestRequestStringUnixArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53798,6 +54449,7 @@ func (c *Client) sendTestRequestStringUnixMicro(ctx context.Context, request Opt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53871,6 +54523,7 @@ func (c *Client) sendTestRequestStringUnixMicroArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -53944,6 +54597,7 @@ func (c *Client) sendTestRequestStringUnixMicroArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54017,6 +54671,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54090,6 +54745,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54163,6 +54819,7 @@ func (c *Client) sendTestRequestStringUnixMicroNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-micro_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54236,6 +54893,7 @@ func (c *Client) sendTestRequestStringUnixMilli(ctx context.Context, request Opt
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54309,6 +54967,7 @@ func (c *Client) sendTestRequestStringUnixMilliArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54382,6 +55041,7 @@ func (c *Client) sendTestRequestStringUnixMilliArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54455,6 +55115,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54528,6 +55189,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54601,6 +55263,7 @@ func (c *Client) sendTestRequestStringUnixMilliNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-milli_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54674,6 +55337,7 @@ func (c *Client) sendTestRequestStringUnixNano(ctx context.Context, request OptS
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54747,6 +55411,7 @@ func (c *Client) sendTestRequestStringUnixNanoArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54820,6 +55485,7 @@ func (c *Client) sendTestRequestStringUnixNanoArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54893,6 +55559,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -54966,6 +55633,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55039,6 +55707,7 @@ func (c *Client) sendTestRequestStringUnixNanoNullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-nano_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55112,6 +55781,7 @@ func (c *Client) sendTestRequestStringUnixNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55185,6 +55855,7 @@ func (c *Client) sendTestRequestStringUnixNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55258,6 +55929,7 @@ func (c *Client) sendTestRequestStringUnixNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55331,6 +56003,7 @@ func (c *Client) sendTestRequestStringUnixSeconds(ctx context.Context, request O
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55404,6 +56077,7 @@ func (c *Client) sendTestRequestStringUnixSecondsArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55477,6 +56151,7 @@ func (c *Client) sendTestRequestStringUnixSecondsArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55550,6 +56225,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullable(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55623,6 +56299,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55696,6 +56373,7 @@ func (c *Client) sendTestRequestStringUnixSecondsNullableArrayArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_request_string_unix-seconds_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55769,6 +56447,7 @@ func (c *Client) sendTestResponseAny(ctx context.Context, request string) (res j
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_Any"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55842,6 +56521,7 @@ func (c *Client) sendTestResponseBoolean(ctx context.Context, request string) (r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55915,6 +56595,7 @@ func (c *Client) sendTestResponseBooleanArray(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -55988,6 +56669,7 @@ func (c *Client) sendTestResponseBooleanArrayArray(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56061,6 +56743,7 @@ func (c *Client) sendTestResponseBooleanNullable(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56134,6 +56817,7 @@ func (c *Client) sendTestResponseBooleanNullableArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56207,6 +56891,7 @@ func (c *Client) sendTestResponseBooleanNullableArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_boolean_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56280,6 +56965,7 @@ func (c *Client) sendTestResponseEmptyStruct(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_EmptyStruct"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56353,6 +57039,7 @@ func (c *Client) sendTestResponseFormatTest(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_FormatTest"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56426,6 +57113,7 @@ func (c *Client) sendTestResponseInteger(ctx context.Context, request string) (r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56499,6 +57187,7 @@ func (c *Client) sendTestResponseIntegerArray(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56572,6 +57261,7 @@ func (c *Client) sendTestResponseIntegerArrayArray(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56645,6 +57335,7 @@ func (c *Client) sendTestResponseIntegerInt16(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56718,6 +57409,7 @@ func (c *Client) sendTestResponseIntegerInt16Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56791,6 +57483,7 @@ func (c *Client) sendTestResponseIntegerInt16ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56864,6 +57557,7 @@ func (c *Client) sendTestResponseIntegerInt16Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -56937,6 +57631,7 @@ func (c *Client) sendTestResponseIntegerInt16NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57010,6 +57705,7 @@ func (c *Client) sendTestResponseIntegerInt16NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57083,6 +57779,7 @@ func (c *Client) sendTestResponseIntegerInt32(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57156,6 +57853,7 @@ func (c *Client) sendTestResponseIntegerInt32Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57229,6 +57927,7 @@ func (c *Client) sendTestResponseIntegerInt32ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57302,6 +58001,7 @@ func (c *Client) sendTestResponseIntegerInt32Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57375,6 +58075,7 @@ func (c *Client) sendTestResponseIntegerInt32NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57448,6 +58149,7 @@ func (c *Client) sendTestResponseIntegerInt32NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57521,6 +58223,7 @@ func (c *Client) sendTestResponseIntegerInt64(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57594,6 +58297,7 @@ func (c *Client) sendTestResponseIntegerInt64Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57667,6 +58371,7 @@ func (c *Client) sendTestResponseIntegerInt64ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57740,6 +58445,7 @@ func (c *Client) sendTestResponseIntegerInt64Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57813,6 +58519,7 @@ func (c *Client) sendTestResponseIntegerInt64NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57886,6 +58593,7 @@ func (c *Client) sendTestResponseIntegerInt64NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -57959,6 +58667,7 @@ func (c *Client) sendTestResponseIntegerInt8(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58032,6 +58741,7 @@ func (c *Client) sendTestResponseIntegerInt8Array(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58105,6 +58815,7 @@ func (c *Client) sendTestResponseIntegerInt8ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58178,6 +58889,7 @@ func (c *Client) sendTestResponseIntegerInt8Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58251,6 +58963,7 @@ func (c *Client) sendTestResponseIntegerInt8NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58324,6 +59037,7 @@ func (c *Client) sendTestResponseIntegerInt8NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_int8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58397,6 +59111,7 @@ func (c *Client) sendTestResponseIntegerNullable(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58470,6 +59185,7 @@ func (c *Client) sendTestResponseIntegerNullableArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58543,6 +59259,7 @@ func (c *Client) sendTestResponseIntegerNullableArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58616,6 +59333,7 @@ func (c *Client) sendTestResponseIntegerUint(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58689,6 +59407,7 @@ func (c *Client) sendTestResponseIntegerUint16(ctx context.Context, request stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58762,6 +59481,7 @@ func (c *Client) sendTestResponseIntegerUint16Array(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58835,6 +59555,7 @@ func (c *Client) sendTestResponseIntegerUint16ArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58908,6 +59629,7 @@ func (c *Client) sendTestResponseIntegerUint16Nullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -58981,6 +59703,7 @@ func (c *Client) sendTestResponseIntegerUint16NullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59054,6 +59777,7 @@ func (c *Client) sendTestResponseIntegerUint16NullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59127,6 +59851,7 @@ func (c *Client) sendTestResponseIntegerUint32(ctx context.Context, request stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59200,6 +59925,7 @@ func (c *Client) sendTestResponseIntegerUint32Array(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59273,6 +59999,7 @@ func (c *Client) sendTestResponseIntegerUint32ArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59346,6 +60073,7 @@ func (c *Client) sendTestResponseIntegerUint32Nullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59419,6 +60147,7 @@ func (c *Client) sendTestResponseIntegerUint32NullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59492,6 +60221,7 @@ func (c *Client) sendTestResponseIntegerUint32NullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59565,6 +60295,7 @@ func (c *Client) sendTestResponseIntegerUint64(ctx context.Context, request stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59638,6 +60369,7 @@ func (c *Client) sendTestResponseIntegerUint64Array(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59711,6 +60443,7 @@ func (c *Client) sendTestResponseIntegerUint64ArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59784,6 +60517,7 @@ func (c *Client) sendTestResponseIntegerUint64Nullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59857,6 +60591,7 @@ func (c *Client) sendTestResponseIntegerUint64NullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -59930,6 +60665,7 @@ func (c *Client) sendTestResponseIntegerUint64NullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60003,6 +60739,7 @@ func (c *Client) sendTestResponseIntegerUint8(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60076,6 +60813,7 @@ func (c *Client) sendTestResponseIntegerUint8Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60149,6 +60887,7 @@ func (c *Client) sendTestResponseIntegerUint8ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60222,6 +60961,7 @@ func (c *Client) sendTestResponseIntegerUint8Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60295,6 +61035,7 @@ func (c *Client) sendTestResponseIntegerUint8NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60368,6 +61109,7 @@ func (c *Client) sendTestResponseIntegerUint8NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60441,6 +61183,7 @@ func (c *Client) sendTestResponseIntegerUintArray(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60514,6 +61257,7 @@ func (c *Client) sendTestResponseIntegerUintArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60587,6 +61331,7 @@ func (c *Client) sendTestResponseIntegerUintNullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60660,6 +61405,7 @@ func (c *Client) sendTestResponseIntegerUintNullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60733,6 +61479,7 @@ func (c *Client) sendTestResponseIntegerUintNullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_uint_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60806,6 +61553,7 @@ func (c *Client) sendTestResponseIntegerUnix(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60879,6 +61627,7 @@ func (c *Client) sendTestResponseIntegerUnixArray(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -60952,6 +61701,7 @@ func (c *Client) sendTestResponseIntegerUnixArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61025,6 +61775,7 @@ func (c *Client) sendTestResponseIntegerUnixMicro(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61098,6 +61849,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61171,6 +61923,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61244,6 +61997,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullable(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61317,6 +62071,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61390,6 +62145,7 @@ func (c *Client) sendTestResponseIntegerUnixMicroNullableArrayArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-micro_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61463,6 +62219,7 @@ func (c *Client) sendTestResponseIntegerUnixMilli(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61536,6 +62293,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61609,6 +62367,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61682,6 +62441,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullable(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61755,6 +62515,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61828,6 +62589,7 @@ func (c *Client) sendTestResponseIntegerUnixMilliNullableArrayArray(ctx context.
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-milli_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61901,6 +62663,7 @@ func (c *Client) sendTestResponseIntegerUnixNano(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -61974,6 +62737,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62047,6 +62811,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62120,6 +62885,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullable(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62193,6 +62959,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62266,6 +63033,7 @@ func (c *Client) sendTestResponseIntegerUnixNanoNullableArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-nano_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62339,6 +63107,7 @@ func (c *Client) sendTestResponseIntegerUnixNullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62412,6 +63181,7 @@ func (c *Client) sendTestResponseIntegerUnixNullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62485,6 +63255,7 @@ func (c *Client) sendTestResponseIntegerUnixNullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62558,6 +63329,7 @@ func (c *Client) sendTestResponseIntegerUnixSeconds(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62631,6 +63403,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62704,6 +63477,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62777,6 +63551,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullable(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62850,6 +63625,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62923,6 +63699,7 @@ func (c *Client) sendTestResponseIntegerUnixSecondsNullableArrayArray(ctx contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_integer_unix-seconds_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -62996,6 +63773,7 @@ func (c *Client) sendTestResponseNull(ctx context.Context, request string) (res 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63069,6 +63847,7 @@ func (c *Client) sendTestResponseNullArray(ctx context.Context, request string) 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63142,6 +63921,7 @@ func (c *Client) sendTestResponseNullArrayArray(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63215,6 +63995,7 @@ func (c *Client) sendTestResponseNullNullable(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63288,6 +64069,7 @@ func (c *Client) sendTestResponseNullNullableArray(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63361,6 +64143,7 @@ func (c *Client) sendTestResponseNullNullableArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_null_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63434,6 +64217,7 @@ func (c *Client) sendTestResponseNumber(ctx context.Context, request string) (re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63507,6 +64291,7 @@ func (c *Client) sendTestResponseNumberArray(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63580,6 +64365,7 @@ func (c *Client) sendTestResponseNumberArrayArray(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63653,6 +64439,7 @@ func (c *Client) sendTestResponseNumberDouble(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63726,6 +64513,7 @@ func (c *Client) sendTestResponseNumberDoubleArray(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63799,6 +64587,7 @@ func (c *Client) sendTestResponseNumberDoubleArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63872,6 +64661,7 @@ func (c *Client) sendTestResponseNumberDoubleNullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -63945,6 +64735,7 @@ func (c *Client) sendTestResponseNumberDoubleNullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64018,6 +64809,7 @@ func (c *Client) sendTestResponseNumberDoubleNullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_double_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64091,6 +64883,7 @@ func (c *Client) sendTestResponseNumberFloat(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64164,6 +64957,7 @@ func (c *Client) sendTestResponseNumberFloatArray(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64237,6 +65031,7 @@ func (c *Client) sendTestResponseNumberFloatArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64310,6 +65105,7 @@ func (c *Client) sendTestResponseNumberFloatNullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64383,6 +65179,7 @@ func (c *Client) sendTestResponseNumberFloatNullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64456,6 +65253,7 @@ func (c *Client) sendTestResponseNumberFloatNullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_float_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64529,6 +65327,7 @@ func (c *Client) sendTestResponseNumberInt32(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64602,6 +65401,7 @@ func (c *Client) sendTestResponseNumberInt32Array(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64675,6 +65475,7 @@ func (c *Client) sendTestResponseNumberInt32ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64748,6 +65549,7 @@ func (c *Client) sendTestResponseNumberInt32Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64821,6 +65623,7 @@ func (c *Client) sendTestResponseNumberInt32NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64894,6 +65697,7 @@ func (c *Client) sendTestResponseNumberInt32NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -64967,6 +65771,7 @@ func (c *Client) sendTestResponseNumberInt64(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65040,6 +65845,7 @@ func (c *Client) sendTestResponseNumberInt64Array(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65113,6 +65919,7 @@ func (c *Client) sendTestResponseNumberInt64ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65186,6 +65993,7 @@ func (c *Client) sendTestResponseNumberInt64Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65259,6 +66067,7 @@ func (c *Client) sendTestResponseNumberInt64NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65332,6 +66141,7 @@ func (c *Client) sendTestResponseNumberInt64NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65405,6 +66215,7 @@ func (c *Client) sendTestResponseNumberNullable(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65478,6 +66289,7 @@ func (c *Client) sendTestResponseNumberNullableArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65551,6 +66363,7 @@ func (c *Client) sendTestResponseNumberNullableArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_number_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65624,6 +66437,7 @@ func (c *Client) sendTestResponseString(ctx context.Context, request string) (re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65697,6 +66511,7 @@ func (c *Client) sendTestResponseStringArray(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65770,6 +66585,7 @@ func (c *Client) sendTestResponseStringArrayArray(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65843,6 +66659,7 @@ func (c *Client) sendTestResponseStringBase64(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65916,6 +66733,7 @@ func (c *Client) sendTestResponseStringBase64Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -65989,6 +66807,7 @@ func (c *Client) sendTestResponseStringBase64ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66062,6 +66881,7 @@ func (c *Client) sendTestResponseStringBase64Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66135,6 +66955,7 @@ func (c *Client) sendTestResponseStringBase64NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66208,6 +67029,7 @@ func (c *Client) sendTestResponseStringBase64NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_base64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66281,6 +67103,7 @@ func (c *Client) sendTestResponseStringBinary(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66354,6 +67177,7 @@ func (c *Client) sendTestResponseStringBinaryArray(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66427,6 +67251,7 @@ func (c *Client) sendTestResponseStringBinaryArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66500,6 +67325,7 @@ func (c *Client) sendTestResponseStringBinaryNullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66573,6 +67399,7 @@ func (c *Client) sendTestResponseStringBinaryNullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66646,6 +67473,7 @@ func (c *Client) sendTestResponseStringBinaryNullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_binary_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66719,6 +67547,7 @@ func (c *Client) sendTestResponseStringByte(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66792,6 +67621,7 @@ func (c *Client) sendTestResponseStringByteArray(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66865,6 +67695,7 @@ func (c *Client) sendTestResponseStringByteArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -66938,6 +67769,7 @@ func (c *Client) sendTestResponseStringByteNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67011,6 +67843,7 @@ func (c *Client) sendTestResponseStringByteNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67084,6 +67917,7 @@ func (c *Client) sendTestResponseStringByteNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_byte_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67157,6 +67991,7 @@ func (c *Client) sendTestResponseStringDate(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67230,6 +68065,7 @@ func (c *Client) sendTestResponseStringDateArray(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67303,6 +68139,7 @@ func (c *Client) sendTestResponseStringDateArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67376,6 +68213,7 @@ func (c *Client) sendTestResponseStringDateNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67449,6 +68287,7 @@ func (c *Client) sendTestResponseStringDateNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67522,6 +68361,7 @@ func (c *Client) sendTestResponseStringDateNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67595,6 +68435,7 @@ func (c *Client) sendTestResponseStringDateTime(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67668,6 +68509,7 @@ func (c *Client) sendTestResponseStringDateTimeArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67741,6 +68583,7 @@ func (c *Client) sendTestResponseStringDateTimeArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67814,6 +68657,7 @@ func (c *Client) sendTestResponseStringDateTimeNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67887,6 +68731,7 @@ func (c *Client) sendTestResponseStringDateTimeNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -67960,6 +68805,7 @@ func (c *Client) sendTestResponseStringDateTimeNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_date-time_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68033,6 +68879,7 @@ func (c *Client) sendTestResponseStringDuration(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68106,6 +68953,7 @@ func (c *Client) sendTestResponseStringDurationArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68179,6 +69027,7 @@ func (c *Client) sendTestResponseStringDurationArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68252,6 +69101,7 @@ func (c *Client) sendTestResponseStringDurationNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68325,6 +69175,7 @@ func (c *Client) sendTestResponseStringDurationNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68398,6 +69249,7 @@ func (c *Client) sendTestResponseStringDurationNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_duration_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68471,6 +69323,7 @@ func (c *Client) sendTestResponseStringEmail(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68544,6 +69397,7 @@ func (c *Client) sendTestResponseStringEmailArray(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68617,6 +69471,7 @@ func (c *Client) sendTestResponseStringEmailArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68690,6 +69545,7 @@ func (c *Client) sendTestResponseStringEmailNullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68763,6 +69619,7 @@ func (c *Client) sendTestResponseStringEmailNullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68836,6 +69693,7 @@ func (c *Client) sendTestResponseStringEmailNullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_email_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68909,6 +69767,7 @@ func (c *Client) sendTestResponseStringFloat32(ctx context.Context, request stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -68982,6 +69841,7 @@ func (c *Client) sendTestResponseStringFloat32Array(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69055,6 +69915,7 @@ func (c *Client) sendTestResponseStringFloat32ArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69128,6 +69989,7 @@ func (c *Client) sendTestResponseStringFloat32Nullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69201,6 +70063,7 @@ func (c *Client) sendTestResponseStringFloat32NullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69274,6 +70137,7 @@ func (c *Client) sendTestResponseStringFloat32NullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69347,6 +70211,7 @@ func (c *Client) sendTestResponseStringFloat64(ctx context.Context, request stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69420,6 +70285,7 @@ func (c *Client) sendTestResponseStringFloat64Array(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69493,6 +70359,7 @@ func (c *Client) sendTestResponseStringFloat64ArrayArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69566,6 +70433,7 @@ func (c *Client) sendTestResponseStringFloat64Nullable(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69639,6 +70507,7 @@ func (c *Client) sendTestResponseStringFloat64NullableArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69712,6 +70581,7 @@ func (c *Client) sendTestResponseStringFloat64NullableArrayArray(ctx context.Con
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_float64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69785,6 +70655,7 @@ func (c *Client) sendTestResponseStringHostname(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69858,6 +70729,7 @@ func (c *Client) sendTestResponseStringHostnameArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -69931,6 +70803,7 @@ func (c *Client) sendTestResponseStringHostnameArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70004,6 +70877,7 @@ func (c *Client) sendTestResponseStringHostnameNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70077,6 +70951,7 @@ func (c *Client) sendTestResponseStringHostnameNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70150,6 +71025,7 @@ func (c *Client) sendTestResponseStringHostnameNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_hostname_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70223,6 +71099,7 @@ func (c *Client) sendTestResponseStringIP(ctx context.Context, request string) (
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70296,6 +71173,7 @@ func (c *Client) sendTestResponseStringIPArray(ctx context.Context, request stri
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70369,6 +71247,7 @@ func (c *Client) sendTestResponseStringIPArrayArray(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70442,6 +71321,7 @@ func (c *Client) sendTestResponseStringIPNullable(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70515,6 +71395,7 @@ func (c *Client) sendTestResponseStringIPNullableArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70588,6 +71469,7 @@ func (c *Client) sendTestResponseStringIPNullableArrayArray(ctx context.Context,
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ip_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70661,6 +71543,7 @@ func (c *Client) sendTestResponseStringInt(ctx context.Context, request string) 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70734,6 +71617,7 @@ func (c *Client) sendTestResponseStringInt16(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70807,6 +71691,7 @@ func (c *Client) sendTestResponseStringInt16Array(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70880,6 +71765,7 @@ func (c *Client) sendTestResponseStringInt16ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -70953,6 +71839,7 @@ func (c *Client) sendTestResponseStringInt16Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71026,6 +71913,7 @@ func (c *Client) sendTestResponseStringInt16NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71099,6 +71987,7 @@ func (c *Client) sendTestResponseStringInt16NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71172,6 +72061,7 @@ func (c *Client) sendTestResponseStringInt32(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71245,6 +72135,7 @@ func (c *Client) sendTestResponseStringInt32Array(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71318,6 +72209,7 @@ func (c *Client) sendTestResponseStringInt32ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71391,6 +72283,7 @@ func (c *Client) sendTestResponseStringInt32Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71464,6 +72357,7 @@ func (c *Client) sendTestResponseStringInt32NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71537,6 +72431,7 @@ func (c *Client) sendTestResponseStringInt32NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71610,6 +72505,7 @@ func (c *Client) sendTestResponseStringInt64(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71683,6 +72579,7 @@ func (c *Client) sendTestResponseStringInt64Array(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71756,6 +72653,7 @@ func (c *Client) sendTestResponseStringInt64ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71829,6 +72727,7 @@ func (c *Client) sendTestResponseStringInt64Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71902,6 +72801,7 @@ func (c *Client) sendTestResponseStringInt64NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -71975,6 +72875,7 @@ func (c *Client) sendTestResponseStringInt64NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72048,6 +72949,7 @@ func (c *Client) sendTestResponseStringInt8(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72121,6 +73023,7 @@ func (c *Client) sendTestResponseStringInt8Array(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72194,6 +73097,7 @@ func (c *Client) sendTestResponseStringInt8ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72267,6 +73171,7 @@ func (c *Client) sendTestResponseStringInt8Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72340,6 +73245,7 @@ func (c *Client) sendTestResponseStringInt8NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72413,6 +73319,7 @@ func (c *Client) sendTestResponseStringInt8NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72486,6 +73393,7 @@ func (c *Client) sendTestResponseStringIntArray(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72559,6 +73467,7 @@ func (c *Client) sendTestResponseStringIntArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72632,6 +73541,7 @@ func (c *Client) sendTestResponseStringIntNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72705,6 +73615,7 @@ func (c *Client) sendTestResponseStringIntNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72778,6 +73689,7 @@ func (c *Client) sendTestResponseStringIntNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_int_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72851,6 +73763,7 @@ func (c *Client) sendTestResponseStringIpv4(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72924,6 +73837,7 @@ func (c *Client) sendTestResponseStringIpv4Array(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -72997,6 +73911,7 @@ func (c *Client) sendTestResponseStringIpv4ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73070,6 +73985,7 @@ func (c *Client) sendTestResponseStringIpv4Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73143,6 +74059,7 @@ func (c *Client) sendTestResponseStringIpv4NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73216,6 +74133,7 @@ func (c *Client) sendTestResponseStringIpv4NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv4_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73289,6 +74207,7 @@ func (c *Client) sendTestResponseStringIpv6(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73362,6 +74281,7 @@ func (c *Client) sendTestResponseStringIpv6Array(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73435,6 +74355,7 @@ func (c *Client) sendTestResponseStringIpv6ArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73508,6 +74429,7 @@ func (c *Client) sendTestResponseStringIpv6Nullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73581,6 +74503,7 @@ func (c *Client) sendTestResponseStringIpv6NullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73654,6 +74577,7 @@ func (c *Client) sendTestResponseStringIpv6NullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_ipv6_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73727,6 +74651,7 @@ func (c *Client) sendTestResponseStringMAC(ctx context.Context, request string) 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73800,6 +74725,7 @@ func (c *Client) sendTestResponseStringMACArray(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73873,6 +74799,7 @@ func (c *Client) sendTestResponseStringMACArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -73946,6 +74873,7 @@ func (c *Client) sendTestResponseStringMACNullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74019,6 +74947,7 @@ func (c *Client) sendTestResponseStringMACNullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74092,6 +75021,7 @@ func (c *Client) sendTestResponseStringMACNullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_mac_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74165,6 +75095,7 @@ func (c *Client) sendTestResponseStringNullable(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74238,6 +75169,7 @@ func (c *Client) sendTestResponseStringNullableArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74311,6 +75243,7 @@ func (c *Client) sendTestResponseStringNullableArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74384,6 +75317,7 @@ func (c *Client) sendTestResponseStringPassword(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74457,6 +75391,7 @@ func (c *Client) sendTestResponseStringPasswordArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74530,6 +75465,7 @@ func (c *Client) sendTestResponseStringPasswordArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74603,6 +75539,7 @@ func (c *Client) sendTestResponseStringPasswordNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74676,6 +75613,7 @@ func (c *Client) sendTestResponseStringPasswordNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74749,6 +75687,7 @@ func (c *Client) sendTestResponseStringPasswordNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_password_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74822,6 +75761,7 @@ func (c *Client) sendTestResponseStringTime(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74895,6 +75835,7 @@ func (c *Client) sendTestResponseStringTimeArray(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -74968,6 +75909,7 @@ func (c *Client) sendTestResponseStringTimeArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75041,6 +75983,7 @@ func (c *Client) sendTestResponseStringTimeNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75114,6 +76057,7 @@ func (c *Client) sendTestResponseStringTimeNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75187,6 +76131,7 @@ func (c *Client) sendTestResponseStringTimeNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_time_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75260,6 +76205,7 @@ func (c *Client) sendTestResponseStringURI(ctx context.Context, request string) 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75333,6 +76279,7 @@ func (c *Client) sendTestResponseStringURIArray(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75406,6 +76353,7 @@ func (c *Client) sendTestResponseStringURIArrayArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75479,6 +76427,7 @@ func (c *Client) sendTestResponseStringURINullable(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75552,6 +76501,7 @@ func (c *Client) sendTestResponseStringURINullableArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75625,6 +76575,7 @@ func (c *Client) sendTestResponseStringURINullableArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uri_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75698,6 +76649,7 @@ func (c *Client) sendTestResponseStringUUID(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75771,6 +76723,7 @@ func (c *Client) sendTestResponseStringUUIDArray(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75844,6 +76797,7 @@ func (c *Client) sendTestResponseStringUUIDArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75917,6 +76871,7 @@ func (c *Client) sendTestResponseStringUUIDNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -75990,6 +76945,7 @@ func (c *Client) sendTestResponseStringUUIDNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76063,6 +77019,7 @@ func (c *Client) sendTestResponseStringUUIDNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uuid_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76136,6 +77093,7 @@ func (c *Client) sendTestResponseStringUint(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76209,6 +77167,7 @@ func (c *Client) sendTestResponseStringUint16(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76282,6 +77241,7 @@ func (c *Client) sendTestResponseStringUint16Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76355,6 +77315,7 @@ func (c *Client) sendTestResponseStringUint16ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76428,6 +77389,7 @@ func (c *Client) sendTestResponseStringUint16Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76501,6 +77463,7 @@ func (c *Client) sendTestResponseStringUint16NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76574,6 +77537,7 @@ func (c *Client) sendTestResponseStringUint16NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint16_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76647,6 +77611,7 @@ func (c *Client) sendTestResponseStringUint32(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76720,6 +77685,7 @@ func (c *Client) sendTestResponseStringUint32Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76793,6 +77759,7 @@ func (c *Client) sendTestResponseStringUint32ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76866,6 +77833,7 @@ func (c *Client) sendTestResponseStringUint32Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -76939,6 +77907,7 @@ func (c *Client) sendTestResponseStringUint32NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77012,6 +77981,7 @@ func (c *Client) sendTestResponseStringUint32NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint32_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77085,6 +78055,7 @@ func (c *Client) sendTestResponseStringUint64(ctx context.Context, request strin
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77158,6 +78129,7 @@ func (c *Client) sendTestResponseStringUint64Array(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77231,6 +78203,7 @@ func (c *Client) sendTestResponseStringUint64ArrayArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77304,6 +78277,7 @@ func (c *Client) sendTestResponseStringUint64Nullable(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77377,6 +78351,7 @@ func (c *Client) sendTestResponseStringUint64NullableArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77450,6 +78425,7 @@ func (c *Client) sendTestResponseStringUint64NullableArrayArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint64_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77523,6 +78499,7 @@ func (c *Client) sendTestResponseStringUint8(ctx context.Context, request string
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77596,6 +78573,7 @@ func (c *Client) sendTestResponseStringUint8Array(ctx context.Context, request s
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77669,6 +78647,7 @@ func (c *Client) sendTestResponseStringUint8ArrayArray(ctx context.Context, requ
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77742,6 +78721,7 @@ func (c *Client) sendTestResponseStringUint8Nullable(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77815,6 +78795,7 @@ func (c *Client) sendTestResponseStringUint8NullableArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77888,6 +78869,7 @@ func (c *Client) sendTestResponseStringUint8NullableArrayArray(ctx context.Conte
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint8_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -77961,6 +78943,7 @@ func (c *Client) sendTestResponseStringUintArray(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78034,6 +79017,7 @@ func (c *Client) sendTestResponseStringUintArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78107,6 +79091,7 @@ func (c *Client) sendTestResponseStringUintNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78180,6 +79165,7 @@ func (c *Client) sendTestResponseStringUintNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78253,6 +79239,7 @@ func (c *Client) sendTestResponseStringUintNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_uint_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78326,6 +79313,7 @@ func (c *Client) sendTestResponseStringUnix(ctx context.Context, request string)
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78399,6 +79387,7 @@ func (c *Client) sendTestResponseStringUnixArray(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78472,6 +79461,7 @@ func (c *Client) sendTestResponseStringUnixArrayArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78545,6 +79535,7 @@ func (c *Client) sendTestResponseStringUnixMicro(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78618,6 +79609,7 @@ func (c *Client) sendTestResponseStringUnixMicroArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78691,6 +79683,7 @@ func (c *Client) sendTestResponseStringUnixMicroArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78764,6 +79757,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullable(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78837,6 +79831,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78910,6 +79905,7 @@ func (c *Client) sendTestResponseStringUnixMicroNullableArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-micro_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -78983,6 +79979,7 @@ func (c *Client) sendTestResponseStringUnixMilli(ctx context.Context, request st
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79056,6 +80053,7 @@ func (c *Client) sendTestResponseStringUnixMilliArray(ctx context.Context, reque
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79129,6 +80127,7 @@ func (c *Client) sendTestResponseStringUnixMilliArrayArray(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79202,6 +80201,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullable(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79275,6 +80275,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79348,6 +80349,7 @@ func (c *Client) sendTestResponseStringUnixMilliNullableArrayArray(ctx context.C
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-milli_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79421,6 +80423,7 @@ func (c *Client) sendTestResponseStringUnixNano(ctx context.Context, request str
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79494,6 +80497,7 @@ func (c *Client) sendTestResponseStringUnixNanoArray(ctx context.Context, reques
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79567,6 +80571,7 @@ func (c *Client) sendTestResponseStringUnixNanoArrayArray(ctx context.Context, r
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79640,6 +80645,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullable(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79713,6 +80719,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79786,6 +80793,7 @@ func (c *Client) sendTestResponseStringUnixNanoNullableArrayArray(ctx context.Co
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-nano_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79859,6 +80867,7 @@ func (c *Client) sendTestResponseStringUnixNullable(ctx context.Context, request
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -79932,6 +80941,7 @@ func (c *Client) sendTestResponseStringUnixNullableArray(ctx context.Context, re
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -80005,6 +81015,7 @@ func (c *Client) sendTestResponseStringUnixNullableArrayArray(ctx context.Contex
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -80078,6 +81089,7 @@ func (c *Client) sendTestResponseStringUnixSeconds(ctx context.Context, request 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -80151,6 +81163,7 @@ func (c *Client) sendTestResponseStringUnixSecondsArray(ctx context.Context, req
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -80224,6 +81237,7 @@ func (c *Client) sendTestResponseStringUnixSecondsArrayArray(ctx context.Context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -80297,6 +81311,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullable(ctx context.Context, 
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -80370,6 +81385,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArray(ctx context.Cont
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -80443,6 +81459,7 @@ func (c *Client) sendTestResponseStringUnixSecondsNullableArrayArray(ctx context
 		semconv.HTTPRequestMethodKey.String("POST"),
 		semconv.HTTPRouteKey.String("/test_response_string_unix-seconds_nullable_array_array"),
 	}
+	otelAttrs = append(otelAttrs, c.cfg.Attributes...)
 
 	// Run stopwatch.
 	startTime := time.Now()

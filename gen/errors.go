@@ -91,14 +91,24 @@ func (g *Generator) trySkip(err error, msg string, l position) error {
 		return err
 	}
 
-	reason := err.Error()
 	if uErr, ok := errors.Into[unimplementedError](err); ok {
-		reason = uErr.Error()
+		// Debug the original error "deep", to include the various messages added with Wrap*().
+		g.log.WithOptions(zap.AddCallerSkip(1)).Debug(msg,
+			zapPosition(l),
+			zap.String("reason_error", fmt.Errorf("%w", err).Error()),
+		)
+		// Then log the brief error briefly with Info.
+		g.log.WithOptions(zap.AddCallerSkip(1)).Info(msg,
+			zapPosition(l),
+			zap.String("reason_error", uErr.Error()),
+		)
+	} else {
+		// Log the original error "deep", to include the various messages added with Wrap*().
+		g.log.WithOptions(zap.AddCallerSkip(1)).Info(msg,
+			zapPosition(l),
+			zap.String("reason_error", fmt.Errorf("%w", err).Error()),
+		)
 	}
-	g.log.WithOptions(zap.AddCallerSkip(1)).Info(msg,
-		zapPosition(l),
-		zap.String("reason_error", reason),
-	)
 	return nil
 }
 

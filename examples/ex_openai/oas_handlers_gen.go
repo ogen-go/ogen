@@ -8,16 +8,15 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
 
 type codeRecorder struct {
@@ -86,7 +85,7 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -115,6 +114,8 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response FineTune
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -123,6 +124,7 @@ func (s *Server) handleCancelFineTuneRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "Immediately cancel a fine-tune job.\n",
 			OperationID:      "cancelFineTune",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "fine_tune_id",
@@ -229,7 +231,7 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -247,7 +249,9 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 			ID:   "createAnswer",
 		}
 	)
-	request, close, err := s.decodeCreateAnswerRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateAnswerRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -271,6 +275,7 @@ func (s *Server) handleCreateAnswerRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "Answers the specified question using the provided documents and examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).\n",
 			OperationID:      "createAnswer",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -367,7 +372,7 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -385,7 +390,9 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 			ID:   "createChatCompletion",
 		}
 	)
-	request, close, err := s.decodeCreateChatCompletionRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateChatCompletionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -409,6 +416,7 @@ func (s *Server) handleCreateChatCompletionRequest(args [0]string, argsEscaped b
 			OperationSummary: "Creates a completion for the chat message",
 			OperationID:      "createChatCompletion",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -513,7 +521,7 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -531,7 +539,9 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 			ID:   "createClassification",
 		}
 	)
-	request, close, err := s.decodeCreateClassificationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateClassificationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -555,6 +565,7 @@ func (s *Server) handleCreateClassificationRequest(args [0]string, argsEscaped b
 			OperationSummary: "Classifies the specified `query` using provided examples.\n\nThe endpoint first [searches](/docs/api-reference/searches) over the labeled examples\nto select the ones most relevant for the particular query. Then, the relevant examples\nare combined with the query to construct a prompt to produce the final label via the\n[completions](/docs/api-reference/completions) endpoint.\n\nLabeled examples can be provided via an uploaded `file`, or explicitly listed in the\nrequest using the `examples` parameter for quick tests and small scale use cases.\n",
 			OperationID:      "createClassification",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -651,7 +662,7 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -669,7 +680,9 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 			ID:   "createCompletion",
 		}
 	)
-	request, close, err := s.decodeCreateCompletionRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateCompletionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -693,6 +706,7 @@ func (s *Server) handleCreateCompletionRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "Creates a completion for the provided prompt and parameters",
 			OperationID:      "createCompletion",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -789,7 +803,7 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -807,7 +821,9 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "createEdit",
 		}
 	)
-	request, close, err := s.decodeCreateEditRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateEditRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -831,6 +847,7 @@ func (s *Server) handleCreateEditRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "Creates a new edit for the provided input, instruction, and parameters.",
 			OperationID:      "createEdit",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -927,7 +944,7 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -945,7 +962,9 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 			ID:   "createEmbedding",
 		}
 	)
-	request, close, err := s.decodeCreateEmbeddingRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateEmbeddingRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -969,6 +988,7 @@ func (s *Server) handleCreateEmbeddingRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "Creates an embedding vector representing the input text.",
 			OperationID:      "createEmbedding",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1067,7 +1087,7 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1085,7 +1105,9 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 			ID:   "createFile",
 		}
 	)
-	request, close, err := s.decodeCreateFileRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1109,6 +1131,7 @@ func (s *Server) handleCreateFileRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.\n",
 			OperationID:      "createFile",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1208,7 +1231,7 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1226,7 +1249,9 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 			ID:   "createFineTune",
 		}
 	)
-	request, close, err := s.decodeCreateFineTuneRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateFineTuneRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1250,6 +1275,7 @@ func (s *Server) handleCreateFineTuneRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "Creates a job that fine-tunes a specified model from a given dataset.\n\nResponse includes details of the enqueued job including job status and the name of the fine-tuned models once complete.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n",
 			OperationID:      "createFineTune",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1346,7 +1372,7 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1364,7 +1390,9 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 			ID:   "createImage",
 		}
 	)
-	request, close, err := s.decodeCreateImageRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateImageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1388,6 +1416,7 @@ func (s *Server) handleCreateImageRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "Creates an image given a prompt.",
 			OperationID:      "createImage",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1484,7 +1513,7 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1502,7 +1531,9 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 			ID:   "createImageEdit",
 		}
 	)
-	request, close, err := s.decodeCreateImageEditRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateImageEditRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1526,6 +1557,7 @@ func (s *Server) handleCreateImageEditRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "Creates an edited or extended image given an original image and a prompt.",
 			OperationID:      "createImageEdit",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1622,7 +1654,7 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1640,7 +1672,9 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 			ID:   "createImageVariation",
 		}
 	)
-	request, close, err := s.decodeCreateImageVariationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateImageVariationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1664,6 +1698,7 @@ func (s *Server) handleCreateImageVariationRequest(args [0]string, argsEscaped b
 			OperationSummary: "Creates a variation of a given image.",
 			OperationID:      "createImageVariation",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1760,7 +1795,7 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1778,7 +1813,9 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 			ID:   "createModeration",
 		}
 	)
-	request, close, err := s.decodeCreateModerationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateModerationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1802,6 +1839,7 @@ func (s *Server) handleCreateModerationRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "Classifies if text violates OpenAI's Content Policy",
 			OperationID:      "createModeration",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1907,7 +1945,7 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1935,7 +1973,9 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeCreateSearchRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateSearchRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1959,6 +1999,7 @@ func (s *Server) handleCreateSearchRequest(args [1]string, argsEscaped bool, w h
 			OperationSummary: "The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.\n\nTo go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.\n\nThe similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.\n",
 			OperationID:      "createSearch",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "engine_id",
@@ -2060,7 +2101,7 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -2078,7 +2119,9 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 			ID:   "createTranscription",
 		}
 	)
-	request, close, err := s.decodeCreateTranscriptionRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateTranscriptionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2102,6 +2145,7 @@ func (s *Server) handleCreateTranscriptionRequest(args [0]string, argsEscaped bo
 			OperationSummary: "Transcribes audio into the input language.",
 			OperationID:      "createTranscription",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2198,7 +2242,7 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -2216,7 +2260,9 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 			ID:   "createTranslation",
 		}
 	)
-	request, close, err := s.decodeCreateTranslationRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeCreateTranslationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2240,6 +2286,7 @@ func (s *Server) handleCreateTranslationRequest(args [0]string, argsEscaped bool
 			OperationSummary: "Translates audio into into English.",
 			OperationID:      "createTranslation",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2336,7 +2383,7 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -2365,6 +2412,8 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 		return
 	}
 
+	var rawBody []byte
+
 	var response *DeleteFileResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2373,6 +2422,7 @@ func (s *Server) handleDeleteFileRequest(args [1]string, argsEscaped bool, w htt
 			OperationSummary: "Delete a file.",
 			OperationID:      "deleteFile",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "file_id",
@@ -2474,7 +2524,7 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -2503,6 +2553,8 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 		return
 	}
 
+	var rawBody []byte
+
 	var response *DeleteModelResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2511,6 +2563,7 @@ func (s *Server) handleDeleteModelRequest(args [1]string, argsEscaped bool, w ht
 			OperationSummary: "Delete a fine-tuned model. You must have the Owner role in your organization.",
 			OperationID:      "deleteModel",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "model",
@@ -2612,7 +2665,7 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -2641,6 +2694,8 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 		return
 	}
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2649,6 +2704,7 @@ func (s *Server) handleDownloadFileRequest(args [1]string, argsEscaped bool, w h
 			OperationSummary: "Returns the contents of the specified file",
 			OperationID:      "downloadFile",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "file_id",
@@ -2753,7 +2809,7 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -2768,6 +2824,8 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *ListEnginesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2776,6 +2834,7 @@ func (s *Server) handleListEnginesRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.",
 			OperationID:      "listEngines",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2872,7 +2931,7 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -2887,6 +2946,8 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *ListFilesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2895,6 +2956,7 @@ func (s *Server) handleListFilesRequest(args [0]string, argsEscaped bool, w http
 			OperationSummary: "Returns a list of files that belong to the user's organization.",
 			OperationID:      "listFiles",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2991,7 +3053,7 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -3020,6 +3082,8 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 		return
 	}
 
+	var rawBody []byte
+
 	var response *ListFineTuneEventsResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3028,6 +3092,7 @@ func (s *Server) handleListFineTuneEventsRequest(args [1]string, argsEscaped boo
 			OperationSummary: "Get fine-grained status updates for a fine-tune job.\n",
 			OperationID:      "listFineTuneEvents",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "fine_tune_id",
@@ -3133,7 +3198,7 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -3148,6 +3213,8 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *ListFineTunesResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3156,6 +3223,7 @@ func (s *Server) handleListFineTunesRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "List your organization's fine-tuning jobs\n",
 			OperationID:      "listFineTunes",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3253,7 +3321,7 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -3268,6 +3336,8 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *ListModelsResponse
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3276,6 +3346,7 @@ func (s *Server) handleListModelsRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "Lists the currently available models, and provides basic information about each one such as the owner and availability.",
 			OperationID:      "listModels",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -3375,7 +3446,7 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -3404,6 +3475,8 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response Engine
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3412,6 +3485,7 @@ func (s *Server) handleRetrieveEngineRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "Retrieves a model instance, providing basic information about it such as the owner and availability.",
 			OperationID:      "retrieveEngine",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "engine_id",
@@ -3513,7 +3587,7 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -3542,6 +3616,8 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 		return
 	}
 
+	var rawBody []byte
+
 	var response OpenAIFile
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3550,6 +3626,7 @@ func (s *Server) handleRetrieveFileRequest(args [1]string, argsEscaped bool, w h
 			OperationSummary: "Returns information about a specific file.",
 			OperationID:      "retrieveFile",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "file_id",
@@ -3652,7 +3729,7 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -3681,6 +3758,8 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 		return
 	}
 
+	var rawBody []byte
+
 	var response FineTune
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3689,6 +3768,7 @@ func (s *Server) handleRetrieveFineTuneRequest(args [1]string, argsEscaped bool,
 			OperationSummary: "Gets info about the fine-tune job.\n\n[Learn more about Fine-tuning](/docs/guides/fine-tuning)\n",
 			OperationID:      "retrieveFineTune",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "fine_tune_id",
@@ -3791,7 +3871,7 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -3820,6 +3900,8 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 		return
 	}
 
+	var rawBody []byte
+
 	var response Model
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3828,6 +3910,7 @@ func (s *Server) handleRetrieveModelRequest(args [1]string, argsEscaped bool, w 
 			OperationSummary: "Retrieves a model instance, providing basic information about the model such as the owner and permissioning.",
 			OperationID:      "retrieveModel",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "model",

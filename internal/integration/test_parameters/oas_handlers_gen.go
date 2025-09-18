@@ -8,16 +8,15 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
 
 type codeRecorder struct {
@@ -83,7 +82,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -112,6 +111,8 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response *ComplicatedParameterNameGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -120,6 +121,7 @@ func (s *Server) handleComplicatedParameterNameGetRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "=",
@@ -235,7 +237,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -264,6 +266,8 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 		return
 	}
 
+	var rawBody []byte
+
 	var response *ContentParameters
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -272,6 +276,7 @@ func (s *Server) handleContentParametersRequest(args [1]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "contentParameters",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "query",
@@ -385,7 +390,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -414,6 +419,8 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -422,6 +429,7 @@ func (s *Server) handleCookieParameterRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "cookieParameter",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "value",
@@ -523,7 +531,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -552,6 +560,8 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -560,6 +570,7 @@ func (s *Server) handleHeaderParameterRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "headerParameter",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "X-Value",
@@ -659,7 +670,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -688,6 +699,8 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 		return
 	}
 
+	var rawBody []byte
+
 	var response *OneLevelObject
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -696,6 +709,7 @@ func (s *Server) handleObjectCookieParameterRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "objectCookieParameter",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "value",
@@ -795,7 +809,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -824,6 +838,8 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 		return
 	}
 
+	var rawBody []byte
+
 	var response *ObjectQueryParameterOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -832,6 +848,7 @@ func (s *Server) handleObjectQueryParameterRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "objectQueryParameter",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "formObject",
@@ -935,7 +952,7 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -964,6 +981,8 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 		return
 	}
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -972,6 +991,7 @@ func (s *Server) handleOptionalArrayParameterRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "optionalArrayParameter",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "query",
@@ -1077,7 +1097,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1106,6 +1126,8 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Value
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1114,6 +1136,7 @@ func (s *Server) handlePathParameterRequest(args [1]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "pathParameter",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "value",
@@ -1215,7 +1238,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1244,6 +1267,8 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 		return
 	}
 
+	var rawBody []byte
+
 	var response *SameNameOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1252,6 +1277,7 @@ func (s *Server) handleSameNameRequest(args [1]string, argsEscaped bool, w http.
 			OperationSummary: "parameters with different location, but with the same name",
 			OperationID:      "sameName",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "param",
@@ -1357,7 +1383,7 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1386,6 +1412,8 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 		return
 	}
 
+	var rawBody []byte
+
 	var response *SimilarNamesOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1394,6 +1422,7 @@ func (s *Server) handleSimilarNamesRequest(args [0]string, argsEscaped bool, w h
 			OperationSummary: "parameters with different location, but with similar names",
 			OperationID:      "similarNames",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "x-param",

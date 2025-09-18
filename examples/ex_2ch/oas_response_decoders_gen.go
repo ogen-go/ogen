@@ -9,7 +9,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -61,7 +60,7 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response) (res *Captcha,
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response) (res APICaptcha2chcaptchaShowGetRes, _ error) {
@@ -73,7 +72,7 @@ func decodeAPICaptcha2chcaptchaShowGetResponse(resp *http.Response) (res APICapt
 		// Code 404.
 		return &APICaptcha2chcaptchaShowGetNotFound{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captcha, _ error) {
@@ -123,7 +122,7 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response) (res *Captch
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, _ error) {
@@ -173,7 +172,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response) (res *
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaInvisibleRecaptchaMobileGetOK, _ error) {
@@ -182,7 +181,7 @@ func decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp *http.Response) (r
 		// Code 200.
 		return &APICaptchaInvisibleRecaptchaMobileGetOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, _ error) {
@@ -232,7 +231,7 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response) (res *Captcha, 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res *APICaptchaRecaptchaMobileGetOK, _ error) {
@@ -241,7 +240,7 @@ func decodeAPICaptchaRecaptchaMobileGetResponse(resp *http.Response) (res *APICa
 		// Code 200.
 		return &APICaptchaRecaptchaMobileGetOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, _ error) {
@@ -291,7 +290,7 @@ func decodeAPIDislikeGetResponse(resp *http.Response) (res *Like, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPILikeGetResponse(resp *http.Response) (res *Like, _ error) {
@@ -341,7 +340,7 @@ func decodeAPILikeGetResponse(resp *http.Response) (res *Like, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *MobileThreadPostsAfter, _ error) {
@@ -391,7 +390,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response) (res *
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, _ error) {
@@ -441,7 +440,7 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response) (res Boards, _ erro
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *MobileThreadLastInfo, _ error) {
@@ -491,7 +490,7 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response) (res *Mobi
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobilePost, _ error) {
@@ -541,7 +540,7 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response) (res *MobileP
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, _ error) {
@@ -591,7 +590,7 @@ func decodeUserPassloginPostResponse(resp *http.Response) (res *Passcode, _ erro
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, _ error) {
@@ -641,7 +640,7 @@ func decodeUserPostingPostResponse(resp *http.Response) (res UserPostingPostOK, 
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeUserReportPostResponse(resp *http.Response) (res *Report, _ error) {
@@ -691,5 +690,5 @@ func decodeUserReportPostResponse(resp *http.Response) (res *Report, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

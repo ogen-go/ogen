@@ -8,16 +8,15 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
 
 type codeRecorder struct {
@@ -84,7 +83,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -147,6 +146,8 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 		}
 	}
 
+	var rawBody []byte
+
 	var response *CustomSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -155,6 +156,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "customSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -249,7 +251,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -364,6 +366,8 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 		}
 	}
 
+	var rawBody []byte
+
 	var response *DisjointSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -372,6 +376,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "disjointSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -466,7 +471,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -564,6 +569,8 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 		}
 	}
 
+	var rawBody []byte
+
 	var response *IntersectSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -572,6 +579,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "intersectSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -666,7 +674,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -730,6 +738,8 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 		}
 	}
 
+	var rawBody []byte
+
 	var response *OptionalSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -738,6 +748,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "optionalSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

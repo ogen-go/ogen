@@ -6,40 +6,52 @@ import (
 	"time"
 )
 
-type DefaultOK struct {
-	Date     OptDate     `json:"date"`
-	Time     OptTime     `json:"time"`
-	DateTime OptDateTime `json:"dateTime"`
+type Alias time.Time
+
+// NewOptAlias returns new OptAlias with value set to v.
+func NewOptAlias(v Alias) OptAlias {
+	return OptAlias{
+		Value: v,
+		Set:   true,
+	}
 }
 
-// GetDate returns the value of Date.
-func (s *DefaultOK) GetDate() OptDate {
-	return s.Date
+// OptAlias is optional Alias.
+type OptAlias struct {
+	Value Alias
+	Set   bool
 }
 
-// GetTime returns the value of Time.
-func (s *DefaultOK) GetTime() OptTime {
-	return s.Time
+// IsSet returns true if OptAlias was set.
+func (o OptAlias) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptAlias) Reset() {
+	var v Alias
+	o.Value = v
+	o.Set = false
 }
 
-// GetDateTime returns the value of DateTime.
-func (s *DefaultOK) GetDateTime() OptDateTime {
-	return s.DateTime
+// SetTo sets value to v.
+func (o *OptAlias) SetTo(v Alias) {
+	o.Set = true
+	o.Value = v
 }
 
-// SetDate sets the value of Date.
-func (s *DefaultOK) SetDate(val OptDate) {
-	s.Date = val
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAlias) Get() (v Alias, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
 }
 
-// SetTime sets the value of Time.
-func (s *DefaultOK) SetTime(val OptTime) {
-	s.Time = val
-}
-
-// SetDateTime sets the value of DateTime.
-func (s *DefaultOK) SetDateTime(val OptDateTime) {
-	s.DateTime = val
+// Or returns value if set, or given parameter if does not.
+func (o OptAlias) Or(d Alias) Alias {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
 }
 
 // NewOptDate returns new OptDate with value set to v.
@@ -180,10 +192,58 @@ func (o OptTime) Or(d time.Time) time.Time {
 	return d
 }
 
+type OptionalOK struct {
+	Date     OptDate     `json:"date"`
+	Time     OptTime     `json:"time"`
+	DateTime OptDateTime `json:"dateTime"`
+	Alias    OptAlias    `json:"alias"`
+}
+
+// GetDate returns the value of Date.
+func (s *OptionalOK) GetDate() OptDate {
+	return s.Date
+}
+
+// GetTime returns the value of Time.
+func (s *OptionalOK) GetTime() OptTime {
+	return s.Time
+}
+
+// GetDateTime returns the value of DateTime.
+func (s *OptionalOK) GetDateTime() OptDateTime {
+	return s.DateTime
+}
+
+// GetAlias returns the value of Alias.
+func (s *OptionalOK) GetAlias() OptAlias {
+	return s.Alias
+}
+
+// SetDate sets the value of Date.
+func (s *OptionalOK) SetDate(val OptDate) {
+	s.Date = val
+}
+
+// SetTime sets the value of Time.
+func (s *OptionalOK) SetTime(val OptTime) {
+	s.Time = val
+}
+
+// SetDateTime sets the value of DateTime.
+func (s *OptionalOK) SetDateTime(val OptDateTime) {
+	s.DateTime = val
+}
+
+// SetAlias sets the value of Alias.
+func (s *OptionalOK) SetAlias(val OptAlias) {
+	s.Alias = val
+}
+
 type RequiredOK struct {
 	Date     time.Time `json:"date"`
 	Time     time.Time `json:"time"`
 	DateTime time.Time `json:"dateTime"`
+	Alias    Alias     `json:"alias"`
 }
 
 // GetDate returns the value of Date.
@@ -201,6 +261,11 @@ func (s *RequiredOK) GetDateTime() time.Time {
 	return s.DateTime
 }
 
+// GetAlias returns the value of Alias.
+func (s *RequiredOK) GetAlias() Alias {
+	return s.Alias
+}
+
 // SetDate sets the value of Date.
 func (s *RequiredOK) SetDate(val time.Time) {
 	s.Date = val
@@ -214,4 +279,9 @@ func (s *RequiredOK) SetTime(val time.Time) {
 // SetDateTime sets the value of DateTime.
 func (s *RequiredOK) SetDateTime(val time.Time) {
 	s.DateTime = val
+}
+
+// SetAlias sets the value of Alias.
+func (s *RequiredOK) SetAlias(val Alias) {
+	s.Alias = val
 }

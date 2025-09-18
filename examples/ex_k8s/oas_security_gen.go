@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
@@ -240,6 +239,7 @@ var operationRolesBearerToken = map[string][]string{
 	ListStorageV1beta1NamespacedCSIStorageCapacityOperation:                     []string{},
 	LogFileHandlerOperation:                                                     []string{},
 	LogFileListHandlerOperation:                                                 []string{},
+	PatchCoreV1NamespacedConfigMapOperation:                                     []string{},
 	ReadAdmissionregistrationV1MutatingWebhookConfigurationOperation:            []string{},
 	ReadAdmissionregistrationV1ValidatingWebhookConfigurationOperation:          []string{},
 	ReadApiextensionsV1CustomResourceDefinitionOperation:                        []string{},

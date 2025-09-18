@@ -14,5 +14,5 @@ func decodeAliveResponse(resp *http.Response) (res *AliveOK, _ error) {
 		// Code 200.
 		return &AliveOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

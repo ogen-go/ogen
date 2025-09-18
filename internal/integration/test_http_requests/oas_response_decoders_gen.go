@@ -11,7 +11,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -38,7 +37,7 @@ func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequestBodiesOptionalOK, _ error) {
@@ -63,7 +62,7 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequest
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, _ error) {
@@ -88,7 +87,7 @@ func decodeBase64RequestResponse(resp *http.Response) (res Base64RequestOK, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, _ error) {
@@ -129,7 +128,7 @@ func decodeMaskContentTypeResponse(resp *http.Response) (res *MaskResponse, _ er
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskResponse, _ error) {
@@ -170,7 +169,7 @@ func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res *MaskRespon
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
@@ -222,5 +221,5 @@ func decodeStreamJSONResponse(resp *http.Response) (res float64, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

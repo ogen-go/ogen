@@ -10,7 +10,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -62,7 +61,7 @@ func decodeCreatePetResponse(resp *http.Response) (res Pet, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListNotificationsResponse(resp *http.Response) (res []Notification, _ error) {
@@ -137,7 +136,7 @@ func decodeListNotificationsResponse(resp *http.Response) (res []Notification, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListPetsResponse(resp *http.Response) (res []Pet, _ error) {
@@ -212,7 +211,7 @@ func decodeListPetsResponse(resp *http.Response) (res []Pet, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListVehiclesResponse(resp *http.Response) (res []Vehicle, _ error) {
@@ -287,5 +286,5 @@ func decodeListVehiclesResponse(resp *http.Response) (res []Vehicle, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

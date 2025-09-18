@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/ogenerrors"
@@ -154,6 +153,10 @@ type Invoker interface {
 	//
 	// GET /testIssue1310
 	TestIssue1310(ctx context.Context) (*Issue1310, error)
+	// TestIssue1461 invokes testIssue1461 operation.
+	//
+	// GET /testIssue1461
+	TestIssue1461(ctx context.Context) (*Issue1461, error)
 	// TestNullableOneofs invokes testNullableOneofs operation.
 	//
 	// GET /testNullableOneofs
@@ -1534,6 +1537,40 @@ func (c *Client) sendTestIssue1310(ctx context.Context) (res *Issue1310, err err
 	defer resp.Body.Close()
 
 	result, err := decodeTestIssue1310Response(resp)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestIssue1461 invokes testIssue1461 operation.
+//
+// GET /testIssue1461
+func (c *Client) TestIssue1461(ctx context.Context) (*Issue1461, error) {
+	res, err := c.sendTestIssue1461(ctx)
+	return res, err
+}
+
+func (c *Client) sendTestIssue1461(ctx context.Context) (res *Issue1461, err error) {
+
+	u := uri.Clone(c.requestURL(ctx))
+	var pathParts [1]string
+	pathParts[0] = "/testIssue1461"
+	uri.AddPathParts(u, pathParts[:]...)
+
+	r, err := ht.NewRequest(ctx, "GET", u)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestIssue1461Response(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

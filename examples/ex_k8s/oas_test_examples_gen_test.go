@@ -6655,6 +6655,18 @@ func TestIoK8sApimachineryPkgApisMetaV1OwnerReference_EncodeDecode(t *testing.T)
 	var typ2 IoK8sApimachineryPkgApisMetaV1OwnerReference
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestIoK8sApimachineryPkgApisMetaV1Patch_EncodeDecode(t *testing.T) {
+	var typ IoK8sApimachineryPkgApisMetaV1Patch
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IoK8sApimachineryPkgApisMetaV1Patch
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestIoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR_EncodeDecode(t *testing.T) {
 	var typ IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
 	typ.SetFake()
@@ -6797,6 +6809,30 @@ func TestIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference_EncodeDecod
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedConfigMapCreated_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedConfigMapCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedConfigMapCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPatchCoreV1NamespacedConfigMapOK_EncodeDecode(t *testing.T) {
+	var typ PatchCoreV1NamespacedConfigMapOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatchCoreV1NamespacedConfigMapOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestReadCoreV1NamespacedPodLogOKApplicationJSON_EncodeDecode(t *testing.T) {

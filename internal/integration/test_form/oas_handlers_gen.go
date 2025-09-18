@@ -8,16 +8,15 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-	"go.opentelemetry.io/otel/trace"
-
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	"go.opentelemetry.io/otel/trace"
 )
 
 type codeRecorder struct {
@@ -84,7 +83,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -102,7 +101,9 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 			ID:   "onlyForm",
 		}
 	)
-	request, close, err := s.decodeOnlyFormRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeOnlyFormRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -126,6 +127,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "onlyForm",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -220,7 +222,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -238,7 +240,9 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 			ID:   "onlyMultipartFile",
 		}
 	)
-	request, close, err := s.decodeOnlyMultipartFileRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeOnlyMultipartFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -262,6 +266,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "onlyMultipartFile",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -356,7 +361,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -374,7 +379,9 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 			ID:   "onlyMultipartForm",
 		}
 	)
-	request, close, err := s.decodeOnlyMultipartFormRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeOnlyMultipartFormRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -398,6 +405,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "onlyMultipartForm",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -492,7 +500,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -510,7 +518,9 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 			ID:   "testFormURLEncoded",
 		}
 	)
-	request, close, err := s.decodeTestFormURLEncodedRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestFormURLEncodedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -534,6 +544,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "testFormURLEncoded",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -628,7 +639,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -646,7 +657,9 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 			ID:   "testMultipart",
 		}
 	)
-	request, close, err := s.decodeTestMultipartRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestMultipartRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -670,6 +683,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "testMultipart",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -764,7 +778,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -782,7 +796,9 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 			ID:   "testMultipartUpload",
 		}
 	)
-	request, close, err := s.decodeTestMultipartUploadRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestMultipartUploadRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -806,6 +822,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "testMultipartUpload",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -900,7 +917,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -918,7 +935,9 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 			ID:   "testReuseFormOptionalSchema",
 		}
 	)
-	request, close, err := s.decodeTestReuseFormOptionalSchemaRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestReuseFormOptionalSchemaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -942,6 +961,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "testReuseFormOptionalSchema",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1036,7 +1056,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1054,7 +1074,9 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 			ID:   "testReuseFormSchema",
 		}
 	)
-	request, close, err := s.decodeTestReuseFormSchemaRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestReuseFormSchemaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1078,6 +1100,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "testReuseFormSchema",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1172,7 +1195,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
 			// max redirects exceeded), in which case status MUST be set to Error.
 			code := statusWriter.status
-			if code >= 100 && code < 500 {
+			if code < 100 || code >= 500 {
 				span.SetStatus(codes.Error, stage)
 			}
 
@@ -1190,7 +1213,9 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 			ID:   "testShareFormSchema",
 		}
 	)
-	request, close, err := s.decodeTestShareFormSchemaRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestShareFormSchemaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1214,6 +1239,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "testShareFormSchema",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

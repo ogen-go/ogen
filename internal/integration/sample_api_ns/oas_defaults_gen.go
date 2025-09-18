@@ -4,7 +4,6 @@ package api
 
 import (
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/json"
 )
 

@@ -9,7 +9,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -20,7 +19,7 @@ func decodeOnlyFormResponse(resp *http.Response) (res *OnlyFormOK, _ error) {
 		// Code 200.
 		return &OnlyFormOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOnlyMultipartFileResponse(resp *http.Response) (res *OnlyMultipartFileOK, _ error) {
@@ -29,7 +28,7 @@ func decodeOnlyMultipartFileResponse(resp *http.Response) (res *OnlyMultipartFil
 		// Code 200.
 		return &OnlyMultipartFileOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeOnlyMultipartFormResponse(resp *http.Response) (res *OnlyMultipartFormOK, _ error) {
@@ -38,7 +37,7 @@ func decodeOnlyMultipartFormResponse(resp *http.Response) (res *OnlyMultipartFor
 		// Code 200.
 		return &OnlyMultipartFormOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEncodedOK, _ error) {
@@ -47,7 +46,7 @@ func decodeTestFormURLEncodedResponse(resp *http.Response) (res *TestFormURLEnco
 		// Code 200.
 		return &TestFormURLEncodedOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestMultipartResponse(resp *http.Response) (res *TestMultipartOK, _ error) {
@@ -56,7 +55,7 @@ func decodeTestMultipartResponse(resp *http.Response) (res *TestMultipartOK, _ e
 		// Code 200.
 		return &TestMultipartOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartUploadOK, _ error) {
@@ -106,7 +105,7 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res *TestMultipartU
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestReuseFormOptionalSchemaResponse(resp *http.Response) (res *TestReuseFormOptionalSchemaOK, _ error) {
@@ -115,7 +114,7 @@ func decodeTestReuseFormOptionalSchemaResponse(resp *http.Response) (res *TestRe
 		// Code 200.
 		return &TestReuseFormOptionalSchemaOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestReuseFormSchemaResponse(resp *http.Response) (res *TestReuseFormSchemaOK, _ error) {
@@ -124,7 +123,7 @@ func decodeTestReuseFormSchemaResponse(resp *http.Response) (res *TestReuseFormS
 		// Code 200.
 		return &TestReuseFormSchemaOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeTestShareFormSchemaResponse(resp *http.Response) (res *TestShareFormSchemaOK, _ error) {
@@ -133,5 +132,5 @@ func decodeTestShareFormSchemaResponse(resp *http.Response) (res *TestShareFormS
 		// Code 200.
 		return &TestShareFormSchemaOK{}, nil
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

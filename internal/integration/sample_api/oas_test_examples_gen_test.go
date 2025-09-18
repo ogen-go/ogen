@@ -301,6 +301,66 @@ func TestIssue1433_EncodeDecode(t *testing.T) {
 	var typ2 Issue1433
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestIssue1461_EncodeDecode(t *testing.T) {
+	var typ Issue1461
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue1461
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue1461NullableOptionalTest_EncodeDecode(t *testing.T) {
+	var typ Issue1461NullableOptionalTest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue1461NullableOptionalTest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue1461NullableTest_EncodeDecode(t *testing.T) {
+	var typ Issue1461NullableTest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue1461NullableTest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue1461OptionalTest_EncodeDecode(t *testing.T) {
+	var typ Issue1461OptionalTest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue1461OptionalTest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssue1461RequiredTest_EncodeDecode(t *testing.T) {
+	var typ Issue1461RequiredTest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue1461RequiredTest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestIssue943_EncodeDecode(t *testing.T) {
 	var typ Issue943
 	typ.SetFake()

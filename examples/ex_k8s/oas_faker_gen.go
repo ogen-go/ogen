@@ -15313,6 +15313,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *IoK8sApimachineryPkgApisMetaV1Patch) SetFake() {
+}
+
+// SetFake set fake values.
 func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) SetFake() {
 	{
 		{
@@ -18200,6 +18204,24 @@ func (s *OptString) SetFake() {
 		elem = "string"
 	}
 	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedConfigMapCreated) SetFake() {
+	var unwrapped IoK8sAPICoreV1ConfigMap
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedConfigMapCreated(unwrapped)
+}
+
+// SetFake set fake values.
+func (s *PatchCoreV1NamespacedConfigMapOK) SetFake() {
+	var unwrapped IoK8sAPICoreV1ConfigMap
+	{
+		unwrapped.SetFake()
+	}
+	*s = PatchCoreV1NamespacedConfigMapOK(unwrapped)
 }
 
 // SetFake set fake values.

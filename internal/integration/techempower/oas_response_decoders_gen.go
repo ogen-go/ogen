@@ -9,7 +9,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -61,7 +60,7 @@ func decodeCachingResponse(resp *http.Response) (res WorldObjects, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDBResponse(resp *http.Response) (res *WorldObject, _ error) {
@@ -102,7 +101,7 @@ func decodeDBResponse(resp *http.Response) (res *WorldObject, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeJSONResponse(resp *http.Response) (res *HelloWorld, _ error) {
@@ -143,7 +142,7 @@ func decodeJSONResponse(resp *http.Response) (res *HelloWorld, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeQueriesResponse(resp *http.Response) (res WorldObjects, _ error) {
@@ -193,7 +192,7 @@ func decodeQueriesResponse(resp *http.Response) (res WorldObjects, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, _ error) {
@@ -243,5 +242,5 @@ func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

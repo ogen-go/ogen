@@ -6,7 +6,6 @@ import (
 	"fmt"
 
 	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -5403,6 +5402,22 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Validate() e
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedConfigMapCreated) Validate() error {
+	alias := (*IoK8sAPICoreV1ConfigMap)(s)
+	if err := alias.Validate(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *PatchCoreV1NamespacedConfigMapOK) Validate() error {
+	alias := (*IoK8sAPICoreV1ConfigMap)(s)
+	if err := alias.Validate(); err != nil {
+		return err
 	}
 	return nil
 }
