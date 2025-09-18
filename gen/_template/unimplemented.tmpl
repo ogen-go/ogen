@@ -8,6 +8,17 @@ type UnimplementedHandler struct{}
 {{- if $.PathsServerEnabled }}
 {{- with $ops := $.Operations }}
 var _ Handler = UnimplementedHandler{}
+
+{{- $hasRawOps := false }}
+{{- range $op := $ops }}
+	{{- if $op.HasRawResponse }}
+		{{- $hasRawOps = true }}
+	{{- end }}
+{{- end }}
+{{- if $hasRawOps }}
+var _ RawHandler = UnimplementedHandler{}
+{{- end }}
+
 {{- range $op := $ops }}
     {{- template "unimplemented/operation" $op }}
 {{- end }}
@@ -42,7 +53,13 @@ var _ WebhookHandler = UnimplementedHandler{}
 // {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_op" $op }}
+{{- if $op.HasRawResponse }}
+func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params{{ end }}, w http.ResponseWriter) error {
+	return ht.ErrNotImplemented
+}
+{{- else }}
 func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.GoType }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) {{ $op.Responses.ResultTuple "r" "" }} {
 	return {{ if $op.Responses.DoPass }}r,{{ end }} ht.ErrNotImplemented
 }
+{{- end }}
 {{ end }}
