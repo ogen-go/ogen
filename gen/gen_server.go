@@ -24,7 +24,9 @@ func (g *Generator) generateServer(s openapi.Server) (ir.Server, error) {
 			continue
 		}
 		if part.Param.Default == "" {
-			return ir.Server{}, &ErrNotImplemented{"empty server variable default"}
+			return ir.Server{}, errors.Wrap(
+				&ErrNotImplemented{"empty server variable default"},
+				part.Param.Name)
 		}
 
 		v := part.Param
