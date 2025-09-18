@@ -153,7 +153,7 @@ func (g *Generator) generateFormContent(
 			switch ct := getEncoding(f); ct {
 			case "", ir.EncodingFormURLEncoded:
 				f.Type.AddFeature("uri")
-			case ir.EncodingJSON:
+			case ir.EncodingJSON, ir.EncodingProblemJSON:
 				f.Type.AddFeature("json")
 			default:
 				return errors.Wrapf(
@@ -218,7 +218,7 @@ func (g *Generator) generateFormContent(
 				if err := isParamAllowed(f.Type, true, map[*ir.Type]struct{}{}); err != nil {
 					return err
 				}
-			case ir.EncodingJSON:
+			case ir.EncodingJSON, ir.EncodingProblemJSON:
 				spec.Content = &openapi.ParameterContent{
 					Name: ct.String(),
 				}
@@ -300,7 +300,7 @@ func (g *Generator) generateContents(
 				encoding = r
 			}
 
-			if encoding != ir.EncodingJSON && media.XOgenJSONStreaming {
+			if encoding != ir.EncodingJSON && encoding != ir.EncodingProblemJSON && media.XOgenJSONStreaming {
 				g.log.Warn(`Extension "x-ogen-json-streaming" will be ignored for non-JSON encoding`,
 					zapPosition(media),
 					zap.String("contentType", contentType),
@@ -321,6 +321,34 @@ func (g *Generator) generateContents(
 					JSONStreaming: media.XOgenJSONStreaming,
 					RawResponse:   media.XOgenRawResponse,
 				}
+				return nil
+
+			case ir.EncodingProblemJSON:
+				// In rfc9457, the only MUST defined for generators is to keep the status field
+				// synced with the HTTP status code.
+				if media.Schema.Type == jsonschema.Object {
+					for _, prop := range media.Schema.Properties {
+						if prop.Name == "status" {
+							g.log.Warn(`Ensuring "status" matching HTTP status code will not be enforced yet!`,
+								zapPosition(media),
+								zap.String("contentType", contentType),
+							)
+							break
+						}
+					}
+				}
+				t, err := g.generateSchema(ctx, typeName, media.Schema, optional, nil)
+				if err != nil {
+					return errors.Wrap(err, "generate schema")
+				}
+
+				t.AddFeature("json")
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding:      encoding,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
+				}
+
 				return nil
 
 			case ir.EncodingFormURLEncoded:

@@ -1,0 +1,60 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: API with Problems
+paths:
+  /v1/test:
+    get:
+      operationId: getTest
+      responses:
+        "200":
+          x-summary: OK
+          description: Process me.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Hello, World!"
+        "400":
+          x-summary: Bad Request
+          description: |
+            Something was wrong
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemJsonErrorResponse'
+
+components:
+  schemas:
+    ProblemJsonErrorResponse:
+      type: object
+      description: >-
+        An errors that occurred.
+      required:
+        - type
+        - title
+        - status
+      properties:
+        type:
+          type: string
+          description: >-
+            Identifies the type of the problem. If the problem type has no additional semantics beyond the HTTP status code, the URI `about:blank` is used.
+          example: "about:blank"
+        title:
+          type: string
+          description: >-
+            Roughly describes the problem. This is a static description, not a detailed one. If `type` is `about:blank`, the reason phrase of the status should be used as title.
+          example: Not Found
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code.
+          example: 404
+        detail:
+          type: string
+          description: >-
+            Further details about the error.
+          example: The email address could not be found.

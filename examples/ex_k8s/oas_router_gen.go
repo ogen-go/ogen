@@ -410,8 +410,13 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															args[0],
 															args[1],
 														}, elemIsEscaped, w, r)
+													case "PATCH":
+														s.handlePatchCoreV1NamespacedConfigMapRequest([2]string{
+															args[0],
+															args[1],
+														}, elemIsEscaped, w, r)
 													default:
-														s.notAllowed(w, r, "GET")
+														s.notAllowed(w, r, "GET,PATCH")
 													}
 
 													return
@@ -13404,6 +13409,14 @@ func (s *Server) FindPath(method string, u *url.URL) (r Route, _ bool) {
 														r.name = ReadCoreV1NamespacedConfigMapOperation
 														r.summary = ""
 														r.operationID = "readCoreV1NamespacedConfigMap"
+														r.pathPattern = "/api/v1/namespaces/{namespace}/configmaps/{name}"
+														r.args = args
+														r.count = 2
+														return r, true
+													case "PATCH":
+														r.name = PatchCoreV1NamespacedConfigMapOperation
+														r.summary = ""
+														r.operationID = "patchCoreV1NamespacedConfigMap"
 														r.pathPattern = "/api/v1/namespaces/{namespace}/configmaps/{name}"
 														r.args = args
 														r.count = 2
