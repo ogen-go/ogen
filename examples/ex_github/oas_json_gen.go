@@ -133512,10 +133512,6 @@ func (s *ReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) error {
 		MinPropertiesSet: false,
 		MaxProperties:    10,
 		MaxPropertiesSet: true,
-		MinLength:        0,
-		MinLengthSet:     false,
-		MaxLength:        0,
-		MaxLengthSet:     false,
 	}).ValidateProperties(propertiesCount); err != nil {
 		return errors.Wrap(err, "object")
 	}
