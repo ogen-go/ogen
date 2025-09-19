@@ -4,6 +4,30 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+func transformSchema(schema *jsonschema.Schema) *jsonschema.Schema {
+	if schema == nil {
+		return nil
+	}
+	schema = transformSingleOneOf(schema)
+	schema = transformNullableOneOf(schema)
+	return schema
+}
+
+// transformSingleOneOf detects and handles single oneOf patterns.
+//
+// single oneOf pattern is:
+//
+//	oneOf:
+//	  - <schema>
+//
+// if such pattern is detected, this function will return the inner schema.
+func transformSingleOneOf(schema *jsonschema.Schema) *jsonschema.Schema {
+	if len(schema.OneOf) == 1 {
+		return schema.OneOf[0]
+	}
+	return schema
+}
+
 // transformNullableOneOf detects and handles nullable oneOf patterns.
 //
 // nullable oneOf pattern is:

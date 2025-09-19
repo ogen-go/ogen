@@ -12,6 +12,25 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+func TestSingleOneOf(t *testing.T) {
+	t.Run("single oneOf unwraps", func(t *testing.T) {
+		a := require.New(t)
+		s := createTestSchemaGen(nil)
+
+		schema := &jsonschema.Schema{
+			Type: jsonschema.Empty,
+			OneOf: []*jsonschema.Schema{
+				createPrimitiveSchema(jsonschema.String),
+			},
+		}
+		result, err := s.generate("UnwrappedString", schema, false)
+		a.NoError(err)
+		a.NotNil(result)
+		a.Equal(ir.KindPrimitive, result.Kind)
+		a.Equal(ir.String, result.Primitive)
+	})
+}
+
 func TestNullableOneOf_BasicPrimitives(t *testing.T) {
 	primitiveTests := []struct {
 		name         string

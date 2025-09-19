@@ -106,7 +106,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bo
 		g.depthCount--
 	}()
 
-	schema = transformNullableOneOf(schema)
+	schema = transformSchema(schema)
 
 	t, err := g.generate2(name, schema)
 	if err != nil {
