@@ -15,48 +15,59 @@ type Object struct {
 }
 
 // SetMinProperties sets MinProperties validation.
-func (t *Object) SetMinProperties(v int) {
-	t.MinPropertiesSet = true
-	t.MinProperties = v
+func (o *Object) SetMinProperties(v int) {
+	o.MinPropertiesSet = true
+	o.MinProperties = v
 }
 
 // SetMaxProperties sets MaxProperties validation.
-func (t *Object) SetMaxProperties(v int) {
-	t.MaxPropertiesSet = true
-	t.MaxProperties = v
+func (o *Object) SetMaxProperties(v int) {
+	o.MaxPropertiesSet = true
+	o.MaxProperties = v
 }
 
 // SetMinLength sets MinLength validation.
-func (t *Object) SetMinLength(v int) {
-	t.MinLengthSet = true
-	t.MinLength = v
+func (o *Object) SetMinLength(v int) {
+	o.MinLengthSet = true
+	o.MinLength = v
 }
 
 // SetMaxLength sets MaxLength validation.
-func (t *Object) SetMaxLength(v int) {
-	t.MaxLengthSet = true
-	t.MaxLength = v
+func (o *Object) SetMaxLength(v int) {
+	o.MaxLengthSet = true
+	o.MaxLength = v
 }
 
-// Set reports whether any validations are set.
-func (t Object) Set() bool {
-	return t.MaxPropertiesSet || t.MinPropertiesSet
+// Set reports whether any validations are seo.
+func (o Object) Set() bool {
+	return o.MaxPropertiesSet || o.MinPropertiesSet
 }
 
 // ValidateProperties returns error if object length (properties number) v is invalid.
-func (t Object) ValidateProperties(v int) error {
-	if t.MaxPropertiesSet && v > t.MaxProperties {
-		return errors.Errorf("object properties number %d greater than maximum %d", v, t.MaxProperties)
+func (o Object) ValidateProperties(v int) error {
+	if o.MaxPropertiesSet && v > o.MaxProperties {
+		return errors.Errorf("object properties number %d greater than maximum %d", v, o.MaxProperties)
 	}
-	if t.MinPropertiesSet && v < t.MinProperties {
-		return errors.Errorf("object properties number %d less than minimum %d", v, t.MinProperties)
-	}
-	if t.MinLengthSet && v < t.MinLength {
-		return errors.Errorf("object length %d less than minimum %d", v, t.MinLength)
-	}
-	if t.MaxLengthSet && v > t.MaxLength {
-		return errors.Errorf("object length number %d greater than maximum %d", v, t.MaxLength)
+	if o.MinPropertiesSet && v < o.MinProperties {
+		return errors.Errorf("object properties number %d less than minimum %d", v, o.MinProperties)
 	}
 
 	return nil
+}
+
+func (o Object) ValidateLength(v any) error {
+	switch vv := v.(type) {
+	case string:
+		if o.MinLengthSet && len(vv) < o.MinLength {
+			return errors.Errorf("object length %d less than minimum %d", len(vv), o.MinLength)
+		}
+		if o.MaxLengthSet && len(vv) > o.MaxLength {
+			return errors.Errorf("object length number %d greater than maximum %d", len(vv), o.MaxLength)
+		}
+
+		return nil
+
+	default:
+		return errors.Errorf("unimplemented type %T in object validate", vv)
+	}
 }
