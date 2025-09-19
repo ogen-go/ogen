@@ -98,6 +98,8 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *AnyContentTypeBinaryStringSchemaOKHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -106,6 +108,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, a
 			OperationSummary: "",
 			OperationID:      "anyContentTypeBinaryStringSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -215,6 +218,8 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *AnyContentTypeBinaryStringSchemaDefaultDefStatusCodeWithHeaders
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -223,6 +228,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "anyContentTypeBinaryStringSchemaDefault",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -346,6 +352,8 @@ func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.
 		return
 	}
 
+	var rawBody []byte
+
 	var response CombinedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -354,6 +362,7 @@ func (s *Server) handleCombinedRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "combined",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "type",
@@ -468,6 +477,8 @@ func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w htt
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *Headers200OK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -476,6 +487,7 @@ func (s *Server) handleHeaders200Request(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "headers200",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -599,6 +611,8 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response HeadersCombinedRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -607,6 +621,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "headersCombined",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "type",
@@ -721,6 +736,8 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *HeadersDefaultDef
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -729,6 +746,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "headersDefault",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -838,6 +856,8 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w ht
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *HeadersJSONOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -846,6 +866,7 @@ func (s *Server) handleHeadersJSONRequest(args [0]string, argsEscaped bool, w ht
 			OperationSummary: "",
 			OperationID:      "headersJSON",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -955,6 +976,8 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *HeadersPattern4XX
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -963,6 +986,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "headersPattern",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1089,6 +1113,8 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped b
 		return
 	}
 
+	var rawBody []byte
+
 	var response IntersectPatternCodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1097,6 +1123,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "intersectPatternCode",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "code",
@@ -1211,6 +1238,8 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscap
 		err error
 	)
 
+	var rawBody []byte
+
 	var response MultipleGenericResponsesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1219,6 +1248,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "multipleGenericResponses",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1328,6 +1358,8 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, args
 		err error
 	)
 
+	var rawBody []byte
+
 	var response OctetStreamBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1336,6 +1368,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, args
 			OperationSummary: "",
 			OperationID:      "octetStreamBinaryStringSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1445,6 +1478,8 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped
 		err error
 	)
 
+	var rawBody []byte
+
 	var response OctetStreamEmptySchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1453,6 +1488,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "octetStreamEmptySchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1564,6 +1600,8 @@ func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, 
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *OptionalHeadersOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1572,6 +1610,7 @@ func (s *Server) handleOptionalHeadersRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "optionalHeaders",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1695,6 +1734,8 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 		return
 	}
 
+	var rawBody []byte
+
 	var response StreamJSONRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1703,6 +1744,7 @@ func (s *Server) handleStreamJSONRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "",
 			OperationID:      "streamJSON",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "count",
@@ -1817,6 +1859,8 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEs
 		err error
 	)
 
+	var rawBody []byte
+
 	var response TextPlainBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1825,6 +1869,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "textPlainBinaryStringSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

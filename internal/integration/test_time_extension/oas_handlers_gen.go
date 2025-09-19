@@ -112,6 +112,8 @@ func (s *Server) handleOptionalRequest(args [0]string, argsEscaped bool, w http.
 		return
 	}
 
+	var rawBody []byte
+
 	var response *OptionalOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -120,6 +122,7 @@ func (s *Server) handleOptionalRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "optional",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "date",
@@ -260,6 +263,8 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 		return
 	}
 
+	var rawBody []byte
+
 	var response *RequiredOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -268,6 +273,7 @@ func (s *Server) handleRequiredRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "required",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "date",

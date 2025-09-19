@@ -101,7 +101,9 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 			ID:   "onlyForm",
 		}
 	)
-	request, close, err := s.decodeOnlyFormRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeOnlyFormRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -125,6 +127,7 @@ func (s *Server) handleOnlyFormRequest(args [0]string, argsEscaped bool, w http.
 			OperationSummary: "",
 			OperationID:      "onlyForm",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -237,7 +240,9 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 			ID:   "onlyMultipartFile",
 		}
 	)
-	request, close, err := s.decodeOnlyMultipartFileRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeOnlyMultipartFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -261,6 +266,7 @@ func (s *Server) handleOnlyMultipartFileRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "onlyMultipartFile",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -373,7 +379,9 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 			ID:   "onlyMultipartForm",
 		}
 	)
-	request, close, err := s.decodeOnlyMultipartFormRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeOnlyMultipartFormRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -397,6 +405,7 @@ func (s *Server) handleOnlyMultipartFormRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "onlyMultipartForm",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -509,7 +518,9 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 			ID:   "testFormURLEncoded",
 		}
 	)
-	request, close, err := s.decodeTestFormURLEncodedRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestFormURLEncodedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -533,6 +544,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "testFormURLEncoded",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -645,7 +657,9 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 			ID:   "testMultipart",
 		}
 	)
-	request, close, err := s.decodeTestMultipartRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestMultipartRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -669,6 +683,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "",
 			OperationID:      "testMultipart",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -781,7 +796,9 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 			ID:   "testMultipartUpload",
 		}
 	)
-	request, close, err := s.decodeTestMultipartUploadRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestMultipartUploadRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -805,6 +822,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "testMultipartUpload",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -917,7 +935,9 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 			ID:   "testReuseFormOptionalSchema",
 		}
 	)
-	request, close, err := s.decodeTestReuseFormOptionalSchemaRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestReuseFormOptionalSchemaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -941,6 +961,7 @@ func (s *Server) handleTestReuseFormOptionalSchemaRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "testReuseFormOptionalSchema",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1053,7 +1074,9 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 			ID:   "testReuseFormSchema",
 		}
 	)
-	request, close, err := s.decodeTestReuseFormSchemaRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestReuseFormSchemaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1077,6 +1100,7 @@ func (s *Server) handleTestReuseFormSchemaRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "testReuseFormSchema",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1189,7 +1213,9 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 			ID:   "testShareFormSchema",
 		}
 	)
-	request, close, err := s.decodeTestShareFormSchemaRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeTestShareFormSchemaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1213,6 +1239,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "testShareFormSchema",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

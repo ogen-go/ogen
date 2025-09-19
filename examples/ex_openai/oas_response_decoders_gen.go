@@ -51,7 +51,7 @@ func decodeCancelFineTuneResponse(resp *http.Response) (res FineTune, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateAnswerResponse(resp *http.Response) (res *CreateAnswerResponse, _ error) {
@@ -92,7 +92,7 @@ func decodeCreateAnswerResponse(resp *http.Response) (res *CreateAnswerResponse,
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateChatCompletionResponse(resp *http.Response) (res *CreateChatCompletionResponse, _ error) {
@@ -142,7 +142,7 @@ func decodeCreateChatCompletionResponse(resp *http.Response) (res *CreateChatCom
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateClassificationResponse(resp *http.Response) (res *CreateClassificationResponse, _ error) {
@@ -183,7 +183,7 @@ func decodeCreateClassificationResponse(resp *http.Response) (res *CreateClassif
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateCompletionResponse(resp *http.Response) (res *CreateCompletionResponse, _ error) {
@@ -233,7 +233,7 @@ func decodeCreateCompletionResponse(resp *http.Response) (res *CreateCompletionR
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateEditResponse(resp *http.Response) (res *CreateEditResponse, _ error) {
@@ -283,7 +283,7 @@ func decodeCreateEditResponse(resp *http.Response) (res *CreateEditResponse, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateEmbeddingResponse(resp *http.Response) (res *CreateEmbeddingResponse, _ error) {
@@ -333,7 +333,7 @@ func decodeCreateEmbeddingResponse(resp *http.Response) (res *CreateEmbeddingRes
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateFileResponse(resp *http.Response) (res OpenAIFile, _ error) {
@@ -374,7 +374,7 @@ func decodeCreateFileResponse(resp *http.Response) (res OpenAIFile, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateFineTuneResponse(resp *http.Response) (res FineTune, _ error) {
@@ -415,7 +415,7 @@ func decodeCreateFineTuneResponse(resp *http.Response) (res FineTune, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateImageResponse(resp *http.Response) (res ImagesResponse, _ error) {
@@ -456,7 +456,7 @@ func decodeCreateImageResponse(resp *http.Response) (res ImagesResponse, _ error
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateImageEditResponse(resp *http.Response) (res ImagesResponse, _ error) {
@@ -497,7 +497,7 @@ func decodeCreateImageEditResponse(resp *http.Response) (res ImagesResponse, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateImageVariationResponse(resp *http.Response) (res ImagesResponse, _ error) {
@@ -538,7 +538,7 @@ func decodeCreateImageVariationResponse(resp *http.Response) (res ImagesResponse
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateModerationResponse(resp *http.Response) (res *CreateModerationResponse, _ error) {
@@ -588,7 +588,7 @@ func decodeCreateModerationResponse(resp *http.Response) (res *CreateModerationR
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateSearchResponse(resp *http.Response) (res *CreateSearchResponse, _ error) {
@@ -638,7 +638,7 @@ func decodeCreateSearchResponse(resp *http.Response) (res *CreateSearchResponse,
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateTranscriptionResponse(resp *http.Response) (res *CreateTranscriptionResponse, _ error) {
@@ -679,7 +679,7 @@ func decodeCreateTranscriptionResponse(resp *http.Response) (res *CreateTranscri
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreateTranslationResponse(resp *http.Response) (res *CreateTranslationResponse, _ error) {
@@ -720,7 +720,7 @@ func decodeCreateTranslationResponse(resp *http.Response) (res *CreateTranslatio
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDeleteFileResponse(resp *http.Response) (res *DeleteFileResponse, _ error) {
@@ -761,7 +761,7 @@ func decodeDeleteFileResponse(resp *http.Response) (res *DeleteFileResponse, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDeleteModelResponse(resp *http.Response) (res *DeleteModelResponse, _ error) {
@@ -802,7 +802,7 @@ func decodeDeleteModelResponse(resp *http.Response) (res *DeleteModelResponse, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDownloadFileResponse(resp *http.Response) (res string, _ error) {
@@ -845,7 +845,7 @@ func decodeDownloadFileResponse(resp *http.Response) (res string, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListEnginesResponse(resp *http.Response) (res *ListEnginesResponse, _ error) {
@@ -895,7 +895,7 @@ func decodeListEnginesResponse(resp *http.Response) (res *ListEnginesResponse, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListFilesResponse(resp *http.Response) (res *ListFilesResponse, _ error) {
@@ -945,7 +945,7 @@ func decodeListFilesResponse(resp *http.Response) (res *ListFilesResponse, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListFineTuneEventsResponse(resp *http.Response) (res *ListFineTuneEventsResponse, _ error) {
@@ -995,7 +995,7 @@ func decodeListFineTuneEventsResponse(resp *http.Response) (res *ListFineTuneEve
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListFineTunesResponse(resp *http.Response) (res *ListFineTunesResponse, _ error) {
@@ -1045,7 +1045,7 @@ func decodeListFineTunesResponse(resp *http.Response) (res *ListFineTunesRespons
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListModelsResponse(resp *http.Response) (res *ListModelsResponse, _ error) {
@@ -1095,7 +1095,7 @@ func decodeListModelsResponse(resp *http.Response) (res *ListModelsResponse, _ e
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeRetrieveEngineResponse(resp *http.Response) (res Engine, _ error) {
@@ -1136,7 +1136,7 @@ func decodeRetrieveEngineResponse(resp *http.Response) (res Engine, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeRetrieveFileResponse(resp *http.Response) (res OpenAIFile, _ error) {
@@ -1177,7 +1177,7 @@ func decodeRetrieveFileResponse(resp *http.Response) (res OpenAIFile, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeRetrieveFineTuneResponse(resp *http.Response) (res FineTune, _ error) {
@@ -1218,7 +1218,7 @@ func decodeRetrieveFineTuneResponse(resp *http.Response) (res FineTune, _ error)
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeRetrieveModelResponse(resp *http.Response) (res Model, _ error) {
@@ -1259,5 +1259,5 @@ func decodeRetrieveModelResponse(resp *http.Response) (res Model, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

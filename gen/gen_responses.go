@@ -80,7 +80,43 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses open
 		return nil, errors.Wrap(err, "walk")
 	}
 
+	// We'll need to use an interface-based approach for raw responses
+	var needsInterface bool
 	if countTypes == 1 {
+	statusCodesLoop:
+		for _, resp := range result.StatusCode {
+			for _, media := range resp.Contents {
+				if media.RawResponse {
+					needsInterface = true
+					break statusCodesLoop
+				}
+			}
+		}
+		if !needsInterface {
+		patternLoop:
+			for _, resp := range result.Pattern {
+				if resp == nil {
+					continue
+				}
+				for _, media := range resp.Contents {
+					if media.RawResponse {
+						needsInterface = true
+						break patternLoop
+					}
+				}
+			}
+		}
+		if !needsInterface && result.Default != nil {
+			for _, media := range result.Default.Contents {
+				if media.RawResponse {
+					needsInterface = true
+					break
+				}
+			}
+		}
+	}
+
+	if countTypes == 1 && !needsInterface {
 		result.Type = lastWalked
 		return result, nil
 	}
@@ -112,8 +148,91 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses open
 		return nil, errors.Wrap(err, "walk")
 	}
 
+	// Add raw response concrete types for content types with RawResponse=true
+	if err := addRawResponseTypes(ctx, result, iface, opName); err != nil {
+		return nil, errors.Wrap(err, "add raw response types")
+	}
+
 	result.Type = iface
 	return result, nil
+}
+
+// addRawResponseTypes adds concrete types for raw responses that implement the interface
+func addRawResponseTypes(ctx *genctx, result *ir.Responses, iface *ir.Type, opName string) error {
+	addRawType := func(prefix string, response *ir.Response) error {
+		if response == nil {
+			return nil
+		}
+
+		for contentType, media := range response.Contents {
+			if !media.RawResponse {
+				continue
+			}
+
+			rawTypeName, err := pascal(opName, prefix, "Raw", string(contentType))
+			if err != nil {
+				return errors.Wrapf(err, "raw type name: %s %s", prefix, contentType)
+			}
+
+			rawType := &ir.Type{
+				Kind: ir.KindStruct,
+				Name: rawTypeName,
+				Doc:  fmt.Sprintf("%s represents raw HTTP response for %s %s.", rawTypeName, opName, contentType),
+				Fields: []*ir.Field{
+					{
+						Name: "Response",
+						Type: ir.Pointer(&ir.Type{
+							Kind:      ir.KindPrimitive,
+							Primitive: "http.Response",
+							External: ir.ExternalType{
+								PackagePath: "net/http",
+								TypeName:    "Response",
+								IsPointer:   false,
+							},
+						}, ir.NilOptional),
+						Tag: ir.Tag{JSON: "-"},
+					},
+				},
+			}
+
+			// Remove the original structured type from the interface
+			// since we're replacing it with a raw response type
+			originalType := media.Type
+			originalType.Unimplement(iface)
+
+			rawType.Implement(iface)
+
+			if err := ctx.saveType(rawType); err != nil {
+				return errors.Wrap(err, "save raw type")
+			}
+
+			response.Contents[contentType] = ir.Media{
+				Encoding:      media.Encoding,
+				Type:          rawType,
+				JSONStreaming: media.JSONStreaming,
+				RawResponse:   media.RawResponse,
+			}
+		}
+		return nil
+	}
+
+	for code, response := range result.StatusCode {
+		if err := addRawType(statusText(code), response); err != nil {
+			return errors.Wrapf(err, "status code %d", code)
+		}
+	}
+
+	for pattern, response := range result.Pattern {
+		if err := addRawType(fmt.Sprintf("%dXX", pattern+1), response); err != nil {
+			return errors.Wrapf(err, "pattern %d", pattern)
+		}
+	}
+
+	if err := addRawType("Default", result.Default); err != nil {
+		return errors.Wrap(err, "default")
+	}
+
+	return nil
 }
 
 func (g *Generator) responseToIR(
@@ -187,7 +306,7 @@ func (g *Generator) responseToIR(
 	var unsupported []string
 	for ct, content := range contents {
 		t, e := content.Type, content.Encoding
-		if e.JSON() || t.IsStream() || isBinary(t.Schema) {
+		if e.JSON() || e.ProblemJSON() || t.IsStream() || isBinary(t.Schema) || content.RawResponse {
 			continue
 		}
 		delete(contents, ct)
@@ -220,6 +339,7 @@ func (g *Generator) responseToIR(
 			Encoding:      media.Encoding,
 			Type:          t,
 			JSONStreaming: media.JSONStreaming,
+			RawResponse:   media.RawResponse,
 		}
 	}
 

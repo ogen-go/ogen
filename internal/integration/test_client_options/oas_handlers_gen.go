@@ -112,6 +112,8 @@ func (s *Server) handleFooRequest(args [0]string, argsEscaped bool, w http.Respo
 		return
 	}
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -120,6 +122,7 @@ func (s *Server) handleFooRequest(args [0]string, argsEscaped bool, w http.Respo
 			OperationSummary: "",
 			OperationID:      "Foo",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "body",

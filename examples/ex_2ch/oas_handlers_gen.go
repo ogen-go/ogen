@@ -112,6 +112,8 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -120,6 +122,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, argsEsca
 			OperationSummary: "Получение ид для использования 2chcaptcha.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -253,6 +256,8 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response APICaptcha2chcaptchaShowGetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -261,6 +266,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, argsEs
 			OperationSummary: "Отображение 2chcaptcha по id.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "id",
@@ -394,6 +400,8 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -402,6 +410,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, argsEs
 			OperationSummary: "Получение app_response_id для отправки поста.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "public_key",
@@ -539,6 +548,8 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -547,6 +558,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 			OperationSummary: "Получение публичного ключа invisible recaptcha.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -666,6 +678,8 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *APICaptchaInvisibleRecaptchaMobileGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -674,6 +688,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 			OperationSummary: "Получение html страницы для решения капчи, CORS отключён.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -798,6 +813,8 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Captcha
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -806,6 +823,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, argsEscap
 			OperationSummary: "Получение публичного ключа recaptcha v2.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -925,6 +943,8 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsE
 		err error
 	)
 
+	var rawBody []byte
+
 	var response *APICaptchaRecaptchaMobileGetOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -933,6 +953,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, argsE
 			OperationSummary: "Получение html страницы для решения капчи, CORS отключён.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1057,6 +1078,8 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Like
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1065,6 +1088,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, argsEscaped bool, w 
 			OperationSummary: "Добавление дизлайка на пост.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1198,6 +1222,8 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 		return
 	}
 
+	var rawBody []byte
+
 	var response *Like
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1206,6 +1232,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, argsEscaped bool, w htt
 			OperationSummary: "Добавление лайка на пост.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1341,6 +1368,8 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response *MobileThreadPostsAfter
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1349,6 +1378,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 			OperationSummary: "Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1472,6 +1502,8 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped b
 		err error
 	)
 
+	var rawBody []byte
+
 	var response Boards
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1480,6 +1512,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, argsEscaped b
 			OperationSummary: "Получение списка досок и их настроек.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -1604,6 +1637,8 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response *MobileThreadLastInfo
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1612,6 +1647,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, args
 			OperationSummary: "Получение информации о треде.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1745,6 +1781,8 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response *MobilePost
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1753,6 +1791,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, argsEsc
 			OperationSummary: "Получение информации о посте.",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "board",
@@ -1885,7 +1924,9 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeUserPassloginPostRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUserPassloginPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1909,6 +1950,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, argsEscaped bool
 			OperationSummary: "Авторизация пасскода.",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "json",
@@ -2027,7 +2069,9 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodeUserPostingPostRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUserPostingPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2051,6 +2095,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "Создание нового поста или треда.",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -2164,7 +2209,9 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodeUserReportPostRequest(r)
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodeUserReportPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2188,6 +2235,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "Отправка жалобы.",
 			OperationID:      "",
 			Body:             request,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

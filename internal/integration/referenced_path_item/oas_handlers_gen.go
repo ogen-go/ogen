@@ -95,6 +95,8 @@ func (s *Server) handleFooGetRequest(args [0]string, argsEscaped bool, w http.Re
 		err error
 	)
 
+	var rawBody []byte
+
 	var response string
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -103,6 +105,7 @@ func (s *Server) handleFooGetRequest(args [0]string, argsEscaped bool, w http.Re
 			OperationSummary: "",
 			OperationID:      "",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

@@ -56,6 +56,8 @@ type Request struct {
 	OperationID string
 	// Body is the operation request body. May be nil, if the operation has not body.
 	Body any
+	// RawBody is the operation request raw body. May be nil or empty, if the operation has no body.
+	RawBody []byte
 	// Params is the operation parameters.
 	Params Parameters
 	// Raw is the raw http request.

@@ -33954,6 +33954,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetUID(val string) {
 	s.UID = val
 }
 
+// Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.
+// Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Patch
+type IoK8sApimachineryPkgApisMetaV1Patch struct{}
+
 // ServerAddressByClientCIDR helps the client to determine the server address that they should use,
 // depending on the clientCIDR that they match.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR
@@ -48769,6 +48773,19 @@ func (o OptString) Or(d string) string {
 	}
 	return d
 }
+
+type PatchCoreV1NamespacedConfigMapCreated IoK8sAPICoreV1ConfigMap
+
+func (*PatchCoreV1NamespacedConfigMapCreated) patchCoreV1NamespacedConfigMapRes() {}
+
+type PatchCoreV1NamespacedConfigMapOK IoK8sAPICoreV1ConfigMap
+
+func (*PatchCoreV1NamespacedConfigMapOK) patchCoreV1NamespacedConfigMapRes() {}
+
+// PatchCoreV1NamespacedConfigMapUnauthorized is response for PatchCoreV1NamespacedConfigMap operation.
+type PatchCoreV1NamespacedConfigMapUnauthorized struct{}
+
+func (*PatchCoreV1NamespacedConfigMapUnauthorized) patchCoreV1NamespacedConfigMapRes() {}
 
 // ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized is response for ReadAdmissionregistrationV1MutatingWebhookConfiguration operation.
 type ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized struct{}

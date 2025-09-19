@@ -158,6 +158,8 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1DeleteNamespacedPodProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -166,6 +168,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyRequest(args [2]stri
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedPodProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -348,6 +351,8 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1DeleteNamespacedPodProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -356,6 +361,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedPodProxyWithPathRequest(args
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedPodProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -542,6 +548,8 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1DeleteNamespacedServiceProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -550,6 +558,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyRequest(args [2]
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedServiceProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -732,6 +741,8 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1DeleteNamespacedServiceProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -740,6 +751,7 @@ func (s *Server) handleConnectCoreV1DeleteNamespacedServiceProxyWithPathRequest(
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNamespacedServiceProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -926,6 +938,8 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1DeleteNodeProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -934,6 +948,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyRequest(args [1]string, argsE
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNodeProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -1112,6 +1127,8 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1DeleteNodeProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1120,6 +1137,7 @@ func (s *Server) handleConnectCoreV1DeleteNodeProxyWithPathRequest(args [2]strin
 			OperationSummary: "",
 			OperationID:      "connectCoreV1DeleteNodeProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -1302,6 +1320,8 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNamespacedPodAttachRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1310,6 +1330,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodAttachRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodAttach",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "container",
@@ -1508,6 +1529,8 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNamespacedPodExecRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1516,6 +1539,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodExecRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodExec",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "command",
@@ -1718,6 +1742,8 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNamespacedPodPortforwardRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1726,6 +1752,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodPortforwardRequest(args [2]s
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodPortforward",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -1908,6 +1935,8 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNamespacedPodProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -1916,6 +1945,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -2098,6 +2128,8 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNamespacedPodProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2106,6 +2138,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedPodProxyWithPathRequest(args [3
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedPodProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -2292,6 +2325,8 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNamespacedServiceProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2300,6 +2335,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyRequest(args [2]str
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedServiceProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -2482,6 +2518,8 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNamespacedServiceProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2490,6 +2528,7 @@ func (s *Server) handleConnectCoreV1GetNamespacedServiceProxyWithPathRequest(arg
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNamespacedServiceProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -2676,6 +2715,8 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNodeProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2684,6 +2725,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyRequest(args [1]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNodeProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -2862,6 +2904,8 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1GetNodeProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -2870,6 +2914,7 @@ func (s *Server) handleConnectCoreV1GetNodeProxyWithPathRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "connectCoreV1GetNodeProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -3052,6 +3097,8 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1HeadNamespacedPodProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3060,6 +3107,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedPodProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -3242,6 +3290,8 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1HeadNamespacedPodProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3250,6 +3300,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedPodProxyWithPathRequest(args [
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedPodProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -3436,6 +3487,8 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1HeadNamespacedServiceProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3444,6 +3497,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedServiceProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -3626,6 +3680,8 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1HeadNamespacedServiceProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3634,6 +3690,7 @@ func (s *Server) handleConnectCoreV1HeadNamespacedServiceProxyWithPathRequest(ar
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNamespacedServiceProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -3820,6 +3877,8 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1HeadNodeProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -3828,6 +3887,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyRequest(args [1]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNodeProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -4006,6 +4066,8 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1HeadNodeProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4014,6 +4076,7 @@ func (s *Server) handleConnectCoreV1HeadNodeProxyWithPathRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1HeadNodeProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -4196,6 +4259,8 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1OptionsNamespacedPodProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4204,6 +4269,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyRequest(args [2]str
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedPodProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -4386,6 +4452,8 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1OptionsNamespacedPodProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4394,6 +4462,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedPodProxyWithPathRequest(arg
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedPodProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -4580,6 +4649,8 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1OptionsNamespacedServiceProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4588,6 +4659,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyRequest(args [2
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedServiceProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -4770,6 +4842,8 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1OptionsNamespacedServiceProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4778,6 +4852,7 @@ func (s *Server) handleConnectCoreV1OptionsNamespacedServiceProxyWithPathRequest
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNamespacedServiceProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -4964,6 +5039,8 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1OptionsNodeProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -4972,6 +5049,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNodeProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -5150,6 +5228,8 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1OptionsNodeProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -5158,6 +5238,7 @@ func (s *Server) handleConnectCoreV1OptionsNodeProxyWithPathRequest(args [2]stri
 			OperationSummary: "",
 			OperationID:      "connectCoreV1OptionsNodeProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -5340,6 +5421,8 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PatchNamespacedPodProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -5348,6 +5431,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyRequest(args [2]strin
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedPodProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -5530,6 +5614,8 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PatchNamespacedPodProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -5538,6 +5624,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedPodProxyWithPathRequest(args 
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedPodProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -5724,6 +5811,8 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PatchNamespacedServiceProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -5732,6 +5821,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyRequest(args [2]s
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedServiceProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -5914,6 +6004,8 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PatchNamespacedServiceProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -5922,6 +6014,7 @@ func (s *Server) handleConnectCoreV1PatchNamespacedServiceProxyWithPathRequest(a
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNamespacedServiceProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -6108,6 +6201,8 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PatchNodeProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -6116,6 +6211,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyRequest(args [1]string, argsEs
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNodeProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -6294,6 +6390,8 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PatchNodeProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -6302,6 +6400,7 @@ func (s *Server) handleConnectCoreV1PatchNodeProxyWithPathRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PatchNodeProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -6484,6 +6583,8 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNamespacedPodAttachRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -6492,6 +6593,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodAttachRequest(args [2]strin
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodAttach",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "container",
@@ -6690,6 +6792,8 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNamespacedPodExecRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -6698,6 +6802,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodExecRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodExec",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "command",
@@ -6900,6 +7005,8 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNamespacedPodPortforwardRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -6908,6 +7015,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodPortforwardRequest(args [2]
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodPortforward",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -7090,6 +7198,8 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNamespacedPodProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -7098,6 +7208,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -7280,6 +7391,8 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNamespacedPodProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -7288,6 +7401,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedPodProxyWithPathRequest(args [
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedPodProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -7474,6 +7588,8 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNamespacedServiceProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -7482,6 +7598,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedServiceProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -7664,6 +7781,8 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNamespacedServiceProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -7672,6 +7791,7 @@ func (s *Server) handleConnectCoreV1PostNamespacedServiceProxyWithPathRequest(ar
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNamespacedServiceProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -7858,6 +7978,8 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNodeProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -7866,6 +7988,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyRequest(args [1]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNodeProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -8044,6 +8167,8 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PostNodeProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -8052,6 +8177,7 @@ func (s *Server) handleConnectCoreV1PostNodeProxyWithPathRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PostNodeProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -8234,6 +8360,8 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PutNamespacedPodProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -8242,6 +8370,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedPodProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -8424,6 +8553,8 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PutNamespacedPodProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -8432,6 +8563,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedPodProxyWithPathRequest(args [3
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedPodProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -8618,6 +8750,8 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PutNamespacedServiceProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -8626,6 +8760,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyRequest(args [2]str
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedServiceProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -8808,6 +8943,8 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PutNamespacedServiceProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -8816,6 +8953,7 @@ func (s *Server) handleConnectCoreV1PutNamespacedServiceProxyWithPathRequest(arg
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNamespacedServiceProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -9002,6 +9140,8 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PutNodeProxyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -9010,6 +9150,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyRequest(args [1]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNodeProxy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -9188,6 +9329,8 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ConnectCoreV1PutNodeProxyWithPathRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -9196,6 +9339,7 @@ func (s *Server) handleConnectCoreV1PutNodeProxyWithPathRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "connectCoreV1PutNodeProxyWithPath",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -9368,6 +9512,8 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAPIVersionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -9376,6 +9522,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "getAPIVersions",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9535,6 +9682,8 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAdmissionregistrationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -9543,6 +9692,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, a
 			OperationSummary: "",
 			OperationID:      "getAdmissionregistrationAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9702,6 +9852,8 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAdmissionregistrationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -9710,6 +9862,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 			OperationSummary: "",
 			OperationID:      "getAdmissionregistrationV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -9869,6 +10022,8 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetApiextensionsAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -9877,6 +10032,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "getApiextensionsAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10036,6 +10192,8 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetApiextensionsV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -10044,6 +10202,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, arg
 			OperationSummary: "",
 			OperationID:      "getApiextensionsV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10203,6 +10362,8 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetApiregistrationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -10211,6 +10372,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "getApiregistrationAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10370,6 +10532,8 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetApiregistrationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -10378,6 +10542,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, a
 			OperationSummary: "",
 			OperationID:      "getApiregistrationV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10537,6 +10702,8 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAppsAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -10545,6 +10712,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "getAppsAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10704,6 +10872,8 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAppsV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -10712,6 +10882,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "getAppsV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -10871,6 +11042,8 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAuthenticationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -10879,6 +11052,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "getAuthenticationAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11038,6 +11212,8 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAuthenticationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -11046,6 +11222,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "getAuthenticationV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11205,6 +11382,8 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAuthorizationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -11213,6 +11392,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "getAuthorizationAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11372,6 +11552,8 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAuthorizationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -11380,6 +11562,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, arg
 			OperationSummary: "",
 			OperationID:      "getAuthorizationV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11539,6 +11722,8 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAutoscalingAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -11547,6 +11732,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "getAutoscalingAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11706,6 +11892,8 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAutoscalingV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -11714,6 +11902,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, argsE
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -11873,6 +12062,8 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAutoscalingV2beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -11881,6 +12072,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV2beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12040,6 +12232,8 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetAutoscalingV2beta2APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -12048,6 +12242,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 			OperationSummary: "",
 			OperationID:      "getAutoscalingV2beta2APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12207,6 +12402,8 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetBatchAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -12215,6 +12412,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "getBatchAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12374,6 +12572,8 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetBatchV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -12382,6 +12582,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "getBatchV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12541,6 +12742,8 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetBatchV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -12549,6 +12752,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "getBatchV1beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12708,6 +12912,8 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetCertificatesAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -12716,6 +12922,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "getCertificatesAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -12875,6 +13082,8 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetCertificatesV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -12883,6 +13092,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, args
 			OperationSummary: "",
 			OperationID:      "getCertificatesV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -13042,6 +13252,8 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetCodeVersionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -13050,6 +13262,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "getCodeVersion",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -13209,6 +13422,8 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetCoordinationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -13217,6 +13432,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "getCoordinationAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -13376,6 +13592,8 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetCoordinationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -13384,6 +13602,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, args
 			OperationSummary: "",
 			OperationID:      "getCoordinationV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -13543,6 +13762,8 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetCoreAPIVersionsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -13551,6 +13772,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "getCoreAPIVersions",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -13710,6 +13932,8 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetCoreV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -13718,6 +13942,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "getCoreV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -13877,6 +14102,8 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetDiscoveryAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -13885,6 +14112,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "getDiscoveryAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -14044,6 +14272,8 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetDiscoveryV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -14052,6 +14282,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "getDiscoveryV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -14211,6 +14442,8 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetDiscoveryV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -14219,6 +14452,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "getDiscoveryV1beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -14378,6 +14612,8 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetEventsAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -14386,6 +14622,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "getEventsAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -14545,6 +14782,8 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetEventsV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -14553,6 +14792,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "getEventsV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -14712,6 +14952,8 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetEventsV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -14720,6 +14962,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, argsE
 			OperationSummary: "",
 			OperationID:      "getEventsV1beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -14879,6 +15122,8 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetFlowcontrolApiserverAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -14887,6 +15132,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -15046,6 +15292,8 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetFlowcontrolApiserverV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -15054,6 +15302,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverV1beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -15213,6 +15462,8 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetFlowcontrolApiserverV1beta2APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -15221,6 +15472,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 			OperationSummary: "",
 			OperationID:      "getFlowcontrolApiserverV1beta2APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -15380,6 +15632,8 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetInternalApiserverAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -15388,6 +15642,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, argsE
 			OperationSummary: "",
 			OperationID:      "getInternalApiserverAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -15547,6 +15802,8 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetInternalApiserverV1alpha1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -15555,6 +15812,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 			OperationSummary: "",
 			OperationID:      "getInternalApiserverV1alpha1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -15714,6 +15972,8 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetNetworkingAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -15722,6 +15982,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "getNetworkingAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -15881,6 +16142,8 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetNetworkingV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -15889,6 +16152,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "getNetworkingV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -16048,6 +16312,8 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetNodeAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -16056,6 +16322,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "getNodeAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -16215,6 +16482,8 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetNodeV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -16223,6 +16492,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "getNodeV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -16382,6 +16652,8 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetNodeV1alpha1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -16390,6 +16662,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "getNodeV1alpha1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -16549,6 +16822,8 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetNodeV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -16557,6 +16832,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "getNodeV1beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -16716,6 +16992,8 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetPolicyAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -16724,6 +17002,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "getPolicyAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -16883,6 +17162,8 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetPolicyV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -16891,6 +17172,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "getPolicyV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -17050,6 +17332,8 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetPolicyV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -17058,6 +17342,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, argsE
 			OperationSummary: "",
 			OperationID:      "getPolicyV1beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -17217,6 +17502,8 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetRbacAuthorizationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -17225,6 +17512,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, argsE
 			OperationSummary: "",
 			OperationID:      "getRbacAuthorizationAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -17384,6 +17672,8 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetRbacAuthorizationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -17392,6 +17682,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 			OperationSummary: "",
 			OperationID:      "getRbacAuthorizationV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -17551,6 +17842,8 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetSchedulingAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -17559,6 +17852,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "getSchedulingAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -17718,6 +18012,8 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetSchedulingV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -17726,6 +18022,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "getSchedulingV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -17885,6 +18182,8 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetServiceAccountIssuerOpenIDConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -17893,6 +18192,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 			OperationSummary: "",
 			OperationID:      "getServiceAccountIssuerOpenIDConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -18052,6 +18352,8 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetServiceAccountIssuerOpenIDKeysetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -18060,6 +18362,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDKeysetRequest(args [0]string
 			OperationSummary: "",
 			OperationID:      "getServiceAccountIssuerOpenIDKeyset",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -18219,6 +18522,8 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetStorageAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -18227,6 +18532,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "getStorageAPIGroup",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -18386,6 +18692,8 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetStorageV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -18394,6 +18702,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "getStorageV1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -18553,6 +18862,8 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetStorageV1alpha1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -18561,6 +18872,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, arg
 			OperationSummary: "",
 			OperationID:      "getStorageV1alpha1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -18720,6 +19032,8 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 		}
 	}
 
+	var rawBody []byte
+
 	var response GetStorageV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -18728,6 +19042,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, args
 			OperationSummary: "",
 			OperationID:      "getStorageV1beta1APIResources",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -18897,6 +19212,8 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAdmissionregistrationV1MutatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -18905,6 +19222,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationSummary: "",
 			OperationID:      "listAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -19115,6 +19433,8 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -19123,6 +19443,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationSummary: "",
 			OperationID:      "listAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -19333,6 +19654,8 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListApiextensionsV1CustomResourceDefinitionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -19341,6 +19664,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationSummary: "",
 			OperationID:      "listApiextensionsV1CustomResourceDefinition",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -19551,6 +19875,8 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListApiregistrationV1APIServiceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -19559,6 +19885,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "listApiregistrationV1APIService",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -19769,6 +20096,8 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1ControllerRevisionForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -19777,6 +20106,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			OperationSummary: "",
 			OperationID:      "listAppsV1ControllerRevisionForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -19987,6 +20317,8 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1DaemonSetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -19995,6 +20327,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			OperationSummary: "",
 			OperationID:      "listAppsV1DaemonSetForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -20205,6 +20538,8 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1DeploymentForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -20213,6 +20548,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			OperationSummary: "",
 			OperationID:      "listAppsV1DeploymentForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -20423,6 +20759,8 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1NamespacedControllerRevisionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -20431,6 +20769,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedControllerRevision",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -20645,6 +20984,8 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1NamespacedDaemonSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -20653,6 +20994,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedDaemonSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -20867,6 +21209,8 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1NamespacedDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -20875,6 +21219,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, arg
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedDeployment",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -21089,6 +21434,8 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1NamespacedReplicaSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -21097,6 +21444,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, arg
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedReplicaSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -21311,6 +21659,8 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1NamespacedStatefulSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -21319,6 +21669,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, ar
 			OperationSummary: "",
 			OperationID:      "listAppsV1NamespacedStatefulSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -21533,6 +21884,8 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1ReplicaSetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -21541,6 +21894,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			OperationSummary: "",
 			OperationID:      "listAppsV1ReplicaSetForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -21751,6 +22105,8 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAppsV1StatefulSetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -21759,6 +22115,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			OperationSummary: "",
 			OperationID:      "listAppsV1StatefulSetForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -21969,6 +22326,8 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -21977,6 +22336,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -22187,6 +22547,8 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -22195,6 +22557,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -22409,6 +22772,8 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -22417,6 +22782,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -22627,6 +22993,8 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -22635,6 +23003,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -22849,6 +23218,8 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -22857,6 +23228,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -23067,6 +23439,8 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -23075,6 +23449,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationSummary: "",
 			OperationID:      "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -23289,6 +23664,8 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListBatchV1CronJobForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -23297,6 +23674,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			OperationSummary: "",
 			OperationID:      "listBatchV1CronJobForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -23507,6 +23885,8 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListBatchV1JobForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -23515,6 +23895,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, arg
 			OperationSummary: "",
 			OperationID:      "listBatchV1JobForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -23725,6 +24106,8 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListBatchV1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -23733,6 +24116,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, argsE
 			OperationSummary: "",
 			OperationID:      "listBatchV1NamespacedCronJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -23947,6 +24331,8 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListBatchV1NamespacedJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -23955,6 +24341,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "listBatchV1NamespacedJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -24169,6 +24556,8 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListBatchV1beta1CronJobForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -24177,6 +24566,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "listBatchV1beta1CronJobForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -24387,6 +24777,8 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListBatchV1beta1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -24395,6 +24787,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			OperationSummary: "",
 			OperationID:      "listBatchV1beta1NamespacedCronJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -24609,6 +25002,8 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCertificatesV1CertificateSigningRequestRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -24617,6 +25012,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			OperationSummary: "",
 			OperationID:      "listCertificatesV1CertificateSigningRequest",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -24827,6 +25223,8 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoordinationV1LeaseForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -24835,6 +25233,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "listCoordinationV1LeaseForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -25045,6 +25444,8 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoordinationV1NamespacedLeaseRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -25053,6 +25454,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			OperationSummary: "",
 			OperationID:      "listCoordinationV1NamespacedLease",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -25267,6 +25669,8 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1ComponentStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -25275,6 +25679,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "listCoreV1ComponentStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -25485,6 +25890,8 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1ConfigMapForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -25493,6 +25900,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			OperationSummary: "",
 			OperationID:      "listCoreV1ConfigMapForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -25703,6 +26111,8 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1EndpointsForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -25711,6 +26121,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			OperationSummary: "",
 			OperationID:      "listCoreV1EndpointsForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -25921,6 +26332,8 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1EventForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -25929,6 +26342,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "listCoreV1EventForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -26139,6 +26553,8 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1LimitRangeForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -26147,6 +26563,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			OperationSummary: "",
 			OperationID:      "listCoreV1LimitRangeForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -26357,6 +26774,8 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespaceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -26365,6 +26784,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "listCoreV1Namespace",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -26575,6 +26995,8 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedConfigMapRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -26583,6 +27005,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedConfigMap",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -26797,6 +27220,8 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedEndpointsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -26805,6 +27230,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedEndpoints",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -27019,6 +27445,8 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -27027,6 +27455,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -27241,6 +27670,8 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedLimitRangeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -27249,6 +27680,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, arg
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedLimitRange",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -27463,6 +27895,8 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedPersistentVolumeClaimRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -27471,6 +27905,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPersistentVolumeClaim",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -27685,6 +28120,8 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedPodRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -27693,6 +28130,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPod",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -27907,6 +28345,8 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedPodTemplateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -27915,6 +28355,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, ar
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedPodTemplate",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -28129,6 +28570,8 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedReplicationControllerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -28137,6 +28580,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedReplicationController",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -28351,6 +28795,8 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedResourceQuotaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -28359,6 +28805,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedResourceQuota",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -28573,6 +29020,8 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -28581,6 +29030,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedSecret",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -28795,6 +29245,8 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedServiceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -28803,6 +29255,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, argsEs
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedService",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -29017,6 +29470,8 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NamespacedServiceAccountRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -29025,6 +29480,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			OperationSummary: "",
 			OperationID:      "listCoreV1NamespacedServiceAccount",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -29239,6 +29695,8 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1NodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -29247,6 +29705,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "listCoreV1Node",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -29457,6 +29916,8 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1PersistentVolumeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -29465,6 +29926,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "listCoreV1PersistentVolume",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -29675,6 +30137,8 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1PersistentVolumeClaimForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -29683,6 +30147,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			OperationSummary: "",
 			OperationID:      "listCoreV1PersistentVolumeClaimForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -29893,6 +30358,8 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1PodForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -29901,6 +30368,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, args
 			OperationSummary: "",
 			OperationID:      "listCoreV1PodForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -30111,6 +30579,8 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1PodTemplateForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -30119,6 +30589,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			OperationSummary: "",
 			OperationID:      "listCoreV1PodTemplateForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -30329,6 +30800,8 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1ReplicationControllerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -30337,6 +30810,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			OperationSummary: "",
 			OperationID:      "listCoreV1ReplicationControllerForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -30547,6 +31021,8 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1ResourceQuotaForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -30555,6 +31031,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "listCoreV1ResourceQuotaForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -30765,6 +31242,8 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1SecretForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -30773,6 +31252,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, a
 			OperationSummary: "",
 			OperationID:      "listCoreV1SecretForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -30983,6 +31463,8 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1ServiceAccountForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -30991,6 +31473,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			OperationSummary: "",
 			OperationID:      "listCoreV1ServiceAccountForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -31201,6 +31684,8 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListCoreV1ServiceForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -31209,6 +31694,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			OperationSummary: "",
 			OperationID:      "listCoreV1ServiceForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -31419,6 +31905,8 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListDiscoveryV1EndpointSliceForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -31427,6 +31915,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1EndpointSliceForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -31637,6 +32126,8 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListDiscoveryV1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -31645,6 +32136,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1NamespacedEndpointSlice",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -31859,6 +32351,8 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -31867,6 +32361,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -32077,6 +32572,8 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListDiscoveryV1beta1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -32085,6 +32582,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationSummary: "",
 			OperationID:      "listDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -32299,6 +32797,8 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListEventsV1EventForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -32307,6 +32807,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			OperationSummary: "",
 			OperationID:      "listEventsV1EventForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -32517,6 +33018,8 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListEventsV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -32525,6 +33028,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, argsEs
 			OperationSummary: "",
 			OperationID:      "listEventsV1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -32739,6 +33243,8 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListEventsV1beta1EventForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -32747,6 +33253,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			OperationSummary: "",
 			OperationID:      "listEventsV1beta1EventForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -32957,6 +33464,8 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListEventsV1beta1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -32965,6 +33474,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, a
 			OperationSummary: "",
 			OperationID:      "listEventsV1beta1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -33179,6 +33689,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListFlowcontrolApiserverV1beta1FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -33187,6 +33699,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta1FlowSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -33397,6 +33910,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -33405,6 +33920,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -33615,6 +34131,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListFlowcontrolApiserverV1beta2FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -33623,6 +34141,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta2FlowSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -33833,6 +34352,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -33841,6 +34362,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationSummary: "",
 			OperationID:      "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -34051,6 +34573,8 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListInternalApiserverV1alpha1StorageVersionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -34059,6 +34583,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationSummary: "",
 			OperationID:      "listInternalApiserverV1alpha1StorageVersion",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -34269,6 +34794,8 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNetworkingV1IngressClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -34277,6 +34804,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, argsE
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1IngressClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -34487,6 +35015,8 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNetworkingV1IngressForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -34495,6 +35025,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1IngressForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -34705,6 +35236,8 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNetworkingV1NamespacedIngressRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -34713,6 +35246,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NamespacedIngress",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -34927,6 +35461,8 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNetworkingV1NamespacedNetworkPolicyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -34935,6 +35471,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NamespacedNetworkPolicy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -35149,6 +35686,8 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNetworkingV1NetworkPolicyForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -35157,6 +35696,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			OperationSummary: "",
 			OperationID:      "listNetworkingV1NetworkPolicyForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -35367,6 +35907,8 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNodeV1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -35375,6 +35917,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "listNodeV1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -35585,6 +36128,8 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNodeV1alpha1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -35593,6 +36138,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, argsE
 			OperationSummary: "",
 			OperationID:      "listNodeV1alpha1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -35803,6 +36349,8 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListNodeV1beta1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -35811,6 +36359,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "listNodeV1beta1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -36021,6 +36570,8 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPolicyV1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -36029,6 +36580,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			OperationSummary: "",
 			OperationID:      "listPolicyV1NamespacedPodDisruptionBudget",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -36243,6 +36795,8 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -36251,6 +36805,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			OperationSummary: "",
 			OperationID:      "listPolicyV1PodDisruptionBudgetForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -36461,6 +37016,8 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPolicyV1beta1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -36469,6 +37026,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -36683,6 +37241,8 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -36691,6 +37251,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -36901,6 +37462,8 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListPolicyV1beta1PodSecurityPolicyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -36909,6 +37472,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			OperationSummary: "",
 			OperationID:      "listPolicyV1beta1PodSecurityPolicy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -37119,6 +37683,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListRbacAuthorizationV1ClusterRoleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -37127,6 +37693,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1ClusterRole",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -37337,6 +37904,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListRbacAuthorizationV1ClusterRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -37345,6 +37914,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1ClusterRoleBinding",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -37555,6 +38125,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListRbacAuthorizationV1NamespacedRoleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -37563,6 +38135,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1NamespacedRole",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -37777,6 +38350,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListRbacAuthorizationV1NamespacedRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -37785,6 +38360,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1NamespacedRoleBinding",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -37999,6 +38575,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -38007,6 +38585,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1RoleBindingForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -38217,6 +38796,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListRbacAuthorizationV1RoleForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -38225,6 +38806,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			OperationSummary: "",
 			OperationID:      "listRbacAuthorizationV1RoleForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -38435,6 +39017,8 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListSchedulingV1PriorityClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -38443,6 +39027,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, args
 			OperationSummary: "",
 			OperationID:      "listSchedulingV1PriorityClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -38653,6 +39238,8 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1CSIDriverRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -38661,6 +39248,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "listStorageV1CSIDriver",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -38871,6 +39459,8 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1CSINodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -38879,6 +39469,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "listStorageV1CSINode",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -39089,6 +39680,8 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1StorageClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -39097,6 +39690,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "listStorageV1StorageClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -39307,6 +39901,8 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1VolumeAttachmentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -39315,6 +39911,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, args
 			OperationSummary: "",
 			OperationID:      "listStorageV1VolumeAttachment",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -39525,6 +40122,8 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -39533,6 +40132,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			OperationSummary: "",
 			OperationID:      "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -39743,6 +40343,8 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1alpha1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -39751,6 +40353,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationSummary: "",
 			OperationID:      "listStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -39965,6 +40568,8 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -39973,6 +40578,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			OperationSummary: "",
 			OperationID:      "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -40183,6 +40789,8 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ListStorageV1beta1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -40191,6 +40799,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationSummary: "",
 			OperationID:      "listStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -40403,6 +41012,8 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response *LogFileHandlerUnauthorized
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -40411,6 +41022,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "logFileHandler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "logpath",
@@ -40573,6 +41185,8 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 		}
 	}
 
+	var rawBody []byte
+
 	var response *LogFileListHandlerUnauthorized
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -40581,6 +41195,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 			OperationSummary: "",
 			OperationID:      "logFileListHandler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -40613,6 +41228,226 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, argsEscaped boo
 	}
 
 	if err := encodeLogFileListHandlerResponse(response, w, span); err != nil {
+		defer recordError("EncodeResponse", err)
+		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+		}
+		return
+	}
+}
+
+// handlePatchCoreV1NamespacedConfigMapRequest handles patchCoreV1NamespacedConfigMap operation.
+//
+// Partially update the specified ConfigMap.
+//
+// PATCH /api/v1/namespaces/{namespace}/configmaps/{name}
+func (s *Server) handlePatchCoreV1NamespacedConfigMapRequest(args [2]string, argsEscaped bool, w http.ResponseWriter, r *http.Request) {
+	statusWriter := &codeRecorder{ResponseWriter: w}
+	w = statusWriter
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchCoreV1NamespacedConfigMap"),
+		semconv.HTTPRequestMethodKey.String("PATCH"),
+		semconv.HTTPRouteKey.String("/api/v1/namespaces/{namespace}/configmaps/{name}"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), PatchCoreV1NamespacedConfigMapOperation,
+		trace.WithAttributes(otelAttrs...),
+		serverSpanKind,
+	)
+	defer span.End()
+
+	// Add Labeler to context.
+	labeler := &Labeler{attrs: otelAttrs}
+	ctx = contextWithLabeler(ctx, labeler)
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+
+		attrSet := labeler.AttributeSet()
+		attrs := attrSet.ToSlice()
+		code := statusWriter.status
+		if code != 0 {
+			codeAttr := semconv.HTTPResponseStatusCode(code)
+			attrs = append(attrs, codeAttr)
+			span.SetAttributes(codeAttr)
+		}
+		attrOpt := metric.WithAttributes(attrs...)
+
+		// Increment request counter.
+		s.requests.Add(ctx, 1, attrOpt)
+
+		// Use floating point division here for higher precision (instead of Millisecond method).
+		s.duration.Record(ctx, float64(elapsedDuration)/float64(time.Millisecond), attrOpt)
+	}()
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+
+			// https://opentelemetry.io/docs/specs/semconv/http/http-spans/#status
+			// Span Status MUST be left unset if HTTP status code was in the 1xx, 2xx or 3xx ranges,
+			// unless there was another error (e.g., network error receiving the response body; or 3xx codes with
+			// max redirects exceeded), in which case status MUST be set to Error.
+			code := statusWriter.status
+			if code < 100 || code >= 500 {
+				span.SetStatus(codes.Error, stage)
+			}
+
+			attrSet := labeler.AttributeSet()
+			attrs := attrSet.ToSlice()
+			if code != 0 {
+				attrs = append(attrs, semconv.HTTPResponseStatusCode(code))
+			}
+
+			s.errors.Add(ctx, 1, metric.WithAttributes(attrs...))
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: PatchCoreV1NamespacedConfigMapOperation,
+			ID:   "patchCoreV1NamespacedConfigMap",
+		}
+	)
+	{
+		type bitset = [1]uint8
+		var satisfied bitset
+		{
+			sctx, ok, err := s.securityBearerToken(ctx, PatchCoreV1NamespacedConfigMapOperation, r)
+			if err != nil {
+				err = &ogenerrors.SecurityError{
+					OperationContext: opErrContext,
+					Security:         "BearerToken",
+					Err:              err,
+				}
+				defer recordError("Security:BearerToken", err)
+				s.cfg.ErrorHandler(ctx, w, r, err)
+				return
+			}
+			if ok {
+				satisfied[0] |= 1 << 0
+				ctx = sctx
+			}
+		}
+
+		if ok := func() bool {
+		nextRequirement:
+			for _, requirement := range []bitset{
+				{0b00000001},
+			} {
+				for i, mask := range requirement {
+					if satisfied[i]&mask != mask {
+						continue nextRequirement
+					}
+				}
+				return true
+			}
+			return false
+		}(); !ok {
+			err = &ogenerrors.SecurityError{
+				OperationContext: opErrContext,
+				Err:              ogenerrors.ErrSecurityRequirementIsNotSatisfied,
+			}
+			defer recordError("Security", err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+	}
+	params, err := decodePatchCoreV1NamespacedConfigMapParams(args, argsEscaped, r)
+	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	var rawBody []byte
+	request, rawBody, close, err := s.decodePatchCoreV1NamespacedConfigMapRequest(r)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		defer recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response PatchCoreV1NamespacedConfigMapRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:          ctx,
+			OperationName:    PatchCoreV1NamespacedConfigMapOperation,
+			OperationSummary: "",
+			OperationID:      "patchCoreV1NamespacedConfigMap",
+			Body:             request,
+			RawBody:          rawBody,
+			Params: middleware.Parameters{
+				{
+					Name: "dryRun",
+					In:   "query",
+				}: params.DryRun,
+				{
+					Name: "fieldManager",
+					In:   "query",
+				}: params.FieldManager,
+				{
+					Name: "force",
+					In:   "query",
+				}: params.Force,
+				{
+					Name: "name",
+					In:   "path",
+				}: params.Name,
+				{
+					Name: "namespace",
+					In:   "path",
+				}: params.Namespace,
+				{
+					Name: "pretty",
+					In:   "query",
+				}: params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = *IoK8sApimachineryPkgApisMetaV1Patch
+			Params   = PatchCoreV1NamespacedConfigMapParams
+			Response = PatchCoreV1NamespacedConfigMapRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPatchCoreV1NamespacedConfigMapParams,
+			func(ctx context.Context, request Request, params Params) (response Response, err error) {
+				response, err = s.h.PatchCoreV1NamespacedConfigMap(ctx, request, params)
+				return response, err
+			},
+		)
+	} else {
+		response, err = s.h.PatchCoreV1NamespacedConfigMap(ctx, request, params)
+	}
+	if err != nil {
+		defer recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodePatchCoreV1NamespacedConfigMapResponse(response, w, span); err != nil {
 		defer recordError("EncodeResponse", err)
 		if !errors.Is(err, ht.ErrInternalServerErrorResponse) {
 			s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40750,6 +41585,8 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAdmissionregistrationV1MutatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -40758,6 +41595,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			OperationSummary: "",
 			OperationID:      "readAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -40936,6 +41774,8 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -40944,6 +41784,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			OperationSummary: "",
 			OperationID:      "readAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -41122,6 +41963,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadApiextensionsV1CustomResourceDefinitionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -41130,6 +41973,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			OperationSummary: "",
 			OperationID:      "readApiextensionsV1CustomResourceDefinition",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -41308,6 +42152,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadApiextensionsV1CustomResourceDefinitionStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -41316,6 +42162,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			OperationSummary: "",
 			OperationID:      "readApiextensionsV1CustomResourceDefinitionStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -41494,6 +42341,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadApiregistrationV1APIServiceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -41502,6 +42351,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, ar
 			OperationSummary: "",
 			OperationID:      "readApiregistrationV1APIService",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -41680,6 +42530,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadApiregistrationV1APIServiceStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -41688,6 +42540,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			OperationSummary: "",
 			OperationID:      "readApiregistrationV1APIServiceStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -41866,6 +42719,8 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedControllerRevisionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -41874,6 +42729,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedControllerRevision",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -42056,6 +42912,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedDaemonSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -42064,6 +42922,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, args
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDaemonSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -42246,6 +43105,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedDaemonSetStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -42254,6 +43115,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDaemonSetStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -42436,6 +43298,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -42444,6 +43308,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeployment",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -42626,6 +43491,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedDeploymentScaleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -42634,6 +43501,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeploymentScale",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -42816,6 +43684,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedDeploymentStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -42824,6 +43694,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedDeploymentStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -43006,6 +43877,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedReplicaSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -43014,6 +43887,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -43196,6 +44070,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedReplicaSetScaleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -43204,6 +44080,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSetScale",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -43386,6 +44263,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedReplicaSetStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -43394,6 +44273,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedReplicaSetStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -43576,6 +44456,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedStatefulSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -43584,6 +44466,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, ar
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -43766,6 +44649,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedStatefulSetScaleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -43774,6 +44659,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSetScale",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -43956,6 +44842,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAppsV1NamespacedStatefulSetStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -43964,6 +44852,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			OperationSummary: "",
 			OperationID:      "readAppsV1NamespacedStatefulSetStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -44146,6 +45035,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -44154,6 +45045,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -44336,6 +45228,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -44344,6 +45238,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -44526,6 +45421,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -44534,6 +45431,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -44716,6 +45614,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -44724,6 +45624,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -44906,6 +45807,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -44914,6 +45817,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -45096,6 +46000,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -45104,6 +46010,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			OperationSummary: "",
 			OperationID:      "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -45286,6 +46193,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadBatchV1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -45294,6 +46203,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, argsE
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedCronJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -45476,6 +46386,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadBatchV1NamespacedCronJobStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -45484,6 +46396,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedCronJobStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -45666,6 +46579,8 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadBatchV1NamespacedJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -45674,6 +46589,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -45856,6 +46772,8 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadBatchV1NamespacedJobStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -45864,6 +46782,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "readBatchV1NamespacedJobStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -46046,6 +46965,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadBatchV1beta1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -46054,6 +46975,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "readBatchV1beta1NamespacedCronJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -46236,6 +47158,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadBatchV1beta1NamespacedCronJobStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -46244,6 +47168,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "readBatchV1beta1NamespacedCronJobStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -46426,6 +47351,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCertificatesV1CertificateSigningRequestRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -46434,6 +47361,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequest",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -46612,6 +47540,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCertificatesV1CertificateSigningRequestApprovalRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -46620,6 +47550,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequestApproval",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -46798,6 +47729,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCertificatesV1CertificateSigningRequestStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -46806,6 +47739,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			OperationSummary: "",
 			OperationID:      "readCertificatesV1CertificateSigningRequestStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -46984,6 +47918,8 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoordinationV1NamespacedLeaseRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -46992,6 +47928,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "readCoordinationV1NamespacedLease",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -47174,6 +48111,8 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1ComponentStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -47182,6 +48121,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "readCoreV1ComponentStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -47360,6 +48300,8 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespaceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -47368,6 +48310,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "readCoreV1Namespace",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -47546,6 +48489,8 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespaceStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -47554,6 +48499,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespaceStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -47732,6 +48678,8 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedConfigMapRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -47740,6 +48688,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, args
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedConfigMap",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -47922,6 +48871,8 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedEndpointsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -47930,6 +48881,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, args
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedEndpoints",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -48112,6 +49064,8 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -48120,6 +49074,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -48302,6 +49257,8 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedLimitRangeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -48310,6 +49267,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedLimitRange",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -48492,6 +49450,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedPersistentVolumeClaimRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -48500,6 +49460,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPersistentVolumeClaim",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -48682,6 +49643,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedPersistentVolumeClaimStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -48690,6 +49653,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPersistentVolumeClaimStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -48872,6 +49836,8 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedPodRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -48880,6 +49846,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPod",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -49062,6 +50029,8 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedPodEphemeralcontainersRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -49070,6 +50039,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodEphemeralcontainers",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -49252,6 +50222,8 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedPodLogRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -49260,6 +50232,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodLog",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "container",
@@ -49474,6 +50447,8 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedPodStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -49482,6 +50457,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, args
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -49664,6 +50640,8 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedPodTemplateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -49672,6 +50650,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, ar
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedPodTemplate",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -49854,6 +50833,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedReplicationControllerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -49862,6 +50843,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationController",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -50044,6 +51026,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedReplicationControllerScaleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -50052,6 +51036,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationControllerScale",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -50234,6 +51219,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedReplicationControllerStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -50242,6 +51229,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedReplicationControllerStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -50424,6 +51412,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedResourceQuotaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -50432,6 +51422,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedResourceQuota",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -50614,6 +51605,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedResourceQuotaStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -50622,6 +51615,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedResourceQuotaStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -50804,6 +51798,8 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -50812,6 +51808,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedSecret",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -50994,6 +51991,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedServiceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -51002,6 +52001,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, argsEs
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedService",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -51184,6 +52184,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedServiceAccountRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -51192,6 +52194,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedServiceAccount",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -51374,6 +52377,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NamespacedServiceStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -51382,6 +52387,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "readCoreV1NamespacedServiceStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -51564,6 +52570,8 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -51572,6 +52580,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "readCoreV1Node",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -51750,6 +52759,8 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1NodeStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -51758,6 +52769,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "readCoreV1NodeStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -51936,6 +52948,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1PersistentVolumeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -51944,6 +52958,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "readCoreV1PersistentVolume",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -52122,6 +53137,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadCoreV1PersistentVolumeStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -52130,6 +53147,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, a
 			OperationSummary: "",
 			OperationID:      "readCoreV1PersistentVolumeStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -52308,6 +53326,8 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadDiscoveryV1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -52316,6 +53336,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			OperationSummary: "",
 			OperationID:      "readDiscoveryV1NamespacedEndpointSlice",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -52498,6 +53519,8 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadDiscoveryV1beta1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -52506,6 +53529,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			OperationSummary: "",
 			OperationID:      "readDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -52688,6 +53712,8 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadEventsV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -52696,6 +53722,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, argsEs
 			OperationSummary: "",
 			OperationID:      "readEventsV1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -52878,6 +53905,8 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadEventsV1beta1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -52886,6 +53915,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, a
 			OperationSummary: "",
 			OperationID:      "readEventsV1beta1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -53068,6 +54098,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta1FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -53076,6 +54108,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1FlowSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -53254,6 +54287,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -53262,6 +54297,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -53440,6 +54476,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -53448,6 +54486,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -53626,6 +54665,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -53634,6 +54675,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -53812,6 +54854,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta2FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -53820,6 +54864,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2FlowSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -53998,6 +55043,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -54006,6 +55053,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -54184,6 +55232,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -54192,6 +55242,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -54370,6 +55421,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -54378,6 +55431,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			OperationSummary: "",
 			OperationID:      "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -54556,6 +55610,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadInternalApiserverV1alpha1StorageVersionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -54564,6 +55620,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			OperationSummary: "",
 			OperationID:      "readInternalApiserverV1alpha1StorageVersion",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -54742,6 +55799,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadInternalApiserverV1alpha1StorageVersionStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -54750,6 +55809,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			OperationSummary: "",
 			OperationID:      "readInternalApiserverV1alpha1StorageVersionStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -54928,6 +55988,8 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadNetworkingV1IngressClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -54936,6 +55998,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, argsE
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1IngressClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -55114,6 +56177,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadNetworkingV1NamespacedIngressRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -55122,6 +56187,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedIngress",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -55304,6 +56370,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadNetworkingV1NamespacedIngressStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -55312,6 +56380,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedIngressStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -55494,6 +56563,8 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadNetworkingV1NamespacedNetworkPolicyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -55502,6 +56573,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "readNetworkingV1NamespacedNetworkPolicy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -55684,6 +56756,8 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadNodeV1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -55692,6 +56766,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "readNodeV1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -55870,6 +56945,8 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadNodeV1alpha1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -55878,6 +56955,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, argsE
 			OperationSummary: "",
 			OperationID:      "readNodeV1alpha1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -56056,6 +57134,8 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadNodeV1beta1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -56064,6 +57144,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, argsEs
 			OperationSummary: "",
 			OperationID:      "readNodeV1beta1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -56242,6 +57323,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadPolicyV1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -56250,6 +57333,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			OperationSummary: "",
 			OperationID:      "readPolicyV1NamespacedPodDisruptionBudget",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -56432,6 +57516,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -56440,6 +57526,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			OperationSummary: "",
 			OperationID:      "readPolicyV1NamespacedPodDisruptionBudgetStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -56622,6 +57709,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -56630,6 +57719,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -56812,6 +57902,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -56820,6 +57912,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -57002,6 +58095,8 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadPolicyV1beta1PodSecurityPolicyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -57010,6 +58105,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			OperationSummary: "",
 			OperationID:      "readPolicyV1beta1PodSecurityPolicy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -57188,6 +58284,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadRbacAuthorizationV1ClusterRoleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -57196,6 +58294,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1ClusterRole",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -57374,6 +58473,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadRbacAuthorizationV1ClusterRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -57382,6 +58483,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1ClusterRoleBinding",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -57560,6 +58662,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadRbacAuthorizationV1NamespacedRoleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -57568,6 +58672,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1NamespacedRole",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -57750,6 +58855,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadRbacAuthorizationV1NamespacedRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -57758,6 +58865,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			OperationSummary: "",
 			OperationID:      "readRbacAuthorizationV1NamespacedRoleBinding",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -57940,6 +59048,8 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadSchedulingV1PriorityClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -57948,6 +59058,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "readSchedulingV1PriorityClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -58126,6 +59237,8 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadStorageV1CSIDriverRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -58134,6 +59247,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, argsEscaped
 			OperationSummary: "",
 			OperationID:      "readStorageV1CSIDriver",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -58312,6 +59426,8 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadStorageV1CSINodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -58320,6 +59436,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "readStorageV1CSINode",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -58498,6 +59615,8 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadStorageV1StorageClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -58506,6 +59625,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "readStorageV1StorageClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -58684,6 +59804,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadStorageV1VolumeAttachmentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -58692,6 +59814,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "readStorageV1VolumeAttachment",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -58870,6 +59993,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadStorageV1VolumeAttachmentStatusRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -58878,6 +60003,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			OperationSummary: "",
 			OperationID:      "readStorageV1VolumeAttachmentStatus",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -59056,6 +60182,8 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadStorageV1alpha1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -59064,6 +60192,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			OperationSummary: "",
 			OperationID:      "readStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -59246,6 +60375,8 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response ReadStorageV1beta1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -59254,6 +60385,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			OperationSummary: "",
 			OperationID:      "readStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "name",
@@ -59438,6 +60570,8 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAdmissionregistrationV1MutatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -59446,6 +60580,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1MutatingWebhookConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -59661,6 +60796,8 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -59669,6 +60806,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -59881,6 +61019,8 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -59889,6 +61029,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -60104,6 +61245,8 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -60112,6 +61255,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			OperationSummary: "",
 			OperationID:      "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -60323,6 +61467,8 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchApiextensionsV1CustomResourceDefinitionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -60331,6 +61477,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchApiextensionsV1CustomResourceDefinition",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -60546,6 +61693,8 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchApiextensionsV1CustomResourceDefinitionListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -60554,6 +61703,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			OperationSummary: "",
 			OperationID:      "watchApiextensionsV1CustomResourceDefinitionList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -60765,6 +61915,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchApiregistrationV1APIServiceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -60773,6 +61925,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, a
 			OperationSummary: "",
 			OperationID:      "watchApiregistrationV1APIService",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -60988,6 +62141,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchApiregistrationV1APIServiceListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -60996,6 +62151,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			OperationSummary: "",
 			OperationID:      "watchApiregistrationV1APIServiceList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -61207,6 +62363,8 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1ControllerRevisionListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -61215,6 +62373,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			OperationSummary: "",
 			OperationID:      "watchAppsV1ControllerRevisionListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -61426,6 +62585,8 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1DaemonSetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -61434,6 +62595,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			OperationSummary: "",
 			OperationID:      "watchAppsV1DaemonSetListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -61645,6 +62807,8 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1DeploymentListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -61653,6 +62817,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			OperationSummary: "",
 			OperationID:      "watchAppsV1DeploymentListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -61864,6 +63029,8 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedControllerRevisionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -61872,6 +63039,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedControllerRevision",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -62091,6 +63259,8 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedControllerRevisionListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -62099,6 +63269,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedControllerRevisionList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -62314,6 +63485,8 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedDaemonSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -62322,6 +63495,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDaemonSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -62541,6 +63715,8 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedDaemonSetListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -62549,6 +63725,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDaemonSetList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -62764,6 +63941,8 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -62772,6 +63951,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, ar
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDeployment",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -62991,6 +64171,8 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedDeploymentListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -62999,6 +64181,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedDeploymentList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -63214,6 +64397,8 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedReplicaSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -63222,6 +64407,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, ar
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedReplicaSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -63441,6 +64627,8 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedReplicaSetListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -63449,6 +64637,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedReplicaSetList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -63664,6 +64853,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedStatefulSetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -63672,6 +64863,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, a
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedStatefulSet",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -63891,6 +65083,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1NamespacedStatefulSetListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -63899,6 +65093,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			OperationSummary: "",
 			OperationID:      "watchAppsV1NamespacedStatefulSetList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -64114,6 +65309,8 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1ReplicaSetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -64122,6 +65319,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			OperationSummary: "",
 			OperationID:      "watchAppsV1ReplicaSetListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -64333,6 +65531,8 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAppsV1StatefulSetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -64341,6 +65541,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			OperationSummary: "",
 			OperationID:      "watchAppsV1StatefulSetListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -64552,6 +65753,8 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -64560,6 +65763,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -64771,6 +65975,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -64779,6 +65985,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -64998,6 +66205,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -65006,6 +66215,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -65221,6 +66431,8 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -65229,6 +66441,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -65440,6 +66653,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -65448,6 +66663,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -65667,6 +66883,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -65675,6 +66893,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -65890,6 +67109,8 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -65898,6 +67119,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -66109,6 +67331,8 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -66117,6 +67341,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -66336,6 +67561,8 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -66344,6 +67571,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			OperationSummary: "",
 			OperationID:      "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -66559,6 +67787,8 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1CronJobListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -66567,6 +67797,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "watchBatchV1CronJobListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -66778,6 +68009,8 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1JobListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -66786,6 +68019,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			OperationSummary: "",
 			OperationID:      "watchBatchV1JobListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -66997,6 +68231,8 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -67005,6 +68241,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, args
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedCronJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -67224,6 +68461,8 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1NamespacedCronJobListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -67232,6 +68471,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedCronJobList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -67447,6 +68687,8 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1NamespacedJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -67455,6 +68697,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -67674,6 +68917,8 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1NamespacedJobListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -67682,6 +68927,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "watchBatchV1NamespacedJobList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -67897,6 +69143,8 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1beta1CronJobListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -67905,6 +69153,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1CronJobListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -68116,6 +69365,8 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1beta1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -68124,6 +69375,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1NamespacedCronJob",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -68343,6 +69595,8 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchBatchV1beta1NamespacedCronJobListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -68351,6 +69605,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			OperationSummary: "",
 			OperationID:      "watchBatchV1beta1NamespacedCronJobList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -68567,6 +69822,8 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCertificatesV1CertificateSigningRequestRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -68575,6 +69832,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchCertificatesV1CertificateSigningRequest",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -68790,6 +70048,8 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCertificatesV1CertificateSigningRequestListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -68798,6 +70058,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			OperationSummary: "",
 			OperationID:      "watchCertificatesV1CertificateSigningRequestList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -69009,6 +70270,8 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoordinationV1LeaseListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -69017,6 +70280,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1LeaseListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -69228,6 +70492,8 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoordinationV1NamespacedLeaseRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -69236,6 +70502,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1NamespacedLease",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -69455,6 +70722,8 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoordinationV1NamespacedLeaseListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -69463,6 +70732,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			OperationSummary: "",
 			OperationID:      "watchCoordinationV1NamespacedLeaseList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -69678,6 +70948,8 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1ConfigMapListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -69686,6 +70958,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ConfigMapListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -69897,6 +71170,8 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1EndpointsListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -69905,6 +71180,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			OperationSummary: "",
 			OperationID:      "watchCoreV1EndpointsListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -70116,6 +71392,8 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1EventListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -70124,6 +71402,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			OperationSummary: "",
 			OperationID:      "watchCoreV1EventListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -70335,6 +71614,8 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1LimitRangeListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -70343,6 +71624,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			OperationSummary: "",
 			OperationID:      "watchCoreV1LimitRangeListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -70554,6 +71836,8 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespaceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -70562,6 +71846,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, argsEscaped b
 			OperationSummary: "",
 			OperationID:      "watchCoreV1Namespace",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -70777,6 +72062,8 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespaceListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -70785,6 +72072,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespaceList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -70996,6 +72284,8 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedConfigMapRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -71004,6 +72294,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedConfigMap",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -71223,6 +72514,8 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedConfigMapListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -71231,6 +72524,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedConfigMapList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -71446,6 +72740,8 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedEndpointsRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -71454,6 +72750,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, arg
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEndpoints",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -71673,6 +72970,8 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedEndpointsListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -71681,6 +72980,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEndpointsList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -71896,6 +73196,8 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -71904,6 +73206,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -72123,6 +73426,8 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedEventListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -72131,6 +73436,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, arg
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedEventList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -72346,6 +73652,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedLimitRangeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -72354,6 +73662,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, ar
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedLimitRange",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -72573,6 +73882,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedLimitRangeListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -72581,6 +73892,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedLimitRangeList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -72796,6 +74108,8 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedPersistentVolumeClaimRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -72804,6 +74118,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPersistentVolumeClaim",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -73023,6 +74338,8 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedPersistentVolumeClaimListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -73031,6 +74348,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPersistentVolumeClaimList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -73246,6 +74564,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedPodRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -73254,6 +74574,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, argsEscap
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPod",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -73473,6 +74794,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedPodListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -73481,6 +74804,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, argsE
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -73696,6 +75020,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedPodTemplateRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -73704,6 +75030,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, a
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodTemplate",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -73923,6 +75250,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedPodTemplateListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -73931,6 +75260,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedPodTemplateList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -74146,6 +75476,8 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedReplicationControllerRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -74154,6 +75486,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedReplicationController",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -74373,6 +75706,8 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedReplicationControllerListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -74381,6 +75716,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedReplicationControllerList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -74596,6 +75932,8 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedResourceQuotaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -74604,6 +75942,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedResourceQuota",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -74823,6 +76162,8 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedResourceQuotaListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -74831,6 +76172,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedResourceQuotaList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -75046,6 +76388,8 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedSecretRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -75054,6 +76398,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, argsEs
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedSecret",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -75273,6 +76618,8 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedSecretListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -75281,6 +76628,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, ar
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedSecretList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -75496,6 +76844,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedServiceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -75504,6 +76854,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, argsE
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedService",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -75723,6 +77074,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedServiceAccountRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -75731,6 +77084,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceAccount",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -75950,6 +77304,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedServiceAccountListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -75958,6 +77314,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceAccountList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -76173,6 +77530,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NamespacedServiceListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -76181,6 +77540,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, a
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NamespacedServiceList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -76396,6 +77756,8 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -76404,6 +77766,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, argsEscaped bool, 
 			OperationSummary: "",
 			OperationID:      "watchCoreV1Node",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -76619,6 +77982,8 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1NodeListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -76627,6 +77992,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, argsEscaped bo
 			OperationSummary: "",
 			OperationID:      "watchCoreV1NodeList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -76838,6 +78204,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1PersistentVolumeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -76846,6 +78214,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, argsEs
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolume",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -77061,6 +78430,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -77069,6 +78440,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -77280,6 +78652,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1PersistentVolumeListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -77288,6 +78662,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, ar
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PersistentVolumeList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -77499,6 +78874,8 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1PodListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -77507,6 +78884,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PodListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -77718,6 +79096,8 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1PodTemplateListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -77726,6 +79106,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			OperationSummary: "",
 			OperationID:      "watchCoreV1PodTemplateListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -77937,6 +79318,8 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1ReplicationControllerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -77945,6 +79328,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ReplicationControllerListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -78156,6 +79540,8 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1ResourceQuotaListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -78164,6 +79550,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ResourceQuotaListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -78375,6 +79762,8 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1SecretListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -78383,6 +79772,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			OperationSummary: "",
 			OperationID:      "watchCoreV1SecretListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -78594,6 +79984,8 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1ServiceAccountListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -78602,6 +79994,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ServiceAccountListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -78813,6 +80206,8 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchCoreV1ServiceListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -78821,6 +80216,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			OperationSummary: "",
 			OperationID:      "watchCoreV1ServiceListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -79032,6 +80428,8 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -79040,6 +80438,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1EndpointSliceListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -79251,6 +80650,8 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchDiscoveryV1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -79259,6 +80660,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1NamespacedEndpointSlice",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -79478,6 +80880,8 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchDiscoveryV1NamespacedEndpointSliceListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -79486,6 +80890,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1NamespacedEndpointSliceList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -79701,6 +81106,8 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -79709,6 +81116,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -79920,6 +81328,8 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchDiscoveryV1beta1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -79928,6 +81338,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1NamespacedEndpointSlice",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -80147,6 +81558,8 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchDiscoveryV1beta1NamespacedEndpointSliceListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -80155,6 +81568,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			OperationSummary: "",
 			OperationID:      "watchDiscoveryV1beta1NamespacedEndpointSliceList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -80370,6 +81784,8 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchEventsV1EventListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -80378,6 +81794,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			OperationSummary: "",
 			OperationID:      "watchEventsV1EventListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -80589,6 +82006,8 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchEventsV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -80597,6 +82016,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, argsE
 			OperationSummary: "",
 			OperationID:      "watchEventsV1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -80816,6 +82236,8 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchEventsV1NamespacedEventListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -80824,6 +82246,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, a
 			OperationSummary: "",
 			OperationID:      "watchEventsV1NamespacedEventList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -81039,6 +82462,8 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchEventsV1beta1EventListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -81047,6 +82472,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1EventListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -81258,6 +82684,8 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchEventsV1beta1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -81266,6 +82694,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1NamespacedEvent",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -81485,6 +82914,8 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchEventsV1beta1NamespacedEventListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -81493,6 +82924,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			OperationSummary: "",
 			OperationID:      "watchEventsV1beta1NamespacedEventList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -81708,6 +83140,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta1FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -81716,6 +83150,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1FlowSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -81931,6 +83366,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -81939,6 +83376,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1FlowSchemaList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -82151,6 +83589,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -82159,6 +83599,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -82374,6 +83815,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -82382,6 +83825,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -82593,6 +84037,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta2FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -82601,6 +84047,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2FlowSchema",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -82816,6 +84263,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -82824,6 +84273,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2FlowSchemaList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -83036,6 +84486,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -83044,6 +84496,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -83259,6 +84712,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -83267,6 +84722,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			OperationSummary: "",
 			OperationID:      "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -83478,6 +84934,8 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchInternalApiserverV1alpha1StorageVersionRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -83486,6 +84944,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchInternalApiserverV1alpha1StorageVersion",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -83701,6 +85160,8 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchInternalApiserverV1alpha1StorageVersionListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -83709,6 +85170,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			OperationSummary: "",
 			OperationID:      "watchInternalApiserverV1alpha1StorageVersionList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -83920,6 +85382,8 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1IngressClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -83928,6 +85392,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -84143,6 +85608,8 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1IngressClassListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -84151,6 +85618,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressClassList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -84362,6 +85830,8 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1IngressListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -84370,6 +85840,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1IngressListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -84581,6 +86052,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1NamespacedIngressRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -84589,6 +86062,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedIngress",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -84808,6 +86282,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1NamespacedIngressListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -84816,6 +86292,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedIngressList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -85031,6 +86508,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1NamespacedNetworkPolicyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -85039,6 +86518,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedNetworkPolicy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -85258,6 +86738,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1NamespacedNetworkPolicyListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -85266,6 +86748,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NamespacedNetworkPolicyList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -85481,6 +86964,8 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -85489,6 +86974,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			OperationSummary: "",
 			OperationID:      "watchNetworkingV1NetworkPolicyListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -85700,6 +87186,8 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNodeV1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -85708,6 +87196,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "watchNodeV1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -85923,6 +87412,8 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNodeV1RuntimeClassListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -85931,6 +87422,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "watchNodeV1RuntimeClassList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -86142,6 +87634,8 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNodeV1alpha1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -86150,6 +87644,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, args
 			OperationSummary: "",
 			OperationID:      "watchNodeV1alpha1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -86365,6 +87860,8 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNodeV1alpha1RuntimeClassListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -86373,6 +87870,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			OperationSummary: "",
 			OperationID:      "watchNodeV1alpha1RuntimeClassList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -86584,6 +88082,8 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNodeV1beta1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -86592,6 +88092,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, argsE
 			OperationSummary: "",
 			OperationID:      "watchNodeV1beta1RuntimeClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -86807,6 +88308,8 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchNodeV1beta1RuntimeClassListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -86815,6 +88318,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, a
 			OperationSummary: "",
 			OperationID:      "watchNodeV1beta1RuntimeClassList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -87026,6 +88530,8 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -87034,6 +88540,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1NamespacedPodDisruptionBudget",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -87253,6 +88760,8 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1NamespacedPodDisruptionBudgetListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -87261,6 +88770,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1NamespacedPodDisruptionBudgetList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -87476,6 +88986,8 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -87484,6 +88996,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -87695,6 +89208,8 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -87703,6 +89218,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1NamespacedPodDisruptionBudget",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -87922,6 +89438,8 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -87930,6 +89448,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -88145,6 +89664,8 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -88153,6 +89674,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -88364,6 +89886,8 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1beta1PodSecurityPolicyRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -88372,6 +89896,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodSecurityPolicy",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -88587,6 +90112,8 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchPolicyV1beta1PodSecurityPolicyListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -88595,6 +90122,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "watchPolicyV1beta1PodSecurityPolicyList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -88806,6 +90334,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1ClusterRoleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -88814,6 +90344,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRole",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -89029,6 +90560,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1ClusterRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -89037,6 +90570,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleBinding",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -89252,6 +90786,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1ClusterRoleBindingListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -89260,6 +90796,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleBindingList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -89471,6 +91008,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1ClusterRoleListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -89479,6 +91018,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1ClusterRoleList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -89690,6 +91230,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1NamespacedRoleRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -89698,6 +91240,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRole",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -89917,6 +91460,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1NamespacedRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -89925,6 +91470,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleBinding",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -90144,6 +91690,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1NamespacedRoleBindingListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -90152,6 +91700,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleBindingList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -90367,6 +91916,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1NamespacedRoleListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -90375,6 +91926,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1NamespacedRoleList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -90590,6 +92142,8 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -90598,6 +92152,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -90809,6 +92364,8 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchRbacAuthorizationV1RoleListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -90817,6 +92374,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			OperationSummary: "",
 			OperationID:      "watchRbacAuthorizationV1RoleListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -91028,6 +92586,8 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchSchedulingV1PriorityClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -91036,6 +92596,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, arg
 			OperationSummary: "",
 			OperationID:      "watchSchedulingV1PriorityClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -91251,6 +92812,8 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchSchedulingV1PriorityClassListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -91259,6 +92822,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			OperationSummary: "",
 			OperationID:      "watchSchedulingV1PriorityClassList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -91470,6 +93034,8 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1CSIDriverRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -91478,6 +93044,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, argsEscape
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSIDriver",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -91693,6 +93260,8 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1CSIDriverListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -91701,6 +93270,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, argsEs
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSIDriverList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -91912,6 +93482,8 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1CSINodeRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -91920,6 +93492,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, argsEscaped 
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSINode",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -92135,6 +93708,8 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1CSINodeListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -92143,6 +93718,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, argsEsca
 			OperationSummary: "",
 			OperationID:      "watchStorageV1CSINodeList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -92354,6 +93930,8 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1StorageClassRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -92362,6 +93940,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, argsEsc
 			OperationSummary: "",
 			OperationID:      "watchStorageV1StorageClass",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -92577,6 +94156,8 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1StorageClassListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -92585,6 +94166,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, arg
 			OperationSummary: "",
 			OperationID:      "watchStorageV1StorageClassList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -92796,6 +94378,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1VolumeAttachmentRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -92804,6 +94388,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, arg
 			OperationSummary: "",
 			OperationID:      "watchStorageV1VolumeAttachment",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -93019,6 +94604,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1VolumeAttachmentListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -93027,6 +94614,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			OperationSummary: "",
 			OperationID:      "watchStorageV1VolumeAttachmentList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -93238,6 +94826,8 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -93246,6 +94836,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -93457,6 +95048,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1alpha1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -93465,6 +95058,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1NamespacedCSIStorageCapacity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -93684,6 +95278,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -93692,6 +95288,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			OperationSummary: "",
 			OperationID:      "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -93907,6 +95504,8 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -93915,6 +95514,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -94126,6 +95726,8 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1beta1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -94134,6 +95736,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1NamespacedCSIStorageCapacity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",
@@ -94353,6 +95956,8 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 		return
 	}
 
+	var rawBody []byte
+
 	var response WatchStorageV1beta1NamespacedCSIStorageCapacityListRes
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -94361,6 +95966,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			OperationSummary: "",
 			OperationID:      "watchStorageV1beta1NamespacedCSIStorageCapacityList",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params: middleware.Parameters{
 				{
 					Name: "allowWatchBookmarks",

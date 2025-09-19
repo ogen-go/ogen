@@ -146,6 +146,8 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 		}
 	}
 
+	var rawBody []byte
+
 	var response *CustomSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -154,6 +156,7 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 			OperationSummary: "",
 			OperationID:      "customSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -363,6 +366,8 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 		}
 	}
 
+	var rawBody []byte
+
 	var response *DisjointSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -371,6 +376,7 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "disjointSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -563,6 +569,8 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 		}
 	}
 
+	var rawBody []byte
+
 	var response *IntersectSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -571,6 +579,7 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			OperationSummary: "",
 			OperationID:      "intersectSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}
@@ -729,6 +738,8 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 		}
 	}
 
+	var rawBody []byte
+
 	var response *OptionalSecurityOK
 	if m := s.cfg.Middleware; m != nil {
 		mreq := middleware.Request{
@@ -737,6 +748,7 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 			OperationSummary: "",
 			OperationID:      "optionalSecurity",
 			Body:             nil,
+			RawBody:          rawBody,
 			Params:           middleware.Parameters{},
 			Raw:              r,
 		}

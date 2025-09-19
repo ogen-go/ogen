@@ -64,7 +64,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		}
 		return res, errors.Wrap(defRes, "error")
 	{{- else }}
-		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+		return res, validate.UnexpectedStatusCodeWithResponse(resp)
 	{{- end }}
 }
 {{ end }}
@@ -102,12 +102,18 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- else }}
 		case ht.MatchContentType({{ quote $contentType }}, ct):
 		{{- end }}
+		{{- if $media.RawResponse }}
+		// Raw response - return the http.Response directly
+		return {{ if $ptr }}&{{ end }}{{ $originalType.Name }}{
+			Response: resp,
+		}, nil
+		{{- else }}
 		{{- $type := $originalType }}
 		{{- if or $response.WithStatusCode $response.WithHeaders }}
 			{{- $type = ($type.MustField "Response").Type }}
 		{{- end }}
 
-		{{- if $encoding.JSON }}
+		{{- if or $encoding.JSON $encoding.ProblemJSON }}
 			{{- if $media.JSONStreaming }}
 			d := jx.Decode(resp.Body, -1)
 			{{- else }}
@@ -176,6 +182,7 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.GoT
 		{{- else }}
 			return {{ if $ptr }}&{{ end }}response, nil
 		{{- end }}
+		{{- end }}{{/* End of RawResponse else block */}}
 	{{- end }}{{/* Range over contents */}}
 	default:
 		return res, validate.InvalidContentType(ct)

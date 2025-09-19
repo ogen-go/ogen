@@ -153,7 +153,7 @@ func (g *Generator) generateFormContent(
 			switch ct := getEncoding(f); ct {
 			case "", ir.EncodingFormURLEncoded:
 				f.Type.AddFeature("uri")
-			case ir.EncodingJSON:
+			case ir.EncodingJSON, ir.EncodingProblemJSON:
 				f.Type.AddFeature("json")
 			default:
 				return errors.Wrapf(
@@ -218,7 +218,7 @@ func (g *Generator) generateFormContent(
 				if err := isParamAllowed(f.Type, true, map[*ir.Type]struct{}{}); err != nil {
 					return err
 				}
-			case ir.EncodingJSON:
+			case ir.EncodingJSON, ir.EncodingProblemJSON:
 				spec.Content = &openapi.ParameterContent{
 					Name: ct.String(),
 				}
@@ -300,7 +300,7 @@ func (g *Generator) generateContents(
 				encoding = r
 			}
 
-			if encoding != ir.EncodingJSON && media.XOgenJSONStreaming {
+			if encoding != ir.EncodingJSON && encoding != ir.EncodingProblemJSON && media.XOgenJSONStreaming {
 				g.log.Warn(`Extension "x-ogen-json-streaming" will be ignored for non-JSON encoding`,
 					zapPosition(media),
 					zap.String("contentType", contentType),
@@ -319,7 +319,36 @@ func (g *Generator) generateContents(
 					Encoding:      encoding,
 					Type:          t,
 					JSONStreaming: media.XOgenJSONStreaming,
+					RawResponse:   media.XOgenRawResponse,
 				}
+				return nil
+
+			case ir.EncodingProblemJSON:
+				// In rfc9457, the only MUST defined for generators is to keep the status field
+				// synced with the HTTP status code.
+				if media.Schema.Type == jsonschema.Object {
+					for _, prop := range media.Schema.Properties {
+						if prop.Name == "status" {
+							g.log.Warn(`Ensuring "status" matching HTTP status code will not be enforced yet!`,
+								zapPosition(media),
+								zap.String("contentType", contentType),
+							)
+							break
+						}
+					}
+				}
+				t, err := g.generateSchema(ctx, typeName, media.Schema, optional, nil)
+				if err != nil {
+					return errors.Wrap(err, "generate schema")
+				}
+
+				t.AddFeature("json")
+				result[ir.ContentType(parsedContentType)] = ir.Media{
+					Encoding:      encoding,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
+				}
+
 				return nil
 
 			case ir.EncodingFormURLEncoded:
@@ -329,8 +358,10 @@ func (g *Generator) generateContents(
 				}
 
 				result[ir.ContentType(parsedContentType)] = ir.Media{
-					Encoding: encoding,
-					Type:     t,
+					Encoding:      encoding,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
+					RawResponse:   media.XOgenRawResponse,
 				}
 				return nil
 
@@ -341,8 +372,10 @@ func (g *Generator) generateContents(
 				}
 
 				result[ir.ContentType(parsedContentType)] = ir.Media{
-					Encoding: encoding,
-					Type:     t,
+					Encoding:      encoding,
+					Type:          t,
+					JSONStreaming: media.XOgenJSONStreaming,
+					RawResponse:   media.XOgenRawResponse,
 				}
 				return nil
 			default:
@@ -356,10 +389,25 @@ func (g *Generator) generateContents(
 						encoding = ir.EncodingOctetStream
 					}
 					result[ir.ContentType(parsedContentType)] = ir.Media{
-						Encoding: encoding,
-						Type:     t,
+						Encoding:      encoding,
+						Type:          t,
+						JSONStreaming: media.XOgenJSONStreaming,
+						RawResponse:   media.XOgenRawResponse,
 					}
 					return ctx.saveType(t)
+				} else if media.XOgenRawResponse {
+					t, err := g.generateSchema(ctx, typeName, media.Schema, optional, nil)
+					if err != nil {
+						return errors.Wrap(err, "generate schema")
+					}
+
+					result[ir.ContentType(parsedContentType)] = ir.Media{
+						Encoding:      encoding,
+						Type:          t,
+						JSONStreaming: media.XOgenJSONStreaming,
+						RawResponse:   media.XOgenRawResponse,
+					}
+					return nil
 				}
 
 				g.log.Info(`Content type is unsupported, set "format" to "binary" to use io.Reader`,
@@ -400,6 +448,7 @@ func (g *Generator) generateContents(
 				Type:          t,
 				Encoding:      m.Encoding,
 				JSONStreaming: m.JSONStreaming,
+				RawResponse:   m.RawResponse,
 			}
 		}
 	}

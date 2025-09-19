@@ -156,7 +156,7 @@ func decodeCreatePetResponse(resp *http.Response) (res CreatePetRes, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreatePetCategoriesResponse(resp *http.Response) (res CreatePetCategoriesRes, _ error) {
@@ -302,7 +302,7 @@ func decodeCreatePetCategoriesResponse(resp *http.Response) (res CreatePetCatego
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreatePetFriendsResponse(resp *http.Response) (res CreatePetFriendsRes, _ error) {
@@ -448,7 +448,7 @@ func decodeCreatePetFriendsResponse(resp *http.Response) (res CreatePetFriendsRe
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeCreatePetOwnerResponse(resp *http.Response) (res CreatePetOwnerRes, _ error) {
@@ -594,7 +594,7 @@ func decodeCreatePetOwnerResponse(resp *http.Response) (res CreatePetOwnerRes, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDeletePetResponse(resp *http.Response) (res DeletePetRes, _ error) {
@@ -708,7 +708,7 @@ func decodeDeletePetResponse(resp *http.Response) (res DeletePetRes, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeDeletePetOwnerResponse(resp *http.Response) (res DeletePetOwnerRes, _ error) {
@@ -822,7 +822,7 @@ func decodeDeletePetOwnerResponse(resp *http.Response) (res DeletePetOwnerRes, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListPetResponse(resp *http.Response) (res ListPetRes, _ error) {
@@ -977,7 +977,7 @@ func decodeListPetResponse(resp *http.Response) (res ListPetRes, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListPetCategoriesResponse(resp *http.Response) (res ListPetCategoriesRes, _ error) {
@@ -1132,7 +1132,7 @@ func decodeListPetCategoriesResponse(resp *http.Response) (res ListPetCategories
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeListPetFriendsResponse(resp *http.Response) (res ListPetFriendsRes, _ error) {
@@ -1287,7 +1287,7 @@ func decodeListPetFriendsResponse(resp *http.Response) (res ListPetFriendsRes, _
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeReadPetResponse(resp *http.Response) (res ReadPetRes, _ error) {
@@ -1433,7 +1433,7 @@ func decodeReadPetResponse(resp *http.Response) (res ReadPetRes, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeReadPetOwnerResponse(resp *http.Response) (res ReadPetOwnerRes, _ error) {
@@ -1579,7 +1579,7 @@ func decodeReadPetOwnerResponse(resp *http.Response) (res ReadPetOwnerRes, _ err
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }
 
 func decodeUpdatePetResponse(resp *http.Response) (res UpdatePetRes, _ error) {
@@ -1725,5 +1725,5 @@ func decodeUpdatePetResponse(resp *http.Response) (res UpdatePetRes, _ error) {
 			return res, validate.InvalidContentType(ct)
 		}
 	}
-	return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	return res, validate.UnexpectedStatusCodeWithResponse(resp)
 }

@@ -1854,6 +1854,15 @@ func (UnimplementedHandler) LogFileListHandler(ctx context.Context) error {
 	return ht.ErrNotImplemented
 }
 
+// PatchCoreV1NamespacedConfigMap implements patchCoreV1NamespacedConfigMap operation.
+//
+// Partially update the specified ConfigMap.
+//
+// PATCH /api/v1/namespaces/{namespace}/configmaps/{name}
+func (UnimplementedHandler) PatchCoreV1NamespacedConfigMap(ctx context.Context, req *IoK8sApimachineryPkgApisMetaV1Patch, params PatchCoreV1NamespacedConfigMapParams) (r PatchCoreV1NamespacedConfigMapRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // ReadAdmissionregistrationV1MutatingWebhookConfiguration implements readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
 // Read the specified MutatingWebhookConfiguration.
