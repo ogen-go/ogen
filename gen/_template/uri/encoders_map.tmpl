@@ -64,6 +64,10 @@ func (s *{{ $.Name }}) DecodeURI(d uri.Decoder) error {
 		MinPropertiesSet: {{ $v.MinPropertiesSet }},
 		MaxProperties:	{{ $v.MaxProperties }},
 		MaxPropertiesSet: {{ $v.MaxPropertiesSet }},
+		MinLength: {{ $v.MinLength }},
+		MinLengthSet: {{ $v.MinLengthSet }},
+		MaxLength: {{ $v.MaxLength }},
+		MaxLengthSet: {{ $v.MaxLengthSet }},
 	}).ValidateProperties(propertiesCount); err != nil {
 		return errors.Wrap(err, "object")
 	}

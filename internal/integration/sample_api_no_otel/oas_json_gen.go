@@ -3926,6 +3926,10 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 		MinPropertiesSet: false,
 		MaxProperties:    7,
 		MaxPropertiesSet: true,
+		MinLength:        0,
+		MinLengthSet:     false,
+		MaxLength:        0,
+		MaxLengthSet:     false,
 	}).ValidateProperties(propertiesCount); err != nil {
 		return errors.Wrap(err, "object")
 	}
@@ -4196,6 +4200,10 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 		MinPropertiesSet: true,
 		MaxProperties:    2,
 		MaxPropertiesSet: true,
+		MinLength:        0,
+		MinLengthSet:     false,
+		MaxLength:        0,
+		MaxLengthSet:     false,
 	}).ValidateProperties(propertiesCount); err != nil {
 		return errors.Wrap(err, "object")
 	}
@@ -10590,6 +10598,10 @@ func (s *ValidationStringMap) Decode(d *jx.Decoder) error {
 		MinPropertiesSet: true,
 		MaxProperties:    4,
 		MaxPropertiesSet: true,
+		MinLength:        0,
+		MinLengthSet:     false,
+		MaxLength:        0,
+		MaxLengthSet:     false,
 	}).ValidateProperties(propertiesCount); err != nil {
 		return errors.Wrap(err, "object")
 	}

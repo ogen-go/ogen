@@ -8,6 +8,10 @@ type Object struct {
 	MinPropertiesSet bool
 	MaxProperties    int
 	MaxPropertiesSet bool
+	MinLength        int
+	MinLengthSet     bool
+	MaxLength        int
+	MaxLengthSet     bool
 }
 
 // SetMinProperties sets MinProperties validation.
@@ -22,6 +26,18 @@ func (t *Object) SetMaxProperties(v int) {
 	t.MaxProperties = v
 }
 
+// SetMinLength sets MinLength validation.
+func (t *Object) SetMinLength(v int) {
+	t.MinLengthSet = true
+	t.MinLength = v
+}
+
+// SetMaxLength sets MaxLength validation.
+func (t *Object) SetMaxLength(v int) {
+	t.MaxLengthSet = true
+	t.MaxLength = v
+}
+
 // Set reports whether any validations are set.
 func (t Object) Set() bool {
 	return t.MaxPropertiesSet || t.MinPropertiesSet
@@ -34,6 +50,12 @@ func (t Object) ValidateProperties(v int) error {
 	}
 	if t.MinPropertiesSet && v < t.MinProperties {
 		return errors.Errorf("object properties number %d less than minimum %d", v, t.MinProperties)
+	}
+	if t.MinLengthSet && v < t.MinLength {
+		return errors.Errorf("object length %d less than minimum %d", v, t.MinLength)
+	}
+	if t.MaxLengthSet && v > t.MaxLength {
+		return errors.Errorf("object length number %d greater than maximum %d", v, t.MaxLength)
 	}
 
 	return nil
