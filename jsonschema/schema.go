@@ -96,6 +96,9 @@ type Schema struct {
 	MaxProperties *uint64
 	MinProperties *uint64
 
+	// OgenValidate is a map of custom validation parameters.
+	OgenValidate map[string]any
+
 	Examples []Example
 	// Default schema value.
 	Default    any
