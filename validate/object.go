@@ -8,32 +8,49 @@ type Object struct {
 	MinPropertiesSet bool
 	MaxProperties    int
 	MaxPropertiesSet bool
+	// TODO: add validate to gen
+	MinLength    int
+	MinLengthSet bool
+	MaxLength    int
+	MaxLengthSet bool
 }
 
 // SetMinProperties sets MinProperties validation.
-func (t *Object) SetMinProperties(v int) {
-	t.MinPropertiesSet = true
-	t.MinProperties = v
+func (o *Object) SetMinProperties(v int) {
+	o.MinPropertiesSet = true
+	o.MinProperties = v
 }
 
 // SetMaxProperties sets MaxProperties validation.
-func (t *Object) SetMaxProperties(v int) {
-	t.MaxPropertiesSet = true
-	t.MaxProperties = v
+func (o *Object) SetMaxProperties(v int) {
+	o.MaxPropertiesSet = true
+	o.MaxProperties = v
 }
 
-// Set reports whether any validations are set.
-func (t Object) Set() bool {
-	return t.MaxPropertiesSet || t.MinPropertiesSet
+// SetMinLength sets MinLength validation.
+func (o *Object) SetMinLength(v int) {
+	o.MinLengthSet = true
+	o.MinLength = v
+}
+
+// SetMaxLength sets MaxLength validation.
+func (o *Object) SetMaxLength(v int) {
+	o.MaxLengthSet = true
+	o.MaxLength = v
+}
+
+// Set reports whether any validations are seo.
+func (o Object) Set() bool {
+	return o.MaxPropertiesSet || o.MinPropertiesSet
 }
 
 // ValidateProperties returns error if object length (properties number) v is invalid.
-func (t Object) ValidateProperties(v int) error {
-	if t.MaxPropertiesSet && v > t.MaxProperties {
-		return errors.Errorf("object properties number %d greater than maximum %d", v, t.MaxProperties)
+func (o Object) ValidateProperties(v int) error {
+	if o.MaxPropertiesSet && v > o.MaxProperties {
+		return errors.Errorf("object properties number %d greater than maximum %d", v, o.MaxProperties)
 	}
-	if t.MinPropertiesSet && v < t.MinProperties {
-		return errors.Errorf("object properties number %d less than minimum %d", v, t.MinProperties)
+	if o.MinPropertiesSet && v < o.MinProperties {
+		return errors.Errorf("object properties number %d less than minimum %d", v, o.MinProperties)
 	}
 
 	return nil
