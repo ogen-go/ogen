@@ -55,6 +55,7 @@ func (o Object) ValidateProperties(v int) error {
 	return nil
 }
 
+// ValidateProperties returns error if object length v is invalid.
 func (o Object) ValidateLength(v any) error {
 	switch vv := v.(type) {
 	case string:
