@@ -54,21 +54,3 @@ func (o Object) ValidateProperties(v int) error {
 
 	return nil
 }
-
-// ValidateProperties returns error if object length v is invalid.
-func (o Object) ValidateLength(v any) error {
-	switch vv := v.(type) {
-	case string:
-		if o.MinLengthSet && len(vv) < o.MinLength {
-			return errors.Errorf("object length %d less than minimum %d", len(vv), o.MinLength)
-		}
-		if o.MaxLengthSet && len(vv) > o.MaxLength {
-			return errors.Errorf("object length number %d greater than maximum %d", len(vv), o.MaxLength)
-		}
-
-		return nil
-
-	default:
-		return errors.Errorf("unimplemented type %T in object validate", vv)
-	}
-}
