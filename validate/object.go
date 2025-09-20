@@ -8,10 +8,11 @@ type Object struct {
 	MinPropertiesSet bool
 	MaxProperties    int
 	MaxPropertiesSet bool
-	MinLength        int
-	MinLengthSet     bool
-	MaxLength        int
-	MaxLengthSet     bool
+	// TODO: add validate to gen
+	MinLength    int
+	MinLengthSet bool
+	MaxLength    int
+	MaxLengthSet bool
 }
 
 // SetMinProperties sets MinProperties validation.
