@@ -327,6 +327,8 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				"patternProperties": {},
 				"minProperties":     {},
 				"maxProperties":     {},
+				"minLength":         {},
+				"maxLength":         {},
 			},
 			"array": {
 				"items":       {},

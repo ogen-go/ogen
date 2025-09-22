@@ -641,6 +641,8 @@ func (e *expander) Schema(schema *jsonschema.Schema, walked map[*jsonschema.Sche
 	case jsonschema.Object:
 		expanded.MinProperties = schema.MinProperties
 		expanded.MaxProperties = schema.MaxProperties
+		expanded.MinLength = schema.MinLength
+		expanded.MaxLength = schema.MaxLength
 
 		if props := schema.Properties; len(props) > 0 {
 			expanded.Properties = make(ogen.Properties, len(props))

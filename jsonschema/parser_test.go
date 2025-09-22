@@ -450,3 +450,24 @@ func TestInvalidMultipleOf(t *testing.T) {
 		require.Error(t, err)
 	}
 }
+
+func TestSchema_MinMaxObjectProp(t *testing.T) {
+	var minLength, maxLength uint64 = 1, 2
+
+	parser := NewParser(Settings{})
+
+	out, err := parser.Parse(&RawSchema{
+		Type:      "object",
+		MinLength: &minLength,
+		MaxLength: &maxLength,
+	}, testCtx())
+	require.NoError(t, err)
+
+	expect := &Schema{
+		Type:      Object,
+		MinLength: &minLength,
+		MaxLength: &maxLength,
+	}
+
+	require.Equal(t, expect, out)
+}

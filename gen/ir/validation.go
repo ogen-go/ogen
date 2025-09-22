@@ -125,6 +125,12 @@ func (v *Validators) SetObject(schema *jsonschema.Schema) {
 	if schema.MinProperties != nil {
 		v.Object.SetMinProperties(int(*schema.MinProperties))
 	}
+	if schema.MinLength != nil {
+		v.Object.SetMinLength(int(*schema.MinLength))
+	}
+	if schema.MaxLength != nil {
+		v.Object.SetMaxLength(int(*schema.MaxLength))
+	}
 }
 
 func (t *Type) NeedValidation() bool {
