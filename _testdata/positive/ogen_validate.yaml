@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: Custom Ogen Validation Example
+  version: 1.0.0
+paths:
+  "/user":
+    post:
+      operationId: createUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/User"
+      responses:
+        '200':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/User"
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+          x-ogen-validate:
+            hasPrefix: "Mr. "
+        age:
+          type: integer
+        email:
+          type: string
+        other:
+          type: object
+          additionalProperties: true
+          x-ogen-validate:
+            count:
+              fields:
+                exact: 1
+      required:
+      - name
+      - age
+      - email
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+

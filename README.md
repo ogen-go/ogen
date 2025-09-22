@@ -287,6 +287,54 @@ requestBody:
           type: number
 ```
 
+### Custom validation
+
+Optionally, custom validation can be specified by `x-ogen-validate`, for example:
+
+```yaml
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+          x-ogen-validate:
+            minWords: 2
+        tags:
+          type: array
+          items:
+            type: string
+          x-ogen-validate:
+            uniqueItems: true
+        metadata:
+          type: object
+          additionalProperties: true
+          x-ogen-validate:
+            fieldCount:
+              min: 1
+              max: 10
+```
+
+Custom validators must be registered before validation is performed:
+
+```go
+import "github.com/ogen-go/ogen/validate"
+
+// Register validators
+validate.RegisterValidator("minWords", func(value any, params any) error {
+    // ... validate minimum word count
+})
+
+validate.RegisterValidator("uniqueItems", func(value any, params any) error {
+    // ... validate array has no duplicate items
+})
+
+validate.RegisterValidator("fieldCount", func(value any, params any) error {
+    // ... validate object field count within min/max range
+})
+```
+
 ### Operation groups
 
 Optionally, operations can be grouped so a handler interface will be generated for each group of operations.
