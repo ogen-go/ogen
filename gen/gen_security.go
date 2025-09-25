@@ -35,6 +35,10 @@ func (g *Generator) generateSecurityAPIKey(
 			Name: "Roles",
 			Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
 		},
+		&ir.Field{
+			Name: "DisjointRoles",
+			Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
+		},
 	)
 
 	switch in := security.In; in {
@@ -113,6 +117,9 @@ func (g *Generator) generateSecurityHTTP(
 
 	s.Type.Fields = append(s.Type.Fields, &ir.Field{
 		Name: "Roles",
+		Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
+	}, &ir.Field{
+		Name: "DisjointRoles",
 		Type: ir.Array(ir.Primitive(ir.String, nil), ir.NilOptional, nil),
 	})
 

@@ -44,7 +44,7 @@ var operationRoles{{ $s.Type.Name }} = map[string][]string {
 {{- end }}
 }
 
-func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request) (context.Context, bool, error) {
+func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName OperationName, req *http.Request, roles []string) (context.Context, bool, error) {
 	{{- if $s.Format.IsAPIKeySecurity }}
 		var t {{ $s.Type.Name }}
         const parameterName = {{ quote $s.ParameterName }}
@@ -74,6 +74,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 		{{- end }}
 		t.APIKey = value
         t.Roles = operationRoles{{ $s.Type.Name }}[operationName]
+        t.DisjointRoles = roles
     {{- else if $s.Format.IsBasicHTTPSecurity }}
 		var t {{ $s.Type.Name }}
 		if _, ok := findAuthorization(req.Header, "Basic"); !ok {
@@ -86,6 +87,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 		t.Username = username
 		t.Password = password
         t.Roles = operationRoles{{ $s.Type.Name }}[operationName]
+        t.DisjointRoles = roles
 	{{- else if $s.Format.IsBearerSecurity }}
 		var t {{ $s.Type.Name }}
 		token, ok := findAuthorization(req.Header, "Bearer")
@@ -94,6 +96,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 		}
 		t.Token = token
         t.Roles = operationRoles{{ $s.Type.Name }}[operationName]
+        t.DisjointRoles = roles
 	{{- else if $s.Format.IsOAuth2Security }}
 		var t {{ $s.Type.Name }}
 		token, ok := findAuthorization(req.Header, "Bearer")
@@ -102,6 +105,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName O
 		}
 		t.Token = token
 		t.Scopes = oauth2Scopes{{ $s.Type.Name }}[operationName]
+        t.DisjointRoles = roles
 	{{- else if $s.Format.IsCustomSecurity }}
 		var t {{ $s.Type.Name }}
 		t.Request = req
