@@ -1799,8 +1799,10 @@ func (s *Server) handleSecurityTestRequest(args [0]string, argsEscaped bool, w h
 	{
 		type bitset = [1]uint8
 		var satisfied bitset
+		allRoles := map[string][]string{"SecurityTest": []string{}}
 		{
-			sctx, ok, err := s.securityAPIKey(ctx, SecurityTestOperation, r)
+			roles := allRoles["SecurityTest"]
+			sctx, ok, err := s.securityAPIKey(ctx, SecurityTestOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
