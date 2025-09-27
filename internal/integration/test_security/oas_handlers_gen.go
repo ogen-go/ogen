@@ -104,8 +104,10 @@ func (s *Server) handleCustomSecurityRequest(args [0]string, argsEscaped bool, w
 	{
 		type bitset = [1]uint8
 		var satisfied bitset
+		allRoles := map[string][]string{"CustomSecurity": []string{}}
 		{
-			sctx, ok, err := s.securityCustom(ctx, CustomSecurityOperation, r)
+			roles := allRoles["CustomSecurity"]
+			sctx, ok, err := s.securityCustom(ctx, CustomSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -272,8 +274,10 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 	{
 		type bitset = [1]uint8
 		var satisfied bitset
+		allRoles := map[string][]string{"DisjointSecurity": []string{}, "IntersectSecurity": []string(nil)}
 		{
-			sctx, ok, err := s.securityBasicAuth(ctx, DisjointSecurityOperation, r)
+			roles := allRoles["DisjointSecurity"]
+			sctx, ok, err := s.securityBasicAuth(ctx, DisjointSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -290,7 +294,8 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityQueryKey(ctx, DisjointSecurityOperation, r)
+			roles := allRoles["DisjointSecurity"]
+			sctx, ok, err := s.securityQueryKey(ctx, DisjointSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -307,7 +312,8 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityCookieKey(ctx, DisjointSecurityOperation, r)
+			roles := allRoles["DisjointSecurity"]
+			sctx, ok, err := s.securityCookieKey(ctx, DisjointSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -324,7 +330,8 @@ func (s *Server) handleDisjointSecurityRequest(args [0]string, argsEscaped bool,
 			}
 		}
 		{
-			sctx, ok, err := s.securityHeaderKey(ctx, DisjointSecurityOperation, r)
+			roles := allRoles["DisjointSecurity"]
+			sctx, ok, err := s.securityHeaderKey(ctx, DisjointSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -492,8 +499,10 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 	{
 		type bitset = [1]uint8
 		var satisfied bitset
+		allRoles := map[string][]string{"DisjointSecurity": []string{}, "IntersectSecurity": []string(nil)}
 		{
-			sctx, ok, err := s.securityBasicAuth(ctx, IntersectSecurityOperation, r)
+			roles := allRoles["IntersectSecurity"]
+			sctx, ok, err := s.securityBasicAuth(ctx, IntersectSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -510,7 +519,8 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			}
 		}
 		{
-			sctx, ok, err := s.securityHeaderKey(ctx, IntersectSecurityOperation, r)
+			roles := allRoles["IntersectSecurity"]
+			sctx, ok, err := s.securityHeaderKey(ctx, IntersectSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -527,7 +537,8 @@ func (s *Server) handleIntersectSecurityRequest(args [0]string, argsEscaped bool
 			}
 		}
 		{
-			sctx, ok, err := s.securityBearerToken(ctx, IntersectSecurityOperation, r)
+			roles := allRoles["IntersectSecurity"]
+			sctx, ok, err := s.securityBearerToken(ctx, IntersectSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
@@ -695,8 +706,10 @@ func (s *Server) handleOptionalSecurityRequest(args [0]string, argsEscaped bool,
 	{
 		type bitset = [1]uint8
 		var satisfied bitset
+		allRoles := map[string][]string{"DisjointSecurity": []string{}, "OptionalSecurity": []string{"admin"}}
 		{
-			sctx, ok, err := s.securityQueryKey(ctx, OptionalSecurityOperation, r)
+			roles := allRoles["OptionalSecurity"]
+			sctx, ok, err := s.securityQueryKey(ctx, OptionalSecurityOperation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,

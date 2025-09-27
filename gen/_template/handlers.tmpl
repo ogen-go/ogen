@@ -133,9 +133,13 @@ func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Req
 		type bitset = [{{ $op.Security.BitArrayLen }}]uint8
 		var satisfied bitset
 		{{- range $idx, $s := $securities }}
+		{{- if eq $idx 0 }}
+		allRoles := {{ printf "%#v" $s.Scopes }}
+		{{- end }}
 		{{- $securityName := $s.Type.Name }}
 		{
-			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r)
+			roles := allRoles[{{ quote $op.Name }}]
+			sctx, ok, err := s.security{{ $securityName }}(ctx, {{ $op.Name }}Operation, r, roles)
 			if err != nil {
 				err = &ogenerrors.SecurityError{
 					OperationContext: opErrContext,
