@@ -50,4 +50,5 @@ func DefaultErrorHandler(ctx context.Context, w http.ResponseWriter, r *http.Req
 	e.ObjEnd()
 
 	_, _ = w.Write(e.Bytes())
+	jx.PutEncoder(e)
 }
