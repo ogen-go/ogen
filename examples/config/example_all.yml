@@ -1,4 +1,4 @@
-# Update schema.yaml after editing this file.
+# Update ogen.jsonschema.yml after editing this file.
 
 # sets parser options.
 parser:
