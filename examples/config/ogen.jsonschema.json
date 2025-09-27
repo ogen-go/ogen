@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ogen Configuration Schema",
+  "description": "JSON Schema for ogen code generator configuration",
+  "type": "object",
+  "properties": {
+    "parser": {
+      "type": "object",
+      "description": "Parser configuration options",
+      "properties": {
+        "infer_types": {
+          "type": "boolean",
+          "description": "Enables type inference for schemas",
+          "default": true
+        },
+        "allow_remote": {
+          "type": "boolean",
+          "description": "Enables remote references resolving",
+          "default": true
+        },
+        "depth_limit": {
+          "type": "integer",
+          "description": "Maximum depth of schema generation",
+          "minimum": 1,
+          "default": 1000
+        },
+        "authentication_schemes": {
+          "type": "array",
+          "description": "Allowed authentication schemes",
+          "items": {
+            "type": "string",
+            "enum": [
+              "basic",
+              "bearer",
+              "concealed",
+              "digest",
+              "dpop",
+              "gnap",
+              "hoba",
+              "mutual",
+              "negotiate",
+              "oauth",
+              "privatetoken",
+              "scram-sha-1",
+              "scram-sha-256",
+              "vapid"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "generator": {
+      "type": "object",
+      "description": "Generator configuration options",
+      "properties": {
+        "features": {
+          "type": "object",
+          "description": "Generator feature configuration",
+          "properties": {
+            "enable": {
+              "type": "array",
+              "description": "Features to enable",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "paths/client",
+                  "paths/server",
+                  "webhooks/client",
+                  "webhooks/server",
+                  "client/security/reentrant",
+                  "client/request/validation",
+                  "server/response/validation",
+                  "ogen/otel",
+                  "ogen/unimplemented",
+                  "debug/example_tests"
+                ]
+              }
+            },
+            "disable": {
+              "type": "array",
+              "description": "Features to disable",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "paths/client",
+                  "paths/server",
+                  "webhooks/client",
+                  "webhooks/server",
+                  "client/security/reentrant",
+                  "client/request/validation",
+                  "server/response/validation",
+                  "ogen/otel",
+                  "ogen/unimplemented",
+                  "debug/example_tests"
+                ]
+              }
+            },
+            "disable_all": {
+              "type": "boolean",
+              "description": "Disable all features"
+            }
+          },
+          "additionalProperties": false
+        },
+        "filters": {
+          "type": "object",
+          "description": "Operation filtering configuration",
+          "properties": {
+            "path_regex": {
+              "type": "string",
+              "description": "Regular expression to filter paths"
+            },
+            "methods": {
+              "type": "array",
+              "description": "HTTP methods to include",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "GET",
+                  "POST",
+                  "PUT",
+                  "PATCH",
+                  "DELETE",
+                  "HEAD",
+                  "OPTIONS",
+                  "TRACE"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "ignore_not_implemented": {
+          "type": "array",
+          "description": "Functions to ignore when not implemented",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "expand": {
+      "type": "string",
+      "description": "Path to expanded spec file"
+    }
+  },
+  "additionalProperties": false
+}
