@@ -1,3 +1,5 @@
+# Update schema.yaml after editing this file.
+
 # sets parser options.
 parser:
   # enables type inference for schemas. Schema parser will try to detect schema type by its properties.
