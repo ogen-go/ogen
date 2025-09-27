@@ -92,6 +92,7 @@
 			MaxLength:      {{ $v.MaxLength }},
 			MaxLengthSet:   {{ $v.MaxLengthSet }},
 			Email:          {{ $v.Email }},
+			Byte:           {{ $v.Byte }},
 			Hostname:       {{ $v.Hostname }},
 			{{- if $v.Regex }}
 			Regex:          regexMap[{{ quote $v.Regex }}],
